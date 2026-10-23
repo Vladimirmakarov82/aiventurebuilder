@@ -14,6 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wdth,wght@12..36,75..150,300..900&family=Geist+Mono:wght@400..600&display=swap">
 <style>
+.lang{display:inline-flex;align-items:center;justify-content:center;flex:none;height:34px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-family:var(--m);font-size:12px;letter-spacing:.08em;color:var(--ink);text-decoration:none}.lang:hover{border-color:var(--or)}.chip{margin-left:auto}
 /* Layout: one 1280x720 film stage, chapter cards, caption under the stage, segmented player, scenario switch. Swiss Precision: light grid, black ink, one orange accent, company colors. */
 :root{
   --bg:#F3F4F2; --paper:#FFFFFF; --ink:#0B0B0D; --mute:#5E616A; --inv:#F3F4F2;
@@ -149,6 +150,7 @@ svg.instant,svg.instant *{transition:none!important}
   <div class="top">
     <div class="lock"><svg><use href="#mark"/></svg><div><b>Orbiq</b></div></div>
     <div class="chip"><span class="k" id="chipK"></span><span class="t" id="chipT"></span></div>
+    <a class="lang" href="/en/model/" hreflang="en" lang="en" aria-label="English version">EN</a>
     <button class="cap" id="cap" type="button" aria-label="Увеличить ролик, скрыть текст" title="Увеличить ролик">⤢</button>
     <div class="pill" role="group" aria-label="Сценарий" style="display:none"><span class="lb">Сценарий</span>
       <button data-s="bad" aria-pressed="false">Плохой</button><button data-s="base" aria-pressed="true">Базовый</button><button data-s="good" aria-pressed="false">Хороший</button>

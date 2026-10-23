@@ -18,6 +18,9 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="canonical" href="https://aiventurebuilder.xyz">
+<link rel="alternate" hreflang="ru" href="https://aiventurebuilder.xyz/">
+<link rel="alternate" hreflang="en" href="https://aiventurebuilder.xyz/en/">
+<link rel="alternate" hreflang="x-default" href="https://aiventurebuilder.xyz/">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -85,7 +88,7 @@ button{font:inherit}
 .kpi > span{font-family:var(--m);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);line-height:1.4}
 .kpi:hover > span{color:var(--ink)}
 @media (max-width:980px){.hero{grid-template-columns:1fr;min-height:auto}.h-left,.h-right{grid-column:1/-1}.h-right{max-width:600px;margin-inline:auto;width:100%;margin-top:12px}}
-@media (max-width:620px){.kpis{grid-template-columns:1fr 1fr .6fr}.kpi{padding-inline:8px}.kpi b{font-size:26px}.lead{font-size:18px}.hero{gap:18px}}
+@media (max-width:620px){.kpis{grid-template-columns:.55fr 1fr 1.25fr}.kpi{padding-inline:8px}.kpi b{font-size:26px}.lead{font-size:18px}.hero{gap:18px}}
 
 .hub{width:100%;height:auto;display:block;overflow:visible}
 .hub .lbl-k{font-family:var(--m);font-size:11px;letter-spacing:.1em;fill:var(--mute)}
@@ -328,6 +331,7 @@ button{font:inherit}
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
       <a class="nl" href="#cross">Фокус</a><a class="nl" href="#focus">Отбор</a><a class="nl" href="#model">Модель</a><a class="nl" href="#portfolio">Портфель</a>
+      <a class="chip" href="/en/" hreflang="en" lang="en" aria-label="English version">EN</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Движение: вкл</button>
     </div>
   </header>
@@ -469,7 +473,7 @@ button{font:inherit}
           <path id="riskA" fill="url(#rk)"/>
           <path id="riskL" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="7 6"/>
           <path id="revL" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/>
-          <g id="cross"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-14" dy="-12">ОТРЫВ ПРОПАДАЕТ</text></g>
+          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-14" dy="-12">ОТРЫВ ПРОПАДАЕТ</text></g>
           <g id="round"><circle r="9" fill="#FF4D00"/><circle r="18" fill="none" stroke="#FF4D00"/><text class="svgl" fill="var(--ink)" dx="-10" dy="-26">РАУНД $300K+</text></g>
           <text id="revT" class="svgl" fill="var(--ink)" text-anchor="end">ВЫРУЧКА</text>
           <text id="riskT" class="svgl" fill="#FF4D00" text-anchor="end">РИСК: КОНКУРЕНТЫ ДОГОНЯЮТ</text>
@@ -655,7 +659,7 @@ button{font:inherit}
     $('revL').setAttribute('d',rv);$('riskL').setAttribute('d',rk);$('riskA').setAttribute('d',rk+'L'+px(24)+' '+Y0+'L'+px(0)+' '+Y0+'Z');
     var re=revB(24)*(1-k)+revA(24)*k,ri=Math.min(.98,riskB(24)*(1-k)+riskA(24)*k);
     $('revT').setAttribute('x',X1);$('revT').setAttribute('y',py(re)+(k>.5?-14:22));$('riskT').setAttribute('x',X1);$('riskT').setAttribute('y',py(ri)+(k>.5?22:-12));
-    var cm=15.4;$('cross').setAttribute('transform','translate('+px(cm)+' '+py(revB(cm))+')');$('cross').style.opacity=Math.max(0,1-k*2.2);
+    var cm=15.4;$('crossPt').setAttribute('transform','translate('+px(cm)+' '+py(revB(cm))+')');$('crossPt').style.opacity=Math.max(0,1-k*2.2);
     $('round').setAttribute('transform','translate('+px(4)+' '+py(revA(4))+')');$('round').style.opacity=Math.max(0,k*2-1)}
   draw();
   var SIDE=[

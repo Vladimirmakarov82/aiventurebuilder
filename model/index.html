@@ -782,10 +782,11 @@ var cur=0,advAt=null,beatAnim=false,beatStart=0;
 var under=document.getElementById("under"),chapEl=document.getElementById("chap");
 function resetScene(){Object.keys(A).forEach(function(id){var el=A[id];if(el&&el.classList&&el.classList.contains("pop"))off(id)});Object.keys(PIPES).forEach(poff);clearFlows();tweens=[];timers=[];while(gFly.firstChild)gFly.removeChild(gFly.firstChild);
   Object.keys(CNT).forEach(function(k){setC(k,CNT[k].v0)});A.invX.textContent="";bldT.textContent="";invSub.textContent="ЧЕК ВЫБИРАЕТ КАЖДЫЙ ИНВЕСТОР";Object.keys(ROWS).forEach(function(k){ROWS[k].forEach(function(r){r.classList.remove("off")})});PLB.forEach(function(b){b.classList.remove("off")})}
+function hideAll(){Object.keys(A).forEach(function(id){var el=A[id];if(el&&el.classList&&el.classList.contains("pop"))off(id)});Object.keys(PIPES).forEach(poff);clearFlows();timers=[];tweens=[];while(gFly.firstChild)gFly.removeChild(gFly.firstChild)}
 function chip(s){document.getElementById("chipK").textContent=(s+1)+" / "+NST;document.getElementById("chipT").textContent=CH[s]}
 function runBeat(i,anim){cur=i;var b=B[i],a=anim&&!reduce,ch=a&&i===sStart[b.s]&&i>0;chip(b.s);
   var txt=b.t(),D=Math.max(5200,2400+txt.length*40)*(b.dur||1),pre=ch?2150:0;
-  if(ch){svg.classList.add("instant");ovOnly(null);svg.getBoundingClientRect();svg.classList.remove("instant");document.getElementById("chapK").textContent=(b.s+1)+" / "+NST;document.getElementById("chapT").textContent=CH[b.s];chapEl.classList.add("show");later(1700,function(){chapEl.classList.remove("show")});beatAnim=true;later(pre,function(){b.f(true,D)})}
+  if(ch){svg.classList.add("instant");hideAll();svg.getBoundingClientRect();svg.classList.remove("instant");document.getElementById("chapK").textContent=(b.s+1)+" / "+NST;document.getElementById("chapT").textContent=CH[b.s];chapEl.classList.add("show");later(1700,function(){chapEl.classList.remove("show")});beatAnim=true;later(pre,function(){b.f(true,D)})}
   else{beatAnim=a;b.f(a,D)}
   under.innerHTML=txt;under.scrollTop=0;beatStart=clock;advAt=(a&&!b.end)?clock+pre+D:null;segUpdate()}
 function go(i,anim){i=Math.max(0,Math.min(B.length-1,i|0));chapEl.classList.remove("show");resetScene();svg.classList.add("instant");beatAnim=false;for(var k=0;k<i;k++)B[k].f(false,0);svg.getBoundingClientRect();svg.classList.remove("instant");runBeat(i,anim!==false&&playing)}

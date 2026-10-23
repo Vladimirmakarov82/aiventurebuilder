@@ -371,50 +371,54 @@ var BM={};
 function coCreate(p,x,y,tx,ty,text,anchorRight,dark){var g=E("g",{opacity:0},p);var bg=dark?"var(--inv)":"var(--ink)",fg=dark?"var(--ink)":"var(--inv)";var w=Math.round(text.length*8.9+34);var bx=anchorRight?tx-w:tx;E("line",{x1:x,y1:y,x2:tx,y2:ty,stroke:bg,"stroke-width":1.5,"stroke-opacity":.5},g);E("circle",{cx:x,cy:y,r:5,fill:bg},g);E("rect",{x:bx,y:ty-21,width:w,height:42,rx:21,fill:bg},g);T(g,bx+15,ty+6,text,"ttl",{"font-size":15.5,fill:fg});return g}
 function coShow(arr,g){arr.forEach(function(o){if(o!==g)fz(o,0,400)});later(250,function(){fz(g,1,500)})}
 function rTo(c,r1,d){var r0=+c.getAttribute("r");TW(d||1200,function(k){c.setAttribute("r",(r0+(r1-r0)*ease(k)).toFixed(1))})}
-ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");
-  var cx=640,cy=400;BM.cx=cx;BM.cy=cy;
-  BM.ring=E("g",{opacity:0},g);var rg=E("g",{},BM.ring);E("circle",{cx:cx,cy:cy,r:150,fill:"none",stroke:OR,"stroke-width":3,"stroke-dasharray":"30 16","stroke-opacity":.5},rg);
-  [0,90,180,270].forEach(function(a){var rad=a*Math.PI/180,x=cx+150*Math.cos(rad),y=cy+150*Math.sin(rad);E("path",{d:"M-9 -7 L9 0 L-9 7 Z",fill:OR,transform:"translate("+x.toFixed(1)+","+y.toFixed(1)+") rotate("+(a+90)+")"},rg)});
-  var an=document.createElementNS("http://www.w3.org/2000/svg","animateTransform");an.setAttribute("attributeName","transform");an.setAttribute("type","rotate");an.setAttribute("from","0 "+cx+" "+cy);an.setAttribute("to","360 "+cx+" "+cy);an.setAttribute("dur","14s");an.setAttribute("repeatCount","indefinite");rg.appendChild(an);
-  BM.core=E("g",{opacity:0},g);BM.c=E("circle",{cx:cx,cy:cy,r:60,fill:OR},BM.core);T(BM.core,cx,cy-6,"Venture","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});T(BM.core,cx,cy+16,"Builder","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});
-  /* new company + founder */
-  BM.co1=E("g",{opacity:0},g);BM.cc=E("circle",{cx:250,cy:290,r:56,fill:"#00A676"},BM.co1);T(BM.co1,250,286,"Новая","big",{"font-size":16,"text-anchor":"middle",fill:"#fff"});T(BM.co1,250,306,"компания","big",{"font-size":16,"text-anchor":"middle",fill:"#fff"});
-  E("rect",{x:92,y:200,width:116,height:40,rx:20,fill:"var(--ink)"},BM.co1);T(BM.co1,150,226,"Фаундер","ttl",{"font-size":16,"text-anchor":"middle",fill:"var(--inv)"});
-  BM.hand=E("g",{opacity:0},g);E("path",{d:"M208 222 Q 400 170 590 360",fill:"none",stroke:"var(--ink)","stroke-width":2,"stroke-dasharray":"6 6"},BM.hand);
-  BM.prog=E("g",{opacity:0},g);E("circle",{cx:250,cy:290,r:70,fill:"none",stroke:"var(--line)","stroke-width":8},BM.prog);BM.pc=E("circle",{cx:250,cy:290,r:70,fill:"none",stroke:OR,"stroke-width":8,"stroke-dasharray":"0 440",transform:"rotate(-90 250 290)","stroke-linecap":"round"},BM.prog);BM.pt=T(BM.prog,250,384,"раунд 0%","ttl",{"font-size":14,"text-anchor":"middle",fill:"var(--ink)"});
-  BM.inv=E("g",{opacity:0},g);[[120,520],[200,580],[290,540]].forEach(function(p){E("circle",{cx:p[0],cy:p[1],r:24,fill:"var(--ink)"},BM.inv);T(BM.inv,p[0],p[1]+7,"$","big",{"font-size":18,"text-anchor":"middle",fill:"var(--inv)"})});T(BM.inv,200,630,"ИНВЕСТОРЫ VB","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
-  BM.disc=E("g",{opacity:0},g);E("rect",{x:330,y:500,width:160,height:34,rx:17,fill:GR},BM.disc);T(BM.disc,410,522,"−20% к раунду","ttl",{"font-size":14.5,"text-anchor":"middle",fill:"#fff"});
-  /* other companies */
-  BM.oth=[];[["MAST","#FFB800","#0B0B0D",1010,230],["VisaTO","#00A676","#fff",1080,420],["+1","none",OR,960,620],["+1","none",OR,1150,580]].forEach(function(p){var q=E("g",{opacity:0},g);var c=E("circle",{cx:p[3],cy:p[4],r:p[1]=="none"?36:46,fill:p[1]},q);if(p[1]=="none"){c.setAttribute("stroke",OR);c.setAttribute("stroke-width",2);c.setAttribute("stroke-dasharray","6 6")}T(q,p[3],p[4]+5,p[0],"ttl",{"font-size":p[1]=="none"?20:16,"text-anchor":"middle",fill:p[2]});BM.oth.push({g:q,c:c,x:p[3],y:p[4]})});
-  BM.fin=E("g",{opacity:0},g);E("circle",{cx:cx,cy:cy,r:195,fill:"none",stroke:OR,"stroke-width":2,"stroke-dasharray":"8 10"},BM.fin);
-  BM.L=E("g",{},g);BM.CO=E("g",{},g);var C=BM.CO;
-  BM.co=[coCreate(C,208,220,250,150,"VB договаривается с фаундером новой компании",false),
-   coCreate(C,420,230,470,180,"Акции минимум на $250 тыс. — в Venture Builder",false),
-   coCreate(C,320,290,360,240,"Условие: VB закрывает раунд на 100%",false),
-   coCreate(C,200,556,250,660,"Инвесторы VB закрывают раунд",false),
-   coCreate(C,490,517,520,600,"Спецусловия для инвесторов VB",false),
-   coCreate(C,700,430,760,520,"Сразу после сделки 10% капитала — cash в VB",false),
-   coCreate(C,700,370,760,300,"Carry: 20% прибыли инвесторов на выходе",false),
-   coCreate(C,1080,466,1180,520,"Каждая компания добавляет акции в VB",true),
-   coCreate(C,cx+150,cy,cx+200,cy+110,"Компании растут — доли дорожают",false),
-   coCreate(C,cx,cy-195,cx-250,cy-245,"Новые инвесторы входят в VB через 12 мес. по оценке $10 млн+",false)];
-  BM.all=[BM.ring,BM.core,BM.co1,BM.hand,BM.prog,BM.inv,BM.disc,BM.fin].concat(BM.oth.map(function(o){return o.g}))});
-function runBM(a,D){var L=BM.L;while(L.firstChild)L.removeChild(L.firstChild);var co=BM.co,cx=BM.cx,cy=BM.cy;
-  co.forEach(function(c){c.setAttribute("opacity",0)});
-  if(!a){BM.all.forEach(function(e){e.setAttribute("opacity",1)});BM.c.setAttribute("r",120);BM.pc.setAttribute("stroke-dasharray","440 440");BM.pt.textContent="раунд 100%";co[co.length-1].setAttribute("opacity",1);return}
-  BM.all.forEach(function(e){e.setAttribute("opacity",0)});BM.c.setAttribute("r",60);BM.pc.setAttribute("stroke-dasharray","0 440");BM.pt.textContent="раунд 0%";BM.oth.forEach(function(o){o.c.setAttribute("r",o.c.getAttribute("stroke")?36:46)});
+ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");var C=BM;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
+  C.act=T(g,1218,66,"","lbl",{"text-anchor":"end",fill:OR});
+  C.cx=640;C.cy=370;
+  C.brand=P();E("ellipse",{cx:640,cy:392,rx:600,ry:262,fill:"none",stroke:OR,"stroke-width":2,"stroke-dasharray":"10 10"},C.brand);T(C.brand,640,678,"БРЕНД ГРУППЫ · ЕГО ЗНАЮТ ИНВЕСТОРЫ","lbl",{"text-anchor":"middle",fill:OR});
+  C.plat=P();E("circle",{cx:C.cx,cy:C.cy,r:112,fill:"none",stroke:GR,"stroke-width":3,"stroke-dasharray":"4 8"},C.plat);T(C.plat,C.cx,C.cy+132,"база клиентов · AI-агент","ttl",{"font-size":13,"text-anchor":"middle",fill:GR});
+  C.core=P();C.c=E("circle",{cx:C.cx,cy:C.cy,r:66,fill:OR},C.core);T(C.core,C.cx,C.cy-4,"Venture","big",{"font-size":18,"text-anchor":"middle",fill:"#fff"});T(C.core,C.cx,C.cy+18,"Builder","big",{"font-size":18,"text-anchor":"middle",fill:"#fff"});
+  C.pr=P();E("circle",{cx:250,cy:290,r:54,fill:"#00A676"},C.pr);T(C.pr,250,286,"Проект","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});T(C.pr,250,306,"VisaTO","ttl",{"font-size":13,"text-anchor":"middle",fill:"#fff"});
+  E("rect",{x:170,y:196,width:160,height:34,rx:17,fill:"var(--ink)"},C.pr);T(C.pr,250,218,"Команда проекта","ttl",{"font-size":14,"text-anchor":"middle",fill:"var(--inv)"});
+  C.ring=P();E("circle",{cx:250,cy:290,r:68,fill:"none",stroke:"var(--line)","stroke-width":7},C.ring);C.rp=E("circle",{cx:250,cy:290,r:68,fill:"none",stroke:OR,"stroke-width":7,"stroke-dasharray":"0 428","stroke-linecap":"round",transform:"rotate(-90 250 290)"},C.ring);C.rt=T(C.ring,250,380,"раунд 0%","ttl",{"font-size":13,"text-anchor":"middle",fill:"var(--ink)"});
+  C.doc=P();E("path",{d:"M310 300 Q 450 250 574 340",fill:"none",stroke:"var(--ink)","stroke-width":2,"stroke-dasharray":"6 6"},C.doc);E("rect",{x:428,y:252,width:30,height:38,rx:4,fill:"var(--paper)",stroke:"var(--ink)","stroke-width":2},C.doc);[262,271,280].forEach(function(y){E("line",{x1:435,y1:y,x2:451,y2:y,stroke:"var(--ink)","stroke-width":2},C.doc)});
+  C.inv=P();[[110,500],[190,550],[280,515]].forEach(function(p){E("circle",{cx:p[0],cy:p[1],r:22,fill:"var(--ink)"},C.inv);T(C.inv,p[0],p[1]+6,"$","big",{"font-size":16,"text-anchor":"middle",fill:"var(--inv)"})});T(C.inv,195,598,"ИНВЕСТОРЫ VB","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
+  C.disc=P();E("rect",{x:296,y:500,width:148,height:32,rx:16,fill:"#00A676"},C.disc);T(C.disc,370,521,"−20% к раунду","ttl",{"font-size":14,"text-anchor":"middle",fill:"#fff"});
+  C.rx=[["Визы",1000,220,"#00A676","#fff",0],["Животные",1090,340,"var(--paper)",OR,1],["Лекарства",1000,460,"var(--paper)",OR,1]].map(function(c){var q=P();var ci=E("circle",{cx:c[1],cy:c[2],r:44,fill:c[3]},q);if(c[5]){ci.setAttribute("stroke",OR);ci.setAttribute("stroke-width",2);ci.setAttribute("stroke-dasharray","6 6")}T(q,c[1],c[2]+5,c[0],"ttl",{"font-size":c[0].length>6?13:15,"text-anchor":"middle",fill:c[4]});return {g:q,x:c[1],y:c[2]}});
+  C.pt=P();[["Страховка",800],["eSIM",940],["Переводы",1080]].forEach(function(p){E("rect",{x:p[1]-62,y:560,width:124,height:36,rx:18,fill:"var(--soft)"},C.pt);T(C.pt,p[1],583,p[0],"ttl",{"font-size":14,"text-anchor":"middle",fill:"var(--ink)"})});T(C.pt,940,618,"ПАРТНЕРЫ ГРУППЫ","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
+  C.rev=P();E("rect",{x:462,y:478,width:366,height:58,rx:16,fill:"var(--ink)"},C.rev);T(C.rev,482,500,"ВЫРУЧКА VB","lbl",{fill:OR});C.revT=T(C.rev,482,524,"","ttl",{"font-size":14.5,fill:"var(--inv)"});
+  C.L=E("g",{},g);C.CO=E("g",{},g);var X=C.CO;
+  C.co=[coCreate(X,330,213,370,140,"Соглашение: VB закрывает раунд и ведет IR проекта",false),
+   coCreate(X,443,252,480,140,"Команда передает VB акции от $250 тыс. — если раунд закрыт",false),
+   coCreate(X,195,500,96,140,"Инвесторы VB закрывают раунд со скидкой 20%",false),
+   coCreate(X,640,304,700,140,"Сразу после сделки: 10% раунда до $2 млн, 5% от крупных",false),
+   coCreate(X,640,304,700,140,"На выходе: carry 20% с прибыли инвесторов VB",false),
+   coCreate(X,1000,176,1184,140,"Клиент VisaTO везет собаку — AI-агент ведет его к соседнему проекту",true),
+   coCreate(X,1090,296,1184,140,"Проект платит VB комиссию за клиента",true),
+   coCreate(X,940,560,1184,140,"Страховка, eSIM, переводы: партнеры платят VB за клиентов группы",true),
+   coCreate(X,640,130,700,140,"Инвесторы знают группу: раунды быстрее и дороже",false),
+   coCreate(X,640,130,700,140,"Войти в проекты группы можно только через VB",false)]});
+function runBM(a,D){var C=BM,L=C.L,cx=C.cx,cy=C.cy;zClear(L);C.p.forEach(function(e){e.setAttribute("opacity",a?0:1);e.removeAttribute("transform")});C.co.forEach(function(c){c.setAttribute("opacity",0)});
+  function act(s){C.act.textContent=s}
+  function rev(s){C.revT.textContent=s}
+  C.c.setAttribute("r",a?66:96);C.rp.setAttribute("stroke-dasharray",a?"0 428":"428 428");C.rt.textContent=a?"раунд 0%":"раунд 100%";
+  if(!a){act("");rev("раунды · carry · клиенты · партнеры");return}
+  rev("");act("1 · КАПИТАЛ");
   var S=[
-   [0,function(){fz(BM.core,1,700);fz(BM.co1,1,700);later(600,function(){fz(BM.hand,1)});coShow(co,co[0])}],
-   [4800,function(){coShow(co,co[1]);for(var i=0;i<3;i++)moveCoin(L,"fee","акции",260,240,cx,cy-40,1500,i*300);later(1800,function(){rTo(BM.c,72,600)})}],
-   [9600,function(){fz(BM.prog,1);coShow(co,co[2])}],
-   [14400,function(){fz(BM.inv,1);coShow(co,co[3]);[[120,520],[200,580],[290,540]].forEach(function(p,i){moveCoin(L,"usd","",p[0],p[1],250,320,1400,i*350)});later(1500,function(){TW(1600,function(k){BM.pc.setAttribute("stroke-dasharray",(440*ease(k)).toFixed(0)+" 440");BM.pt.textContent="раунд "+Math.round(100*ease(k))+"%"})})}],
-   [19200,function(){fz(BM.disc,1);coShow(co,co[4])}],
-   [24000,function(){coShow(co,co[5]);for(var i=0;i<3;i++)moveCoin(L,"fee","cash 10%",300,300,cx-50,cy,1300,i*300);later(1500,function(){rTo(BM.c,82,600)})}],
-   [28800,function(){coShow(co,co[6]);rTo(BM.cc,72,1000);later(1000,function(){for(var i=0;i<3;i++)moveCoin(L,"usd","carry",300,280,cx-50,cy-20,1300,i*300);later(1400,function(){rTo(BM.c,92,600)})})}],
-   [33600,function(){coShow(co,co[7]);BM.oth.forEach(function(o,i){later(i*600,function(){fz(o.g,1,600);moveCoin(L,"fee","",o.x,o.y,cx,cy,1300,500)})});later(3200,function(){rTo(BM.c,108,800)})}],
-   [39600,function(){fz(BM.ring,1,800);coShow(co,co[8]);BM.oth.forEach(function(o){rTo(o.c,(+o.c.getAttribute("r"))*1.35,1200)});later(1200,function(){rTo(BM.c,120,800)})}],
-   [45000,function(){fz(BM.fin,1,800);coShow(co,co[9])}]];
+   [0,function(){rise(C.pr);rise(C.core)}],
+   [700,function(){rise(C.doc);coShow(C.co,C.co[0])}],
+   [4200,function(){coShow(C.co,C.co[1])}],
+   [7600,function(){rise(C.inv);rise(C.ring);rise(C.disc);coShow(C.co,C.co[2]);[[110,500],[190,550],[280,515]].forEach(function(p,i){moveCoin(L,"usd","",p[0],p[1],250,330,1300,600+i*300)});later(1600,function(){TW(1500,function(k){var e=ease(k);C.rp.setAttribute("stroke-dasharray",(428*e).toFixed(0)+" 428");C.rt.textContent="раунд "+Math.round(100*e)+"%"})})}],
+   [11800,function(){coShow(C.co,C.co[3]);moveCoin(L,"fee","акции $250 тыс.+",290,300,cx-50,cy-20,1300,0);moveCoin(L,"usd","10% cash",290,320,cx-50,cy+10,1300,500);later(1500,function(){rTo(C.c,76,600);rise(C.rev);rev("раунды")})}],
+   [15400,function(){coShow(C.co,C.co[4]);moveCoin(L,"usd","carry",290,300,cx-50,cy,1300,0);later(1300,function(){rTo(C.c,82,500);rev("раунды · carry")})}],
+   [19000,function(){act("2 · КЛИЕНТЫ");C.rx.forEach(function(r,i){later(i*300,function(){rise(r.g)})});rise(C.plat,800);coShow(C.co,C.co[5]);
+     later(1200,function(){moveCoin(L,"fee","клиент",1000,220,cx+90,cy-50,1300,0)});later(2700,function(){moveCoin(L,"fee","клиент",cx+90,cy-30,1090,340,1300,0)})}],
+   [24200,function(){coShow(C.co,C.co[6]);moveCoin(L,"usd","комиссия",1090,340,cx+60,cy,1300,0);later(1300,function(){rTo(C.c,88,500);rev("раунды · carry · клиенты")})}],
+   [28400,function(){rise(C.pt);coShow(C.co,C.co[7]);[800,940,1080].forEach(function(x,i){moveCoin(L,"usd","",x,560,cx+40,cy+40,1300,600+i*300)});later(2400,function(){rTo(C.c,94,500);rev("раунды · carry · клиенты · партнеры")})}],
+   [33600,function(){act("3 · БРЕНД ГРУППЫ");rise(C.brand,900);coShow(C.co,C.co[8])}],
+   [38600,function(){coShow(C.co,C.co[9]);rTo(C.c,100,900)}],
+   [44000,function(){C.co.forEach(function(c){fz(c,0,400)});act("")}]];
   S.forEach(function(s){later(s[0],s[1])})}
+
 function CB(g){var o={g:E("g",{opacity:0},g)};E("rect",{x:62,y:86,width:1156,height:66,rx:18,fill:OR},o.g);o.t=T(o.g,640,127,"","big",{"font-size":21,"text-anchor":"middle",fill:"#fff"});return o}
 function cbSet(o,s){var g=o.g,o0=+g.getAttribute("opacity")||0,sw=false;TW(800,function(k){if(k<.4){g.setAttribute("opacity",(o0*(1-k/.4)).toFixed(2))}else{if(!sw){sw=true;o.t.textContent=s}g.setAttribute("opacity",((k-.4)/.6).toFixed(2))}})}
 function fz(el,to,d){var f=+el.getAttribute("opacity")||0;TW(d||600,function(k){el.setAttribute("opacity",(f+(to-f)*k).toFixed(2))})}
@@ -720,7 +724,7 @@ var B=[
  {s:2,t:function(){return "В составе Venture Builder две компании: MAST — AI-first технология монетизации трафика для владельцев сайтов, рынок платформ монетизации для владельцев сайтов $8,2 млрд. Технология прошла проверки в течение 2 месяцев, с 20 октября началось масштабирование внутрь партнера с ожидаемой выручкой $600 тыс. в год. VisaTO — AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз, рынок визовых услуг $15,2 млрд. Еще шесть направлений в планах, на синергию с текущими."},f:function(a,D){ovOnly(null);
    CO.forEach(function(c,j){setCo(j,c.mkt.split(" · ")[0],"РЫНОК · "+c.mkt.split(" · ").slice(1).join(" · ").toUpperCase(),"");if(a){off("c"+j);later(j*400,function(){on("c"+j)})}else on("c"+j)});on("plan");PLB.forEach(function(b,k){if(a){b.classList.add("off");later(1300+k*260,function(){b.classList.remove("off")})}else b.classList.remove("off")})}},
  {s:3,t:function(){return "Venture Builder — одна компания в свободной зоне ОАЭ, один класс акций. Акционеры: основатель, два партнера — сооснователи первых двух проектов, и инвесторы первого раунда. Андрей отвечает за платный трафик, Алексей за SEO и GEO, у каждого по 5%. Портфель — активы компании: доли в MAST, VisaTO и новых компаниях. Фабрика — операционная работа: капитализация проектов, стратегия и прозрачная отчетность по каждому, привлечение капитала, рост за счет синергии, поиск новых проектов."},f:function(a,D){ovOnly("ovParts");runParts(a,D)}},
- {s:4,dur:2.35,t:function(){return "Venture Builder договаривается с фаундерами новых компаний: за привлечение инвестиций и investment relations они отдают акции минимум на $250 тыс. по оценке раунда — при условии, что раунд закрыт на 100%. Инвесторы Venture Builder получают спецусловия, Venture Builder — акции, carry 20% и сразу после сделки 10% вложенного капитала кэшем: ритейнер за структурирование, привлечение новых инвесторов и IR. Он растет за счет новых компаний, роста их долей и новых раундов по более высокой оценке."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
+ {s:4,dur:2.44,t:function(){return "Venture Builder зарабатывает тремя способами. Капитал: закрывает раунды проектов своими инвесторами и получает акции проектов, 10% от раундов до $2 млн и 5% от крупных, carry 20% на выходе. Клиенты: общая база и AI-агент ведут клиента между проектами и к продуктам партнеров — страховке, eSIM, переводам, за каждого клиента VB получает комиссию. Бренд группы: инвесторы знают группу, и раунды проектов закрываются быстрее и дороже."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
  {s:5,t:function(){return "Модель уже работает на рынке. Hexa, бывшая eFounders: в 2015 году Hexa привлекла первые €5 млн, в 2016 еще €5 млн от 40 частных инвесторов, которые получили исключительное право входить в стартапы студии. Сейчас в портфеле 40 компаний стоимостью €4,5 млрд. Prytek: с 2017 года вложил в компании больше $350 млн, 180 сделок за три года, часть вложенных денег направляет на развитие бизнеса компаний — у нас ту же роль играет IR. За счет AI-технологий и синергии направлений с высокой маржой Venture Builder планирует вырасти до оценки активов $500 млн+ за 3–4 года."},f:function(a,D){ovOnly("ovRef");runRef(a,D)}},
  {s:6,t:function(){return "Общая необходимая сумма для масштабирования — $1,5 млн. $1,5 млн позволяют закрыть текущие раунды инвестиций в проекты и сфокусироваться на масштабировании Venture Builder."},f:function(a,D){ovOnly("ovNeed");showRows(rows("need"),a,D)}},
  {s:6,dur:2.68,t:function(){return "Что дает $1,5 млн. Деньги закрывают раунды VisaTO и MAST и запускают Venture Builder. Каждый получает капитал на рост, и через 12 месяцев капитализация всех трех вырастает больше чем в 2 раза."},f:function(a,D){ovOnly("ovGrow");runGrow(a,D)}},

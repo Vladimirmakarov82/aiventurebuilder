@@ -73,13 +73,13 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .big{font-weight:600;font-stretch:112%;letter-spacing:-.04em;fill:var(--ink)}
 .f-paper{fill:var(--paper)}.f-bg{fill:var(--bg)}.f-soft{fill:var(--soft)}.f-ink{fill:var(--ink)}.t-inv{fill:var(--inv)}
 .s-line{stroke:var(--line)}
-.pop{transition:opacity .7s cubic-bezier(.22,1,.36,1)}
-.pop.off{opacity:0;pointer-events:none}
+.pop{transition:opacity .7s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
+.pop.off{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .7s cubic-bezier(.22,1,.36,1),visibility 0s linear .7s}
 .pop.dim{opacity:.16}
-.pipe{transition:opacity .8s ease}.pipe.off{opacity:0}
+.pipe{transition:opacity .8s ease,visibility 0s linear 0s}.pipe.off{opacity:0;visibility:hidden;transition:opacity .8s ease,visibility 0s linear .8s}
 svg.instant,svg.instant *{transition:none!important}
 .mk-orb{transform-origin:60px 60px;animation:mk 9s linear infinite}
-.mk-big{transform-origin:60px 60px;animation:mk 6s linear infinite}
+.mk-big{transform-origin:60px 60px;animation:mk 6s linear infinite;animation-play-state:paused}
 @keyframes mk{to{transform:rotate(360deg)}}
 .clk{cursor:pointer}
 @media (max-width:760px){.chip{display:none}.seg span{display:none}.keys{display:none}.pill .lb{display:none}.lock div{display:none}}
@@ -129,6 +129,11 @@ svg.instant,svg.instant *{transition:none!important}
   <symbol id="mark" viewBox="0 0 120 120">
     <rect width="120" height="120" rx="28" fill="#FF4D00"/>
     <g class="mk-orb" fill="#fff"><circle cx="60" cy="22" r="6"/><circle cx="92.9" cy="41" r="6"/><circle cx="92.9" cy="79" r="6"/><circle cx="60" cy="98" r="6"/><circle cx="27.1" cy="79" r="6"/><circle cx="27.1" cy="41" r="6"/></g>
+    <circle cx="60" cy="60" r="15" fill="#fff"/>
+  </symbol>
+  <symbol id="markst" viewBox="0 0 120 120">
+    <rect width="120" height="120" rx="28" fill="#FF4D00"/>
+    <g fill="#fff"><circle cx="60" cy="22" r="6"/><circle cx="92.9" cy="41" r="6"/><circle cx="92.9" cy="79" r="6"/><circle cx="60" cy="98" r="6"/><circle cx="27.1" cy="79" r="6"/><circle cx="27.1" cy="41" r="6"/></g>
     <circle cx="60" cy="60" r="15" fill="#fff"/>
   </symbol>
   <symbol id="markbig" viewBox="0 0 120 120">
@@ -210,9 +215,10 @@ function ease(k){return k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2}
 var gPipe=E("g",{},svg),gAct=E("g",{},svg),gFlow=E("g",{},svg),gFly=E("g",{},svg),gTop=E("g",{},svg);
 var gg=E("g",{opacity:.5},gPipe);for(var i=0;i<=12;i++)E("line",{x1:40+i*100,y1:0,x2:40+i*100,y2:720,"class":"s-line","stroke-width":1},gg);
 var A={};
-function actor(id,draw,layer){var g=E("g",{"class":"pop off"},layer||gAct);draw(g);A[id]=g;return g}
-function on(id){A[id].classList.remove("off","dim")}
-function off(id){A[id].classList.add("off");A[id].classList.remove("dim")}
+function actor(id,draw,layer){var g=E("g",{"class":"pop off"},layer||gAct);draw(g);A[id]=g;if(g.querySelector('use[href="#markbig"]'))MBI.push(id);return g}
+function on(id){A[id].classList.remove("off","dim");if(MBI.indexOf(id)>=0)spinUpd()}
+function off(id){A[id].classList.add("off");A[id].classList.remove("dim");if(MBI.indexOf(id)>=0)spinUpd()}
+var MBI=[];function spinUpd(){var mb=document.querySelector("#markbig .mk-big");if(!mb)return;var v=MBI.some(function(k){return A[k]&&!A[k].classList.contains("off")});mb.style.animationPlayState=v?"running":"paused"}
 function dim(id){A[id].classList.remove("off");A[id].classList.add("dim")}
 function box(g,x,y,w,h,label,cls,stroke){var r=E("rect",{x:x,y:y,width:w,height:h,rx:24,"class":cls||"f-paper"},g);r.style.stroke=stroke||"var(--line)";r.style.strokeWidth=stroke?2:1;if(label)T(g,x+22,y+32,label,"lbl");return r}
 function panel(g,title){E("rect",{x:30,y:24,width:1220,height:672,rx:28,"class":"f-paper"},g).style.stroke="var(--line)";T(g,62,66,title,"lbl")}
@@ -240,7 +246,7 @@ actor("bld",function(g){box(g,40,480,290,210,"ОСНОВАТЕЛЬ И ПАРТН
   T(g,62,612,"ПЕРЕДАЕТ ДОЛИ В MAST И VISATO","sub");bldV=T(g,62,634,"ПО ЦЕНАМ РАУНДОВ","sub");T(g,62,656,"АЛЕКСЕЙ И АНДРЕЙ: ПО 5% ORBIQ","sub");bldT=T(g,62,678,"","sub",{fill:OR})});
 var vbV,vbL,vbW,vbW2;
 actor("vb",function(g){E("rect",{x:470,y:200,width:340,height:320,rx:28,"class":"f-ink"},g);
-  E("use",{href:"#mark",x:494,y:224,width:46,height:46},g);TI(g,554,250,"Orbiq",26);SI(g,554,270,"КОМПАНИЯ В ОАЭ",.7);
+  E("use",{href:"#markst",x:494,y:224,width:46,height:46},g);TI(g,554,250,"Orbiq",26);SI(g,554,270,"КОМПАНИЯ В ОАЭ",.7);
   vbL=SI(g,494,316,"ВНУТРИ ПО ЦЕНАМ РАУНДОВ",.7);vbV=TI(g,494,370,"$0",50);counter("vb",vbV,function(x){return money(x)});
   vbW=SI(g,494,404,"",.75);vbW2=SI(g,494,426,"",.55);
   E("line",{x1:494,y1:446,x2:786,y2:446,"stroke-width":1},g).style.stroke="rgba(255,255,255,.18)";
@@ -289,7 +295,7 @@ ov("ovParts",function(g){panel(g,"СТРУКТУРА ORBIQ");var C=PT;C.p=[];fun
   C.fr=P();E("rect",{x:62,y:92,width:800,height:96,rx:20,fill:"none",stroke:OR,"stroke-width":1.5,"stroke-dasharray":"6 6"},C.fr);T(C.fr,84,114,"ОСНОВАТЕЛИ","lbl",{fill:OR});
   C.f=[["Основатель","вносит $500 тыс. в долях компаний",84,330],["Алексей","SEO и GEO",432,200],["Андрей","платный трафик",650,190]].map(function(p){var q=P();E("rect",{x:p[2],y:124,width:p[3],height:52,rx:14,"class":"f-soft"},q);T(q,p[2]+16,146,p[0],"ttl",{"font-size":16});T(q,p[2]+16,166,p[1],"ttl",{"font-size":13,fill:"var(--mute)"});return q});
   C.inv=P();E("rect",{x:890,y:124,width:328,height:52,rx:14,fill:GR},C.inv);T(C.inv,906,146,"Инвестор первого раунда","ttl",{"font-size":16,fill:"#fff"});T(C.inv,906,166,"$250 тыс. за 10%","ttl",{"font-size":13,fill:"#fff"});
-  C.vb=P();E("rect",{x:62,y:216,width:1156,height:384,rx:24,"class":"f-ink"},C.vb);E("use",{href:"#mark",x:90,y:240,width:36,height:36},C.vb);TI(C.vb,138,266,"Orbiq",26);
+  C.vb=P();E("rect",{x:62,y:216,width:1156,height:384,rx:24,"class":"f-ink"},C.vb);E("use",{href:"#markst",x:90,y:240,width:36,height:36},C.vb);TI(C.vb,138,266,"Orbiq",26);
   C.pf=P();E("rect",{x:90,y:300,width:540,height:276,rx:18,fill:"rgba(255,255,255,.08)"},C.pf);TI(C.pf,114,342,"Портфель",28);SI(C.pf,114,366,"АКТИВЫ КОМПАНИИ",.6);
   C.pb=["Доли в MAST и VisaTO","Доли в новых компаниях","Деньги инвесторов: сразу в раунды компаний"].map(function(s,i){var q=P();E("circle",{cx:122,cy:404+i*38,r:4,fill:"#fff"},q);var tx=T(q,136,409+i*38,s,"txt",{"font-size":16});tx.style.fill="var(--inv)";return q});
   C.fc=P();E("rect",{x:650,y:300,width:540,height:276,rx:18,fill:"rgba(255,77,0,.18)",stroke:OR,"stroke-width":1.5},C.fc);TI(C.fc,674,342,"Фабрика",28);SI(C.fc,674,366,"ОПЕРАЦИОННАЯ ДЕЯТЕЛЬНОСТЬ",.6);

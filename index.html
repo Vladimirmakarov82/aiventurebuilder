@@ -232,9 +232,25 @@ button{font:inherit}
 .join h2{font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:-.04em}
 .join h2 span{color:#FF4D00}
 .join p{color:rgba(243,244,242,.65);max-width:44ch}
+.xb-lead{max-width:860px;font-size:clamp(18px,1.6vw,22px);line-height:1.5;margin:0 0 28px}
+.xb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.xb{border:1px solid var(--line);border-radius:22px;padding:22px;background:var(--paper);display:flex;flex-direction:column;gap:8px;min-height:170px;transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .3s}
+.xb:hover{transform:translateY(-4px);border-color:#FF4D00}
+.xb .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF4D00}
+.xb b{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.xb p{margin:auto 0 0;font-size:15px;line-height:1.45;color:var(--mute)}
+.xb.on{background:#00A676;border-color:#00A676;color:#fff}.xb.on .mono,.xb.on p{color:#fff}.xb.on p{opacity:.9}
+.xb-syn{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.xb-syn>div{background:var(--ink);color:var(--bg);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.xb-syn .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF4D00}
+.xb-syn b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.xb-syn p{margin:0;font-size:15px;line-height:1.45;opacity:.8}
+@media (max-width:860px){.xb-grid{grid-template-columns:repeat(2,1fr)}.xb-syn{grid-template-columns:1fr}}
+@media (max-width:520px){.xb-grid{grid-template-columns:1fr}.xb{min-height:0}}
 .slots5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .slots5 div{aspect-ratio:1;border-radius:22px;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;min-width:0;line-height:1.25}
 .slots5 .sa{background:#5542FF}.slots5 .sb{background:#00A676}.slots5 .sc{background:#FFB800;color:#0B0B0D}.slots5 .sd{background:#D2FF00;color:#0B0B0D}
+.slots5.s6{grid-template-columns:repeat(3,1fr)}.slots5.s6 div{aspect-ratio:1.5}
 .slots5 .e{border:1.5px dashed #FF4D00;color:#FF4D00;position:relative}
 .slots5 .e::before{content:"";position:absolute;inset:-1.5px;border-radius:22px;border:1.5px solid #FF4D00;animation:slotp 2.4s cubic-bezier(.16,1,.3,1) infinite}
 
@@ -288,16 +304,16 @@ button{font:inherit}
   <header class="nav">
     <a class="brand" href="#top" aria-label="AI Venture Builder"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>AI Venture <span>Builder</span></a>
     <div class="nav-r">
-      <a class="nl" href="#focus">Фокус</a><a class="nl" href="#model">Модель</a><a class="nl" href="#portfolio">Портфель</a>
+      <a class="nl" href="#cross">Фокус</a><a class="nl" href="#focus">Отбор</a><a class="nl" href="#model">Модель</a><a class="nl" href="#portfolio">Портфель</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Движение: вкл</button>
     </div>
   </header>
 
   <section class="hero" id="top">
     <div class="h-left">
-      <div class="kick mono"><span class="dot"></span>Портфель · <b>3 из 5 мест заняты</b></div>
+      <div class="kick mono"><span class="dot"></span>AI-first · <b>трансграничные перемещения</b></div>
       <h1 class="display" id="h1"><span class="acc">AI</span> Venture <span class="lt">Builder</span></h1>
-      <p class="lead">Собираем портфель из&nbsp;<b>5 международных IT-компаний</b>. Цель&nbsp;— <b>$500&nbsp;млн</b> капитализации к&nbsp;2029&nbsp;году.</p>
+      <p class="lead">Строим международные AI-first компании вокруг всего, что пересекает границу: люди, животные, лекарства, ценные вещи. Цель&nbsp;— <b>$500&nbsp;млн</b> капитализации к&nbsp;2029&nbsp;году.</p>
       <div class="kpis">
         <a class="kpi" href="#portfolio"><b class="num"><span class="cu" data-to="2" data-pre="$">$2</span> млн<em>+</em></b><span>заработано инвесторам</span></a>
         <a class="kpi" href="#portfolio"><b class="num"><span class="cu" data-to="27.5" data-pre="$" data-dec="1">$27,5</span> млн</b><span>капитализация сегодня</span></a>
@@ -322,15 +338,15 @@ button{font:inherit}
           <g transform="translate(595 86)"><circle r="12" fill="#FF4D00"/><circle r="5" fill="#fff"/></g>
           <g transform="translate(70 420)"><circle class="here" r="10" fill="none" stroke="var(--ink)" stroke-width="2"/><circle class="here h2" r="10" fill="none" stroke="var(--ink)" stroke-width="2"/><circle r="10" fill="var(--ink)"/></g>
           <g class="tcards">
-            <g class="tc" transform="translate(56 246)"><rect width="230" height="78" rx="14" fill="var(--ink)"/><text x="16" y="26" class="svgl" fill="#FF4D00">СЕГОДНЯ · 2026 · 3 ПРОЕКТА</text><text x="16" y="60" class="svgv" font-size="28" fill="var(--bg)">$27,5 млн</text></g>
-            <g class="tc" transform="translate(424 300)"><rect width="206" height="78" rx="14" fill="var(--paper)" stroke="var(--line)"/><text x="16" y="26" class="svgl" fill="var(--mute)">2028 · 5 КОМПАНИЙ</text><text x="16" y="60" class="svgv" font-size="28" fill="var(--ink)">$250 млн</text></g>
+            <g class="tc" transform="translate(56 246)"><rect width="230" height="78" rx="14" fill="var(--ink)"/><text x="16" y="26" class="svgl" fill="#FF4D00">СЕГОДНЯ · 2026 · 2 КОМПАНИИ</text><text x="16" y="60" class="svgv" font-size="28" fill="var(--bg)">$27,5 млн</text></g>
+            <g class="tc" transform="translate(424 300)"><rect width="206" height="78" rx="14" fill="var(--paper)" stroke="var(--line)"/><text x="16" y="26" class="svgl" fill="var(--mute)">2028 · 6+ КОМПАНИЙ</text><text x="16" y="60" class="svgv" font-size="28" fill="var(--ink)">$250 млн</text></g>
             <g class="tc" transform="translate(362 128)"><rect width="206" height="78" rx="14" fill="#FF4D00"/><text x="16" y="26" class="svgl" fill="#fff" fill-opacity=".9">2029 · ЦЕЛЬ ПОРТФЕЛЯ</text><text x="16" y="60" class="svgv" font-size="28" fill="#fff">$500 млн</text></g>
           </g>
           <g class="svgl" fill="var(--mute)" text-anchor="middle"><text x="70" y="474">2026</text><text x="245" y="474">2027</text><text x="420" y="474">2028</text><text x="595" y="474">2029</text></g>
         </svg>
         <div class="tmiles">
-          <div class="now"><span class="mono">Сегодня · 2026</span><b class="num">$27,5 млн</b><span class="mono">3 проекта</span></div>
-          <div><span class="mono">2028 · цель</span><b class="num">$250 млн</b><span class="mono">5 компаний</span></div>
+          <div class="now"><span class="mono">Сегодня · 2026</span><b class="num">$27,5 млн</b><span class="mono">2 компании</span></div>
+          <div><span class="mono">2028 · цель</span><b class="num">$250 млн</b><span class="mono">6+ компаний</span></div>
           <div class="top"><span class="mono">2029 · цель</span><b class="num">$500 млн</b><span class="mono">×18</span></div>
         </div>
       </div>
@@ -339,11 +355,29 @@ button{font:inherit}
 </div>
 
 <div class="ticker" aria-hidden="true"><div class="tr" id="tr">
-  <span>AI Venture Builder</span><span class="m">цель $500 млн к 2029</span><span class="o">Хвост рынка $5B+</span><span class="m">высокий порог входа</span><span>Активный спрос</span><span class="m">раунд за 3–5 месяцев</span><span class="o">$27,5 млн</span><span class="m">бумажная капитализация</span><span class="m">·</span>
-  <span>AI Venture Builder</span><span class="m">цель $500 млн к 2029</span><span class="o">Хвост рынка $5B+</span><span class="m">высокий порог входа</span><span>Активный спрос</span><span class="m">раунд за 3–5 месяцев</span><span class="o">$27,5 млн</span><span class="m">бумажная капитализация</span><span class="m">·</span>
+  <span>AI Venture Builder</span><span class="m">трансграничные перемещения</span><span class="o">Вход через визы</span><span class="m">цель $500 млн к 2029</span><span class="o">Хвост рынка $5B+</span><span class="m">высокий порог входа</span><span>Активный спрос</span><span class="m">раунд за 3–5 месяцев</span><span class="o">$27,5 млн</span><span class="m">бумажная капитализация</span><span class="m">·</span>
+  <span>AI Venture Builder</span><span class="m">трансграничные перемещения</span><span class="o">Вход через визы</span><span class="m">цель $500 млн к 2029</span><span class="o">Хвост рынка $5B+</span><span class="m">высокий порог входа</span><span>Активный спрос</span><span class="m">раунд за 3–5 месяцев</span><span class="o">$27,5 млн</span><span class="m">бумажная капитализация</span><span class="m">·</span>
 </div></div>
 
 <div class="wrap">
+  <section class="sec" id="cross">
+    <div class="sec-h"><span class="mono">00 · Фокус</span><h2 class="mask">Все, что пересекает границу</h2></div>
+    <p class="xb-lead">Человек, питомец, лекарство или ценная вещь едут в&nbsp;другую страну. Каждый раз нужны документы, разрешения и&nbsp;партнеры по&nbsp;обе стороны границы. Сегодня это делают вручную, рынок раздроблен. Строим AI-first компании, которые закрывают эти задачи, и&nbsp;заходим в&nbsp;рынок через визы.</p>
+    <div class="xb-grid">
+      <div class="xb on"><span class="mono">В работе · VisaTO</span><b>Визы</b><p>Лицензия в&nbsp;Сингапуре, дальше Дубай, Таиланд, Вьетнам, Австралия</p></div>
+      <div class="xb"><span class="mono">Ищем фаундера</span><b>Перевозка животных</b><p>Документы и&nbsp;ветеринарные разрешения для&nbsp;питомцев</p></div>
+      <div class="xb"><span class="mono">Ищем фаундера</span><b>Лекарства</b><p>Ввоз рецептурных препаратов для&nbsp;лечения за&nbsp;границей</p></div>
+      <div class="xb"><span class="mono">Ищем фаундера</span><b>Медицинская техника</b><p>Ввоз, сертификация и&nbsp;допуски медтехники</p></div>
+      <div class="xb"><span class="mono">Ищем фаундера</span><b>Музыкальные инструменты</b><p>Разрешения CITES на&nbsp;редкие материалы для&nbsp;гастролей</p></div>
+      <div class="xb"><span class="mono">Ищем фаундера</span><b>Искусство и&nbsp;коллекции</b><p>Вывоз и&nbsp;ввоз ценностей, экспертиза и&nbsp;страхование</p></div>
+    </div>
+    <div class="xb-syn">
+      <div><span class="mono">Синергия 1</span><b>Один клиент&nbsp;— несколько границ</b><p>Кто оформляет визу, часто везет питомца, лекарства или инструмент. Клиент одного проекта становится клиентом соседнего.</p></div>
+      <div><span class="mono">Синергия 2</span><b>Общая AI-инфраструктура</b><p>Агенты, базы требований стран и&nbsp;процессы переходят из&nbsp;проекта в&nbsp;проект. Новая компания стартует на&nbsp;готовом.</p></div>
+      <div><span class="mono">Синергия 3</span><b>Общий трафик</b><p>MAST дает платный трафик, VisaTO&nbsp;— поисковый и&nbsp;AI-поиск. Каждый проект получает клиентов дешевле рынка.</p></div>
+    </div>
+  </section>
+
   <section class="sec" id="focus">
     <div class="sec-h"><span class="mono">01 · Отбор</span><h2 class="mask">Как выбираем проекты</h2></div>
     <div class="focus">
@@ -468,9 +502,9 @@ button{font:inherit}
     <div class="port-h">
       <h2 class="mask">Порт<span>фель</span></h2>
       <div class="port-k">
-        <div><b class="num">3</b><span>проекта</span></div>
+        <div><b class="num">2</b><span>компании в работе</span></div>
         <div><b class="num">$27,5 млн</b><span>бумажная капитализация</span></div>
-        <div><b class="num">3 из 5</b><span>мест в портфеле</span></div>
+        <div><b class="num">6</b><span>направлений в поиске</span></div>
       </div>
     </div>
 
@@ -478,8 +512,8 @@ button{font:inherit}
       <span class="bgn" aria-hidden="true">VISA</span>
       <div class="pj-l">
         <div class="no"><span>01 · Travel-tech</span><span class="st">Старт: Сингапур</span></div>
-        <h3>AI-first Global Visa Center</h3>
-        <p class="one">Визовый центр на&nbsp;AI-агентах. Следующий шаг — AI-консьерж путешествий: места, маршруты и&nbsp;брони в&nbsp;одном чате.</p>
+        <h3>VisaTO</h3>
+        <p class="one">AI-first визовый центр с&nbsp;лицензией в&nbsp;Сингапуре. Масштабируется в&nbsp;Дубай, Таиланд, Вьетнам и&nbsp;Австралию. Следующий шаг — AI-консьерж путешествий: места, маршруты и&nbsp;брони в&nbsp;одном чате.</p>
         <div class="mkt"><b class="num"><span class="cu" data-to="15.2" data-pre="$" data-dec="1">$15,2</span><small>млрд → $27,5 млрд к&nbsp;2034</small></b><span>мировой рынок визового сервиса, 2025</span></div>
         <div class="tags">
           <div class="tag"><i>Порог</i>Работающий бизнес и&nbsp;партнер в&nbsp;Сингапуре 3+ года</div>
@@ -498,7 +532,7 @@ button{font:inherit}
     <article class="pj py" id="pj3">
       <span class="bgn" aria-hidden="true">MAST</span>
       <div class="pj-l">
-        <div class="no"><span>02 · AdTech</span><span class="st">Прибыль $1,7 млн</span></div>
+        <div class="no"><span>02 · AdTech · трафик для всех проектов</span><span class="st">Прибыль $1,7 млн</span></div>
         <h3>MAST</h3>
         <p class="one">AI-first монетизация сайтов.<br>Клиенты — паблишеры, владельцы сайтов. Они зарабатывают на&nbsp;30–80% больше за&nbsp;счет технологий MAST.<br>Ноль сотрудников: всю работу делают AI&#8209;агенты MAST.</p>
         <div class="mkt"><b class="num"><span class="cu" data-to="134.8" data-pre="$" data-dec="1">$134,8</span><small>млрд</small></b><span>программатик-реклама только в США, 2024</span></div>
@@ -522,40 +556,17 @@ button{font:inherit}
       </div>
     </article>
 
-    <article class="pj pf" id="pj4">
-      <span class="bgn" aria-hidden="true">FLOOR</span>
-      <div class="pj-l">
-        <div class="no"><span>03 · Web3 · RWA</span><span class="st">Robinhood Chain</span></div>
-        <h3>FloorStreet</h3>
-        <p class="one">10&nbsp;000 NFT-зданий: от&nbsp;гаража до&nbsp;небоскреба. Здание растет через слияние и&nbsp;получает ETH из&nbsp;пулов токенизированных акций США.</p>
-        <div class="mkt"><b class="num"><span class="cu" data-to="20" data-pre="$">$20</span><small>млрд+</small></b><span>реальные активы в ончейне, 2025</span></div>
-        <div class="tags">
-          <div class="tag"><i>Порог</i>Партнерство с&nbsp;Robinhood Chain и&nbsp;своя экономика наград</div>
-          <div class="tag"><i>Спрос</i>Холдеры получают ETH, акции США уходят в&nbsp;ончейн</div>
-        </div>
-      </div>
-      <div class="pj-r">
-        <svg id="v4" viewBox="0 0 640 470" aria-label="Здания растут от гаража до небоскреба и получают ETH-награды по весу">
-          <g id="f4b"></g>
-          <g id="f4r" fill="#D2FF00"></g>
-          <line x1="20" y1="400" x2="620" y2="400" stroke="#F3F4F2" stroke-opacity=".3"/>
-          <g id="f4l"></g>
-          <g transform="translate(20 52)"><text class="svgv" font-size="34" fill="#D2FF00" id="f4c">0,00</text><text class="svgl" fill="#F3F4F2" fill-opacity=".7" y="22">ETH-НАГРАДЫ · ДЕМО</text></g>
-          <g transform="translate(620 52)"><text class="svgl" fill="#F3F4F2" fill-opacity=".7" text-anchor="end">ВЕС В НАГРАДАХ</text><text class="svgv" font-size="22" fill="#F3F4F2" text-anchor="end" y="26" id="f4w">1x → 26,5x</text></g>
-        </svg>
-      </div>
-    </article>
   </section>
 
   <section class="join" id="join">
     <div class="l">
-      <span class="mono" style="color:#FF4D00">Портфель закрывается на пяти</span>
-      <h2 class="mask">Три места заняты. <span>Осталось два</span></h2>
-      <p>Пятая компания закрывает портфель. Дальше состав не&nbsp;меняется до&nbsp;цели $500&nbsp;млн.</p>
-      <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Обсудить участие <i aria-hidden="true">→</i></a>
+      <span class="mono" style="color:#FF4D00">Ищем фаундеров</span>
+      <h2 class="mask">Строите бизнес через границу? <span>Давайте строить вместе</span></h2>
+      <p>Ищем команды, которые уже работают в&nbsp;нише и&nbsp;держат порог входа: лицензию, аккредитацию или партнеров в&nbsp;двух странах. Даем капитал, AI-инфраструктуру, трафик и&nbsp;клиентов соседних проектов.</p>
+      <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Предложить проект <i aria-hidden="true">→</i></a>
     </div>
     <div class="r">
-      <div class="slots5"><div class="sb">Visa Center</div><div class="sc">MAST</div><div class="sd">Floor Street</div><div class="e">Место 4</div><div class="e">Место 5</div></div>
+      <div class="slots5 s6"><div class="sb">VisaTO</div><div class="sc">MAST</div><div class="e">Животные</div><div class="e">Лекарства</div><div class="e">Медтехника</div><div class="e">Искусство</div></div>
     </div>
   </section>
 
@@ -697,34 +708,15 @@ button{font:inherit}
     $('m3halo').setAttribute('r',72+8*Math.sin(t*.003))}
   v3(0,0);
 
-  /* V4 FLOORSTREET */
-  var TIERS=[['GARAGE','1x',44,1],['OFFICE','2,2x',78,2.2],['TRADING','5x',128,5],['HQ','11,5x',200,11.5],['SKYSCRAPER','26,5x',300,26.5]],BLD=[],WSUM=46.2;
-  TIERS.forEach(function(T,i){var w=88,x=24+i*120,h=T[2],y=400-h;var g=el('g',{},$('f4b'));
-    var body=el('rect',{x:x,y:y,width:w,height:h,rx:6,fill:'#F3F4F2','fill-opacity':.08,stroke:'#F3F4F2','stroke-opacity':.35},g);var wins=[];
-    for(var wy=y+12;wy<396-10;wy+=16)for(var wx=x+10;wx<x+w-10;wx+=16)wins.push(el('rect',{x:wx,y:wy,width:9,height:9,rx:2,fill:'#F3F4F2','fill-opacity':.12},g));
-    el('text',{x:x+w/2,y:422,class:'svgl','text-anchor':'middle',fill:'#F3F4F2','fill-opacity':.75},$('f4l')).textContent=T[0];
-    el('text',{x:x+w/2,y:440,class:'svgl','text-anchor':'middle',fill:'#D2FF00'},$('f4l')).textContent=T[1];
-    if(i<4){var ax=x+w+4,ay=400-Math.min(h,60)/2-6;el('text',{x:x+w+16,y:ay,class:'svgl','text-anchor':'middle',fill:'#D2FF00','fill-opacity':.8},$('f4l')).textContent='→'}
-    BLD.push({x:x,w:w,y:y,body:body,wins:wins,wt:T[3],flash:0})});
-  var RAIN=[],eth=0,rAcc=0,f4c=$('f4c');
-  function pickB(){var r=Math.random()*WSUM;for(var i=0;i<BLD.length;i++){r-=BLD[i].wt;if(r<=0)return BLD[i]}return BLD[4]}
-  function v4(dt,t){rAcc+=dt;if(rAcc>90){rAcc=0;var b=pickB();RAIN.push({b:b,x:b.x+10+Math.random()*(b.w-20),y:70,c:el('circle',{r:3},$('f4r'))})}
-    RAIN=RAIN.filter(function(d){d.y+=dt*.32;if(d.y>=d.b.y){d.c.remove();d.b.flash=1;eth+=.004*d.b.wt/26.5+.001;f4c.textContent=eth.toFixed(2).replace('.',',');if(eth>9.99)eth=0;return false}d.c.setAttribute('cx',d.x);d.c.setAttribute('cy',d.y);return true});
-    var cyc=(t%7500)/7500,act=Math.floor(cyc*5);
-    BLD.forEach(function(b,i){b.flash=Math.max(0,b.flash-dt*.004);var on=i<=act;
-      b.body.setAttribute('stroke',i===act?'#D2FF00':'#F3F4F2');b.body.setAttribute('stroke-opacity',i===act?1:.35);
-      b.body.setAttribute('fill',b.flash>.05?'#D2FF00':'#F3F4F2');b.body.setAttribute('fill-opacity',b.flash>.05?.12+.2*b.flash:.08);
-      b.wins.forEach(function(w,j){w.setAttribute('fill',on?'#D2FF00':'#F3F4F2');w.setAttribute('fill-opacity',on?(.35+.5*((j*7+Math.floor(t/400))%5===0?1:.4)):.12)})})}
-  v4(0,0);
 
   /* TICKER */
   var tr=$('tr'),tx=0,boost=0,lastY=scrollY;
   function tick(dt){var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
 
-  ['traj','tailsvg','wallsvg','pulsesvg','chart','stsvg','v2','v3','v4'].forEach(function(id){var e=$(id);if(e&&io)io.observe(e)});
+  ['traj','tailsvg','wallsvg','pulsesvg','chart','stsvg','v2','v3'].forEach(function(id){var e=$(id);if(e&&io)io.observe(e)});
   var last=0;
   function loop(t){var dt=Math.min(50,t-(last||t));last=t;
-    if(!still){if(on('traj'))traj(t);if(on('tailsvg'))tail(t);if(on('wallsvg'))wall(t);if(on('pulsesvg'))pul(t);if(on('stsvg'))stairs(t);if(on('v2'))v2(dt,t);if(on('v3'))v3(dt,t);if(on('v4'))v4(dt,t);tick(dt)}
+    if(!still){if(on('traj'))traj(t);if(on('tailsvg'))tail(t);if(on('wallsvg'))wall(t);if(on('pulsesvg'))pul(t);if(on('stsvg'))stairs(t);if(on('v2'))v2(dt,t);if(on('v3'))v3(dt,t);tick(dt)}
     requestAnimationFrame(loop)}
   requestAnimationFrame(loop);
 

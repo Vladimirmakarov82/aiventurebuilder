@@ -207,7 +207,7 @@ function calc(s){var S=SC[s],vals=CO.map(function(c,j){return S.p[j]?c.hold*S.p[
 var scen="base",R=calc(scen);
 
 /* ================= CLOCK ================= */
-var clock=0,lastT=performance.now(),playing=!reduce,tweens=[],timers=[];
+var clock=0,lastT=performance.now(),playing=!reduce,tweens=[],timers=[],lastAct=0,advCap=0,HOLD=3500;
 function later(ms,fn){timers.push({at:clock+ms,fn:fn})}
 function TW(d,u,f){var w={s:clock,d:d,u:u,f:f};tweens.push(w);u(0);return w}
 function ease(k){return k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2}
@@ -786,9 +786,10 @@ function hideAll(){Object.keys(A).forEach(function(id){var el=A[id];if(el&&el.cl
 function chip(s){document.getElementById("chipK").textContent=(s+1)+" / "+NST;document.getElementById("chipT").textContent=CH[s]}
 function runBeat(i,anim){cur=i;var b=B[i],a=anim&&!reduce,ch=a&&i===sStart[b.s]&&i>0;chip(b.s);
   var txt=b.t(),D=Math.max(5200,2400+txt.length*40)*(b.dur||1),pre=ch?2150:0;
-  if(ch){svg.classList.add("instant");hideAll();svg.getBoundingClientRect();svg.classList.remove("instant");document.getElementById("chapK").textContent=(b.s+1)+" / "+NST;document.getElementById("chapT").textContent=CH[b.s];chapEl.classList.add("show");later(1700,function(){chapEl.classList.remove("show")});beatAnim=true;later(pre,function(){b.f(true,D)})}
+  if(ch){svg.classList.add("instant");hideAll();svg.getBoundingClientRect();svg.classList.remove("instant");document.getElementById("chapK").textContent=(b.s+1)+" / "+NST;document.getElementById("chapT").textContent=CH[b.s];chapEl.classList.add("show");later(1700,function(){chapEl.classList.remove("show")});beatAnim=true;later(pre,function(){b.f(true,D);fitAdv()})}
   else{beatAnim=a;b.f(a,D)}
-  under.innerHTML=txt;under.scrollTop=0;beatStart=clock;advAt=(a&&!b.end)?clock+pre+D:null;segUpdate()}
+  under.innerHTML=txt;under.scrollTop=0;beatStart=clock;lastAct=clock;advAt=(a&&!b.end)?clock+pre+D:null;advCap=clock+pre+D+30000;if(!ch&&a)fitAdv();segUpdate()}
+function fitAdv(){if(advAt==null)return;var e=0;timers.forEach(function(x){if(x.at>e)e=x.at});tweens.forEach(function(w){if(w.s+w.d>e)e=w.s+w.d});var t=e+1200+HOLD;if(t>advAt)advAt=t}
 function go(i,anim){i=Math.max(0,Math.min(B.length-1,i|0));chapEl.classList.remove("show");resetScene();svg.classList.add("instant");beatAnim=false;for(var k=0;k<i;k++)B[k].f(false,0);svg.getBoundingClientRect();svg.classList.remove("instant");runBeat(i,anim!==false&&playing)}
 var PHL=window.matchMedia("(orientation:landscape) and (max-height:520px)");
 var segWrap=document.getElementById("segs"),segEls=[];
@@ -811,9 +812,9 @@ document.addEventListener("keydown",function(e){if(e.target.closest&&e.target.cl
 function setScen(s){scen=s;R=calc(s);document.querySelectorAll(".pill [data-s]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.s===s)});go(cur,false);if(playing&&!B[cur].end){advAt=clock+5200;beatStart=clock}}
 document.querySelectorAll(".pill [data-s]").forEach(function(b){b.addEventListener("click",function(){setScen(b.dataset.s)})});
 function frame(t){var dt=Math.min(50,t-lastT);lastT=t;
-  if(playing){clock+=dt;var due=timers.filter(function(x){return x.at<=clock});timers=timers.filter(function(x){return x.at>clock});due.forEach(function(x){x.fn()});
-    tweens=tweens.filter(function(w){var k=Math.min(1,(clock-w.s)/w.d);w.u(k);if(k>=1){if(w.f)w.f();return false}return true});
-    if(!reduce)updateFlows();drawProg();if(advAt!=null&&clock>=advAt){advAt=null;if(cur<B.length-1)runBeat(cur+1,true)}}
+  if(playing){clock+=dt;var due=timers.filter(function(x){return x.at<=clock});timers=timers.filter(function(x){return x.at>clock});due.forEach(function(x){x.fn()});if(due.length)lastAct=clock;
+    tweens=tweens.filter(function(w){var k=Math.min(1,(clock-w.s)/w.d);w.u(k);if(k>=1){lastAct=clock;if(w.f)w.f();return false}return true});
+    if(!reduce)updateFlows();drawProg();if(advAt!=null&&clock>=advAt){var pend=timers.length>0||tweens.length>0;if((pend||clock<lastAct+HOLD)&&clock<advCap){advAt=pend?clock+200:lastAct+HOLD}else{advAt=null;if(cur<B.length-1)runBeat(cur+1,true)}}}
   requestAnimationFrame(frame)}
 requestAnimationFrame(frame);
 if(ROT.matches){rotWait=true;playing=false;go(0,false)}else go(0,true);

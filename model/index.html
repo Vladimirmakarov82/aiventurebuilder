@@ -6,7 +6,12 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#F3F4F2">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>Venture Builder Model</title>
+<title>Orbiq · модель</title>
+<meta property="og:title" content="Orbiq · модель">
+<meta property="og:image" content="https://aiventurebuilder.xyz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wdth,wght@12..36,75..150,300..900&family=Geist+Mono:wght@400..600&display=swap">
 <style>
 /* Layout: one 1280x720 film stage, chapter cards, caption under the stage, segmented player, scenario switch. Swiss Precision: light grid, black ink, one orange accent, company colors. */
@@ -136,7 +141,7 @@ svg.instant,svg.instant *{transition:none!important}
 <div id="rot" role="dialog" aria-label="Поверните телефон"><div class="ph"><i></i></div><h2>Поверните телефон</h2><p>Ролик сделан для горизонтального экрана: так видно и анимацию, и текст.</p><button type="button" id="rotno">Смотреть вертикально</button></div>
 <div class="wrap" id="wrap">
   <div class="top">
-    <div class="lock"><svg><use href="#mark"/></svg><div><b>Venture</b> <span>Builder</span></div></div>
+    <div class="lock"><svg><use href="#mark"/></svg><div><b>Orbiq</b></div></div>
     <div class="chip"><span class="k" id="chipK"></span><span class="t" id="chipT"></span></div>
     <button class="cap" id="cap" type="button" aria-label="Увеличить ролик, скрыть текст" title="Увеличить ролик">⤢</button>
     <div class="pill" role="group" aria-label="Сценарий" style="display:none"><span class="lb">Сценарий</span>
@@ -144,7 +149,7 @@ svg.instant,svg.instant *{transition:none!important}
     </div>
   </div>
   <div class="filmbox"><div class="film" id="film">
-    <svg id="stage" viewBox="0 0 1280 720" role="img" aria-label="Анимация модели Venture Builder"></svg>
+    <svg id="stage" viewBox="0 0 1280 720" role="img" aria-label="Анимация модели Orbiq"></svg>
     <div class="chap" id="chap"><span class="k" id="chapK"></span><span class="t" id="chapT"></span><span class="ln"></span></div>
   </div></div>
   <div class="under" id="under" aria-live="polite"></div>
@@ -224,7 +229,7 @@ function bar(g,x,y,w,h,parts){var acc=0;parts.forEach(function(p){var pw=w*p[0];
 
 /* ================= MAIN STAGE ================= */
 ov("intro",function(g){E("rect",{x:0,y:0,width:1280,height:720,"class":"f-ink"},g);E("use",{href:"#markbig",x:570,y:120,width:140,height:140},g);
-  TI(g,640,350,"Venture Builder",84,"middle");SI(g,640,392,"AI-FIRST БИЗНЕСЫ · ЧЕРЕЗ ГРАНИЦУ · ОАЭ",.75,"middle");
+  TI(g,640,350,"Orbiq",84,"middle");SI(g,640,392,"AI-FIRST БИЗНЕСЫ · ЧЕРЕЗ ГРАНИЦУ · ОАЭ",.75,"middle");
   ["Визы","Перевозка животных","Лекарства","Музыкальные инструменты","Искусство"].forEach(function(s,i){var w=[110,230,150,290,150][i],x=[145,275,525,695,1005][i];E("rect",{x:x,y:470,width:w,height:52,rx:26,fill:"none",stroke:"rgba(255,255,255,.35)","stroke-width":1.2},g);var t=T(g,x+w/2,502,s,"ttl",{"text-anchor":"middle","font-size":15});t.style.fill="var(--inv)"});
   SI(g,640,600,"ДВЕ КОМПАНИИ В РАБОТЕ · ШЕСТЬ НАПРАВЛЕНИЙ В ПОИСКЕ",.6,"middle")});
 var invGot,invSub;
@@ -232,10 +237,10 @@ actor("inv",function(g){box(g,40,50,290,190,"ИНВЕСТОРЫ ПЕРВОГО �
   invGot=T(g,62,200,"","big",{"font-size":22,fill:OR});counter("inv",invGot,function(x){return x<1?"":"доля стоит "+money(x)});A.invX=T(g,62,224,"","sub")});
 var bldT,bldV;
 actor("bld",function(g){box(g,40,480,290,210,"ОСНОВАТЕЛЬ И ПАРТНЕРЫ");T(g,62,558,"$550 тыс.","big",{"font-size":36});T(g,62,584,"ВНОСИТ 5% VISATO И 5% MAST","sub",{"font-size":10});
-  T(g,62,612,"ПЕРЕДАЕТ ДОЛИ В MAST И VISATO","sub");bldV=T(g,62,634,"ПО ЦЕНАМ РАУНДОВ","sub");T(g,62,656,"АЛЕКСЕЙ И АНДРЕЙ: ПО 5% VB","sub");bldT=T(g,62,678,"","sub",{fill:OR})});
+  T(g,62,612,"ПЕРЕДАЕТ ДОЛИ В MAST И VISATO","sub");bldV=T(g,62,634,"ПО ЦЕНАМ РАУНДОВ","sub");T(g,62,656,"АЛЕКСЕЙ И АНДРЕЙ: ПО 5% ORBIQ","sub");bldT=T(g,62,678,"","sub",{fill:OR})});
 var vbV,vbL,vbW,vbW2;
 actor("vb",function(g){E("rect",{x:470,y:200,width:340,height:320,rx:28,"class":"f-ink"},g);
-  E("use",{href:"#mark",x:494,y:224,width:46,height:46},g);TI(g,554,250,"Venture Builder",26);SI(g,554,270,"КОМПАНИЯ В ОАЭ",.7);
+  E("use",{href:"#mark",x:494,y:224,width:46,height:46},g);TI(g,554,250,"Orbiq",26);SI(g,554,270,"КОМПАНИЯ В ОАЭ",.7);
   vbL=SI(g,494,316,"ВНУТРИ ПО ЦЕНАМ РАУНДОВ",.7);vbV=TI(g,494,370,"$0",50);counter("vb",vbV,function(x){return money(x)});
   vbW=SI(g,494,404,"",.75);vbW2=SI(g,494,426,"",.55);
   E("line",{x1:494,y1:446,x2:786,y2:446,"stroke-width":1},g).style.stroke="rgba(255,255,255,.18)";
@@ -256,20 +261,20 @@ actor("board",function(g){bd1=T(g,640,72,"","lbl",{"text-anchor":"middle"});bd1.
 function board(a,b,c){bd1.textContent=a;bd2.textContent=b;bd3.textContent=c;on("board")}
 actor("nc",function(g){box(g,460,560,360,120,"ФАБРИКА · НОВЫЕ КОМПАНИИ",null,OR);T(g,482,622,"$250 тыс. на 4–6 сделок","ttl",{"font-size":18});T(g,482,648,"ВХОД ДО РАУНДА · ДОЛЯ ЗА ДЕНЬГИ И РАБОТУ","sub",{"font-size":10})});
 var backT;
-actor("back",function(g){E("rect",{x:860,y:600,width:380,height:90,rx:18,"class":"f-soft"},g);T(g,880,636,"Инвесторы отказались от раунда MAST","ttl",{"font-size":16});backT=T(g,880,662,"ДОЛИ MAST ВОЗВРАЩАЮТСЯ ОСНОВАТЕЛЮ · ЕГО ДОЛЯ В VB МЕНЬШЕ НА ИХ ЦЕНУ","sub",{"font-size":10})});
+actor("back",function(g){E("rect",{x:860,y:600,width:380,height:90,rx:18,"class":"f-soft"},g);T(g,880,636,"Инвесторы отказались от раунда MAST","ttl",{"font-size":16});backT=T(g,880,662,"ДОЛИ MAST ВОЗВРАЩАЮТСЯ ОСНОВАТЕЛЮ · ЕГО ДОЛЯ В ORBIQ МЕНЬШЕ НА ИХ ЦЕНУ","sub",{"font-size":10})});
 
 /* ================= OVERLAYS ================= */
 ov("ovPort",function(g){panel(g,"ПОРТФЕЛЬ · ДВЕ КОМПАНИИ");
   CO.forEach(function(co,i){var x=62+i*588,rg=E("g",{"class":"pop"},g);E("rect",{x:x,y:96,width:568,height:470,rx:22,fill:co.bg},rg);
     T(rg,x+28,150,co.name,"big",{"font-size":40,fill:co.fg});var s=T(rg,x+28,180,co.sector.toUpperCase(),"sub",{fill:co.fg});s.style.opacity=.75;
-    [co.what,co.fact,"Рынок "+co.mkt,"Раунд "+money(co.round)+", после раунда у Venture Builder "+pct(co.hold*100),"Цель 24 месяца: "+co.goal.split(", раунд")[0]].forEach(function(l,k){var y=232+k*62;E("circle",{cx:x+38,cy:y-6,r:5,fill:co.fg},rg);T(rg,x+56,y,l,"txt",{fill:co.fg,"font-size":k===2?19:16,"font-weight":k===2?600:400})});rows("port").push(rg)});
-  card(g,62,590,1156,76,false);T(g,86,636,"Цена раунда одна для всех участников: для Venture Builder и для внешних инвесторов раунда.","txt",{"font-size":16})});
-ov("ovFast",function(g){panel(g,"БЫСТРАЯ ИНВЕСТИЦИЯ ЧЕРЕЗ VENTURE BUILDER · ПЕРЕВОД СРАЗУ ПРОЕКТУ");
+    [co.what,co.fact,"Рынок "+co.mkt,"Раунд "+money(co.round)+", после раунда у Orbiq "+pct(co.hold*100),"Цель 24 месяца: "+co.goal.split(", раунд")[0]].forEach(function(l,k){var y=232+k*62;E("circle",{cx:x+38,cy:y-6,r:5,fill:co.fg},rg);T(rg,x+56,y,l,"txt",{fill:co.fg,"font-size":k===2?19:16,"font-weight":k===2?600:400})});rows("port").push(rg)});
+  card(g,62,590,1156,76,false);T(g,86,636,"Цена раунда одна для всех участников: для Orbiq и для внешних инвесторов раунда.","txt",{"font-size":16})});
+ov("ovFast",function(g){panel(g,"БЫСТРАЯ ИНВЕСТИЦИЯ ЧЕРЕЗ ORBIQ · ПЕРЕВОД СРАЗУ ПРОЕКТУ");
   var X=[62,358,654,950];
-  [["1","Договор с Venture Builder","Инвестор инвестирует в MAST или VisaTO через Venture Builder. Venture Builder входит в раунд от своего имени за счет инвестора.","День 1"],["2","Перевод сразу проекту","По поручению Venture Builder инвестор переводит деньги на реквизиты проекта. В Venture Builder деньги не заходят, банк ОАЭ не нужен.","Дни 2–5"],["3","Акции проекта","Проект выпускает акции на Venture Builder, права по ним у инвестора. Пока Venture Builder регистрируется, акции записаны на инвестора с обязательством передать их.","Дни 5–10"],["4","Сделка закрыта","После регистрации акции проекта переходят на Venture Builder. Права по ним остаются у инвестора.","После регистрации"]].forEach(function(c,i){var x=X[i],rg=E("g",{"class":"pop"},g);var r=E("rect",{x:x,y:100,width:276,height:420,rx:22,"class":i===1?"f-ink":"f-bg"},rg);if(i!==1)r.style.stroke="var(--line)";var fg=i===1?"var(--inv)":"var(--ink)";
+  [["1","Договор с Orbiq","Инвестор инвестирует в MAST или VisaTO через Orbiq. Orbiq входит в раунд от своего имени за счет инвестора.","День 1"],["2","Перевод сразу проекту","По поручению Orbiq инвестор переводит деньги на реквизиты проекта. В Orbiq деньги не заходят, банк ОАЭ не нужен.","Дни 2–5"],["3","Акции проекта","Проект выпускает акции на Orbiq, права по ним у инвестора. Пока Orbiq регистрируется, акции записаны на инвестора с обязательством передать их.","Дни 5–10"],["4","Сделка закрыта","После регистрации акции проекта переходят на Orbiq. Права по ним остаются у инвестора.","После регистрации"]].forEach(function(c,i){var x=X[i],rg=E("g",{"class":"pop"},g);var r=E("rect",{x:x,y:100,width:276,height:420,rx:22,"class":i===1?"f-ink":"f-bg"},rg);if(i!==1)r.style.stroke="var(--line)";var fg=i===1?"var(--inv)":"var(--ink)";
     T(rg,x+22,170,c[0],"big",{"font-size":64,fill:OR});wrapT(rg,x+22,222,c[1],20,"big",{"font-size":21,fill:fg},26);wrapT(rg,x+22,300,c[2],30,"txt",{fill:fg,"font-size":14.5},22);T(rg,x+22,494,c[3].toUpperCase(),"sub",{fill:OR});
     if(i<3){E("path",{d:"M"+(x+278)+" 300 l16 0",stroke:OR,"stroke-width":2.5,fill:"none"},rg);E("path",{d:"M"+(x+286)+" 292 l8 8 l-8 8",stroke:OR,"stroke-width":2.5,fill:"none"},rg)}rows("fast").push(rg)});
-  card(g,62,544,1156,122,false);T(g,86,584,"Инвестор инвестирует через Venture Builder, перевод идет сразу проекту по поручению Venture Builder.","txt",{"font-size":16});T(g,86,612,"Компания получает деньги за дни, а не за месяцы открытия счета.","txt",{"font-size":16});T(g,86,640,"Так же проходят все следующие сделки, если компании нужны деньги быстро.","txt",{"font-size":16,fill:OR})});
+  card(g,62,544,1156,122,false);T(g,86,584,"Инвестор инвестирует через Orbiq, перевод идет сразу проекту по поручению Orbiq.","txt",{"font-size":16});T(g,86,612,"Компания получает деньги за дни, а не за месяцы открытия счета.","txt",{"font-size":16});T(g,86,640,"Так же проходят все следующие сделки, если компании нужны деньги быстро.","txt",{"font-size":16,fill:OR})});
 ov("ovCore",function(g){panel(g,"ЯДРО");
   [["Владимир, 43","Капитал и сделки","$2 млн+","ЗАРАБОТАЛ ИНВЕСТОРАМ НА IT-ПРОЕКТАХ",["3 экзита","Привлек $5 млн+ венчурного капитала от 10+ бизнес-ангелов и 2 VC, включая 500 Startups (500.co)","За 9 месяцев вывел стартап на выручку из 12 стран"],"Венчурная стратегия, привлечение капитала, структурирование сделок для роста капитализации","var(--ink)","var(--inv)"],
    ["Андрей, 44","Трафик · MAST","$1,7 млн","ЗАРАБОТАЛ ИНВЕСТОРАМ ЗА 1,5 ГОДА",["Спроектировал систему платежей «Корона»","Разработал технологию монетизации MAST","Заменил 30 разработчиков, масштабирует технологию на мир"],"Эффективная работа с платным трафиком","#FFB800","#0B0B0D"],
@@ -280,15 +285,15 @@ ov("ovCore",function(g){panel(g,"ЯДРО");
     E("line",{x1:x+28,y1:500,x2:x+344,y2:500,"stroke-width":1,stroke:fg,"stroke-opacity":.3},rg);var s3=T(rg,x+28,528,"КОМПЕТЕНЦИЯ","sub",{fill:fg});s3.style.opacity=.7;wrapT(rg,x+28,556,c[5],34,"ttl",{fill:fg,"font-size":15.5},21);rows("core").push(rg)})});
 var PT={};
 function rise(el,d){el.setAttribute("opacity",0);TW(d||700,function(k){var e=ease(k);el.setAttribute("opacity",e.toFixed(2));el.setAttribute("transform","translate(0,"+(16*(1-e)).toFixed(1)+")")})}
-ov("ovParts",function(g){panel(g,"СТРУКТУРА VENTURE BUILDER");var C=PT;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
+ov("ovParts",function(g){panel(g,"СТРУКТУРА ORBIQ");var C=PT;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
   C.fr=P();E("rect",{x:62,y:92,width:800,height:96,rx:20,fill:"none",stroke:OR,"stroke-width":1.5,"stroke-dasharray":"6 6"},C.fr);T(C.fr,84,114,"ОСНОВАТЕЛИ","lbl",{fill:OR});
   C.f=[["Основатель","вносит $500 тыс. в долях компаний",84,330],["Алексей","SEO и GEO",432,200],["Андрей","платный трафик",650,190]].map(function(p){var q=P();E("rect",{x:p[2],y:124,width:p[3],height:52,rx:14,"class":"f-soft"},q);T(q,p[2]+16,146,p[0],"ttl",{"font-size":16});T(q,p[2]+16,166,p[1],"ttl",{"font-size":13,fill:"var(--mute)"});return q});
   C.inv=P();E("rect",{x:890,y:124,width:328,height:52,rx:14,fill:GR},C.inv);T(C.inv,906,146,"Инвестор первого раунда","ttl",{"font-size":16,fill:"#fff"});T(C.inv,906,166,"$250 тыс. за 10%","ttl",{"font-size":13,fill:"#fff"});
-  C.vb=P();E("rect",{x:62,y:216,width:1156,height:384,rx:24,"class":"f-ink"},C.vb);E("use",{href:"#mark",x:90,y:240,width:36,height:36},C.vb);TI(C.vb,138,266,"Venture Builder",26);
+  C.vb=P();E("rect",{x:62,y:216,width:1156,height:384,rx:24,"class":"f-ink"},C.vb);E("use",{href:"#mark",x:90,y:240,width:36,height:36},C.vb);TI(C.vb,138,266,"Orbiq",26);
   C.pf=P();E("rect",{x:90,y:300,width:540,height:276,rx:18,fill:"rgba(255,255,255,.08)"},C.pf);TI(C.pf,114,342,"Портфель",28);SI(C.pf,114,366,"АКТИВЫ КОМПАНИИ",.6);
   C.pb=["Доли в MAST и VisaTO","Доли в новых компаниях","Деньги инвесторов: сразу в раунды компаний"].map(function(s,i){var q=P();E("circle",{cx:122,cy:404+i*38,r:4,fill:"#fff"},q);var tx=T(q,136,409+i*38,s,"txt",{"font-size":16});tx.style.fill="var(--inv)";return q});
   C.fc=P();E("rect",{x:650,y:300,width:540,height:276,rx:18,fill:"rgba(255,77,0,.18)",stroke:OR,"stroke-width":1.5},C.fc);TI(C.fc,674,342,"Фабрика",28);SI(C.fc,674,366,"ОПЕРАЦИОННАЯ ДЕЯТЕЛЬНОСТЬ",.6);
-  C.fb=["Капитализация проектов: стратегия по каждому","Investment Relations по каждому проекту и по VB","Поиск предпринимателей в фокусе VB для сделок","Рост проектов за счет синергии: трафик, SEO и GEO"].map(function(s,i){var q=P();E("circle",{cx:682,cy:404+i*38,r:4,fill:OR},q);var tx=T(q,696,409+i*38,s,"txt",{"font-size":16});tx.style.fill="var(--inv)";return q});
+  C.fb=["Капитализация проектов: стратегия по каждому","Investment Relations по каждому проекту и по Orbiq","Поиск предпринимателей в фокусе Orbiq для сделок","Рост проектов за счет синергии: трафик, SEO и GEO"].map(function(s,i){var q=P();E("circle",{cx:682,cy:404+i*38,r:4,fill:OR},q);var tx=T(q,696,409+i*38,s,"txt",{"font-size":16});tx.style.fill="var(--inv)";return q});
   C.st=[["Основатель сетапит сделку",62,360],["Инвесторы утверждают",450,360],["Портфель получает долю",838,380]].map(function(s,i){var q=P();E("rect",{x:s[1],y:620,width:s[2],height:50,rx:25,fill:i==2?OR:"var(--ink)"},q);T(q,s[1]+s[2]/2,651,s[0],"ttl",{"font-size":16,"text-anchor":"middle",fill:i==2?"#fff":"var(--inv)"});if(i<2)E("path",{d:"M"+(s[1]+s[2]+6)+" 645 h16 m-6 -6 l6 6 l-6 6",stroke:OR,"stroke-width":2.5,fill:"none"},q);return q});
   C.L=E("g",{},g)});
 function runParts(a,D){var C=PT;zClear(C.L);C.p.forEach(function(e){e.setAttribute("opacity",a?0:1);e.removeAttribute("transform")});if(!a)return;
@@ -309,7 +314,7 @@ ov("ovRef",function(g){panel(g,"РЕФЕРЕНСЫ · МОДЕЛЬ РАБОТА�
   C.pr=P();card(C.pr,652,96,566,370,false);T(C.pr,676,146,"Prytek","big",{"font-size":44});T(C.pr,676,172,"С 2017 · ИНВЕСТИРУЕТ И РАЗВИВАЕТ КОМПАНИИ","sub");
   C.prr=[["$350 млн+","ВЛОЖЕНО В КОМПАНИИ"],["180","СДЕЛОК ЗА ТРИ ГОДА"]].map(function(r,i){var q=P(),y=250+i*90;T(q,676,y,r[0],"big",{"font-size":40});T(q,676,y+26,r[1],"sub");return q});
   C.pn=P();T(C.pn,676,430,"Часть вложенных денег идет на развитие бизнеса компаний.","txt",{"font-size":15});T(C.pn,676,454,"У нас та же логика через IR: 10% на привлечение капитала.","txt",{"font-size":15});
-  C.t=P();E("rect",{x:652,y:490,width:566,height:176,rx:22,fill:OR},C.t);T(C.t,676,560,"$500 млн+","big",{"font-size":56,fill:"#fff"});T(C.t,676,594,"ЦЕЛЬ VENTURE BUILDER ПО ОЦЕНКЕ АКТИВОВ ЗА 3–4 ГОДА","sub",{fill:"#fff"});var s2=T(C.t,676,620,"AI-ТЕХНОЛОГИИ И СИНЕРГИЯ НАПРАВЛЕНИЙ С ВЫСОКОЙ МАРЖОЙ","sub",{fill:"#fff"});s2.style.opacity=.8});
+  C.t=P();E("rect",{x:652,y:490,width:566,height:176,rx:22,fill:OR},C.t);T(C.t,676,560,"$500 млн+","big",{"font-size":56,fill:"#fff"});T(C.t,676,594,"ЦЕЛЬ ORBIQ ПО ОЦЕНКЕ АКТИВОВ ЗА 3–4 ГОДА","sub",{fill:"#fff"});var s2=T(C.t,676,620,"AI-ТЕХНОЛОГИИ И СИНЕРГИЯ НАПРАВЛЕНИЙ С ВЫСОКОЙ МАРЖОЙ","sub",{fill:"#fff"});s2.style.opacity=.8});
 function runRef(a,D){var C=RF;C.p.forEach(function(e){e.setAttribute("opacity",a?0:1);e.removeAttribute("transform")});if(!a)return;
   var S=[[0,function(){rise(C.h,800)}]];C.hr.forEach(function(q,i){S.push([1200+i*1500,function(){rise(q)}])});S.push([5800,function(){rise(C.hn)}]);
   S.push([8000,function(){rise(C.pr,800)}]);C.prr.forEach(function(q,i){S.push([9200+i*1500,function(){rise(q)}])});S.push([12400,function(){rise(C.pn)}]);S.push([15000,function(){rise(C.t,900)}]);
@@ -321,8 +326,8 @@ var PL={};
 ov("ovPlan",function(g){panel(g,"6 И 12 МЕСЯЦЕВ · КАПИТАЛИЗАЦИЯ И ВЫРУЧКА");PL.c=[];
   var DT=[["VisaTO","КАПИТАЛИЗАЦИЯ",CVi,[4,4.5,9],["$4 млн","$4,5 млн","$9 млн"],"×2,25",["6 мес.: выручка $50 тыс. в месяц","12 мес.: выручка $100 тыс.+ в месяц, раунд по $8–10 млн"]],
    ["MAST","КАПИТАЛИЗАЦИЯ",CMa,[7,7.5,15],["$7 млн","$7,5 млн","$15 млн"],"×2,1",["6 мес.: выручка $100 тыс. в месяц","12 мес.: выручка $200 тыс.+ в месяц"]],
-   ["Venture Builder","ВЫРУЧКА",GR,[0,125,225],["$0","$125 тыс.","$225 тыс."],"",["6 мес.: 10% от раундов VisaTO и MAST","12 мес.: еще 10% от $1 млн новых инвесторов через VB"]],
-   ["Venture Builder","КАПИТАЛИЗАЦИЯ",OR,[4,6,10],["$4 млн","$6 млн","$10 млн+"],"×2,5",["6 мес.: выручка и доли 2 новых компаний","12 мес.: новые инвесторы входят по $10 млн+"]]];
+   ["Orbiq","ВЫРУЧКА",GR,[0,125,225],["$0","$125 тыс.","$225 тыс."],"",["6 мес.: 10% от раундов VisaTO и MAST","12 мес.: еще 10% от $1 млн новых инвесторов через Orbiq"]],
+   ["Orbiq","КАПИТАЛИЗАЦИЯ",OR,[4,6,10],["$4 млн","$6 млн","$10 млн+"],"×2,5",["6 мес.: выручка и доли 2 новых компаний","12 мес.: новые инвесторы входят по $10 млн+"]]];
   DT.forEach(function(d,i){var x=62+i*292,q={d:d,x:x};q.g=HG(g);card(q.g,x,96,272,570,false);T(q.g,x+22,140,d[0],"big",{"font-size":d[0].length>8?21:26,fill:"var(--ink)"});T(q.g,x+22,168,d[1],"lbl",{fill:OR});
     if(d[5]){q.m=HG(q.g);E("rect",{x:x+178,y:180,width:74,height:36,rx:18,fill:OR},q.m);T(q.m,x+215,204,d[5],"ttl",{"font-size":17,"text-anchor":"middle",fill:"#fff"})}
     var mx=Math.max.apply(null,d[3]),base=478,H=210;q.b=[];
@@ -343,7 +348,7 @@ ov("ovGrow",function(g){panel(g,"ЧТО ДАЕТ $1,5 МЛН · КАПИТАЛИ
   var base=560,sc=24;
   [["VisaTO","#00A676","$750 тыс.",4e6,9e6,"×2,25","Дубай, Таиланд, Вьетнам, Австралия · выручка $100 тыс.+ в месяц"],
    ["MAST","#FFB800","$500 тыс.",7e6,15e6,"×2,1","1 000+ паблишеров · выручка $200 тыс.+ в месяц"],
-   ["Venture Builder",OR,"$250 тыс.",4e6,9.7e6,"×2,4","IR 10% · carry 20% · доли в 2–4 новых сделках"]].forEach(function(c,i){
+   ["Orbiq",OR,"$250 тыс.",4e6,9.7e6,"×2,4","IR 10% · carry 20% · доли в 2–4 новых сделках"]].forEach(function(c,i){
     var x=150+i*360,q={};q.g=HG(g);
     T(q.g,x+70,150,c[0],"big",{"font-size":26,"text-anchor":"middle",fill:"var(--ink)"});
     E("rect",{x:x,y:base-c[3]/1e6*sc,width:140,height:c[3]/1e6*sc,rx:14,fill:c[1],"fill-opacity":.3},q.g);
@@ -371,11 +376,11 @@ var BM={};
 function coCreate(p,x,y,tx,ty,text,anchorRight,dark){var g=E("g",{opacity:0},p);var bg=dark?"var(--inv)":"var(--ink)",fg=dark?"var(--ink)":"var(--inv)";var w=Math.round(text.length*8.9+34);var bx=anchorRight?tx-w:tx;E("line",{x1:x,y1:y,x2:tx,y2:ty,stroke:bg,"stroke-width":1.5,"stroke-opacity":.5},g);E("circle",{cx:x,cy:y,r:5,fill:bg},g);E("rect",{x:bx,y:ty-21,width:w,height:42,rx:21,fill:bg},g);T(g,bx+15,ty+6,text,"ttl",{"font-size":15.5,fill:fg});return g}
 function coShow(arr,g){arr.forEach(function(o){if(o!==g)fz(o,0,400)});later(250,function(){fz(g,1,500)})}
 function rTo(c,r1,d){var r0=+c.getAttribute("r");TW(d||1200,function(k){c.setAttribute("r",(r0+(r1-r0)*ease(k)).toFixed(1))})}
-ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");var C=BM;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
+ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ ORBIQ");var C=BM;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
   var G="#00A676",Y="#FFB800",YD="#B88400";C.vx=620;C.vy=380;
   C.hd=P();C.hdT=T(C.hd,62,128,"","big",{"font-size":26,fill:"var(--ink)"});C.hdK=T(C.hd,62,98,"","lbl",{fill:OR});C.mo=P();T(C.mo,1218,98,"СРОК","lbl",{"text-anchor":"end",fill:"var(--mute)"});C.moT=T(C.mo,1218,134,"","big",{"font-size":34,"text-anchor":"end",fill:OR});
   C.brand=P();C.br=E("circle",{cx:C.vx,cy:C.vy,r:150,fill:"none",stroke:OR,"stroke-width":2,"stroke-dasharray":"8 10"},C.brand);
-  C.vb=P();C.vc=E("circle",{cx:C.vx,cy:C.vy,r:64,fill:OR},C.vb);T(C.vb,C.vx,C.vy-2,"VENTURE","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});T(C.vb,C.vx,C.vy+20,"BUILDER","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});
+  C.vb=P();C.vc=E("circle",{cx:C.vx,cy:C.vy,r:64,fill:OR},C.vb);T(C.vb,C.vx,C.vy+8,"Orbiq","big",{"font-size":22,"text-anchor":"middle",fill:"#fff"});
   C.pj=[["VisaTO",330,270,G,"#fff","$4 млн","$9 млн"],["MAST",330,480,Y,"#0B0B0D","$7 млн","$15 млн"]].map(function(c){var q=P();var ci=E("circle",{cx:c[1],cy:c[2],r:44,fill:c[3]},q);T(q,c[1],c[2]+5,c[0],"ttl",{"font-size":15,"text-anchor":"middle",fill:c[4]});var v=T(q,c[1],c[2]+68,"оценка "+c[5],"ttl",{"font-size":14,"text-anchor":"middle",fill:"var(--ink)"});return {g:q,c:ci,v:v,x:c[1],y:c[2],a:c[5],b:c[6]}});
   C.iv=P();[[110,210],[110,330],[110,450],[110,560]].forEach(function(p){E("circle",{cx:p[0],cy:p[1],r:20,fill:"var(--ink)"},C.iv);T(C.iv,p[0],p[1]+6,"$","big",{"font-size":15,"text-anchor":"middle",fill:"var(--inv)"})});T(C.iv,110,610,"ИНВЕСТОРЫ","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
   C.np=[[500,590],[620,612],[740,590]].map(function(p){var q=P();var ci=E("circle",{cx:p[0],cy:p[1],r:34,fill:"var(--paper)",stroke:OR,"stroke-width":2,"stroke-dasharray":"6 6"},q);var t=T(q,p[0],p[1]+5,"проект","ttl",{"font-size":13,"text-anchor":"middle",fill:OR});return {g:q,c:ci,t:t,x:p[0],y:p[1]}});
@@ -383,16 +388,16 @@ ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");var C
   C.s3=HG(g);var Z=C.s3;Z.parts=[];function Q(){var q=HG(Z);Z.parts.push(q);return q}
   Z.sub=T(Z,62,160,"Проекты начинают работать как одна группа: общие клиенты, партнеры и бренд","ttl",{"font-size":18,fill:"var(--mute)"});
   Z.br=Q();E("ellipse",{cx:640,cy:410,rx:360,ry:200,fill:"none",stroke:OR,"stroke-width":2,"stroke-dasharray":"10 10"},Z.br);T(Z.br,640,226,"БРЕНД ГРУППЫ","lbl",{"text-anchor":"middle",fill:OR});
-  Z.vb=Q();E("circle",{cx:640,cy:410,r:66,fill:OR},Z.vb);T(Z.vb,640,406,"VENTURE","big",{"font-size":16,"text-anchor":"middle",fill:"#fff"});T(Z.vb,640,426,"BUILDER","big",{"font-size":16,"text-anchor":"middle",fill:"#fff"});
+  Z.vb=Q();E("circle",{cx:640,cy:410,r:66,fill:OR},Z.vb);T(Z.vb,640,418,"Orbiq","big",{"font-size":22,"text-anchor":"middle",fill:"#fff"});
   Z.pj=[["Визы",430,320],["Животные",850,320],["Лекарства",430,500],["Медтехника",850,500]].map(function(c){var q=Q();E("line",{x1:640,y1:410,x2:c[1],y2:c[2],stroke:"var(--line)","stroke-width":2},q);E("circle",{cx:c[1],cy:c[2],r:46,fill:"#00A676"},q);T(q,c[1],c[2]+5,c[0],"ttl",{"font-size":c[0].length>6?12:15,"text-anchor":"middle",fill:"#fff"});return {g:q,x:c[1],y:c[2]}});
   Z.pt=Q();[["Страховка",300],["eSIM",410],["Переводы",520]].forEach(function(p){E("rect",{x:1070,y:p[1]-20,width:140,height:40,rx:20,fill:"var(--soft)"},Z.pt);T(Z.pt,1140,p[1]+6,p[0],"ttl",{"font-size":15,"text-anchor":"middle",fill:"var(--ink)"})});T(Z.pt,1140,570,"ПАРТНЕРЫ","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
   Z.iv=Q();[300,410,520].forEach(function(y){E("circle",{cx:130,cy:y,r:24,fill:"var(--ink)"},Z.iv);T(Z.iv,130,y+6,"$","big",{"font-size":16,"text-anchor":"middle",fill:"var(--inv)"})});T(Z.iv,130,570,"ИНВЕСТОРЫ","lbl",{"text-anchor":"middle",fill:"var(--ink)"});
   Z.cap=T(Z,640,660,"","big",{"font-size":24,"text-anchor":"middle",fill:"var(--ink)"});
-  C.ct=[["ОЦЕНКА VB","$4 млн",OR,206],["ВЫРУЧКА VB","$0",G,346],["АКЦИИ В ПОРТФЕЛЕ","$0,5 млн",YD,486]].map(function(c){var q=P();E("rect",{x:930,y:c[3]-50,width:288,height:112,rx:22,fill:"var(--bg)",stroke:"var(--line)"},q);T(q,954,c[3]-16,c[0],"lbl",{fill:c[2]});var v=T(q,954,c[3]+34,c[1],"big",{"font-size":38,fill:c[2]});return {g:q,v:v}});
+  C.ct=[["ОЦЕНКА ORBIQ","$4 млн",OR,206],["ВЫРУЧКА ORBIQ","$0",G,346],["АКЦИИ В ПОРТФЕЛЕ","$0,5 млн",YD,486]].map(function(c){var q=P();E("rect",{x:930,y:c[3]-50,width:288,height:112,rx:22,fill:"var(--bg)",stroke:"var(--line)"},q);T(q,954,c[3]-16,c[0],"lbl",{fill:c[2]});var v=T(q,954,c[3]+34,c[1],"big",{"font-size":38,fill:c[2]});return {g:q,v:v}});
   C.st=[];C.L=E("g",{},g);
-  [["ЭТАП 1","Закрываем раунды VisaTO и MAST","1–3 месяца","+35%","оценка VB: $4 млн → $5,4 млн","420% годовых, если оба раунда закрыты за 1 месяц",["Оба раунда закрыты сразу: +35% за 1 месяц","Один раунд сейчас: +17% сразу, второй раунд — еще 2–3 месяца"],"Первый инвестор: $250 тыс. → $540 тыс., +116%"],
-   ["ЭТАП 2","Добавляем три новых проекта","12 месяцев","×2,5","оценка VB: $4 млн → $10 млн","+150% годовых",["Акции в портфеле VB: $0,5 млн → $1,25 млн","VisaTO $4 → $9 млн, MAST $7 → $15 млн","Выручка VB за год: $275 тыс."],"Первый инвестор за год: $250 тыс. → $1 млн, ×4"],
-   ["ЭТАП 3","Платформа и бренд группы","24 месяца","×12,5","оценка VB: $4 млн → $50 млн","≈ 250% годовых",["Клиенты и партнеры приносят выручку платформе","Бренд группы: раунды проектов быстрее и дороже","4–6 компаний, раунд венчурных фондов"],"Первый инвестор за 2 года: $250 тыс. → $4,2 млн с учетом размытия"]].forEach(function(s){var q=HG(g);E("rect",{x:30,y:24,width:1220,height:672,rx:28,"class":"f-paper"},q);q.parts=[];
+  [["ЭТАП 1","Закрываем раунды VisaTO и MAST","1–3 месяца","+35%","оценка Orbiq: $4 млн → $5,4 млн","420% годовых, если оба раунда закрыты за 1 месяц",["Оба раунда закрыты сразу: +35% за 1 месяц","Один раунд сейчас: +17% сразу, второй раунд — еще 2–3 месяца"],"Первый инвестор: $250 тыс. → $540 тыс., +116%"],
+   ["ЭТАП 2","Добавляем три новых проекта","12 месяцев","×2,5","оценка Orbiq: $4 млн → $10 млн","+150% годовых",["Акции в портфеле Orbiq: $0,5 млн → $1,25 млн","VisaTO $4 → $9 млн, MAST $7 → $15 млн","Выручка Orbiq за год: $275 тыс."],"Первый инвестор за год: $250 тыс. → $1 млн, ×4"],
+   ["ЭТАП 3","Платформа и бренд группы","24 месяца","×12,5","оценка Orbiq: $4 млн → $50 млн","≈ 250% годовых",["Клиенты и партнеры приносят выручку платформе","Бренд группы: раунды проектов быстрее и дороже","4–6 компаний, раунд венчурных фондов"],"Первый инвестор за 2 года: $250 тыс. → $4,2 млн с учетом размытия"]].forEach(function(s){var q=HG(g);E("rect",{x:30,y:24,width:1220,height:672,rx:28,"class":"f-paper"},q);q.parts=[];
     function part(){var r=HG(q);q.parts.push(r);return r}
     var a=part();T(a,96,112,s[0],"lbl",{fill:OR});T(a,96,158,s[1],"big",{"font-size":36,fill:"var(--ink)"});
     var b=part();T(b,96,278,s[2],"big",{"font-size":86,fill:"var(--ink)"});T(b,100,312,"СРОК","lbl",{fill:"var(--mute)"});
@@ -414,24 +419,24 @@ function runBM(a,D){var C=BM,L=C.L,G="#00A676";zClear(L);
   function hide(i,t0){later(t0,function(){fz(C.st[i],0,600)})}
   var S=[
    [0,function(){head("ЭТАП 1","Закрываем раунды VisaTO и MAST","месяц 0");rise(C.vb);C.ct.forEach(function(c,i){later(300+i*200,function(){rise(c.g)})})}],
-   [1600,function(){C.pj.forEach(function(p,i){later(i*400,function(){rise(p.g)})});later(900,function(){cp("На старте в VB акции VisaTO и MAST на $500 тыс.");C.pj.forEach(function(p,i){moveCoin(L,"fee","акции",p.x+40,p.y,C.vx-60,C.vy,1300,i*300)});later(1500,function(){countUp(C.ct[2].v,0,5e5,900,0,mon)})})}],
+   [1600,function(){C.pj.forEach(function(p,i){later(i*400,function(){rise(p.g)})});later(900,function(){cp("На старте в Orbiq акции VisaTO и MAST на $500 тыс.");C.pj.forEach(function(p,i){moveCoin(L,"fee","акции",p.x+40,p.y,C.vx-60,C.vy,1300,i*300)});later(1500,function(){countUp(C.ct[2].v,0,5e5,900,0,mon)})})}],
    [5200,function(){rise(C.iv);cp("Инвесторы закрывают раунды проектов: $1,25 млн")}],
    [6400,function(){[[110,210,330,270],[110,330,330,270],[110,450,330,480],[110,560,330,480]].forEach(function(m,i){moveCoin(L,"usd",i==0?"$750 тыс.":i==2?"$500 тыс.":"",m[0],m[1],m[2],m[3],1400,i*250)})}],
-   [9000,function(){cp("В день закрытия раунда VB получает 10%: $125 тыс.");moveCoin(L,"fee","$75 тыс.",370,290,C.vx-60,C.vy-10,1400,0);moveCoin(L,"fee","$50 тыс.",370,460,C.vx-60,C.vy+10,1400,400);later(1500,function(){countUp(C.ct[1].v,0,125e3,1200,0,mon)})}],
-   [11800,function(){cp("Оценка VB: $4 млн → $5,4 млн");C.moT.textContent="1 месяц";rTo(C.vc,78,1400);countUp(C.ct[0].v,4e6,5.4e6,1400,0,mon)}]];
+   [9000,function(){cp("В день закрытия раунда Orbiq получает 10%: $125 тыс.");moveCoin(L,"fee","$75 тыс.",370,290,C.vx-60,C.vy-10,1400,0);moveCoin(L,"fee","$50 тыс.",370,460,C.vx-60,C.vy+10,1400,400);later(1500,function(){countUp(C.ct[1].v,0,125e3,1200,0,mon)})}],
+   [11800,function(){cp("Оценка Orbiq: $4 млн → $5,4 млн");C.moT.textContent="1 месяц";rTo(C.vc,78,1400);countUp(C.ct[0].v,4e6,5.4e6,1400,0,mon)}]];
   show(0,15000);hide(0,24500);
   S=S.concat([
    [25200,function(){C.cp.setAttribute("opacity",0);head("ЭТАП 2","Добавляем три новых проекта","1 → 12 месяцев")}],
-   [26200,function(){cp("Каждый новый проект передает VB акции на $250 тыс. по оценке раунда");C.np.forEach(function(n,i){later(i*600,function(){rise(n.g);n.c.setAttribute("fill","#00A676");n.c.setAttribute("stroke","#00A676");n.c.setAttribute("stroke-dasharray","none");n.t.style.fill="#fff";moveCoin(L,"fee","$250 тыс.",n.x,n.y-30,C.vx,C.vy+70,1300,400)})});later(2400,function(){countUp(C.ct[2].v,5e5,1.25e6,1200,0,mon)})}],
-   [30600,function(){cp("VisaTO и MAST растут — их акции в VB дорожают");C.pj.forEach(function(p,i){rTo(p.c,i?64:58,1500);later(700,function(){p.v.textContent="оценка "+p.a+" → "+p.b})})}],
-   [34600,function(){cp("Выручка VB за год: $275 тыс.");countUp(C.ct[1].v,125e3,275e3,1200,0,mon);rTo(C.vc,96,1400);countUp(C.ct[0].v,5.4e6,10e6,1400,0,mon)}]]);
+   [26200,function(){cp("Каждый новый проект передает Orbiq акции на $250 тыс. по оценке раунда");C.np.forEach(function(n,i){later(i*600,function(){rise(n.g);n.c.setAttribute("fill","#00A676");n.c.setAttribute("stroke","#00A676");n.c.setAttribute("stroke-dasharray","none");n.t.style.fill="#fff";moveCoin(L,"fee","$250 тыс.",n.x,n.y-30,C.vx,C.vy+70,1300,400)})});later(2400,function(){countUp(C.ct[2].v,5e5,1.25e6,1200,0,mon)})}],
+   [30600,function(){cp("VisaTO и MAST растут — их акции в Orbiq дорожают");C.pj.forEach(function(p,i){rTo(p.c,i?64:58,1500);later(700,function(){p.v.textContent="оценка "+p.a+" → "+p.b})})}],
+   [34600,function(){cp("Выручка Orbiq за год: $275 тыс.");countUp(C.ct[1].v,125e3,275e3,1200,0,mon);rTo(C.vc,96,1400);countUp(C.ct[0].v,5.4e6,10e6,1400,0,mon)}]]);
   S=S.concat([
-   [38600,function(){fz(C.cp,0,300);head("ЭТАП 2 · ИТОГ","12 месяцев: оценка VB ×2,5 — это +150% годовых","12 месяцев")}],
+   [38600,function(){fz(C.cp,0,300);head("ЭТАП 2 · ИТОГ","12 месяцев: оценка Orbiq ×2,5 — это +150% годовых","12 месяцев")}],
    [44000,function(){[C.vb,C.iv,C.ct[0].g,C.ct[1].g,C.ct[2].g].concat(C.pj.map(function(p){return p.g}),C.np.map(function(n){return n.g})).forEach(function(e){fz(e,0,500)});
      later(400,function(){head("ЭТАП 3","Платформа и бренд группы","12 → 24 месяца");fz(C.s3,1,400);rise(C.s3.vb);C.s3.pj.forEach(function(p,i){later(400+i*300,function(){rise(p.g)})})})}],
    [47500,function(){cap("Один клиент пересекает несколько границ");var Z=C.s3;later(600,function(){moveCoin(L,"fee","клиент",430,320,600,400,1300,0)});later(2000,function(){moveCoin(L,"fee","клиент",680,400,850,320,1300,0)})}],
-   [52000,function(){cap("Проект платит VB комиссию за клиента");moveCoin(L,"usd","комиссия",850,320,680,410,1300,300)}],
-   [56000,function(){cap("Партнеры платят VB за клиентов группы");rise(C.s3.pt);[300,410,520].forEach(function(y,i){moveCoin(L,"usd","",1070,y,706,410,1300,600+i*300)})}],
+   [52000,function(){cap("Проект платит Orbiq комиссию за клиента");moveCoin(L,"usd","комиссия",850,320,680,410,1300,300)}],
+   [56000,function(){cap("Партнеры платят Orbiq за клиентов группы");rise(C.s3.pt);[300,410,520].forEach(function(y,i){moveCoin(L,"usd","",1070,y,706,410,1300,600+i*300)})}],
    [61000,function(){cap("Инвесторы знают группу: раунды быстрее и дороже");rise(C.s3.br,800);rise(C.s3.iv);[[154,300,430,320],[154,410,430,500],[154,520,850,500]].forEach(function(m,i){moveCoin(L,"usd","",m[0],m[1],m[2],m[3],1500,800+i*300)})}]]);
   show(2,66500);
   S.forEach(function(s){later(s[0],s[1])})}
@@ -460,26 +465,26 @@ function zClear(L){while(L.firstChild)L.removeChild(L.firstChild)}
 function zCard(g,x,w,dark,lab,tit,lines,big){var cg=HG(g),fc=dark?"var(--inv)":"var(--ink)";card(cg,x,100,w,566,dark);T(cg,x+26,140,lab,"lbl",{fill:OR});var y=180;if(big){T(cg,x+26,212,big,"big",{"font-size":52,fill:fc});y=256}y=wrapT(cg,x+26,y,tit,Math.round(w/15),"big",{"font-size":24,fill:fc},30)+50;lines.forEach(function(l){E("circle",{cx:x+32,cy:y-6,r:4.5,fill:OR},cg);y=wrapT(cg,x+46,y,l,Math.round(w/9.6),"ttl",{"font-size":16.5,fill:fc},22)+30});return cg}
 var SCN={};
 ov("ovScen",function(g){panel(g,"СЦЕНАРИИ ИНВЕСТИРОВАНИЯ");var C=SCN;
-  var s1=zScene(g,"СЦЕНАРИЙ 1 · БЕЗ VENTURE BUILDER","Обычная ангельская инвестиция",false);
+  var s1=zScene(g,"СЦЕНАРИЙ 1 · БЕЗ ORBIQ","Обычная ангельская инвестиция",false);
   s1.inv=zNode(s1,260,440,62,"var(--ink)","$","Инвестор","var(--inv)");s1.pr=zNode(s1,1000,440,72,CVi,"VisaTO","или MAST");
-  s1.vb=zPart(s1);E("circle",{cx:630,cy:300,r:44,fill:"none",stroke:"var(--ink)","stroke-width":2,"stroke-dasharray":"6 6","stroke-opacity":.35},s1.vb);T(s1.vb,630,306,"VB","big",{"font-size":18,"text-anchor":"middle",fill:"var(--ink)","fill-opacity":.35});E("line",{x1:600,y1:270,x2:660,y2:330,stroke:OR,"stroke-width":3},s1.vb);
+  s1.vb=zPart(s1);E("circle",{cx:630,cy:300,r:44,fill:"none",stroke:"var(--ink)","stroke-width":2,"stroke-dasharray":"6 6","stroke-opacity":.35},s1.vb);T(s1.vb,630,306,"Orbiq","big",{"font-size":18,"text-anchor":"middle",fill:"var(--ink)","fill-opacity":.35});E("line",{x1:600,y1:270,x2:660,y2:330,stroke:OR,"stroke-width":3},s1.vb);
   s1.sh=zBadge(s1,260,550,"Акции проекта у инвестора",CVi);
-  s1.co=[coCreate(s1.C,260,378,330,300,"Инвестор вкладывает от $100 тыс.",false),coCreate(s1.C,1000,368,960,290,"Общие условия раунда, без скидки",true),coCreate(s1.C,630,344,700,580,"Venture Builder не участвует, carry нет",false)];zFix(s1);
-  var s2=zScene(g,"СЦЕНАРИЙ 2 · С VENTURE BUILDER","Скидка 20% на раунде в обмен на carry 20%",false);
+  s1.co=[coCreate(s1.C,260,378,330,300,"Инвестор вкладывает от $100 тыс.",false),coCreate(s1.C,1000,368,960,290,"Общие условия раунда, без скидки",true),coCreate(s1.C,630,344,700,580,"Orbiq не участвует, carry нет",false)];zFix(s1);
+  var s2=zScene(g,"СЦЕНАРИЙ 2 · С ORBIQ","Скидка 20% на раунде в обмен на carry 20%",false);
   s2.inv=zNode(s2,220,400,58,"var(--ink)","$","Инвестор","var(--inv)");
   s2.ring=zPart(s2);E("circle",{cx:1000,cy:400,r:84,fill:"none",stroke:"var(--line)","stroke-width":9},s2.ring);s2.rp=E("circle",{cx:1000,cy:400,r:84,fill:"none",stroke:OR,"stroke-width":9,"stroke-dasharray":"0 528","stroke-linecap":"round",transform:"rotate(-90 1000 400)"},s2.ring);s2.rt=T(s2.ring,1000,512,"раунд 0%","ttl",{"font-size":15,"text-anchor":"middle",fill:"var(--ink)"});
-  s2.pr=zNode(s2,1000,400,66,CVi,"VisaTO","$4 млн");s2.vb=zNode(s2,600,560,56,OR,"Venture","Builder");
-  s2.vbs=zBadge(s2,220,500,"10% Venture Builder",OR);s2.disc=zBadge(s2,1000,290,"Оценка $4 млн → $3,2 млн",OR);
-  s2.res=zBadge(s2,330,262,"Итог: +20% от вложенного к сделке без VB",GR);
-  s2.co=[coCreate(s2.C,220,342,270,290,"Инвестор входит с Venture Builder",false),
+  s2.pr=zNode(s2,1000,400,66,CVi,"VisaTO","$4 млн");s2.vb=zNode(s2,600,560,56,OR,"Orbiq");
+  s2.vbs=zBadge(s2,220,500,"10% Orbiq",OR);s2.disc=zBadge(s2,1000,290,"Оценка $4 млн → $3,2 млн",OR);
+  s2.res=zBadge(s2,330,262,"Итог: +20% от вложенного к сделке без Orbiq",GR);
+  s2.co=[coCreate(s2.C,220,342,270,290,"Инвестор входит с Orbiq",false),
    coCreate(s2.C,1000,484,1080,560,"Условие 1: закрыть раунд проекта на 100%",true),
-   coCreate(s2.C,600,504,640,640,"Условие 2: $250 тыс. в Venture Builder → 10% VB",false),
+   coCreate(s2.C,600,504,640,640,"Условие 2: $250 тыс. в Orbiq → 10% Orbiq",false),
    coCreate(s2.C,1000,273,960,230,"Выигрыш: скидка 20% — на 25% больше акций",true),
-   coCreate(s2.C,650,560,700,600,"Отдает: carry 20% прибыли с выхода — Venture Builder",false),
-   coCreate(s2.C,220,517,80,600,"10% carry возвращается инвестору через долю в VB",false)];zFix(s2);
+   coCreate(s2.C,650,560,700,600,"Отдает: carry 20% прибыли с выхода — Orbiq",false),
+   coCreate(s2.C,220,517,80,600,"10% carry возвращается инвестору через долю в Orbiq",false)];zFix(s2);
   C.S=[s1,s2];
-  C.cards=[zCard(g,62,568,false,"СЦЕНАРИЙ 1 · БЕЗ VENTURE BUILDER","Обычная ангельская инвестиция",["От $100 тыс. в любой проект","Общие условия раунда, без скидки","Акции проекта у инвестора","Carry нет, Venture Builder не участвует"]),
-   zCard(g,650,568,true,"СЦЕНАРИЙ 2 · С VENTURE BUILDER","Скидка 20% на раунде в обмен на carry 20%",["Выигрыш: скидка 20% на раунде — на 25% больше акций","Отдает: carry 20% прибыли с выхода — Venture Builder","Условия входа: закрыть раунд проекта на 100% и вложить $250 тыс. в Venture Builder","Итог: при выходе с прибылью +20% от вложенного к сделке без VB и 10% Venture Builder"])];
+  C.cards=[zCard(g,62,568,false,"СЦЕНАРИЙ 1 · БЕЗ ORBIQ","Обычная ангельская инвестиция",["От $100 тыс. в любой проект","Общие условия раунда, без скидки","Акции проекта у инвестора","Carry нет, Orbiq не участвует"]),
+   zCard(g,650,568,true,"СЦЕНАРИЙ 2 · С ORBIQ","Скидка 20% на раунде в обмен на carry 20%",["Выигрыш: скидка 20% на раунде — на 25% больше акций","Отдает: carry 20% прибыли с выхода — Orbiq","Условия входа: закрыть раунд проекта на 100% и вложить $250 тыс. в Orbiq","Итог: при выходе с прибылью +20% от вложенного к сделке без Orbiq и 10% Orbiq"])];
   C.L=E("g",{},g)});
 function runScen(a,D){var C=SCN,s1=C.S[0],s2=C.S[1],L=C.L;zHide(C.S);zClear(L);C.cards.forEach(function(e){e.setAttribute("opacity",a?0:1)});
   s2.rp.setAttribute("stroke-dasharray","0 528");s2.rt.textContent="раунд 0%";s2.pr.c.setAttribute("r",66);
@@ -501,25 +506,25 @@ function runScen(a,D){var C=SCN,s1=C.S[0],s2=C.S[1],L=C.L;zHide(C.S);zClear(L);C
 var VR={};
 ov("ovVar",function(g){panel(g,"ВАРИАНТЫ РАЗВИТИЯ · ПЕРВЫЙ ИНВЕСТОР · $1 МЛН В VISATO");VR.cb=CB(g);VR.it=[];
   var h=HG(g);card(h,62,170,1156,118,false);T(h,86,204,"У ИНВЕСТОРА В ДЕНЬ СДЕЛКИ","lbl",{fill:OR});
-  [["25% VisaTO","за $750 тыс. · без VB 19,6%"],["10% Venture Builder","за $250 тыс."],["Без carry","доля в carry всех соинвесторов"]].forEach(function(p,i){var x=86+i*380;T(h,x,248,p[0],"big",{"font-size":28,fill:i==2?GR:"var(--ink)"});var s=T(h,x,274,p[1],"ttl",{"font-size":14,fill:"var(--ink)"});s.style.opacity=.65});VR.it.push(h);VR.h=h;
-  VR.c=[];[["ПЛОХОЙ",["VisaTO без раунда, оценка −50%","Соинвесторов нет, carry нет","План не выполнен: доля в VB 15%"],"$645 тыс.","$619 тыс.","$675 тыс.","$619 тыс.",false],
-   ["БАЗОВЫЙ",["VisaTO: $9 млн → $20 млн","Соинвесторы через VB: $3 → $10 млн","VB: $4,9 млн → $11,5 млн"],"$2,52 млн","$2,09 млн","$5,2 млн","$4,18 млн",false],
-   ["ХОРОШИЙ",["VisaTO: $20 млн → $40 млн","Соинвесторы через VB: $5 → $20 млн","VB: $10,4 млн → $23 млн"],"$5,54 млн","$4,64 млн","$10,4 млн","$8,36 млн",true]].forEach(function(s,i){var x=62+i*394,cg=HG(g),dk=s[6],fc=dk?"var(--inv)":"var(--ink)";card(cg,x,306,368,360,dk);T(cg,x+24,342,s[0],"lbl",{fill:OR});
+  [["25% VisaTO","за $750 тыс. · без Orbiq 19,6%"],["10% Orbiq","за $250 тыс."],["Без carry","доля в carry всех соинвесторов"]].forEach(function(p,i){var x=86+i*380;T(h,x,248,p[0],"big",{"font-size":28,fill:i==2?GR:"var(--ink)"});var s=T(h,x,274,p[1],"ttl",{"font-size":14,fill:"var(--ink)"});s.style.opacity=.65});VR.it.push(h);VR.h=h;
+  VR.c=[];[["ПЛОХОЙ",["VisaTO без раунда, оценка −50%","Соинвесторов нет, carry нет","План не выполнен: доля в Orbiq 15%"],"$645 тыс.","$619 тыс.","$675 тыс.","$619 тыс.",false],
+   ["БАЗОВЫЙ",["VisaTO: $9 млн → $20 млн","Соинвесторы через Orbiq: $3 → $10 млн","Orbiq: $4,9 млн → $11,5 млн"],"$2,52 млн","$2,09 млн","$5,2 млн","$4,18 млн",false],
+   ["ХОРОШИЙ",["VisaTO: $20 млн → $40 млн","Соинвесторы через Orbiq: $5 → $20 млн","Orbiq: $10,4 млн → $23 млн"],"$5,54 млн","$4,64 млн","$10,4 млн","$8,36 млн",true]].forEach(function(s,i){var x=62+i*394,cg=HG(g),dk=s[6],fc=dk?"var(--inv)":"var(--ink)";card(cg,x,306,368,360,dk);T(cg,x+24,342,s[0],"lbl",{fill:OR});
     s[1].forEach(function(l,j){E("circle",{cx:x+30,cy:372+j*28,r:4,fill:OR},cg);T(cg,x+44,377+j*28,l,"ttl",{"font-size":13.5,fill:fc})});
     var r=HG(cg);E("line",{x1:x+24,y1:466,x2:x+344,y2:466,stroke:fc,"stroke-opacity":.2},r);
-    [["12 МЕСЯЦЕВ",s[2],s[3],502],["24 МЕСЯЦА",s[4],s[5],582]].forEach(function(q){var t=T(r,x+24,q[3],q[0],"sub",{fill:fc});t.style.opacity=.7;T(r,x+24,q[3]+36,q[1],"big",{"font-size":28,fill:fc});var d=T(r,x+344,q[3]+14,"БЕЗ VB","sub",{"text-anchor":"end",fill:fc});d.style.opacity=.6;T(r,x+344,q[3]+38,q[2],"big",{"font-size":18,"text-anchor":"end",fill:fc})});
+    [["12 МЕСЯЦЕВ",s[2],s[3],502],["24 МЕСЯЦА",s[4],s[5],582]].forEach(function(q){var t=T(r,x+24,q[3],q[0],"sub",{fill:fc});t.style.opacity=.7;T(r,x+24,q[3]+36,q[1],"big",{"font-size":28,fill:fc});var d=T(r,x+344,q[3]+14,"БЕЗ ORBIQ","sub",{"text-anchor":"end",fill:fc});d.style.opacity=.6;T(r,x+344,q[3]+38,q[2],"big",{"font-size":18,"text-anchor":"end",fill:fc})});
     VR.c.push({g:cg,r:r});VR.it.push(cg);VR.it.push(r)})});
 function runVar(a,D){var C=VR;seqRun(a,C.it,C.cb,[
-  [0,function(){cbSet(C.cb,"Пример: первый инвестор, $1 млн в VisaTO через Venture Builder");fz(C.h,1)}],
-  [2800,function(){cbSet(C.cb,"25% VisaTO вместо 19,6%, 10% Venture Builder, сделка без carry")}],
-  [6000,function(){cbSet(C.cb,"Плохой: VisaTO без раунда, соинвесторов нет. Доля в VB растет до 15%");fz(C.c[0].g,1)}],
-  [9200,function(){fz(C.c[0].r,1);cbSet(C.cb,"Через VB $645 тыс. за 12 месяцев, без VB $619 тыс.")}],
+  [0,function(){cbSet(C.cb,"Пример: первый инвестор, $1 млн в VisaTO через Orbiq");fz(C.h,1)}],
+  [2800,function(){cbSet(C.cb,"25% VisaTO вместо 19,6%, 10% Orbiq, сделка без carry")}],
+  [6000,function(){cbSet(C.cb,"Плохой: VisaTO без раунда, соинвесторов нет. Доля в Orbiq растет до 15%");fz(C.c[0].g,1)}],
+  [9200,function(){fz(C.c[0].r,1);cbSet(C.cb,"Через Orbiq $645 тыс. за 12 месяцев, без Orbiq $619 тыс.")}],
   [12400,function(){cbSet(C.cb,"Базовый: соинвесторы приводят $3 млн за год и $10 млн за два — carry растет");fz(C.c[1].g,1)}],
-  [15600,function(){fz(C.c[1].r,1);cbSet(C.cb,"Через VB $2,52 млн за 12 месяцев и $5,2 млн за 24")}],
-  [18800,function(){cbSet(C.cb,"Хороший: VisaTO $40 млн, через VB $20 млн соинвесторов");fz(C.c[2].g,1)}],
-  [22000,function(){fz(C.c[2].r,1);cbSet(C.cb,"Через VB $5,54 млн за 12 месяцев и $10,4 млн за 24")}],
-  [25200,function(){cbSet(C.cb,"Без VB — тот же $1 млн в VisaTO на общих условиях")}]],
-  "Без VB — тот же $1 млн в VisaTO на общих условиях")}
+  [15600,function(){fz(C.c[1].r,1);cbSet(C.cb,"Через Orbiq $2,52 млн за 12 месяцев и $5,2 млн за 24")}],
+  [18800,function(){cbSet(C.cb,"Хороший: VisaTO $40 млн, через Orbiq $20 млн соинвесторов");fz(C.c[2].g,1)}],
+  [22000,function(){fz(C.c[2].r,1);cbSet(C.cb,"Через Orbiq $5,54 млн за 12 месяцев и $10,4 млн за 24")}],
+  [25200,function(){cbSet(C.cb,"Без Orbiq — тот же $1 млн в VisaTO на общих условиях")}]],
+  "Без Orbiq — тот же $1 млн в VisaTO на общих условиях")}
 
 /* ===== 11. ПЕРЕОЦЕНКА ===== */
 var PR={};
@@ -530,17 +535,17 @@ ov("ovProt",function(g){panel(g,"ПЕРЕОЦЕНКА ДОЛЕЙ В СЛУЧАЕ
   E("circle",{cx:120,cy:280,r:32,fill:CMa},C.fo);T(C.fo,120,285,"MAST","ttl",{"font-size":13,"text-anchor":"middle",fill:"#0B0B0D"});E("circle",{cx:210,cy:280,r:32,fill:CVi},C.fo);T(C.fo,210,285,"VisaTO","ttl",{"font-size":12,"text-anchor":"middle",fill:"#fff"});
   C.iv=P();E("rect",{x:170-w/2,y:578,width:w,height:44,rx:22,fill:GR},C.iv);T(C.iv,170,606,"Инвестор","ttl",{"font-size":17,"text-anchor":"middle",fill:"#fff"});
   C.dn=P();C.sl={};[["f",OR],["a","#8A8F98"],["b","#B9BEC6"],["i",GR]].forEach(function(s){C.sl[s[0]]=E("path",{d:"",fill:s[1]},C.dn)});
-  T(C.dn,C.cx,C.cy-4,"Venture","big",{"font-size":20,"text-anchor":"middle",fill:"var(--ink)"});T(C.dn,C.cx,C.cy+20,"Builder","big",{"font-size":20,"text-anchor":"middle",fill:"var(--ink)"});
+  T(C.dn,C.cx,C.cy+9,"Orbiq","big",{"font-size":26,"text-anchor":"middle",fill:"var(--ink)"});
   C.lf=T(C.dn,C.cx-180,C.cy+150,"","big",{"font-size":22,"text-anchor":"end",fill:OR});C.la=T(C.dn,0,0,"Алексей 5%","ttl",{"font-size":14,fill:"var(--ink)"});C.lb=T(C.dn,0,0,"Андрей 5%","ttl",{"font-size":14,fill:"var(--ink)"});
   C.li=T(C.dn,0,0,"","big",{"font-size":22,fill:GR});C.sl.i.setAttribute("opacity",0);C.li.setAttribute("opacity",0);
   C.plan=P();card(C.plan,790,110,428,300,true);T(C.plan,816,150,"ПЛАН НА 24 МЕСЯЦА","lbl",{fill:OR});C.k=[];
-  [["$1 млн капитала новых инвесторов через Venture Builder"],["2 новые сделки"],["Следующий раунд VisaTO"]].forEach(function(t,i){var q=HG(C.plan),y=[198,272,322][i];E("circle",{cx:830,cy:y-6,r:14,fill:OR},q);T(q,830,y-1,String(i+1),"ttl",{"font-size":14,"text-anchor":"middle",fill:"#fff"});wrapT(q,856,y,t[0],30,"ttl",{"font-size":18,fill:"var(--inv)"},24);C.k.push(q)});
+  [["$1 млн капитала новых инвесторов через Orbiq"],["2 новые сделки"],["Следующий раунд VisaTO"]].forEach(function(t,i){var q=HG(C.plan),y=[198,272,322][i];E("circle",{cx:830,cy:y-6,r:14,fill:OR},q);T(q,830,y-1,String(i+1),"ttl",{"font-size":14,"text-anchor":"middle",fill:"#fff"});wrapT(q,856,y,t[0],30,"ttl",{"font-size":18,fill:"var(--inv)"},24);C.k.push(q)});
   C.x=P();E("circle",{cx:1182,cy:144,r:18,fill:OR},C.x);E("path",{d:"M1175 137 L1189 151 M1189 137 L1175 151",stroke:"#fff","stroke-width":3},C.x);
   C.st=P();card(C.st,790,430,428,236,false);T(C.st,816,470,"ЕСЛИ ПЛАН НЕ ВЫПОЛНЕН","lbl",{fill:OR});T(C.st,816,498,"Инвестор закрыл раунды обоих проектов","ttl",{"font-size":15,fill:"var(--ink)"});C.big=T(C.st,816,548,"10%","big",{"font-size":46,fill:GR});T(C.st,816,582,"Инвестор закрыл раунд одного проекта","ttl",{"font-size":15,fill:"var(--ink)"});C.big2=T(C.st,816,618,"10% → 15%","big",{"font-size":28,fill:GR});C.fs=T(C.st,816,650,"","ttl",{"font-size":15,fill:OR});
   C.L=E("g",{},g);C.CO=E("g",{},g);
   C.co=[coCreate(C.CO,245,200,280,130,"Доли в MAST и VisaTO на $500 тыс. + вся работа",false),
-    coCreate(C.CO,245,600,280,655,"$250 тыс. → 10% Venture Builder",false),
-    coCreate(C.CO,640,300,300,130,"Алексей и Андрей — по 5% до первого раунда VB",false),
+    coCreate(C.CO,245,600,280,655,"$250 тыс. → 10% Orbiq",false),
+    coCreate(C.CO,640,300,300,130,"Алексей и Андрей — по 5% до первого раунда Orbiq",false),
     coCreate(C.CO,560,265,290,130,"Доля инвестора растет за счет доли основателя",false)]});
 function protSet(inv){var C=PR,cx=C.cx,cy=C.cy,r0=92,r1=160,u=Math.PI*2/100,a=0;
   function seg(k,v){var p=arcP(cx,cy,r0,r1,a+0.004,a+v*u-0.004);C.sl[k].setAttribute("d",p);var m=a+v*u/2;a+=v*u;return m}
@@ -561,25 +566,25 @@ function runProt(a,D){var C=PR;zClear(C.L);C.p.forEach(function(e){e.setAttribut
   S.forEach(function(s){later(s[0],s[1])})}
 /* ===== 12. ОЦЕНКА ===== */
 var KV={};
-ov("ovCapVB",function(g){panel(g,"КАК ОЦЕНИВАЕТСЯ VENTURE BUILDER");var C=KV;
+ov("ovCapVB",function(g){panel(g,"КАК ОЦЕНИВАЕТСЯ ORBIQ");var C=KV;
   var sA=zScene(g,"ПРИНЦИП","Оценка = доли в компаниях + прибыль от комиссий × 10",false);
   sA.b1=zPart(sA);E("rect",{x:96,y:300,width:300,height:170,rx:22,fill:"var(--ink)"},sA.b1);T(sA.b1,120,340,"ДОЛИ В КОМПАНИЯХ","lbl",{fill:OR});wrapT(sA.b1,120,390,"Акции проектов в портфеле",18,"big",{"font-size":22,fill:"var(--inv)"},28);
   sA.b2=zPart(sA);T(sA.b2,432,400,"+","big",{"font-size":44,"text-anchor":"middle",fill:"var(--ink)"});E("rect",{x:466,y:300,width:330,height:170,rx:22,fill:GR},sA.b2);T(sA.b2,490,340,"ПРИБЫЛЬ ОТ КОМИССИЙ","lbl",{fill:"#fff"});wrapT(sA.b2,490,390,"10% привлеченного капитала и carry 20%",22,"big",{"font-size":22,fill:"#fff"},28);
-  sA.b3=zPart(sA);T(sA.b3,846,400,"× 10","big",{"font-size":40,"text-anchor":"middle",fill:"var(--ink)"});E("rect",{x:900,y:300,width:284,height:170,rx:22,fill:OR},sA.b3);T(sA.b3,924,340,"ОЦЕНКА","lbl",{fill:"#fff"});wrapT(sA.b3,924,390,"Venture Builder",14,"big",{"font-size":26,fill:"#fff"},30);
+  sA.b3=zPart(sA);T(sA.b3,846,400,"× 10","big",{"font-size":40,"text-anchor":"middle",fill:"var(--ink)"});E("rect",{x:900,y:300,width:284,height:170,rx:22,fill:OR},sA.b3);T(sA.b3,924,340,"ОЦЕНКА","lbl",{fill:"#fff"});wrapT(sA.b3,924,390,"Orbiq",14,"big",{"font-size":26,fill:"#fff"},30);
   sA.co=[coCreate(sA.C,630,470,450,560,"Управляющие компании покупают по 10–15× прибыли",false),coCreate(sA.C,630,470,400,560,"Пример: Petershill и Blue Owl покупают доли управляющих",false),coCreate(sA.C,846,365,880,250,"Мы берем 10×",false)];zFix(sA);
   var sB=zScene(g,"СЕГОДНЯ","Текущий раунд — $4 млн",false);
   sB.b1=zPart(sB);E("rect",{x:96,y:250,width:240,height:170,rx:22,fill:"var(--ink)"},sB.b1);T(sB.b1,118,288,"ДОЛИ","lbl",{fill:OR});T(sB.b1,118,350,"$0,5 млн","big",{"font-size":40,fill:"var(--inv)"});T(sB.b1,118,392,"MAST + VisaTO","ttl",{"font-size":16,fill:"var(--inv)"});
-  sB.b2=zPart(sB);T(sB.b2,368,346,"+","big",{"font-size":44,"text-anchor":"middle",fill:"var(--ink)"});var r=E("rect",{x:400,y:250,width:500,height:170,rx:22,fill:"none",stroke:"var(--line)","stroke-width":2},sB.b2);T(sB.b2,422,288,"ПРИБЫЛЬ ОТ КОМИССИЙ · ПЛАН 2-ГО ГОДА","lbl",{fill:OR});T(sB.b2,422,316,"$10 млн через VB → выручка $1 млн → прибыль $700 тыс.","ttl",{"font-size":15,fill:"var(--ink)"});
+  sB.b2=zPart(sB);T(sB.b2,368,346,"+","big",{"font-size":44,"text-anchor":"middle",fill:"var(--ink)"});var r=E("rect",{x:400,y:250,width:500,height:170,rx:22,fill:"none",stroke:"var(--line)","stroke-width":2},sB.b2);T(sB.b2,422,288,"ПРИБЫЛЬ ОТ КОМИССИЙ · ПЛАН 2-ГО ГОДА","lbl",{fill:OR});T(sB.b2,422,316,"$10 млн через Orbiq → выручка $1 млн → прибыль $700 тыс.","ttl",{"font-size":15,fill:"var(--ink)"});
   sB.bar=E("rect",{x:422,y:334,width:0,height:46,rx:10,fill:OR},sB.b2);sB.barT=T(sB.b2,434,364,"","big",{"font-size":22,fill:"#fff"});sB.eq2=T(sB.b2,422,406,"","ttl",{"font-size":15,fill:"var(--ink)"});
   sB.b3=zPart(sB);T(sB.b3,932,346,"=","big",{"font-size":44,"text-anchor":"middle",fill:"var(--ink)"});E("rect",{x:964,y:250,width:220,height:170,rx:22,fill:OR},sB.b3);T(sB.b3,986,288,"ТЕКУЩИЙ РАУНД","lbl",{fill:"#fff"});T(sB.b3,986,360,"$4 млн","big",{"font-size":46,fill:"#fff"});
   sB.b4=zPart(sB);E("rect",{x:96,y:450,width:1088,height:110,rx:22,fill:"var(--ink)"},sB.b4);T(sB.b4,120,488,"ПЕРВЫЙ ИНВЕСТОР · БОЛЬШЕ РИСКА","lbl",{fill:OR});T(sB.b4,120,532,"Скидка на риск 70%: $0,5 млн + $2,1 млн ≈ $2,5 млн","big",{"font-size":26,fill:"var(--inv)"});
   sB.co=[coCreate(sB.C,660,380,560,620,"Скидка на риск 50%: план еще не выполнен",false)];zFix(sB);
   var sC=zScene(g,"В ДЕНЬ СДЕЛКИ","Выручка появляется сразу",false);
-  sC.inv=zNode(sC,200,420,58,"var(--ink)","$","Инвестор","var(--inv)");sC.v=zNode(sC,1010,300,56,CVi,"VisaTO");sC.m=zNode(sC,1010,520,52,CMa,"MAST","","#0B0B0D");sC.vb=zNode(sC,600,560,58,OR,"Venture","Builder");
-  sC.rev=zPart(sC);T(sC.rev,690,540,"ВЫРУЧКА VB","lbl",{fill:GR});sC.revT=T(sC.rev,690,582,"$0","big",{"font-size":34,fill:GR});
-  sC.val=zPart(sC);sC.valT=T(sC.val,96,262,"Оценка VB: $4 млн","big",{"font-size":30,fill:OR});T(sC.val,96,294,"Скидка на риск 50% → 30%: раунды закрыты, выручка получена","ttl",{"font-size":15,fill:"var(--ink)"});
+  sC.inv=zNode(sC,200,420,58,"var(--ink)","$","Инвестор","var(--inv)");sC.v=zNode(sC,1010,300,56,CVi,"VisaTO");sC.m=zNode(sC,1010,520,52,CMa,"MAST","","#0B0B0D");sC.vb=zNode(sC,600,560,58,OR,"Orbiq");
+  sC.rev=zPart(sC);T(sC.rev,690,540,"ВЫРУЧКА ORBIQ","lbl",{fill:GR});sC.revT=T(sC.rev,690,582,"$0","big",{"font-size":34,fill:GR});
+  sC.val=zPart(sC);sC.valT=T(sC.val,96,262,"Оценка Orbiq: $4 млн","big",{"font-size":30,fill:OR});T(sC.val,96,294,"Скидка на риск 50% → 30%: раунды закрыты, выручка получена","ttl",{"font-size":15,fill:"var(--ink)"});
   sC.sh=zBadge(sC,220,520,"10% первого инвестора: $540 тыс.",GR);
-  sC.co=[coCreate(sC.C,600,502,640,420,"10% денег сразу возвращаются в VB кэшем",false)];zFix(sC);
+  sC.co=[coCreate(sC.C,600,502,640,420,"10% денег сразу возвращаются в Orbiq кэшем",false)];zFix(sC);
   C.S=[sA,sB,sC];
   C.fin=HG(g);var f=C.fin;card(f,62,100,1156,104,true);T(f,88,138,"КАК ОЦЕНИВАЮТ VENTURE BUILDERS И УПРАВЛЯЮЩИЕ КОМПАНИИ","lbl",{fill:OR});T(f,88,180,"Доли в компаниях + прибыль от комиссий × 10–15. Мы берем 10×","big",{"font-size":24,fill:"var(--inv)"});
   [["СЕГОДНЯ","$4 млн","Текущий раунд",["Доли $0,5 млн + комиссии $7 млн со скидкой на риск 50%","Первый инвестор: $2,5 млн — скидка 70% за больший риск"],false],
@@ -587,7 +592,7 @@ ov("ovCapVB",function(g){panel(g,"КАК ОЦЕНИВАЕТСЯ VENTURE BUILDER"
    ["ЧЕРЕЗ 12 МЕСЯЦЕВ","$10 млн+","Вход новых инвесторов",["Компания с выручкой и закрытыми раундами","10% первого инвестора: $1 млн+"],true]].forEach(function(c,i){var x=62+i*392,cg=HG(f),dk=c[4];C.fc=C.fc||[];C.fc.push(cg),fc=dk?"#fff":"var(--ink)";var rr=E("rect",{x:x,y:222,width:372,height:444,rx:22,fill:dk?OR:"none","class":dk?"":"f-bg"},cg);if(!dk)rr.style.stroke="var(--line)";T(cg,x+26,262,c[0],"lbl",{fill:dk?"#fff":OR});T(cg,x+26,330,c[1],"big",{"font-size":54,fill:fc});T(cg,x+26,370,c[2],"ttl",{"font-size":18,fill:fc});var y=420;c[3].forEach(function(l){E("circle",{cx:x+32,cy:y-6,r:4.5,fill:dk?"#fff":OR},cg);y=wrapT(cg,x+46,y,l,32,"ttl",{"font-size":15.5,fill:fc},21)+26})});
   C.L=E("g",{},g)});
 function runCapVB(a,D){var C=KV,sA=C.S[0],sB=C.S[1],sC=C.S[2],L=C.L;zHide(C.S);zClear(L);C.fin.setAttribute("opacity",a?0:1);(C.fc||[]).forEach(function(e){e.setAttribute("opacity",a?0:1)});
-  sB.bar.setAttribute("width",0);sB.barT.textContent="";sB.eq2.textContent="";sC.revT.textContent="$0";sC.valT.textContent="Оценка VB: $4 млн";
+  sB.bar.setAttribute("width",0);sB.barT.textContent="";sB.eq2.textContent="";sC.revT.textContent="$0";sC.valT.textContent="Оценка Orbiq: $4 млн";
   if(!a)return;
   function mon(v){return v<1e6?"$"+Math.round(v/1e3)+" тыс.":"$"+(Math.round(v/1e5)/10).toString().replace(".",",")+" млн"}
   var S=[
@@ -602,14 +607,14 @@ function runCapVB(a,D){var C=KV,sA=C.S[0],sB=C.S[1],sC=C.S[2],L=C.L;zHide(C.S);z
    [34000,function(){zSay(sC,0);moveCoin(L,"fee","$75 тыс.",990,350,620,500,1300,0);later(1300,function(){countUp(sC.revT,0,75e3,900,0,mon)})}],
    [37000,function(){for(var i=0;i<3;i++)moveCoin(L,"usd",i?"":"$500 тыс.",260,430,955,520,1400,i*250)}],
    [39000,function(){moveCoin(L,"fee","$50 тыс.",960,510,650,540,1200,0);later(1200,function(){countUp(sC.revT,75e3,125e3,900,0,mon)})}],
-   [41500,function(){TW(1600,function(k){sC.valT.textContent="Оценка VB: $4 млн → "+mon(4e6+1.4e6*ease(k))})}],
+   [41500,function(){TW(1600,function(k){sC.valT.textContent="Оценка Orbiq: $4 млн → "+mon(4e6+1.4e6*ease(k))})}],
    [43500,function(){fz(sC.sh,1)}],
    [46500,function(){fz(sC,0,500);later(400,function(){fz(C.fin,1,800);C.fc.forEach(function(e,i){later(600+i*900,function(){fz(e,1,700)})})})}]];
   S.forEach(function(s){later(s[0],s[1])})}
 /* ===== 13. ИТОГО ===== */
 var FN={};
 ov("ovFin",function(g){panel(g,"ИТОГО · СТРАТЕГИЯ НА 3–5 ЛЕТ");var C=FN;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
-  C.top=P();card(C.top,62,96,1156,120,true);T(C.top,88,136,"СОЗДАЕМ","lbl",{fill:OR});T(C.top,88,178,"Venture Builder с фокусом на трансграничные перемещения","big",{"font-size":26,fill:"var(--inv)"});
+  C.top=P();card(C.top,62,96,1156,120,true);T(C.top,88,136,"СОЗДАЕМ","lbl",{fill:OR});T(C.top,88,178,"Orbiq с фокусом на трансграничные перемещения","big",{"font-size":26,fill:"var(--inv)"});
   T(C.top,1190,178,"Старт: акции компаний на $500 тыс.","ttl",{"font-size":16,"text-anchor":"end",fill:"var(--inv)"});
   C.cy=450;C.st=[];
   var ST=[["ПРЕСИД","Отдельные AI-first бизнесы",CVi,36],["3–5 ЛЕТ","$50–500 млн капитализация",OR,70],["ПЛАТФОРМА ГРУППЫ","Общая база клиентов и кросс-продажи",CMa,86],["IPO","Группа под зонтичным брендом","var(--ink)",104]];
@@ -632,13 +637,13 @@ ov("ovPlat",function(g){panel(g,"ПЛАТФОРМА И БРЕНД ГРУППЫ")
     E("line",{x1:C.cx,y1:C.cy,x2:c[1],y2:c[2],stroke:"var(--line)","stroke-width":2},C.links);
     var q=P();var ci=E("circle",{cx:c[1],cy:c[2],r:46,fill:c[3]},q);if(c[5]){ci.setAttribute("stroke",OR);ci.setAttribute("stroke-width",2);ci.setAttribute("stroke-dasharray","6 6");ci.setAttribute("fill","var(--paper)")}
     T(q,c[1],c[2]+5,c[0],"ttl",{"font-size":c[0].length>7?12.5:15,"text-anchor":"middle",fill:c[4]});return {g:q,x:c[1],y:c[2]}});
-  C.core=P();E("circle",{cx:C.cx,cy:C.cy,r:102,fill:OR},C.core);T(C.core,C.cx,C.cy-10,"Venture Builder","big",{"font-size":19,"text-anchor":"middle",fill:"#fff"});T(C.core,C.cx,C.cy+14,"платформа группы","ttl",{"font-size":13.5,"text-anchor":"middle",fill:"#fff"});T(C.core,C.cx,C.cy+34,"база клиентов, AI-агент","ttl",{"font-size":11.5,"text-anchor":"middle",fill:"#fff","fill-opacity":.85});
+  C.core=P();E("circle",{cx:C.cx,cy:C.cy,r:102,fill:OR},C.core);T(C.core,C.cx,C.cy-12,"Orbiq","big",{"font-size":26,"text-anchor":"middle",fill:"#fff"});T(C.core,C.cx,C.cy+14,"платформа группы","ttl",{"font-size":13.5,"text-anchor":"middle",fill:"#fff"});T(C.core,C.cx,C.cy+34,"база клиентов, AI-агент","ttl",{"font-size":11.5,"text-anchor":"middle",fill:"#fff","fill-opacity":.85});
   C.fin=P();E("rect",{x:190,y:634,width:900,height:44,rx:22,fill:"var(--ink)"},C.fin);T(C.fin,640,662,"На IPO компании объединяются вокруг платформы: один вход, одна база, общая выручка","ttl",{"font-size":15,"text-anchor":"middle",fill:"var(--inv)"});
   C.L=E("g",{},g);C.C=E("g",{},g);
   C.cs=[coCreate(C.C,330,234,96,150,"Каждая компания — под своим брендом",false),
    coCreate(C.C,640,288,700,150,"Общая база клиентов и AI-агент группы",false),
    coCreate(C.C,300,434,96,150,"Клиент VisaTO везет питомца — платформа ведет его к соседней компании",false),
-   coCreate(C.C,640,288,1184,150,"Выручка VB: 10% от раундов до $2 млн, 5% от крупных",true),
+   coCreate(C.C,640,288,1184,150,"Выручка Orbiq: 10% от раундов до $2 млн, 5% от крупных",true),
    coCreate(C.C,640,288,1184,150,"И оплата за клиентов, которых платформа привела в компании",true),
    coCreate(C.C,950,234,1184,150,"Инвесторы знают бренд группы: раунды закрываются быстрее",true)]});
 function runPlat(a,D){var C=PG,L=C.L;zClear(L);C.p.forEach(function(e){e.setAttribute("opacity",a?0:1)});C.cs.forEach(function(c){c.setAttribute("opacity",0)});
@@ -654,12 +659,12 @@ function runPlat(a,D){var C=PG,L=C.L;zClear(L);C.p.forEach(function(e){e.setAttr
   S.forEach(function(s){later(s[0],s[1])})}
 /* ===== 14. ПЛАН КАПИТАЛИЗАЦИИ ===== */
 var CP={};
-ov("ovCapPlan",function(g){panel(g,"ПЛАН РОСТА КАПИТАЛИЗАЦИИ VENTURE BUILDER");var C=CP;C.p=[];C.st=[];function P(){var q=HG(g);C.p.push(q);return q}
+ov("ovCapPlan",function(g){panel(g,"ПЛАН РОСТА КАПИТАЛИЗАЦИИ ORBIQ");var C=CP;C.p=[];C.st=[];function P(){var q=HG(g);C.p.push(q);return q}
   C.cy=330;
   C.line=P();E("path",{d:"M150 330 H1110",stroke:"var(--line)","stroke-width":3},C.line);
   var ST=[["СЕЙЧАС","$2,5 млн","Первый инвестор: $250\u00a0тыс. за\u00a010%",GR,34,"#fff"],
    ["ТЕКУЩИЙ РАУНД","$4 млн","Следующие инвесторы, раунды VisaTO и\u00a0MAST","#5EC8A0",44,"#0B0B0D"],
-   ["ЧЕРЕЗ 12 МЕС.","$10 млн","Ангелы: $2\u00a0млн в\u00a0VB на\u00a0платформу и\u00a0бренд",OR,56,"#fff"],
+   ["ЧЕРЕЗ 12 МЕС.","$10 млн","Ангелы: $2\u00a0млн в\u00a0Orbiq на\u00a0платформу и\u00a0бренд",OR,56,"#fff"],
    ["ЧЕРЕЗ 24 МЕС.","$50 млн","Фонды: платформа на\u00a04–6 компаний, докупка долей",CMa,72,"#0B0B0D"],
    ["3–5 ЛЕТ","$300–500 млн","Объединение вокруг платформы и\u00a0IPO","var(--ink)",90,"var(--inv)"]];
   ST.forEach(function(s,i){var q=P(),x=150+i*240;C.st.push(q);
@@ -684,9 +689,9 @@ ov("ovDec",function(g){panel(g,"КТО РЕШАЕТ ПО СДЕЛКАМ");
   card(g,62,96,566,570,true);TI(g,86,150,"Решает инвестор",34);SI(g,86,178,"ЧЬИ ДЕНЬГИ, ТОТ И РЕШАЕТ, КУДА ОНИ ИДУТ",.75);
   ["Инвестор утверждает каждую сделку, в которую идут его деньги","Не хочет входить в раунд компании: деньги туда не идут","Доли этой компании, внесенные основателем, возвращаются основателю","Без согласия инвестора нельзя: новые акции, долг, продажа компании или четверти портфеля, сделки со связанными сторонами"].forEach(function(s,i){var y=240+i*100,rg=E("g",{"class":"pop"},g);E("circle",{cx:96,cy:y-6,r:6,fill:OR},rg);var tx=wrapT(rg,116,y,s,46,"txt",{"font-size":16,fill:"var(--inv)"},22);rows("dec").push(rg)});
   card(g,652,96,566,570,false);T(g,676,150,"Фабрика · основатель","big",{"font-size":30,fill:OR});T(g,676,178,"ЧТО ДЕЛАЕТ ПАРТНЕР, КОТОРЫЙ ОТВЕЧАЕТ ЗА ФАБРИКУ","sub");
-  ["Приносит сделки в Venture Builder","Вносит свои доли в компаниях","Привлекает инвестиции в Venture Builder и в проекты","Ведет IR по каждому проекту"].forEach(function(s,i){var y=250+i*80,rg=E("g",{"class":"pop"},g);E("circle",{cx:690,cy:y-6,r:6,fill:OR},rg);T(rg,710,y,s,"txt",{"font-size":17});rows("dec").push(rg)})});
+  ["Приносит сделки в Orbiq","Вносит свои доли в компаниях","Привлекает инвестиции в Orbiq и в проекты","Ведет IR по каждому проекту"].forEach(function(s,i){var y=250+i*80,rg=E("g",{"class":"pop"},g);E("circle",{cx:690,cy:y-6,r:6,fill:OR},rg);T(rg,710,y,s,"txt",{"font-size":17});rows("dec").push(rg)})});
 ov("ovGoal",function(g){panel(g,"ЦЕЛИ НА 24 МЕСЯЦА И ВТОРОЙ РАУНД");
-  [[CO[0],["Контракт на $600 тыс. подписан, выручка идет","Раунд от внешних инвесторов при оценке $15 млн","Позиция Venture Builder растет вдвое"]],[CO[1],["Запуск в Сингапуре, первая выручка","Раунд от внешних инвесторов при оценке $20 млн","Позиция Venture Builder растет впятеро"]]].forEach(function(c,i){var co=c[0],x=62+i*392,rg=E("g",{"class":"pop"},g);E("rect",{x:x,y:96,width:372,height:300,rx:22,fill:co.bg},rg);T(rg,x+24,140,co.name,"big",{"font-size":28,fill:co.fg});c[1].forEach(function(l,k){var y=190+k*62;E("circle",{cx:x+34,cy:y-6,r:5,fill:co.fg},rg);wrapT(rg,x+50,y,l,30,"txt",{fill:co.fg,"font-size":15},22)});rows("goal").push(rg)});
+  [[CO[0],["Контракт на $600 тыс. подписан, выручка идет","Раунд от внешних инвесторов при оценке $15 млн","Позиция Orbiq растет вдвое"]],[CO[1],["Запуск в Сингапуре, первая выручка","Раунд от внешних инвесторов при оценке $20 млн","Позиция Orbiq растет впятеро"]]].forEach(function(c,i){var co=c[0],x=62+i*392,rg=E("g",{"class":"pop"},g);E("rect",{x:x,y:96,width:372,height:300,rx:22,fill:co.bg},rg);T(rg,x+24,140,co.name,"big",{"font-size":28,fill:co.fg});c[1].forEach(function(l,k){var y=190+k*62;E("circle",{cx:x+34,cy:y-6,r:5,fill:co.fg},rg);wrapT(rg,x+50,y,l,30,"txt",{fill:co.fg,"font-size":15},22)});rows("goal").push(rg)});
   var rg=E("g",{"class":"pop"},g);E("rect",{x:846,y:96,width:372,height:300,rx:22,fill:OR},rg);T(rg,870,140,"Фабрика","big",{"font-size":28,fill:"#fff"});["4–6 новых компаний в шести направлениях","Доля за деньги раунда и работу, вход до первого раунда","Каждая с внешним капиталом за 24 месяца"].forEach(function(l,k){var y=190+k*62;E("circle",{cx:880,cy:y-6,r:5,fill:"#fff"},rg);wrapT(rg,896,y,l,30,"txt",{fill:"#fff","font-size":15},22)});rows("goal").push(rg);
   card(g,62,420,1156,246,true);TI(g,86,462,"Второй раунд · через 6–9 месяцев · цена $8 млн",26);
   ["Цена второго раунда $8 млн: портфель после раундов MAST и VisaTO и первых сделок фабрики плюс фабрика. Ниже $8 млн раунд не открывается.","Инвесторы второго раунда входят по $8 млн, без пересчета цены и без голоса по сделкам. К этому моменту цена подтверждена двумя внешними раундами.","Доля инвесторов первого раунда при $8 млн стоит $2,2 млн. Четверть своих акций они могут продать второму раунду за $550 тыс. и остаться в сделке."].forEach(function(s,i){var y0=504+i*54,g2=E("g",{},g);wrapT(g2,86,y0,s,120,"txt",{"font-size":14.5},20);Array.prototype.forEach.call(g2.querySelectorAll("text"),function(el){el.style.fill="var(--inv)"})})});
@@ -701,12 +706,12 @@ ov("ovS",function(g){panel(g,"СЦЕНАРИИ ЧЕРЕЗ 24 МЕСЯЦА · И�
     T(cg,x+24,384,"ЦЕНА ВХОДА "+(r0.conf===2?"$4,25 МЛН · ДОЛИ ЗАСЧИТАНЫ ПОЛНОСТЬЮ":"ПЕРЕСЧИТАНА ДО "+money(r0.pre).toUpperCase()),"sub",{fill:OR});
     T(cg,x+24,420,"ИНВЕСТОРЫ · ДОЛЯ "+pct(r0.st*100).toUpperCase(),"lbl");var m=T(cg,x+24,478,xf(r0.mult),"big",{"font-size":64});
     T(cg,x+24,508,money(r0.inv)+(r0.yr>0?" · "+Math.round(r0.yr*100)+"% годовых":" · ниже входа"),"txt");
-    T(cg,x+24,566,"ОСНОВАТЕЛЬ И ПАРТНЕРЫ · "+pct((1-r0.st)*100).toUpperCase(),"lbl");T(cg,x+24,596,money(r0.bld)+" в Venture Builder","txt");
+    T(cg,x+24,566,"ОСНОВАТЕЛЬ И ПАРТНЕРЫ · "+pct((1-r0.st)*100).toUpperCase(),"lbl");T(cg,x+24,596,money(r0.bld)+" в Orbiq","txt");
     SCC[s]={r:r,m:m}})});
 function paintScen(){for(var s in SCC){var a=s===scen;SCC[s].r.style.stroke=a?OR:"var(--line)";SCC[s].r.style.strokeWidth=a?3:1;SCC[s].m.style.fill=a?OR:"var(--ink)"}}
 var finT;
 ov("fin",function(g){E("rect",{x:0,y:0,width:1280,height:720,"class":"f-ink"},g);E("use",{href:"#markbig",x:600,y:150,width:80,height:80},g);
-  TI(g,640,300,"Venture Builder",48,"middle");finT=[];[360,392,424,456].forEach(function(y){var t=T(g,640,y,"","txt",{"text-anchor":"middle","font-size":18});t.style.fill="var(--inv)";finT.push(t)});
+  TI(g,640,300,"Orbiq",48,"middle");finT=[];[360,392,424,456].forEach(function(y){var t=T(g,640,y,"","txt",{"text-anchor":"middle","font-size":18});t.style.fill="var(--inv)";finT.push(t)});
   T(g,640,540,"@vladimir82makarov","big",{"text-anchor":"middle","font-size":24,fill:OR})});
 
 /* ================= PIPES & FLOWS ================= */
@@ -732,33 +737,33 @@ function burst(x,y,col){if(reduce)return;var c=E("circle",{cx:x,cy:y,r:10,fill:"
 function spread(n,span,fn){for(var k=0;k<n;k++)(function(k){later(k*span/Math.max(1,n-1),function(){fn(k)})})(k)}
 
 /* ================= BEATS ================= */
-var CH=["Старт","Ядро","Что развиваем","Структура","Бизнес-модель","Референсы","Капитал для роста","6 и 12 месяцев","Сценарии инвестирования","Варианты развития","Переоценка долей в случае наступления разных сценариев","Оценка VB","Итого","Платформа группы","План капитализации"];
+var CH=["Старт","Ядро","Что развиваем","Структура","Бизнес-модель","Референсы","Капитал для роста","6 и 12 месяцев","Сценарии инвестирования","Варианты развития","Переоценка долей в случае наступления разных сценариев","Оценка Orbiq","Итого","Платформа группы","План капитализации"];
 function stageSetup(a,D){ovOnly(null);on("inv");on("bld");on("vb");on("nc");CO.forEach(function(c,j){on("c"+j)});pon("inv");pon("bld");pon("nc");flow("inv","usd");flow("bld","share");flow("nc","usd");setC("vb",0);
    if(a){spread(3,D*.3,function(k){fly("share",160,590,640,360,1500)});spread(4,D*.4,function(){fly("usd",180,150,640,330,1500)})}
-   CO.forEach(function(c,j){pon("to"+j);flow("to"+j,"usd");var fin=function(){setCo(j,"РАУНД "+money(c.round),"ДЕНЬГИ ПРИШЛИ НАПРЯМУЮ · АКЦИИ НА VENTURE BUILDER","");if(a)burst(1100,CY[j]+80,OR)};if(a){setCo(j,c.mkt.split(" · ")[0],"РЫНОК","");later(D*.4+j*D*.2,fin)}else fin()});
+   CO.forEach(function(c,j){pon("to"+j);flow("to"+j,"usd");var fin=function(){setCo(j,"РАУНД "+money(c.round),"ДЕНЬГИ ПРИШЛИ НАПРЯМУЮ · АКЦИИ НА ORBIQ","");if(a)burst(1100,CY[j]+80,OR)};if(a){setCo(j,c.mkt.split(" · ")[0],"РЫНОК","");later(D*.4+j*D*.2,fin)}else fin()});
    vbL.textContent="ДОЛИ И ДЕНЬГИ ВНУТРИ";tweenC("vb",2.05e6,D*.7,a);vbW.textContent="ДОЛИ ОСНОВАТЕЛЯ $550 ТЫС. + РАУНДЫ $1,25 МЛН";vbW2.textContent="+ ФАБРИКА $250 ТЫС.";setC("inv",0);A.invX.textContent="";bldT.textContent=""}
 var B=[
- {s:0,dur:0.97,t:function(){return "Виза, переезд с питомцем, ввоз лекарств, гастроли с редким инструментом, вывоз искусства: каждый раз нужны документы двух стран, и их до сих пор собирают вручную. Venture Builder строит компании, где эту работу делают AI-агенты. Первая, VisaTO, уже вышла на прибыль $10 тыс. без затрат на маркетинг."},f:function(a,D){ovOnly("intro")}},
+ {s:0,dur:0.97,t:function(){return "Виза, переезд с питомцем, ввоз лекарств, гастроли с редким инструментом, вывоз искусства: каждый раз нужны документы двух стран, и их до сих пор собирают вручную. Orbiq строит компании, где эту работу делают AI-агенты. Первая, VisaTO, уже вышла на прибыль $10 тыс. без затрат на маркетинг."},f:function(a,D){ovOnly("intro")}},
  {s:1,t:function(){return "Синергия основателя и партнеров. Андрей (44 года) — спроектировал систему платежей «Корона», разработал технологию монетизации трафика MAST, за полтора года заработал инвесторам $1,7 млн, заменил 30 разработчиков, сейчас масштабирует технологию на мир. Компетенция — эффективная работа с платным трафиком. Алексей (32 года) — co-founder Rocketech (экзит в 2026), создал AI-first VisaTO и вывел на прибыль $10 тыс. без затрат на маркетинг. Компетенция — привлечение бесплатного целевого трафика. Владимир (43 года) — заработал на IT-проектах инвесторам больше $2 млн, привлек $5 млн+ венчурного капитала от 10+ бизнес-ангелов и 2 VC, включая 500 Startups (500.co), за 9 месяцев вывел стартап на выручку из 12 стран. Компетенция — венчурная стратегия, привлечение капитала, структурирование сделок для роста капитализации портфельных проектов."},f:function(a,D){ovOnly("ovCore");rows("core").forEach(function(r,k){if(a){r.classList.add("off");later(250+k*380,function(){r.classList.remove("off")})}else r.classList.remove("off")})}},
- {s:2,t:function(){return "В составе Venture Builder две компании: MAST — AI-first технология монетизации трафика для владельцев сайтов, рынок платформ монетизации для владельцев сайтов $8,2 млрд. Технология прошла проверки в течение 2 месяцев, с 20 октября началось масштабирование внутрь партнера с ожидаемой выручкой $600 тыс. в год. VisaTO — AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз, рынок визовых услуг $15,2 млрд. Еще шесть направлений в планах, на синергию с текущими."},f:function(a,D){ovOnly(null);
+ {s:2,t:function(){return "В составе Orbiq две компании: MAST — AI-first технология монетизации трафика для владельцев сайтов, рынок платформ монетизации для владельцев сайтов $8,2 млрд. Технология прошла проверки в течение 2 месяцев, с 20 октября началось масштабирование внутрь партнера с ожидаемой выручкой $600 тыс. в год. VisaTO — AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз, рынок визовых услуг $15,2 млрд. Еще шесть направлений в планах, на синергию с текущими."},f:function(a,D){ovOnly(null);
    CO.forEach(function(c,j){setCo(j,c.mkt.split(" · ")[0],"РЫНОК · "+c.mkt.split(" · ").slice(1).join(" · ").toUpperCase(),"");if(a){off("c"+j);later(j*400,function(){on("c"+j)})}else on("c"+j)});on("plan");PLB.forEach(function(b,k){if(a){b.classList.add("off");later(1300+k*260,function(){b.classList.remove("off")})}else b.classList.remove("off")})}},
- {s:3,t:function(){return "Venture Builder — одна компания в свободной зоне ОАЭ, один класс акций. Акционеры: основатель, два партнера — сооснователи первых двух проектов, и инвесторы первого раунда. Андрей отвечает за платный трафик, Алексей за SEO и GEO, у каждого по 5%. Портфель — активы компании: доли в MAST, VisaTO и новых компаниях. Фабрика — операционная работа: капитализация проектов, стратегия и прозрачная отчетность по каждому, привлечение капитала, рост за счет синергии, поиск новых проектов."},f:function(a,D){ovOnly("ovParts");runParts(a,D)}},
- {s:4,dur:5.97,t:function(){return "Только факт закрытия первого раунда с проектами дает прирост капитализации VB на 25–35% — это 420% годовых. Для первого инвестора — это 116% за 2–3 месяца. Это рост «бумажной» оценки. Продажа доли в рынок акций компании первый инвестор может сделать не ранее, чем через 15 мес."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
- {s:5,t:function(){return "Модель уже работает на рынке. Hexa, бывшая eFounders: в 2015 году Hexa привлекла первые €5 млн, в 2016 еще €5 млн от 40 частных инвесторов, которые получили исключительное право входить в стартапы студии. Сейчас в портфеле 40 компаний стоимостью €4,5 млрд. Prytek: с 2017 года вложил в компании больше $350 млн, 180 сделок за три года, часть вложенных денег направляет на развитие бизнеса компаний — у нас ту же роль играет IR. За счет AI-технологий и синергии направлений с высокой маржой Venture Builder планирует вырасти до оценки активов $500 млн+ за 3–4 года."},f:function(a,D){ovOnly("ovRef");runRef(a,D)}},
- {s:6,t:function(){return "Общая необходимая сумма для масштабирования — $1,5 млн. $1,5 млн позволяют закрыть текущие раунды инвестиций в проекты и сфокусироваться на масштабировании Venture Builder."},f:function(a,D){ovOnly("ovNeed");showRows(rows("need"),a,D)}},
- {s:6,dur:2.68,t:function(){return "Что дает $1,5 млн. Деньги закрывают раунды VisaTO и MAST и запускают Venture Builder. Каждый получает капитал на рост, и через 12 месяцев капитализация всех трех вырастает больше чем в 2 раза."},f:function(a,D){ovOnly("ovGrow");runGrow(a,D)}},
- {s:7,dur:1.9,t:function(){return "Что будет через 6 и 12 месяцев. AI-first подход позволяет быстро масштабировать проекты, расходуя капитал целевым образом. Капитализация VisaTO и MAST растет больше чем в 2 раза, Venture Builder получает выручку с первого дня, и через 12 месяцев новые инвесторы входят в него по оценке $10 млн+."},f:function(a,D){ovOnly("ovPlan");runPlan(a,D)}},
- {s:8,dur:3.74,t:function(){return "Два способа войти. Без Venture Builder — обычная ангельская инвестиция на общих условиях раунда. С Venture Builder инвестор отдает carry 20% с выхода, а взамен получает скидку 20% на раунде. Условия входа: закрыть раунд проекта на 100% и вложить $250 тыс. в Venture Builder."},f:function(a,D){ovOnly("ovScen");runScen(a,D)}},
- {s:9,dur:4.55,t:function(){return "Сравниваем один и тот же $1 млн: напрямую в VisaTO и через Venture Builder. Через Venture Builder у инвестора больше акций VisaTO и есть доля в самом Venture Builder — итог по каждому варианту на карточках."},f:function(a,D){ovOnly("ovVar");runVar(a,D)}},
- {s:10,dur:1.51,t:function(){return "Основатель вносит свои доли в проектах и всю работу, первый инвестор получает 10% Venture Builder за $250 тыс. План на 24 месяца: $1 млн новых инвесторов через Venture Builder, 2 новые сделки, следующий раунд VisaTO. Если план не выполнен, доля инвестора растет за счет доли основателя: с 10% до 20%, когда инвестор закрыл раунды обоих проектов, и с 10% до 15%, когда закрыл раунд одного."},f:function(a,D){ovOnly("ovProt");runProt(a,D)}},
- {s:11,dur:2.58,t:function(){return "Venture builders и управляющие компании во всем мире оцениваются по одной модели: доли в компаниях плюс прибыль от комиссий с коэффициентом 10–15. Мы берем 10. Текущий раунд — $4 млн, первый инвестор берет больший риск и входит по $2,5 млн. Переоценка начинается в день сделки: 10% отправленных в проекты денег сразу возвращаются в Venture Builder выручкой, и следующие инвесторы входят в компанию, у которой уже есть выручка и закрытые раунды."},f:function(a,D){ovOnly("ovCapVB");runCapVB(a,D)}},
- {s:12,dur:1.15,t:function(){return "Итого. Создаем Venture Builder с фокусом на трансграничные перемещения. На старте его активы — акции компаний на $500 тыс. по текущей оценке. Цель на 3–5 лет: с помощью AI вырастить проекты с пресид-раундов до компаний с капитализацией от $50 до $500 млн. Каждый проект — отдельный AI-first бизнес под своим брендом. Вокруг них Venture Builder строит платформу группы: общую базу клиентов и кросс-продажи. Дальше компании объединяются вокруг платформы под зонтичным брендом и выходят на IPO."},f:function(a,D){ovOnly("ovFin");runFin(a,D)}},
- {s:13,dur:1.55,t:function(){return "Каждая компания работает под своим брендом. Venture Builder строит платформу группы: общую базу клиентов и AI-агента, который ведет клиента к соседней компании — кто оформил визу, часто везет питомца или лекарства. Venture Builder зарабатывает на раундах, 10% до $2 млн и 5% от крупных, и на клиентах, которых платформа привела в компании. На IPO компании объединяются вокруг платформы: один вход, одна база, общая выручка."},f:function(a,D){ovOnly("ovPlat");runPlat(a,D)}},
- {s:14,end:true,dur:1.25,t:function(){return "План роста капитализации Venture Builder. Сейчас первый инвестор входит по оценке $2,5 млн: $250 тыс. за 10%. Следующие инвесторы текущего раунда входят по $4 млн, и закрываем раунды VisaTO и MAST. Через 12 месяцев бизнес-ангелы вкладывают $2 млн по оценке $10 млн в платформу и бренд группы, и до 10% раунда может пойти на частичный выход ранних инвесторов. Через 24 месяца — раунд венчурных фондов по $50 млн: платформа на все компании и докупка долей в лучших. Цель на 3–5 лет — объединение вокруг платформы и IPO."},f:function(a,D){ovOnly("ovCapPlan");runCapPlan(a,D)}}
+ {s:3,t:function(){return "Orbiq — одна компания в свободной зоне ОАЭ, один класс акций. Акционеры: основатель, два партнера — сооснователи первых двух проектов, и инвесторы первого раунда. Андрей отвечает за платный трафик, Алексей за SEO и GEO, у каждого по 5%. Портфель — активы компании: доли в MAST, VisaTO и новых компаниях. Фабрика — операционная работа: капитализация проектов, стратегия и прозрачная отчетность по каждому, привлечение капитала, рост за счет синергии, поиск новых проектов."},f:function(a,D){ovOnly("ovParts");runParts(a,D)}},
+ {s:4,dur:5.97,t:function(){return "Только факт закрытия первого раунда с проектами дает прирост капитализации Orbiq на 25–35% — это 420% годовых. Для первого инвестора — это 116% за 2–3 месяца. Это рост «бумажной» оценки. Продажа доли в рынок акций компании первый инвестор может сделать не ранее, чем через 15 мес."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
+ {s:5,t:function(){return "Модель уже работает на рынке. Hexa, бывшая eFounders: в 2015 году Hexa привлекла первые €5 млн, в 2016 еще €5 млн от 40 частных инвесторов, которые получили исключительное право входить в стартапы студии. Сейчас в портфеле 40 компаний стоимостью €4,5 млрд. Prytek: с 2017 года вложил в компании больше $350 млн, 180 сделок за три года, часть вложенных денег направляет на развитие бизнеса компаний — у нас ту же роль играет IR. За счет AI-технологий и синергии направлений с высокой маржой Orbiq планирует вырасти до оценки активов $500 млн+ за 3–4 года."},f:function(a,D){ovOnly("ovRef");runRef(a,D)}},
+ {s:6,t:function(){return "Общая необходимая сумма для масштабирования — $1,5 млн. $1,5 млн позволяют закрыть текущие раунды инвестиций в проекты и сфокусироваться на масштабировании Orbiq."},f:function(a,D){ovOnly("ovNeed");showRows(rows("need"),a,D)}},
+ {s:6,dur:2.68,t:function(){return "Что дает $1,5 млн. Деньги закрывают раунды VisaTO и MAST и запускают Orbiq. Каждый получает капитал на рост, и через 12 месяцев капитализация всех трех вырастает больше чем в 2 раза."},f:function(a,D){ovOnly("ovGrow");runGrow(a,D)}},
+ {s:7,dur:1.9,t:function(){return "Что будет через 6 и 12 месяцев. AI-first подход позволяет быстро масштабировать проекты, расходуя капитал целевым образом. Капитализация VisaTO и MAST растет больше чем в 2 раза, Orbiq получает выручку с первого дня, и через 12 месяцев новые инвесторы входят в него по оценке $10 млн+."},f:function(a,D){ovOnly("ovPlan");runPlan(a,D)}},
+ {s:8,dur:3.74,t:function(){return "Два способа войти. Без Orbiq — обычная ангельская инвестиция на общих условиях раунда. С Orbiq инвестор отдает carry 20% с выхода, а взамен получает скидку 20% на раунде. Условия входа: закрыть раунд проекта на 100% и вложить $250 тыс. в Orbiq."},f:function(a,D){ovOnly("ovScen");runScen(a,D)}},
+ {s:9,dur:4.55,t:function(){return "Сравниваем один и тот же $1 млн: напрямую в VisaTO и через Orbiq. Через Orbiq у инвестора больше акций VisaTO и есть доля в самом Orbiq — итог по каждому варианту на карточках."},f:function(a,D){ovOnly("ovVar");runVar(a,D)}},
+ {s:10,dur:1.51,t:function(){return "Основатель вносит свои доли в проектах и всю работу, первый инвестор получает 10% Orbiq за $250 тыс. План на 24 месяца: $1 млн новых инвесторов через Orbiq, 2 новые сделки, следующий раунд VisaTO. Если план не выполнен, доля инвестора растет за счет доли основателя: с 10% до 20%, когда инвестор закрыл раунды обоих проектов, и с 10% до 15%, когда закрыл раунд одного."},f:function(a,D){ovOnly("ovProt");runProt(a,D)}},
+ {s:11,dur:2.58,t:function(){return "Venture builders и управляющие компании во всем мире оцениваются по одной модели: доли в компаниях плюс прибыль от комиссий с коэффициентом 10–15. Мы берем 10. Текущий раунд — $4 млн, первый инвестор берет больший риск и входит по $2,5 млн. Переоценка начинается в день сделки: 10% отправленных в проекты денег сразу возвращаются в Orbiq выручкой, и следующие инвесторы входят в компанию, у которой уже есть выручка и закрытые раунды."},f:function(a,D){ovOnly("ovCapVB");runCapVB(a,D)}},
+ {s:12,dur:1.15,t:function(){return "Итого. Создаем Orbiq с фокусом на трансграничные перемещения. На старте его активы — акции компаний на $500 тыс. по текущей оценке. Цель на 3–5 лет: с помощью AI вырастить проекты с пресид-раундов до компаний с капитализацией от $50 до $500 млн. Каждый проект — отдельный AI-first бизнес под своим брендом. Вокруг них Orbiq строит платформу группы: общую базу клиентов и кросс-продажи. Дальше компании объединяются вокруг платформы под зонтичным брендом и выходят на IPO."},f:function(a,D){ovOnly("ovFin");runFin(a,D)}},
+ {s:13,dur:1.55,t:function(){return "Каждая компания работает под своим брендом. Orbiq строит платформу группы: общую базу клиентов и AI-агента, который ведет клиента к соседней компании — кто оформил визу, часто везет питомца или лекарства. Orbiq зарабатывает на раундах, 10% до $2 млн и 5% от крупных, и на клиентах, которых платформа привела в компании. На IPO компании объединяются вокруг платформы: один вход, одна база, общая выручка."},f:function(a,D){ovOnly("ovPlat");runPlat(a,D)}},
+ {s:14,end:true,dur:1.25,t:function(){return "План роста капитализации Orbiq. Сейчас первый инвестор входит по оценке $2,5 млн: $250 тыс. за 10%. Следующие инвесторы текущего раунда входят по $4 млн, и закрываем раунды VisaTO и MAST. Через 12 месяцев бизнес-ангелы вкладывают $2 млн по оценке $10 млн в платформу и бренд группы, и до 10% раунда может пойти на частичный выход ранних инвесторов. Через 24 месяца — раунд венчурных фондов по $50 млн: платформа на все компании и докупка долей в лучших. Цель на 3–5 лет — объединение вокруг платформы и IPO."},f:function(a,D){ovOnly("ovCapPlan");runCapPlan(a,D)}}
 ];
 var ROLE={inv:["Инвесторы первого раунда","Сумма до $1,5 млн, каждый выбирает чек. Доля = вложено ÷ (то, что внутри + вложено). Голос по сделкам, защита в договоре."],
- bld:["Основатель и партнеры","Основатель вносит в Venture Builder свои доли в MAST и VisaTO на $500 тыс., по оценке, по которой сейчас заходят инвесторы. Алексей (SEO и GEO) и Андрей (платный трафик) получают по 5% Venture Builder."],
- vb:["Venture Builder","Компания в ОАЭ. Портфель и фабрика. Оценка $4 млн."],
+ bld:["Основатель и партнеры","Основатель вносит в Orbiq свои доли в MAST и VisaTO на $500 тыс., по оценке, по которой сейчас заходят инвесторы. Алексей (SEO и GEO) и Андрей (платный трафик) получают по 5% Orbiq."],
+ vb:["Orbiq","Компания в ОАЭ. Портфель и фабрика. Оценка $4 млн."],
  c0:["MAST","AI-first технология монетизации трафика для владельцев сайтов. Рынок платформ монетизации $8,2 млрд. Контракт на $600 тыс. подписывается. Раунд $500 тыс. при $7 млн."],
  c1:["VisaTO","AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз. Рынок визовых услуг $15,2 млрд. Раунд $750 тыс. при $4 млн, до 31 октября."],
  nc:["Фабрика","$250 тыс. на 4–6 новых компаний за 24 месяца, вход до первого раунда, доля за деньги и работу."]};

@@ -584,17 +584,18 @@ function runFin(a,D){var C=FN;C.p.forEach(function(e){e.setAttribute("opacity",a
 var CP={};
 ov("ovCapPlan",function(g){panel(g,"ПЛАН РОСТА КАПИТАЛИЗАЦИИ VENTURE BUILDER");var C=CP;C.p=[];C.st=[];function P(){var q=HG(g);C.p.push(q);return q}
   C.cy=330;
-  C.line=P();E("path",{d:"M150 330 H1130",stroke:"var(--line)","stroke-width":3},C.line);
-  var ST=[["СЕЙЧАС","$2,5 млн","Первый инвестор: $250\u00a0тыс. за\u00a010%, раунды VisaTO и\u00a0MAST",GR,40,"#fff"],
-   ["ЧЕРЕЗ 12 МЕСЯЦЕВ","$10 млн","Бизнес-ангелы: $2\u00a0млн в\u00a0Venture Builder",OR,56,"#fff"],
-   ["ЧЕРЕЗ 24 МЕСЯЦА","$50 млн","Венчурные фонды, 4–6 компаний в\u00a0портфеле",CMa,76,"#0B0B0D"],
-   ["3–5 ЛЕТ","$300–500 млн","Один бренд и IPO","var(--ink)",100,"var(--inv)"]];
-  ST.forEach(function(s,i){var q=P(),x=180+i*315;C.st.push(q);
-    T(q,x,C.cy-s[4]-62,s[0],"lbl",{"text-anchor":"middle",fill:OR});
-    T(q,x,C.cy-s[4]-22,s[1],"big",{"font-size":i==3?28:32,"text-anchor":"middle",fill:"var(--ink)"});
-    E("circle",{cx:x,cy:C.cy,r:s[4],fill:s[3]},q);T(q,x,C.cy+(s[4]>60?12:9),String(i+1),"big",{"font-size":s[4]>60?36:26,"text-anchor":"middle",fill:s[5]});
-    wrapT(q,x,C.cy+s[4]+40-(i==3?0:0),s[2],22,"ttl",{"font-size":17,"text-anchor":"middle",fill:"var(--ink)"},23)});
-  C.ex=P();E("rect",{x:375,y:474,width:240,height:58,rx:14,fill:GR,"fill-opacity":.12},C.ex);wrapT(C.ex,495,498,"До 10% раунда — частичный выход ранних инвесторов",30,"ttl",{"font-size":14,"text-anchor":"middle",fill:GR},19);
+  C.line=P();E("path",{d:"M150 330 H1110",stroke:"var(--line)","stroke-width":3},C.line);
+  var ST=[["СЕЙЧАС","$2,5 млн","Первый инвестор: $250\u00a0тыс. за\u00a010%",GR,34,"#fff"],
+   ["ТЕКУЩИЙ РАУНД","$4 млн","Следующие инвесторы, раунды VisaTO и\u00a0MAST","#5EC8A0",44,"#0B0B0D"],
+   ["ЧЕРЕЗ 12 МЕС.","$10 млн","Бизнес-ангелы: $2\u00a0млн в\u00a0VB",OR,56,"#fff"],
+   ["ЧЕРЕЗ 24 МЕС.","$50 млн","Венчурные фонды, 4–6 компаний",CMa,72,"#0B0B0D"],
+   ["3–5 ЛЕТ","$300–500 млн","Один бренд и\u00a0IPO","var(--ink)",90,"var(--inv)"]];
+  ST.forEach(function(s,i){var q=P(),x=150+i*240;C.st.push(q);
+    T(q,x,C.cy-s[4]-58,s[0],"lbl",{"text-anchor":"middle",fill:OR});
+    T(q,x,C.cy-s[4]-20,s[1],"big",{"font-size":i==4?26:30,"text-anchor":"middle",fill:"var(--ink)"});
+    E("circle",{cx:x,cy:C.cy,r:s[4],fill:s[3]},q);T(q,x,C.cy+(s[4]>60?12:9),String(i+1),"big",{"font-size":s[4]>60?34:24,"text-anchor":"middle",fill:s[5]});
+    wrapT(q,x,C.cy+s[4]+36,s[2],19,"ttl",{"font-size":16,"text-anchor":"middle",fill:"var(--ink)"},21)});
+  C.ex=P();E("rect",{x:520,y:478,width:240,height:58,rx:14,fill:GR,"fill-opacity":.12},C.ex);wrapT(C.ex,640,502,"До 10% раунда — частичный выход ранних инвесторов",30,"ttl",{"font-size":14,"text-anchor":"middle",fill:GR},19);
   C.inv=P();E("rect",{x:62,y:560,width:1156,height:106,rx:22,fill:"var(--ink)"},C.inv);
   T(C.inv,90,598,"ПЕРВЫЙ ИНВЕСТОР · 10% ЗА $250 ТЫС.","lbl",{fill:OR});
   C.iv=T(C.inv,90,644,"","big",{"font-size":30,fill:"var(--inv)"});
@@ -603,9 +604,9 @@ function runCapPlan(a,D){var C=CP;C.p.forEach(function(e){e.setAttribute("opacit
   var V=["$250 тыс.","→ $1 млн","→ $4,2 млн"];C.iv.textContent=a?"":V.join("  ");
   if(!a)return;
   var S=[[0,function(){fz(C.line,1,600)}]];
-  C.st.forEach(function(q,i){S.push([600+i*3400,function(){fz(q,1,700)}])});
-  S.push([5200,function(){fz(C.ex,1,700)}]);
-  S.push([14600,function(){fz(C.inv,1,700);var s="";V.forEach(function(v,i){later(700+i*1300,function(){s+=(i?"  ":"")+v;C.iv.textContent=s})})}]);
+  C.st.forEach(function(q,i){S.push([600+i*3000,function(){fz(q,1,700)}])});
+  S.push([7800,function(){fz(C.ex,1,700)}]);
+  S.push([15800,function(){fz(C.inv,1,700);var s="";V.forEach(function(v,i){later(700+i*1300,function(){s+=(i?"  ":"")+v;C.iv.textContent=s})})}]);
   S.forEach(function(s){later(s[0],s[1])})}
 ov("ovDec",function(g){panel(g,"КТО РЕШАЕТ ПО СДЕЛКАМ");
   card(g,62,96,566,570,true);TI(g,86,150,"Решает инвестор",34);SI(g,86,178,"ЧЬИ ДЕНЬГИ, ТОТ И РЕШАЕТ, КУДА ОНИ ИДУТ",.75);
@@ -680,7 +681,7 @@ var B=[
  {s:10,dur:1.51,t:function(){return "Основатель вносит свои доли в проектах и всю работу, первый инвестор получает 10% Venture Builder за $250 тыс. План на 24 месяца: $1 млн новых инвесторов через Venture Builder, 2 новые сделки, следующий раунд VisaTO. Если план не выполнен, доля инвестора растет за счет доли основателя: с 10% до 20%, когда инвестор закрыл раунды обоих проектов, и с 10% до 15%, когда закрыл раунд одного."},f:function(a,D){ovOnly("ovProt");runProt(a,D)}},
  {s:11,dur:2.58,t:function(){return "Venture builders и управляющие компании во всем мире оцениваются по одной модели: доли в компаниях плюс прибыль от комиссий с коэффициентом 10–15. Мы берем 10. Текущий раунд — $4 млн, первый инвестор берет больший риск и входит по $2,5 млн. Переоценка начинается в день сделки: 10% отправленных в проекты денег сразу возвращаются в Venture Builder выручкой, и следующие инвесторы входят в компанию, у которой уже есть выручка и закрытые раунды."},f:function(a,D){ovOnly("ovCapVB");runCapVB(a,D)}},
  {s:12,dur:1.15,t:function(){return "Итого. Создаем Venture Builder с фокусом на трансграничные перемещения. На старте его активы — акции компаний на $500 тыс. по текущей оценке. Цель на 3–5 лет: с помощью AI вырастить проекты с пресид-раундов до компаний с капитализацией от $50 до $500 млн. Все проекты в одной отрасли и под одной конструкцией, каждый — отдельный AI-first бизнес. Дальше возможен внутренний M&A, объединение в один бренд и выход на IPO."},f:function(a,D){ovOnly("ovFin");runFin(a,D)}},
- {s:13,end:true,dur:1.33,t:function(){return "План роста капитализации Venture Builder. Сейчас первый инвестор входит по оценке $2,5 млн: $250 тыс. за 10%, и закрываем раунды VisaTO и MAST. Через 12 месяцев бизнес-ангелы вкладывают $2 млн по оценке $10 млн, и до 10% раунда может пойти на частичный выход ранних инвесторов. Через 24 месяца — раунд венчурных фондов по $50 млн. Цель на 3–5 лет — один бренд и IPO."},f:function(a,D){ovOnly("ovCapPlan");runCapPlan(a,D)}}
+ {s:13,end:true,dur:1.25,t:function(){return "План роста капитализации Venture Builder. Сейчас первый инвестор входит по оценке $2,5 млн: $250 тыс. за 10%. Следующие инвесторы текущего раунда входят по $4 млн, и закрываем раунды VisaTO и MAST. Через 12 месяцев бизнес-ангелы вкладывают $2 млн по оценке $10 млн, и до 10% раунда может пойти на частичный выход ранних инвесторов. Через 24 месяца — раунд венчурных фондов по $50 млн. Цель на 3–5 лет — один бренд и IPO."},f:function(a,D){ovOnly("ovCapPlan");runCapPlan(a,D)}}
 ];
 var ROLE={inv:["Инвесторы первого раунда","Сумма до $1,5 млн, каждый выбирает чек. Доля = вложено ÷ (то, что внутри + вложено). Голос по сделкам, защита в договоре."],
  bld:["Основатель и партнеры","Основатель вносит в Venture Builder свои доли в MAST и VisaTO на $500 тыс., по оценке, по которой сейчас заходят инвесторы. Алексей (SEO и GEO) и Андрей (платный трафик) получают по 5% Venture Builder."],

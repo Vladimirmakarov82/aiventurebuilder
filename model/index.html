@@ -373,7 +373,7 @@ function coShow(arr,g){arr.forEach(function(o){if(o!==g)fz(o,0,400)});later(250,
 function rTo(c,r1,d){var r0=+c.getAttribute("r");TW(d||1200,function(k){c.setAttribute("r",(r0+(r1-r0)*ease(k)).toFixed(1))})}
 ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");var C=BM;C.p=[];function P(){var q=HG(g);C.p.push(q);return q}
   var G="#00A676",Y="#FFB800",YD="#B88400";C.vx=620;C.vy=380;
-  C.hd=P();C.hdT=T(C.hd,62,128,"","big",{"font-size":26,fill:"var(--ink)"});C.hdK=T(C.hd,62,98,"","lbl",{fill:OR});
+  C.hd=P();C.hdT=T(C.hd,62,128,"","big",{"font-size":26,fill:"var(--ink)"});C.hdK=T(C.hd,62,98,"","lbl",{fill:OR});C.mo=P();T(C.mo,1218,98,"СРОК","lbl",{"text-anchor":"end",fill:"var(--mute)"});C.moT=T(C.mo,1218,134,"","big",{"font-size":34,"text-anchor":"end",fill:OR});
   C.brand=P();C.br=E("circle",{cx:C.vx,cy:C.vy,r:150,fill:"none",stroke:OR,"stroke-width":2,"stroke-dasharray":"8 10"},C.brand);
   C.vb=P();C.vc=E("circle",{cx:C.vx,cy:C.vy,r:64,fill:OR},C.vb);T(C.vb,C.vx,C.vy-2,"VENTURE","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});T(C.vb,C.vx,C.vy+20,"BUILDER","big",{"font-size":17,"text-anchor":"middle",fill:"#fff"});
   C.pj=[["VisaTO",330,270,G,"#fff","$4 млн","$9 млн"],["MAST",330,480,Y,"#0B0B0D","$7 млн","$15 млн"]].map(function(c){var q=P();var ci=E("circle",{cx:c[1],cy:c[2],r:44,fill:c[3]},q);T(q,c[1],c[2]+5,c[0],"ttl",{"font-size":15,"text-anchor":"middle",fill:c[4]});var v=T(q,c[1],c[2]+68,"оценка "+c[5],"ttl",{"font-size":14,"text-anchor":"middle",fill:"var(--ink)"});return {g:q,c:ci,v:v,x:c[1],y:c[2],a:c[5],b:c[6]}});
@@ -383,39 +383,41 @@ ov("ovBM",function(g){panel(g,"БИЗНЕС-МОДЕЛЬ VENTURE BUILDER");var C
   C.pt=P();[["Страховка",230],["eSIM",230],["Переводы",230]].forEach(function(p,i){var y=[600,640,680][i];});
   C.ct=[["ОЦЕНКА VB","$4 млн",OR,206],["ВЫРУЧКА VB","$0",G,346],["АКЦИИ В ПОРТФЕЛЕ","$0,5 млн",YD,486]].map(function(c){var q=P();E("rect",{x:930,y:c[3]-50,width:288,height:112,rx:22,fill:"var(--bg)",stroke:"var(--line)"},q);T(q,954,c[3]-16,c[0],"lbl",{fill:c[2]});var v=T(q,954,c[3]+34,c[1],"big",{"font-size":38,fill:c[2]});return {g:q,v:v}});
   C.st=[];C.L=E("g",{},g);
-  [["ЭТАП 1 · 1–2 МЕСЯЦА","Закрываем раунды VisaTO и MAST",["Инвесторы вкладывают в проекты $1,25 млн","В день закрытия раунда VB получает 10%: выручка $125 тыс.","Компания без выручки становится компанией с выручкой"],"Оценка VB: $4 млн → $5,4 млн, +35%",["Первый инвестор: $250 тыс. → $540 тыс.","Инвесторы текущего раунда: +35%"]],
-   ["ЭТАП 2 · ДО 12 МЕСЯЦЕВ","Добавляем три новых проекта",["Акции в портфеле VB: $0,5 млн → $1,25 млн","VisaTO $4 → $9 млн, MAST $7 → $15 млн","Выручка VB за год: $275 тыс."],"Оценка VB: $10 млн, ×2,5 к текущему раунду",["Первый инвестор: $250 тыс. → $1 млн","Бизнес-ангелы входят в компанию с выручкой и 5 проектами"]],
-   ["ЭТАП 3 · ДО 24 МЕСЯЦЕВ","Платформа и бренд группы",["Клиенты переходят между проектами, партнеры платят за клиентов","Инвесторы знают группу: раунды проектов быстрее и дороже","В портфеле 4–6 компаний"],"Оценка VB: $50 млн, раунд венчурных фондов",["Первый инвестор: $250 тыс. → $4,2 млн с учетом размытия"]]].forEach(function(s){var q=HG(g);E("rect",{x:30,y:24,width:1220,height:672,rx:28,"class":"f-paper"},q);q.parts=[];
+  [["ЭТАП 1","Закрываем раунды за 1 месяц","1 месяц","+35%","оценка VB: $4 млн → $5,4 млн","≈ 420% годовых в пересчете на год",["Закрыли раунды VisaTO и MAST: $1,25 млн","В день закрытия VB получил выручку $125 тыс.","Компания без выручки стала компанией с выручкой"],"Первый инвестор за месяц: $250 тыс. → $540 тыс., +116%"],
+   ["ЭТАП 2","Добавляем три новых проекта","12 месяцев","×2,5","оценка VB: $4 млн → $10 млн","+150% годовых",["Акции в портфеле VB: $0,5 млн → $1,25 млн","VisaTO $4 → $9 млн, MAST $7 → $15 млн","Выручка VB за год: $275 тыс."],"Первый инвестор за год: $250 тыс. → $1 млн, ×4"],
+   ["ЭТАП 3","Платформа и бренд группы","24 месяца","×12,5","оценка VB: $4 млн → $50 млн","≈ 250% годовых",["Клиенты и партнеры приносят выручку платформе","Бренд группы: раунды проектов быстрее и дороже","4–6 компаний, раунд венчурных фондов"],"Первый инвестор за 2 года: $250 тыс. → $4,2 млн с учетом размытия"]].forEach(function(s){var q=HG(g);E("rect",{x:30,y:24,width:1220,height:672,rx:28,"class":"f-paper"},q);q.parts=[];
     function part(){var r=HG(q);q.parts.push(r);return r}
-    var a=part();T(a,96,140,s[0],"lbl",{fill:OR});T(a,96,196,s[1],"big",{"font-size":44,fill:"var(--ink)"});
-    s[2].forEach(function(l,i){var r=part();E("circle",{cx:104,cy:262+i*50-7,r:6,fill:OR},r);T(r,124,262+i*50,l,"ttl",{"font-size":24,fill:"var(--ink)"})});
-    var b=part();E("rect",{x:96,y:420,width:1088,height:84,rx:22,fill:OR},b);T(b,124,474,s[3],"big",{"font-size":34,fill:"#fff"});
-    s[4].forEach(function(l,i){var r=part();T(r,96,560+i*44,l,"ttl",{"font-size":24,fill:i?"var(--mute)":"var(--ink)"})});
+    var a=part();T(a,96,112,s[0],"lbl",{fill:OR});T(a,96,158,s[1],"big",{"font-size":36,fill:"var(--ink)"});
+    var b=part();T(b,96,278,s[2],"big",{"font-size":86,fill:"var(--ink)"});T(b,100,312,"СРОК","lbl",{fill:"var(--mute)"});
+    var c=part();T(c,640,278,s[3],"big",{"font-size":86,fill:OR});T(c,644,312,s[4].toUpperCase(),"lbl",{fill:"var(--mute)"});
+    var d=part();E("rect",{x:96,y:342,width:1088,height:76,rx:22,fill:"#00A676"},d);T(d,124,392,s[5],"big",{"font-size":34,fill:"#fff"});
+    s[6].forEach(function(l,i){var r=part();E("circle",{cx:104,cy:470+i*38-7,r:5,fill:OR},r);T(r,122,470+i*38,l,"ttl",{"font-size":20,fill:"var(--ink)"})});
+    var e=part();T(e,96,616,s[7],"big",{"font-size":24,fill:"var(--ink)"});
     C.st.push(q)})});
 function runBM(a,D){var C=BM,L=C.L,G="#00A676";zClear(L);
   C.p.forEach(function(e){e.setAttribute("opacity",0);e.removeAttribute("transform")});C.st.forEach(function(s){s.setAttribute("opacity",0);s.parts.forEach(function(p){p.setAttribute("opacity",0)})});
   C.vc.setAttribute("r",64);C.br.setAttribute("r",150);C.ct[0].v.textContent="$4 млн";C.ct[1].v.textContent="$0";C.ct[2].v.textContent="$0,5 млн";
   C.pj.forEach(function(p){p.c.setAttribute("r",44);p.v.textContent="оценка "+p.a});C.np.forEach(function(n){n.c.setAttribute("fill","var(--paper)");n.c.setAttribute("stroke",OR);n.c.setAttribute("stroke-dasharray","6 6");n.t.style.fill=OR});
   if(!a){var s=C.st[2];s.setAttribute("opacity",1);s.parts.forEach(function(p){p.setAttribute("opacity",1)});return}
-  function head(k,t){C.hdK.textContent=k;C.hdT.textContent=t;rise(C.hd,500)}
+  function head(k,t,m){C.hdK.textContent=k;C.hdT.textContent=t;rise(C.hd,500);if(m){C.moT.textContent=m;rise(C.mo,500)}}
   function mon(v){return v>=1e6?"$"+(Math.round(v/1e4)/100).toString().replace(".",",")+" млн":"$"+Math.round(v/1e3)+" тыс."}
   function show(i,t0){var s=C.st[i];later(t0,function(){fz(s,1,600);s.parts.forEach(function(p,k){later(500+k*900,function(){rise(p,600)})})})}
   function hide(i,t0){later(t0,function(){fz(C.st[i],0,600)})}
   var S=[
-   [0,function(){head("ЭТАП 1 · 1–2 МЕСЯЦА","Закрываем раунды VisaTO и MAST");rise(C.vb);C.ct.forEach(function(c,i){later(300+i*200,function(){rise(c.g)})})}],
+   [0,function(){head("ЭТАП 1","Закрываем раунды VisaTO и MAST","месяц 0");rise(C.vb);C.ct.forEach(function(c,i){later(300+i*200,function(){rise(c.g)})})}],
    [1600,function(){rise(C.iv);C.pj.forEach(function(p,i){later(i*400,function(){rise(p.g)})})}],
    [3400,function(){[[110,210,330,270],[110,330,330,270],[110,450,330,480],[110,560,330,480]].forEach(function(m,i){moveCoin(L,"usd",i==0?"$750 тыс.":i==2?"$500 тыс.":"",m[0],m[1],m[2],m[3],1400,i*250)})}],
    [6000,function(){moveCoin(L,"fee","$75 тыс.",370,290,C.vx-60,C.vy-10,1400,0);moveCoin(L,"fee","$50 тыс.",370,460,C.vx-60,C.vy+10,1400,400);later(1500,function(){countUp(C.ct[1].v,0,125e3,1200,0,mon)})}],
-   [8800,function(){rTo(C.vc,78,1400);countUp(C.ct[0].v,4e6,5.4e6,1400,0,mon)}]];
+   [8800,function(){C.moT.textContent="1 месяц";rTo(C.vc,78,1400);countUp(C.ct[0].v,4e6,5.4e6,1400,0,mon)}]];
   show(0,12000);hide(0,21500);
   S=S.concat([
-   [22200,function(){head("ЭТАП 2 · ДО 12 МЕСЯЦЕВ","Добавляем три новых проекта")}],
+   [22200,function(){head("ЭТАП 2","Добавляем три новых проекта","1 → 12 месяцев")}],
    [23200,function(){C.np.forEach(function(n,i){later(i*600,function(){rise(n.g);n.c.setAttribute("fill","#00A676");n.c.setAttribute("stroke","#00A676");n.c.setAttribute("stroke-dasharray","none");n.t.style.fill="#fff";moveCoin(L,"fee","акции",n.x,n.y-30,C.vx,C.vy+70,1300,400)})});later(2400,function(){countUp(C.ct[2].v,5e5,1.25e6,1200,0,mon)})}],
    [26600,function(){C.pj.forEach(function(p,i){rTo(p.c,i?64:58,1500);later(700,function(){p.v.textContent="оценка "+p.a+" → "+p.b})})}],
    [29200,function(){countUp(C.ct[1].v,125e3,275e3,1200,0,mon);rTo(C.vc,96,1400);countUp(C.ct[0].v,5.4e6,10e6,1400,0,mon)}]]);
   show(1,32600);hide(1,41500);
   S=S.concat([
-   [42200,function(){head("ЭТАП 3 · ДО 24 МЕСЯЦЕВ","Платформа и бренд группы")}],
+   [42200,function(){head("ЭТАП 3","Платформа и бренд группы","12 → 24 месяца")}],
    [43000,function(){rise(C.cl);later(800,function(){moveCoin(L,"fee","клиент",C.dots[1][0],C.dots[1][1],C.dots[4][0],C.dots[4][1],1300,0)})}],
    [45200,function(){rise(C.brand,800);TW(1800,function(k){C.br.setAttribute("r",(150+30*ease(k)).toFixed(1))});rTo(C.vc,110,1600);countUp(C.ct[0].v,10e6,50e6,1600,400,function(v){return "$"+Math.round(v/1e6)+" млн"})}]]);
   show(2,48600);
@@ -728,7 +730,7 @@ var B=[
  {s:2,t:function(){return "В составе Venture Builder две компании: MAST — AI-first технология монетизации трафика для владельцев сайтов, рынок платформ монетизации для владельцев сайтов $8,2 млрд. Технология прошла проверки в течение 2 месяцев, с 20 октября началось масштабирование внутрь партнера с ожидаемой выручкой $600 тыс. в год. VisaTO — AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз, рынок визовых услуг $15,2 млрд. Еще шесть направлений в планах, на синергию с текущими."},f:function(a,D){ovOnly(null);
    CO.forEach(function(c,j){setCo(j,c.mkt.split(" · ")[0],"РЫНОК · "+c.mkt.split(" · ").slice(1).join(" · ").toUpperCase(),"");if(a){off("c"+j);later(j*400,function(){on("c"+j)})}else on("c"+j)});on("plan");PLB.forEach(function(b,k){if(a){b.classList.add("off");later(1300+k*260,function(){b.classList.remove("off")})}else b.classList.remove("off")})}},
  {s:3,t:function(){return "Venture Builder — одна компания в свободной зоне ОАЭ, один класс акций. Акционеры: основатель, два партнера — сооснователи первых двух проектов, и инвесторы первого раунда. Андрей отвечает за платный трафик, Алексей за SEO и GEO, у каждого по 5%. Портфель — активы компании: доли в MAST, VisaTO и новых компаниях. Фабрика — операционная работа: капитализация проектов, стратегия и прозрачная отчетность по каждому, привлечение капитала, рост за счет синергии, поиск новых проектов."},f:function(a,D){ovOnly("ovParts");runParts(a,D)}},
- {s:4,dur:5.45,t:function(){return "Бизнес-модель по этапам: простые действия с понятным результатом. Закрытые раунды сразу дают Venture Builder выручку, новые проекты добавляют акции в портфель, платформа и бренд группы приводят следующих инвесторов."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
+ {s:4,dur:4.69,t:function(){return "Бизнес-модель по срокам. За 1 месяц закрываем раунды VisaTO и MAST, VB сразу получает выручку, и его оценка растет на 35%. За 12 месяцев оценка растет в 2,5 раза, за 24 месяца — в 12,5 раз: новые проекты, платформа и бренд группы приводят следующих инвесторов."},f:function(a,D){ovOnly("ovBM");runBM(a,D)}},
  {s:5,t:function(){return "Модель уже работает на рынке. Hexa, бывшая eFounders: в 2015 году Hexa привлекла первые €5 млн, в 2016 еще €5 млн от 40 частных инвесторов, которые получили исключительное право входить в стартапы студии. Сейчас в портфеле 40 компаний стоимостью €4,5 млрд. Prytek: с 2017 года вложил в компании больше $350 млн, 180 сделок за три года, часть вложенных денег направляет на развитие бизнеса компаний — у нас ту же роль играет IR. За счет AI-технологий и синергии направлений с высокой маржой Venture Builder планирует вырасти до оценки активов $500 млн+ за 3–4 года."},f:function(a,D){ovOnly("ovRef");runRef(a,D)}},
  {s:6,t:function(){return "Общая необходимая сумма для масштабирования — $1,5 млн. $1,5 млн позволяют закрыть текущие раунды инвестиций в проекты и сфокусироваться на масштабировании Venture Builder."},f:function(a,D){ovOnly("ovNeed");showRows(rows("need"),a,D)}},
  {s:6,dur:2.68,t:function(){return "Что дает $1,5 млн. Деньги закрывают раунды VisaTO и MAST и запускают Venture Builder. Каждый получает капитал на рост, и через 12 месяцев капитализация всех трех вырастает больше чем в 2 раза."},f:function(a,D){ovOnly("ovGrow");runGrow(a,D)}},

@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Orbiq · model</title>
 <meta property="og:title" content="Orbiq · model">
-<meta property="og:image" content="https://aiventurebuilder.xyz/og-en.png">
+<meta property="og:image" content="https://aiventurebuilder.xyz/og-orbiq-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,9 +238,9 @@ function bar(g,x,y,w,h,parts){var acc=0;parts.forEach(function(p){var pw=w*p[0];
 
 /* ================= MAIN STAGE ================= */
 ov("intro",function(g){E("rect",{x:0,y:0,width:1280,height:720,"class":"f-ink"},g);E("use",{href:"#markbig",x:570,y:120,width:140,height:140},g);
-  TI(g,640,350,"Orbiq",84,"middle");SI(g,640,392,"AI-FIRST BUSINESSES · WITHOUT BORDERS",.75,"middle");
+  TI(g,640,350,"Orbiq",84,"middle");SI(g,640,392,"AI-FIRST · WITHOUT BORDERS",.75,"middle");
   ["Visas","Pet relocation","Medicines","Musical instruments","Art"].forEach(function(s,i){var w=[110,230,150,290,150][i],x=[145,275,525,695,1005][i];E("rect",{x:x,y:470,width:w,height:52,rx:26,fill:"none",stroke:"rgba(255,255,255,.35)","stroke-width":1.2},g);var t=T(g,x+w/2,502,s,"ttl",{"text-anchor":"middle","font-size":15});t.style.fill="var(--inv)"});
-  SI(g,640,600,"TWO COMPANIES IN OPERATION · SIX DIRECTIONS IN SEARCH",.6,"middle")});
+  });
 var invGot,invSub;
 actor("inv",function(g){box(g,40,50,290,190,"FIRST-ROUND INVESTORS");T(g,62,128,"up to $1.5M","big",{"font-size":36});invSub=T(g,62,154,"EACH INVESTOR CHOOSES THE TICKET","sub");
   invGot=T(g,62,200,"","big",{"font-size":22,fill:OR});counter("inv",invGot,function(x){return x<1?"":"stake is worth "+money(x)});A.invX=T(g,62,224,"","sub")});
@@ -752,7 +752,7 @@ function stageSetup(a,D){ovOnly(null);on("inv");on("bld");on("vb");on("nc");CO.f
    CO.forEach(function(c,j){pon("to"+j);flow("to"+j,"usd");var fin=function(){setCo(j,"ROUND "+money(c.round),"MONEY CAME DIRECTLY · SHARES TO ORBIQ","");if(a)burst(1100,CY[j]+80,OR)};if(a){setCo(j,c.mkt.split(" · ")[0],"MARKET","");later(D*.4+j*D*.2,fin)}else fin()});
    vbL.textContent="STAKES AND MONEY INSIDE";tweenC("vb",2.05e6,D*.7,a);vbW.textContent="FOUNDER STAKES $550K + ROUNDS $1.25M";vbW2.textContent="+ FACTORY $250K";setC("inv",0);A.invX.textContent="";bldT.textContent=""}
 var B=[
- {s:0,dur:0.89,t:function(){return "<span class=\"hl\">Orbiq — a venture builder with a flywheel effect</span>We build the value of an umbrella brand around AI-first projects that earn on cross-border relocation. We unite them with a shared brand, a shared client base and shared fundraising. Each new project makes the group stronger and raises its value with a multiplier."},f:function(a,D){ovOnly("intro")}},
+ {s:0,dur:0.45,t:function(){return "<span class=\"hl\">Orbiq — a venture builder with a flywheel effect</span>We build the value of an umbrella brand around AI-first projects that earn on cross-border relocation. We unite them with a shared brand, a shared client base and shared fundraising. Each new project makes the group stronger and raises its value with a multiplier."},f:function(a,D){ovOnly("intro")}},
  {s:1,t:function(){return "<span class=\"hl\">Founder synergy</span>10+ years of working together on different projects.<br><br>Synergy of expertise:<br>Vladimir — strategy and investment<br>Andrey — Performance Marketing (CPA, ROAS)<br>Alexey — Organic Growth (SEO, GEO, scaling organic traffic)"},f:function(a,D){ovOnly("ovCore");rows("core").forEach(function(r,k){if(a){r.classList.add("off");later(250+k*380,function(){r.classList.remove("off")})}else r.classList.remove("off")})}},
  {s:2,t:function(){return "<span class=\"hl\">Orbiq already has two companies</span><strong>MAST</strong> — AI-first traffic monetization technology for website owners. The market of monetization platforms for website owners is $8.2B.<br>For 1.5 years the technology monetized our own publishers and earned $1.7M for investors.<br>In the last 2 months we turned the technology into a product that tens of thousands of external publishers can use.<br>On October 20, scaling started inside a monetization partner, with expected revenue of $600K per year.<br><br><strong>VisaTO</strong> — AI-first licensed company in Singapore that earns on visa processing. The visa services market is $15.2B. The company has zero line staff. In 3 months it reached $10K in revenue with zero marketing spend. SEO and GEO cost a $200 Claude subscription. The entry barrier for vibe coders is a license that costs $70K."},f:function(a,D){ovOnly(null);
    CO.forEach(function(c,j){setCo(j,c.mkt.split(" · ")[0],"MARKET · "+c.mkt.split(" · ").slice(1).join(" · ").toUpperCase(),"");if(a){off("c"+j);later(j*400,function(){on("c"+j)})}else on("c"+j)});on("plan");PLB.forEach(function(b,k){if(a){b.classList.add("off");later(1300+k*260,function(){b.classList.remove("off")})}else b.classList.remove("off")})}},

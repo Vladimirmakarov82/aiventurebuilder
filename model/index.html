@@ -8,7 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Orbiq · модель</title>
 <meta property="og:title" content="Orbiq · модель">
-<meta property="og:image" content="https://aiventurebuilder.xyz/og.png">
+<meta property="og:image" content="https://aiventurebuilder.xyz/og-orbiq.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,9 +238,9 @@ function bar(g,x,y,w,h,parts){var acc=0;parts.forEach(function(p){var pw=w*p[0];
 
 /* ================= MAIN STAGE ================= */
 ov("intro",function(g){E("rect",{x:0,y:0,width:1280,height:720,"class":"f-ink"},g);E("use",{href:"#markbig",x:570,y:120,width:140,height:140},g);
-  TI(g,640,350,"Orbiq",84,"middle");SI(g,640,392,"AI-FIRST БИЗНЕСЫ · БЕЗ ГРАНИЦ",.75,"middle");
+  TI(g,640,350,"Orbiq",84,"middle");SI(g,640,392,"AI-FIRST · БЕЗ ГРАНИЦ",.75,"middle");
   ["Визы","Перевозка животных","Лекарства","Музыкальные инструменты","Искусство"].forEach(function(s,i){var w=[110,230,150,290,150][i],x=[145,275,525,695,1005][i];E("rect",{x:x,y:470,width:w,height:52,rx:26,fill:"none",stroke:"rgba(255,255,255,.35)","stroke-width":1.2},g);var t=T(g,x+w/2,502,s,"ttl",{"text-anchor":"middle","font-size":15});t.style.fill="var(--inv)"});
-  SI(g,640,600,"ДВЕ КОМПАНИИ В РАБОТЕ · ШЕСТЬ НАПРАВЛЕНИЙ В ПОИСКЕ",.6,"middle")});
+  });
 var invGot,invSub;
 actor("inv",function(g){box(g,40,50,290,190,"ИНВЕСТОРЫ ПЕРВОГО РАУНДА");T(g,62,128,"до $1,5 млн","big",{"font-size":36});invSub=T(g,62,154,"ЧЕК ВЫБИРАЕТ КАЖДЫЙ ИНВЕСТОР","sub");
   invGot=T(g,62,200,"","big",{"font-size":22,fill:OR});counter("inv",invGot,function(x){return x<1?"":"доля стоит "+money(x)});A.invX=T(g,62,224,"","sub")});
@@ -752,7 +752,7 @@ function stageSetup(a,D){ovOnly(null);on("inv");on("bld");on("vb");on("nc");CO.f
    CO.forEach(function(c,j){pon("to"+j);flow("to"+j,"usd");var fin=function(){setCo(j,"РАУНД "+money(c.round),"ДЕНЬГИ ПРИШЛИ НАПРЯМУЮ · АКЦИИ НА ORBIQ","");if(a)burst(1100,CY[j]+80,OR)};if(a){setCo(j,c.mkt.split(" · ")[0],"РЫНОК","");later(D*.4+j*D*.2,fin)}else fin()});
    vbL.textContent="ДОЛИ И ДЕНЬГИ ВНУТРИ";tweenC("vb",2.05e6,D*.7,a);vbW.textContent="ДОЛИ ОСНОВАТЕЛЯ $550 ТЫС. + РАУНДЫ $1,25 МЛН";vbW2.textContent="+ ФАБРИКА $250 ТЫС.";setC("inv",0);A.invX.textContent="";bldT.textContent=""}
 var B=[
- {s:0,dur:0.89,t:function(){return "<span class=\"hl\">Orbiq — Venture Builder с эффектом flywheel</span>Капитализируем зонтичный бренд вокруг AI-first проектов, зарабатывающих на трансграничных переездах. Объединяем их общим брендом, клиентской базой и привлечением капитала. Каждый новый проект усиливает группу и увеличивает ее стоимость с мультипликатором."},f:function(a,D){ovOnly("intro")}},
+ {s:0,dur:0.45,t:function(){return "<span class=\"hl\">Orbiq — Venture Builder с эффектом flywheel</span>Капитализируем зонтичный бренд вокруг AI-first проектов, зарабатывающих на трансграничных переездах. Объединяем их общим брендом, клиентской базой и привлечением капитала. Каждый новый проект усиливает группу и увеличивает ее стоимость с мультипликатором."},f:function(a,D){ovOnly("intro")}},
  {s:1,t:function(){return "<span class=\"hl\">Синергия основателей</span>10+ лет взаимодействия в различных проектах.<br><br>Синергия компетенций:<br>Владимир — стратегия и инвестиции<br>Андрей — Performance Marketing (CPA, ROAS)<br>Алексей — Organic Growth (SEO, GEO, масштабирование органического трафика)"},f:function(a,D){ovOnly("ovCore");rows("core").forEach(function(r,k){if(a){r.classList.add("off");later(250+k*380,function(){r.classList.remove("off")})}else r.classList.remove("off")})}},
  {s:2,t:function(){return "<span class=\"hl\">В составе Orbiq уже две компании</span><strong>MAST</strong> — AI-first технология монетизации трафика для владельцев сайтов, рынок платформ монетизации для владельцев сайтов $8,2 млрд.<br>1,5 года технологию применяли для монетизации собственных паблишеров, заработали инвесторам $1,7 млн.<br>2 последних месяца технологию превращали в продукт, которым могут пользоваться десятки тысяч внешних паблишеров.<br>С 20 октября началось масштабирование внутрь партнера-монетизатора, с ожидаемой выручкой $600 тыс. в год.<br><br><strong>VisaTO</strong> — AI-first сингапурская компания с лицензией, зарабатывает на выдаче виз, рынок визовых услуг $15,2 млрд. В компании ноль линейных сотрудников, за 3 мес. компания вышла на выручку $10 тыс. с 0 затрат на маркетинг. SEO и GEO обходятся в $200 подписку Claude. Порогом входа для вайбкодеров является лицензия стоимостью $70 тыс."},f:function(a,D){ovOnly(null);
    CO.forEach(function(c,j){setCo(j,c.mkt.split(" · ")[0],"РЫНОК · "+c.mkt.split(" · ").slice(1).join(" · ").toUpperCase(),"");if(a){off("c"+j);later(j*400,function(){on("c"+j)})}else on("c"+j)});on("plan");PLB.forEach(function(b,k){if(a){b.classList.add("off");later(1300+k*260,function(){b.classList.remove("off")})}else b.classList.remove("off")})}},

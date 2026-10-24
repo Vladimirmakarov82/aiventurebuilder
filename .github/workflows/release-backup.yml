@@ -1,0 +1,21 @@
+# Каждый пуш в main = релиз сайта: тег release-ГГГГ-ММ-ДД-ЧЧММСС + архив всех файлов сайта.
+# Откат: «верни сайт на релиз release-...» — файлы берутся из этого тега.
+name: Release backup
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag and archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="release-$(TZ=Europe/Moscow date +%Y-%m-%d-%H%M%S)"
+          git archive --format=zip -o "orbiq-site-$TAG.zip" HEAD
+          MSG="$(git log -1 --pretty=%B)"
+          gh release create "$TAG" "orbiq-site-$TAG.zip" --target "$GITHUB_SHA" --title "$TAG" --notes "$MSG" --latest

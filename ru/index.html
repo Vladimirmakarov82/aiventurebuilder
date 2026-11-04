@@ -426,12 +426,12 @@ button{font:inherit}
           <svg id="tailsvg" viewBox="0 0 700 380" role="img" aria-label="Клиенты рынка по размеру чека: ядро слева, длинный хвост справа">
             <g id="tbars"></g>
             <line id="tcost" x1="30" x2="690" stroke="#F3F4F2" stroke-width="1.5" stroke-dasharray="6 6"/>
-            <text id="tcostT" class="svgl" fill="#F3F4F2" x="690" text-anchor="end"></text>
-            <g id="tcore"><path d="M32 0 V-10 H162 V0" fill="none" stroke="#FF4D00" stroke-width="1.5"/><text x="32" y="-20" class="svgl" fill="#FF4D00">ЯДРО · 20% КЛИЕНТОВ · 80% ДЕНЕГ</text><text id="tcoreN" x="32" y="-38" class="svgv" font-size="17" fill="#F3F4F2"></text></g>
-            <g id="ttail"><path d="M176 0 V-10 H688 V0" fill="none" stroke="#F3F4F2" stroke-opacity=".6" stroke-width="1.5"/><text x="688" y="-20" class="svgl" fill="#F3F4F2" fill-opacity=".8" text-anchor="end">ХВОСТ · 80% КЛИЕНТОВ</text><text id="ttailN" x="688" y="-38" class="svgv" font-size="17" fill="#F3F4F2" text-anchor="end"></text></g>
-            <text id="tsum" x="430" y="250" class="svgv" font-size="64" fill="#FF4D00" text-anchor="middle" letter-spacing="-3">$5B+</text>
+            <text id="tcostT" class="svgl" fill="#F3F4F2" x="30"></text>
+            <g id="tcore"><path d="M558 0 V-10 H688 V0" fill="none" stroke="#FF4D00" stroke-width="1.5"/><text x="688" y="-20" class="svgl" fill="#FF4D00" text-anchor="end">ЯДРО · 20% КЛИЕНТОВ · 80% ДЕНЕГ</text><text id="tcoreN" x="688" y="-38" class="svgv" font-size="17" fill="#F3F4F2" text-anchor="end"></text></g>
+            <g id="ttail"><path d="M32 0 V-10 H544 V0" fill="none" stroke="#F3F4F2" stroke-opacity=".6" stroke-width="1.5"/><text x="32" y="-20" class="svgl" fill="#F3F4F2" fill-opacity=".8">ХВОСТ · 80% КЛИЕНТОВ</text><text id="ttailN" x="32" y="-38" class="svgv" font-size="17" fill="#F3F4F2"></text></g>
+            <text id="tsum" x="290" y="250" class="svgv" font-size="64" fill="#FF4D00" text-anchor="middle" letter-spacing="-3">$5B+</text>
             <line x1="30" y1="340" x2="690" y2="340" stroke="#F3F4F2" stroke-opacity=".3"/>
-            <text x="30" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55">КРУПНЫЙ ЧЕК</text><text x="690" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55" text-anchor="end">МАЛЕНЬКИЙ ЧЕК · ТЫСЯЧИ КЛИЕНТОВ</text>
+            <text x="30" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55">МАЛЕНЬКИЙ ЧЕК · ТЫСЯЧИ КЛИЕНТОВ</text><text x="690" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55" text-anchor="end">КРУПНЫЙ ЧЕК</text>
           </svg>
         </div>
       </article>
@@ -609,7 +609,7 @@ button{font:inherit}
 
   /* TAIL: pareto explainer */
   var TB=$('tbars'),NB=48,BARS=[],BX0=34,BW=(688-34)/NB;
-  for(var bi=0;bi<NB;bi++){var vv=1/Math.pow(bi+1,.85),hh=Math.max(7,vv*290);BARS.push({h:hh,r:el('rect',{x:(BX0+bi*BW).toFixed(1),width:(BW-3).toFixed(1),rx:2.5,y:340,height:0},TB),core:bi<10})}
+  for(var bi=0;bi<NB;bi++){var vv=1/Math.pow(bi+1,.85),hh=Math.max(7,vv*290);BARS.push({h:hh,r:el('rect',{x:(BX0+(NB-1-bi)*BW).toFixed(1),width:(BW-3).toFixed(1),rx:2.5,y:340,height:0},TB),core:bi<10})}
   var TX={visa:{core:'Корпоративные клиенты, агентства',tail:'Частные путешественники',ex:'<b>Визы.</b> Корпоративные клиенты и агентства — ядро, их обслуживают крупные визовые центры. Частный путешественник с одной визой — хвост: ручная консультация съедает весь чек. AI-агент ведет такого клиента почти бесплатно.'},
           mast:{core:'Крупные паблишеры',tail:'Тысячи небольших сайтов',ex:'<b>MAST.</b> Крупные паблишеры — ядро, у них свои менеджеры в рекламных сетях. Тысячи небольших сайтов — хвост: менеджер на каждый сайт не окупается. AI-агенты подключают и настраивают монетизацию без людей.'}};
   var tex='visa';

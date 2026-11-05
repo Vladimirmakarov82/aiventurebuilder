@@ -262,9 +262,9 @@ function setCo(j,v,tag,sh){COT[j].v.textContent=v;COT[j].tag.textContent=tag;COT
 var PLB=[];
 actor("plan",function(g){
   T(g,40,40,"WHAT WE BUILD · 2 COMPANIES · 6 DIRECTIONS FOR SYNERGY","lbl");
-  var P=[["AI concierge","$2.7B","concierge services, 2025"],["Content factory","$6.2B","AI video, 2025"],["Pets","$2.4B","pet transportation, 2024"],["Medicines","$5B","travel medicine, 2025"],["Instruments · CITES","$10B","instrument market"],["Art","$2.64B","art logistics, 2025"]];
+  var P=[["AI concierge","$2.7B","concierge services, 2025"],["Content factory","$6.2B","AI video, 2025"],["Pets","$0.1–0.2B","pet travel documents"],["Medicines","$0.15–0.5B","import permits, estimate"],["Instruments · CITES","tens of $M","CITES certificates, estimate"],["Art","tens of $M","export licences, estimate"]];
   P.forEach(function(p,i){var x=40+(i%3)*292,y=64+Math.floor(i/3)*318,b=E("g",{"class":"pop"},g);var r=E("rect",{x:x,y:y,width:276,height:302,rx:24,fill:"none","stroke-width":1.6,"stroke-dasharray":"7 6"},b);r.style.stroke=OR;
-    T(b,x+22,y+36,"LOOKING FOR A FOUNDER","sub",{fill:OR});T(b,x+22,y+92,p[0],"big",{"font-size":23});T(b,x+22,y+186,p[1],"big",{"font-size":40,fill:OR});T(b,x+22,y+222,"MARKET","lbl");T(b,x+22,y+252,p[2],"txt",{"font-size":16});PLB.push(b)})});
+    T(b,x+22,y+36,"LOOKING FOR A FOUNDER","sub",{fill:OR});T(b,x+22,y+92,p[0],"big",{"font-size":23});T(b,x+22,y+186,p[1],"big",{"font-size":(p[1].length>10?28:40),fill:OR});T(b,x+22,y+222,"MARKET","lbl");T(b,x+22,y+252,p[2],"txt",{"font-size":16});PLB.push(b)})});
 var bd1,bd2,bd3;
 actor("board",function(g){bd1=T(g,640,72,"","lbl",{"text-anchor":"middle"});bd1.style.fill=OR;bd2=T(g,640,130,"","big",{"text-anchor":"middle","font-size":52});bd3=T(g,640,162,"","sub",{"text-anchor":"middle","font-size":13})});
 function board(a,b,c){bd1.textContent=a;bd2.textContent=b;bd3.textContent=c;on("board")}

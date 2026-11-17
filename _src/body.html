@@ -1,0 +1,243 @@
+<div class="grain" aria-hidden="true"></div>
+<div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mark" viewBox="0 0 120 120"><rect width="120" height="120" rx="28" fill="#FF4D00"/><g class="mk-orb" fill="#fff"><circle cx="60" cy="22" r="6"/><circle cx="92.9" cy="41" r="6"/><circle cx="92.9" cy="79" r="6"/><circle cx="60" cy="98" r="6"/><circle cx="27.1" cy="79" r="6"/><circle cx="27.1" cy="41" r="6"/></g><circle cx="60" cy="60" r="15" fill="#fff"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
+    <div class="nav-r">
+      <a class="nl" href="#cross">{{nav1}}</a><a class="nl" href="#focus">{{nav2}}</a><a class="nl" href="#model">{{nav3}}</a><a class="nl" href="#portfolio">{{nav4}}</a>
+      {{langchip}}
+      <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>{{motion_on}}</button>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="h-left">
+      <div class="kick mono"><span class="dot"></span>Orbiq · <b>{{kick}}</b></div>
+      <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">{{h1b}}</span></h1>
+      <p class="lead">{{lead}}</p>
+      <div class="kpis">
+        <a class="kpi" href="#model"><b class="num">24/7</b><span>{{k1}}</span></a>
+        <a class="kpi" href="#chatfilm"><b class="num"><span class="cu" data-to="1">1</span></b><span>{{k2}}</span></a>
+        <a class="kpi" href="#portfolio"><b class="num">SG</b><span>{{k3}}</span></a>
+      </div>
+    </div>
+    <div class="h-right">
+      <div class="bx" id="bx">
+        <div class="bx-h"><span class="mono">{{bx_h}}</span><span class="mono live"><i></i>{{bx_live}}</span></div>
+        <div class="bx-stage" aria-label="{{bx_aria}}">
+          <span class="mono bx-a">{{bx_a}}</span><span class="mono bx-b">{{bx_b}}</span>
+          <div class="bx-line"><span class="mono">{{bx_line}}</span><div class="bx-ai">AI</div></div>
+          {{bx_items}}
+        </div>
+        <div class="bx-f"><div class="on"><span class="mono">{{bxf1k}}</span><b>{{bxf1v}}</b></div><div><span class="mono">{{bxf2k}}</span><b>{{bxf2v}}</b></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="ticker" aria-hidden="true"><div class="tr" id="tr">
+  {{ticker}}
+  {{ticker}}
+</div></div>
+
+<div class="wrap">
+  <section class="sec" id="cross">
+    <div class="sec-h"><span class="mono">{{s0_m}}</span><h2 class="mask">{{s0_h}}</h2></div>
+    <p class="xb-lead">{{s0_lead}}</p>
+    <div class="xb-grid">
+      {{xb}}
+    </div>
+    <div class="xb-syn">
+      {{syn}}
+    </div>
+  </section>
+
+  <section class="sec" id="focus">
+    <div class="sec-h"><span class="mono">{{s1_m}}</span><h2 class="mask">{{s1_h}}</h2></div>
+    <div class="focus">
+      <article class="fc f1">
+        <span class="n">{{p1_n}}</span>
+        <h3>{{p1_h}}</h3>
+        <p>{{p1_p}}</p>
+        <ul class="bar">
+          {{p1_bars}}
+        </ul>
+        <svg viewBox="0 0 360 150" class="wall" aria-hidden="true" id="wallsvg"><g id="bricks"></g><circle id="runner" r="9" fill="#FF4D00" cx="20" cy="120"/></svg>
+      </article>
+      <article class="fc f3">
+        <span class="n">{{p2_n}}</span>
+        <h3>{{p2_h}}</h3>
+        <p>{{p2_p}}</p>
+        <svg viewBox="0 0 260 120" aria-hidden="true" id="pulsesvg"><path id="pulse" class="pulse-l" d="M0 80"/><circle id="pdot" r="5" fill="#FF4D00" cx="260" cy="60"/></svg>
+      </article>
+      <article class="fc f2" id="tailcard">
+        <div class="tl-l">
+          <span class="n">{{p3_n}}</span>
+          <div class="big num">∞</div>
+          <h3>{{p3_h}}</h3>
+          <ol class="tl-steps">
+            {{p3_steps}}
+          </ol>
+          <div class="seg tl-seg" role="group" aria-label="{{p3_seg_aria}}"><button type="button" data-x="money" aria-pressed="true">{{p3_seg1}}</button><button type="button" data-x="visa" aria-pressed="false">{{p3_seg2}}</button></div>
+          <p class="tl-ex" id="tlex"></p>
+        </div>
+        <div class="tl-r">
+          <svg id="tailsvg" viewBox="0 0 700 380" role="img" aria-label="{{tail_aria}}">
+            <g id="tbars"></g>
+            <line id="tcost" x1="30" x2="690" stroke="#F3F4F2" stroke-width="1.5" stroke-dasharray="6 6"/>
+            <text id="tcostT" class="svgl" fill="#F3F4F2" x="30"></text>
+            <g id="tcore"><path d="M558 0 V-10 H688 V0" fill="none" stroke="#FF4D00" stroke-width="1.5"/><text x="688" y="-20" class="svgl" fill="#FF4D00" text-anchor="end">{{tail_core}}</text><text id="tcoreN" x="688" y="-38" class="svgv" font-size="17" fill="#F3F4F2" text-anchor="end"></text></g>
+            <g id="ttail"><path d="M32 0 V-10 H544 V0" fill="none" stroke="#F3F4F2" stroke-opacity=".6" stroke-width="1.5"/><text x="32" y="-20" class="svgl" fill="#F3F4F2" fill-opacity=".8">{{tail_tail}}</text><text id="ttailN" x="32" y="-38" class="svgv" font-size="17" fill="#F3F4F2"></text></g>
+            <text id="tsum" x="290" y="250" class="svgv" font-size="96" fill="#FF4D00" text-anchor="middle" letter-spacing="-3">∞</text>
+            <line x1="30" y1="340" x2="690" y2="340" stroke="#F3F4F2" stroke-opacity=".3"/>
+            <text x="30" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55">{{tail_bl}}</text><text x="690" y="364" class="svgl" fill="#F3F4F2" fill-opacity=".55" text-anchor="end">{{tail_br}}</text>
+          </svg>
+        </div>
+      </article>
+      <article class="fc fv cf" id="chatfilm">
+        <div class="fv-h">
+          <div class="l">
+            <span class="n">{{cf_n}}</span>
+            <h3>{{cf_h}}</h3>
+          </div>
+          <div class="r">
+            <p>{{cf_p}}</p>
+            <div class="fv-ctl">
+              <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>{{cf_playing}}</button>
+              <button class="chip" id="cfr" type="button">{{cf_replay}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="cf-st">
+          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">{{cf_online}}</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
+          <div class="cf-board"><div class="cf-bh"><span class="mono">{{cf_board}}</span><span class="mono cf-demo">{{cf_demo}}</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="model">
+    <div class="sec-h"><span class="mono">{{s2_m}}</span><h2 class="mask">{{s2_h}}</h2></div>
+    <div class="ba" id="ba">
+      <div class="ba-chart">
+        <div class="seg" role="group" aria-label="{{s2_seg_aria}}"><button type="button" data-v="0" aria-pressed="true">{{s2_seg1}}</button><button type="button" data-v="1" aria-pressed="false">Orbiq</button></div>
+        <svg id="chart" viewBox="0 0 720 360" role="img" aria-label="{{s2_aria}}">
+          <defs><linearGradient id="rk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4D00" stop-opacity=".38"/><stop offset="1" stop-color="#FF4D00" stop-opacity=".02"/></linearGradient></defs>
+          <g id="axes"></g>
+          <path id="riskA" fill="url(#rk)"/>
+          <path id="riskL" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="7 6"/>
+          <path id="revL" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/>
+          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-14" dy="-12">{{s2_cross}}</text></g>
+          <g id="round"><circle r="9" fill="#FF4D00"/><circle r="18" fill="none" stroke="#FF4D00"/><text class="svgl" fill="var(--ink)" text-anchor="middle" dy="40">{{s2_round}}</text></g>
+          <text id="revT" class="svgl" fill="var(--ink)" text-anchor="end">{{s2_revT}}</text>
+          <text id="riskT" class="svgl" fill="#FF4D00" text-anchor="end">{{s2_riskT}}</text>
+        </svg>
+        <div class="legend"><span><i></i>{{s2_l1}}</span><span><i class="r"></i>{{s2_l2}}</span><span>{{s2_l3}}</span></div>
+      </div>
+      <aside class="ba-side" id="side"></aside>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="def">
+      <div class="def-txt">
+        <span class="mono" style="color:var(--or)">{{s3_m}}</span>
+        <h3 class="mask">{{s3_h}}</h3>
+        <p>{{s3_p}}</p>
+      </div>
+      <div class="def-viz">
+        <svg id="stsvg" viewBox="0 0 640 260" aria-label="{{s3_aria}}">
+          <line x1="20" y1="210" x2="620" y2="210" stroke="#fff" stroke-opacity=".25"/>
+          <rect class="st" x="30" y="168" width="170" height="42" rx="10" fill="#FF4D00"/>
+          <rect class="st" x="230" y="118" width="170" height="92" rx="10" fill="#FF4D00"/>
+          <rect class="st" x="430" y="58" width="170" height="152" rx="10" fill="#FF4D00"/>
+          <g font-family="Geist Mono,monospace" font-size="11.5" fill="#fff" fill-opacity=".85" text-anchor="middle" letter-spacing=".9"><text x="115" y="236">{{s3_l1}}</text><text x="315" y="236">{{s3_l2}}</text><text x="515" y="236">{{s3_l3}}</text></g>
+          <g font-family="TikTok Sans,system-ui" font-weight="600" font-size="15" fill="#fff" text-anchor="middle"><text x="115" y="156">{{s3_step}} 1</text><text x="315" y="106">{{s3_step}} 2</text><text x="515" y="46">{{s3_step}} 3</text></g>
+          <circle id="climb" r="10" fill="#fff" cx="600" cy="50"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="portfolio">
+    <div class="port-h">
+      <h2 class="mask">{{s4_h}}</h2>
+      <div class="port-k">
+        {{s4_k}}
+      </div>
+    </div>
+    <p class="xb-lead">{{s4_lead}}</p>
+
+    <article class="pj pg" id="pj2">
+      <span class="bgn" aria-hidden="true">VISA</span>
+      <div class="pj-l">
+        <div class="no"><span>{{v_no}}</span><span class="st">{{v_st}}</span></div>
+        <h3>VisaTO</h3>
+        <p class="one">{{v_one}}</p>
+        <div class="mkt"><b class="num"><span class="cu" data-to="15.2" data-pre="$" data-dec="1">{{v_mk0}}</span><small>{{v_mk1}}</small></b><span>{{v_mk2}}</span></div>
+        <div class="tags">
+          <div class="tag"><i>{{v_t1k}}</i>{{v_t1}}</div>
+          <div class="tag"><i>{{v_t2k}}</i>{{v_t2}}</div>
+        </div>
+      </div>
+      <div class="pj-r">
+        <svg id="v2" viewBox="0 0 640 480" aria-label="{{v_aria}}">
+          <g id="v2grid"></g><g id="v2arcs"></g><g id="v2planes" fill="#fff"></g><g id="v2nodes"></g>
+          <g transform="translate(320 250)"><circle r="56" fill="#fff" fill-opacity=".14" id="v2halo"/><circle r="36" fill="#fff"/><text class="svgv" font-size="20" text-anchor="middle" dy="7" fill="#00A676">SG</text></g>
+          <g transform="translate(20 470)"><text class="svgv" font-size="40" fill="#fff" id="v2c">0</text><text class="svgl" fill="#fff" fill-opacity=".75" x="0" y="-38">{{v_cnt}}</text></g>
+        </svg>
+      </div>
+    </article>
+
+    <article class="pj py" id="pj3">
+      <span class="bgn" aria-hidden="true">MAST</span>
+      <div class="pj-l">
+        <div class="no"><span>{{m_no}}</span><span class="st">{{m_st}}</span></div>
+        <h3>MAST</h3>
+        <p class="one">{{m_one}}</p>
+        <div class="mkt"><b class="num"><span class="cu" data-to="134.8" data-pre="$" data-dec="1">{{m_mk0}}</span><small>{{m_mk1}}</small></b><span>{{m_mk2}}</span></div>
+        <div class="tags">
+          <div class="tag"><i>{{m_t1k}}</i>{{m_t1}}</div>
+          <div class="tag"><i>{{m_t2k}}</i>{{m_t2}}</div>
+        </div>
+      </div>
+      <div class="pj-r">
+        <svg id="v3" viewBox="0 0 640 470" aria-label="{{m_aria}}">
+          <g class="svgl" fill="#0B0B0D" fill-opacity=".7"><text x="20" y="60">{{m_lw}}</text><text x="620" y="60" text-anchor="end">{{m_ln}}</text></g>
+          <g id="m3p" fill="none" stroke="#0B0B0D" stroke-opacity=".18" stroke-width="1.2"></g>
+          <g id="m3t"></g>
+          <g id="m3s"></g>
+          <g id="m3d" fill="#0B0B0D"></g>
+          <g transform="translate(330 200)"><circle r="74" fill="#0B0B0D" fill-opacity=".08" id="m3halo"/><circle r="58" fill="#0B0B0D"/><text text-anchor="middle" y="-10" fill="#FFB800" font-size="22" font-weight="700" letter-spacing="-.02em" style="font-family:var(--f);font-stretch:112%">MAST</text><g fill="#FFB800" fill-opacity=".85" text-anchor="middle" font-size="8" letter-spacing=".08em" style="font-family:var(--m)"><text y="8">PUBLISHER</text><text y="19">MONETISATION</text><text y="30">PLATFORM</text></g></g>
+          <g id="m3b"></g>
+          <text x="20" y="460" class="svgl" fill="#0B0B0D" fill-opacity=".7">{{m_li}}</text>
+          <g transform="translate(620 460)"><text class="svgv" font-size="34" fill="#0B0B0D" text-anchor="end" y="-30" id="m3c">0</text><text class="svgl" fill="#0B0B0D" fill-opacity=".7" text-anchor="end">{{m_lc}}</text></g>
+        </svg>
+      </div>
+    </article>
+  </section>
+
+  <section class="join" id="join">
+    <div class="l">
+      <span class="mono" style="color:#FF4D00">{{j_m}}</span>
+      <h2 class="mask">{{j_h}}</h2>
+      <p>{{j_p}}</p>
+      <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">{{j_btn}} <i aria-hidden="true">→</i></a>
+      <a class="jlink" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">{{j_link}} →</a>
+    </div>
+    <div class="r">
+      <div class="slots5 s6">{{j_slots}}</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
+    <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">{{copy}}</span></button>
+    <span class="mono">orbicgroup.com · 2026</span>
+  </footer>
+</div>

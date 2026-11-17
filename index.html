@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Orbiq · Concierge without borders</title>
-<meta name="description" content="Orbiq takes tasks no ready service covers: Hermès Birkin, Sotheby’s and Christie’s lots, private jets, surgeons in Seoul, meetings with stars, visas and trusts for heirs.">
+<meta name="description" content="Orbiq runs the life of a family across countries in one chat: transfers, residence and citizenship, trusts, schools and universities, clinics, private jets, rare things and events.">
 <meta property="og:title" content="Orbiq · Concierge without borders">
-<meta property="og:description" content="Orbiq takes tasks no ready service covers: Hermès Birkin, Sotheby’s and Christie’s lots, private jets, surgeons in Seoul, meetings with stars, visas and trusts for heirs.">
+<meta property="og:description" content="Orbiq runs the life of a family across countries in one chat: transfers, residence and citizenship, trusts, schools and universities, clinics, private jets, rare things and events.">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://orbiqgroup.com/">
 <meta property="og:type" content="website">
@@ -361,6 +361,16 @@ button{font:inherit}
 .bx-it em{animation-duration:12s;animation-delay:calc(var(--d) * -1s)}
 @media (max-width:520px){.bx-it{font-size:12.5px;padding:7px 12px}}
 .jmail{font-size:clamp(18px,1.6vw,22px);font-weight:600;letter-spacing:-.01em;color:#F3F4F2;align-self:flex-start;border-bottom:1px solid rgba(243,244,242,.3);padding-bottom:2px}.jmail:hover{color:#FF4D00;border-color:#FF4D00}
+.aud{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.aud>div{border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;min-height:230px;background:var(--paper);border:1px solid var(--line);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.aud>div:hover{transform:translateY(-4px)}
+.aud>div:first-child{background:#FF4D00;color:#fff;border-color:#FF4D00}
+.aud .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF4D00}.aud>div:first-child .mono{color:#fff;opacity:.8}
+.aud b{font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1.12}
+.aud p{margin:auto 0 0;font-size:15px;line-height:1.45;color:var(--mute)}.aud>div:first-child p{color:rgba(255,255,255,.9)}
+@media (max-width:1000px){.aud{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.aud{grid-template-columns:1fr}.aud>div{min-height:0}}
+.bx-it span{transition:opacity .3s}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -374,7 +384,7 @@ button{font:inherit}
   <header class="nav">
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
-      <a class="nl" href="#cross">Services</a><a class="nl" href="#focus">Why now</a><a class="nl" href="#model">Comparison</a><a class="nl" href="#portfolio">Companies</a>
+      <a class="nl" href="#audience">Who it is for</a><a class="nl" href="#cross">Services</a><a class="nl" href="#focus">Why now</a><a class="nl" href="#model">Comparison</a><a class="nl" href="#portfolio">Companies</a>
       <a class="chip" href="/ru/" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Motion: on</button>
     </div>
@@ -384,46 +394,60 @@ button{font:inherit}
     <div class="h-left">
       <div class="kick mono"><span class="dot"></span>Orbiq · <b>AI-first concierge</b></div>
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">without borders</span></h1>
-      <p class="lead">A Hermès Birkin, a lot at Sotheby’s, an appointment with a top surgeon in Seoul, dinner with Lenny Kravitz. Orbiq takes tasks no ready service covers: AI agents and partners in many countries find the way. Visas, transfers and trusts for heirs are here&nbsp;too.</p>
+      <p class="lead">A home in Geneva, school in London, a villa in Dubai, capital in Singapore. Orbiq keeps the whole life of a family in one chat: one manager sees the full picture, AI agents and partners in many countries run every task, from a tuition payment to a lot at Sotheby’s.</p>
       <div class="kpis">
         <a class="kpi" href="#model"><b class="num">24/7</b><span>AI agents on&nbsp;duty</span></a>
-        <a class="kpi" href="#chatfilm"><b class="num"><span class="cu" data-to="1">1</span></b><span>chat for any task</span></a>
+        <a class="kpi" href="#chatfilm"><b class="num"><span class="cu" data-to="1">1</span></b><span>manager for the whole family</span></a>
         <a class="kpi" href="#portfolio"><b class="num">SG</b><span>own visa license</span></a>
       </div>
     </div>
     <div class="h-right">
       <div class="bx" id="bx">
         <div class="bx-h"><span class="mono">Unique tasks</span><span class="mono live"><i></i>AI agents at work</span></div>
-        <div class="bx-stage" aria-label="Requests cross the border and get done: Hermès Birkin, Koenigsegg Jesko, Gulfstream G700, Sotheby’s and Christie’s lots, rare coins, a surgeon in Seoul, Clinique La Prairie, dinner with Lenny Kravitz, meeting Justin Bieber, reception with Lady Gaga, visas">
+        <div class="bx-stage" aria-label="A stream of family requests crosses the border and gets done: money, residence, schools, clinics, jets, rare things, art and events">
           <span class="mono bx-a">Request</span><span class="mono bx-b">Done</span>
           <div class="bx-line"><span class="mono">Border</span><div class="bx-ai">AI</div></div>
           <div class="bx-it v" style="--l:0;--d:0"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:1"><span>Koenigsegg Jesko</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:2"><span>Gulfstream G700</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:3"><span>Sotheby’s lot</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:4"><span>Rare coins</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:5"><span>Surgeon in Seoul</span><em>✓</em></div><div class="bx-it " style="--l:0;--d:6"><span>Dinner with Lenny Kravitz</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:7"><span>Christie’s painting</span><em>✓</em></div><div class="bx-it v" style="--l:2;--d:8"><span>Clinique La Prairie</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:9"><span>Meeting Justin Bieber</span><em>✓</em></div><div class="bx-it " style="--l:4;--d:10"><span>Visa and residence</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:11"><span>Reception with Lady Gaga</span><em>✓</em></div>
         </div>
-        <div class="bx-f"><div class="on"><span class="mono">Own license</span><b>Visas · Singapore</b></div><div><span class="mono">Through partners</span><b>Hermès, Sotheby’s, jets, clinics</b></div></div>
+        <div class="bx-f"><div class="on"><span class="mono">Own license</span><b>Visas · Singapore</b></div><div><span class="mono">Through partners</span><b>Money, residence, schools, clinics</b></div></div>
       </div>
     </div>
   </section>
 </div>
 
 <div class="ticker" aria-hidden="true"><div class="tr" id="tr">
-  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Hermès Birkin</span><span class="m">Koenigsegg</span><span>Sotheby’s</span><span class="m">Christie’s</span><span class="o">Gulfstream G700</span><span class="m">rare coins</span><span>surgeons in Seoul</span><span class="m">Clinique La Prairie</span><span class="o">Visas</span><span class="m">trusts for heirs</span><span>24/7</span><span class="m">·</span>
-  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Hermès Birkin</span><span class="m">Koenigsegg</span><span>Sotheby’s</span><span class="m">Christie’s</span><span class="o">Gulfstream G700</span><span class="m">rare coins</span><span>surgeons in Seoul</span><span class="m">Clinique La Prairie</span><span class="o">Visas</span><span class="m">trusts for heirs</span><span>24/7</span><span class="m">·</span>
+  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Transfers</span><span class="m">residence and citizenship</span><span>Trusts for heirs</span><span class="m">universities and schools</span><span class="o">Charité and Mayo Clinic</span><span class="m">Gulfstream G700</span><span>Hermès Birkin</span><span class="m">Sotheby’s</span><span class="o">Monaco Grand Prix</span><span class="m">one manager</span><span>24/7</span><span class="m">·</span>
+  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Transfers</span><span class="m">residence and citizenship</span><span>Trusts for heirs</span><span class="m">universities and schools</span><span class="o">Charité and Mayo Clinic</span><span class="m">Gulfstream G700</span><span>Hermès Birkin</span><span class="m">Sotheby’s</span><span class="o">Monaco Grand Prix</span><span class="m">one manager</span><span>24/7</span><span class="m">·</span>
 </div></div>
 
 <div class="wrap">
+  <section class="sec" id="audience">
+    <div class="sec-h"><span class="mono">00 · Who it is for</span><h2 class="mask">Families living in several countries</h2></div>
+    <p class="xb-lead">Orbiq is built for the person who runs the life of a family: homes, schools, doctors, trips, documents. Tasks come from three or four countries at once, and one person needs to see the whole picture.</p>
+    <div class="aud">
+      <div><span class="mono">Three countries</span><b>One family, three homes</b><p>Home, school and holidays in different countries. One manager keeps the schedule, documents and payments of the whole family.</p></div>
+      <div><span class="mono">Relocation</span><b>A family on the move</b><p>Residence, accounts, school and doctors in the new country. The move becomes one plan, run until the keys are handed over.</p></div>
+      <div><span class="mono">Children</span><b>The future of children</b><p>Schools and universities analyzed for the child: character, languages, country, budget. Admission and a guardian on site.</p></div>
+      <div><span class="mono">Capital</span><b>Capital and inheritance</b><p>A trust, a family foundation, transfers, a second citizenship. Licensed partners selected for the task of the family.</p></div>
+    </div>
+  </section>
+
   <section class="sec" id="cross">
-    <div class="sec-h"><span class="mono">00 · Services</span><h2 class="mask">Tasks without a ready service</h2></div>
-    <p class="xb-lead">Rare things, auctions, private jets, clinics, meetings with stars, money and documents across borders. Visas go through our visa center with a&nbsp;license in&nbsp;Singapore. Everything else goes through partners selected for each task.</p>
+    <div class="sec-h"><span class="mono">01 · Services</span><h2 class="mask">Everything a family needs across countries</h2></div>
+    <p class="xb-lead">Money, documents, education, health, rare things and events. Visas go through our visa center with a&nbsp;license in&nbsp;Singapore. Everything else goes through partners selected for each task.</p>
     <div class="xb-grid">
-      <div class="xb on"><span class="mono">Own license · VisaTO</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Citizenship through partners</p></div>
-      <div class="xb"><span class="mono">Through partners</span><b>Money across borders</b><p>Transfers to family, payment for tuition, treatment and purchases abroad. A route for each task</p></div>
-      <div class="xb"><span class="mono">Through partners</span><b>Trusts and capital</b><p>We select licensed trust companies to protect capital and pass it to heirs</p></div>
-      <div class="xb"><span class="mono">Errands</span><b>Hand over and bring back</b><p>Documents, a gift or a thing for a person in another country. Bringing back what is needed</p></div>
-      <div class="xb"><span class="mono">Through partners</span><b>Private jets</b><p>Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X. A charter in one chat</p></div>
-      <div class="xb"><span class="mono">Rare things</span><b>Hermès, Koenigsegg, coins</b><p>Hermès Birkin and Kelly, Koenigsegg and Pagani from limited series, rare coins of different countries, puppies of rare breeds</p></div>
-      <div class="xb"><span class="mono">Art</span><b>Sotheby’s and Christie’s</b><p>Lot selection, bidding at Sotheby’s, Christie’s and Phillips, delivery and insurance of the work</p></div>
-      <div class="xb"><span class="mono">Beauty and health</span><b>Seoul and Montreux</b><p>Booking with top plastic surgeons in Seoul, rejuvenation programs at Clinique La Prairie</p></div>
-      <div class="xb"><span class="mono">Meetings</span><b>Stars and events</b><p>Dinner with Lenny Kravitz, meeting Justin Bieber, reception with Lady Gaga, a seat at the Chanel Haute Couture show</p></div>
+      <div class="xb on"><span class="mono">Own license · VisaTO</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia</p></div>
+      <div class="xb"><span class="mono">Through partners</span><b>Citizenship and relocation</b><p>A second citizenship and a turnkey family move: documents, housing, school and doctors in the new country</p></div>
+      <div class="xb"><span class="mono">Finance</span><b>Money across borders</b><p>Transfers to family, payment for tuition, treatment and deals abroad, accounts in foreign banks through partners</p></div>
+      <div class="xb"><span class="mono">Finance</span><b>Trusts and inheritance</b><p>Trusts and family foundations through licensed partners: protecting capital and passing it to heirs</p></div>
+      <div class="xb"><span class="mono">Analytics</span><b>Decisions for the family</b><p>Countries for a move, taxes, areas and schools compared. A ready analysis with options and figures</p></div>
+      <div class="xb"><span class="mono">Education</span><b>The future of children</b><p>A school and university matched to the child, preparation for Oxford, Le Rosey and the Ivy League, a guardian on site</p></div>
+      <div class="xb"><span class="mono">Health</span><b>Doctors and clinics</b><p>Second opinion from Charité and Mayo Clinic, surgeons in Seoul, Clinique La Prairie and Lanserhof programs</p></div>
+      <div class="xb"><span class="mono">Through partners</span><b>Private jets</b><p>Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X. A dog in the cabin</p></div>
+      <div class="xb"><span class="mono">Rare things</span><b>Hermès, Koenigsegg, coins</b><p>Hermès Birkin and Kelly, Koenigsegg and Pagani from limited series, Patek Philippe, rare coins</p></div>
+      <div class="xb"><span class="mono">Art</span><b>Sotheby’s and Christie’s</b><p>Lot selection, bidding at Sotheby’s, Christie’s and Phillips, collection storage in the Geneva Freeport</p></div>
+      <div class="xb"><span class="mono">Meetings</span><b>Stars and events</b><p>Dinner with Lenny Kravitz, meeting Justin Bieber, reception with Lady Gaga, Chanel Haute Couture, Monaco Grand Prix</p></div>
+      <div class="xb"><span class="mono">Errands</span><b>Hand over and bring back</b><p>Documents, a gift or a thing for a person in another country. A nanny, a chef, a house manager abroad</p></div>
     </div>
     <div class="xb-syn">
       <div><span class="mono">How we work 1</span><b>One chat for everything</b><p>A manager and AI agents in one chat. Statuses, documents and deadlines stay in one thread.</p></div>
@@ -433,7 +457,7 @@ button{font:inherit}
   </section>
 
   <section class="sec" id="focus">
-    <div class="sec-h"><span class="mono">01 · Why now</span><h2 class="mask">Borders got higher</h2></div>
+    <div class="sec-h"><span class="mono">02 · Why now</span><h2 class="mask">Borders got higher</h2></div>
     <div class="focus">
       <article class="fc f1">
         <span class="n">Pain 1</span>
@@ -504,7 +528,7 @@ button{font:inherit}
   </section>
 
   <section class="sec" id="model">
-    <div class="sec-h"><span class="mono">02 · Comparison</span><h2 class="mask">A bank concierge and&nbsp;Orbiq</h2></div>
+    <div class="sec-h"><span class="mono">03 · Comparison</span><h2 class="mask">A bank concierge and&nbsp;Orbiq</h2></div>
     <div class="ba" id="ba">
       <div class="ba-chart">
         <div class="seg" role="group" aria-label="Concierge"><button type="button" data-v="0" aria-pressed="true">Bank concierge</button><button type="button" data-v="1" aria-pressed="false">Orbiq</button></div>
@@ -528,7 +552,7 @@ button{font:inherit}
   <section class="sec">
     <div class="def">
       <div class="def-txt">
-        <span class="mono" style="color:var(--or)">03 · How a task goes</span>
+        <span class="mono" style="color:var(--or)">04 · How a task goes</span>
         <h3 class="mask">One request, three steps</h3>
         <p>Each step is visible in the chat: status, documents, deadline.</p>
       </div>
@@ -610,13 +634,13 @@ button{font:inherit}
     <div class="l">
       <span class="mono" style="color:#FF4D00">Orbiq · concierge without borders</span>
       <h2 class="mask">Tasks across borders <span>start in&nbsp;Telegram</span></h2>
-      <p>A Birkin, a lot at Christie’s, a surgeon in Seoul, a visa, a trust for heirs. The reply with a route and a deadline comes to the same chat.</p>
+      <p>A transfer, a residence permit, a university for a child, a trust, a lot at Christie’s. The reply with a route and a deadline comes to the same chat.</p>
       <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Send a task <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
       <a class="jlink" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Founders with a license in a new country: we build companies together →</a>
     </div>
     <div class="r">
-      <div class="slots5 s6"><div class="sb">Hermès</div><div class="sa">Sotheby’s</div><div class="sc">Jets</div><div class="sd">Clinics</div><div class="se">Visas</div><div class="sf">Any task</div></div>
+      <div class="slots5 s6"><div class="sb">Residence</div><div class="sa">Transfers</div><div class="sc">Schools</div><div class="sd">Clinics</div><div class="se">Jets</div><div class="sf">Any task</div></div>
     </div>
   </section>
 
@@ -826,7 +850,18 @@ document.addEventListener('visibilitychange',function(){draw()});
 }catch(e){}})();
 </script>
 
-<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and send her the laptop she forgot."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking all three tasks. Statuses will appear here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "The laptop was handed over in London. Courier photo attached."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · UK", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Laptop · London", "steps": [{"label": "Courier", "at": 8200}, {"label": "In transit", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};</script>
+<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and send her the laptop she forgot."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking all three tasks. Statuses will appear here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "The laptop was handed over in London. Courier photo attached."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · UK", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Laptop · London", "steps": [{"label": "Courier", "at": 8200}, {"label": "In transit", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};window.__POOL=["Tuition payment in London", "Account at a Singapore bank", "Payment to a Swiss clinic", "Transfer to family in Dubai", "Villa deal in Marbella", "Trust for the grandchildren", "Family foundation in Liechtenstein", "Prenup lawyer in London", "UAE residence for the family", "Greek Golden Visa", "Turkish citizenship", "Singapore residence", "Schengen visa for the nanny", "US visa for parents", "Family move to Lisbon", "Papers for a baby born in Dubai", "University matched to the child", "Shortlist of English boarding schools", "Admission to Le Rosey", "Oxford preparation", "Dubai schools vs London schools", "Summer camp in Switzerland", "Guardian for a student in London", "Taxes of three countries compared", "Best area to live in Singapore", "Country for the family to move", "Surgeon in Seoul", "Clinique La Prairie", "Second opinion from Charité", "Check-up at Mayo Clinic", "Lanserhof at Tegernsee", "Pediatric orthopedist in Munich", "Gulfstream G700", "Bombardier Global 7500", "Dog in the cabin", "Helicopter to Courchevel", "Yacht on the Riviera", "Car shipped to Dubai", "Hermès Birkin", "Hermès Kelly", "Koenigsegg Jesko", "Limited-series Ferrari", "Patek Philippe Nautilus", "Rare coins", "GIA-certified diamond", "Puppy of a rare breed", "Sotheby’s lot", "Christie’s painting", "Art Basel preview", "Collection storage in the Geneva Freeport", "Dinner with Lenny Kravitz", "Meeting Justin Bieber", "Reception with Lady Gaga", "Seat at Chanel Haute Couture", "Table at the Monaco Grand Prix", "Wimbledon final", "Table at Disfrutar", "Wedding on the Amalfi Coast", "The Vatican at night", "Documents to London today", "Order from Milan by morning", "Gift in Paris by morning", "Apartment keys in Geneva", "English-speaking nanny in Dubai", "Private chef for a month", "House manager in Marbella", "Security for a family trip"];</script>
+<script>
+/* Бесконечная лента запросов на первом экране: каждая плашка после круга получает новый запрос из большого пула, без повторов подряд */
+(function(){try{
+var P=(window.__POOL||[]).slice(),its=[].slice.call(document.querySelectorAll('.bx-it'));if(!P.length||!its.length)return;
+function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+var q=sh(P.slice()),shown=[];
+function next(){if(!q.length){q=sh(P.slice()).filter(function(x){return shown.indexOf(x)<0});if(!q.length)q=sh(P.slice())}var x=q.shift();shown.push(x);if(shown.length>its.length)shown.shift();return x}
+its.forEach(function(el){var sp=el.querySelector('span');sp.textContent=next();
+  el.addEventListener('animationiteration',function(e){if(e.target!==el)return;sp.textContent=next()})});
+}catch(e){}})();
+</script>
 <script>
 /* Мини-фильм «Одна семья»: чат и доска задач, запуск в зоне видимости, пауза при выключенном движении */
 (function(){try{

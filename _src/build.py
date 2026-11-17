@@ -6,7 +6,7 @@ body = open(B+'body.html').read()
 js = open(B+'base.js').read()
 fav = open(B+'favicon.js').read()
 cfjs = open(B+'chatfilm.js').read()
-DOM = 'https://orbicgroup.com'
+DOM = 'https://orbiqgroup.com'
 
 def items(lst, cls=''):
     return ''.join('<div class="bx-it %s" style="--l:%d;--d:%d"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', i % 6, i, x) for i, x in enumerate(lst))
@@ -273,6 +273,6 @@ def build(T):
 os.makedirs(B+'site/ru', exist_ok=True); os.makedirs(B+'site/en', exist_ok=True)
 open(B+'site/index.html', 'w').write(build(EN))
 open(B+'site/ru/index.html', 'w').write(build(RU))
-open(B+'site/en/index.html', 'w').write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">\n<title>Orbiq · Concierge without borders</title><link rel="canonical" href="https://orbicgroup.com/">\n<script>location.replace("/"+location.search+location.hash)</script>\n<meta http-equiv="refresh" content="0;url=/"></head><body style="background:#F3F4F2"></body></html>\n')
+open(B+'site/en/index.html', 'w').write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">\n<title>Orbiq · Concierge without borders</title><link rel="canonical" href="https://orbiqgroup.com/">\n<script>location.replace("/"+location.search+location.hash)</script>\n<meta http-equiv="refresh" content="0;url=/"></head><body style="background:#F3F4F2"></body></html>\n')
 open(B+'site/robots.txt', 'w').write('User-agent: *\nAllow: /\n')
 print('ok')

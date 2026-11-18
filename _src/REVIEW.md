@@ -28,6 +28,14 @@ Build: `python3 build.py`. Local server: `cd site && python3 -m http.server 8811
 - No Lora Italic or handwritten fonts.
 - Check: overflow, broken layout, empty blocks, z-index overlaps, console errors, images loaded, RU and EN both.
 
+## Automatic RU lint (must pass before deploy)
+`./check.sh` builds the site and runs `ru_lint.py` on all visible Russian text, including the animated lists. Any ERROR blocks deploy.
+Rules come from humanizer-ru hard bans (github.com/ilyautov/humanizer-ru, MIT), selling-copy-ru, and phrases Vladimir rejected. Add every new rejected phrase to HARD in ru_lint.py the same day.
+Banned forever on all of Vladimir's sites: empty slogans like «Все начинается с одного сообщения», «Задача в чат за минуту», «Задачи через границу», «Так это выглядит».
+
+## Native-ear review (agent, every update)
+Read every Russian headline, button and first sentence aloud. Ask: would a Russian-speaking woman in Moscow or Dubai say this to a friend? If it sounds translated, abstract or like a slogan, rewrite with a concrete brand, place, person or moment. Compare with real Russian luxury sources (Prime Concierge, Tatler Russia, private banking pages) when unsure.
+
 ## What each agent returns
 - Blocking issues (must fix) with exact file and exact replacement.
 - What got better / worse vs previous version.

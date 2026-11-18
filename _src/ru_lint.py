@@ -90,7 +90,7 @@ if __name__ == '__main__':
         m = re.search(r'window\.__POOL=(\[.*?\]);', open(page, encoding='utf-8').read(), re.S)
         if not m: continue
         for it in json.loads(m.group(1)):
-            if re.fullmatch(r'[A-Za-z][\w.-]* \+\d+%', it): continue  # pre-IPO deal: «Name +N%» (owner data, IPO Sharks)
+            if re.fullmatch(r'[A-Za-z][\w.-]* pre-IPO \+\d+%', it): continue  # pre-IPO deal: «Name +N%» (owner data, IPO Sharks)
             if len(it.split()) > 4: hard.append(('POOL: больше 4 слов, нужно только имя', it))
             if re.search(r'с бриллиант|для семьи|через spv|до ipo|в полном|без масла|в платине|без объявлений|with diamonds|for the family|via spv|before the ipo|full set|in platinum', it.lower()):
                 hard.append(('POOL: пояснение вместо имени', it))

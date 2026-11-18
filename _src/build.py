@@ -12,8 +12,11 @@ DOM = 'https://orbiqgroup.com'
 
 def items(lst, cls=''):
     LN = [0, 3, 1, 5, 2, 4, 3, 0, 4, 1, 5, 2]
-    JT = [0, .35, .1, .6, .2, .45, .05, .5, .25, .65, .15, .4]
-    return ''.join('<div class="bx-it %s" style="--l:%d;--d:%.2f"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', LN[i % 12], i + JT[i % 12], x) for i, x in enumerate(lst))
+    LS = [14, 17, 15.5, 19, 13, 16.5]
+    R0 = [2.1, 9.4, 5.7, 12.3, 0.8, 7.6]
+    TT = [LS[LN[i]] for i in range(12)]
+    DL = [R0[LN[i]] + (LS[LN[i]] / 2 if i >= 6 else 0) for i in range(12)]
+    return ''.join('<div class="bx-it %s" style="--l:%d;--t:%.1fs;--o:%.1fs"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', LN[i % 12], TT[i % 12], DL[i % 12], x) for i, x in enumerate(lst))
 
 def ticker(lst):
     out = []

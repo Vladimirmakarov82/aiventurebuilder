@@ -439,8 +439,8 @@ button{font:inherit}
 .bx-it span{transition:opacity .3s}
 /* hero cta */
 .hcta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-.hbtn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 26px;border-radius:999px;background:#FF4D00;color:#fff;font-weight:600;font-size:16px;box-shadow:0 10px 30px -10px rgba(255,77,0,.6);transition:transform .3s cubic-bezier(.16,1,.3,1)}
-.hbtn:hover{transform:translateY(-2px)}.hbtn i{font-style:normal}
+.hbtn{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:500;font-size:15px;letter-spacing:.01em;transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.hbtn:hover{transform:translateY(-1px)}.hbtn i{font-style:normal}
 .hbtn2{display:inline-flex;align-items:center;min-height:56px;padding:0 24px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-weight:600;font-size:15px}
 .trust{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .trust span{display:inline-flex;align-items:center;gap:8px}.trust i{width:6px;height:6px;border-radius:50%;background:#00A676}
@@ -451,47 +451,45 @@ button{font:inherit}
 .tk-trust{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .tk-trust li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4}
 .tk-trust li b{display:block;font-weight:600}.tk-trust li span{color:var(--mute)}
-.tk-trust li:before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:#FF4D00 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:1px}
-.tform{background:#0B0B0D;color:#F3F4F2;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45)}
+.tk-trust li:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-top:9px}
+.tform{background:#0B0B0D;color:#F3F4F2;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px;}
 .tf-top{display:flex;align-items:center;gap:14px}.tf-top .mono{font-size:11px;color:rgba(243,244,242,.6)}
-.tf-bar{flex:1;height:3px;border-radius:9px;background:rgba(243,244,242,.15);overflow:hidden}.tf-bar i{display:block;height:100%;width:33%;background:#FF4D00;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.tf-bar{flex:1;height:3px;border-radius:9px;background:rgba(243,244,242,.15);overflow:hidden}.tf-bar i{display:block;height:100%;width:33%;background:#F3F4F2;transition:width .5s cubic-bezier(.16,1,.3,1)}
 .tf-s{display:none;flex-direction:column;gap:14px;animation:tfin .5s cubic-bezier(.16,1,.3,1)}
 .tf-s.on{display:flex}
 @keyframes tfin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .tf-q{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
 .tf-chips{display:flex;flex-wrap:wrap;gap:8px}
 .tf-chips button{font:inherit;font-size:15px;padding:12px 16px;border-radius:999px;border:1px solid rgba(243,244,242,.2);background:transparent;color:#F3F4F2;cursor:pointer;transition:background .25s,border-color .25s}
-.tf-chips button:hover,.tf-chips button.on{background:#FF4D00;border-color:#FF4D00}
+.tf-chips button:hover{border-color:rgba(243,244,242,.5)}.tf-chips button.on{background:#F3F4F2;border-color:#F3F4F2;color:#0B0B0D}
 .tform textarea,.tform input{font:inherit;font-size:16px;width:100%;box-sizing:border-box;padding:16px;border-radius:16px;border:1px solid rgba(243,244,242,.18);background:rgba(243,244,242,.06);color:#F3F4F2;resize:vertical;outline:none}
-.tform textarea:focus,.tform input:focus{border-color:#FF4D00}
+.tform textarea:focus,.tform input:focus{border-color:rgba(243,244,242,.5)}
 .tform ::placeholder{color:rgba(243,244,242,.4)}
 .tf-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .tf-back{font:inherit;font-size:14px;background:none;border:0;color:rgba(243,244,242,.55);cursor:pointer;padding:8px 0}
-.tf-next,.tf-go{font:inherit;font-weight:600;font-size:16px;min-height:54px;padding:0 24px;border-radius:999px;border:0;background:#FF4D00;color:#fff;cursor:pointer}
+.tf-next,.tf-go{font:inherit;font-weight:500;font-size:15px;min-height:52px;padding:0 24px;border-radius:999px;border:0;background:#F3F4F2;color:#0B0B0D;cursor:pointer}
 .tf-next[disabled]{opacity:.35;cursor:default}
 .tf-send{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tf-go.alt{background:#F3F4F2;color:#0B0B0D}
+.tf-go.alt{background:transparent;color:#F3F4F2;border:1px solid rgba(243,244,242,.25)}
 .tf-note{margin:0;font-size:13px;line-height:1.45;color:rgba(243,244,242,.55)}
 .tf-ta{position:relative}.tf-ta textarea{padding-bottom:60px}
 .tf-mic{position:absolute;left:10px;bottom:12px;display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;border:0;background:#F3F4F2;color:#0B0B0D;cursor:pointer}
 .tf-mic[hidden]{display:none}.tf-mic svg{width:16px;height:16px}
-.tf-mic.rec{background:#FF4D00;color:#fff;animation:micp 1.2s infinite}
-@keyframes micp{0%,100%{box-shadow:0 0 0 0 rgba(255,77,0,.5)}50%{box-shadow:0 0 0 10px rgba(255,77,0,0)}}
-/* sticky mobile cta */
-.stk{display:none}
+.tf-mic.rec{background:#0B0B0D;color:#F3F4F2;outline:1px solid rgba(243,244,242,.4);animation:micp 1.6s infinite}
+@keyframes micp{0%,100%{opacity:1}50%{opacity:.6}}
 @media (max-width:760px){
  .tk-wrap{grid-template-columns:1fr}
  .tform{padding:20px;min-height:0}
  .tf-q{font-size:22px}.tf-send{grid-template-columns:1fr}
  .hcta .hbtn{flex:1;justify-content:center}
- .stk{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;align-items:center;gap:10px;min-height:58px;padding:0 20px;border-radius:999px;background:#FF4D00;color:#fff;font-weight:600;box-shadow:0 14px 40px -12px rgba(255,77,0,.7);transform:translateY(140%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
- .stk.on{transform:none}.stk small{font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin-left:auto}.stk i{font-style:normal}
  #film,#focus,#model,#process,#portfolio{display:none}
  .xb-grid,.xb-syn{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:-16px;padding:0 16px 6px;scrollbar-width:none}
  .xb-grid::-webkit-scrollbar,.xb-syn::-webkit-scrollbar{display:none}
  .xb-grid>*,.xb-syn>*{flex:0 0 80%;scroll-snap-align:start}
  .foot{padding-bottom:90px}
 }
+.nav-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500;font-size:14px;white-space:nowrap}
+@media (max-width:760px){#motion{display:none}.bx-it.x2{display:none}.bx-it,.bx-it em{animation-duration:16s}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -506,6 +504,7 @@ button{font:inherit}
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
       <a class="nl" href="#cross">Услуги</a><a class="nl" href="#focus">Почему сейчас</a><a class="nl" href="#model">Сравнение</a><a class="nl" href="#portfolio">Компании</a>
+      <a class="nav-cta" href="#task">Задача →</a>
       <a class="chip" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Движение: вкл</button>
     </div>
@@ -518,7 +517,6 @@ button{font:inherit}
       <p class="lead">Резидентство Монако, место в&nbsp;Le Rosey, Patek Philippe без листа ожидания, семейный траст на&nbsp;три поколения. Orbiq берет задачи, которые решаются только через нужных людей. Партнеры в&nbsp;каждой стране открывают двери.</p>
       <div class="hcta">
         <a class="hbtn" href="#task">Описать задачу <i aria-hidden="true">→</i></a>
-        <a class="hbtn2" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Telegram</a>
       </div>
       <div class="trust mono"><span><i></i>Конфиденциально</span><span><i></i>Ответ в течение часа</span></div>
       <div class="kpis">
@@ -532,7 +530,7 @@ button{font:inherit}
         <div class="bx-stage" aria-label="Задачи пересекают границу и выполняются: переводы, ВНЖ, трасты, школы, клиники, документы">
           <span class="mono bx-a">Запрос</span><span class="mono bx-b">Готово</span>
           <div class="bx-line"><span class="mono">Граница</span><div class="bx-ai">AI</div></div>
-          <div class="bx-it v" style="--l:0;--d:0"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:1"><span>Счет в частном банке Женевы</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:2"><span>Место в Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:3"><span>Препарат, которого нет в стране</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:4"><span>Patek Philippe 5711 без листа ожидания</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:5"><span>Резидентство Монако</span><em>✓</em></div><div class="bx-it " style="--l:0;--d:6"><span>Второе мнение онколога из Charité</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:7"><span>Ужин с Ленни Кравицем</span><em>✓</em></div><div class="bx-it v" style="--l:2;--d:8"><span>Семейный траст на три поколения</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:9"><span>Кашмирский сапфир с сертификатом Gübelin</span><em>✓</em></div><div class="bx-it " style="--l:4;--d:10"><span>Gulfstream G700 для семьи</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:11"><span>Подбор университета под характер ребенка</span><em>✓</em></div>
+          <div class="bx-it v" style="--l:0;--d:0"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:1"><span>Счет в частном банке Женевы</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:2"><span>Место в Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:3"><span>Препарат, которого нет в стране</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:4"><span>Patek Philippe 5711 без листа ожидания</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:5"><span>Резидентство Монако</span><em>✓</em></div><div class="bx-it  x2" style="--l:0;--d:6"><span>Второе мнение онколога из Charité</span><em>✓</em></div><div class="bx-it  x2" style="--l:1;--d:7"><span>Ужин с Ленни Кравицем</span><em>✓</em></div><div class="bx-it v x2" style="--l:2;--d:8"><span>Семейный траст на три поколения</span><em>✓</em></div><div class="bx-it  x2" style="--l:3;--d:9"><span>Кашмирский сапфир с сертификатом Gübelin</span><em>✓</em></div><div class="bx-it  x2" style="--l:4;--d:10"><span>Gulfstream G700 для семьи</span><em>✓</em></div><div class="bx-it  x2" style="--l:5;--d:11"><span>Подбор университета под характер ребенка</span><em>✓</em></div>
         </div>
       </div>
     </div>
@@ -792,7 +790,6 @@ button{font:inherit}
     </div>
   </section>
 
-  <a class="stk" id="stk" href="#task"><span>Описать задачу</span><small>Ответ в течение часа</small><i aria-hidden="true">→</i></a>
   <footer class="foot">
     <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">Скопировать</span></button>
@@ -1033,9 +1030,6 @@ if(SR&&mic){mic.hidden=false;var r=null,base='';
   r.onresult=function(e){var t='';for(var i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;tx.value=base+t;chk()};
   r.onend=function(){r=null;mic.classList.remove('rec');ml.textContent=D.mic};r.onerror=r.onend;
   try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
-/* sticky cta */
-var k=document.getElementById('stk'),hero=document.getElementById('top'),task=document.getElementById('task'),hv=true,tv=false;
-if(k&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===hero)hv=e.isIntersecting;else tv=e.isIntersecting});k.classList.toggle('on',!hv&&!tv)},{threshold:0});io.observe(hero);io.observe(task)}
 }catch(e){}})();
 </script>
 <script>

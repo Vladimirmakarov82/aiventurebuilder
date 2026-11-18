@@ -11,7 +11,7 @@ formjs = open(B+'form.js').read()
 DOM = 'https://orbiqgroup.com'
 
 def items(lst, cls=''):
-    return ''.join('<div class="bx-it %s" style="--l:%d;--d:%d"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', i % 6, i, x) for i, x in enumerate(lst))
+    return ''.join('<div class="bx-it %s%s" style="--l:%d;--d:%d"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', ' x2' if i >= 6 else '', i % 6, i, x) for i, x in enumerate(lst))
 
 def ticker(lst):
     out = []
@@ -112,7 +112,7 @@ EN = dict(
  axis="['HOTEL','FLIGHT','TRANSFER','VISA','TRUST']",
  SIDE="[{t:'Bank concierge',h:'Works within the rules of one bank',l:['Handles standard requests fast','Non-standard tasks hit the rules and limits of the bank','The bank sets the list of services']},{t:'Orbiq',h:'Builds a route for each task',l:['Partners in many countries: payment, legal, trust, visa','A personal agent network runs all tasks in parallel',{s:'In one chat:',u:['status of each task','documents and deadlines','one manager for the whole family']}],g:true}]",
  goal='<div class="goal"><span>On duty</span><b class="num">24/7</b><span>one chat for any task</span></div>',
- cta='Describe a task',
+ cta='Describe a task', cta_short='Task →',
  trust1='Confidential',
  trust2='Reply within an hour',
  t_m='Task',
@@ -214,7 +214,7 @@ RU = dict(
  axis="['ОТЕЛЬ','ПЕРЕЛЕТ','ПЕРЕВОД','ВИЗА','ТРАСТ']",
  SIDE="[{t:'Консьерж банка',h:'Работает в правилах одного банка',l:['Стандартные запросы закрывает быстро','Нестандартные задачи упираются в правила и лимиты банка','Набор услуг задает банк']},{t:'Orbiq',h:'Строит маршрут под каждую задачу',l:['Партнеры во многих странах: платежные, юридические, трастовые, визовые','Личная сеть агентов ведет все задачи параллельно',{s:'В одном чате:',u:['статус каждой задачи','документы и сроки','один менеджер на всю семью']}],g:true}]",
  goal='<div class="goal"><span>На связи</span><b class="num">24/7</b><span>один чат на любую задачу</span></div>',
- cta='Описать задачу',
+ cta='Описать задачу', cta_short='Задача →',
  trust1='Конфиденциально',
  trust2='Ответ в течение часа',
  t_m='Задача',

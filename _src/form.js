@@ -20,8 +20,5 @@ if(SR&&mic){mic.hidden=false;var r=null,base='';
   r.onresult=function(e){var t='';for(var i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;tx.value=base+t;chk()};
   r.onend=function(){r=null;mic.classList.remove('rec');ml.textContent=D.mic};r.onerror=r.onend;
   try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
-/* sticky cta */
-var k=document.getElementById('stk'),hero=document.getElementById('top'),task=document.getElementById('task'),hv=true,tv=false;
-if(k&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===hero)hv=e.isIntersecting;else tv=e.isIntersecting});k.classList.toggle('on',!hv&&!tv)},{threshold:0});io.observe(hero);io.observe(task)}
 }catch(e){}})();
 </script>

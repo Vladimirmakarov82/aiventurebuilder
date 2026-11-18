@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Orbiq · Консьерж без границ</title>
 <meta name="description" content="Orbiq берет задачи, которые решаются через нужных людей: резидентство Монако, Le Rosey, Patek Philippe без листа ожидания, семейные трасты, Charité, Sotheby’s и Christie’s.">
-<meta property="og:title" content="Orbiq · Concierge without borders">
-<meta property="og:description" content="Orbiq takes tasks that open only through the right people: Monaco residence, Le Rosey, Patek Philippe without a waitlist, family trusts, Charité, Sotheby’s and Christie’s.">
+<meta property="og:title" content="Orbiq · Консьерж без границ">
+<meta property="og:description" content="Orbiq берет задачи, которые решаются через нужных людей: резидентство Монако, Le Rosey, Patek Philippe без листа ожидания, семейные трасты, Charité, Sotheby’s и Christie’s.">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://orbiqgroup.com/ru/">
 <meta property="og:type" content="website">
@@ -513,6 +513,20 @@ button{font:inherit}
 .hlink{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-weight:500;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);transition:border-color .3s}
 .hlink:hover{border-color:var(--ink)}.hlink i{font-style:normal;display:inline-block;animation:hl 2.4s ease-in-out infinite}
 @keyframes hl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+
+/* review: design/mobile pass */
+.bx-stage{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+.bx-line .mono{top:10px;bottom:auto;z-index:3;padding:2px 6px;border-radius:999px;background:var(--bg)}
+.xb p{margin:4px 0 0}
+.join .slots5.s6 div{position:relative;background:color-mix(in srgb,var(--c) 16%,#141417);color:rgba(243,244,242,.85);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);font-size:11px;padding:14px;transition:background .5s var(--ease-out)}
+.join .slots5.s6 div::after{content:"";position:absolute;left:14px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.join .slots5.s6 div:hover{background:color-mix(in srgb,var(--c) 28%,#141417)}
+.join .slots5 .sa{--c:#5542FF}.join .slots5 .sb{--c:#00A676}.join .slots5 .sc{--c:#FFB800}.join .slots5 .sd{--c:#D2FF00}.join .slots5 .se{--c:#FF4D00}.join .slots5 .sf{--c:#F3F4F2}
+.jmail,.foot a.mono{display:inline-flex;align-items:center;min-height:44px}
+.jmail{padding-bottom:0}
+.brand{min-height:44px}
+@media (max-width:760px){.foot{padding-bottom:32px}.nav-cta,.nav .chip{min-height:44px;min-width:44px}}
+#focus,#model,#process{display:none!important}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -526,7 +540,7 @@ button{font:inherit}
   <header class="nav">
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
-      <a class="nl" href="#cross">Услуги</a><a class="nl" href="#focus">Почему сейчас</a><a class="nl" href="#model">Сравнение</a><a class="nl" href="#portfolio">Компании</a>
+      <a class="nl" href="#cross">Услуги</a><a class="nl" href="#stories">Истории</a>
       <a class="nav-cta" href="#task">Связаться</a>
       <a class="chip" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Движение: вкл</button>
@@ -549,7 +563,7 @@ button{font:inherit}
         <div class="bx-stage" aria-label="Задачи пересекают границу и выполняются: переводы, ВНЖ, трасты, школы, клиники, документы">
           <span class="mono bx-a">Запрос</span><span class="mono bx-b">Готово</span>
           <div class="bx-line"><span class="mono">Граница</span><div class="bx-ai">AI</div></div>
-          <div class="bx-it v" style="--l:0;--d:0"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:1"><span>Счет в частном банке Женевы</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:2"><span>Место в Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:3"><span>Препарат, которого нет в стране</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:4"><span>Patek Philippe 5711 без листа ожидания</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:5"><span>Резидентство Монако</span><em>✓</em></div><div class="bx-it  x2" style="--l:0;--d:6"><span>Второе мнение онколога из Charité</span><em>✓</em></div><div class="bx-it  x2" style="--l:1;--d:7"><span>Ужин с Ленни Кравицем</span><em>✓</em></div><div class="bx-it v x2" style="--l:2;--d:8"><span>Семейный траст на три поколения</span><em>✓</em></div><div class="bx-it  x2" style="--l:3;--d:9"><span>Кашмирский сапфир с сертификатом Gübelin</span><em>✓</em></div><div class="bx-it  x2" style="--l:4;--d:10"><span>Gulfstream G700 для семьи</span><em>✓</em></div><div class="bx-it  x2" style="--l:5;--d:11"><span>Подбор университета под характер ребенка</span><em>✓</em></div>
+          <div class="bx-it v" style="--l:0;--d:0"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:1"><span>Счет в частном банке Женевы</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:2"><span>Место в Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:3"><span>Препарат, которого нет в стране</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:4"><span>Patek Philippe 5711 в полном комплекте</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:5"><span>Резидентство Монако</span><em>✓</em></div><div class="bx-it  x2" style="--l:0;--d:6"><span>Второе мнение онколога из Charité</span><em>✓</em></div><div class="bx-it  x2" style="--l:1;--d:7"><span>Стол на гала amfAR в Каннах</span><em>✓</em></div><div class="bx-it v x2" style="--l:2;--d:8"><span>Семейный траст на три поколения</span><em>✓</em></div><div class="bx-it  x2" style="--l:3;--d:9"><span>Кашмирский сапфир с сертификатом Gübelin</span><em>✓</em></div><div class="bx-it  x2" style="--l:4;--d:10"><span>Gulfstream G700 для семьи</span><em>✓</em></div><div class="bx-it  x2" style="--l:5;--d:11"><span>Подбор университета под характер ребенка</span><em>✓</em></div>
         </div>
       </div>
     </div>
@@ -566,13 +580,14 @@ button{font:inherit}
     <div class="st-h"><div class="sec-h"><span class="mono">Истории</span><h2 class="mask">Просят неделю в&nbsp;Лондоне. Получают Royal Ascot</h2></div>
       <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="Назад">←</button><button type="button" class="st-btn" data-d="1" aria-label="Дальше">→</button></div></div>
     <div class="st-row" id="strow">
-      <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">Лондон · июнь</figcaption></figure><div class="st-b"><h3>Скачки, о&nbsp;которых она не&nbsp;думала</h3><p>Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, модистка сшила шляпу под дресс-код.</p><b>В 14:00 мимо прошла королевская процессия</b></div></article>
-      <article class="st"><figure><img src="/img/monaco.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Монако · июль</figcaption></figure><div class="st-b"><h3>Подарок мужу, который ездит верхом</h3><p>Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, Гран-при идет под патронажем Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.</p><b>Трофеи вручала Шарлотта Казираги</b></div></article>
-      <article class="st"><figure><img src="/img/kelly.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Париж</figcaption></figure><div class="st-b"><h3>Kelly без листа ожидания</h3><p>Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного дилера в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.</p><b>Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень</b></div></article>
+      <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">Лондон · июнь</figcaption></figure><div class="st-b"><h3>Скачки, о&nbsp;которых она не&nbsp;думала</h3><p>Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, шляпу под дресс-код сделала лондонская мастерская.</p><b>В 14:00 мимо прошла королевская процессия</b></div></article>
+      <article class="st"><figure><img src="/img/kelly.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Париж</figcaption></figure><div class="st-b"><h3>Kelly без листа ожидания</h3><p>Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного продавца в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.</p><b>Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень</b></div></article>
       <article class="st"><figure><img src="/img/lake.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Монтре · Швейцария</figcaption></figure><div class="st-b"><h3>Неделя для себя у&nbsp;Женевского озера</h3><p>Устала и&nbsp;хотела восстановиться без больничной атмосферы. Мы подобрали программу долголетия в&nbsp;Clinique La&nbsp;Prairie: анализы, врачи, сон, питание. Переводчик и&nbsp;водитель встретили в&nbsp;аэропорту Женевы.</p><b>Семь дней по&nbsp;одному плану, ни&nbsp;одного звонка с&nbsp;ее стороны</b></div></article>
-      <article class="st"><figure><img src="/img/alps.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Гштаад · январь</figcaption></figure><div class="st-b"><h3>Школа, где зимой учатся в&nbsp;горах</h3><p>Родители выбирали школу для дочери. Мы показали Le&nbsp;Rosey: осенью и&nbsp;весной кампус в&nbsp;Ролле, зимой классы переезжают в&nbsp;Гштаад. Устроили визит на&nbsp;оба кампуса и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.</p><b>Дочь сама попросила подать документы</b></div></article>
       <article class="st"><figure><img src="/img/art.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Нью-Йорк · ноябрь</figcaption></figure><div class="st-b"><h3>Картина для новой гостиной</h3><p>После переезда стена над камином пустовала. Арт-консультант отобрал три лота вечерних торгов Christie’s в&nbsp;Нью-Йорке, запросил отчеты о&nbsp;состоянии и&nbsp;провенанс.</p><b>Ставку сделали по&nbsp;телефону через специалиста аукциона</b></div></article>
+      <article class="st"><figure><img src="/img/monaco.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Монако · июль</figcaption></figure><div class="st-b"><h3>Подарок мужу, который ездит верхом</h3><p>Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, турнир идет под патронажем князя Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.</p><b>Призы вручали члены княжеской семьи</b></div></article>
+      <article class="st"><figure><img src="/img/alps.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Гштаад · январь</figcaption></figure><div class="st-b"><h3>Школа, где зимой учатся в&nbsp;горах</h3><p>Родители выбирали школу для дочери. Мы показали Le&nbsp;Rosey: осенью и&nbsp;весной кампус в&nbsp;Ролле, зимой классы переезжают в&nbsp;Гштаад. Устроили визит на&nbsp;оба кампуса и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.</p><b>Дочь сама попросила подать документы</b></div></article>
       <article class="st"><figure><img src="/img/watch.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:60% 50%"><figcaption class="mono">Женева</figcaption></figure><div class="st-b"><h3>Rolex, которого нет в&nbsp;витрине</h3><p>Готовила подарок мужу к&nbsp;50-летию. В&nbsp;бутиках нужной модели не&nbsp;было. Партнер в&nbsp;Женеве нашел часы в&nbsp;полном комплекте с&nbsp;документами, независимый мастер проверил механизм.</p><b>Часы приехали к&nbsp;юбилейному ужину</b></div></article>
+      <article class="st"><figure><img src="/img/preipo.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Цюрих · сентябрь</figcaption></figure><div class="st-b"><h3>Доля в&nbsp;компании, о&nbsp;которой говорит сын</h3><p>Сын работает с&nbsp;данными и&nbsp;часто рассказывает про Databricks. Акции компании не&nbsp;торгуются на&nbsp;бирже. Партнер с&nbsp;лицензией в&nbsp;Цюрихе нашел акционера, готового продать часть доли. Компания согласовала передачу, долю оформили через SPV на&nbsp;семейный траст.</p><b>За ужином сын спросил, откуда она знает его любимую компанию</b></div></article>
     </div>
     <p class="st-note mono">Сценарии работы. Запросы клиентов не&nbsp;публикуем.</p>
   </section>
@@ -615,17 +630,17 @@ button{font:inherit}
       <div class="xb"><span class="mono">Через партнеров</span><b>Резидентство и&nbsp;гражданство</b><p>Резидентство Монако и Сингапура, Golden Visa ОАЭ, Швейцария по паушальному налогу, второе гражданство для семьи</p></div>
       <div class="xb"><span class="mono">Финансы</span><b>Деньги через границу</b><p>Счета в частных банках Женевы и Сингапура, оплата учебы, клиник и сделок за границей</p></div>
       <div class="xb"><span class="mono">Финансы</span><b>Трасты и&nbsp;наследство</b><p>Семейные трасты и фонды в Лихтенштейне и Швейцарии через лицензированных партнеров: капитал под защитой и переходит детям и внукам</p></div>
-      <div class="xb"><span class="mono">Аналитика</span><b>Решения для семьи</b><p>Сравнение стран для переезда, налогов, районов и школ. Готовый разбор с вариантами и цифрами</p></div>
-      <div class="xb"><span class="mono">Образование</span><b>Будущее детей</b><p>Школа и университет под характер ребенка: Le Rosey, Eton, Оксфорд, Лига плюща</p></div>
-      <div class="xb"><span class="mono">Здоровье</span><b>Врачи и&nbsp;лекарства</b><p>Второе мнение из Charité и Mayo Clinic, хирурги Сеула, Clinique La Prairie. Редкий препарат: находим страну, где он есть, и получение через клинику по рецепту</p></div>
+      <div class="xb"><span class="mono">Капитал</span><b>Закрытые pre-IPO сделки</b><p>Закрытые раунды и акции зрелых частных компаний на вторичном рынке: Stripe, Databricks, Anduril. Сделку ведут партнеры с лицензией, доля оформляется через SPV</p></div>
+      <div class="xb"><span class="mono">Образование</span><b>Школы и&nbsp;университеты</b><p>Школа и университет под характер ребенка: Le Rosey, Eton, Оксфорд, Лига плюща</p></div>
+      <div class="xb"><span class="mono">Здоровье</span><b>Врачи и&nbsp;лекарства</b><p>Второе мнение из Charité и Mayo Clinic, хирурги Сеула, Clinique La Prairie. Редкий препарат: находим страну, где его продают, и получаем через клинику по рецепту</p></div>
       <div class="xb"><span class="mono">Через партнеров</span><b>Частные джеты</b><p>Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X для всей семьи</p></div>
       <div class="xb"><span class="mono">Коллекции</span><b>Часы, камни, монеты</b><p>Patek Philippe, Audemars Piguet, F.P. Journe с проверкой подлинности; бриллианты, сапфиры и изумруды с сертификатами GIA и Gübelin; редкие монеты; Hermès Birkin и Kelly</p></div>
       <div class="xb"><span class="mono">Искусство</span><b>Sotheby’s и&nbsp;Christie’s</b><p>Подбор лота, торги Sotheby’s, Christie’s и Phillips, хранение коллекции во фрипорте Женевы</p></div>
-      <div class="xb"><span class="mono">События</span><b>Звезды и&nbsp;события</b><p>Ужин с Ленни Кравицем, встреча с Джастином Бибером, прием у Леди Гаги, показ Chanel Haute Couture, Гран-при Монако</p></div>
-      <div class="xb"><span class="mono">Недвижимость</span><b>Вне рынка</b><p>Виллы и пентхаусы, которых нет в открытой продаже: Марбелья, Монако, One Hyde Park в Лондоне</p></div>
+      <div class="xb"><span class="mono">События</span><b>Закрытые события</b><p>Стол на гала amfAR в Каннах, ложа на Венском оперном балу, показ Chanel Haute Couture, Гран-при Монако</p></div>
+      <div class="xb"><span class="mono">Недвижимость</span><b>Дома вне открытой продажи</b><p>Виллы и пентхаусы, которых нет в открытой продаже: Марбелья, Монако, One Hyde Park в Лондоне</p></div>
     </div>
     <div class="xb-syn">
-      <div><span class="mono">Скорость</span><b>Личная сеть AI-агентов</b><p>Под каждого клиента разворачиваем свою сеть агентов. Они ведут все задачи параллельно, сверяют документы двух стран и не пропускают ни одного срока.</p></div>
+      <div><span class="mono">Скорость</span><b>Личная сеть AI-агентов</b><p>Под каждого клиента запускаем свою сеть агентов. Они ведут все задачи параллельно, сверяют документы двух стран и не пропускают ни одного срока.</p></div>
       <div><span class="mono">Доступ</span><b>Партнеры с лицензией в каждой стране</b><p>Трастовые, платежные и юридические компании, визовые центры. Подбираем и проверяем под каждую задачу.</p></div>
       <div><span class="mono">Конфиденциальность</span><b>Задачу видит один человек</b><p>Личный менеджер и личная сеть агентов клиента. Сайт не хранит заявки, переписка идет только в личном чате.</p></div>
     </div>
@@ -659,9 +674,9 @@ button{font:inherit}
     <div class="sec-h"><span class="mono">01 · Почему сейчас</span><h2 class="mask">Границы стали выше</h2></div>
     <div class="focus">
       <article class="fc f1">
-        <span class="n">Боль 1</span>
-        <h3>Деньги и людей стало сложнее перемещать</h3>
-        <p>Каждый год приносит новые ограничения:</p>
+        <span class="n">Причина 1</span>
+        <h3>Деньгам и людям труднее пересечь границу</h3>
+        <p>Ограничений с каждым годом больше:</p>
         <ul class="bar">
           <li>Переводы за границу идут неделями и зависают</li>
           <li>Банки закрывают счета без объяснений</li>
@@ -673,16 +688,16 @@ button{font:inherit}
         <svg viewBox="0 0 360 150" class="wall" aria-hidden="true" id="wallsvg"><g id="bricks"></g><circle id="runner" r="9" fill="#FF4D00" cx="20" cy="120"/></svg>
       </article>
       <article class="fc f3">
-        <span class="n">Боль 2</span>
+        <span class="n">Причина 2</span>
         <h3>Сроки остаются прежними</h3>
         <p>Учеба, операция, сделка, семейное событие: дата назначена, маршрут меняется каждый месяц</p>
         <svg viewBox="0 0 260 120" aria-hidden="true" id="pulsesvg"><path id="pulse" class="pulse-l" d="M0 80"/><circle id="pdot" r="5" fill="#FF4D00" cx="260" cy="60"/></svg>
       </article>
       <article class="fc f2" id="tailcard">
         <div class="tl-l">
-          <span class="n">Боль 3</span>
+          <span class="n">Причина 3</span>
           <div class="big num">∞</div>
-          <h3>Консьерж банка работает в&nbsp;правилах своего банка</h3>
+          <h3>Консьерж банка связан правилами банка</h3>
           <ol class="tl-steps">
             <li data-s="1"><b>Стандарт.</b> Рестораны, отели, билеты. С этим справляется любой консьерж.</li>
             <li data-s="2"><b>Нестандарт.</b> Деньги, документы, люди и вещи через границу. Консьерж банка остается в правилах и лимитах своего банка.</li>
@@ -718,7 +733,7 @@ button{font:inherit}
           <path id="riskA" fill="url(#rk)"/>
           <path id="riskL" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="7 6"/>
           <path id="revL" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/>
-          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-14" dy="-12">ПРЕДЕЛ ПРАВИЛ БАНКА</text></g>
+          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-18" dy="4">ПРЕДЕЛ ПРАВИЛ БАНКА</text></g>
           <g id="round"><circle r="9" fill="#FF4D00"/><circle r="18" fill="none" stroke="#FF4D00"/><text class="svgl" fill="var(--ink)" text-anchor="middle" dy="40">ORBIQ НАХОДИТ МАРШРУТ</text></g>
           <text id="revT" class="svgl" fill="var(--ink)" text-anchor="end">ЗАДАЧИ РЕШЕНЫ</text>
           <text id="riskT" class="svgl" fill="#FF4D00" text-anchor="end">ЗАДАЧИ БЕЗ РЕШЕНИЯ</text>
@@ -750,66 +765,6 @@ button{font:inherit}
     </div>
   </section>
 
-  <section class="sec" id="portfolio">
-    <div class="port-h">
-      <h2 class="mask">Ком<span>пании</span></h2>
-      <div class="port-k">
-        <div><b class="num">SG</b><span>лицензия визового центра</span></div>
-        <div><b class="num">24/7</b><span>всегда на связи</span></div>
-        <div><b class="num">12</b><span>направлений услуг</span></div>
-      </div>
-    </div>
-    <p class="xb-lead">Под каждое направление Orbiq строит отдельную компанию со своей лицензией и командой.</p>
-
-    <article class="pj pg" id="pj2">
-      <span class="bgn" aria-hidden="true">VISA</span>
-      <div class="pj-l">
-        <div class="no"><span>01 · Визы</span><span class="st">Старт: Сингапур</span></div>
-        <h3>VisaTO</h3>
-        <p class="one">Визовый центр с&nbsp;лицензией в&nbsp;Сингапуре. Дальше Дубай, Таиланд, Вьетнам и&nbsp;Австралия. Агенты собирают документы и&nbsp;ведут каждую заявку.</p>
-        <div class="mkt"><b class="num"><span class="cu" data-to="15.2" data-pre="$" data-dec="1">$15,2</span><small>млрд → $27,5 млрд к&nbsp;2034</small></b><span>мировой рынок визового сервиса, 2025</span></div>
-        <div class="tags">
-          <div class="tag"><i>Лицензия</i>Визовый центр с&nbsp;лицензией в&nbsp;Сингапуре</div>
-          <div class="tag"><i>Спрос</i>Виза нужна в&nbsp;каждой международной поездке</div>
-        </div>
-      </div>
-      <div class="pj-r">
-        <svg id="v2" viewBox="0 0 640 480" aria-label="Из Сингапура AI-агент оформляет визы в страны мира">
-          <g id="v2grid"></g><g id="v2arcs"></g><g id="v2planes" fill="#fff"></g><g id="v2nodes"></g>
-          <g transform="translate(320 250)"><circle r="56" fill="#fff" fill-opacity=".14" id="v2halo"/><circle r="36" fill="#fff"/><text class="svgv" font-size="20" text-anchor="middle" dy="7" fill="#00A676">SG</text></g>
-          <g transform="translate(20 470)"><text class="svgv" font-size="40" fill="#fff" id="v2c">0</text><text class="svgl" fill="#fff" fill-opacity=".75" x="0" y="-38">ОФОРМЛЕНО ВИЗ · ДЕМО</text></g>
-        </svg>
-      </div>
-    </article>
-
-    <article class="pj py" id="pj3">
-      <span class="bgn" aria-hidden="true">MAST</span>
-      <div class="pj-l">
-        <div class="no"><span>02 · AdTech · трафик для группы</span><span class="st">Прибыль $1,7 млн</span></div>
-        <h3>MAST</h3>
-        <p class="one">Монетизация сайтов.<br>Клиенты — паблишеры, владельцы сайтов. Они зарабатывают на&nbsp;30–80% больше за&nbsp;счет технологий MAST.<br>Ноль сотрудников: всю работу делают AI&#8209;агенты MAST.</p>
-        <div class="mkt"><b class="num"><span class="cu" data-to="134.8" data-pre="$" data-dec="1">$134,8</span><small>млрд</small></b><span>программатик-реклама только в США, 2024</span></div>
-        <div class="tags">
-          <div class="tag"><i>Трекшн</i>Прибыль $1,7&nbsp;млн, оценка $7&nbsp;млн</div>
-          <div class="tag"><i>Роль</i>Платный трафик для всех компаний группы</div>
-        </div>
-      </div>
-      <div class="pj-r">
-        <svg id="v3" viewBox="0 0 640 470" aria-label="MAST подключает сайты паблишеров к рекламным сетям Google, Amazon, Microsoft, Magnite и Taboola, доход паблишеров растет">
-          <g class="svgl" fill="#0B0B0D" fill-opacity=".7"><text x="20" y="60">САЙТЫ ПАБЛИШЕРОВ</text><text x="620" y="60" text-anchor="end">РЕКЛАМНЫЕ СЕТИ</text></g>
-          <g id="m3p" fill="none" stroke="#0B0B0D" stroke-opacity=".18" stroke-width="1.2"></g>
-          <g id="m3t"></g>
-          <g id="m3s"></g>
-          <g id="m3d" fill="#0B0B0D"></g>
-          <g transform="translate(330 200)"><circle r="74" fill="#0B0B0D" fill-opacity=".08" id="m3halo"/><circle r="58" fill="#0B0B0D"/><text text-anchor="middle" y="-10" fill="#FFB800" font-size="22" font-weight="700" letter-spacing="-.02em" style="font-family:var(--f);font-stretch:112%">MAST</text><g fill="#FFB800" fill-opacity=".85" text-anchor="middle" font-size="8" letter-spacing=".08em" style="font-family:var(--m)"><text y="8">PUBLISHER</text><text y="19">MONETISATION</text><text y="30">PLATFORM</text></g></g>
-          <g id="m3b"></g>
-          <text x="20" y="460" class="svgl" fill="#0B0B0D" fill-opacity=".7">ДОХОД ПАБЛИШЕРОВ</text>
-          <g transform="translate(620 460)"><text class="svgv" font-size="34" fill="#0B0B0D" text-anchor="end" y="-30" id="m3c">0</text><text class="svgl" fill="#0B0B0D" fill-opacity=".7" text-anchor="end">САЙТОВ ПОДКЛЮЧЕНО · ДЕМО</text></g>
-        </svg>
-      </div>
-    </article>
-  </section>
-
   <section class="join" id="join">
     <div class="l">
       <span class="mono" style="color:#FF4D00">Orbiq · консьерж без границ</span>
@@ -817,7 +772,6 @@ button{font:inherit}
       <p>Резидентство Монако, Le Rosey, кашмирский сапфир, семейный траст на три поколения. Ответ с маршрутом и сроком приходит в тот же чат.</p>
       <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Отправить задачу <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
-      <a class="jlink" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Фаундерам с лицензией в новой стране: строим компании вместе →</a>
     </div>
     <div class="r">
       <div class="slots5 s6"><div class="sb">Монако</div><div class="sa">Трасты</div><div class="sc">Le Rosey</div><div class="sd">Patek</div><div class="se">Hermès</div><div class="sf">Любая задача</div></div>
@@ -925,6 +879,7 @@ button{font:inherit}
     climb.setAttribute('cx',a[0]+(b[0]-a[0])*f);climb.setAttribute('cy',a[1]+(b[1]-a[1])*f);sts.forEach(function(r,j){r.setAttribute('fill-opacity',seg>j*2?1:.28)})}
   stairs(5999);
 
+  if($('v2grid')){
   /* V2 VISA */
   var C={x:320,y:250},CT=[['JP',150,90],['GB',90,230],['US',130,390],['AE',300,430],['AU',500,400],['DE',550,240],['FR',480,90],['KR',320,60]];
   for(var gx=16;gx<640;gx+=32)for(var gy=20;gy<480;gy+=32){var dd=Math.hypot(gx-C.x,gy-C.y);if(dd<240&&dd>70)el('circle',{cx:gx,cy:gy,r:1.4,fill:'#fff','fill-opacity':.22},$('v2grid'))}
@@ -961,6 +916,7 @@ button{font:inherit}
   v3(0,0);
 
 
+  }
   /* TICKER */
   var tr=$('tr'),tx=0,boost=0,lastY=scrollY;
   function tick(dt){var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
@@ -968,7 +924,7 @@ button{font:inherit}
   ['traj','tailsvg','wallsvg','pulsesvg','chart','stsvg','v2','v3'].forEach(function(id){var e=$(id);if(e&&io)io.observe(e)});
   var last=0;
   function loop(t){var dt=Math.min(50,t-(last||t));last=t;
-    if(!still){if(on('traj'))traj(t);if(on('tailsvg'))tail(t);if(on('wallsvg'))wall(t);if(on('pulsesvg'))pul(t);if(on('stsvg'))stairs(t);if(on('v2'))v2(dt,t);if(on('v3'))v3(dt,t);tick(dt)}
+    if(!still){if(on('traj'))traj(t);if(on('tailsvg'))tail(t);if(on('wallsvg'))wall(t);if(on('pulsesvg'))pul(t);if(on('stsvg'))stairs(t);if(typeof v2=='function'&&on('v2'))v2(dt,t);if(typeof v3=='function'&&on('v3'))v3(dt,t);tick(dt)}
     requestAnimationFrame(loop)}
   requestAnimationFrame(loop);
 
@@ -1030,7 +986,7 @@ document.addEventListener('visibilitychange',function(){draw()});
 }catch(e){}})();
 </script>
 
-<script>window.__CF={"started": "НАЧАЛИ", "done": "ГОТОВО ✓", "playing": "Ролик: идет", "paused": "Ролик: пауза", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Чт · 21:40", "text": "Дочь в понедельник начинает учебу в Лондоне. Сегодня нужно оплатить обучение, сделать визы бабушке с дедушкой, чтобы они к ней прилетели, а к ее дню рождения найти Hermès Kelly."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Берем все три задачи. Статусы появятся здесь."}, {"who": "o", "at": 14600, "meta": "Orbiq · Пт 09:12", "text": "Университет подтвердил оплату обучения."}, {"who": "o", "at": 18200, "meta": "Orbiq · Пт 11:30", "text": "Бабушка с дедушкой записаны на подачу виз: четверг, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Сб 14:20", "text": "Hermès Kelly 25 в цвете Gold вручена в Лондоне, фото в чате."}, {"who": "c", "at": 25200, "meta": "Сб · 14:25", "text": "Спасибо. В следующем месяце займемся трастом для внуков."}], "tasks": [{"name": "Учеба · Лондон", "steps": [{"label": "Маршрут", "at": 6200}, {"label": "Платеж", "at": 9800}, {"label": "Зачислено", "at": 14600}]}, {"name": "Визы · UK", "steps": [{"label": "Документы", "at": 7200}, {"label": "Анкета", "at": 12000}, {"label": "Запись", "at": 18200}]}, {"name": "Hermès Kelly · Париж", "steps": [{"label": "Бутик", "at": 8200}, {"label": "Резерв", "at": 15600}, {"label": "Вручена", "at": 22000}]}]};window.__POOL=["Hermès Birkin", "Счет в частном банке Женевы", "Место в Le Rosey", "Препарат, которого нет в стране", "Patek Philippe 5711 без листа ожидания", "Резидентство Монако", "Второе мнение онколога из Charité", "Ужин с Ленни Кравицем", "Семейный траст на три поколения", "Кашмирский сапфир с сертификатом Gübelin", "Gulfstream G700 для семьи", "Подбор университета под характер ребенка", "Лот Sotheby’s", "Off-market вилла в Марбелье", "Rolex Daytona «Paul Newman»", "Golden Visa ОАЭ на 10 лет", "Хирург в Сеуле", "Hermès Kelly", "Семейный фонд в Лихтенштейне", "Встреча с Джастином Бибером", "Розовый бриллиант Argyle", "Поступление в Eton", "Доступ к препарату из клинических испытаний", "Check-up в Mayo Clinic", "Картина с Christie’s", "Швейцария по паушальному налогу", "F.P. Journe Chronomètre Bleu", "Пентхаус в One Hyde Park", "Прием у Леди Гаги", "Koenigsegg Jesko", "Оплата обучения в Оксфорде за день", "Clinique La Prairie", "Монеты Российской империи на торгах", "Показ Chanel Haute Couture", "Бирманский рубин", "Bombardier Global 7500", "Налоговая стратегия семьи в трех странах", "Превью Art Basel", "Audemars Piguet Royal Oak", "Резидентство Сингапура для семьи", "Редкое лекарство по рецепту из Швейцарии", "Lanserhof на Тегернзе", "Стол на Гран-при Монако", "Колумбийский изумруд", "Подготовка к Оксфорду с тьютором", "Хранение коллекции во фрипорте Женевы", "Ferrari из лимитированной серии", "Перевод на сделку в Монако", "Золотой соверен 1937 года", "Экспертиза камня в GIA", "Счет в частном банке Сингапура", "Личная охрана семьи в поездке", "Проверка часов перед покупкой", "Летняя школа в Швейцарии", "Генетический чек-ап в Цюрихе"];window.__TF={"title": "Orbiq · задача", "cat": "Направление", "name": "Имя", "lang": "ru-RU", "mic": "Надиктовать", "micStop": "Остановить"};</script>
+<script>window.__CF={"started": "НАЧАЛИ", "done": "ГОТОВО ✓", "playing": "Ролик: идет", "paused": "Ролик: пауза", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Чт · 21:40", "text": "Дочь в понедельник начинает учебу в Лондоне. Сегодня нужно оплатить обучение, сделать визы бабушке с дедушкой, чтобы они к ней прилетели, а к ее дню рождения найти Hermès Kelly."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Берем все три задачи. Статусы появятся здесь."}, {"who": "o", "at": 14600, "meta": "Orbiq · Пт 09:12", "text": "Университет подтвердил оплату обучения."}, {"who": "o", "at": 18200, "meta": "Orbiq · Пт 11:30", "text": "Бабушка с дедушкой записаны на подачу виз: четверг, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Сб 14:20", "text": "Hermès Kelly 25 в цвете Gold вручена в Лондоне, фото в чате."}, {"who": "c", "at": 25200, "meta": "Сб · 14:25", "text": "Спасибо. В следующем месяце займемся трастом для внуков."}], "tasks": [{"name": "Учеба · Лондон", "steps": [{"label": "Маршрут", "at": 6200}, {"label": "Платеж", "at": 9800}, {"label": "Зачислено", "at": 14600}]}, {"name": "Визы · Британия", "steps": [{"label": "Документы", "at": 7200}, {"label": "Анкета", "at": 12000}, {"label": "Запись", "at": 18200}]}, {"name": "Hermès Kelly · Париж", "steps": [{"label": "Бутик", "at": 8200}, {"label": "Резерв", "at": 15600}, {"label": "Вручена", "at": 22000}]}]};window.__POOL=["Hermès Birkin", "Счет в частном банке Женевы", "Место в Le Rosey", "Препарат, которого нет в стране", "Patek Philippe 5711 в полном комплекте", "Резидентство Монако", "Второе мнение онколога из Charité", "Стол на гала amfAR в Каннах", "Семейный траст на три поколения", "Кашмирский сапфир с сертификатом Gübelin", "Gulfstream G700 для семьи", "Подбор университета под характер ребенка", "Лот Sotheby’s", "Вилла в Марбелье вне открытой продажи", "Rolex Daytona «Paul Newman»", "Golden Visa ОАЭ на 10 лет", "Хирург в Сеуле", "Hermès Kelly", "Семейный фонд в Лихтенштейне", "Ложа на Венском оперном балу", "Розовый бриллиант Argyle", "Поступление в Eton", "Доступ к препарату из клинических испытаний", "Чек-ап в Mayo Clinic", "Картина с Christie’s", "Швейцария по паушальному налогу", "F.P. Journe Chronomètre Bleu", "Пентхаус в One Hyde Park", "Места на центральном корте Уимблдона", "Koenigsegg Jesko", "Оплата обучения в Оксфорде за день", "Clinique La Prairie", "Монеты Российской империи на торгах", "Показ Chanel Haute Couture", "Бирманский рубин", "Bombardier Global 7500", "Налоговая стратегия семьи в трех странах", "VIP-дни Art Basel", "Audemars Piguet Royal Oak", "Резидентство Сингапура для семьи", "Редкое лекарство по рецепту из Швейцарии", "Акции Stripe на вторичном рынке", "Доля в Databricks до IPO", "Закрытый pre-IPO раунд через SPV", "Акции Anduril до IPO", "Lanserhof на Тегернзе", "Стол на Гран-при Монако", "Колумбийский изумруд", "Подготовка к Оксфорду с тьютором", "Хранение коллекции во фрипорте Женевы", "Ferrari из лимитированной серии", "Перевод на сделку в Монако", "Золотой соверен 1937 года", "Экспертиза камня в GIA", "Счет в частном банке Сингапура", "Личная охрана семьи в поездке", "Проверка часов перед покупкой", "Летняя школа в Швейцарии", "Генетический чек-ап в Цюрихе"];window.__TF={"title": "Orbiq · задача", "cat": "Направление", "name": "Имя", "lang": "ru-RU", "mic": "Надиктовать", "micStop": "Остановить"};</script>
 <script>
 /* Бесконечная лента запросов на первом экране: каждая плашка после круга получает новый запрос из большого пула, без повторов подряд */
 (function(){try{
@@ -1065,11 +1021,11 @@ if(SR&&mic){mic.hidden=false;var r=null,base='';
   r.onend=function(){r=null;mic.classList.remove('rec');ml.textContent=D.mic};r.onerror=r.onend;
   try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
 }catch(e){}})();
-</script>
 (function(){var r=document.getElementById('strow');if(!r)return;var bs=document.querySelectorAll('.st-btn');
 function st(){var m=r.scrollWidth-r.clientWidth-2;bs[0].disabled=r.scrollLeft<2;bs[1].disabled=r.scrollLeft>=m}
 bs.forEach(function(b){b.addEventListener('click',function(){var c=r.querySelector('.st');r.scrollBy({left:(c.offsetWidth+16)*+b.dataset.d,behavior:'smooth'})})});
 r.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st()})();
+</script>
 <script>
 /* Мини-фильм «Одна семья»: чат и доска задач, запуск в зоне видимости, пауза при выключенном движении */
 (function(){try{

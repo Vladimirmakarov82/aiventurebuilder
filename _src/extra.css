@@ -125,4 +125,18 @@
 .hlink{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-weight:500;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);transition:border-color .3s}
 .hlink:hover{border-color:var(--ink)}.hlink i{font-style:normal;display:inline-block;animation:hl 2.4s ease-in-out infinite}
 @keyframes hl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+
+/* review: design/mobile pass */
+.bx-stage{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+.bx-line .mono{top:10px;bottom:auto;z-index:3;padding:2px 6px;border-radius:999px;background:var(--bg)}
+.xb p{margin:4px 0 0}
+.join .slots5.s6 div{position:relative;background:color-mix(in srgb,var(--c) 16%,#141417);color:rgba(243,244,242,.85);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);font-size:11px;padding:14px;transition:background .5s var(--ease-out)}
+.join .slots5.s6 div::after{content:"";position:absolute;left:14px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.join .slots5.s6 div:hover{background:color-mix(in srgb,var(--c) 28%,#141417)}
+.join .slots5 .sa{--c:#5542FF}.join .slots5 .sb{--c:#00A676}.join .slots5 .sc{--c:#FFB800}.join .slots5 .sd{--c:#D2FF00}.join .slots5 .se{--c:#FF4D00}.join .slots5 .sf{--c:#F3F4F2}
+.jmail,.foot a.mono{display:inline-flex;align-items:center;min-height:44px}
+.jmail{padding-bottom:0}
+.brand{min-height:44px}
+@media (max-width:760px){.foot{padding-bottom:32px}.nav-cta,.nav .chip{min-height:44px;min-width:44px}}
+#focus,#model,#process{display:none!important}
 </style>

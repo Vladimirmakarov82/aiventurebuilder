@@ -51,7 +51,7 @@ EN = dict(
  langchip='<a class="chip" href="/ru/" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>',
  motion_on='Motion: on', kick='Private concierge', h1b='without borders',
  lead='A Monaco residence, a place at Le Rosey, Patek Philippe without a waitlist, a family trust for three generations. Orbiq takes the tasks that open only through the right people. Partners in each country open the doors.',
- k1='always on&nbsp;duty', k2='personal agent network per client', k3='own visa license',
+ k1='always on&nbsp;duty', k2='own AI agent network for each client', k3='own visa license',
  bx_h='Tasks across borders', bx_live='Personal agent network at work', bx_aria='Tasks cross the border and get done: transfers, residence, trusts, schools, clinics, documents',
  bx_a='Request', bx_b='Done', bx_line='Border',
  bx_items=None,
@@ -63,22 +63,22 @@ EN = dict(
         ('Through partners', 'Residence and citizenship', 'Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family'),
         ('Finance', 'Money across borders', 'Accounts at private banks in Geneva and Singapore, payments for tuition, clinics and deals abroad'),
         ('Finance', 'Trusts and inheritance', 'Family trusts and foundations in Liechtenstein and Switzerland through licensed partners: capital protected and passed to children and grandchildren'),
-        ('Analytics', 'Decisions for the family', 'Countries for a move, taxes, areas and schools compared. A ready analysis with options and figures'),
-        ('Education', 'The future of children', 'A school and university matched to the character of the child: Le Rosey, Eton, Oxford, the Ivy League'),
-        ('Health', 'Doctors and medicines', 'Second opinion from Charité and Mayo Clinic, surgeons in Seoul, Clinique La Prairie. A rare drug: we find the country where it exists and arrange it through a clinic and a prescription'),
+        ('Capital', 'Private pre-IPO deals', 'Closed rounds and secondary shares of late-stage companies: Stripe, Databricks, Anduril. Licensed partners run the deal and hold the shares through an SPV'),
+        ('Education', 'Schools and universities', 'A school and university matched to the character of the child: Le Rosey, Eton, Oxford, the Ivy League'),
+        ('Health', 'Doctors and medicines', 'Second opinion from Charité and Mayo Clinic, surgeons in Seoul, Clinique La Prairie. A rare drug: we find the country where it is sold and get it through a clinic with a prescription'),
         ('Through partners', 'Private jets', 'Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X for the family'),
         ('Collecting', 'Watches, stones, coins', 'Patek Philippe, Audemars Piguet, F.P. Journe with authentication; diamonds, sapphires and emeralds with GIA and Gübelin reports; rare coins; Hermès Birkin and Kelly'),
         ('Art', 'Sotheby’s and Christie’s', 'Lot selection, bidding at Sotheby’s, Christie’s and Phillips, collection storage in the Geneva Freeport'),
-        ('Events', 'Stars and events', 'Dinner with Lenny Kravitz, meeting Justin Bieber, reception with Lady Gaga, Chanel Haute Couture, Monaco Grand Prix'),
+        ('Events', 'Closed events', 'A table at the amfAR gala in Cannes, a box at the Vienna Opera Ball, Chanel Haute Couture, the Monaco Grand Prix'),
         ('Property', 'Off-market property', 'Villas and penthouses that never reach the market: Marbella, Monaco, One Hyde Park in London')]),
- syn=syn([('Speed', 'A personal network of AI agents', 'For every client we deploy their own network of agents. They run all tasks in parallel, check documents of two countries and never miss a deadline.'),
+ syn=syn([('Speed', 'A personal network of AI agents', 'For every client we launch their own network of agents. They run all tasks in parallel, check documents of two countries and never miss a deadline.'),
           ('Access', 'Licensed partners in each country', 'Trust, payment and legal companies, visa centers. We select and check them for each task.'),
           ('Confidentiality', 'One person sees the task', 'A personal manager and the client’s own agent network. The site stores no requests, all talk stays in a private chat.')]),
  s1_m='01 · Why now', s1_h='Borders got higher',
- p1_n='Pain 1', p1_h='Moving money and people got harder', p1_p='Every year brings new limits:',
+ p1_n='Reason 1', p1_h='Moving money and people got harder', p1_p='Each year adds new limits:',
  p1_bars=bars(['Transfers abroad take weeks and get stuck', 'Banks close accounts without explanation', 'Fewer direct flights, longer routes', 'Visa refusals and queues at consulates', 'Residence and citizenship rules change every year', 'Capital needs protection in several jurisdictions']),
- p2_n='Pain 2', p2_h='Deadlines stay the same', p2_p='Tuition, surgery, a deal, a family event: the date is set, the route changes every month',
- p3_n='Pain 3', p3_h='A bank concierge works within the rules of its bank',
+ p2_n='Reason 2', p2_h='Deadlines stay the same', p2_p='Tuition, surgery, a deal, a family event: the date is set, the route changes every month',
+ p3_n='Reason 3', p3_h='A bank concierge is bound by its bank’s rules',
  p3_steps=steps(['<b>Standard.</b> Restaurants, hotels, tickets. Any concierge handles them.', '<b>Non&#8209;standard.</b> Money, documents, people and things across borders. A bank concierge stays within the rules and limits of its bank.', '<b>Orbiq.</b> Partners in many countries and the client’s personal agent network. Each task gets its own route, faster.']),
  p3_seg_aria='Example', p3_seg1='Example: money', p3_seg2='Example: visas',
  tail_aria='Requests by type: standard on the right, non-standard on the left', tail_core='STANDARD REQUESTS', tail_tail='NON-STANDARD TASKS',
@@ -99,7 +99,7 @@ EN = dict(
  v_aria='From Singapore, an AI agent processes visas to countries worldwide', v_cnt='VISAS PROCESSED · DEMO',
  m_no='02 · AdTech · traffic for the group', m_st='Profit $1.7M', m_one='Website monetization.<br>Clients are publishers, website owners. They earn 30–80% more thanks to&nbsp;MAST technology.<br>Zero staff: MAST AI&#8209;agents do all the work.',
  m_mk0='$134.8', m_mk1='B', m_mk2='programmatic advertising in the US alone, 2024',
- m_t1k='Traction', m_t1='Profit $1.7M, valuation $7M', m_t2k='Role', m_t2='Paid traffic for all companies of&nbsp;the&nbsp;group',
+ m_t1k='Results', m_t1='Profit $1.7M, valuation $7M', m_t2k='Role', m_t2='Paid traffic for all companies of&nbsp;the&nbsp;group',
  m_aria='MAST connects publisher websites to the ad networks of Google, Amazon, Microsoft, Magnite and Taboola, publisher income grows',
  m_lw='PUBLISHER WEBSITES', m_ln='AD NETWORKS', m_li='PUBLISHER INCOME', m_lc='WEBSITES CONNECTED · DEMO',
  j_m='Orbiq · concierge without borders', j_h='Tasks across borders <span>start in&nbsp;Telegram</span>',
@@ -133,7 +133,7 @@ EN = dict(
  t_mail='Send by email',
  t_note='Telegram or email opens with the text ready, just press Send.',
  TF=dict(title='Orbiq · task',cat='Area',name='Name',lang='en-US',mic='Dictate',micStop='Stop'),
- POOL=['Hermès Birkin', 'Account at a Geneva private bank', 'A place at Le Rosey', 'A drug not available at home', 'Patek Philippe 5711 without a waitlist', 'Monaco residence', 'Second opinion from Charité', 'Dinner with Lenny Kravitz', 'Family trust for three generations', 'Kashmir sapphire with a Gübelin report', 'Gulfstream G700 for the family', 'University matched to the child’s character', 'Sotheby’s lot', 'Off-market villa in Marbella', 'Rolex Daytona “Paul Newman”', 'UAE Golden Visa for 10 years', 'Surgeon in Seoul', 'Hermès Kelly', 'Family foundation in Liechtenstein', 'Meeting Justin Bieber', 'Argyle pink diamond', 'Admission to Eton', 'Access to a drug in clinical trials', 'Check-up at Mayo Clinic', 'Christie’s painting', 'Swiss lump-sum taxation', 'F.P. Journe Chronomètre Bleu', 'Penthouse at One Hyde Park', 'Reception with Lady Gaga', 'Koenigsegg Jesko', 'Oxford tuition paid in a day', 'Clinique La Prairie', 'Russian Empire coins at auction', 'Chanel Haute Couture show', 'Burmese ruby', 'Bombardier Global 7500', 'Family tax strategy across three countries', 'Art Basel preview', 'Audemars Piguet Royal Oak', 'Singapore residence for the family', 'Rare prescription drug from Switzerland', 'Lanserhof at Tegernsee', 'Table at the Monaco Grand Prix', 'Colombian emerald', 'Oxford preparation with a tutor', 'Collection storage in the Geneva Freeport', 'Limited-series Ferrari', 'Transfer for a deal in Monaco', '1937 gold sovereign', 'Stone grading at GIA', 'Account at a Singapore private bank', 'Personal security for a family trip', 'Watch authentication before purchase', 'Summer school in Switzerland', 'Genetic check-up in Zurich'],
+ POOL=['Hermès Birkin', 'Account at a Geneva private bank', 'A place at Le Rosey', 'A drug not available at home', 'Patek Philippe 5711, full set', 'Monaco residence', 'Second opinion from Charité', 'A table at the amfAR gala in Cannes', 'Family trust for three generations', 'Kashmir sapphire with a Gübelin report', 'Gulfstream G700 for the family', 'University matched to the child’s character', 'Sotheby’s lot', 'Off-market villa in Marbella', 'Rolex Daytona “Paul Newman”', 'UAE Golden Visa for 10 years', 'Surgeon in Seoul', 'Hermès Kelly', 'Family foundation in Liechtenstein', 'A box at the Vienna Opera Ball', 'Argyle pink diamond', 'Admission to Eton', 'Access to a drug in clinical trials', 'Check-up at Mayo Clinic', 'Christie’s painting', 'Swiss lump-sum taxation', 'F.P. Journe Chronomètre Bleu', 'Penthouse at One Hyde Park', 'Centre Court seats at Wimbledon', 'Koenigsegg Jesko', 'Oxford tuition paid in a day', 'Clinique La Prairie', 'Russian Empire coins at auction', 'Chanel Haute Couture show', 'Burmese ruby', 'Bombardier Global 7500', 'Family tax strategy across three countries', 'Art Basel VIP days', 'Audemars Piguet Royal Oak', 'Singapore residence for the family', 'Rare prescription drug from Switzerland', 'Stripe shares on the secondary market', 'A Databricks stake before the IPO', 'A closed pre-IPO round through an SPV', 'Anduril shares before the IPO', 'Lanserhof at Tegernsee', 'Table at the Monaco Grand Prix', 'Colombian emerald', 'Oxford preparation with a tutor', 'Collection storage in the Geneva Freeport', 'Limited-series Ferrari', 'Transfer for a deal in Monaco', '1937 gold sovereign', 'Stone grading at GIA', 'Account at a Singapore private bank', 'Personal security for a family trip', 'Watch authentication before purchase', 'Summer school in Switzerland', 'Genetic check-up in Zurich'],
  CF=dict(started='STARTED', done='DONE ✓', playing='Film: playing', paused='Film: paused', tasksAt=4600,
    msgs=[dict(who='c', at=1600, meta='Thu · 21:40', text='My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday.'),
          dict(who='o', at=4200, meta='Orbiq · 21:41', text='Taking all three tasks. Statuses will appear here.'),
@@ -142,7 +142,7 @@ EN = dict(
          dict(who='o', at=22000, meta='Orbiq · Sat 14:20', text='Hermès Kelly 25 in Gold handed over in London. Photo in the chat.'),
          dict(who='c', at=25200, meta='Sat · 14:25', text='Thank you. Next month: a trust for the grandchildren.')],
    tasks=[dict(name='Tuition · London', steps=[dict(label='Route', at=6200), dict(label='Payment', at=9800), dict(label='Received', at=14600)]),
-          dict(name='Visas · UK', steps=[dict(label='Documents', at=7200), dict(label='Form', at=12000), dict(label='Appointment', at=18200)]),
+          dict(name='Visas · Britain', steps=[dict(label='Documents', at=7200), dict(label='Form', at=12000), dict(label='Appointment', at=18200)]),
           dict(name='Hermès Kelly · Paris', steps=[dict(label='Boutique', at=8200), dict(label='Reserved', at=15600), dict(label='Handed over', at=22000)])]),
 )
 
@@ -155,7 +155,7 @@ RU = dict(
  langchip='<a class="chip" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>',
  motion_on='Движение: вкл', kick='Личный консьерж', h1b='без границ',
  lead='Резидентство Монако, место в&nbsp;Le Rosey, Patek Philippe без листа ожидания, семейный траст на&nbsp;три поколения. Orbiq берет задачи, которые решаются только через нужных людей. Партнеры в&nbsp;каждой стране открывают двери.',
- k1='всегда на&nbsp;связи', k2='личная сеть агентов на&nbsp;клиента', k3='своя визовая лицензия',
+ k1='всегда на&nbsp;связи', k2='своя сеть AI-агентов у&nbsp;каждого клиента', k3='своя визовая лицензия',
  bx_h='Задачи через границу', bx_live='Личная сеть агентов в работе', bx_aria='Задачи пересекают границу и выполняются: переводы, ВНЖ, трасты, школы, клиники, документы',
  bx_a='Запрос', bx_b='Готово', bx_line='Граница',
  bx_items=None,
@@ -167,22 +167,22 @@ RU = dict(
         ('Через партнеров', 'Резидентство и&nbsp;гражданство', 'Резидентство Монако и Сингапура, Golden Visa ОАЭ, Швейцария по паушальному налогу, второе гражданство для семьи'),
         ('Финансы', 'Деньги через границу', 'Счета в частных банках Женевы и Сингапура, оплата учебы, клиник и сделок за границей'),
         ('Финансы', 'Трасты и&nbsp;наследство', 'Семейные трасты и фонды в Лихтенштейне и Швейцарии через лицензированных партнеров: капитал под защитой и переходит детям и внукам'),
-        ('Аналитика', 'Решения для семьи', 'Сравнение стран для переезда, налогов, районов и школ. Готовый разбор с вариантами и цифрами'),
-        ('Образование', 'Будущее детей', 'Школа и университет под характер ребенка: Le Rosey, Eton, Оксфорд, Лига плюща'),
-        ('Здоровье', 'Врачи и&nbsp;лекарства', 'Второе мнение из Charité и Mayo Clinic, хирурги Сеула, Clinique La Prairie. Редкий препарат: находим страну, где он есть, и получение через клинику по рецепту'),
+        ('Капитал', 'Закрытые pre-IPO сделки', 'Закрытые раунды и акции зрелых частных компаний на вторичном рынке: Stripe, Databricks, Anduril. Сделку ведут партнеры с лицензией, доля оформляется через SPV'),
+        ('Образование', 'Школы и&nbsp;университеты', 'Школа и университет под характер ребенка: Le Rosey, Eton, Оксфорд, Лига плюща'),
+        ('Здоровье', 'Врачи и&nbsp;лекарства', 'Второе мнение из Charité и Mayo Clinic, хирурги Сеула, Clinique La Prairie. Редкий препарат: находим страну, где его продают, и получаем через клинику по рецепту'),
         ('Через партнеров', 'Частные джеты', 'Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X для всей семьи'),
         ('Коллекции', 'Часы, камни, монеты', 'Patek Philippe, Audemars Piguet, F.P. Journe с проверкой подлинности; бриллианты, сапфиры и изумруды с сертификатами GIA и Gübelin; редкие монеты; Hermès Birkin и Kelly'),
         ('Искусство', 'Sotheby’s и&nbsp;Christie’s', 'Подбор лота, торги Sotheby’s, Christie’s и Phillips, хранение коллекции во фрипорте Женевы'),
-        ('События', 'Звезды и&nbsp;события', 'Ужин с Ленни Кравицем, встреча с Джастином Бибером, прием у Леди Гаги, показ Chanel Haute Couture, Гран-при Монако'),
-        ('Недвижимость', 'Вне рынка', 'Виллы и пентхаусы, которых нет в открытой продаже: Марбелья, Монако, One Hyde Park в Лондоне')]),
- syn=syn([('Скорость', 'Личная сеть AI-агентов', 'Под каждого клиента разворачиваем свою сеть агентов. Они ведут все задачи параллельно, сверяют документы двух стран и не пропускают ни одного срока.'),
+        ('События', 'Закрытые события', 'Стол на гала amfAR в Каннах, ложа на Венском оперном балу, показ Chanel Haute Couture, Гран-при Монако'),
+        ('Недвижимость', 'Дома вне открытой продажи', 'Виллы и пентхаусы, которых нет в открытой продаже: Марбелья, Монако, One Hyde Park в Лондоне')]),
+ syn=syn([('Скорость', 'Личная сеть AI-агентов', 'Под каждого клиента запускаем свою сеть агентов. Они ведут все задачи параллельно, сверяют документы двух стран и не пропускают ни одного срока.'),
           ('Доступ', 'Партнеры с лицензией в каждой стране', 'Трастовые, платежные и юридические компании, визовые центры. Подбираем и проверяем под каждую задачу.'),
           ('Конфиденциальность', 'Задачу видит один человек', 'Личный менеджер и личная сеть агентов клиента. Сайт не хранит заявки, переписка идет только в личном чате.')]),
  s1_m='01 · Почему сейчас', s1_h='Границы стали выше',
- p1_n='Боль 1', p1_h='Деньги и людей стало сложнее перемещать', p1_p='Каждый год приносит новые ограничения:',
+ p1_n='Причина 1', p1_h='Деньгам и людям труднее пересечь границу', p1_p='Ограничений с каждым годом больше:',
  p1_bars=bars(['Переводы за границу идут неделями и зависают', 'Банки закрывают счета без объяснений', 'Прямых рейсов меньше, маршруты длиннее', 'Отказы в визах и очереди в консульствах', 'Правила ВНЖ и гражданства меняются каждый год', 'Капиталу нужна защита в нескольких юрисдикциях']),
- p2_n='Боль 2', p2_h='Сроки остаются прежними', p2_p='Учеба, операция, сделка, семейное событие: дата назначена, маршрут меняется каждый месяц',
- p3_n='Боль 3', p3_h='Консьерж банка работает в&nbsp;правилах своего банка',
+ p2_n='Причина 2', p2_h='Сроки остаются прежними', p2_p='Учеба, операция, сделка, семейное событие: дата назначена, маршрут меняется каждый месяц',
+ p3_n='Причина 3', p3_h='Консьерж банка связан правилами банка',
  p3_steps=steps(['<b>Стандарт.</b> Рестораны, отели, билеты. С этим справляется любой консьерж.', '<b>Нестандарт.</b> Деньги, документы, люди и вещи через границу. Консьерж банка остается в правилах и лимитах своего банка.', '<b>Orbiq.</b> Партнеры во многих странах и личная сеть агентов клиента. У каждой задачи свой маршрут, и он короче.']),
  p3_seg_aria='Пример', p3_seg1='Пример: деньги', p3_seg2='Пример: визы',
  tail_aria='Запросы по типу: стандартные справа, нестандартные слева', tail_core='СТАНДАРТНЫЕ ЗАПРОСЫ', tail_tail='НЕСТАНДАРТНЫЕ ЗАДАЧИ',
@@ -203,7 +203,7 @@ RU = dict(
  v_aria='Из Сингапура AI-агент оформляет визы в страны мира', v_cnt='ОФОРМЛЕНО ВИЗ · ДЕМО',
  m_no='02 · AdTech · трафик для группы', m_st='Прибыль $1,7 млн', m_one='Монетизация сайтов.<br>Клиенты — паблишеры, владельцы сайтов. Они зарабатывают на&nbsp;30–80% больше за&nbsp;счет технологий MAST.<br>Ноль сотрудников: всю работу делают AI&#8209;агенты MAST.',
  m_mk0='$134,8', m_mk1='млрд', m_mk2='программатик-реклама только в США, 2024',
- m_t1k='Трекшн', m_t1='Прибыль $1,7&nbsp;млн, оценка $7&nbsp;млн', m_t2k='Роль', m_t2='Платный трафик для всех компаний группы',
+ m_t1k='Результат', m_t1='Прибыль $1,7&nbsp;млн, оценка $7&nbsp;млн', m_t2k='Роль', m_t2='Платный трафик для всех компаний группы',
  m_aria='MAST подключает сайты паблишеров к рекламным сетям Google, Amazon, Microsoft, Magnite и Taboola, доход паблишеров растет',
  m_lw='САЙТЫ ПАБЛИШЕРОВ', m_ln='РЕКЛАМНЫЕ СЕТИ', m_li='ДОХОД ПАБЛИШЕРОВ', m_lc='САЙТОВ ПОДКЛЮЧЕНО · ДЕМО',
  j_m='Orbiq · консьерж без границ', j_h='Задачи через границу <span>принимаем в&nbsp;Telegram</span>',
@@ -236,7 +236,7 @@ RU = dict(
  t_mail='Отправить на почту',
  t_note='Откроется Telegram или почта с готовым текстом, останется нажать «Отправить».',
  TF=dict(title='Orbiq · задача',cat='Направление',name='Имя',lang='ru-RU',mic='Надиктовать',micStop='Остановить'),
- POOL=['Hermès Birkin', 'Счет в частном банке Женевы', 'Место в Le Rosey', 'Препарат, которого нет в стране', 'Patek Philippe 5711 без листа ожидания', 'Резидентство Монако', 'Второе мнение онколога из Charité', 'Ужин с Ленни Кравицем', 'Семейный траст на три поколения', 'Кашмирский сапфир с сертификатом Gübelin', 'Gulfstream G700 для семьи', 'Подбор университета под характер ребенка', 'Лот Sotheby’s', 'Off-market вилла в Марбелье', 'Rolex Daytona «Paul Newman»', 'Golden Visa ОАЭ на 10 лет', 'Хирург в Сеуле', 'Hermès Kelly', 'Семейный фонд в Лихтенштейне', 'Встреча с Джастином Бибером', 'Розовый бриллиант Argyle', 'Поступление в Eton', 'Доступ к препарату из клинических испытаний', 'Check-up в Mayo Clinic', 'Картина с Christie’s', 'Швейцария по паушальному налогу', 'F.P. Journe Chronomètre Bleu', 'Пентхаус в One Hyde Park', 'Прием у Леди Гаги', 'Koenigsegg Jesko', 'Оплата обучения в Оксфорде за день', 'Clinique La Prairie', 'Монеты Российской империи на торгах', 'Показ Chanel Haute Couture', 'Бирманский рубин', 'Bombardier Global 7500', 'Налоговая стратегия семьи в трех странах', 'Превью Art Basel', 'Audemars Piguet Royal Oak', 'Резидентство Сингапура для семьи', 'Редкое лекарство по рецепту из Швейцарии', 'Lanserhof на Тегернзе', 'Стол на Гран-при Монако', 'Колумбийский изумруд', 'Подготовка к Оксфорду с тьютором', 'Хранение коллекции во фрипорте Женевы', 'Ferrari из лимитированной серии', 'Перевод на сделку в Монако', 'Золотой соверен 1937 года', 'Экспертиза камня в GIA', 'Счет в частном банке Сингапура', 'Личная охрана семьи в поездке', 'Проверка часов перед покупкой', 'Летняя школа в Швейцарии', 'Генетический чек-ап в Цюрихе'],
+ POOL=['Hermès Birkin', 'Счет в частном банке Женевы', 'Место в Le Rosey', 'Препарат, которого нет в стране', 'Patek Philippe 5711 в полном комплекте', 'Резидентство Монако', 'Второе мнение онколога из Charité', 'Стол на гала amfAR в Каннах', 'Семейный траст на три поколения', 'Кашмирский сапфир с сертификатом Gübelin', 'Gulfstream G700 для семьи', 'Подбор университета под характер ребенка', 'Лот Sotheby’s', 'Вилла в Марбелье вне открытой продажи', 'Rolex Daytona «Paul Newman»', 'Golden Visa ОАЭ на 10 лет', 'Хирург в Сеуле', 'Hermès Kelly', 'Семейный фонд в Лихтенштейне', 'Ложа на Венском оперном балу', 'Розовый бриллиант Argyle', 'Поступление в Eton', 'Доступ к препарату из клинических испытаний', 'Чек-ап в Mayo Clinic', 'Картина с Christie’s', 'Швейцария по паушальному налогу', 'F.P. Journe Chronomètre Bleu', 'Пентхаус в One Hyde Park', 'Места на центральном корте Уимблдона', 'Koenigsegg Jesko', 'Оплата обучения в Оксфорде за день', 'Clinique La Prairie', 'Монеты Российской империи на торгах', 'Показ Chanel Haute Couture', 'Бирманский рубин', 'Bombardier Global 7500', 'Налоговая стратегия семьи в трех странах', 'VIP-дни Art Basel', 'Audemars Piguet Royal Oak', 'Резидентство Сингапура для семьи', 'Редкое лекарство по рецепту из Швейцарии', 'Акции Stripe на вторичном рынке', 'Доля в Databricks до IPO', 'Закрытый pre-IPO раунд через SPV', 'Акции Anduril до IPO', 'Lanserhof на Тегернзе', 'Стол на Гран-при Монако', 'Колумбийский изумруд', 'Подготовка к Оксфорду с тьютором', 'Хранение коллекции во фрипорте Женевы', 'Ferrari из лимитированной серии', 'Перевод на сделку в Монако', 'Золотой соверен 1937 года', 'Экспертиза камня в GIA', 'Счет в частном банке Сингапура', 'Личная охрана семьи в поездке', 'Проверка часов перед покупкой', 'Летняя школа в Швейцарии', 'Генетический чек-ап в Цюрихе'],
  CF=dict(started='НАЧАЛИ', done='ГОТОВО ✓', playing='Ролик: идет', paused='Ролик: пауза', tasksAt=4600,
    msgs=[dict(who='c', at=1600, meta='Чт · 21:40', text='Дочь в понедельник начинает учебу в Лондоне. Сегодня нужно оплатить обучение, сделать визы бабушке с дедушкой, чтобы они к ней прилетели, а к ее дню рождения найти Hermès Kelly.'),
          dict(who='o', at=4200, meta='Orbiq · 21:41', text='Берем все три задачи. Статусы появятся здесь.'),
@@ -245,34 +245,37 @@ RU = dict(
          dict(who='o', at=22000, meta='Orbiq · Сб 14:20', text='Hermès Kelly 25 в цвете Gold вручена в Лондоне, фото в чате.'),
          dict(who='c', at=25200, meta='Сб · 14:25', text='Спасибо. В следующем месяце займемся трастом для внуков.')],
    tasks=[dict(name='Учеба · Лондон', steps=[dict(label='Маршрут', at=6200), dict(label='Платеж', at=9800), dict(label='Зачислено', at=14600)]),
-          dict(name='Визы · UK', steps=[dict(label='Документы', at=7200), dict(label='Анкета', at=12000), dict(label='Запись', at=18200)]),
+          dict(name='Визы · Британия', steps=[dict(label='Документы', at=7200), dict(label='Анкета', at=12000), dict(label='Запись', at=18200)]),
           dict(name='Hermès Kelly · Париж', steps=[dict(label='Бутик', at=8200), dict(label='Резерв', at=15600), dict(label='Вручена', at=22000)])]),
 )
 
 ORIG_TX_EN = re.search(r"var TX=\{visa:.*?\}\};", js, re.S).group(0)
 
-IMGS=['ascot','monaco','kelly','lake','alps','art','watch']
-POS=['30% 50%','50% 50%','50% 40%','50% 50%','50% 50%','50% 40%','60% 50%']
+ORDER=[0,2,3,5,1,4,6,7]
+IMGS=['ascot','monaco','kelly','lake','alps','art','watch','preipo']
+POS=['30% 50%','50% 50%','50% 40%','50% 50%','50% 50%','50% 40%','60% 50%','50% 50%']
 ST_RU=[
-('Лондон · июнь','Скачки, о&nbsp;которых она не&nbsp;думала','Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, модистка сшила шляпу под дресс-код.','В 14:00 мимо прошла королевская процессия'),
-('Монако · июль','Подарок мужу, который ездит верхом','Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, Гран-при идет под патронажем Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.','Трофеи вручала Шарлотта Казираги'),
-('Париж','Kelly без листа ожидания','Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного дилера в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.','Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень'),
+('Лондон · июнь','Скачки, о&nbsp;которых она не&nbsp;думала','Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, шляпу под дресс-код сделала лондонская мастерская.','В 14:00 мимо прошла королевская процессия'),
+('Монако · июль','Подарок мужу, который ездит верхом','Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, турнир идет под патронажем князя Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.','Призы вручали члены княжеской семьи'),
+('Париж','Kelly без листа ожидания','Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного продавца в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.','Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень'),
 ('Монтре · Швейцария','Неделя для себя у&nbsp;Женевского озера','Устала и&nbsp;хотела восстановиться без больничной атмосферы. Мы подобрали программу долголетия в&nbsp;Clinique La&nbsp;Prairie: анализы, врачи, сон, питание. Переводчик и&nbsp;водитель встретили в&nbsp;аэропорту Женевы.','Семь дней по&nbsp;одному плану, ни&nbsp;одного звонка с&nbsp;ее стороны'),
 ('Гштаад · январь','Школа, где зимой учатся в&nbsp;горах','Родители выбирали школу для дочери. Мы показали Le&nbsp;Rosey: осенью и&nbsp;весной кампус в&nbsp;Ролле, зимой классы переезжают в&nbsp;Гштаад. Устроили визит на&nbsp;оба кампуса и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.','Дочь сама попросила подать документы'),
 ('Нью-Йорк · ноябрь','Картина для новой гостиной','После переезда стена над камином пустовала. Арт-консультант отобрал три лота вечерних торгов Christie’s в&nbsp;Нью-Йорке, запросил отчеты о&nbsp;состоянии и&nbsp;провенанс.','Ставку сделали по&nbsp;телефону через специалиста аукциона'),
 ('Женева','Rolex, которого нет в&nbsp;витрине','Готовила подарок мужу к&nbsp;50-летию. В&nbsp;бутиках нужной модели не&nbsp;было. Партнер в&nbsp;Женеве нашел часы в&nbsp;полном комплекте с&nbsp;документами, независимый мастер проверил механизм.','Часы приехали к&nbsp;юбилейному ужину'),
+('Цюрих · сентябрь','Доля в&nbsp;компании, о&nbsp;которой говорит сын','Сын работает с&nbsp;данными и&nbsp;часто рассказывает про Databricks. Акции компании не&nbsp;торгуются на&nbsp;бирже. Партнер с&nbsp;лицензией в&nbsp;Цюрихе нашел акционера, готового продать часть доли. Компания согласовала передачу, долю оформили через SPV на&nbsp;семейный траст.','За ужином сын спросил, откуда она знает его любимую компанию'),
 ]
 ST_EN=[
-('London · June','Races she never thought about','She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;milliner made a&nbsp;hat to&nbsp;the dress code.','At 2&nbsp;pm the Royal Procession passed by'),
-('Monaco · July','A gift for a&nbsp;husband who rides','She needed an anniversary gift. We suggested Jumping International de&nbsp;Monte-Carlo: the arena sits in&nbsp;the port below the Prince’s Palace, the Grand Prix runs under the patronage of&nbsp;Albert&nbsp;II. A&nbsp;table by&nbsp;the arena and a&nbsp;room over the port.','Charlotte Casiraghi presented the trophies'),
-('Paris','Kelly without a&nbsp;waitlist','She wanted a&nbsp;Kelly 25 for her birthday. The boutique offered an&nbsp;open-ended wait. We found the bag at a&nbsp;trusted Paris dealer and ordered an&nbsp;independent authentication.','Delivered on her birthday, at a&nbsp;hotel on&nbsp;Avenue Montaigne'),
+('London · June','Races she never thought about','She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;London atelier made a&nbsp;hat to&nbsp;the dress code.','At 2&nbsp;pm the Royal Procession passed by'),
+('Monaco · July','A gift for a&nbsp;husband who rides','She needed an anniversary gift. We suggested Jumping International de&nbsp;Monte-Carlo: the arena sits in&nbsp;the port below the Prince’s Palace, the event runs under the patronage of&nbsp;Prince Albert&nbsp;II. A&nbsp;table by&nbsp;the arena and a&nbsp;room over the port.','Members of&nbsp;the princely family presented the prizes'),
+('Paris','Kelly without a&nbsp;waitlist','She wanted a&nbsp;Kelly 25 for her birthday. The boutique offered an&nbsp;open-ended wait. We found the bag at a&nbsp;trusted Paris reseller and ordered an&nbsp;independent authentication.','Delivered on her birthday, at a&nbsp;hotel on&nbsp;Avenue Montaigne'),
 ('Montreux · Switzerland','A week for herself by Lake Geneva','She was tired and wanted to&nbsp;recover without a&nbsp;hospital feel. We chose a&nbsp;longevity program at Clinique La&nbsp;Prairie: tests, doctors, sleep, nutrition. An&nbsp;interpreter and a&nbsp;driver met her at Geneva airport.','Seven days, one plan, not a&nbsp;single call from her side'),
 ('Gstaad · January','A school that moves to&nbsp;the mountains','Parents were choosing a&nbsp;school for their daughter. We showed Le&nbsp;Rosey: autumn and spring on the Rolle campus, winter classes in&nbsp;Gstaad. Visits to&nbsp;both campuses and a&nbsp;meeting with an&nbsp;admissions advisor.','The daughter asked to&nbsp;apply herself'),
 ('New York · November','A painting for the new living room','After the move the wall over the fireplace stayed empty. An&nbsp;art advisor picked three lots from Christie’s New York evening sales and requested condition reports and provenance.','The bid went in&nbsp;by phone through the auction specialist'),
 ('Geneva','A Rolex that is not in&nbsp;the window','She was preparing a&nbsp;gift for her husband’s 50th. Boutiques did not have the model. A&nbsp;Geneva partner found a&nbsp;full set with papers, an&nbsp;independent watchmaker checked the movement.','The watch arrived for the anniversary dinner'),
+('Zurich · September','A stake in&nbsp;the company her son talks about','Her son works with data and often talks about Databricks. The company’s shares do&nbsp;not trade on&nbsp;an&nbsp;exchange. A&nbsp;licensed partner in&nbsp;Zurich found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;a&nbsp;stake. The company approved the transfer, the stake went into the family trust through an&nbsp;SPV.','At dinner her son asked how she knew his favourite company'),
 ]
 def stories(lst):
-    return '\n      '.join('<article class="st"><figure><img src="/img/%s.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:%s"><figcaption class="mono">%s</figcaption></figure><div class="st-b"><h3>%s</h3><p>%s</p><b>%s</b></div></article>' % (IMGS[i], POS[i], a, b, c, d) for i, (a, b, c, d) in enumerate(lst))
+    return '\n      '.join('<article class="st"><figure><img src="/img/%s.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:%s"><figcaption class="mono">%s</figcaption></figure><div class="st-b"><h3>%s</h3><p>%s</p><b>%s</b></div></article>' % (IMGS[i], POS[i], a, b, c, d) for i, (a, b, c, d) in [(k, lst[k]) for k in ORDER])
 
 def build(T):
     T=dict(T); T['bx_items']=items(T['POOL'][:12]); T['stories']=stories(ST_RU if T.get('st_m')=='Истории' else ST_EN)
@@ -315,8 +318,8 @@ def build(T):
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{T['title']}</title>
 <meta name="description" content="{T['desc']}">
-<meta property="og:title" content="{EN['title']}">
-<meta property="og:description" content="{EN['desc']}">
+<meta property="og:title" content="{T['title']}">
+<meta property="og:description" content="{T['desc']}">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="{url}">
 <meta property="og:type" content="website">

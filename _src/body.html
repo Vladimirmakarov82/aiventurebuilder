@@ -9,7 +9,7 @@
   <header class="nav">
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
-      <a class="nl" href="#cross">{{nav1}}</a><a class="nl" href="#focus">{{nav2}}</a><a class="nl" href="#model">{{nav3}}</a><a class="nl" href="#portfolio">{{nav4}}</a>
+      <a class="nl" href="#cross">{{nav1}}</a><a class="nl" href="#stories">{{st_m}}</a>
       <a class="nav-cta" href="#task">{{cta_short}}</a>
       {{langchip}}
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>{{motion_on}}</button>
@@ -175,7 +175,7 @@
           <path id="riskA" fill="url(#rk)"/>
           <path id="riskL" fill="none" stroke="#FF4D00" stroke-width="2.5" stroke-dasharray="7 6"/>
           <path id="revL" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/>
-          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-14" dy="-12">{{s2_cross}}</text></g>
+          <g id="crossPt"><circle r="7" fill="var(--paper)" stroke="#FF4D00" stroke-width="2.5"/><text class="svgl" fill="#FF4D00" text-anchor="end" dx="-18" dy="4">{{s2_cross}}</text></g>
           <g id="round"><circle r="9" fill="#FF4D00"/><circle r="18" fill="none" stroke="#FF4D00"/><text class="svgl" fill="var(--ink)" text-anchor="middle" dy="40">{{s2_round}}</text></g>
           <text id="revT" class="svgl" fill="var(--ink)" text-anchor="end">{{s2_revT}}</text>
           <text id="riskT" class="svgl" fill="#FF4D00" text-anchor="end">{{s2_riskT}}</text>
@@ -207,64 +207,6 @@
     </div>
   </section>
 
-  <section class="sec" id="portfolio">
-    <div class="port-h">
-      <h2 class="mask">{{s4_h}}</h2>
-      <div class="port-k">
-        {{s4_k}}
-      </div>
-    </div>
-    <p class="xb-lead">{{s4_lead}}</p>
-
-    <article class="pj pg" id="pj2">
-      <span class="bgn" aria-hidden="true">VISA</span>
-      <div class="pj-l">
-        <div class="no"><span>{{v_no}}</span><span class="st">{{v_st}}</span></div>
-        <h3>VisaTO</h3>
-        <p class="one">{{v_one}}</p>
-        <div class="mkt"><b class="num"><span class="cu" data-to="15.2" data-pre="$" data-dec="1">{{v_mk0}}</span><small>{{v_mk1}}</small></b><span>{{v_mk2}}</span></div>
-        <div class="tags">
-          <div class="tag"><i>{{v_t1k}}</i>{{v_t1}}</div>
-          <div class="tag"><i>{{v_t2k}}</i>{{v_t2}}</div>
-        </div>
-      </div>
-      <div class="pj-r">
-        <svg id="v2" viewBox="0 0 640 480" aria-label="{{v_aria}}">
-          <g id="v2grid"></g><g id="v2arcs"></g><g id="v2planes" fill="#fff"></g><g id="v2nodes"></g>
-          <g transform="translate(320 250)"><circle r="56" fill="#fff" fill-opacity=".14" id="v2halo"/><circle r="36" fill="#fff"/><text class="svgv" font-size="20" text-anchor="middle" dy="7" fill="#00A676">SG</text></g>
-          <g transform="translate(20 470)"><text class="svgv" font-size="40" fill="#fff" id="v2c">0</text><text class="svgl" fill="#fff" fill-opacity=".75" x="0" y="-38">{{v_cnt}}</text></g>
-        </svg>
-      </div>
-    </article>
-
-    <article class="pj py" id="pj3">
-      <span class="bgn" aria-hidden="true">MAST</span>
-      <div class="pj-l">
-        <div class="no"><span>{{m_no}}</span><span class="st">{{m_st}}</span></div>
-        <h3>MAST</h3>
-        <p class="one">{{m_one}}</p>
-        <div class="mkt"><b class="num"><span class="cu" data-to="134.8" data-pre="$" data-dec="1">{{m_mk0}}</span><small>{{m_mk1}}</small></b><span>{{m_mk2}}</span></div>
-        <div class="tags">
-          <div class="tag"><i>{{m_t1k}}</i>{{m_t1}}</div>
-          <div class="tag"><i>{{m_t2k}}</i>{{m_t2}}</div>
-        </div>
-      </div>
-      <div class="pj-r">
-        <svg id="v3" viewBox="0 0 640 470" aria-label="{{m_aria}}">
-          <g class="svgl" fill="#0B0B0D" fill-opacity=".7"><text x="20" y="60">{{m_lw}}</text><text x="620" y="60" text-anchor="end">{{m_ln}}</text></g>
-          <g id="m3p" fill="none" stroke="#0B0B0D" stroke-opacity=".18" stroke-width="1.2"></g>
-          <g id="m3t"></g>
-          <g id="m3s"></g>
-          <g id="m3d" fill="#0B0B0D"></g>
-          <g transform="translate(330 200)"><circle r="74" fill="#0B0B0D" fill-opacity=".08" id="m3halo"/><circle r="58" fill="#0B0B0D"/><text text-anchor="middle" y="-10" fill="#FFB800" font-size="22" font-weight="700" letter-spacing="-.02em" style="font-family:var(--f);font-stretch:112%">MAST</text><g fill="#FFB800" fill-opacity=".85" text-anchor="middle" font-size="8" letter-spacing=".08em" style="font-family:var(--m)"><text y="8">PUBLISHER</text><text y="19">MONETISATION</text><text y="30">PLATFORM</text></g></g>
-          <g id="m3b"></g>
-          <text x="20" y="460" class="svgl" fill="#0B0B0D" fill-opacity=".7">{{m_li}}</text>
-          <g transform="translate(620 460)"><text class="svgv" font-size="34" fill="#0B0B0D" text-anchor="end" y="-30" id="m3c">0</text><text class="svgl" fill="#0B0B0D" fill-opacity=".7" text-anchor="end">{{m_lc}}</text></g>
-        </svg>
-      </div>
-    </article>
-  </section>
-
   <section class="join" id="join">
     <div class="l">
       <span class="mono" style="color:#FF4D00">{{j_m}}</span>
@@ -272,7 +214,6 @@
       <p>{{j_p}}</p>
       <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">{{j_btn}} <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
-      <a class="jlink" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">{{j_link}} →</a>
     </div>
     <div class="r">
       <div class="slots5 s6">{{j_slots}}</div>

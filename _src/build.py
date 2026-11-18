@@ -265,20 +265,20 @@ def build(T):
 <link rel="alternate" hreflang="en" href="{DOM}/">
 <link rel="alternate" hreflang="ru" href="{DOM}/ru/">
 <link rel="alternate" hreflang="x-default" href="{DOM}/">
-<style>body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+<link rel="preload" href="/fonts/TikTokSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/TikTokSans-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<style>@@FONTCSS@@body{{margin:0}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 </head>
 <body>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wdth,wght@12..36,75..150,300..900&family=Geist+Mono:wght@400..600&display=swap">
 '''
     cf = '<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';</script>\n' + pooljs
-    libs = '''<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/SplitText.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+    libs = '''<script src="/js/gsap.min.js"></script>
+<script src="/js/ScrollTrigger.min.js"></script>
+<script src="/js/SplitText.min.js"></script>
+<script src="/js/lenis.min.js"></script>
 '''
+    head = head.replace('@@FONTCSS@@', open(B+'site/fonts/fonts.css').read())
     out = head + css + '\n' + extra + '\n' + b + '\n' + libs + j + '\n' + fav + '\n' + cf + cfjs + '</body></html>\n'
     assert 'ё' not in out
     return out

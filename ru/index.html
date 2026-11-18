@@ -510,6 +510,9 @@ button{font:inherit}
 .st-b b{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px;font-weight:500;line-height:1.35}
 .st-note{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 @media (max-width:760px){.st-nav{display:none}.st{flex-basis:84%}.st figure{aspect-ratio:4/3.6}}
+.hlink{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-weight:500;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);transition:border-color .3s}
+.hlink:hover{border-color:var(--ink)}.hlink i{font-style:normal;display:inline-block;animation:hl 2.4s ease-in-out infinite}
+@keyframes hl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -524,7 +527,7 @@ button{font:inherit}
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
       <a class="nl" href="#cross">Услуги</a><a class="nl" href="#focus">Почему сейчас</a><a class="nl" href="#model">Сравнение</a><a class="nl" href="#portfolio">Компании</a>
-      <a class="nav-cta" href="#task">Задача →</a>
+      <a class="nav-cta" href="#task">Связаться</a>
       <a class="chip" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Движение: вкл</button>
     </div>
@@ -536,7 +539,7 @@ button{font:inherit}
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">без границ</span></h1>
       <p class="lead">Резидентство Монако, место в&nbsp;Le Rosey, Patek Philippe без листа ожидания, семейный траст на&nbsp;три поколения. Orbiq берет задачи, которые решаются только через нужных людей. Партнеры в&nbsp;каждой стране открывают двери.</p>
       <div class="hcta">
-        <a class="hbtn" href="#task">Описать задачу <i aria-hidden="true">→</i></a>
+        <a class="hlink" href="#stories">Смотреть истории <i aria-hidden="true">↓</i></a>
       </div>
       <div class="trust mono"><span><i></i>Конфиденциально</span><span><i></i>Ответ в течение часа</span></div>
     </div>
@@ -560,7 +563,7 @@ button{font:inherit}
 
 <div class="wrap">
   <section class="sec stories" id="stories">
-    <div class="st-h"><div class="sec-h"><span class="mono">Истории</span><h2 class="mask">Так это выглядит</h2></div>
+    <div class="st-h"><div class="sec-h"><span class="mono">Истории</span><h2 class="mask">Просят неделю в&nbsp;Лондоне. Получают Royal Ascot</h2></div>
       <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="Назад">←</button><button type="button" class="st-btn" data-d="1" aria-label="Дальше">→</button></div></div>
     <div class="st-row" id="strow">
       <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">Лондон · июнь</figcaption></figure><div class="st-b"><h3>Скачки, о&nbsp;которых она не&nbsp;думала</h3><p>Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, модистка сшила шляпу под дресс-код.</p><b>В 14:00 мимо прошла королевская процессия</b></div></article>
@@ -605,7 +608,7 @@ button{font:inherit}
   </section>
 
   <section class="sec" id="cross">
-    <div class="sec-h"><span class="mono">00 · Услуги</span><h2 class="mask">Все, что нужно семье в&nbsp;разных странах</h2></div>
+    <div class="sec-h"><span class="mono">00 · Услуги</span><h2 class="mask">От&nbsp;визы до&nbsp;Patek Philippe</h2></div>
     <p class="xb-lead">Капитал, резидентство, образование, здоровье и&nbsp;лекарства, коллекции и&nbsp;события. Партнеров в&nbsp;каждой стране подбираем под задачу.</p>
     <div class="xb-grid">
       <div class="xb on"><span class="mono">Документы</span><b>Визы и&nbsp;ВНЖ</b><p>Туристические, рабочие и семейные визы, вид на жительство. Сингапур, дальше Дубай, Таиланд, Вьетнам, Австралия</p></div>

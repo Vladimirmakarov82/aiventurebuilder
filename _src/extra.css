@@ -122,4 +122,7 @@
 .st-b b{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px;font-weight:500;line-height:1.35}
 .st-note{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 @media (max-width:760px){.st-nav{display:none}.st{flex-basis:84%}.st figure{aspect-ratio:4/3.6}}
+.hlink{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-weight:500;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);transition:border-color .3s}
+.hlink:hover{border-color:var(--ink)}.hlink i{font-style:normal;display:inline-block;animation:hl 2.4s ease-in-out infinite}
+@keyframes hl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 </style>

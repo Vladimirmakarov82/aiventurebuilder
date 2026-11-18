@@ -510,6 +510,9 @@ button{font:inherit}
 .st-b b{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px;font-weight:500;line-height:1.35}
 .st-note{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 @media (max-width:760px){.st-nav{display:none}.st{flex-basis:84%}.st figure{aspect-ratio:4/3.6}}
+.hlink{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-weight:500;font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);transition:border-color .3s}
+.hlink:hover{border-color:var(--ink)}.hlink i{font-style:normal;display:inline-block;animation:hl 2.4s ease-in-out infinite}
+@keyframes hl{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -524,7 +527,7 @@ button{font:inherit}
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
       <a class="nl" href="#cross">Services</a><a class="nl" href="#focus">Why now</a><a class="nl" href="#model">Comparison</a><a class="nl" href="#portfolio">Companies</a>
-      <a class="nav-cta" href="#task">Task →</a>
+      <a class="nav-cta" href="#task">Contact</a>
       <a class="chip" href="/ru/" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Motion: on</button>
     </div>
@@ -536,7 +539,7 @@ button{font:inherit}
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">without borders</span></h1>
       <p class="lead">A Monaco residence, a place at Le Rosey, Patek Philippe without a waitlist, a family trust for three generations. Orbiq takes the tasks that open only through the right people. Partners in each country open the doors.</p>
       <div class="hcta">
-        <a class="hbtn" href="#task">Describe a task <i aria-hidden="true">→</i></a>
+        <a class="hlink" href="#stories">See the stories <i aria-hidden="true">↓</i></a>
       </div>
       <div class="trust mono"><span><i></i>Confidential</span><span><i></i>Reply within an hour</span></div>
     </div>
@@ -560,7 +563,7 @@ button{font:inherit}
 
 <div class="wrap">
   <section class="sec stories" id="stories">
-    <div class="st-h"><div class="sec-h"><span class="mono">Stories</span><h2 class="mask">What it looks like</h2></div>
+    <div class="st-h"><div class="sec-h"><span class="mono">Stories</span><h2 class="mask">They ask for a week in&nbsp;London. They get Royal Ascot</h2></div>
       <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="Back">←</button><button type="button" class="st-btn" data-d="1" aria-label="Next">→</button></div></div>
     <div class="st-row" id="strow">
       <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">London · June</figcaption></figure><div class="st-b"><h3>Races she never thought about</h3><p>She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;milliner made a&nbsp;hat to&nbsp;the dress code.</p><b>At 2&nbsp;pm the Royal Procession passed by</b></div></article>
@@ -605,7 +608,7 @@ button{font:inherit}
   </section>
 
   <section class="sec" id="cross">
-    <div class="sec-h"><span class="mono">00 · Services</span><h2 class="mask">Everything a family needs across countries</h2></div>
+    <div class="sec-h"><span class="mono">00 · Services</span><h2 class="mask">From a&nbsp;visa to&nbsp;a&nbsp;Patek Philippe</h2></div>
     <p class="xb-lead">Capital, residence, education, health and medicines, collections and events. Partners in each country are selected for every task.</p>
     <div class="xb-grid">
       <div class="xb on"><span class="mono">Documents</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia</p></div>

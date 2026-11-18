@@ -43,7 +43,7 @@ def slots(lst):
     return ''.join('<div class="%s">%s</div>' % (cl[i], x) for i, x in enumerate(lst))
 
 EN = dict(
- st_m='Stories', st_h='What it looks like', st_note='Work scenarios. Client requests are never published.', st_prev='Back', st_next='Next',
+ st_m='Stories', st_h='They ask for a week in&nbsp;London. They get Royal Ascot', st_note='Work scenarios. Client requests are never published.', st_prev='Back', st_next='Next',
  lang='en', path='/', title='Orbiq · Concierge without borders',
  desc='Orbiq takes tasks that open only through the right people: Monaco residence, Le Rosey, Patek Philippe without a waitlist, family trusts, Charité, Sotheby’s and Christie’s.',
  og='og-orbic-en.png',
@@ -57,7 +57,7 @@ EN = dict(
  bx_items=None,
  bxf1k='Own license', bxf1v='Visas · Singapore', bxf2k='Through partners', bxf2v='Trusts, Patek, Hermès, Sotheby’s',
  ticker=ticker(['Orbiq', 'concierge without borders', 'Monaco residence', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'family trusts', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'Gübelin sapphires', '24/7']),
- s0_m='00 · Services', s0_h='Everything a family needs across countries',
+ s0_m='00 · Services', s0_h='From a&nbsp;visa to&nbsp;a&nbsp;Patek Philippe',
  s0_lead='Capital, residence, education, health and medicines, collections and events. Partners in each country are selected for every task.',
  xb=xb([('Documents', 'Visas and residence', 'Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia'),
         ('Through partners', 'Residence and citizenship', 'Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family'),
@@ -113,7 +113,7 @@ EN = dict(
  axis="['HOTEL','FLIGHT','TRANSFER','VISA','TRUST']",
  SIDE="[{t:'Bank concierge',h:'Works within the rules of one bank',l:['Handles standard requests fast','Non-standard tasks hit the rules and limits of the bank','The bank sets the list of services']},{t:'Orbiq',h:'Builds a route for each task',l:['Partners in many countries: payment, legal, trust, visa','A personal agent network runs all tasks in parallel',{s:'In one chat:',u:['status of each task','documents and deadlines','one manager for the whole family']}],g:true}]",
  goal='<div class="goal"><span>On duty</span><b class="num">24/7</b><span>one chat for any task</span></div>',
- cta='Describe a task', cta_short='Task →',
+ cta='See the stories', cta_short='Contact',
  trust1='Confidential',
  trust2='Reply within an hour',
  t_m='Task',
@@ -147,7 +147,7 @@ EN = dict(
 )
 
 RU = dict(
- st_m='Истории', st_h='Так это выглядит', st_note='Сценарии работы. Запросы клиентов не&nbsp;публикуем.', st_prev='Назад', st_next='Дальше',
+ st_m='Истории', st_h='Просят неделю в&nbsp;Лондоне. Получают Royal Ascot', st_note='Сценарии работы. Запросы клиентов не&nbsp;публикуем.', st_prev='Назад', st_next='Дальше',
  lang='ru', path='/ru/', title='Orbiq · Консьерж без границ',
  desc='Orbiq берет задачи, которые решаются через нужных людей: резидентство Монако, Le Rosey, Patek Philippe без листа ожидания, семейные трасты, Charité, Sotheby’s и Christie’s.',
  og='og-orbic-ru.png',
@@ -161,7 +161,7 @@ RU = dict(
  bx_items=None,
  bxf1k='Своя лицензия', bxf1v='Визы · Сингапур', bxf2k='Через партнеров', bxf2v='Трасты, Patek, Hermès, Sotheby’s',
  ticker=ticker(['Orbiq', 'консьерж без границ', 'Резидентство Монако', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'семейные трасты', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'сапфиры Gübelin', '24/7']),
- s0_m='00 · Услуги', s0_h='Все, что нужно семье в&nbsp;разных странах',
+ s0_m='00 · Услуги', s0_h='От&nbsp;визы до&nbsp;Patek Philippe',
  s0_lead='Капитал, резидентство, образование, здоровье и&nbsp;лекарства, коллекции и&nbsp;события. Партнеров в&nbsp;каждой стране подбираем под задачу.',
  xb=xb([('Документы', 'Визы и&nbsp;ВНЖ', 'Туристические, рабочие и семейные визы, вид на жительство. Сингапур, дальше Дубай, Таиланд, Вьетнам, Австралия'),
         ('Через партнеров', 'Резидентство и&nbsp;гражданство', 'Резидентство Монако и Сингапура, Golden Visa ОАЭ, Швейцария по паушальному налогу, второе гражданство для семьи'),
@@ -216,7 +216,7 @@ RU = dict(
  axis="['ОТЕЛЬ','ПЕРЕЛЕТ','ПЕРЕВОД','ВИЗА','ТРАСТ']",
  SIDE="[{t:'Консьерж банка',h:'Работает в правилах одного банка',l:['Стандартные запросы закрывает быстро','Нестандартные задачи упираются в правила и лимиты банка','Набор услуг задает банк']},{t:'Orbiq',h:'Строит маршрут под каждую задачу',l:['Партнеры во многих странах: платежные, юридические, трастовые, визовые','Личная сеть агентов ведет все задачи параллельно',{s:'В одном чате:',u:['статус каждой задачи','документы и сроки','один менеджер на всю семью']}],g:true}]",
  goal='<div class="goal"><span>На связи</span><b class="num">24/7</b><span>один чат на любую задачу</span></div>',
- cta='Описать задачу', cta_short='Задача →',
+ cta='Смотреть истории', cta_short='Связаться',
  trust1='Конфиденциально',
  trust2='Ответ в течение часа',
  t_m='Задача',

@@ -91,7 +91,7 @@ if __name__ == '__main__':
         for it in json.loads(m.group(1)):
             if re.fullmatch(r'[A-Za-z][\w.-]* \+\d+%', it): continue  # pre-IPO deal: «Name +N%» (owner data, IPO Sharks)
             if len(it.split()) > 4: hard.append(('POOL: больше 4 слов, нужно только имя', it))
-            if re.search(r'(^|\s)(с|со|для|на|без|в|во|до|через|из|по|под|of|with|for|in|before|at|from|without)(\s|$)', it.lower()):
+            if re.search(r'с бриллиант|для семьи|через spv|до ipo|в полном|без масла|в платине|без объявлений|with diamonds|for the family|via spv|before the ipo|full set|in platinum', it.lower()):
                 hard.append(('POOL: пояснение вместо имени', it))
             if re.search(r'\d+\s*(лет|years)|одн(а|и|о) из|one of', it.lower()):
                 hard.append(('POOL: тираж или срок вместо имени', it))

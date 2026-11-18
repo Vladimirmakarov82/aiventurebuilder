@@ -70,8 +70,8 @@ EN = dict(
  xb=xb([('Residence', 'Monaco, Switzerland, UAE', 'Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family'),
         ('Documents', 'Visas and residence permits', 'Tourist, work and family visas, residence permits. We collect the documents, book the appointment and follow the application to the decision'),
         ('Finance', 'Transfers between countries', 'We open accounts at private banks in Geneva and Singapore and help pay for tuition, treatment and deals abroad'),
-        ('Finance', 'Trusts and inheritance', 'Family trusts and foundations in Liechtenstein and Switzerland through licensed partners: capital protected and passed to children and grandchildren'),
-        ('Capital', 'Private pre-IPO deals', 'Closed rounds and secondary shares of late-stage companies: Stripe, Databricks, Anduril. Licensed partners run the deal'),
+        ('Finance', 'Trusts and inheritance', 'Family trusts and foundations in Liechtenstein and Switzerland set up by local lawyers: capital protected and passed to children and grandchildren'),
+        ('Capital', 'Private pre-IPO deals', 'Closed rounds and secondary shares of late-stage companies: Stripe, Databricks, Anduril. A&nbsp;broker in&nbsp;Zurich runs the deal'),
         ('Education', 'Schools and universities', 'We find a school and university that suit the child: Le Rosey, Eton, Oxford, the Ivy League'),
         ('Health', 'Doctors and medicines', 'Second opinion from Charité and Mayo Clinic, surgeons in Seoul, Clinique La Prairie. A rare drug: we find the country where it is sold and get it through a clinic with a prescription'),
         ('Flights', 'Private jets', 'Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X'),
@@ -80,7 +80,7 @@ EN = dict(
         ('Events', 'Closed events', 'amfAR Gala in Cannes, Vienna Opera Ball, Chanel Haute Couture, Monaco Grand Prix, Royal Ascot'),
         ('Property', 'Off-market property', 'Villas and penthouses that never reach the market: Marbella, Monaco, One Hyde Park in London')]),
  syn=syn([('Speed', 'Each client has their own AI agents', 'For each client we run separate agents. They handle all matters at once, check the documents of two countries and watch every deadline.'),
-          ('Access', 'Licensed people in the right country', 'Trust, payment and legal firms, visa centers. For each matter we pick people we have checked ourselves.'),
+          ('Access', 'Lawyers, bankers and brokers in&nbsp;the right country', 'Trust, payment and legal firms, visa centers. For each matter we pick people we have checked ourselves.'),
           ('Quiet', 'Only the family’s concierge knows its affairs', 'Each partner sees only their part. The site stores no requests, the whole conversation stays in a private chat.')]),
  s1_m='01 · Why now', s1_h='Borders got higher',
  p1_n='Reason 1', p1_h='Moving money and people got harder', p1_p='Each year adds new limits:',
@@ -177,8 +177,8 @@ RU = dict(
  xb=xb([('Резидентство', 'Монако, Швейцария, ОАЭ', 'Резидентство Монако и Сингапура, Golden Visa ОАЭ, паушальный налог в Швейцарии, второе гражданство для семьи'),
         ('Документы', 'Визы и&nbsp;ВНЖ', 'Туристические, рабочие и семейные визы, вид на жительство. Собираем документы, записываем на подачу и ведем заявку до решения'),
         ('Финансы', 'Переводы между странами', 'Открываем счета в частных банках Женевы и Сингапура. Помогаем оплатить учебу, лечение и сделки за границей'),
-        ('Финансы', 'Трасты и&nbsp;наследство', 'Семейные трасты и фонды в Лихтенштейне и Швейцарии. Их оформляют наши партнеры с лицензией, чтобы капитал был защищен и перешел к детям и внукам'),
-        ('Капитал', 'Доли до&nbsp;IPO', 'Закрытые раунды и акции крупных частных компаний на вторичном рынке: Stripe, Databricks, Anduril. Сделку ведут партнеры с лицензией'),
+        ('Финансы', 'Трасты и&nbsp;наследство', 'Семейные трасты и фонды в Лихтенштейне и Швейцарии. Их оформляют местные юристы, чтобы капитал был защищен и перешел к детям и внукам'),
+        ('Капитал', 'Доли до&nbsp;IPO', 'Закрытые раунды и акции крупных частных компаний на вторичном рынке: Stripe, Databricks, Anduril. Сделку ведет брокер в&nbsp;Цюрихе'),
         ('Образование', 'Школы и&nbsp;университеты', 'Подбираем школу и университет под характер ребенка: Le Rosey, Eton, Оксфорд, Лига плюща'),
         ('Здоровье', 'Врачи и&nbsp;лекарства', 'Второе мнение врачей Charité и Mayo Clinic, хирурги в Сеуле, Clinique La Prairie. Если редкого лекарства нет в стране, находим, где его продают, и получаем через клинику по рецепту'),
         ('Перелеты', 'Частные самолеты', 'Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X'),
@@ -187,7 +187,7 @@ RU = dict(
         ('События', 'Закрытые события', 'Гала amfAR в Каннах, Венский оперный бал, Chanel Haute Couture, Гран-при Монако, Royal Ascot'),
         ('Недвижимость', 'Виллы без объявлений', 'Виллы и пентхаусы, которые продают тихо, без открытой рекламы: Марбелья, Монако, One Hyde Park в Лондоне')]),
  syn=syn([('Скорость', 'Свои AI-агенты у&nbsp;каждого клиента', 'Под каждого клиента запускаем отдельных агентов. Они ведут все дела одновременно, сверяют документы с требованиями обеих стран и следят за каждым сроком.'),
-          ('Доступ', 'Свои люди с&nbsp;лицензией в&nbsp;нужной стране', 'Трастовые, платежные и юридические компании, визовые центры. Для каждого дела подбираем тех, кого проверили сами.'),
+          ('Доступ', 'Юристы, банкиры и&nbsp;брокеры в&nbsp;нужной стране', 'Трастовые, платежные и юридические компании, визовые центры. Для каждого дела подбираем тех, кого проверили сами.'),
           ('Тишина', 'О делах семьи знает только личный консьерж', 'Каждый партнер видит только свою часть дела. Сайт не хранит заявки, вся переписка идет в личном чате.')]),
  s1_m='01 · Почему сейчас', s1_h='Жить на&nbsp;несколько стран стало сложнее',
  p1_n='Причина 1', p1_h='Перевести деньги и&nbsp;улететь стало труднее', p1_p='С каждым годом ограничений больше:',
@@ -273,7 +273,7 @@ ST_RU=[
 ('Гштаад · январь','Школа, которая зимой уезжает в&nbsp;горы','Родители выбирали школу для дочери. Мы рассказали им про Le&nbsp;Rosey: осенью и&nbsp;весной дети учатся в&nbsp;Ролле, а&nbsp;зимой вся школа переезжает в&nbsp;Гштаад. Мы свозили семью в&nbsp;оба кампуса и&nbsp;устроили встречу с&nbsp;консультантом по&nbsp;поступлению.','Дочь сама попросила подать документы'),
 ('Нью-Йорк · ноябрь','Картина над камином','Клиентка переехала в&nbsp;новый дом, и&nbsp;стена над камином долго оставалась пустой. Наш арт-консультант отобрал три поздние работы Пикассо с&nbsp;вечерних торгов Christie’s в&nbsp;Нью-Йорке. По&nbsp;каждой он проверил состояние холста и&nbsp;историю владельцев.','Ставку она сделала по&nbsp;телефону, через специалиста Christie’s'),
 ('Женева','Rolex Datejust, которого нет в&nbsp;витрине','Клиентка искала подарок мужу к&nbsp;50-летию. Он давно хотел Datejust 41 с&nbsp;зеленым циферблатом, но&nbsp;в&nbsp;бутиках таких не&nbsp;было. Наш партнер в&nbsp;Женеве нашел такие часы за&nbsp;неделю.','Часы успели к&nbsp;юбилейному ужину'),
-('Цюрих · сентябрь','Доля в&nbsp;компании, о&nbsp;которой все время говорит сын','Сын клиентки работает с&nbsp;данными и&nbsp;часто рассказывает о&nbsp;Databricks. Акции компании на&nbsp;бирже не&nbsp;продаются. Наш партнер с&nbsp;лицензией в&nbsp;Цюрихе нашел акционера, готового продать часть своей доли. Компания одобрила сделку, и&nbsp;долю оформили на&nbsp;семейный траст.','За ужином сын спросил, откуда она знает его любимую компанию'),
+('Цюрих · сентябрь','Доля в&nbsp;компании, о&nbsp;которой все время говорит сын','Сын клиентки работает с&nbsp;данными и&nbsp;часто рассказывает о&nbsp;Databricks. Акции компании на&nbsp;бирже не&nbsp;продаются. Наш брокер в&nbsp;Цюрихе нашел акционера, готового продать часть своей доли. Компания одобрила сделку, и&nbsp;долю оформили на&nbsp;семейный траст.','За ужином сын спросил, откуда она знает его любимую компанию'),
 ]
 ST_EN=[
 ('London · June','Races you enter only by&nbsp;sponsorship','She was planning a&nbsp;week in&nbsp;London for shopping and the theatre. We checked her dates and saw they fell on&nbsp;Royal Ascot. Royal Enclosure badges are not for sale: two members must sponsor a&nbsp;newcomer. Our partners found the sponsors, and a&nbsp;London atelier made her a&nbsp;hat to&nbsp;the dress code.','At 2&nbsp;pm the Royal Procession passed by'),
@@ -283,7 +283,7 @@ ST_EN=[
 ('Gstaad · January','A school that moves to&nbsp;the mountains','Parents were choosing a&nbsp;school for their daughter. We told them about Le&nbsp;Rosey: in&nbsp;autumn and spring the children study in&nbsp;Rolle, and in&nbsp;winter the whole school moves to&nbsp;Gstaad. We took the family to&nbsp;both campuses and set up a&nbsp;meeting with an&nbsp;admissions advisor.','The daughter asked to&nbsp;apply herself'),
 ('New York · November','A painting over the fireplace','She had moved into a&nbsp;new house, and the wall over the fireplace stayed empty for a&nbsp;long time. Our art advisor picked three late Picasso works from Christie’s New York evening sales and checked the condition and provenance of&nbsp;each.','She bid by phone, through a&nbsp;Christie’s specialist'),
 ('Geneva','A Rolex Datejust not in&nbsp;the window','She was looking for a&nbsp;gift for her husband’s 50th. He had long wanted a&nbsp;Datejust 41 with a&nbsp;green dial, but the boutiques had none. Our partner in&nbsp;Geneva found one within a&nbsp;week.','The watch arrived for the anniversary dinner'),
-('Zurich · September','A stake in&nbsp;the company her son always talks about','Her son works with data and often talks about Databricks. The company’s shares are not sold on&nbsp;any exchange. Our licensed partner in&nbsp;Zurich found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;his stake. The company approved the deal, and the stake went into the family trust.','At dinner her son asked how she knew his favourite company'),
+('Zurich · September','A stake in&nbsp;the company her son always talks about','Her son works with data and often talks about Databricks. The company’s shares are not sold on&nbsp;any exchange. Our broker in&nbsp;Zurich found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;his stake. The company approved the deal, and the stake went into the family trust.','At dinner her son asked how she knew his favourite company'),
 ]
 def stories(lst):
     return '\n      '.join('<article class="st"><figure><img src="/img/%s.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:%s"><figcaption class="mono">%s</figcaption></figure><div class="st-b"><h3>%s</h3><p>%s</p><b>%s</b></div></article>' % (IMGS[i], POS[i], a, b, c, d) for i, (a, b, c, d) in [(k, lst[k]) for k in ORDER])

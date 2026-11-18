@@ -20,6 +20,11 @@
       <div class="kick mono"><span class="dot"></span>Orbiq · <b>{{kick}}</b></div>
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">{{h1b}}</span></h1>
       <p class="lead">{{lead}}</p>
+      <div class="hcta">
+        <a class="hbtn" href="#task">{{cta}} <i aria-hidden="true">→</i></a>
+        <a class="hbtn2" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="trust mono"><span><i></i>{{trust1}}</span><span><i></i>{{trust2}}</span></div>
       <div class="kpis">
         <a class="kpi" href="#model"><b class="num">24/7</b><span>{{k1}}</span></a>
         <a class="kpi" href="#chatfilm"><b class="num"><span class="cu" data-to="1">1</span></b><span>{{k2}}</span></a>
@@ -44,6 +49,36 @@
 </div></div>
 
 <div class="wrap">
+  <section class="sec task" id="task">
+    <div class="tk-wrap">
+      <div class="tk-l">
+        <span class="mono" style="color:var(--or)">{{t_m}}</span>
+        <h2 class="mask">{{t_h}}</h2>
+        <p>{{t_p}}</p>
+        <ul class="tk-trust">{{t_trust}}</ul>
+      </div>
+      <form class="tform" id="tform" novalidate>
+        <div class="tf-top"><span class="mono" id="tfstep">1 / 3</span><div class="tf-bar"><i id="tfbar"></i></div></div>
+        <div class="tf-s on" data-s="1">
+          <b class="tf-q">{{t_q1}}</b>
+          <div class="tf-chips">{{t_chips}}</div>
+        </div>
+        <div class="tf-s" data-s="2">
+          <b class="tf-q">{{t_q2}}</b>
+          <div class="tf-ta"><textarea id="tftext" rows="5" placeholder="{{t_ph}}"></textarea><button type="button" class="tf-mic" id="tfmic" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="tfmicl">{{t_mic}}</span></button></div>
+          <div class="tf-nav"><button type="button" class="tf-back">{{t_back}}</button><button type="button" class="tf-next" id="tfnext">{{t_next}} →</button></div>
+        </div>
+        <div class="tf-s" data-s="3">
+          <b class="tf-q">{{t_q3}}</b>
+          <input id="tfname" type="text" autocomplete="off" placeholder="{{t_name}}">
+          <div class="tf-send"><button type="button" class="tf-go" data-ch="tg">{{t_tg}}</button><button type="button" class="tf-go alt" data-ch="mail">{{t_mail}}</button></div>
+          <p class="tf-note">{{t_note}}</p>
+          <div class="tf-nav"><button type="button" class="tf-back">{{t_back}}</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <section class="sec" id="cross">
     <div class="sec-h"><span class="mono">{{s0_m}}</span><h2 class="mask">{{s0_h}}</h2></div>
     <p class="xb-lead">{{s0_lead}}</p>
@@ -52,6 +87,30 @@
     </div>
     <div class="xb-syn">
       {{syn}}
+    </div>
+  </section>
+
+  <section class="sec" id="film">
+    <div class="focus">
+      <article class="fc fv cf" id="chatfilm">
+        <div class="fv-h">
+          <div class="l">
+            <span class="n">{{cf_n}}</span>
+            <h3>{{cf_h}}</h3>
+          </div>
+          <div class="r">
+            <p>{{cf_p}}</p>
+            <div class="fv-ctl">
+              <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>{{cf_playing}}</button>
+              <button class="chip" id="cfr" type="button">{{cf_replay}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="cf-st">
+          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">{{cf_online}}</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
+          <div class="cf-board"><div class="cf-bh"><span class="mono">{{cf_board}}</span><span class="mono cf-demo">{{cf_demo}}</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -97,25 +156,6 @@
           </svg>
         </div>
       </article>
-      <article class="fc fv cf" id="chatfilm">
-        <div class="fv-h">
-          <div class="l">
-            <span class="n">{{cf_n}}</span>
-            <h3>{{cf_h}}</h3>
-          </div>
-          <div class="r">
-            <p>{{cf_p}}</p>
-            <div class="fv-ctl">
-              <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>{{cf_playing}}</button>
-              <button class="chip" id="cfr" type="button">{{cf_replay}}</button>
-            </div>
-          </div>
-        </div>
-        <div class="cf-st">
-          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">{{cf_online}}</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
-          <div class="cf-board"><div class="cf-bh"><span class="mono">{{cf_board}}</span><span class="mono cf-demo">{{cf_demo}}</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -141,7 +181,7 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="process">
     <div class="def">
       <div class="def-txt">
         <span class="mono" style="color:var(--or)">{{s3_m}}</span>
@@ -234,6 +274,7 @@
     </div>
   </section>
 
+  <a class="stk" id="stk" href="#task"><span>{{cta}}</span><small>{{trust2}}</small><i aria-hidden="true">→</i></a>
   <footer class="foot">
     <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">{{copy}}</span></button>

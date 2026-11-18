@@ -437,6 +437,61 @@ button{font:inherit}
 @media (max-width:1000px){.aud{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.aud{grid-template-columns:1fr}.aud>div{min-height:0}}
 .bx-it span{transition:opacity .3s}
+/* hero cta */
+.hcta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.hbtn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 26px;border-radius:999px;background:#FF4D00;color:#fff;font-weight:600;font-size:16px;box-shadow:0 10px 30px -10px rgba(255,77,0,.6);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.hbtn:hover{transform:translateY(-2px)}.hbtn i{font-style:normal}
+.hbtn2{display:inline-flex;align-items:center;min-height:56px;padding:0 24px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font-weight:600;font-size:15px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.trust span{display:inline-flex;align-items:center;gap:8px}.trust i{width:6px;height:6px;border-radius:50%;background:#00A676}
+/* task form */
+.tk-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:start}
+.tk-l h2{font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:-.035em;font-weight:600;font-stretch:112%;margin:14px 0 16px}
+.tk-l p{font-size:18px;line-height:1.5;color:var(--mute);margin:0 0 20px;max-width:46ch}
+.tk-trust{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.tk-trust li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.4}
+.tk-trust li b{display:block;font-weight:600}.tk-trust li span{color:var(--mute)}
+.tk-trust li:before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:#FF4D00 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:1px}
+.tform{background:#0B0B0D;color:#F3F4F2;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px -30px rgba(0,0,0,.45)}
+.tf-top{display:flex;align-items:center;gap:14px}.tf-top .mono{font-size:11px;color:rgba(243,244,242,.6)}
+.tf-bar{flex:1;height:3px;border-radius:9px;background:rgba(243,244,242,.15);overflow:hidden}.tf-bar i{display:block;height:100%;width:33%;background:#FF4D00;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.tf-s{display:none;flex-direction:column;gap:14px;animation:tfin .5s cubic-bezier(.16,1,.3,1)}
+.tf-s.on{display:flex}
+@keyframes tfin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.tf-q{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.tf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tf-chips button{font:inherit;font-size:15px;padding:12px 16px;border-radius:999px;border:1px solid rgba(243,244,242,.2);background:transparent;color:#F3F4F2;cursor:pointer;transition:background .25s,border-color .25s}
+.tf-chips button:hover,.tf-chips button.on{background:#FF4D00;border-color:#FF4D00}
+.tform textarea,.tform input{font:inherit;font-size:16px;width:100%;box-sizing:border-box;padding:16px;border-radius:16px;border:1px solid rgba(243,244,242,.18);background:rgba(243,244,242,.06);color:#F3F4F2;resize:vertical;outline:none}
+.tform textarea:focus,.tform input:focus{border-color:#FF4D00}
+.tform ::placeholder{color:rgba(243,244,242,.4)}
+.tf-nav{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tf-back{font:inherit;font-size:14px;background:none;border:0;color:rgba(243,244,242,.55);cursor:pointer;padding:8px 0}
+.tf-next,.tf-go{font:inherit;font-weight:600;font-size:16px;min-height:54px;padding:0 24px;border-radius:999px;border:0;background:#FF4D00;color:#fff;cursor:pointer}
+.tf-next[disabled]{opacity:.35;cursor:default}
+.tf-send{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf-go.alt{background:#F3F4F2;color:#0B0B0D}
+.tf-note{margin:0;font-size:13px;line-height:1.45;color:rgba(243,244,242,.55)}
+.tf-ta{position:relative}.tf-ta textarea{padding-bottom:60px}
+.tf-mic{position:absolute;left:10px;bottom:12px;display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;border:0;background:#F3F4F2;color:#0B0B0D;cursor:pointer}
+.tf-mic[hidden]{display:none}.tf-mic svg{width:16px;height:16px}
+.tf-mic.rec{background:#FF4D00;color:#fff;animation:micp 1.2s infinite}
+@keyframes micp{0%,100%{box-shadow:0 0 0 0 rgba(255,77,0,.5)}50%{box-shadow:0 0 0 10px rgba(255,77,0,0)}}
+/* sticky mobile cta */
+.stk{display:none}
+@media (max-width:760px){
+ .tk-wrap{grid-template-columns:1fr}
+ .tform{padding:20px;min-height:0}
+ .tf-q{font-size:22px}.tf-send{grid-template-columns:1fr}
+ .hcta .hbtn{flex:1;justify-content:center}
+ .stk{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;align-items:center;gap:10px;min-height:58px;padding:0 20px;border-radius:999px;background:#FF4D00;color:#fff;font-weight:600;box-shadow:0 14px 40px -12px rgba(255,77,0,.7);transform:translateY(140%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+ .stk.on{transform:none}.stk small{font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;margin-left:auto}.stk i{font-style:normal}
+ #film,#focus,#model,#process,#portfolio{display:none}
+ .xb-grid,.xb-syn{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:-16px;padding:0 16px 6px;scrollbar-width:none}
+ .xb-grid::-webkit-scrollbar,.xb-syn::-webkit-scrollbar{display:none}
+ .xb-grid>*,.xb-syn>*{flex:0 0 80%;scroll-snap-align:start}
+ .foot{padding-bottom:90px}
+}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -461,6 +516,11 @@ button{font:inherit}
       <div class="kick mono"><span class="dot"></span>Orbiq · <b>Private concierge</b></div>
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">without borders</span></h1>
       <p class="lead">A Monaco residence, a place at Le Rosey, Patek Philippe without a waitlist, a family trust for three generations. Orbiq takes the tasks that open only through the right people. Partners in each country open the doors.</p>
+      <div class="hcta">
+        <a class="hbtn" href="#task">Describe a task <i aria-hidden="true">→</i></a>
+        <a class="hbtn2" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="trust mono"><span><i></i>Confidential</span><span><i></i>Reply within an hour</span></div>
       <div class="kpis">
         <a class="kpi" href="#model"><b class="num">24/7</b><span>always on&nbsp;duty</span></a>
         <a class="kpi" href="#chatfilm"><b class="num"><span class="cu" data-to="1">1</span></b><span>personal agent network per client</span></a>
@@ -485,11 +545,41 @@ button{font:inherit}
 </div></div>
 
 <div class="wrap">
+  <section class="sec task" id="task">
+    <div class="tk-wrap">
+      <div class="tk-l">
+        <span class="mono" style="color:var(--or)">Task</span>
+        <h2 class="mask">A task to a private chat in&nbsp;a&nbsp;minute</h2>
+        <p>Three short steps. Voice input works. The text goes straight to a personal manager.</p>
+        <ul class="tk-trust"><li><div><b>Confidential</b><span>The site stores no requests. Only a personal manager sees the task.</span></div></li><li><div><b>Fast</b><span>A reply within an hour, then the personal agent network runs the task.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Stay anonymous until the first call.</span></div></li></ul>
+      </div>
+      <form class="tform" id="tform" novalidate>
+        <div class="tf-top"><span class="mono" id="tfstep">1 / 3</span><div class="tf-bar"><i id="tfbar"></i></div></div>
+        <div class="tf-s on" data-s="1">
+          <b class="tf-q">What is the task?</b>
+          <div class="tf-chips"><button type="button">Capital and trusts</button><button type="button">Residence</button><button type="button">Children and education</button><button type="button">Health and medicines</button><button type="button">Watches and stones</button><button type="button">Hermès</button><button type="button">Art</button><button type="button">Property</button><button type="button">Other</button></div>
+        </div>
+        <div class="tf-s" data-s="2">
+          <b class="tf-q">A few words about the task</b>
+          <div class="tf-ta"><textarea id="tftext" rows="5" placeholder="For example: a place at a Swiss boarding school for a 12-year-old son, September 2027"></textarea><button type="button" class="tf-mic" id="tfmic" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="tfmicl">Dictate</span></button></div>
+          <div class="tf-nav"><button type="button" class="tf-back">← Back</button><button type="button" class="tf-next" id="tfnext">Next →</button></div>
+        </div>
+        <div class="tf-s" data-s="3">
+          <b class="tf-q">Where to reply?</b>
+          <input id="tfname" type="text" autocomplete="off" placeholder="Name, optional">
+          <div class="tf-send"><button type="button" class="tf-go" data-ch="tg">Send via Telegram</button><button type="button" class="tf-go alt" data-ch="mail">Send by email</button></div>
+          <p class="tf-note">Telegram or email opens with the text ready, just press Send.</p>
+          <div class="tf-nav"><button type="button" class="tf-back">← Back</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <section class="sec" id="cross">
     <div class="sec-h"><span class="mono">00 · Services</span><h2 class="mask">Everything a family needs across countries</h2></div>
-    <p class="xb-lead">Capital, residence, education, health and medicines, collections and events. Visas go through our visa center with a&nbsp;license in&nbsp;Singapore. Everything else goes through partners selected for each task.</p>
+    <p class="xb-lead">Capital, residence, education, health and medicines, collections and events. Partners in each country are selected for every task.</p>
     <div class="xb-grid">
-      <div class="xb on"><span class="mono">Own license · VisaTO</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia</p></div>
+      <div class="xb on"><span class="mono">Documents</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia</p></div>
       <div class="xb"><span class="mono">Through partners</span><b>Residence and citizenship</b><p>Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family</p></div>
       <div class="xb"><span class="mono">Finance</span><b>Money across borders</b><p>Accounts at private banks in Geneva and Singapore, payments for tuition, clinics and deals abroad</p></div>
       <div class="xb"><span class="mono">Finance</span><b>Trusts and inheritance</b><p>Family trusts and foundations in Liechtenstein and Switzerland through licensed partners: capital protected and passed to children and grandchildren</p></div>
@@ -505,7 +595,31 @@ button{font:inherit}
     <div class="xb-syn">
       <div><span class="mono">Speed</span><b>A personal network of AI agents</b><p>For every client we deploy their own network of agents. They run all tasks in parallel, check documents of two countries and never miss a deadline.</p></div>
       <div><span class="mono">Access</span><b>Licensed partners in each country</b><p>Trust, payment and legal companies, visa centers. We select and check them for each task.</p></div>
-      <div><span class="mono">Quality</span><b>One chat for everything</b><p>A personal manager and the agent network in one chat. Statuses, documents and deadlines stay in one thread.</p></div>
+      <div><span class="mono">Confidentiality</span><b>One person sees the task</b><p>A personal manager and the client’s own agent network. The site stores no requests, all talk stays in a private chat.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="film">
+    <div class="focus">
+      <article class="fc fv cf" id="chatfilm">
+        <div class="fv-h">
+          <div class="l">
+            <span class="n">One family · 30 seconds</span>
+            <h3>Three tasks across borders in&nbsp;one chat</h3>
+          </div>
+          <div class="r">
+            <p>This is how the work looks: one request, the client’s agent network and partners in two countries, the status of each task in the chat.</p>
+            <div class="fv-ctl">
+              <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>Film: playing</button>
+              <button class="chip" id="cfr" type="button">Replay</button>
+            </div>
+          </div>
+        </div>
+        <div class="cf-st">
+          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">online 24/7</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
+          <div class="cf-board"><div class="cf-bh"><span class="mono">Tasks · live</span><span class="mono cf-demo">Demo</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -558,25 +672,6 @@ button{font:inherit}
           </svg>
         </div>
       </article>
-      <article class="fc fv cf" id="chatfilm">
-        <div class="fv-h">
-          <div class="l">
-            <span class="n">One family · 30 seconds</span>
-            <h3>Three tasks across borders in&nbsp;one chat</h3>
-          </div>
-          <div class="r">
-            <p>This is how the work looks: one request, the client’s agent network and partners in two countries, the status of each task in the chat.</p>
-            <div class="fv-ctl">
-              <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>Film: playing</button>
-              <button class="chip" id="cfr" type="button">Replay</button>
-            </div>
-          </div>
-        </div>
-        <div class="cf-st">
-          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">online 24/7</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
-          <div class="cf-board"><div class="cf-bh"><span class="mono">Tasks · live</span><span class="mono cf-demo">Demo</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -602,7 +697,7 @@ button{font:inherit}
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="process">
     <div class="def">
       <div class="def-txt">
         <span class="mono" style="color:var(--or)">03 · How a task goes</span>
@@ -697,6 +792,7 @@ button{font:inherit}
     </div>
   </section>
 
+  <a class="stk" id="stk" href="#task"><span>Describe a task</span><small>Reply within an hour</small><i aria-hidden="true">→</i></a>
   <footer class="foot">
     <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">Copy</span></button>
@@ -903,7 +999,7 @@ document.addEventListener('visibilitychange',function(){draw()});
 }catch(e){}})();
 </script>
 
-<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking all three tasks. Statuses will appear here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "Hermès Kelly 25 in Gold handed over in London. Photo in the chat."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · UK", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Hermès Kelly · Paris", "steps": [{"label": "Boutique", "at": 8200}, {"label": "Reserved", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};window.__POOL=["Hermès Birkin", "Account at a Geneva private bank", "A place at Le Rosey", "A drug not available at home", "Patek Philippe 5711 without a waitlist", "Monaco residence", "Second opinion from Charité", "Dinner with Lenny Kravitz", "Family trust for three generations", "Kashmir sapphire with a Gübelin report", "Gulfstream G700 for the family", "University matched to the child’s character", "Sotheby’s lot", "Off-market villa in Marbella", "Rolex Daytona “Paul Newman”", "UAE Golden Visa for 10 years", "Surgeon in Seoul", "Hermès Kelly", "Family foundation in Liechtenstein", "Meeting Justin Bieber", "Argyle pink diamond", "Admission to Eton", "Access to a drug in clinical trials", "Check-up at Mayo Clinic", "Christie’s painting", "Swiss lump-sum taxation", "F.P. Journe Chronomètre Bleu", "Penthouse at One Hyde Park", "Reception with Lady Gaga", "Koenigsegg Jesko", "Oxford tuition paid in a day", "Clinique La Prairie", "Russian Empire coins at auction", "Chanel Haute Couture show", "Burmese ruby", "Bombardier Global 7500", "Family tax strategy across three countries", "Art Basel preview", "Audemars Piguet Royal Oak", "Singapore residence for the family", "Rare prescription drug from Switzerland", "Lanserhof at Tegernsee", "Table at the Monaco Grand Prix", "Colombian emerald", "Oxford preparation with a tutor", "Collection storage in the Geneva Freeport", "Limited-series Ferrari", "Transfer for a deal in Monaco", "1937 gold sovereign", "Stone grading at GIA", "Account at a Singapore private bank", "Personal security for a family trip", "Watch authentication before purchase", "Summer school in Switzerland", "Genetic check-up in Zurich"];</script>
+<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking all three tasks. Statuses will appear here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "Hermès Kelly 25 in Gold handed over in London. Photo in the chat."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · UK", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Hermès Kelly · Paris", "steps": [{"label": "Boutique", "at": 8200}, {"label": "Reserved", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};window.__POOL=["Hermès Birkin", "Account at a Geneva private bank", "A place at Le Rosey", "A drug not available at home", "Patek Philippe 5711 without a waitlist", "Monaco residence", "Second opinion from Charité", "Dinner with Lenny Kravitz", "Family trust for three generations", "Kashmir sapphire with a Gübelin report", "Gulfstream G700 for the family", "University matched to the child’s character", "Sotheby’s lot", "Off-market villa in Marbella", "Rolex Daytona “Paul Newman”", "UAE Golden Visa for 10 years", "Surgeon in Seoul", "Hermès Kelly", "Family foundation in Liechtenstein", "Meeting Justin Bieber", "Argyle pink diamond", "Admission to Eton", "Access to a drug in clinical trials", "Check-up at Mayo Clinic", "Christie’s painting", "Swiss lump-sum taxation", "F.P. Journe Chronomètre Bleu", "Penthouse at One Hyde Park", "Reception with Lady Gaga", "Koenigsegg Jesko", "Oxford tuition paid in a day", "Clinique La Prairie", "Russian Empire coins at auction", "Chanel Haute Couture show", "Burmese ruby", "Bombardier Global 7500", "Family tax strategy across three countries", "Art Basel preview", "Audemars Piguet Royal Oak", "Singapore residence for the family", "Rare prescription drug from Switzerland", "Lanserhof at Tegernsee", "Table at the Monaco Grand Prix", "Colombian emerald", "Oxford preparation with a tutor", "Collection storage in the Geneva Freeport", "Limited-series Ferrari", "Transfer for a deal in Monaco", "1937 gold sovereign", "Stone grading at GIA", "Account at a Singapore private bank", "Personal security for a family trip", "Watch authentication before purchase", "Summer school in Switzerland", "Genetic check-up in Zurich"];window.__TF={"title": "Orbiq · task", "cat": "Area", "name": "Name", "lang": "en-US", "mic": "Dictate", "micStop": "Stop"};</script>
 <script>
 /* Бесконечная лента запросов на первом экране: каждая плашка после круга получает новый запрос из большого пула, без повторов подряд */
 (function(){try{
@@ -913,6 +1009,33 @@ var q=sh(P.slice()),shown=[];
 function next(){if(!q.length){q=sh(P.slice()).filter(function(x){return shown.indexOf(x)<0});if(!q.length)q=sh(P.slice())}var x=q.shift();shown.push(x);if(shown.length>its.length)shown.shift();return x}
 its.forEach(function(el){var sp=el.querySelector('span');sp.textContent=next();
   el.addEventListener('animationiteration',function(e){if(e.target!==el)return;sp.textContent=next()})});
+}catch(e){}})();
+</script>
+<script>
+/* Форма задачи: 3 шага, ничего не хранит, отправка готовым текстом в Telegram или почту */
+(function(){try{
+var F=document.getElementById('tform'),D=window.__TF;if(!F||!D)return;
+var st=1,cat='',S=[].slice.call(F.querySelectorAll('.tf-s')),bar=document.getElementById('tfbar'),lab=document.getElementById('tfstep'),tx=document.getElementById('tftext'),nm=document.getElementById('tfname'),nx=document.getElementById('tfnext');
+function go(n){st=n;S.forEach(function(e){e.classList.toggle('on',+e.dataset.s===n)});bar.style.width=(n/3*100)+'%';lab.textContent=n+' / 3';if(n===2)setTimeout(function(){tx.focus()},250);if(n===3)setTimeout(function(){nm.focus()},250)}
+F.querySelectorAll('.tf-chips button').forEach(function(b){b.addEventListener('click',function(){F.querySelectorAll('.tf-chips button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');cat=b.textContent;setTimeout(function(){go(2)},220)})});
+function chk(){nx.disabled=tx.value.trim().length<3}tx.addEventListener('input',chk);chk();
+nx.addEventListener('click',function(){if(!nx.disabled)go(3)});
+F.querySelectorAll('.tf-back').forEach(function(b){b.addEventListener('click',function(){go(Math.max(1,st-1))})});
+function msg(){var m=D.title+'\n'+D.cat+': '+(cat||'—')+'\n\n'+tx.value.trim();if(nm.value.trim())m+='\n\n'+D.name+': '+nm.value.trim();return m}
+F.querySelectorAll('.tf-go').forEach(function(b){b.addEventListener('click',function(){var m=msg();
+  if(b.dataset.ch==='tg')window.open('https://t.me/vladimir82makarov?text='+encodeURIComponent(m),'_blank');
+  else location.href='mailto:private@orbiqgroup.com?subject='+encodeURIComponent(D.title)+'&body='+encodeURIComponent(m)})});
+/* голосовой ввод: встроенное распознавание браузера, бесплатно, без нашего сервера */
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,mic=document.getElementById('tfmic'),ml=document.getElementById('tfmicl');
+if(SR&&mic){mic.hidden=false;var r=null,base='';
+ mic.addEventListener('click',function(){if(r){r.stop();return}
+  r=new SR();r.lang=D.lang;r.continuous=true;r.interimResults=true;base=tx.value?tx.value.replace(/\s*$/,' '):'';
+  r.onresult=function(e){var t='';for(var i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;tx.value=base+t;chk()};
+  r.onend=function(){r=null;mic.classList.remove('rec');ml.textContent=D.mic};r.onerror=r.onend;
+  try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
+/* sticky cta */
+var k=document.getElementById('stk'),hero=document.getElementById('top'),task=document.getElementById('task'),hv=true,tv=false;
+if(k&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.target===hero)hv=e.isIntersecting;else tv=e.isIntersecting});k.classList.toggle('on',!hv&&!tv)},{threshold:0});io.observe(hero);io.observe(task)}
 }catch(e){}})();
 </script>
 <script>

@@ -7,6 +7,7 @@ js = open(B+'base.js').read()
 fav = open(B+'favicon.js').read()
 cfjs = open(B+'chatfilm.js').read()
 pooljs = open(B+'pool.js').read()
+formjs = open(B+'form.js').read()
 DOM = 'https://orbiqgroup.com'
 
 def items(lst, cls=''):
@@ -56,8 +57,8 @@ EN = dict(
  bxf1k='Own license', bxf1v='Visas · Singapore', bxf2k='Through partners', bxf2v='Trusts, Patek, Hermès, Sotheby’s',
  ticker=ticker(['Orbiq', 'concierge without borders', 'Monaco residence', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'family trusts', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'Gübelin sapphires', '24/7']),
  s0_m='00 · Services', s0_h='Everything a family needs across countries',
- s0_lead='Capital, residence, education, health and medicines, collections and events. Visas go through our visa center with a&nbsp;license in&nbsp;Singapore. Everything else goes through partners selected for each task.',
- xb=xb([('Own license · VisaTO', 'Visas and residence', 'Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia'),
+ s0_lead='Capital, residence, education, health and medicines, collections and events. Partners in each country are selected for every task.',
+ xb=xb([('Documents', 'Visas and residence', 'Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia'),
         ('Through partners', 'Residence and citizenship', 'Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family'),
         ('Finance', 'Money across borders', 'Accounts at private banks in Geneva and Singapore, payments for tuition, clinics and deals abroad'),
         ('Finance', 'Trusts and inheritance', 'Family trusts and foundations in Liechtenstein and Switzerland through licensed partners: capital protected and passed to children and grandchildren'),
@@ -71,7 +72,7 @@ EN = dict(
         ('Property', 'Off-market property', 'Villas and penthouses that never reach the market: Marbella, Monaco, One Hyde Park in London')]),
  syn=syn([('Speed', 'A personal network of AI agents', 'For every client we deploy their own network of agents. They run all tasks in parallel, check documents of two countries and never miss a deadline.'),
           ('Access', 'Licensed partners in each country', 'Trust, payment and legal companies, visa centers. We select and check them for each task.'),
-          ('Quality', 'One chat for everything', 'A personal manager and the agent network in one chat. Statuses, documents and deadlines stay in one thread.')]),
+          ('Confidentiality', 'One person sees the task', 'A personal manager and the client’s own agent network. The site stores no requests, all talk stays in a private chat.')]),
  s1_m='01 · Why now', s1_h='Borders got higher',
  p1_n='Pain 1', p1_h='Moving money and people got harder', p1_p='Every year brings new limits:',
  p1_bars=bars(['Transfers abroad take weeks and get stuck', 'Banks close accounts without explanation', 'Fewer direct flights, longer routes', 'Visa refusals and queues at consulates', 'Residence and citizenship rules change every year', 'Capital needs protection in several jurisdictions']),
@@ -111,6 +112,26 @@ EN = dict(
  axis="['HOTEL','FLIGHT','TRANSFER','VISA','TRUST']",
  SIDE="[{t:'Bank concierge',h:'Works within the rules of one bank',l:['Handles standard requests fast','Non-standard tasks hit the rules and limits of the bank','The bank sets the list of services']},{t:'Orbiq',h:'Builds a route for each task',l:['Partners in many countries: payment, legal, trust, visa','A personal agent network runs all tasks in parallel',{s:'In one chat:',u:['status of each task','documents and deadlines','one manager for the whole family']}],g:true}]",
  goal='<div class="goal"><span>On duty</span><b class="num">24/7</b><span>one chat for any task</span></div>',
+ cta='Describe a task',
+ trust1='Confidential',
+ trust2='Reply within an hour',
+ t_m='Task',
+ t_h='A task to a private chat in&nbsp;a&nbsp;minute',
+ t_p='Three short steps. Voice input works. The text goes straight to a personal manager.',
+ t_trust='<li><div><b>Confidential</b><span>The site stores no requests. Only a personal manager sees the task.</span></div></li><li><div><b>Fast</b><span>A reply within an hour, then the personal agent network runs the task.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Stay anonymous until the first call.</span></div></li>',
+ t_q1='What is the task?',
+ t_chips='<button type="button">Capital and trusts</button><button type="button">Residence</button><button type="button">Children and education</button><button type="button">Health and medicines</button><button type="button">Watches and stones</button><button type="button">Hermès</button><button type="button">Art</button><button type="button">Property</button><button type="button">Other</button>',
+ t_q2='A few words about the task',
+ t_ph='For example: a place at a Swiss boarding school for a 12-year-old son, September 2027',
+ t_mic='Dictate',
+ t_back='← Back',
+ t_next='Next',
+ t_q3='Where to reply?',
+ t_name='Name, optional',
+ t_tg='Send via Telegram',
+ t_mail='Send by email',
+ t_note='Telegram or email opens with the text ready, just press Send.',
+ TF=dict(title='Orbiq · task',cat='Area',name='Name',lang='en-US',mic='Dictate',micStop='Stop'),
  POOL=['Hermès Birkin', 'Account at a Geneva private bank', 'A place at Le Rosey', 'A drug not available at home', 'Patek Philippe 5711 without a waitlist', 'Monaco residence', 'Second opinion from Charité', 'Dinner with Lenny Kravitz', 'Family trust for three generations', 'Kashmir sapphire with a Gübelin report', 'Gulfstream G700 for the family', 'University matched to the child’s character', 'Sotheby’s lot', 'Off-market villa in Marbella', 'Rolex Daytona “Paul Newman”', 'UAE Golden Visa for 10 years', 'Surgeon in Seoul', 'Hermès Kelly', 'Family foundation in Liechtenstein', 'Meeting Justin Bieber', 'Argyle pink diamond', 'Admission to Eton', 'Access to a drug in clinical trials', 'Check-up at Mayo Clinic', 'Christie’s painting', 'Swiss lump-sum taxation', 'F.P. Journe Chronomètre Bleu', 'Penthouse at One Hyde Park', 'Reception with Lady Gaga', 'Koenigsegg Jesko', 'Oxford tuition paid in a day', 'Clinique La Prairie', 'Russian Empire coins at auction', 'Chanel Haute Couture show', 'Burmese ruby', 'Bombardier Global 7500', 'Family tax strategy across three countries', 'Art Basel preview', 'Audemars Piguet Royal Oak', 'Singapore residence for the family', 'Rare prescription drug from Switzerland', 'Lanserhof at Tegernsee', 'Table at the Monaco Grand Prix', 'Colombian emerald', 'Oxford preparation with a tutor', 'Collection storage in the Geneva Freeport', 'Limited-series Ferrari', 'Transfer for a deal in Monaco', '1937 gold sovereign', 'Stone grading at GIA', 'Account at a Singapore private bank', 'Personal security for a family trip', 'Watch authentication before purchase', 'Summer school in Switzerland', 'Genetic check-up in Zurich'],
  CF=dict(started='STARTED', done='DONE ✓', playing='Film: playing', paused='Film: paused', tasksAt=4600,
    msgs=[dict(who='c', at=1600, meta='Thu · 21:40', text='My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday.'),
@@ -139,8 +160,8 @@ RU = dict(
  bxf1k='Своя лицензия', bxf1v='Визы · Сингапур', bxf2k='Через партнеров', bxf2v='Трасты, Patek, Hermès, Sotheby’s',
  ticker=ticker(['Orbiq', 'консьерж без границ', 'Резидентство Монако', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'семейные трасты', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'сапфиры Gübelin', '24/7']),
  s0_m='00 · Услуги', s0_h='Все, что нужно семье в&nbsp;разных странах',
- s0_lead='Капитал, резидентство, образование, здоровье и&nbsp;лекарства, коллекции и&nbsp;события. Визы оформляет наш визовый центр с&nbsp;лицензией в&nbsp;Сингапуре. Остальное ведут партнеры, которых подбираем под каждую задачу.',
- xb=xb([('Своя лицензия · VisaTO', 'Визы и&nbsp;ВНЖ', 'Туристические, рабочие и семейные визы, вид на жительство. Сингапур, дальше Дубай, Таиланд, Вьетнам, Австралия'),
+ s0_lead='Капитал, резидентство, образование, здоровье и&nbsp;лекарства, коллекции и&nbsp;события. Партнеров в&nbsp;каждой стране подбираем под задачу.',
+ xb=xb([('Документы', 'Визы и&nbsp;ВНЖ', 'Туристические, рабочие и семейные визы, вид на жительство. Сингапур, дальше Дубай, Таиланд, Вьетнам, Австралия'),
         ('Через партнеров', 'Резидентство и&nbsp;гражданство', 'Резидентство Монако и Сингапура, Golden Visa ОАЭ, Швейцария по паушальному налогу, второе гражданство для семьи'),
         ('Финансы', 'Деньги через границу', 'Счета в частных банках Женевы и Сингапура, оплата учебы, клиник и сделок за границей'),
         ('Финансы', 'Трасты и&nbsp;наследство', 'Семейные трасты и фонды в Лихтенштейне и Швейцарии через лицензированных партнеров: капитал под защитой и переходит детям и внукам'),
@@ -154,7 +175,7 @@ RU = dict(
         ('Недвижимость', 'Вне рынка', 'Виллы и пентхаусы, которых нет в открытой продаже: Марбелья, Монако, One Hyde Park в Лондоне')]),
  syn=syn([('Скорость', 'Личная сеть AI-агентов', 'Под каждого клиента разворачиваем свою сеть агентов. Они ведут все задачи параллельно, сверяют документы двух стран и не пропускают ни одного срока.'),
           ('Доступ', 'Партнеры с лицензией в каждой стране', 'Трастовые, платежные и юридические компании, визовые центры. Подбираем и проверяем под каждую задачу.'),
-          ('Качество', 'Один чат на все', 'Личный менеджер и сеть агентов в одном чате. Статусы, документы и сроки собраны в одной переписке.')]),
+          ('Конфиденциальность', 'Задачу видит один человек', 'Личный менеджер и личная сеть агентов клиента. Сайт не хранит заявки, переписка идет только в личном чате.')]),
  s1_m='01 · Почему сейчас', s1_h='Границы стали выше',
  p1_n='Боль 1', p1_h='Деньги и людей стало сложнее перемещать', p1_p='Каждый год приносит новые ограничения:',
  p1_bars=bars(['Переводы за границу идут неделями и зависают', 'Банки закрывают счета без объяснений', 'Прямых рейсов меньше, маршруты длиннее', 'Отказы в визах и очереди в консульствах', 'Правила ВНЖ и гражданства меняются каждый год', 'Капиталу нужна защита в нескольких юрисдикциях']),
@@ -193,6 +214,26 @@ RU = dict(
  axis="['ОТЕЛЬ','ПЕРЕЛЕТ','ПЕРЕВОД','ВИЗА','ТРАСТ']",
  SIDE="[{t:'Консьерж банка',h:'Работает в правилах одного банка',l:['Стандартные запросы закрывает быстро','Нестандартные задачи упираются в правила и лимиты банка','Набор услуг задает банк']},{t:'Orbiq',h:'Строит маршрут под каждую задачу',l:['Партнеры во многих странах: платежные, юридические, трастовые, визовые','Личная сеть агентов ведет все задачи параллельно',{s:'В одном чате:',u:['статус каждой задачи','документы и сроки','один менеджер на всю семью']}],g:true}]",
  goal='<div class="goal"><span>На связи</span><b class="num">24/7</b><span>один чат на любую задачу</span></div>',
+ cta='Описать задачу',
+ trust1='Конфиденциально',
+ trust2='Ответ в течение часа',
+ t_m='Задача',
+ t_h='Задача в&nbsp;личный чат за&nbsp;минуту',
+ t_p='Три коротких шага. Можно надиктовать голосом. Текст уходит напрямую личному менеджеру.',
+ t_trust='<li><div><b>Конфиденциально</b><span>Сайт не хранит заявки. Задачу видит только личный менеджер.</span></div></li><li><div><b>Быстро</b><span>Ответ в течение часа, дальше задачу ведет личная сеть агентов.</span></div></li><li><div><b>Без регистрации</b><span>Имя по желанию. Можно остаться анонимом до первого разговора.</span></div></li>',
+ t_q1='Что за задача?',
+ t_chips='<button type="button">Капитал и трасты</button><button type="button">Резидентство</button><button type="button">Дети и учеба</button><button type="button">Здоровье и лекарства</button><button type="button">Часы и камни</button><button type="button">Hermès</button><button type="button">Искусство</button><button type="button">Недвижимость</button><button type="button">Другое</button>',
+ t_q2='Пара слов о задаче',
+ t_ph='Например: место в пансионе в Швейцарии для сына 12 лет, сентябрь 2027',
+ t_mic='Надиктовать',
+ t_back='← Назад',
+ t_next='Дальше',
+ t_q3='Куда ответить?',
+ t_name='Имя, по желанию',
+ t_tg='Отправить в Telegram',
+ t_mail='Отправить на почту',
+ t_note='Откроется Telegram или почта с готовым текстом, останется нажать «Отправить».',
+ TF=dict(title='Orbiq · задача',cat='Направление',name='Имя',lang='ru-RU',mic='Надиктовать',micStop='Остановить'),
  POOL=['Hermès Birkin', 'Счет в частном банке Женевы', 'Место в Le Rosey', 'Препарат, которого нет в стране', 'Patek Philippe 5711 без листа ожидания', 'Резидентство Монако', 'Второе мнение онколога из Charité', 'Ужин с Ленни Кравицем', 'Семейный траст на три поколения', 'Кашмирский сапфир с сертификатом Gübelin', 'Gulfstream G700 для семьи', 'Подбор университета под характер ребенка', 'Лот Sotheby’s', 'Off-market вилла в Марбелье', 'Rolex Daytona «Paul Newman»', 'Golden Visa ОАЭ на 10 лет', 'Хирург в Сеуле', 'Hermès Kelly', 'Семейный фонд в Лихтенштейне', 'Встреча с Джастином Бибером', 'Розовый бриллиант Argyle', 'Поступление в Eton', 'Доступ к препарату из клинических испытаний', 'Check-up в Mayo Clinic', 'Картина с Christie’s', 'Швейцария по паушальному налогу', 'F.P. Journe Chronomètre Bleu', 'Пентхаус в One Hyde Park', 'Прием у Леди Гаги', 'Koenigsegg Jesko', 'Оплата обучения в Оксфорде за день', 'Clinique La Prairie', 'Монеты Российской империи на торгах', 'Показ Chanel Haute Couture', 'Бирманский рубин', 'Bombardier Global 7500', 'Налоговая стратегия семьи в трех странах', 'Превью Art Basel', 'Audemars Piguet Royal Oak', 'Резидентство Сингапура для семьи', 'Редкое лекарство по рецепту из Швейцарии', 'Lanserhof на Тегернзе', 'Стол на Гран-при Монако', 'Колумбийский изумруд', 'Подготовка к Оксфорду с тьютором', 'Хранение коллекции во фрипорте Женевы', 'Ferrari из лимитированной серии', 'Перевод на сделку в Монако', 'Золотой соверен 1937 года', 'Экспертиза камня в GIA', 'Счет в частном банке Сингапура', 'Личная охрана семьи в поездке', 'Проверка часов перед покупкой', 'Летняя школа в Швейцарии', 'Генетический чек-ап в Цюрихе'],
  CF=dict(started='НАЧАЛИ', done='ГОТОВО ✓', playing='Ролик: идет', paused='Ролик: пауза', tasksAt=4600,
    msgs=[dict(who='c', at=1600, meta='Чт · 21:40', text='Дочь в понедельник начинает учебу в Лондоне. Сегодня нужно оплатить обучение, сделать визы бабушке с дедушкой, чтобы они к ней прилетели, а к ее дню рождения найти Hermès Kelly.'),
@@ -272,7 +313,7 @@ def build(T):
 <body>
 
 '''
-    cf = '<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';</script>\n' + pooljs
+    cf = '<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';window.__TF=' + json.dumps(T['TF'], ensure_ascii=False) + ';</script>\n' + pooljs + formjs
     libs = '''<script src="/js/gsap.min.js"></script>
 <script src="/js/ScrollTrigger.min.js"></script>
 <script src="/js/SplitText.min.js"></script>

@@ -555,7 +555,7 @@ button{font:inherit}
       <div class="hcta">
         <a class="hlink" href="#stories">See the stories <i aria-hidden="true">↓</i></a>
       </div>
-      <div class="trust mono"><span><i></i>Confidential</span><span><i></i>Reply within an hour</span></div>
+      <div class="trust mono"><span><i></i>Confidential</span></div>
     </div>
     <div class="h-right">
       <div class="bx" id="bx">
@@ -571,8 +571,8 @@ button{font:inherit}
 </div>
 
 <div class="ticker" aria-hidden="true"><div class="tr" id="tr">
-  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Monaco residence</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">family trusts</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">Gübelin sapphires</span><span class="m">24/7</span><span class="m">·</span>
-  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Monaco residence</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">family trusts</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">Gübelin sapphires</span><span class="m">24/7</span><span class="m">·</span>
+  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Monaco residence</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">family trusts</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">Gübelin sapphires</span><span class="m">·</span>
+  <span>Orbiq</span><span class="m">concierge without borders</span><span class="o">Monaco residence</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">family trusts</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">Gübelin sapphires</span><span class="m">·</span>
 </div></div>
 
 <div class="wrap">
@@ -598,7 +598,7 @@ button{font:inherit}
         <span class="mono" style="color:var(--or)">Task</span>
         <h2 class="mask">A task to a private chat in&nbsp;a&nbsp;minute</h2>
         <p>Three short steps. Voice input works. The text goes straight to a personal manager.</p>
-        <ul class="tk-trust"><li><div><b>Confidential</b><span>The site stores no requests. Only a personal manager sees the task.</span></div></li><li><div><b>Fast</b><span>A reply within an hour, then the personal agent network runs the task.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Stay anonymous until the first call.</span></div></li></ul>
+        <ul class="tk-trust"><li><div><b>Confidential</b><span>The site stores no requests. Only a personal manager sees the task.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Stay anonymous until the first call.</span></div></li></ul>
       </div>
       <form class="tform" id="tform" novalidate>
         <div class="tf-top"><span class="mono" id="tfstep">1 / 3</span><div class="tf-bar"><i id="tfbar"></i></div></div>
@@ -663,7 +663,7 @@ button{font:inherit}
           </div>
         </div>
         <div class="cf-st">
-          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">online 24/7</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
+          <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">online</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
           <div class="cf-board"><div class="cf-bh"><span class="mono">Tasks · live</span><span class="mono cf-demo">Demo</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
         </div>
       </article>
@@ -768,7 +768,7 @@ button{font:inherit}
   <section class="join" id="join">
     <div class="l">
       <span class="mono" style="color:#FF4D00">Orbiq · concierge without borders</span>
-      <h2 class="mask">It all starts <span>with one message in&nbsp;Telegram</span></h2>
+      <h2 class="mask">Personal concierge <span>in&nbsp;Telegram</span></h2>
       <p>A Monaco residence, Le Rosey, a Kashmir sapphire, a family trust for three generations. The reply with a route and a deadline comes to the same chat.</p>
       <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Send a task <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
@@ -865,7 +865,7 @@ button{font:inherit}
   var SIDE=[{t:'Bank concierge',h:'Works within the rules of one bank',l:['Handles standard requests fast','Non-standard tasks hit the rules and limits of the bank','The bank sets the list of services']},{t:'Orbiq',h:'Builds a route for each task',l:['Partners in many countries: payment, legal, trust, visa','A personal agent network runs all tasks in parallel',{s:'In one chat:',u:['status of each task','documents and deadlines','one manager for the whole family']}],g:true}];
   var side=$('side'),ba=$('ba'),cur=0,touched=false;
   function li(x){return typeof x==='string'?'<li>'+x+'</li>':'<li><span>'+x.s+'<ul>'+x.u.map(function(y){return '<li>'+y+'</li>'}).join('')+'</ul></span></li>'}
-  function renderSide(v){var s=SIDE[v];side.innerHTML='<span class="t">'+s.t+'</span><h3>'+s.h+'</h3><ul>'+s.l.map(li).join('')+'</ul>'+(s.g?'<div class="goal"><span>On duty</span><b class="num">24/7</b><span>one chat for any task</span></div>':'');
+  function renderSide(v){var s=SIDE[v];side.innerHTML='<span class="t">'+s.t+'</span><h3>'+s.h+'</h3><ul>'+s.l.map(li).join('')+'</ul>'+(s.g?'<div class="goal"><span>On duty</span><b class="num">1</b><span>one chat for any task</span></div>':'');
     ba.classList.toggle('on',v===1);document.querySelectorAll('#ba .seg button').forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.v===v))})}
   function setV(v,user){if(user)touched=true;if(v===cur)return;cur=v;
     var go=function(){renderSide(v)};if(document.startViewTransition&&!still)document.startViewTransition(go);else go();

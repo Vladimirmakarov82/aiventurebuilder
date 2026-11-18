@@ -11,7 +11,9 @@ formjs = open(B+'form.js').read()
 DOM = 'https://orbiqgroup.com'
 
 def items(lst, cls=''):
-    return ''.join('<div class="bx-it %s%s" style="--l:%d;--d:%d"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', ' x2' if i >= 6 else '', i % 6, i, x) for i, x in enumerate(lst))
+    LN = [0, 3, 1, 5, 2, 4, 3, 0, 4, 1, 5, 2]
+    JT = [0, .35, .1, .6, .2, .45, .05, .5, .25, .65, .15, .4]
+    return ''.join('<div class="bx-it %s" style="--l:%d;--d:%.2f"><span>%s</span><em>✓</em></div>' % ('v' if i % 4 == 0 else '', LN[i % 12], i + JT[i % 12], x) for i, x in enumerate(lst))
 
 def ticker(lst):
     out = []

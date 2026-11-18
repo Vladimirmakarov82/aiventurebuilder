@@ -529,7 +529,14 @@ button{font:inherit}
 #focus,#model,#process{display:none!important}
 .jimg{margin:0;align-self:stretch;border-radius:clamp(16px,1.8vw,26px);overflow:hidden;min-height:360px}
 .jimg img{width:100%;height:100%;object-fit:cover;object-position:30% 50%;display:block}
-@media (max-width:900px){.jimg{display:none}}
+@media (max-width:900px){.join .jimg{display:none}}
+.md-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.4vw,20px)}
+.md{border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.4vw,36px);background:var(--paper);display:flex;flex-direction:column;gap:12px}
+.md .mono{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF4D00}
+.md2 .mono{color:#00A676}
+.md b{font-size:clamp(24px,2.4vw,34px);font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.md p{margin:0;color:var(--mute);font-size:16px;line-height:1.5;max-width:46ch}
+@media (max-width:760px){.md-grid{grid-template-columns:1fr}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -543,7 +550,7 @@ button{font:inherit}
   <header class="nav">
     <a class="brand" href="#top" aria-label="Orbiq"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <div class="nav-r">
-      <a class="nl" href="#cross">Services</a><a class="nl" href="#stories">Stories</a>
+      <a class="nl" href="#stories">Stories</a><a class="nl" href="#cross">Services</a>
       <a class="nav-cta" href="#task">Contact</a>
       <a class="chip" href="/ru/" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>
       <button class="chip" id="motion" type="button" aria-pressed="true"><i></i>Motion: on</button>
@@ -554,19 +561,19 @@ button{font:inherit}
     <div class="h-left">
       <div class="kick mono"><span class="dot"></span>Orbiq · <b>Private concierge</b></div>
       <h1 class="display" id="h1"><span class="acc">Orbiq</span><br><span class="lt">without borders</span></h1>
-      <p class="lead">A Monaco residence, a place at Le Rosey, Patek Philippe without a waitlist, a family trust for three generations. Orbiq takes the tasks that open only through the right people. Partners in each country open the doors.</p>
+      <p class="lead">Monaco residence, Le&nbsp;Rosey, Patek Philippe 5711, Royal Enclosure. Orbiq takes on matters that only the right people can settle, and knows whom to&nbsp;call.</p>
       <div class="hcta">
         <a class="hlink" href="#stories">See the stories <i aria-hidden="true">↓</i></a>
       </div>
-      <div class="trust mono"><span><i></i>Confidential</span></div>
+      <div class="trust mono"><span><i></i>One person sees the request</span></div>
     </div>
     <div class="h-right">
       <div class="bx" id="bx">
-        <div class="bx-h"><span class="mono">In progress now</span><span class="mono live"><i></i>Personal agent network at work</span></div>
-        <div class="bx-stage" aria-label="Tasks cross the border and get done: transfers, residence, trusts, schools, clinics, documents">
+        <div class="bx-h"><span class="mono">Family requests</span><span class="mono live"><i></i>In progress now</span></div>
+        <div class="bx-stage" aria-label="Family requests and their status: transfers, residence, trusts, schools, clinics, documents">
           <span class="mono bx-a">Request</span><span class="mono bx-b">Done</span>
-          <div class="bx-line"><span class="mono">Border</span><div class="bx-ai">AI</div></div>
-          <div class="bx-it v" style="--l:0;--d:0.00"><span>Hermès Birkin</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:1.35"><span>Account at a Geneva private bank</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:2.10"><span>A place at Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:3.60"><span>A drug not available at home</span><em>✓</em></div><div class="bx-it v" style="--l:2;--d:4.20"><span>Patek Philippe 5711, full set</span><em>✓</em></div><div class="bx-it " style="--l:4;--d:5.45"><span>Monaco residence</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:6.05"><span>Second opinion from Charité</span><em>✓</em></div><div class="bx-it " style="--l:0;--d:7.50"><span>A table at the amfAR gala in Cannes</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:8.25"><span>Family trust for three generations</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:9.65"><span>Kashmir sapphire with a Gübelin report</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:10.15"><span>Gulfstream G700 for the family</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:11.40"><span>University matched to the child’s character</span><em>✓</em></div>
+          <div class="bx-line"><span class="mono">Orbiq</span><div class="bx-ai">AI</div></div>
+          <div class="bx-it v" style="--l:0;--d:0.00"><span>Hermès Birkin 25 Himalaya</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:1.35"><span>Cerebras +2085%</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:2.10"><span>Royal Enclosure</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:3.60"><span>Patek Philippe 5711 Tiffany</span><em>✓</em></div><div class="bx-it v" style="--l:2;--d:4.20"><span>Le Rosey</span><em>✓</em></div><div class="bx-it " style="--l:4;--d:5.45"><span>Ferrari Daytona SP3</span><em>✓</em></div><div class="bx-it " style="--l:3;--d:6.05"><span>Clinique La Prairie</span><em>✓</em></div><div class="bx-it " style="--l:0;--d:7.50"><span>Ripple +391%</span><em>✓</em></div><div class="bx-it v" style="--l:4;--d:8.25"><span>Pigeon Blood ruby</span><em>✓</em></div><div class="bx-it " style="--l:1;--d:9.65"><span>Paddock Club Monaco</span><em>✓</em></div><div class="bx-it " style="--l:5;--d:10.15"><span>Kelly 28 Himalaya</span><em>✓</em></div><div class="bx-it " style="--l:2;--d:11.40"><span>Royal Oak Jumbo 16202</span><em>✓</em></div>
         </div>
       </div>
     </div>
@@ -580,34 +587,42 @@ button{font:inherit}
     <div class="st-h"><div class="sec-h"><span class="mono">Stories</span><h2 class="mask">They ask for a week in&nbsp;London. They get Royal Ascot</h2></div>
       <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="Back">←</button><button type="button" class="st-btn" data-d="1" aria-label="Next">→</button></div></div>
     <div class="st-row" id="strow">
-      <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">London · June</figcaption></figure><div class="st-b"><h3>Races she never thought about</h3><p>She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;London atelier made a&nbsp;hat to&nbsp;the dress code.</p><b>At 2&nbsp;pm the Royal Procession passed by</b></div></article>
-      <article class="st"><figure><img src="/img/kelly.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Paris</figcaption></figure><div class="st-b"><h3>Kelly without a&nbsp;waitlist</h3><p>She wanted a&nbsp;Kelly 25 for her birthday. The boutique offered an&nbsp;open-ended wait. We found the bag at a&nbsp;trusted Paris reseller and ordered an&nbsp;independent authentication.</p><b>Delivered on her birthday, at a&nbsp;hotel on&nbsp;Avenue Montaigne</b></div></article>
+      <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 30%"><figcaption class="mono">London · June</figcaption></figure><div class="st-b"><h3>Races with no ticket office</h3><p>She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not on sale: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;London atelier made a&nbsp;hat to&nbsp;the dress code.</p><b>At 2&nbsp;pm the Royal Procession passed by</b></div></article>
+      <article class="st"><figure><img src="/img/kelly.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Paris</figcaption></figure><div class="st-b"><h3>Kelly without a&nbsp;waitlist</h3><p>She wanted a&nbsp;Kelly 25 in&nbsp;Gold for her birthday. The boutique offered an&nbsp;open-ended wait. We found the bag at a&nbsp;trusted Paris reseller and ordered an&nbsp;independent authentication.</p><b>Delivered on her birthday, at a&nbsp;hotel on&nbsp;Avenue Montaigne</b></div></article>
       <article class="st"><figure><img src="/img/lake.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Montreux · Switzerland</figcaption></figure><div class="st-b"><h3>A week for herself by Lake Geneva</h3><p>She was tired and wanted to&nbsp;recover without a&nbsp;hospital feel. We chose a&nbsp;longevity program at Clinique La&nbsp;Prairie: tests, doctors, sleep, nutrition. An&nbsp;interpreter and a&nbsp;driver met her at Geneva airport.</p><b>Seven days, one plan, not a&nbsp;single call from her side</b></div></article>
-      <article class="st"><figure><img src="/img/art.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">New York · November</figcaption></figure><div class="st-b"><h3>A painting for the new living room</h3><p>After the move the wall over the fireplace stayed empty. An&nbsp;art advisor picked three lots from Christie’s New York evening sales and requested condition reports and provenance.</p><b>The bid went in&nbsp;by phone through the auction specialist</b></div></article>
+      <article class="st"><figure><img src="/img/art.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">New York · November</figcaption></figure><div class="st-b"><h3>A painting over the fireplace</h3><p>After the move the wall over the fireplace stayed empty. An&nbsp;art advisor picked three late Picasso works from Christie’s New York evening sales and requested condition reports and provenance.</p><b>The bid went in&nbsp;by phone through the auction specialist</b></div></article>
       <article class="st"><figure><img src="/img/monaco.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Monaco · July</figcaption></figure><div class="st-b"><h3>A gift for a&nbsp;husband who rides</h3><p>She needed an anniversary gift. We suggested Jumping International de&nbsp;Monte-Carlo: the arena sits in&nbsp;the port below the Prince’s Palace, the event runs under the patronage of&nbsp;Prince Albert&nbsp;II. A&nbsp;table by&nbsp;the arena and a&nbsp;room over the port.</p><b>Members of&nbsp;the princely family presented the prizes</b></div></article>
       <article class="st"><figure><img src="/img/alps.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Gstaad · January</figcaption></figure><div class="st-b"><h3>A school that moves to&nbsp;the mountains</h3><p>Parents were choosing a&nbsp;school for their daughter. We showed Le&nbsp;Rosey: autumn and spring on the Rolle campus, winter classes in&nbsp;Gstaad. Visits to&nbsp;both campuses and a&nbsp;meeting with an&nbsp;admissions advisor.</p><b>The daughter asked to&nbsp;apply herself</b></div></article>
-      <article class="st"><figure><img src="/img/watch.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:60% 50%"><figcaption class="mono">Geneva</figcaption></figure><div class="st-b"><h3>A Rolex that is not in&nbsp;the window</h3><p>She was preparing a&nbsp;gift for her husband’s 50th. Boutiques did not have the model. A&nbsp;Geneva partner found a&nbsp;full set with papers, an&nbsp;independent watchmaker checked the movement.</p><b>The watch arrived for the anniversary dinner</b></div></article>
-      <article class="st"><figure><img src="/img/preipo.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Zurich · September</figcaption></figure><div class="st-b"><h3>A stake in&nbsp;the company her son talks about</h3><p>Her son works with data and often talks about Databricks. The company’s shares do&nbsp;not trade on&nbsp;an&nbsp;exchange. A&nbsp;licensed partner in&nbsp;Zurich found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;a&nbsp;stake. The company approved the transfer, the stake went into the family trust through an&nbsp;SPV.</p><b>At dinner her son asked how she knew his favourite company</b></div></article>
+      <article class="st"><figure><img src="/img/watch.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:60% 50%"><figcaption class="mono">Geneva</figcaption></figure><div class="st-b"><h3>A Rolex Datejust not in&nbsp;the window</h3><p>She was preparing a&nbsp;gift for her husband’s 50th. Boutiques had no Datejust 41 with a&nbsp;green dial. A&nbsp;Geneva partner found a&nbsp;full set with papers, an&nbsp;independent watchmaker checked the movement.</p><b>The watch arrived for the anniversary dinner</b></div></article>
+      <article class="st"><figure><img src="/img/preipo.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Zurich · September</figcaption></figure><div class="st-b"><h3>A stake in&nbsp;the company her son talks about</h3><p>Her son works with data and often talks about Databricks. The company’s shares do&nbsp;not trade on&nbsp;an&nbsp;exchange. A&nbsp;licensed partner in&nbsp;Zurich found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;a&nbsp;stake. The company approved the transfer, the stake went into the family trust.</p><b>At dinner her son asked how she knew his favourite company</b></div></article>
     </div>
     <p class="st-note mono">Work scenarios. Client requests are never published.</p>
+  </section>
+
+  <section class="sec modes" id="modes">
+    <div class="sec-h"><span class="mono">How we search</span><h2 class="mask">Urgently at&nbsp;any price or&nbsp;without rush at&nbsp;the&nbsp;best one</h2></div>
+    <div class="md-grid">
+      <div class="md"><span class="mono">Urgent</span><b>Needed by a&nbsp;date</b><p>We find exactly this piece or place as fast as possible. No substitutes, no haggling over price.</p></div>
+      <div class="md md2"><span class="mono">No rush</span><b>The best price</b><p>We set up dozens of AI&#8209;agents for each request. Every day they check thousands of marketplaces, private sellers and collectors. When the right piece appears at the best price, we write at once.</p></div>
+    </div>
   </section>
 
   <section class="sec task" id="task">
     <div class="tk-wrap">
       <div class="tk-l">
-        <span class="mono" style="color:var(--or)">Task</span>
-        <h2 class="mask">A task to a private chat in&nbsp;a&nbsp;minute</h2>
-        <p>Three short steps. Voice input works. The text goes straight to a personal manager.</p>
-        <ul class="tk-trust"><li><div><b>Confidential</b><span>The site stores no requests. Only a personal manager sees the task.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Stay anonymous until the first call.</span></div></li></ul>
+        <span class="mono" style="color:var(--or)">Request</span>
+        <h2 class="mask">Write to a&nbsp;personal concierge</h2>
+        <p>Three short steps. The text can be dictated by voice.</p>
+        <ul class="tk-trust"><li><div><b>Confidential</b><span>The site stores no requests. Only the personal concierge sees them.</span></div></li><li><div><b>No sign-up</b><span>Name is optional. Introductions can wait until the first conversation.</span></div></li></ul>
       </div>
       <form class="tform" id="tform" novalidate>
         <div class="tf-top"><span class="mono" id="tfstep">1 / 3</span><div class="tf-bar"><i id="tfbar"></i></div></div>
         <div class="tf-s on" data-s="1">
-          <b class="tf-q">What is the task?</b>
-          <div class="tf-chips"><button type="button">Capital and trusts</button><button type="button">Residence</button><button type="button">Children and education</button><button type="button">Health and medicines</button><button type="button">Watches and stones</button><button type="button">Hermès</button><button type="button">Art</button><button type="button">Property</button><button type="button">Other</button></div>
+          <b class="tf-q">How can we help?</b>
+          <div class="tf-chips"><button type="button">Capital and trusts</button><button type="button">Residence</button><button type="button">Children and education</button><button type="button">Health and medicines</button><button type="button">Watches and stones</button><button type="button">Hermès bags</button><button type="button">Art</button><button type="button">Closed events</button><button type="button">Property</button><button type="button">Other</button></div>
         </div>
         <div class="tf-s" data-s="2">
-          <b class="tf-q">A few words about the task</b>
+          <b class="tf-q">The request in a few words</b>
           <div class="tf-ta"><textarea id="tftext" rows="5" placeholder="For example: a place at a Swiss boarding school for a 12-year-old son, September 2027"></textarea><button type="button" class="tf-mic" id="tfmic" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="tfmicl">Dictate</span></button></div>
           <div class="tf-nav"><button type="button" class="tf-back">← Back</button><button type="button" class="tf-next" id="tfnext">Next →</button></div>
         </div>
@@ -624,25 +639,25 @@ button{font:inherit}
 
   <section class="sec" id="cross">
     <div class="sec-h"><span class="mono">00 · Services</span><h2 class="mask">From a&nbsp;visa to&nbsp;a&nbsp;Patek Philippe</h2></div>
-    <p class="xb-lead">Capital, residence, education, health and medicines, collections and events. Partners in each country are selected for every task.</p>
+    <p class="xb-lead">Capital, residence, children’s education, health, collections, closed events. For each request we pick partners in the right country.</p>
     <div class="xb-grid">
-      <div class="xb on"><span class="mono">Documents</span><b>Visas and residence</b><p>Tourist, work and family visas, residence permits. Singapore, next Dubai, Thailand, Vietnam, Australia</p></div>
-      <div class="xb"><span class="mono">Through partners</span><b>Residence and citizenship</b><p>Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family</p></div>
+      <div class="xb on"><span class="mono">Residence</span><b>Monaco, Switzerland, UAE</b><p>Monaco and Singapore residence, UAE Golden Visa, Swiss lump-sum taxation, a second citizenship for the family</p></div>
+      <div class="xb"><span class="mono">Documents</span><b>Visas and residence permits</b><p>Tourist, work and family visas, residence permits. We collect the documents, book the appointment and follow the application to the decision</p></div>
       <div class="xb"><span class="mono">Finance</span><b>Transfers between countries</b><p>Accounts at private banks in Geneva and Singapore, payments for tuition, clinics and deals abroad</p></div>
       <div class="xb"><span class="mono">Finance</span><b>Trusts and inheritance</b><p>Family trusts and foundations in Liechtenstein and Switzerland through licensed partners: capital protected and passed to children and grandchildren</p></div>
-      <div class="xb"><span class="mono">Capital</span><b>Private pre-IPO deals</b><p>Closed rounds and secondary shares of late-stage companies: Stripe, Databricks, Anduril. Licensed partners run the deal and hold the shares through an SPV</p></div>
+      <div class="xb"><span class="mono">Capital</span><b>Private pre-IPO deals</b><p>Closed rounds and secondary shares of late-stage companies: Stripe, Databricks, Anduril. Licensed partners run the deal</p></div>
       <div class="xb"><span class="mono">Education</span><b>Schools and universities</b><p>A school and university matched to the character of the child: Le Rosey, Eton, Oxford, the Ivy League</p></div>
       <div class="xb"><span class="mono">Health</span><b>Doctors and medicines</b><p>Second opinion from Charité and Mayo Clinic, surgeons in Seoul, Clinique La Prairie. A rare drug: we find the country where it is sold and get it through a clinic with a prescription</p></div>
-      <div class="xb"><span class="mono">Through partners</span><b>Private jets</b><p>Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X for the family</p></div>
-      <div class="xb"><span class="mono">Collecting</span><b>Watches, stones, coins</b><p>Patek Philippe, Audemars Piguet, F.P. Journe with authentication; diamonds, sapphires and emeralds with GIA and Gübelin reports; rare coins; Hermès Birkin and Kelly</p></div>
+      <div class="xb"><span class="mono">Flights</span><b>Private jets</b><p>Gulfstream G700, Bombardier Global 7500, Dassault Falcon 8X</p></div>
+      <div class="xb"><span class="mono">Collecting</span><b>Watches, stones, toys</b><p>Patek Philippe, Audemars Piguet, F.P. Journe with authentication; diamonds, sapphires and emeralds with GIA and Gübelin reports; rare coins and collectible toys: Steiff, Be@rbrick, LEGO; Hermès Birkin and Kelly</p></div>
       <div class="xb"><span class="mono">Art</span><b>Sotheby’s and Christie’s</b><p>Lot selection, bidding at Sotheby’s, Christie’s and Phillips, collection storage in the Geneva Freeport</p></div>
-      <div class="xb"><span class="mono">Events</span><b>Closed events</b><p>A table at the amfAR gala in Cannes, a box at the Vienna Opera Ball, Chanel Haute Couture, the Monaco Grand Prix</p></div>
+      <div class="xb"><span class="mono">Events</span><b>Closed events</b><p>amfAR Gala in Cannes, Vienna Opera Ball, Chanel Haute Couture, Monaco Grand Prix, Royal Ascot</p></div>
       <div class="xb"><span class="mono">Property</span><b>Off-market property</b><p>Villas and penthouses that never reach the market: Marbella, Monaco, One Hyde Park in London</p></div>
     </div>
     <div class="xb-syn">
-      <div><span class="mono">Speed</span><b>A personal network of AI agents</b><p>For every client we launch their own network of agents. They run all tasks in parallel, check documents of two countries and never miss a deadline.</p></div>
-      <div><span class="mono">Access</span><b>Licensed partners in each country</b><p>Trust, payment and legal companies, visa centers. We select and check them for each task.</p></div>
-      <div><span class="mono">Confidentiality</span><b>One person sees the task</b><p>A personal manager and the client’s own agent network. The site stores no requests, all talk stays in a private chat.</p></div>
+      <div><span class="mono">Speed</span><b>Each client has their own AI agents</b><p>For each client we run separate agents. They handle all matters at once, check the documents of two countries and watch every deadline.</p></div>
+      <div><span class="mono">Access</span><b>Licensed people in the right country</b><p>Trust, payment and legal firms, visa centers. For each request we pick and check our own.</p></div>
+      <div><span class="mono">Quiet</span><b>One person knows everything</b><p>That is the personal concierge. A partner sees only their part. The site stores no requests, the conversation stays in a private chat.</p></div>
     </div>
   </section>
 
@@ -655,7 +670,7 @@ button{font:inherit}
             <h3>School in&nbsp;London, a&nbsp;visa and a&nbsp;Kelly in&nbsp;one chat</h3>
           </div>
           <div class="r">
-            <p>This is how the work looks: one request, the client’s agent network and partners in two countries, the status of each task in the chat.</p>
+            <p>One request, the client’s agents and partners in two countries. The status of each matter is right in the chat.</p>
             <div class="fv-ctl">
               <button class="chip" id="cfp" type="button" aria-pressed="true"><i></i>Film: playing</button>
               <button class="chip" id="cfr" type="button">Replay</button>
@@ -664,7 +679,7 @@ button{font:inherit}
         </div>
         <div class="cf-st">
           <div class="cf-chat" id="cfchat" aria-live="off"><div class="cf-top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg><b>Orbiq</b><span class="mono">online</span></div><div class="cf-msgs" id="cfmsgs"></div></div>
-          <div class="cf-board"><div class="cf-bh"><span class="mono">Tasks · live</span><span class="mono cf-demo">Demo</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
+          <div class="cf-board"><div class="cf-bh"><span class="mono">Status</span><span class="mono cf-demo">Demo</span></div><div id="cftasks" class="cf-tasks"></div><div class="cf-prog"><i id="cfbar"></i></div></div>
         </div>
       </article>
     </div>
@@ -768,12 +783,12 @@ button{font:inherit}
   <section class="join" id="join">
     <div class="l">
       <span class="mono" style="color:#FF4D00">Orbiq · concierge without borders</span>
-      <h2 class="mask">Where tickets are not&nbsp;sold <span>Royal Ascot, Kelly&nbsp;25, Monaco</span></h2>
-      <p>A Monaco residence, Le Rosey, a Kashmir sapphire, a family trust for three generations. The reply with a route and a deadline comes to the same chat.</p>
-      <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Send a task <i aria-hidden="true">→</i></a>
+      <h2 class="mask">Where tickets are not&nbsp;sold <span>Royal Enclosure, Bal des&nbsp;Débutantes</span></h2>
+      <p>Clients write in&nbsp;Telegram what they need and by&nbsp;when. The plan and dates come back to&nbsp;the same chat.</p>
+      <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Write in Telegram <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
     </div>
-    <figure class="r jimg"><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></figure>
+    <figure class="r jimg"><img src="/img/ascot2.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></figure>
   </section>
 
   <footer class="foot">
@@ -984,7 +999,7 @@ document.addEventListener('visibilitychange',function(){draw()});
 }catch(e){}})();
 </script>
 
-<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking all three tasks. Statuses will appear here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "Hermès Kelly 25 in Gold handed over in London. Photo in the chat."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · Britain", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Hermès Kelly · Paris", "steps": [{"label": "Boutique", "at": 8200}, {"label": "Reserved", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};window.__POOL=["Hermès Birkin", "Account at a Geneva private bank", "A place at Le Rosey", "A drug not available at home", "Patek Philippe 5711, full set", "Monaco residence", "Second opinion from Charité", "A table at the amfAR gala in Cannes", "Family trust for three generations", "Kashmir sapphire with a Gübelin report", "Gulfstream G700 for the family", "University matched to the child’s character", "Sotheby’s lot", "Off-market villa in Marbella", "Rolex Daytona “Paul Newman”", "UAE Golden Visa for 10 years", "Surgeon in Seoul", "Hermès Kelly", "Family foundation in Liechtenstein", "A box at the Vienna Opera Ball", "Argyle pink diamond", "Admission to Eton", "Access to a drug in clinical trials", "Check-up at Mayo Clinic", "Christie’s painting", "Swiss lump-sum taxation", "F.P. Journe Chronomètre Bleu", "Penthouse at One Hyde Park", "Centre Court seats at Wimbledon", "Koenigsegg Jesko", "Oxford tuition paid in a day", "Clinique La Prairie", "Russian Empire coins at auction", "Chanel Haute Couture show", "Burmese ruby", "Bombardier Global 7500", "Family tax strategy across three countries", "Art Basel VIP days", "Audemars Piguet Royal Oak", "Singapore residence for the family", "Rare prescription drug from Switzerland", "Stripe shares on the secondary market", "A Databricks stake before the IPO", "A closed pre-IPO round through an SPV", "Anduril shares before the IPO", "Lanserhof at Tegernsee", "Table at the Monaco Grand Prix", "Colombian emerald", "Oxford preparation with a tutor", "Collection storage in the Geneva Freeport", "Limited-series Ferrari", "Transfer for a deal in Monaco", "1937 gold sovereign", "Stone grading at GIA", "Account at a Singapore private bank", "Personal security for a family trip", "Watch authentication before purchase", "Summer school in Switzerland", "Genetic check-up in Zurich"];window.__TF={"title": "Orbiq · task", "cat": "Area", "name": "Name", "lang": "en-US", "mic": "Dictate", "micStop": "Stop"};</script>
+<script>window.__CF={"started": "STARTED", "done": "DONE ✓", "playing": "Film: playing", "paused": "Film: paused", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Thu · 21:40", "text": "My daughter starts university in London on Monday. Today we need to pay the tuition, get visas for her grandparents to visit and find a Hermès Kelly for her birthday."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Taking on all three. Status will be here."}, {"who": "o", "at": 14600, "meta": "Orbiq · Fri 09:12", "text": "The university confirmed the tuition payment."}, {"who": "o", "at": 18200, "meta": "Orbiq · Fri 11:30", "text": "Visa appointment for the grandparents: Thursday, 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Sat 14:20", "text": "Hermès Kelly 25 in Gold handed over in London. Photo in the chat."}, {"who": "c", "at": 25200, "meta": "Sat · 14:25", "text": "Thank you. Next month: a trust for the grandchildren."}], "tasks": [{"name": "Tuition · London", "steps": [{"label": "Route", "at": 6200}, {"label": "Payment", "at": 9800}, {"label": "Received", "at": 14600}]}, {"name": "Visas · Britain", "steps": [{"label": "Documents", "at": 7200}, {"label": "Form", "at": 12000}, {"label": "Appointment", "at": 18200}]}, {"name": "Hermès Kelly · Paris", "steps": [{"label": "Boutique", "at": 8200}, {"label": "Reserved", "at": 15600}, {"label": "Handed over", "at": 22000}]}]};window.__POOL=["Hermès Birkin 25 Himalaya", "Cerebras +2085%", "Royal Enclosure", "Patek Philippe 5711 Tiffany", "Le Rosey", "Ferrari Daytona SP3", "Clinique La Prairie", "Ripple +391%", "Pigeon Blood ruby", "Paddock Club Monaco", "Kelly 28 Himalaya", "Royal Oak Jumbo 16202", "Aiglon College", "CoreWeave +235%", "Vienna Opera Ball", "Koenigsegg Jesko", "Be@rbrick Chanel 1000%", "Muzo emerald", "Lanserhof Tegernsee", "Monaco residence", "F.P. Journe Chronomètre Bleu", "Circle +230%", "amfAR Cannes", "Birkin Faubourg", "Eton College", "Steiff Louis Vuitton", "Gulfstream G700", "Kashmir sapphire", "Charité", "Paradromics +100%", "Chanel Haute Couture show", "Rolex Daytona Paul Newman", "Pagani Utopia", "Oxford", "Argyle pink diamond", "LeoLabs +96%", "Art Basel VIP", "Richard Mille RM 27-04", "Boba Fett Kenner 1979", "Mayo Clinic", "One Hyde Park", "Edward VIII sovereign", "SambaNova +90%", "Bal des Débutantes", "Bombardier Global 7500", "Padparadscha sapphire", "Geneva Freeport", "Huntress +80%", "Jumping International de Monte-Carlo", "Dassault Falcon 8X", "LEGO Millennium Falcon 10179", "Paraiba tourmaline", "Sotheby’s Magnificent Jewels", "Lightmatter +79%", "Wimbledon Centre Court", "Konstantin rouble", "Christie’s Evening Sale"];window.__TF={"title": "Orbiq · request", "cat": "Area", "name": "Name", "lang": "en-US", "mic": "Dictate", "micStop": "Stop"};</script>
 <script>
 /* Бесконечная лента запросов на первом экране: каждая плашка после круга получает новый запрос из большого пула, без повторов подряд */
 (function(){try{

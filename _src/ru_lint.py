@@ -7,6 +7,8 @@ import re, sys, html
 HARD = [
     # empty slogans and calques Vladimir rejected
     (r'через границ', 'калька «через границу»'),
+    (r'цену не\W*торгуем', 'неграмотно «цену не торгуем»'),
+    (r'терпеливо по\W*лучшей', 'обрубок «терпеливо по лучшей»'),
     (r'вс[её] начинается с', 'пустой лозунг «все начинается с»'),
     (r'за минуту', 'пустое обещание «за минуту»'),
     (r'так это выглядит', 'пустой заголовок'),
@@ -41,6 +43,14 @@ HARD = [
     (r'\b(вы|вас|вам|ваш|ваша|ваше|ваши)\b', 'обращение на «вы» запрещено на этом сайте'),
     (r'честно|без воды|без прикрас', 'самомаркировка честности'),
     (r'\?\s+(да|потому что)', 'псевдосократика'),
+    # rejected in nitpick pass 2026-11-18
+    (r'хватит одного сообщения|одного сообщения достаточно', 'пустой лозунг про одно сообщение'),
+    (r'видео: идет', 'калька: «видео играет»'),
+    (r'не продают билеты.*(kelly|монако|le rosey)', 'нелогично: в списке мест без билетов не места'),
+    (r'\bspv\b', 'жаргон для клиента'),
+    (r'в каждой стране', 'обещание, которое нельзя проверить'),
+    (r'на первом звонке', 'неестественно: «при первом разговоре»'),
+    (r'одн(а|и|о) из \d', 'тираж в плашке: только имя'),
 ]
 SOFT = [
     (r' — ', 'тире-пауза: лучше точка или двоеточие'),
@@ -72,6 +82,19 @@ if __name__ == '__main__':
     for extra in sys.argv[2:]:
         lines += [l.strip() for l in open(extra, encoding='utf-8') if l.strip()]
     hard, soft = lint_lines(lines)
+    # POOL rule: hero animation items are bare names of rare things, max 4 words, no descriptors
+    import json, os
+    for page in [sys.argv[1], os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[1]))), 'index.html')]:
+        if not os.path.exists(page): continue
+        m = re.search(r'window\.__POOL=(\[.*?\]);', open(page, encoding='utf-8').read(), re.S)
+        if not m: continue
+        for it in json.loads(m.group(1)):
+            if re.fullmatch(r'[A-Za-z][\w.-]* \+\d+%', it): continue  # pre-IPO deal: «Name +N%» (owner data, IPO Sharks)
+            if len(it.split()) > 4: hard.append(('POOL: больше 4 слов, нужно только имя', it))
+            if re.search(r'(^|\s)(с|со|для|на|без|в|во|до|через|из|по|под|of|with|for|in|before|at|from|without)(\s|$)', it.lower()):
+                hard.append(('POOL: пояснение вместо имени', it))
+            if re.search(r'\d+\s*(лет|years)|одн(а|и|о) из|one of', it.lower()):
+                hard.append(('POOL: тираж или срок вместо имени', it))
     for why, l in hard: print('ERROR', why, '|', l[:140])
     for why, l in soft: print('warn ', why, '|', l[:140])
     print(f'{len(hard)} errors, {len(soft)} warnings')

@@ -45,6 +45,15 @@
 </div></div>
 
 <div class="wrap">
+  <section class="sec stories" id="stories">
+    <div class="st-h"><div class="sec-h"><span class="mono">{{st_m}}</span><h2 class="mask">{{st_h}}</h2></div>
+      <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="{{st_prev}}">←</button><button type="button" class="st-btn" data-d="1" aria-label="{{st_next}}">→</button></div></div>
+    <div class="st-row" id="strow">
+      {{stories}}
+    </div>
+    <p class="st-note mono">{{st_note}}</p>
+  </section>
+
   <section class="sec task" id="task">
     <div class="tk-wrap">
       <div class="tk-l">

@@ -22,3 +22,7 @@ if(SR&&mic){mic.hidden=false;var r=null,base='';
   try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
 }catch(e){}})();
 </script>
+(function(){var r=document.getElementById('strow');if(!r)return;var bs=document.querySelectorAll('.st-btn');
+function st(){var m=r.scrollWidth-r.clientWidth-2;bs[0].disabled=r.scrollLeft<2;bs[1].disabled=r.scrollLeft>=m}
+bs.forEach(function(b){b.addEventListener('click',function(){var c=r.querySelector('.st');r.scrollBy({left:(c.offsetWidth+16)*+b.dataset.d,behavior:'smooth'})})});
+r.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st()})();

@@ -43,6 +43,7 @@ def slots(lst):
     return ''.join('<div class="%s">%s</div>' % (cl[i], x) for i, x in enumerate(lst))
 
 EN = dict(
+ st_m='Stories', st_h='What it looks like', st_note='Work scenarios. Client requests are never published.', st_prev='Back', st_next='Next',
  lang='en', path='/', title='Orbiq · Concierge without borders',
  desc='Orbiq takes tasks that open only through the right people: Monaco residence, Le Rosey, Patek Philippe without a waitlist, family trusts, Charité, Sotheby’s and Christie’s.',
  og='og-orbic-en.png',
@@ -146,6 +147,7 @@ EN = dict(
 )
 
 RU = dict(
+ st_m='Истории', st_h='Так это выглядит', st_note='Сценарии работы. Запросы клиентов не&nbsp;публикуем.', st_prev='Назад', st_next='Дальше',
  lang='ru', path='/ru/', title='Orbiq · Консьерж без границ',
  desc='Orbiq берет задачи, которые решаются через нужных людей: резидентство Монако, Le Rosey, Patek Philippe без листа ожидания, семейные трасты, Charité, Sotheby’s и Christie’s.',
  og='og-orbic-ru.png',
@@ -249,8 +251,31 @@ RU = dict(
 
 ORIG_TX_EN = re.search(r"var TX=\{visa:.*?\}\};", js, re.S).group(0)
 
+IMGS=['ascot','monaco','kelly','lake','alps','art','watch']
+POS=['30% 50%','50% 50%','50% 40%','50% 50%','50% 50%','50% 40%','60% 50%']
+ST_RU=[
+('Лондон · июнь','Скачки, о&nbsp;которых она не&nbsp;думала','Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, модистка сшила шляпу под дресс-код.','В 14:00 мимо прошла королевская процессия'),
+('Монако · июль','Подарок мужу, который ездит верхом','Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, Гран-при идет под патронажем Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.','Трофеи вручала Шарлотта Казираги'),
+('Париж','Kelly без листа ожидания','Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного дилера в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.','Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень'),
+('Монтре · Швейцария','Неделя для себя у&nbsp;Женевского озера','Устала и&nbsp;хотела восстановиться без больничной атмосферы. Мы подобрали программу долголетия в&nbsp;Clinique La&nbsp;Prairie: анализы, врачи, сон, питание. Переводчик и&nbsp;водитель встретили в&nbsp;аэропорту Женевы.','Семь дней по&nbsp;одному плану, ни&nbsp;одного звонка с&nbsp;ее стороны'),
+('Гштаад · январь','Школа, где зимой учатся в&nbsp;горах','Родители выбирали школу для дочери. Мы показали Le&nbsp;Rosey: осенью и&nbsp;весной кампус в&nbsp;Ролле, зимой классы переезжают в&nbsp;Гштаад. Устроили визит на&nbsp;оба кампуса и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.','Дочь сама попросила подать документы'),
+('Нью-Йорк · ноябрь','Картина для новой гостиной','После переезда стена над камином пустовала. Арт-консультант отобрал три лота вечерних торгов Christie’s в&nbsp;Нью-Йорке, запросил отчеты о&nbsp;состоянии и&nbsp;провенанс.','Ставку сделали по&nbsp;телефону через специалиста аукциона'),
+('Женева','Rolex, которого нет в&nbsp;витрине','Готовила подарок мужу к&nbsp;50-летию. В&nbsp;бутиках нужной модели не&nbsp;было. Партнер в&nbsp;Женеве нашел часы в&nbsp;полном комплекте с&nbsp;документами, независимый мастер проверил механизм.','Часы приехали к&nbsp;юбилейному ужину'),
+]
+ST_EN=[
+('London · June','Races she never thought about','She asked for a&nbsp;week in&nbsp;London: shopping, theatre, dinners. Her dates matched Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. Partners found the sponsors, a&nbsp;milliner made a&nbsp;hat to&nbsp;the dress code.','At 2&nbsp;pm the Royal Procession passed by'),
+('Monaco · July','A gift for a&nbsp;husband who rides','She needed an anniversary gift. We suggested Jumping International de&nbsp;Monte-Carlo: the arena sits in&nbsp;the port below the Prince’s Palace, the Grand Prix runs under the patronage of&nbsp;Albert&nbsp;II. A&nbsp;table by&nbsp;the arena and a&nbsp;room over the port.','Charlotte Casiraghi presented the trophies'),
+('Paris','Kelly without a&nbsp;waitlist','She wanted a&nbsp;Kelly 25 for her birthday. The boutique offered an&nbsp;open-ended wait. We found the bag at a&nbsp;trusted Paris dealer and ordered an&nbsp;independent authentication.','Delivered on her birthday, at a&nbsp;hotel on&nbsp;Avenue Montaigne'),
+('Montreux · Switzerland','A week for herself by Lake Geneva','She was tired and wanted to&nbsp;recover without a&nbsp;hospital feel. We chose a&nbsp;longevity program at Clinique La&nbsp;Prairie: tests, doctors, sleep, nutrition. An&nbsp;interpreter and a&nbsp;driver met her at Geneva airport.','Seven days, one plan, not a&nbsp;single call from her side'),
+('Gstaad · January','A school that moves to&nbsp;the mountains','Parents were choosing a&nbsp;school for their daughter. We showed Le&nbsp;Rosey: autumn and spring on the Rolle campus, winter classes in&nbsp;Gstaad. Visits to&nbsp;both campuses and a&nbsp;meeting with an&nbsp;admissions advisor.','The daughter asked to&nbsp;apply herself'),
+('New York · November','A painting for the new living room','After the move the wall over the fireplace stayed empty. An&nbsp;art advisor picked three lots from Christie’s New York evening sales and requested condition reports and provenance.','The bid went in&nbsp;by phone through the auction specialist'),
+('Geneva','A Rolex that is not in&nbsp;the window','She was preparing a&nbsp;gift for her husband’s 50th. Boutiques did not have the model. A&nbsp;Geneva partner found a&nbsp;full set with papers, an&nbsp;independent watchmaker checked the movement.','The watch arrived for the anniversary dinner'),
+]
+def stories(lst):
+    return '\n      '.join('<article class="st"><figure><img src="/img/%s.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:%s"><figcaption class="mono">%s</figcaption></figure><div class="st-b"><h3>%s</h3><p>%s</p><b>%s</b></div></article>' % (IMGS[i], POS[i], a, b, c, d) for i, (a, b, c, d) in enumerate(lst))
+
 def build(T):
-    T=dict(T); T['bx_items']=items(T['POOL'][:12])
+    T=dict(T); T['bx_items']=items(T['POOL'][:12]); T['stories']=stories(ST_RU if T.get('st_m')=='Истории' else ST_EN)
     b = body
     for k, v in T.items():
         if isinstance(v, str):

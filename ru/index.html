@@ -490,6 +490,26 @@ button{font:inherit}
 }
 .nav-cta{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:500;font-size:14px;white-space:nowrap}
 @media (max-width:760px){#motion{display:none}.bx-it.x2{display:none}.bx-it,.bx-it em{animation-duration:16s}}
+/* stories */
+.st-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.st-h .sec-h{flex:1;margin-bottom:clamp(22px,3.4vh,40px)}
+.st-nav{display:flex;gap:8px;margin-bottom:clamp(22px,3.4vh,40px)}
+.st-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:500 18px var(--f);cursor:pointer;transition:background .3s,color .3s,opacity .3s}
+.st-btn:hover{background:var(--ink);color:var(--bg)}
+.st-btn:disabled{opacity:.3;pointer-events:none}
+.st-row{display:flex;gap:clamp(12px,1.4vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-inline:calc(var(--gut)*-1);padding:0 var(--gut) 8px;scroll-padding-inline:var(--gut);scrollbar-width:none;overscroll-behavior-x:contain}
+.st-row::-webkit-scrollbar{display:none}
+.st{flex:0 0 clamp(270px,27vw,380px);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
+.st figure{margin:0;position:relative;aspect-ratio:4/4.4;overflow:hidden;background:var(--soft)}
+.st img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.st:hover img{transform:scale(1)}
+.st figcaption{position:absolute;left:14px;top:14px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#0B0B0D;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.st-b{padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.st-b h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.st-b p{margin:0;color:var(--mute);font-size:15px;line-height:1.5}
+.st-b b{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px;font-weight:500;line-height:1.35}
+.st-note{margin:14px 0 0;color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:760px){.st-nav{display:none}.st{flex-basis:84%}.st figure{aspect-ratio:4/3.6}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -539,6 +559,21 @@ button{font:inherit}
 </div></div>
 
 <div class="wrap">
+  <section class="sec stories" id="stories">
+    <div class="st-h"><div class="sec-h"><span class="mono">Истории</span><h2 class="mask">Так это выглядит</h2></div>
+      <div class="st-nav"><button type="button" class="st-btn" data-d="-1" aria-label="Назад">←</button><button type="button" class="st-btn" data-d="1" aria-label="Дальше">→</button></div></div>
+    <div class="st-row" id="strow">
+      <article class="st"><figure><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:30% 50%"><figcaption class="mono">Лондон · июнь</figcaption></figure><div class="st-b"><h3>Скачки, о&nbsp;которых она не&nbsp;думала</h3><p>Просила неделю в&nbsp;Лондоне: магазины, театр, ужины. На&nbsp;ее даты выпал Royal Ascot. Билет в&nbsp;Royal Enclosure не&nbsp;продают: новичка рекомендуют два члена клуба. Партнеры нашли рекомендателей, модистка сшила шляпу под дресс-код.</p><b>В 14:00 мимо прошла королевская процессия</b></div></article>
+      <article class="st"><figure><img src="/img/monaco.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Монако · июль</figcaption></figure><div class="st-b"><h3>Подарок мужу, который ездит верхом</h3><p>Искала подарок на&nbsp;годовщину. Мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит в&nbsp;порту под княжеским дворцом, Гран-при идет под патронажем Альберта II. Взяли столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт.</p><b>Трофеи вручала Шарлотта Казираги</b></div></article>
+      <article class="st"><figure><img src="/img/kelly.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Париж</figcaption></figure><div class="st-b"><h3>Kelly без листа ожидания</h3><p>Хотела Kelly 25 к&nbsp;своему дню рождения. В&nbsp;бутике предложили ждать без срока. Мы нашли сумку у&nbsp;проверенного дилера в&nbsp;Париже и&nbsp;заказали независимую экспертизу подлинности.</p><b>Сумку вручили в&nbsp;день рождения, в&nbsp;отеле на&nbsp;авеню Монтень</b></div></article>
+      <article class="st"><figure><img src="/img/lake.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Монтре · Швейцария</figcaption></figure><div class="st-b"><h3>Неделя для себя у&nbsp;Женевского озера</h3><p>Устала и&nbsp;хотела восстановиться без больничной атмосферы. Мы подобрали программу долголетия в&nbsp;Clinique La&nbsp;Prairie: анализы, врачи, сон, питание. Переводчик и&nbsp;водитель встретили в&nbsp;аэропорту Женевы.</p><b>Семь дней по&nbsp;одному плану, ни&nbsp;одного звонка с&nbsp;ее стороны</b></div></article>
+      <article class="st"><figure><img src="/img/alps.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 50%"><figcaption class="mono">Гштаад · январь</figcaption></figure><div class="st-b"><h3>Школа, где зимой учатся в&nbsp;горах</h3><p>Родители выбирали школу для дочери. Мы показали Le&nbsp;Rosey: осенью и&nbsp;весной кампус в&nbsp;Ролле, зимой классы переезжают в&nbsp;Гштаад. Устроили визит на&nbsp;оба кампуса и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.</p><b>Дочь сама попросила подать документы</b></div></article>
+      <article class="st"><figure><img src="/img/art.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption class="mono">Нью-Йорк · ноябрь</figcaption></figure><div class="st-b"><h3>Картина для новой гостиной</h3><p>После переезда стена над камином пустовала. Арт-консультант отобрал три лота вечерних торгов Christie’s в&nbsp;Нью-Йорке, запросил отчеты о&nbsp;состоянии и&nbsp;провенанс.</p><b>Ставку сделали по&nbsp;телефону через специалиста аукциона</b></div></article>
+      <article class="st"><figure><img src="/img/watch.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:60% 50%"><figcaption class="mono">Женева</figcaption></figure><div class="st-b"><h3>Rolex, которого нет в&nbsp;витрине</h3><p>Готовила подарок мужу к&nbsp;50-летию. В&nbsp;бутиках нужной модели не&nbsp;было. Партнер в&nbsp;Женеве нашел часы в&nbsp;полном комплекте с&nbsp;документами, независимый мастер проверил механизм.</p><b>Часы приехали к&nbsp;юбилейному ужину</b></div></article>
+    </div>
+    <p class="st-note mono">Сценарии работы. Запросы клиентов не&nbsp;публикуем.</p>
+  </section>
+
   <section class="sec task" id="task">
     <div class="tk-wrap">
       <div class="tk-l">
@@ -1028,6 +1063,10 @@ if(SR&&mic){mic.hidden=false;var r=null,base='';
   try{r.start();mic.classList.add('rec');ml.textContent=D.micStop}catch(e){r=null}})}
 }catch(e){}})();
 </script>
+(function(){var r=document.getElementById('strow');if(!r)return;var bs=document.querySelectorAll('.st-btn');
+function st(){var m=r.scrollWidth-r.clientWidth-2;bs[0].disabled=r.scrollLeft<2;bs[1].disabled=r.scrollLeft>=m}
+bs.forEach(function(b){b.addEventListener('click',function(){var c=r.querySelector('.st');r.scrollBy({left:(c.offsetWidth+16)*+b.dataset.d,behavior:'smooth'})})});
+r.addEventListener('scroll',st,{passive:true});window.addEventListener('resize',st);st()})();
 <script>
 /* Мини-фильм «Одна семья»: чат и доска задач, запуск в зоне видимости, пауза при выключенном движении */
 (function(){try{

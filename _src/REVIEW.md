@@ -22,6 +22,7 @@ Build: `python3 build.py`. Local server: `cd site && python3 -m http.server 8811
 - selling-copy-ru rules apply; target tekst-check ≥ 8/10.
 
 ## Design rules
+- No decorative tiles, chips or tickers with bare brand names or «Что угодно». Every block must carry meaning: a story, a fact, an action.
 - Calm, premium, 2026 style. No aggression: no heavy black blocks shouting, no loud orange everywhere.
 - Images: no two similar images side by side (two horses, two lakes). Each image matches its story. No brand logos that contradict the story.
 - Mobile first: short page, horizontal scrollers for cards, nothing cut off, tap targets ≥ 44px.

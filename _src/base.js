@@ -131,7 +131,7 @@
   }
   /* TICKER */
   var tr=$('tr'),tx=0,boost=0,lastY=scrollY;
-  function tick(dt){var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
+  function tick(dt){if(!tr)return;var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
 
   ['traj','tailsvg','wallsvg','pulsesvg','chart','stsvg','v2','v3'].forEach(function(id){var e=$(id);if(e&&io)io.observe(e)});
   var last=0;

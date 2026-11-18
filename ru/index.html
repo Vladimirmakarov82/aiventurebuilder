@@ -527,6 +527,9 @@ button{font:inherit}
 .brand{min-height:44px}
 @media (max-width:760px){.foot{padding-bottom:32px}.nav-cta,.nav .chip{min-height:44px;min-width:44px}}
 #focus,#model,#process{display:none!important}
+.jimg{margin:0;align-self:stretch;border-radius:clamp(16px,1.8vw,26px);overflow:hidden;min-height:360px}
+.jimg img{width:100%;height:100%;object-fit:cover;object-position:30% 50%;display:block}
+@media (max-width:900px){.jimg{display:none}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -570,10 +573,7 @@ button{font:inherit}
   </section>
 </div>
 
-<div class="ticker" aria-hidden="true"><div class="tr" id="tr">
-  <span>Orbiq</span><span class="m">консьерж без границ</span><span class="o">резидентство Монако</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">семейные трасты</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">сапфиры Gübelin</span><span class="m">·</span>
-  <span>Orbiq</span><span class="m">консьерж без границ</span><span class="o">резидентство Монако</span><span class="m">Hermès Birkin</span><span>Le Rosey</span><span class="m">Patek Philippe</span><span class="o">семейные трасты</span><span class="m">Sotheby’s</span><span>Charité</span><span class="m">Gulfstream G700</span><span class="o">сапфиры Gübelin</span><span class="m">·</span>
-</div></div>
+
 
 <div class="wrap">
   <section class="sec stories" id="stories">
@@ -773,9 +773,7 @@ button{font:inherit}
       <a class="jbtn" href="https://t.me/vladimir82makarov" target="_blank" rel="noopener">Написать в Telegram <i aria-hidden="true">→</i></a>
       <a class="jmail" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
     </div>
-    <div class="r">
-      <div class="slots5 s6"><div class="sb">Монако</div><div class="sa">Трасты</div><div class="sc">Le Rosey</div><div class="sd">Patek</div><div class="se">Hermès</div><div class="sf">Что угодно</div></div>
-    </div>
+    <figure class="r jimg"><img src="/img/ascot.webp" alt="" width="800" height="1000" loading="lazy" decoding="async"></figure>
   </section>
 
   <footer class="foot">
@@ -919,7 +917,7 @@ button{font:inherit}
   }
   /* TICKER */
   var tr=$('tr'),tx=0,boost=0,lastY=scrollY;
-  function tick(dt){var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
+  function tick(dt){if(!tr)return;var y=scrollY;boost+=(Math.min(40,Math.abs(y-lastY))*.08-boost)*.08;lastY=y;tx-=(.6+boost)*dt*.06;var w=tr.scrollWidth/2;if(w&&-tx>w)tx+=w;tr.style.transform='translateX('+tx+'px)'}
 
   ['traj','tailsvg','wallsvg','pulsesvg','chart','stsvg','v2','v3'].forEach(function(id){var e=$(id);if(e&&io)io.observe(e)});
   var last=0;

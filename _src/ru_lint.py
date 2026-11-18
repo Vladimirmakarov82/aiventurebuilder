@@ -107,9 +107,9 @@ if __name__ == '__main__':
     import json, os
     for page in [sys.argv[1], os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[1]))), 'index.html')]:
         if not os.path.exists(page): continue
-        m = re.search(r'window\.__POOL=(\[.*?\]);', open(page, encoding='utf-8').read(), re.S)
+        _src = open(page, encoding='utf-8').read(); m = re.search(r'window\.__POOL=(\[.*?\]);', _src, re.S); m2 = re.search(r'window\.__SVC=(\[.*?\]);', _src, re.S)
         if not m: continue
-        for it in json.loads(m.group(1)):
+        for it in json.loads(m.group(1)) + (json.loads(m2.group(1)) if m2 else []):
             if re.fullmatch(r'[A-Za-z][\w.-]* pre-IPO \+\d+%', it): continue  # pre-IPO deal: «Name +N%» (owner data, IPO Sharks)
             if len(it.split()) > 4: hard.append(('POOL: больше 4 слов, нужно только имя', it))
             if re.search(r'с бриллиант|для семьи|через spv|до ipo|в полном|без масла|в платине|без объявлений|with diamonds|for the family|via spv|before the ipo|full set|in platinum', it.lower()):

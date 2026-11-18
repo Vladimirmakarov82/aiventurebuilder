@@ -1,4 +1,6 @@
-import json, re, os
+import json, re, os, sys
+sys.path.insert(0, '/home/claude/orbicgroup')
+from pool_data import SVC_RU, SVC_EN, THINGS_RU, THINGS_EN, S_SLOTS
 B = '/home/claude/orbicgroup/'
 css = open(B+'base.css').read()
 extra = open(B+'extra.css').read()
@@ -299,7 +301,13 @@ def stories(lst):
     return '\n      '.join('<article class="st"><figure><img src="/img/%s.webp" alt="" width="800" height="1000" loading="lazy" decoding="async" style="object-position:%s"><figcaption class="mono">%s</figcaption></figure><div class="st-b"><h3>%s</h3><p>%s</p><b>%s</b></div></article>' % (IMGS[i], POS[i], a, b, c, d) for i, (a, b, c, d) in [(k, lst[k]) for k in ORDER])
 
 def build(T):
-    T=dict(T); T['bx_items']=items(T['POOL'][:12]); T['stories']=stories(ST_RU if T.get('st_m')=='Истории' else ST_EN)
+    T=dict(T); _ru = T.get('st_m')=='Истории'
+    T['POOL'] = THINGS_RU if _ru else THINGS_EN; T['SVC'] = SVC_RU if _ru else SVC_EN
+    _si, _ti, _init = 0, 0, []
+    for _k in range(12):
+        if _k in S_SLOTS: _init.append(T['SVC'][_si]); _si += 1
+        else: _init.append(T['POOL'][_ti]); _ti += 1
+    T['bx_items']=items(_init); T['stories']=stories(ST_RU if T.get('st_m')=='Истории' else ST_EN)
     b = body
     for k, v in T.items():
         if isinstance(v, str):
@@ -362,7 +370,7 @@ def build(T):
 <body>
 
 '''
-    cf = '<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';window.__TF=' + json.dumps(T['TF'], ensure_ascii=False) + ';</script>\n' + pooljs + formjs
+    cf = '<script>window.__SVC=' + json.dumps(T['SVC'], ensure_ascii=False) + ';window.__SROLE=' + json.dumps(S_SLOTS) + ';</script>\n<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';window.__TF=' + json.dumps(T['TF'], ensure_ascii=False) + ';</script>\n' + pooljs + formjs
     libs = '''<script src="/js/gsap.min.js"></script>
 <script src="/js/ScrollTrigger.min.js"></script>
 <script src="/js/SplitText.min.js"></script>

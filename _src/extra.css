@@ -153,4 +153,7 @@
 .st-h .sec-h{grid-template-columns:1fr}
 .st-h .sec-h .mono,.st-h .sec-h h2{grid-column:1/-1}
 .st-h .sec-h h2{font-size:clamp(30px,3.4vw,50px);max-width:34ch}
+.hero{min-height:auto;padding-block:clamp(24px,4vh,48px) 0}
+#stories{padding-top:clamp(40px,6vh,72px)}
+#motion{display:none!important}
 </style>

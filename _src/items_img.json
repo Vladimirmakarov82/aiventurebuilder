@@ -1,4 +1,52 @@
 {
+ "0": {
+  "ru": "Romanée-Conti 1945",
+  "en": "Romanée-Conti 1945",
+  "file": "/img/items/romanee-conti.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Bouteille_de_Roman%C3%A9e_Conti.JPG",
+  "lic": "CC BY-SA 3.0",
+  "artist": "PRA"
+ },
+ "1": {
+  "ru": "Pétrus 1961",
+  "en": "Pétrus 1961",
+  "file": "/img/items/petrus.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Petrus_1973_J1.jpg",
+  "lic": "CC BY-SA 3.0",
+  "artist": "Jamain"
+ },
+ "3": {
+  "ru": "Château d’Yquem 1811",
+  "en": "Château d’Yquem 1811",
+  "file": "/img/items/yquem.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Chateau_YQUEM_(1986)_-_Bild_001.jpg",
+  "lic": "CC BY-SA 4.0",
+  "artist": "Lupus in Saxonia"
+ },
+ "4": {
+  "ru": "Penfolds Grange 1951",
+  "en": "Penfolds Grange 1951",
+  "file": "/img/items/penfolds-grange.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:PenfoldsGrange.jpg",
+  "lic": "Public domain",
+  "artist": "CocktailSteward"
+ },
+ "9": {
+  "ru": "Louis XIII Rare Cask",
+  "en": "Louis XIII Rare Cask",
+  "file": "/img/items/louis-xiii.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Louis_XIII_de_R%C3%A9my_Martin_Grande_Champagne_Cognac.jpg",
+  "lic": "CC BY 2.0",
+  "artist": "JerryLee (Jerry Lee)"
+ },
+ "12": {
+  "ru": "Cohiba Behike 56",
+  "en": "Cohiba Behike 56",
+  "file": "/img/items/cohiba-behike.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:COHIBA_BEHIKE_52.jpg",
+  "lic": "CC BY-SA 4.0",
+  "artist": "Erspert"
+ },
  "14": {
   "ru": "Ваза эпохи Цяньлун",
   "en": "Qianlong vase",
@@ -71,6 +119,14 @@
   "lic": "Public domain",
   "artist": ""
  },
+ "31": {
+  "ru": "Patek Philippe 5711 Tiffany",
+  "en": "Patek Philippe 5711 Tiffany",
+  "file": "/img/items/patek-5711.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Patek-Philippe-Nautilus-5711-1A-010-1.jpg",
+  "lic": "CC BY-SA 4.0",
+  "artist": "Patek Philippe SA"
+ },
  "33": {
   "ru": "Patek Grandmaster Chime",
   "en": "Patek Grandmaster Chime",
@@ -103,6 +159,14 @@
   "lic": "CC BY-SA 3.0",
   "artist": ""
  },
+ "47": {
+  "ru": "Кашмирский сапфир",
+  "en": "Kashmir sapphire",
+  "file": "/img/items/kashmir-sapphire.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Two-Kashmiri-Sapphire-Rings-in-Antique-Boxes-EDJ-1000x563.webp",
+  "lic": "CC BY 4.0",
+  "artist": "Estate Diamond Jewelry"
+ },
  "49": {
   "ru": "Изумруд Muzo",
   "en": "Muzo emerald",
@@ -120,12 +184,12 @@
   "artist": ""
  },
  "52": {
-  "ru": "Турмалин Paraiba",
-  "en": "Paraiba tourmaline",
-  "file": "/img/items/paraiba-tourmaline.webp",
-  "page": "https://commons.wikimedia.org/wiki/File:Tourmaline_para%C3%AFba_%28Br%C3%A9sil%29.JPG",
-  "lic": "CC BY-SA 3.0",
-  "artist": ""
+  "ru": "Константиновский рубль",
+  "en": "Constantine rouble",
+  "file": "/img/items/constantine-rouble.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Const.jpg",
+  "lic": "Public domain",
+  "artist": "The original uploader was Mitrius at Russian Wikipedia."
  },
  "55": {
   "ru": "Double Eagle 1933",
@@ -136,12 +200,12 @@
   "artist": ""
  },
  "56": {
-  "ru": "Brasher Doubloon",
-  "en": "Brasher Doubloon",
-  "file": "/img/items/brasher-doubloon.webp",
-  "page": "https://commons.wikimedia.org/wiki/File:Brasher_Doubloon%2C_1787_-_National_Museum_of_American_History_-_DSC00238.jpg",
-  "lic": "CC0",
-  "artist": ""
+  "ru": "Марка Inverted Jenny",
+  "en": "Inverted Jenny stamp",
+  "file": "/img/items/inverted-jenny.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:US_Airmail_inverted_Jenny_24c_1918_issue.jpg",
+  "lic": "Public domain",
+  "artist": "Bureau of Engraving and Printing"
  },
  "59": {
   "ru": "Шекспир First Folio",
@@ -158,6 +222,14 @@
   "page": "https://commons.wikimedia.org/wiki/File:Honus_Wagner_T206_from_Burdick_Collection.jpg",
   "lic": "Public domain",
   "artist": ""
+ },
+ "70": {
+  "ru": "Солдатики Britains",
+  "en": "Britains toy soldiers",
+  "file": "/img/items/britains-soldiers.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Toy_Soldiers_British_Coldstream_Guards.jpg",
+  "lic": "Public domain",
+  "artist": "Jcbutler at English Wikipedia"
  },
  "74": {
   "ru": "Ferrari 250 GTO",
@@ -200,12 +272,12 @@
   "artist": "Alexander Migl"
  },
  "79": {
-  "ru": "Koenigsegg Jesko",
-  "en": "Koenigsegg Jesko",
-  "file": "/img/items/koenigsegg-jesko.webp",
-  "page": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Jesko_Auto_Zuerich_2023_1X7A1382.jpg",
+  "ru": "Pagani Utopia",
+  "en": "Pagani Utopia",
+  "file": "/img/items/pagani-utopia.webp",
+  "page": "https://commons.wikimedia.org/wiki/File:Pagani_Utopia_Auto_Zuerich_2023_1X7A1185.jpg",
   "lic": "CC BY-SA 4.0",
-  "artist": ""
+  "artist": "Alexander-93"
  },
  "81": {
   "ru": "Nike Air Mag",

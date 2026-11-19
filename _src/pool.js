@@ -12,4 +12,12 @@ its.forEach(function(el,i){var sp=el.querySelector('span'),isS=S.length&&R.index
   put(el,sp,isS?nextSvc():nextThing());
   el.addEventListener('animationiteration',function(e){if(e.target!==el)return;put(el,sp,isS?nextSvc():nextThing())})});
 }catch(e){}})();
+(function(){var c=document.getElementById('cat');if(!c)return;var T=c.querySelectorAll('.cat-t'),P=c.querySelectorAll('.cat-p'),cur=0,tm=null,user=false,vis=false,D=7000;
+function show(i){cur=i;T.forEach(function(t,k){var on=k===i;t.classList.toggle('on',on);t.setAttribute('aria-selected',on?'true':'false');var b=t.querySelector('i');if(b){b.style.width='';b.style.animation='none';b.offsetWidth;b.style.animation=''}});P.forEach(function(p,k){var on=k===i;p.hidden=!on;p.classList.toggle('on',on);if(on)p.scrollLeft=0});var a=T[i];if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth){a.parentNode.scrollTo({left:a.offsetLeft-16,behavior:'smooth'})}}
+function loop(){clearTimeout(tm);if(user||!vis||c.classList.contains('paused'))return;tm=setTimeout(function(){show((cur+1)%T.length);loop()},D)}
+T.forEach(function(t,k){t.addEventListener('click',function(){user=true;c.classList.add('paused');clearTimeout(tm);show(k);var b=t.querySelector('i');if(b)b.style.width='100%'})});
+c.addEventListener('mouseenter',function(){if(!user){c.classList.add('paused');clearTimeout(tm)}});c.addEventListener('mouseleave',function(){if(!user){c.classList.remove('paused');show(cur);loop()}});
+c.addEventListener('touchstart',function(){user=true;c.classList.add('paused');clearTimeout(tm)},{passive:true});
+if('IntersectionObserver'in window){new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis){show(cur);loop()}else clearTimeout(tm)},{threshold:.35}).observe(c)}else{vis=true;loop()}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)user=true;})();
 </script>

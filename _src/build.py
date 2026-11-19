@@ -1,5 +1,6 @@
 import json, re, os, sys
 sys.path.insert(0, '/home/claude/orbicgroup')
+from cats_data import CATS_RU, CATS_EN, cats
 from pool_data import SVC_RU, SVC_EN, THINGS_RU, THINGS_EN, S_SLOTS
 B = '/home/claude/orbicgroup/'
 css = open(B+'base.css').read()
@@ -66,21 +67,10 @@ EN = dict(
  bx_a='Request', bx_b='Done', bx_line='Orbiq',
  bx_items=None,
  bxf1k='Own license', bxf1v='Visas · Singapore', bxf2k='Through partners', bxf2v='Trusts, Patek, Hermès, Sotheby’s',
- ticker=ticker(['Orbiq', 'concierge without borders', 'Monaco residence', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'family trusts', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'Gübelin sapphires']),
+ ticker=ticker(['Orbiq', 'concierge without borders', 'Gion teahouses', 'America’s Cup', 'Hermès Birkin Himalaya', 'Art Basel Hong Kong', 'Sabi Sand', 'Patek Philippe', 'Niseko', 'Dubai World Cup', 'family office Singapore', 'Sotheby’s']),
  s0_m='00 · Services', s0_h='What we do',
  s0_lead='Capital, residence, children’s education, health, collections, closed events.',
- xb=xb([('Residence', 'A&nbsp;country to&nbsp;live in', 'In&nbsp;Switzerland tax can be paid as&nbsp;a&nbsp;fixed sum instead of&nbsp;on&nbsp;income. Not everywhere: Geneva allows it, Zurich does not. We match the place to&nbsp;the family’s plans: Monaco, Switzerland, UAE Golden Visa, a&nbsp;second citizenship'),
-        ('Documents', 'A&nbsp;summer visa filed in&nbsp;winter', 'A&nbsp;Schengen visa can be filed six months before the trip. We collect the documents for the whole family, book the appointment and follow the application to&nbsp;the decision'),
-        ('Finance', 'A&nbsp;Geneva account for the family', 'A&nbsp;Swiss school bills in&nbsp;francs, a&nbsp;London clinic in&nbsp;pounds. We open accounts at private banks in&nbsp;Geneva and Singapore, and the family pays for tuition, treatment and deals from one place'),
-        ('Finance', 'Capital for the grandchildren', 'The charter of&nbsp;a&nbsp;Liechtenstein family foundation can set the age at which grandchildren receive income and what it may be spent on'),
-        ('Capital', 'Shares before the listing', 'Shares of&nbsp;a&nbsp;private company cannot simply be bought: the company approves every sale. We find holders of&nbsp;Stripe, Databricks and Anduril ready to&nbsp;sell, and places in&nbsp;closed rounds'),
-        ('Education', 'A&nbsp;school for the family’s plans', 'First we decide where the child will live and build a&nbsp;career. If it is Britain, the path often runs through Eton and Oxford. At Eton boys live in&nbsp;25&nbsp;houses of&nbsp;about 50, and housemates become the first circle of&nbsp;friends'),
-        ('Health', 'A&nbsp;medicine from another country', 'In&nbsp;Germany a&nbsp;pharmacy can order, on&nbsp;prescription, a&nbsp;drug not yet approved there if another country has approved it. We arrange second opinions from Charité and Mayo Clinic'),
-        ('Flights', 'A&nbsp;plane straight to&nbsp;Courchevel', 'From Geneva to&nbsp;Courchevel we fly a&nbsp;Pilatus. The runway is 537&nbsp;metres long with an&nbsp;18.6% slope, and landing there needs a&nbsp;special rating. The dog flies in&nbsp;the cabin next to&nbsp;its owner'),
-        ('Collecting', 'A&nbsp;watch made in&nbsp;170&nbsp;pieces', 'Patek Philippe made the 5711 with a&nbsp;Tiffany-blue dial in&nbsp;170&nbsp;pieces. Such things never sit in&nbsp;a&nbsp;window, they are found with collectors. We also look for Birkin Himalaya, Kashmir sapphires and the Constantine rouble'),
-        ('Art', 'A&nbsp;painting free of&nbsp;import VAT', 'While a&nbsp;painting stays in&nbsp;the Geneva Freeport, no import VAT is due on&nbsp;it. We select lots at Sotheby’s, Christie’s and Phillips, place the bids and send the purchase to&nbsp;storage'),
-        ('Events', 'A&nbsp;box at&nbsp;the Vienna ball', 'At the Vienna Opera Ball the dancing for all guests begins with the call «Alles Walzer!». From a&nbsp;box above the floor the whole hall is in&nbsp;view. We also book places at the amfAR Gala in&nbsp;Cannes and the Monaco Grand Prix'),
-        ('Property', 'Homes without listings', 'Residents of&nbsp;One Hyde Park in&nbsp;London get room service from the Mandarin Oriental next door. Such flats, villas in&nbsp;Marbella and penthouses in&nbsp;Monaco often sell quietly, with no advertising')]),
+ xb=cats(CATS_EN),
  bz_m='For business', bz_h='Cargo, customs and&nbsp;payment to&nbsp;a&nbsp;supplier',
  bz_cards=xb([('Logistics', 'Cargo from country to&nbsp;country', 'Under Incoterms DDP the seller pays duty and customs clearance in&nbsp;the buyer’s country. For each shipment we choose the delivery terms and the route: by sea, by rail or by air'),
         ('Customs', 'The product code and the duty', 'The duty rate depends on&nbsp;the product code. The first six digits are the same almost everywhere in&nbsp;the world, only the last ones differ. We find the code and prepare the declaration'),
@@ -177,21 +167,10 @@ RU = dict(
  bx_a='Запрос', bx_b='Готово', bx_line='Orbiq',
  bx_items=None,
  bxf1k='Своя лицензия', bxf1v='Визы · Сингапур', bxf2k='Через партнеров', bxf2v='Трасты, Patek, Hermès, Sotheby’s',
- ticker=ticker(['Orbiq', 'консьерж без границ', 'резидентство Монако', 'Hermès Birkin', 'Le Rosey', 'Patek Philippe', 'семейные трасты', 'Sotheby’s', 'Charité', 'Gulfstream G700', 'сапфиры Gübelin']),
- s0_m='00 · Услуги', s0_h='Чем занимаемся',
+ ticker=ticker(['Orbiq', 'консьерж без границ', 'чайные дома Гиона', 'Кубок Америки', 'Hermès Birkin Himalaya', 'Art Basel Hong Kong', 'Саби Сэнд', 'Patek Philippe', 'Нисеко', 'Dubai World Cup', 'семейный офис в Сингапуре', 'Sotheby’s']),
+ s0_m='00 · Направления', s0_h='Чем занимаемся',
  s0_lead='Капитал, резидентство, учеба детей, здоровье, коллекции, закрытые события.',
- xb=xb([('Резидентство', 'Страна для&nbsp;жизни', 'В&nbsp;Швейцарии налог можно платить фиксированной суммой, а&nbsp;не&nbsp;с&nbsp;доходов. Но&nbsp;так можно не&nbsp;в&nbsp;каждом городе: в&nbsp;Женеве можно, в&nbsp;Цюрихе нельзя. Подбираем место под планы семьи: Монако, Швейцария, Golden Visa ОАЭ, второе гражданство'),
-        ('Документы', 'Виза на&nbsp;лето, поданная зимой', 'Шенгенскую визу можно подать за&nbsp;полгода до&nbsp;поездки. Собираем документы на&nbsp;всю семью, записываем на&nbsp;подачу и&nbsp;ведем заявку до&nbsp;решения'),
-        ('Финансы', 'Счет в&nbsp;Женеве для&nbsp;семьи', 'Счет из&nbsp;швейцарской школы приходит во&nbsp;франках, из&nbsp;лондонской клиники в&nbsp;фунтах. Открываем счета в&nbsp;частных банках Женевы и&nbsp;Сингапура, и&nbsp;семья платит за&nbsp;учебу, лечение и&nbsp;сделки с&nbsp;одного места'),
-        ('Финансы', 'Капитал для&nbsp;внуков', 'В&nbsp;уставе семейного фонда в&nbsp;Лихтенштейне можно записать, с&nbsp;какого возраста внуки получают доход и&nbsp;на&nbsp;что его тратят'),
-        ('Капитал', 'Акции до&nbsp;биржи', 'Акции частной компании нельзя просто купить: каждую продажу одобряет сама компания. Находим акционеров Stripe, Databricks и&nbsp;Anduril, готовых продать долю, и&nbsp;места в&nbsp;закрытых раундах'),
-        ('Образование', 'Школа под&nbsp;планы семьи', 'Сначала решаем, в&nbsp;какой стране ребенок будет жить и&nbsp;строить карьеру. Если это Британия, путь часто идет через Eton и&nbsp;Оксфорд. В&nbsp;Eton мальчики живут в&nbsp;25&nbsp;домах по&nbsp;50&nbsp;человек, и&nbsp;соседи по&nbsp;дому становятся первым кругом знакомств'),
-        ('Здоровье', 'Лекарство из&nbsp;другой страны', 'В&nbsp;Германии аптека по&nbsp;рецепту может заказать лекарство, которое там еще не&nbsp;одобрено, если его разрешили в&nbsp;другой стране. Второе мнение устраиваем у&nbsp;врачей Charité и&nbsp;Mayo Clinic'),
-        ('Перелеты', 'Самолет прямо в&nbsp;Куршевель', 'Из&nbsp;Женевы в&nbsp;Куршевель летим на&nbsp;Pilatus. Полоса там длиной 537&nbsp;метров с&nbsp;уклоном 18,6%, и&nbsp;садиться на&nbsp;нее можно только со&nbsp;специальным допуском. Собака летит в&nbsp;салоне рядом с&nbsp;хозяйкой'),
-        ('Коллекции', 'Часы тиражом 170&nbsp;штук', 'Patek Philippe 5711 с&nbsp;циферблатом цвета Tiffany выпустили тиражом 170&nbsp;штук. Такие вещи не&nbsp;лежат в&nbsp;витрине, их&nbsp;находят у&nbsp;коллекционеров. Также ищем Birkin Himalaya, кашмирские сапфиры и&nbsp;Константиновский рубль'),
-        ('Искусство', 'Картина без&nbsp;ввозного НДС', 'Пока картина хранится во&nbsp;фрипорте Женевы, ввозной НДС за&nbsp;нее не&nbsp;платят. Подбираем лоты на&nbsp;Sotheby’s, Christie’s и&nbsp;Phillips, делаем ставки и&nbsp;отправляем покупку на&nbsp;хранение'),
-        ('События', 'Ложа на&nbsp;Венском балу', 'На&nbsp;Венском оперном балу танцы для&nbsp;всех гостей начинаются с&nbsp;возгласа «Alles Walzer!». Из&nbsp;ложи над паркетом виден весь зал. Также бронируем места на&nbsp;гала amfAR в&nbsp;Каннах и&nbsp;на&nbsp;Гран-при Монако'),
-        ('Недвижимость', 'Квартиры без&nbsp;объявлений', 'Жильцам One Hyde Park в&nbsp;Лондоне еду приносит рум-сервис соседнего отеля Mandarin Oriental. Такие квартиры, виллы в&nbsp;Марбелье и&nbsp;пентхаусы в&nbsp;Монако часто продают тихо, без&nbsp;рекламы')]),
+ xb=cats(CATS_RU),
  bz_m='Для бизнеса', bz_h='Груз, таможня и&nbsp;оплата поставщику',
  bz_cards=xb([('Логистика', 'Груз из&nbsp;страны в&nbsp;страну', 'По&nbsp;условиям Incoterms DDP пошлину и&nbsp;растаможку в&nbsp;стране покупателя оплачивает продавец. Под каждую партию подбираем условия поставки и&nbsp;путь: морем, по&nbsp;железной дороге или самолетом'),
         ('Таможня', 'Код товара и&nbsp;пошлина', 'Ставку пошлины определяет код товара. Первые шесть цифр кода одинаковы почти во&nbsp;всем мире, различаются только последние. Подбираем код и&nbsp;готовим декларацию'),
@@ -272,29 +251,29 @@ RU = dict(
 
 ORIG_TX_EN = re.search(r"var TX=\{visa:.*?\}\};", js, re.S).group(0)
 
-ORDER=[0,2,3,5,1,4,6,7]
-IMGS=['ascot','monaco','kelly','lake','alps','art','watch','preipo']
-POS=['50% 30%','50% 50%','50% 40%','50% 50%','50% 50%','50% 40%','60% 50%','50% 50%']
+ORDER=[0,1,2,3,4,5,6,7]
+IMGS=['ascot','kyoto','kelly','sailing','alps','safari','art','preipo']
+POS=['50% 30%','50% 50%','50% 40%','50% 50%','50% 50%','50% 40%','50% 40%','50% 50%']
 ST_RU=[
 ('Лондон · июнь','Скачки, куда пускают только по&nbsp;рекомендации','Неделя в&nbsp;Лондоне за&nbsp;покупками превратилась в&nbsp;день на&nbsp;королевских скачках Royal Ascot. Билеты в&nbsp;Royal Enclosure не&nbsp;продают: новичка должны рекомендовать два члена клуба. Мы нашли поручителей, а&nbsp;лондонская мастерская сшила шляпу по&nbsp;дресс-коду.','В 14:00 мимо проехала королевская процессия'),
-('Монако · июль','Подарок мужу, который ездит верхом','Подарок мужу на&nbsp;годовщину свадьбы выбран за&nbsp;один вечер. Муж ездит верхом, и&nbsp;мы предложили Jumping International de&nbsp;Monte-Carlo: арена стоит прямо в&nbsp;порту, под княжеским дворцом. Столик у&nbsp;арены и&nbsp;номер с&nbsp;видом на&nbsp;порт забронированы.','Призы победителям вручали члены княжеской семьи'),
+('Киото · апрель','Вечер в&nbsp;чайном доме, куда не&nbsp;пускают с&nbsp;улицы','Ужин с&nbsp;гейко в&nbsp;Гионе прошел в&nbsp;первый же приезд в&nbsp;Киото. Чайные дома Гиона принимают гостя только по&nbsp;рекомендации. Мы договорились через постоянного гостя дома, а&nbsp;переводчик весь вечер сидел рядом.','Майко станцевала под сямисэн, за&nbsp;окном цвела сакура'),
 ('Париж','Kelly без листа ожидания','Желание получить Kelly 25 в&nbsp;цвете Gold к&nbsp;дню рождения выполнено, несмотря на&nbsp;отказ в&nbsp;бутике. Наши AI-агенты проанализировали сотни предложений по&nbsp;всему миру и&nbsp;нашли сумку у&nbsp;частного продавца в&nbsp;Париже.','В&nbsp;день рождения сумку привезли в&nbsp;отель на&nbsp;авеню Монтень'),
-('Монтре · Швейцария','Неделя для себя на&nbsp;Женевском озере','Неделя восстановления прошла без больничной атмосферы и&nbsp;без единого звонка. Программа долголетия в&nbsp;Clinique La&nbsp;Prairie: анализы, врачи, сон и&nbsp;питание. В&nbsp;аэропорту Женевы ждали водитель и&nbsp;переводчик.','Семь дней по&nbsp;одному плану'),
+('Барселона · сентябрь','Кубок Америки с&nbsp;воды','Подарок сыну на&nbsp;18-летие выбран за&nbsp;один вечер: финал Кубка Луи Виттона, где Luna Rossa гонялась с&nbsp;британской командой. Яхты AC75 поднимаются над водой на&nbsp;подводных крыльях и&nbsp;разгоняются быстрее 90&nbsp;км/ч. Мы забронировали катер прямо у&nbsp;трассы гонок.','Сын сказал, что это красивее Формулы-1'),
 ('Гштаад · январь','Школа, которая зимой уезжает в&nbsp;горы','Школа для дочери выбрана после поездки в&nbsp;оба кампуса Le&nbsp;Rosey. Осенью и&nbsp;весной дети учатся в&nbsp;Ролле, а&nbsp;зимой вся школа переезжает в&nbsp;Гштаад. Мы устроили визиты и&nbsp;встречу с&nbsp;консультантом по&nbsp;поступлению.','Дочь сама попросила подать документы'),
+('Саби Сэнд · ЮАР','Леопард в&nbsp;пяти метрах от&nbsp;машины','Первое сафари для детей прошло в&nbsp;частном заповеднике Саби Сэнд по&nbsp;соседству с&nbsp;парком Крюгера. Здесь рейнджер съезжает с&nbsp;дороги вслед за&nbsp;зверем и&nbsp;выезжает ночью. Мы выбрали лодж с&nbsp;семейной виллой и&nbsp;отдельным рейнджером.','Леопарда увидели в&nbsp;первый же вечер'),
 ('Нью-Йорк · ноябрь','Картина над камином','Пустая стена над камином в&nbsp;новом доме дождалась своей картины. Наши AI-агенты просмотрели каталоги вечерних торгов Christie’s в&nbsp;Нью-Йорке и&nbsp;отобрали три поздние работы Пикассо.','Ставку сделали по&nbsp;телефону'),
-('Женева','Rolex Datejust, которого нет в&nbsp;витрине','Подарок мужу к&nbsp;50-летию найден, хотя в&nbsp;бутиках этой модели не&nbsp;было. Наши AI-агенты проверили сотни предложений и&nbsp;нашли Datejust 41 с&nbsp;зеленым циферблатом в&nbsp;Женеве.','Часы успели к&nbsp;юбилейному ужину'),
-('Цюрих · сентябрь','Доля в&nbsp;компании, о&nbsp;которой все время говорит сын','Доля в&nbsp;Databricks оформлена на&nbsp;семейный траст, хотя на&nbsp;бирже акций компании нет. Мы нашли акционера, готового продать часть доли, и&nbsp;компания одобрила сделку.','За ужином сын спросил, откуда она знает его любимую компанию'),
+('Сингапур · сентябрь','Доля в&nbsp;компании, о&nbsp;которой все время говорит сын','Доля в&nbsp;Databricks оформлена на&nbsp;семейный траст, хотя на&nbsp;бирже акций компании нет. Мы нашли акционера, готового продать часть доли, и&nbsp;компания одобрила сделку.','За ужином сын спросил маму, откуда она знает его любимую компанию'),
 ]
 
 ST_EN=[
 ('London · June','Races you enter only by&nbsp;sponsorship','A&nbsp;shopping week in&nbsp;London turned into a&nbsp;day at&nbsp;the royal races, Royal Ascot. Royal Enclosure badges are not sold: two members must sponsor a&nbsp;newcomer. We found the sponsors, and a&nbsp;London atelier made a&nbsp;hat to&nbsp;the dress code.','At 2&nbsp;pm the Royal Procession passed by'),
-('Monaco · July','A gift for a&nbsp;husband who rides','An&nbsp;anniversary gift chosen in&nbsp;one evening. He rides, so we suggested Jumping International de&nbsp;Monte-Carlo: the arena sits right in&nbsp;the port, below the Prince’s Palace. A&nbsp;table by&nbsp;the arena and a&nbsp;room over the port are booked.','Members of&nbsp;the princely family presented the prizes'),
+('Kyoto · April','An&nbsp;evening in&nbsp;a&nbsp;teahouse closed to&nbsp;walk-ins','Dinner with geiko in&nbsp;Gion on&nbsp;her very first trip to&nbsp;Kyoto. The teahouses of&nbsp;Gion accept guests only by&nbsp;recommendation. We arranged it&nbsp;through a&nbsp;regular of&nbsp;the house, and an&nbsp;interpreter sat beside her all evening.','A&nbsp;maiko danced to&nbsp;the shamisen while the cherry trees bloomed outside'),
 ('Paris','Kelly without a&nbsp;waitlist','A&nbsp;Kelly 25 in&nbsp;Gold for her birthday, despite the boutique saying no. Our AI agents went through hundreds of&nbsp;offers worldwide and found the bag with a&nbsp;private seller in&nbsp;Paris.','On her birthday the bag was delivered to&nbsp;her hotel on&nbsp;Avenue Montaigne'),
-('Montreux · Switzerland','A week for herself by Lake Geneva','A&nbsp;week of&nbsp;recovery with no hospital feel and not a&nbsp;single call. A&nbsp;longevity program at Clinique La&nbsp;Prairie: tests, doctors, sleep and nutrition. A&nbsp;driver and an&nbsp;interpreter waited at Geneva airport.','Seven days, one plan'),
+('Barcelona · September','The America’s Cup from the water','A&nbsp;gift for her son’s 18th, chosen in&nbsp;one evening: the Louis Vuitton Cup final, Luna Rossa against the British team. AC75 yachts rise above the water on&nbsp;foils and go faster than 90&nbsp;km/h. We booked a&nbsp;boat right by&nbsp;the race course.','Her son said it&nbsp;beat Formula 1'),
 ('Gstaad · January','A school that moves to&nbsp;the mountains','A&nbsp;school for their daughter chosen after visiting both Le&nbsp;Rosey campuses. In&nbsp;autumn and spring the children study in&nbsp;Rolle, in&nbsp;winter the whole school moves to&nbsp;Gstaad. We arranged the visits and a&nbsp;meeting with an&nbsp;admissions advisor.','The daughter asked to&nbsp;apply herself'),
+('Sabi Sand · South Africa','A&nbsp;leopard five metres from the car','The children’s first safari, in&nbsp;the private Sabi Sand reserve next to&nbsp;Kruger. Here the ranger leaves the road to&nbsp;follow the animals and drives out at&nbsp;night. We chose a&nbsp;lodge with a&nbsp;family villa and a&nbsp;private ranger.','They saw a&nbsp;leopard on&nbsp;the first evening'),
 ('New York · November','A painting over the fireplace','The empty wall over the fireplace in&nbsp;the new house got its painting. Our AI agents went through Christie’s New York evening sale catalogues and picked three late Picasso works.','The bid went in&nbsp;by phone'),
-('Geneva','A Rolex Datejust not in&nbsp;the window','A&nbsp;gift for her husband’s 50th, found although no boutique had the model. Our AI agents checked hundreds of&nbsp;offers and found a&nbsp;Datejust 41 with a&nbsp;green dial in&nbsp;Geneva.','The watch arrived for the anniversary dinner'),
-('Zurich · September','A stake in&nbsp;the company her son always talks about','A&nbsp;stake in&nbsp;Databricks placed in&nbsp;the family trust, although the shares are not on&nbsp;any exchange. We found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;his stake, and the company approved the deal.','At dinner her son asked how she knew his favourite company'),
+('Singapore · September','A stake in&nbsp;the company her son always talks about','A&nbsp;stake in&nbsp;Databricks placed in&nbsp;the family trust, although the shares are not on&nbsp;any exchange. We found a&nbsp;shareholder ready to&nbsp;sell part of&nbsp;his stake, and the company approved the deal.','At dinner her son asked how she knew his favourite company'),
 ]
 
 def stories(lst):

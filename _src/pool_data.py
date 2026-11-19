@@ -1,20 +1,20 @@
 # Hero animation data. SVC: services, may repeat. THINGS: rare collectibles, never repeat on screen.
 SVC_RU = ['Резидентство Монако', 'Счет в Pictet', 'Golden Visa ОАЭ', 'Семейный траст', 'Фонд в Лихтенштейне',
-          'Второе мнение Charité', 'Препарат из Швейцарии', 'Хирург в Сеуле', 'Le Rosey', 'Eton College',
-          'Royal Enclosure', 'Paddock Club Monaco', 'Bal des Débutantes', 'Венский оперный бал',
-          'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Сделка в Монако', 'Охрана семьи',
+          'Второе мнение Charité', 'Места у ринга сумо', 'Хирург в Сеуле', 'Le Rosey', 'Eton College',
+          'Royal Enclosure', 'Ночная гонка в Сингапуре', 'Bal des Débutantes', 'Венский оперный бал',
+          'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Ужин в Гионе', 'Охрана семьи',
           'Вилла вне продажи', 'Clinique La Prairie', 'Mayo Clinic', 'Растаможка груза', 'Оплата поставщику',
-          'Компания в ОАЭ', 'Счет в Julius Baer', 'Резидентство Сингапура', 'Паушальный налог Швейцарии',
-          'Aiglon College', 'Оксфорд', 'Lanserhof Tegernsee', 'Art Basel VIP', 'amfAR Cannes',
-          'Показ Chanel Haute Couture', 'Центральный корт Уимблдона', 'Gulfstream G700', 'Фрипорт Женевы']
+          'Компания в ОАЭ', 'Счет в Julius Baer', 'Резидентство Сингапура', 'Семейный офис в Сингапуре',
+          'Антарктида из Кейптауна', 'Оксфорд', 'Сафари в Саби Сэнд', 'Art Basel Hong Kong', 'amfAR Cannes',
+          'Показ Chanel Haute Couture', 'Центральный корт Уимблдона', 'Gulfstream G700', 'Кубок Америки в Неаполе']
 SVC_EN = ['Monaco residence', 'Pictet account', 'UAE Golden Visa', 'Family trust', 'Liechtenstein foundation',
-          'Charité second opinion', 'Medicine from Switzerland', 'Surgeon in Seoul', 'Le Rosey', 'Eton College',
-          'Royal Enclosure', 'Paddock Club Monaco', 'Bal des Débutantes', 'Vienna Opera Ball',
-          'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Deal in Monaco', 'Family security',
+          'Charité second opinion', 'Ringside at sumo', 'Surgeon in Seoul', 'Le Rosey', 'Eton College',
+          'Royal Enclosure', 'Singapore night race', 'Bal des Débutantes', 'Vienna Opera Ball',
+          'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Dinner in Gion', 'Family security',
           'Off-market villa', 'Clinique La Prairie', 'Mayo Clinic', 'Customs clearance', 'Supplier payment',
-          'UAE company', 'Julius Baer account', 'Singapore residence', 'Swiss lump-sum tax',
-          'Aiglon College', 'Oxford', 'Lanserhof Tegernsee', 'Art Basel VIP', 'amfAR Cannes',
-          'Chanel Haute Couture show', 'Wimbledon Centre Court', 'Gulfstream G700', 'Geneva Freeport']
+          'UAE company', 'Julius Baer account', 'Singapore residence', 'Singapore family office',
+          'Antarctica from Cape Town', 'Oxford', 'Sabi Sand safari', 'Art Basel Hong Kong', 'amfAR Cannes',
+          'Chanel Haute Couture show', 'Wimbledon Centre Court', 'Gulfstream G700', 'America’s Cup Naples']
 
 # (ru, en)
 THINGS = [

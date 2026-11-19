@@ -60,6 +60,7 @@ EN = dict(
  og='og-orbic-en.png',
  nav1='Services', nav2='Why now', nav3='Comparison', nav4='Companies',
  langchip='<a class="chip" href="/ru/" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>',
+ audbar='',
  motion_on='Motion: on', kick='Private concierge', h1b='without borders',
  lead='Monaco residence, Le&nbsp;Rosey, Patek Philippe 5711, Royal Enclosure. Orbiq takes on matters that only the right people can settle, and knows whom to&nbsp;call.',
  k1='always on&nbsp;duty', k2='own AI agent network for each client', k3='own visa license',
@@ -160,6 +161,7 @@ RU = dict(
  og='og-orbic-ru.png',
  nav1='Услуги', nav2='Почему сейчас', nav3='Сравнение', nav4='Компании',
  langchip='<a class="chip" href="/" hreflang="en" lang="en" aria-label="English version">EN</a>',
+ audbar='<nav class="swt" aria-label="Раздел сайта"><div><a class="on" href="/ru/" aria-current="page">Клиентам</a><a href="/ru/partners/">Партнерам</a></div></nav>',
  motion_on='Анимация: вкл', kick='Личный консьерж', h1b='без границ',
  lead='Резидентство Монако, Le&nbsp;Rosey, Patek Philippe 5711, Royal Enclosure. Orbiq берется за&nbsp;дела, которые решаются только через нужных людей, и&nbsp;знает, кому позвонить.',
  k1='', k2='свои AI-агенты у&nbsp;каждого клиента', k3='своя визовая лицензия',
@@ -367,5 +369,6 @@ os.makedirs(B+'site/ru', exist_ok=True); os.makedirs(B+'site/en', exist_ok=True)
 open(B+'site/index.html', 'w').write(build(EN))
 open(B+'site/ru/index.html', 'w').write(build(RU))
 open(B+'site/en/index.html', 'w').write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">\n<title>Orbiq · Concierge without borders</title><link rel="canonical" href="https://orbiqgroup.com/">\n<script>location.replace("/"+location.search+location.hash)</script>\n<meta http-equiv="refresh" content="0;url=/"></head><body style="background:#F3F4F2"></body></html>\n')
+os.makedirs(B+'site/ru/partners', exist_ok=True); open(B+'site/ru/partners/index.html', 'w').write(open(B+'partners.html').read())
 open(B+'site/robots.txt', 'w').write('User-agent: *\nAllow: /\n')
 print('ok')

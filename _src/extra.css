@@ -184,4 +184,5 @@
 @media (max-width:760px){.cat-tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:0 16px 4px;scrollbar-width:none}.cat-tabs::-webkit-scrollbar{display:none}.cat-t{flex:0 0 auto;font-size:14px;padding:10px 15px}}
 @media (prefers-reduced-motion:reduce){.cat-p.on .xb{animation:none}.cat-t.on i{animation:none;width:100%}}
 .cat-p[hidden]{display:none!important}
+.swt{display:flex;justify-content:center;padding-top:10px}.swt div{display:inline-flex;padding:4px;border-radius:999px;background:var(--soft);gap:2px}.swt a{font-family:var(--m);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:999px;color:var(--mute);min-height:36px;display:inline-flex;align-items:center;white-space:nowrap}.swt a.on{background:var(--ink);color:var(--bg)}.swt a:not(.on):hover{color:var(--ink)}
 </style>

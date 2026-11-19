@@ -84,8 +84,7 @@ EN = dict(
  bz_m='For business', bz_h='Cargo, customs and&nbsp;payment to&nbsp;a&nbsp;supplier',
  bz_cards=xb([('Logistics', 'Cargo from country to&nbsp;country', 'Under Incoterms DDP the seller pays duty and customs clearance in&nbsp;the buyer’s country. For each shipment we choose the delivery terms and the route: by sea, by rail or by air'),
         ('Customs', 'The product code and the duty', 'The duty rate depends on&nbsp;the product code. The first six digits are the same almost everywhere in&nbsp;the world, only the last ones differ. We find the code and prepare the declaration'),
-        ('Payments', 'Payment after shipment', 'Under a&nbsp;letter of&nbsp;credit the bank pays the supplier only after it presents the shipping documents. We make payments to&nbsp;suppliers in&nbsp;yuan, dirhams and dollars'),
-        ('Company', 'A&nbsp;company in&nbsp;Hong Kong or&nbsp;the UAE', 'In&nbsp;Hong Kong the first HK$2&nbsp;million of&nbsp;profit is taxed at 8.25%. In&nbsp;the UAE the 9% tax applies only to&nbsp;profit above AED&nbsp;375,000. We register the company and open an&nbsp;account for foreign trade')]),
+        ('Payments', 'Payment after shipment', 'Under a&nbsp;letter of&nbsp;credit the bank pays the supplier only after it presents the shipping documents. We make payments to&nbsp;suppliers in&nbsp;yuan, dirhams and dollars')]),
  syn=syn([('Speed', 'Every matter at once', 'A&nbsp;mother writes about the school, the visa and the flight in&nbsp;one message. The matters run in&nbsp;parallel: while the consulate reviews the visa, the school already has the child’s documents.'),
           ('Access', 'One chat instead of&nbsp;ten calls', 'An&nbsp;account in&nbsp;Geneva, a&nbsp;foundation in&nbsp;Vaduz and a&nbsp;visa for London usually mean three countries, three languages and a&nbsp;dozen calls. Here it all runs in&nbsp;one chat.'),
           ('Quiet', 'Only the concierge sees the whole picture', 'Whoever sets up the foundation in&nbsp;Liechtenstein knows nothing about the school in&nbsp;London. Each sees only their part. The site stores no requests, the whole conversation stays in&nbsp;a&nbsp;private chat.')]),
@@ -196,8 +195,7 @@ RU = dict(
  bz_m='Для бизнеса', bz_h='Груз, таможня и&nbsp;оплата поставщику',
  bz_cards=xb([('Логистика', 'Груз из&nbsp;страны в&nbsp;страну', 'По&nbsp;условиям Incoterms DDP пошлину и&nbsp;растаможку в&nbsp;стране покупателя оплачивает продавец. Под каждую партию подбираем условия поставки и&nbsp;путь: морем, по&nbsp;железной дороге или самолетом'),
         ('Таможня', 'Код товара и&nbsp;пошлина', 'Ставку пошлины определяет код товара. Первые шесть цифр кода одинаковы почти во&nbsp;всем мире, различаются только последние. Подбираем код и&nbsp;готовим декларацию'),
-        ('Платежи', 'Оплата после отгрузки', 'По&nbsp;аккредитиву банк платит поставщику только после того, как тот покажет документы об&nbsp;отгрузке. Проводим платежи поставщикам в&nbsp;юанях, дирхамах и&nbsp;долларах'),
-        ('Компания', 'Компания в&nbsp;Гонконге или&nbsp;ОАЭ', 'В&nbsp;Гонконге с&nbsp;первых 2&nbsp;млн гонконгских долларов прибыли налог 8,25%. В&nbsp;ОАЭ налог 9% платят только с&nbsp;прибыли выше 375&nbsp;тысяч дирхамов. Регистрируем компанию и&nbsp;открываем счет для&nbsp;внешней торговли')]),
+        ('Платежи', 'Оплата после отгрузки', 'По&nbsp;аккредитиву банк платит поставщику только после того, как тот покажет документы об&nbsp;отгрузке. Проводим платежи поставщикам в&nbsp;юанях, дирхамах и&nbsp;долларах')]),
  syn=syn([('Скорость', 'Все дела сразу', 'Мама пишет про школу, визу и&nbsp;перелет одним сообщением. Дела идут одновременно: пока консульство рассматривает визу, школа уже получила документы ребенка.'),
           ('Доступ', 'Один чат вместо десяти звонков', 'Счет в&nbsp;Женеве, фонд в&nbsp;Вадуце и&nbsp;виза в&nbsp;Лондон обычно означают три страны, три языка и&nbsp;десяток звонков. Здесь все это идет в&nbsp;одном чате.'),
           ('Тишина', 'Всю картину видит только консьерж', 'Тот, кто оформляет фонд в&nbsp;Лихтенштейне, ничего не&nbsp;знает о&nbsp;школе в&nbsp;Лондоне. Каждый видит только свою часть дела. Сайт не&nbsp;хранит заявки, вся переписка идет в&nbsp;личном чате.')]),
@@ -372,7 +370,10 @@ def build(T):
 <body>
 
 '''
-    cf = '<script>window.__SVC=' + json.dumps(T['SVC'], ensure_ascii=False) + ';window.__SROLE=' + json.dumps(S_SLOTS) + ';</script>\n<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';window.__TF=' + json.dumps(T['TF'], ensure_ascii=False) + ';</script>\n' + pooljs + formjs
+    _im = json.load(open('/home/claude/orbicgroup/items_img.json'))
+    _imap = {}
+    for _v in _im.values(): _imap[_v['ru']] = _v['file']; _imap[_v['en']] = _v['file']
+    cf = '<script>window.__IMG=' + json.dumps(_imap, ensure_ascii=False) + ';</script>\n<script>window.__SVC=' + json.dumps(T['SVC'], ensure_ascii=False) + ';window.__SROLE=' + json.dumps(S_SLOTS) + ';</script>\n<script>window.__CF=' + json.dumps(T['CF'], ensure_ascii=False) + ';window.__POOL=' + json.dumps(T['POOL'], ensure_ascii=False) + ';window.__TF=' + json.dumps(T['TF'], ensure_ascii=False) + ';</script>\n' + pooljs + formjs
     libs = '''<script src="/js/gsap.min.js"></script>
 <script src="/js/ScrollTrigger.min.js"></script>
 <script src="/js/SplitText.min.js"></script>

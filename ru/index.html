@@ -544,6 +544,16 @@ button{font:inherit}
 .hero{min-height:auto;padding-block:clamp(24px,4vh,48px) 0}
 #stories{padding-top:clamp(40px,6vh,72px)}
 #motion{display:none!important}
+.sec-h{grid-template-columns:1fr}
+.sec-h .mono,.sec-h h2{grid-column:1/-1}
+.sec-h h2{font-size:clamp(30px,3.4vw,50px);max-width:34ch}
+.bx-it .ph{position:absolute;left:50%;top:50%;width:100%;min-width:80px;height:80px;transform:translate(-50%,-50%) scale(.92);border-radius:18px;background:#fff center/cover no-repeat;opacity:0;pointer-events:none;box-shadow:0 14px 34px -14px rgba(11,11,13,.45);display:none}
+.bx-it.img .ph{display:block;animation:phx var(--t) linear infinite;animation-delay:calc(var(--o) * -1)}
+.bx-it.img>span{animation:phtx var(--t) linear infinite;animation-delay:calc(var(--o) * -1)}
+.bx-it.img em{display:none}
+@keyframes phx{0%,47%{opacity:0;transform:translate(-50%,-50%) scale(.92)}53%,63%{opacity:1;transform:translate(-50%,-50%) scale(1)}69%,100%{opacity:0;transform:translate(-50%,-50%) scale(.96)}}
+@keyframes phtx{0%,46%{opacity:1}51%,64%{opacity:0}69%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bx-it.img .ph{display:none}.bx-it.img>span{animation:none}}
 </style>
 
 <div class="grain" aria-hidden="true"></div>
@@ -638,8 +648,7 @@ button{font:inherit}
   </section>
 
   <section class="sec" id="cross">
-    <div class="sec-h"><span class="mono">00 · Услуги</span><h2 class="mask">Чем занимаемся</h2></div>
-    <p class="xb-lead">Капитал, резидентство, учеба детей, здоровье, коллекции, закрытые события.</p>
+    <div class="sec-h"><span class="mono">00 · Услуги</span></div>
     <div class="xb-grid">
       <div class="xb on"><span class="mono">Резидентство</span><b>Страна для&nbsp;жизни</b><p>В&nbsp;Швейцарии налог можно платить фиксированной суммой, а&nbsp;не&nbsp;с&nbsp;доходов. Но&nbsp;так можно не&nbsp;в&nbsp;каждом городе: в&nbsp;Женеве можно, в&nbsp;Цюрихе нельзя. Подбираем место под планы семьи: Монако, Швейцария, Golden Visa ОАЭ, второе гражданство</p></div>
       <div class="xb"><span class="mono">Документы</span><b>Виза на&nbsp;лето, поданная зимой</b><p>Шенгенскую визу можно подать за&nbsp;полгода до&nbsp;поездки. Собираем документы на&nbsp;всю семью, записываем на&nbsp;подачу и&nbsp;ведем заявку до&nbsp;решения</p></div>
@@ -667,7 +676,6 @@ button{font:inherit}
       <div class="xb on"><span class="mono">Логистика</span><b>Груз из&nbsp;страны в&nbsp;страну</b><p>По&nbsp;условиям Incoterms DDP пошлину и&nbsp;растаможку в&nbsp;стране покупателя оплачивает продавец. Под каждую партию подбираем условия поставки и&nbsp;путь: морем, по&nbsp;железной дороге или самолетом</p></div>
       <div class="xb"><span class="mono">Таможня</span><b>Код товара и&nbsp;пошлина</b><p>Ставку пошлины определяет код товара. Первые шесть цифр кода одинаковы почти во&nbsp;всем мире, различаются только последние. Подбираем код и&nbsp;готовим декларацию</p></div>
       <div class="xb"><span class="mono">Платежи</span><b>Оплата после отгрузки</b><p>По&nbsp;аккредитиву банк платит поставщику только после того, как тот покажет документы об&nbsp;отгрузке. Проводим платежи поставщикам в&nbsp;юанях, дирхамах и&nbsp;долларах</p></div>
-      <div class="xb"><span class="mono">Компания</span><b>Компания в&nbsp;Гонконге или&nbsp;ОАЭ</b><p>В&nbsp;Гонконге с&nbsp;первых 2&nbsp;млн гонконгских долларов прибыли налог 8,25%. В&nbsp;ОАЭ налог 9% платят только с&nbsp;прибыли выше 375&nbsp;тысяч дирхамов. Регистрируем компанию и&nbsp;открываем счет для&nbsp;внешней торговли</p></div>
     </div>
   </section>
 
@@ -804,6 +812,7 @@ button{font:inherit}
     <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
     <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">Скопировать</span></button>
     <a class="mono" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
+    <a class="mono" href="/credits/" style="opacity:.5">Photo credits</a>
   </footer>
 </div>
 
@@ -1008,6 +1017,7 @@ document.addEventListener('visibilitychange',function(){draw()});
 }catch(e){}})();
 </script>
 
+<script>window.__IMG={"Ваза эпохи Цяньлун": "/img/items/qianlong-vase.webp", "Qianlong vase": "/img/items/qianlong-vase.webp", "Чаша Чэнхуа с курами": "/img/items/chenghua-chicken-cup.webp", "Chenghua chicken cup": "/img/items/chenghua-chicken-cup.webp", "Фарфор Мин": "/img/items/ming-porcelain.webp", "Ming porcelain": "/img/items/ming-porcelain.webp", "Фарфор Ру": "/img/items/ru-ware.webp", "Ru ware": "/img/items/ru-ware.webp", "Нэцкэ эпохи Эдо": "/img/items/edo-netsuke.webp", "Edo netsuke": "/img/items/edo-netsuke.webp", "Ковер эпохи Сефевидов": "/img/items/safavid-carpet.webp", "Safavid carpet": "/img/items/safavid-carpet.webp", "Атлас Блау": "/img/items/blaeu-atlas.webp", "Blaeu atlas": "/img/items/blaeu-atlas.webp", "Меч эпохи Камакура": "/img/items/kamakura-sword.webp", "Kamakura sword": "/img/items/kamakura-sword.webp", "Айвазовский": "/img/items/aivazovsky.webp", "Aivazovsky": "/img/items/aivazovsky.webp", "Patek Grandmaster Chime": "/img/items/patek-grandmaster-chime.webp", "Chanel 2.55 1955": "/img/items/chanel-2-55-1955.webp", "Cartier Tutti Frutti": "/img/items/cartier-tutti-frutti.webp", "Брошь Фаберже": "/img/items/faberg-brooch.webp", "Fabergé brooch": "/img/items/faberg-brooch.webp", "Изумруд Muzo": "/img/items/muzo-emerald.webp", "Muzo emerald": "/img/items/muzo-emerald.webp", "Розовый бриллиант Argyle": "/img/items/argyle-pink-diamond.webp", "Argyle pink diamond": "/img/items/argyle-pink-diamond.webp", "Турмалин Paraiba": "/img/items/paraiba-tourmaline.webp", "Paraiba tourmaline": "/img/items/paraiba-tourmaline.webp", "Double Eagle 1933": "/img/items/1933-double-eagle.webp", "1933 Double Eagle": "/img/items/1933-double-eagle.webp", "Brasher Doubloon": "/img/items/brasher-doubloon.webp", "Шекспир First Folio": "/img/items/shakespeare-first-folio.webp", "Shakespeare First Folio": "/img/items/shakespeare-first-folio.webp", "Honus Wagner T206": "/img/items/honus-wagner-t206.webp", "Ferrari 250 GTO": "/img/items/ferrari-250-gto.webp", "Ferrari Daytona SP3": "/img/items/ferrari-daytona-sp3.webp", "Mercedes 300 SL Gullwing": "/img/items/mercedes-300-sl-gullwing.webp", "Aston Martin DB5": "/img/items/aston-martin-db5.webp", "Porsche 959": "/img/items/porsche-959.webp", "Koenigsegg Jesko": "/img/items/koenigsegg-jesko.webp", "Nike Air Mag": "/img/items/nike-air-mag.webp", "Air Jordan 1 Chicago": "/img/items/air-jordan-1-chicago.webp", "Скрипка Страдивари": "/img/items/stradivarius-violin.webp", "Stradivarius violin": "/img/items/stradivarius-violin.webp", "Gibson Les Paul 1959": "/img/items/gibson-les-paul-1959.webp", "Лунный метеорит": "/img/items/lunar-meteorite.webp", "Lunar meteorite": "/img/items/lunar-meteorite.webp", "Скелет трицератопса": "/img/items/triceratops-skeleton.webp", "Triceratops skeleton": "/img/items/triceratops-skeleton.webp", "Bombardier Global 7500": "/img/items/bombardier-global-7500.webp", "Dassault Falcon 8X": "/img/items/dassault-falcon-8x.webp", "One Hyde Park": "/img/items/one-hyde-park.webp"};</script>
 <script>window.__SVC=["Резидентство Монако", "Счет в Pictet", "Golden Visa ОАЭ", "Семейный траст", "Фонд в Лихтенштейне", "Второе мнение Charité", "Препарат из Швейцарии", "Хирург в Сеуле", "Le Rosey", "Eton College", "Royal Enclosure", "Paddock Club Monaco", "Bal des Débutantes", "Венский оперный бал", "Cerebras pre-IPO +2085%", "CoreWeave pre-IPO +235%", "Сделка в Монако", "Охрана семьи", "Вилла вне продажи", "Clinique La Prairie", "Mayo Clinic", "Растаможка груза", "Оплата поставщику", "Компания в ОАЭ", "Счет в Julius Baer", "Резидентство Сингапура", "Паушальный налог Швейцарии", "Aiglon College", "Оксфорд", "Lanserhof Tegernsee", "Art Basel VIP", "amfAR Cannes", "Показ Chanel Haute Couture", "Центральный корт Уимблдона", "Gulfstream G700", "Фрипорт Женевы"];window.__SROLE=[0, 2, 3, 5, 7, 8, 10];</script>
 <script>window.__CF={"started": "НАЧАЛИ", "done": "ГОТОВО ✓", "playing": "", "paused": "Видео: пауза", "tasksAt": 4600, "msgs": [{"who": "c", "at": 1600, "meta": "Чт · 21:40", "text": "Дочь в понедельник начинает учебу в Лондоне. Сегодня нужно оплатить обучение. Еще бабушке с дедушкой нужны визы, чтобы они прилетели ее навестить. А к ее дню рождения нужна Hermès Kelly."}, {"who": "o", "at": 4200, "meta": "Orbiq · 21:41", "text": "Беремся за все три. Новости будем писать сюда."}, {"who": "o", "at": 14600, "meta": "Orbiq · Пт 09:12", "text": "Университет подтвердил оплату."}, {"who": "o", "at": 18200, "meta": "Orbiq · Пт 11:30", "text": "Бабушку с дедушкой записали подавать документы на визы в четверг на 10:00."}, {"who": "o", "at": 22000, "meta": "Orbiq · Сб 14:20", "text": "Kelly 25 в цвете Gold уже у дочери в Лондоне. Фото ниже."}, {"who": "c", "at": 25200, "meta": "Сб · 14:25", "text": "Спасибо. В следующем месяце займемся трастом для внуков."}], "tasks": [{"name": "Учеба · Лондон", "steps": [{"label": "План", "at": 6200}, {"label": "Платеж", "at": 9800}, {"label": "Зачислено", "at": 14600}]}, {"name": "Визы · Британия", "steps": [{"label": "Документы", "at": 7200}, {"label": "Анкета", "at": 12000}, {"label": "Запись", "at": 18200}]}, {"name": "Hermès Kelly · Париж", "steps": [{"label": "Бутик", "at": 8200}, {"label": "Резерв", "at": 15600}, {"label": "Передана", "at": 22000}]}]};window.__POOL=["Romanée-Conti 1945", "Pétrus 1961", "Screaming Eagle 1992", "Château d’Yquem 1811", "Penfolds Grange 1951", "Krug Clos d’Ambonnay", "Domaine Leroy Musigny", "Macallan 1926", "Yamazaki 55", "Louis XIII Rare Cask", "Пуэр Red Mark", "Пуэр Song Pin Hao", "Cohiba Behike 56", "Ваза эпохи Цяньлун", "Чаша Чэнхуа с курами", "Фарфор Мин", "Фарфор Ру", "Нэцкэ эпохи Эдо", "Ковер эпохи Сефевидов", "Атлас Блау", "Меч эпохи Камакура", "Яеи Кусама", "Баския", "Герхард Рихтер", "Дэвид Хокни", "Марк Ротко", "Энди Уорхол", "Айвазовский", "Илья Кабаков", "Бэнкси", "Поздний Пикассо", "Patek Philippe 5711 Tiffany", "Patek Grandmaster Chime", "Royal Oak Jumbo 16202", "Rolex Daytona Paul Newman", "F.P. Journe Chronomètre Bleu", "Richard Mille RM 27-04", "Lange Datograph", "Hermès Birkin 25 Himalaya", "Kelly 28 Himalaya", "Birkin Faubourg", "Chanel 2.55 1955", "Cartier Tutti Frutti", "Van Cleef Zip", "JAR", "Брошь Фаберже", "Рубин Pigeon Blood", "Кашмирский сапфир", "Изумруд Muzo", "Розовый бриллиант Argyle", "Сапфир Padparadscha", "Турмалин Paraiba", "Константиновский рубль", "Соверен Эдуарда VIII", "Double Eagle 1933", "Brasher Doubloon", "Марка Inverted Jenny", "Голубой Маврикий", "Шекспир First Folio", "Первое издание «Гарри Поттера»", "Action Comics #1", "Amazing Fantasy #15", "Pikachu Illustrator", "Charizard 1st Edition", "Honus Wagner T206", "Michael Jordan Fleer 1986", "Steiff Louis Vuitton", "Be@rbrick Chanel 1000%", "Boba Fett Kenner 1979", "LEGO Millennium Falcon 10179", "Солдатики Britains", "Hot Wheels Beach Bomb", "Barbie 1959", "Ferrari 250 GTO", "Ferrari Daytona SP3", "Mercedes 300 SL Gullwing", "Aston Martin DB5", "Porsche 959", "Koenigsegg Jesko", "Pagani Utopia", "Nike Air Mag", "Air Jordan 1 Chicago", "Скрипка Страдивари", "Gibson Les Paul 1959", "Beatles Butcher Cover", "Лунный метеорит", "Скелет трицератопса", "Bombardier Global 7500", "Dassault Falcon 8X", "One Hyde Park"];window.__TF={"title": "Orbiq · запрос", "cat": "Направление", "name": "Имя", "lang": "ru-RU", "mic": "Надиктовать", "micStop": "Остановить"};</script>
 <script>
@@ -1015,13 +1025,14 @@ document.addEventListener('visibilitychange',function(){draw()});
 (function(){try{
 var T=(window.__POOL||[]).slice(),S=(window.__SVC||[]).slice(),R=window.__SROLE||[],its=[].slice.call(document.querySelectorAll('.bx-it'));if(!T.length||!its.length)return;
 function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
-var tq=sh(T.slice());
+var IM=window.__IMG||{},tq=sh(T.slice());
+function put(el,sp,x){sp.textContent=x;var u=IM[x],ph=el.querySelector('.ph');if(u){if(!ph){ph=document.createElement('i');ph.className='ph';el.appendChild(ph)}ph.style.backgroundImage='url('+u+')';el.classList.add('img')}else el.classList.remove('img')}
 function vis(){return its.map(function(e){return e.querySelector('span').textContent})}
 function nextThing(){if(!tq.length){var v=vis();tq=sh(T.filter(function(x){return v.indexOf(x)<0}))}return tq.shift()}
 function nextSvc(){var v=vis(),c=S.filter(function(x){return v.indexOf(x)<0});if(!c.length)c=S;return c[Math.floor(Math.random()*c.length)]}
 its.forEach(function(el,i){var sp=el.querySelector('span'),isS=S.length&&R.indexOf(i%12)>=0;
-  sp.textContent=isS?nextSvc():nextThing();
-  el.addEventListener('animationiteration',function(e){if(e.target!==el)return;sp.textContent=isS?nextSvc():nextThing()})});
+  put(el,sp,isS?nextSvc():nextThing());
+  el.addEventListener('animationiteration',function(e){if(e.target!==el)return;put(el,sp,isS?nextSvc():nextThing())})});
 }catch(e){}})();
 </script>
 <script>

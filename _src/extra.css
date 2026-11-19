@@ -156,4 +156,14 @@
 .hero{min-height:auto;padding-block:clamp(24px,4vh,48px) 0}
 #stories{padding-top:clamp(40px,6vh,72px)}
 #motion{display:none!important}
+.sec-h{grid-template-columns:1fr}
+.sec-h .mono,.sec-h h2{grid-column:1/-1}
+.sec-h h2{font-size:clamp(30px,3.4vw,50px);max-width:34ch}
+.bx-it .ph{position:absolute;left:50%;top:50%;width:100%;min-width:80px;height:80px;transform:translate(-50%,-50%) scale(.92);border-radius:18px;background:#fff center/cover no-repeat;opacity:0;pointer-events:none;box-shadow:0 14px 34px -14px rgba(11,11,13,.45);display:none}
+.bx-it.img .ph{display:block;animation:phx var(--t) linear infinite;animation-delay:calc(var(--o) * -1)}
+.bx-it.img>span{animation:phtx var(--t) linear infinite;animation-delay:calc(var(--o) * -1)}
+.bx-it.img em{display:none}
+@keyframes phx{0%,47%{opacity:0;transform:translate(-50%,-50%) scale(.92)}53%,63%{opacity:1;transform:translate(-50%,-50%) scale(1)}69%,100%{opacity:0;transform:translate(-50%,-50%) scale(.96)}}
+@keyframes phtx{0%,46%{opacity:1}51%,64%{opacity:0}69%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.bx-it.img .ph{display:none}.bx-it.img>span{animation:none}}
 </style>

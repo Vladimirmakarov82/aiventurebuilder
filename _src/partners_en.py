@@ -48,7 +48,7 @@ T = [
   'An Orbiq subscription costs a client $10 000 a year. Every client who pays for the Orbiq subscription brings the partner $3 000 a year.'),
  ('Подключение к Orbiq для первых 15 партнеров: $20 000 за 2 года', 'Joining Orbiq for the first 15 partners: $20 000 for 2 years'),
  ('В сети Orbiq не более 2 партнеров в одном сегменте услуг.', 'The Orbiq network has at most 2 partners per service segment.'),
- ('2 клиента подключили у другого партнера услугу с ежемесячной оплатой. Партнер получает до $5 000 в месяц с каждого.',
+ ('Партнер привел 2 своих клиентов к другому партнеру сети на услугу с ежемесячной оплатой. С каждого клиента он получает комиссию до $5 000 в месяц, за год это до $120 000.',
   '2 clients took another partner’s service with a monthly fee. The partner gets up to $5 000 a month from each.'),
  ('4 клиента купили разовые услуги других партнеров. Доля партнера в среднем $7 500 со сделки.',
   '4 clients bought one-off services from other partners. The partner’s share averages $7 500 per deal.'),

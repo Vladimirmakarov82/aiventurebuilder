@@ -16,3 +16,4 @@ for g in m.groups(): walk(json.loads(g))
 open('/tmp/ru_js.txt','w').write('\n'.join(re.sub('<[^>]+>','',t) for t in out))
 P
 python3 ru_lint.py site/ru/index.html /tmp/ru_js.txt
+if [ -f journal/items.json ]; then python3 journal/build_journal.py && python3 ru_lint.py site/journal-c0f4ba/index.html; fi

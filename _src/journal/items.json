@@ -25,7 +25,8 @@
   "flag": "",
   "reject_why": "Подвесные куклы: заголовок читается как «повешенные», жуткая ассоциация; детское в начале выпуска",
   "kids": true,
-  "vis": "inatori-tsurushi-bina"
+  "vis": "inatori-tsurushi-bina",
+  "facts": []
  },
  {
   "id": "birkin-painted-by-daughter",
@@ -53,7 +54,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "birkin-painted-by-daughter"
+  "vis": "birkin-painted-by-daughter",
+  "facts": []
  },
  {
   "id": "mitti-attar-kannauj",
@@ -81,7 +83,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "mitti-attar-kannauj"
+  "vis": "mitti-attar-kannauj",
+  "facts": []
  },
  {
   "id": "oaxaca-noche-de-rabanos",
@@ -109,7 +112,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "oaxaca-noche-de-rabanos"
+  "vis": "oaxaca-noche-de-rabanos",
+  "facts": []
  },
  {
   "id": "kyogen-kamon-family-crest",
@@ -137,7 +141,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "kyogen-kamon-family-crest"
+  "vis": "kyogen-kamon-family-crest",
+  "facts": []
  },
  {
   "id": "nuer-hong-daughter-wine",
@@ -165,7 +170,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "nuer-hong-daughter-wine"
+  "vis": "nuer-hong-daughter-wine",
+  "facts": []
  },
  {
   "id": "taprobane-island-weligama",
@@ -193,7 +199,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "taprobane-island-weligama"
+  "vis": "taprobane-island-weligama",
+  "facts": []
  },
  {
   "id": "sumpango-giant-kites",
@@ -221,7 +228,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "sumpango-giant-kites"
+  "vis": "sumpango-giant-kites",
+  "facts": []
  },
  {
   "id": "nagara-ukai-imperial-cormorant-masters",
@@ -249,7 +257,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "nagara-ukai-imperial-cormorant-masters"
+  "vis": "nagara-ukai-imperial-cormorant-masters",
+  "facts": []
  },
  {
   "id": "kiri-tansu-daughter-tree",
@@ -277,7 +286,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "kiri-tansu-daughter-tree"
+  "vis": "kiri-tansu-daughter-tree",
+  "facts": []
  },
  {
   "id": "lamu-dhow-fundi",
@@ -305,7 +315,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "lamu-dhow-fundi"
+  "vis": "lamu-dhow-fundi",
+  "facts": []
  },
  {
   "id": "montecristi-superfino-panama",
@@ -333,7 +344,8 @@
   "flag": "?",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "montecristi-superfino-panama"
+  "vis": "montecristi-superfino-panama",
+  "facts": []
  },
  {
   "id": "chiiori-iya-valley",
@@ -361,7 +373,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "chiiori-iya-valley"
+  "vis": "chiiori-iya-valley",
+  "facts": []
  },
  {
   "id": "akachan-fude-baby-hair-brush",
@@ -389,7 +402,8 @@
   "flag": "",
   "reject_why": "Кисть из волос ребенка: телесное, вызывает брезгливость",
   "kids": true,
-  "vis": "akachan-fude-baby-hair-brush"
+  "vis": "akachan-fude-baby-hair-brush",
+  "facts": []
  },
  {
   "id": "reteti-elephant-sanctuary",
@@ -417,7 +431,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "reteti-elephant-sanctuary"
+  "vis": "reteti-elephant-sanctuary",
+  "facts": []
  },
  {
   "id": "areco-draghi-gaucho-silver",
@@ -445,7 +460,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "areco-draghi-gaucho-silver"
+  "vis": "areco-draghi-gaucho-silver",
+  "facts": []
  },
  {
   "id": "tsingpu-tulou-retreat",
@@ -473,7 +489,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "tsingpu-tulou-retreat"
+  "vis": "tsingpu-tulou-retreat",
+  "facts": []
  },
  {
   "id": "jusan-mairi-horinji",
@@ -501,7 +518,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "jusan-mairi-horinji"
+  "vis": "jusan-mairi-horinji",
+  "facts": []
  },
  {
   "id": "lunuganga-bawa-suite",
@@ -529,7 +547,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "lunuganga-bawa-suite"
+  "vis": "lunuganga-bawa-suite",
+  "facts": []
  },
  {
   "id": "nantucket-lightship-basket",
@@ -557,7 +576,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "nantucket-lightship-basket"
+  "vis": "nantucket-lightship-basket",
+  "facts": []
  },
  {
   "id": "linden-centre-xizhou",
@@ -585,7 +605,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "linden-centre-xizhou"
+  "vis": "linden-centre-xizhou",
+  "facts": []
  },
  {
   "id": "furisode-painted-by-daughter",
@@ -613,7 +634,8 @@
   "flag": "?",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "furisode-painted-by-daughter"
+  "vis": "furisode-painted-by-daughter",
+  "facts": []
  },
  {
   "id": "keris-bali-empu",
@@ -641,7 +663,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "keris-bali-empu"
+  "vis": "keris-bali-empu",
+  "facts": []
  },
  {
   "id": "fogo-island-quilts",
@@ -669,7 +692,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "fogo-island-quilts"
+  "vis": "fogo-island-quilts",
+  "facts": []
  },
  {
   "id": "satoumian-ama-hut",
@@ -697,7 +721,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "satoumian-ama-hut"
+  "vis": "satoumian-ama-hut",
+  "facts": []
  },
  {
   "id": "oaxaca-tona-spirit-animal",
@@ -725,7 +750,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "oaxaca-tona-spirit-animal"
+  "vis": "oaxaca-tona-spirit-animal",
+  "facts": []
  },
  {
   "id": "chalkley-treehouse-sabi-sand",
@@ -753,7 +779,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "chalkley-treehouse-sabi-sand"
+  "vis": "chalkley-treehouse-sabi-sand",
+  "facts": []
  },
  {
   "id": "free-spirit-spheres",
@@ -781,7 +808,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "free-spirit-spheres"
+  "vis": "free-spirit-spheres",
+  "facts": []
  },
  {
   "id": "rixing-type-foundry-taipei",
@@ -809,7 +837,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "rixing-type-foundry-taipei"
+  "vis": "rixing-type-foundry-taipei",
+  "facts": []
  },
  {
   "id": "bonwire-kente-honour-cloth",
@@ -837,7 +866,8 @@
   "flag": "?",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "bonwire-kente-honour-cloth"
+  "vis": "bonwire-kente-honour-cloth",
+  "facts": []
  },
  {
   "id": "singing-wells-samburu",
@@ -865,7 +895,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "singing-wells-samburu"
+  "vis": "singing-wells-samburu",
+  "facts": []
  },
  {
   "id": "willie-creek-harvest-your-pearl",
@@ -893,7 +924,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "willie-creek-harvest-your-pearl"
+  "vis": "willie-creek-harvest-your-pearl",
+  "facts": []
  },
  {
   "id": "biu-kee-hand-carved-mahjong",
@@ -921,7 +953,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "biu-kee-hand-carved-mahjong"
+  "vis": "biu-kee-hand-carved-mahjong",
+  "facts": []
  },
  {
   "id": "pounamu-commission-taonga",
@@ -949,7 +982,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "pounamu-commission-taonga"
+  "vis": "pounamu-commission-taonga",
+  "facts": []
  },
  {
   "id": "shipwreck-lodge-skeleton-coast",
@@ -977,7 +1011,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "shipwreck-lodge-skeleton-coast"
+  "vis": "shipwreck-lodge-skeleton-coast",
+  "facts": []
  },
  {
   "id": "rari-horsehair-butterflies",
@@ -1005,7 +1040,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "rari-horsehair-butterflies"
+  "vis": "rari-horsehair-butterflies",
+  "facts": []
  },
  {
   "id": "man-wa-lane-name-seal",
@@ -1033,7 +1069,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "man-wa-lane-name-seal"
+  "vis": "man-wa-lane-name-seal",
+  "facts": []
  },
  {
   "id": "family-tartan-highland-mill",
@@ -1061,7 +1098,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "family-tartan-highland-mill"
+  "vis": "family-tartan-highland-mill",
+  "facts": []
  },
  {
   "id": "chumbe-island-coral-park",
@@ -1089,7 +1127,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "chumbe-island-coral-park"
+  "vis": "chumbe-island-coral-park",
+  "facts": []
  },
  {
   "id": "orkney-straw-back-chair",
@@ -1117,7 +1156,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "orkney-straw-back-chair"
+  "vis": "orkney-straw-back-chair",
+  "facts": []
  },
  {
   "id": "tai-hang-fire-dragon",
@@ -1145,7 +1185,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "tai-hang-fire-dragon"
+  "vis": "tai-hang-fire-dragon",
+  "facts": []
  },
  {
   "id": "hawaiian-feather-lei-hulu",
@@ -1173,7 +1214,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "hawaiian-feather-lei-hulu"
+  "vis": "hawaiian-feather-lei-hulu",
+  "facts": []
  },
  {
   "id": "jebel-akhdar-rosewater",
@@ -1201,7 +1243,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "jebel-akhdar-rosewater"
+  "vis": "jebel-akhdar-rosewater",
+  "facts": []
  },
  {
   "id": "faroe-heimablidni",
@@ -1229,7 +1272,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "faroe-heimablidni"
+  "vis": "faroe-heimablidni",
+  "facts": []
  },
  {
   "id": "ki-soon-do-360-year-soy-sauce",
@@ -1257,7 +1301,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "ki-soon-do-360-year-soy-sauce"
+  "vis": "ki-soon-do-360-year-soy-sauce",
+  "facts": []
  },
  {
   "id": "najeon-wedding-chest-korea",
@@ -1285,7 +1330,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "najeon-wedding-chest-korea"
+  "vis": "najeon-wedding-chest-korea",
+  "facts": []
  },
  {
   "id": "gypsy-mekong-barge",
@@ -1313,7 +1359,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "gypsy-mekong-barge"
+  "vis": "gypsy-mekong-barge",
+  "facts": []
  },
  {
   "id": "las-pozas-xilitla",
@@ -1341,7 +1388,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "las-pozas-xilitla"
+  "vis": "las-pozas-xilitla",
+  "facts": []
  },
  {
   "id": "jeong-kwan-chunjinam-temple-food",
@@ -1369,7 +1417,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "jeong-kwan-chunjinam-temple-food"
+  "vis": "jeong-kwan-chunjinam-temple-food",
+  "facts": []
  },
  {
   "id": "rocking-horse-family-pony",
@@ -1397,7 +1446,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "rocking-horse-family-pony"
+  "vis": "rocking-horse-family-pony",
+  "facts": []
  },
  {
   "id": "taliouine-saffron-dawn",
@@ -1425,7 +1475,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "taliouine-saffron-dawn"
+  "vis": "taliouine-saffron-dawn",
+  "facts": []
  },
  {
   "id": "vintage-port-for-newborn",
@@ -1453,7 +1504,8 @@
   "flag": "?",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "vintage-port-for-newborn"
+  "vis": "vintage-port-for-newborn",
+  "facts": []
  },
  {
   "id": "yamadamatsu-genjiko-incense",
@@ -1481,7 +1533,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "yamadamatsu-genjiko-incense"
+  "vis": "yamadamatsu-genjiko-incense",
+  "facts": []
  },
  {
   "id": "orchid-named-after-daughter",
@@ -1509,7 +1562,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "orchid-named-after-daughter"
+  "vis": "orchid-named-after-daughter",
+  "facts": []
  },
  {
   "id": "feynan-candlelit-lodge",
@@ -1537,7 +1591,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "feynan-candlelit-lodge"
+  "vis": "feynan-candlelit-lodge",
+  "facts": []
  },
  {
   "id": "qeswachaka-grass-bridge",
@@ -1565,7 +1620,8 @@
   "flag": "",
   "kids": false,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "qeswachaka-grass-bridge"
+  "vis": "qeswachaka-grass-bridge",
+  "facts": []
  },
  {
   "id": "kathputli-jaipur-puppet",
@@ -1593,7 +1649,8 @@
   "flag": "",
   "kids": true,
   "reject_why": "выпуск 1: этно-подборка, попадание 2 из 100",
-  "vis": "kathputli-jaipur-puppet"
+  "vis": "kathputli-jaipur-puppet",
+  "facts": []
  },
  {
   "id": "memory-road-morocco",
@@ -1691,7 +1748,8 @@
   "source_name": "Air Mail",
   "kind": "experience",
   "vis": "memory-road-morocco",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "taprobane-island",
@@ -1795,7 +1853,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "island",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "le-coual-louis-malle",
@@ -1893,7 +1952,8 @@
   "source_name": "Air Mail",
   "kind": "stay",
   "vis": "le-coual-louis-malle",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "il-delfino-isola-bella",
@@ -1994,7 +2054,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Isola_Bella,_Lake_Maggiore,_Italy_LOC_4711360535.jpg",
   "kind": "stay",
   "vis": "il-delfino-isola-bella",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "tanner-krolle-van-gogh-trunk",
@@ -2096,7 +2157,8 @@
   "img_reject_why": "спина человека, нет объекта",
   "kind": "master",
   "vis": "tanner-krolle-van-gogh-trunk",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "jacks-camp-botswana",
@@ -2199,7 +2261,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Wildebeest_Crossing_the_Salt_Pans.jpg",
   "kind": "stay",
   "vis": "safari",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "moonhole-bequia",
@@ -2302,7 +2365,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Moonhole_art_deco_community,_Bequia,_part_of_St._Vincent_and_the_Grenadines_-_panoramio.jpg",
   "kind": "stay",
   "vis": "island",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "lemisios-athens",
@@ -2403,7 +2467,8 @@
   "img_page": "https://lemisios.com/about-us/",
   "kind": "master",
   "vis": "shoes",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "sosian-horseback-safari",
@@ -2505,7 +2570,8 @@
   "img_hero": true,
   "kind": "experience",
   "vis": "safari",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "nagatacho-ohka-tokyo",
@@ -2603,7 +2669,8 @@
   "source_name": "Air Mail",
   "kind": "food",
   "vis": "nagatacho-ohka-tokyo",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "vahine-private-island",
@@ -2705,7 +2772,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "island",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "deeppura-garh-rajasthan",
@@ -2806,7 +2874,8 @@
   "img_page": "https://deeppuragarh.in/home",
   "kind": "stay",
   "vis": "palace",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "bob-kramer-knives",
@@ -2907,7 +2976,8 @@
   "img_page": "https://kramerknives.com/",
   "kind": "master",
   "vis": "bob-kramer-knives",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "asaba-ryokan",
@@ -3011,7 +3081,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "asaba-ryokan",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "lago-strobel-patagonia",
@@ -3109,7 +3180,8 @@
   "source_name": "Air Mail",
   "kind": "stay",
   "vis": "lago-strobel-patagonia",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "ninnaji-temple-night",
@@ -3323,7 +3395,8 @@
   "source_name": "Bloomberg Pursuits",
   "kind": "master",
   "vis": "bellerby-globes",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "nayara-treehouses-panama",
@@ -3425,7 +3498,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "nayara-treehouses-panama",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "bhagat-golconda-necklace",
@@ -3523,7 +3597,8 @@
   "source_name": "Robb Report",
   "kind": "master",
   "vis": "bhagat-golconda-necklace",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "hanley-painted-moynat",
@@ -3624,7 +3699,8 @@
   "img_page": "https://www.moynat.com/blogs/personalization/personalization",
   "kind": "master",
   "vis": "hanley-painted-moynat",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "kubili-house-kruger",
@@ -3726,7 +3802,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "safari",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "casa-silencio-oaxaca",
@@ -3827,7 +3904,8 @@
   "img_page": "https://www.casasilencio.com/",
   "kind": "stay",
   "vis": "casa-silencio-oaxaca",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "specht-espresso-melbourne",
@@ -3928,7 +4006,8 @@
   "img_page": "https://spechtdesign.com/collections/specht-espresso-machines",
   "kind": "master",
   "vis": "specht-espresso-melbourne",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "fisher-private-maze",
@@ -4029,7 +4108,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Blenheim_Palace_Maze_(6092866405).jpg",
   "kind": "object",
   "vis": "fisher-private-maze",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "pedrazzini-wooden-boats",
@@ -4127,7 +4207,8 @@
   "source_name": "Robb Report",
   "kind": "master",
   "vis": "pedrazzini-wooden-boats",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "hosoo-nishijin-kyoto",
@@ -4229,7 +4310,8 @@
   "img_reject_why": "абстрактная текстура",
   "kind": "master",
   "vis": "hosoo-nishijin-kyoto",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "arion-press-books",
@@ -4330,7 +4412,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Metal_movable_type.jpg",
   "kind": "master",
   "vis": "workshop",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "prince-dimitri-salon",
@@ -4432,7 +4515,8 @@
   "img_reject_why": "портрет, не глянец",
   "kind": "closed",
   "vis": "prince-dimitri-salon",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "makihara-watchmaker",
@@ -4530,7 +4614,8 @@
   "source_name": "Robb Report",
   "kind": "master",
   "vis": "makihara-watchmaker",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "private-railcar-amtrak",
@@ -4635,7 +4720,8 @@
   "img_reject_why": "промзона, поезда, бетон",
   "kind": "closed",
   "vis": "private-railcar-amtrak",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "maharaja-rolls-royce-udaipur",
@@ -4739,7 +4825,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Rolls_Royce_20-25,_Vintage_Collection_of_Classic_Cars_Museum,_Udaipur,_20191208_0959_7514.jpg",
   "kind": "object",
   "vis": "palace",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "turrell-ta-khut-uruguay",
@@ -4837,7 +4924,8 @@
   "source_name": "Vogue",
   "kind": "stay",
   "vis": "turrell-ta-khut-uruguay",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "kisawa-benguerra-mozambique",
@@ -4942,7 +5030,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "island",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "jaipur-city-palace-gudliya-suite",
@@ -5047,7 +5136,8 @@
   "img_hero": true,
   "kind": "stay",
   "vis": "palace",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "bonsai-kimura-apprentice",
@@ -5150,7 +5240,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:California_Juniper_by_Masahiko_Kimura.jpg",
   "kind": "master",
   "vis": "bonsai-kimura-apprentice",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "jeong-kwan-temple-kitchen",
@@ -5255,7 +5346,8 @@
   "img_hero": true,
   "kind": "food",
   "vis": "temple",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "cercle-music-at-wonders",
@@ -5358,7 +5450,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Verbier,_Switzerland,_in_2011.jpg",
   "kind": "experience",
   "vis": "cercle-music-at-wonders",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "gaisho-tokyo",
@@ -5463,7 +5556,8 @@
   "img_reject_why": "фасад универмага",
   "kind": "closed",
   "vis": "gaisho-tokyo",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "truffle-dealer-cortesi",
@@ -5564,7 +5658,8 @@
   "source_name": "Tatler",
   "kind": "food",
   "vis": "truffle-dealer-cortesi",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "firsts-london-rare-books",
@@ -5668,7 +5763,8 @@
   "img_page": "https://www.firstslondon.com/",
   "kind": "object",
   "vis": "workshop",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "wellington-horse-country",
@@ -5773,7 +5869,8 @@
   "img": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
   "kind": "closed",
   "vis": "wellington-horse-country",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "four-charles-standing-guests",
@@ -5873,7 +5970,8 @@
   "source_name": "The New Yorker",
   "kind": "closed",
   "vis": "four-charles-standing-guests",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "gouzer-auction-daredevil",
@@ -5972,7 +6070,8 @@
   "kids": false,
   "source_name": "The New Yorker",
   "vis": "gouzer-auction-daredevil",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "ps-private-terminal-lax",
@@ -6070,7 +6169,8 @@
   "source_name": "Vanity Fair",
   "kind": "closed",
   "vis": "ps-private-terminal-lax",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "bahrain-pearl-diving",
@@ -6168,7 +6268,8 @@
   "source_name": "The Peak Singapore",
   "kind": "experience",
   "vis": "bahrain-pearl-diving",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "yohei-fukuda-tokyo-shoes",
@@ -6269,7 +6370,8 @@
   "img_page": "https://yoheifukuda.com/",
   "kind": "master",
   "vis": "shoes",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "aman-kyoto-forgotten-garden",
@@ -6370,7 +6472,8 @@
   "img_page": "https://www.aman.com/resorts/aman-kyoto",
   "kind": "stay",
   "vis": "temple",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "lee-bong-ju-bronzeware",
@@ -6472,7 +6575,8 @@
   "img_reject_why": "файл не открывается (406)",
   "kind": "master",
   "vis": "lee-bong-ju-bronzeware",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "pemako-punakha-bhutan",
@@ -6573,7 +6677,8 @@
   "img_page": "https://www.pemakohotels.com/punakha/",
   "kind": "stay",
   "vis": "pemako-punakha-bhutan",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "hajime-asaoka-tourbillon",
@@ -6674,7 +6779,8 @@
   "img_page": "https://kuronotokyo.com/pages/media-library",
   "kind": "master",
   "vis": "hajime-asaoka-tourbillon",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "suyian-laikipia-black-leopard",
@@ -6775,7 +6881,8 @@
   "img_page": "https://www.andbeyond.com/our-lodges/africa/kenya/laikipia/andbeyond-suyian-lodge/",
   "kind": "stay",
   "vis": "safari",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "japan-handmade-kyoto-heirs",
@@ -6873,7 +6980,8 @@
   "source_name": "Monocle",
   "kind": "master",
   "vis": "japan-handmade-kyoto-heirs",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "farasha-farmhouse-marrakech",
@@ -6974,7 +7082,8 @@
   "img_page": "https://farashafarmhouse.com/",
   "kind": "stay",
   "vis": "farasha-farmhouse-marrakech",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "cafe-de-lambre-ginza",
@@ -7075,7 +7184,8 @@
   "img_page": "https://cafedelambre.com/",
   "kind": "food",
   "vis": "cafe-de-lambre-ginza",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "da-ping-huo-private-kitchen",
@@ -7172,7 +7282,8 @@
   "kids": false,
   "source_name": "Tatler Asia (Hong Kong Tatler)",
   "vis": "da-ping-huo-private-kitchen",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "chichibu-ichiro-akuto",
@@ -7270,7 +7381,8 @@
   "source_name": "Monocle",
   "kind": "master",
   "vis": "chichibu-ichiro-akuto",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "china-club-hong-kong",
@@ -7368,7 +7480,8 @@
   "source_name": "Tatler Asia",
   "kind": "closed",
   "vis": "china-club-hong-kong",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "casa-wabi-buried-sculptures",
@@ -7469,7 +7582,8 @@
   "img_page": "https://casawabi.org/en/",
   "kind": "culture",
   "vis": "casa-wabi-buried-sculptures",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
  },
  {
   "id": "il-micio-florence-shoemaker",
@@ -7570,6 +7684,787 @@
   "img_page": "https://ilmicio.com/",
   "kind": "master",
   "vis": "shoes",
-  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм",
+  "facts": []
+ },
+ {
+  "id": "ten-commandments-paving-stone",
+  "title": "Десять заповедей лежали под ногами",
+  "hook": "Мраморную плиту с заповедями около 30 лет использовали как ступень у дома; Sotheby's продал ее за $5,04 млн",
+  "text": "Мраморная плита из Явне в Израиле несет текст Десяти заповедей. Ее датируют 300–500 годами нашей эры. Около 30 лет плита лежала у частного дома как ступень мостовой. Люди ходили по ней и не знали, что у них под ногами. В декабре 2024 года Sotheby's в Нью-Йорке продал плиту за $5,04 млн. Аукционный дом назвал ее самой старой известной плитой с заповедями. Возраст плиты обсуждали ученые и пресса. самая дорогая плита с заповедями долго служила обычной ступенькой. Sotheby's до сих пор рассказывает эту историю. Он приводит ее как пример лота, который пришел к нему через онлайн-форму для продавцов.",
+  "geo": "Израиль, Явне",
+  "publication": "Sotheby's",
+  "pub_date": "2024-12",
+  "source_url": "https://www.sothebys.com/en/articles/editorial-remarkable-auction-stories-that-began-with-the-sothebys-consignment-portal",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–6 недель на встречу со специалистом"
+   ],
+   [
+    "Гости",
+    "1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить встречу со специалистом Sotheby's по иудаике",
+  "last_seen": "2026-01",
+  "last_seen_url": "https://www.sothebys.com/en/articles/editorial-remarkable-auction-stories-that-began-with-the-sothebys-consignment-portal",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/ten-commandments-paving-stone.webp",
+  "img_credit": "Фото: sothebys.com",
+  "kind": "object",
+  "vis": "вещь крупно: стертый мрамор с 20 строками письма",
+  "archetype": "святыня, служившая мостовой",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "m"
+ },
+ {
+  "id": "steidl-publisher-gottingen",
+  "title": "Издатель, у которого авторы живут в типографии",
+  "hook": "Герхард Штайдль сам печатает каждую книгу в Геттингене, и авторы живут у него, пока идет печать",
+  "text": "Герхард Штайдль — издатель из немецкого Геттингена. Он печатает книги сам, в своей типографии. Среди его авторов был Гюнтер Грасс, нобелевский лауреат. Штайдль делает книги для фотографов и модных домов. Журнал Muller Martini назвал их «книгами от-кутюр». Главная особенность: авторы приезжают в Геттинген и живут у издателя, пока идет печать. Карл Лагерфельд фотографировал самого Штайдля. Про издательство сняли фильм «Как сделать книгу со Штайдлем». The New Yorker писал о нем большой профиль, Monocle — о росте издательской империи. В 2024 году вышла хроника издательства «Concentric Circles». Австралийский журнал Capture писал о неясном будущем дела.",
+  "geo": "Германия, Геттинген",
+  "publication": "The New Yorker (PDF на сайте Steidl)",
+  "pub_date": "",
+  "source_url": "https://steidl.de/assets/mime/-UTQ3ZS2ZJSijdUs,CDJscw3XalLYE22OCZr4zpjX8IYBrkre/new_yorker.pdf",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–3 месяца на визит; издание личной книги дольше"
+   ],
+   [
+    "Гости",
+    "1–3 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить визит в типографию Steidl и издание личной книги",
+  "last_seen": "2024",
+  "last_seen_url": "https://steidl.de/Books/Concentric-Circles-A-Chronicle-of-Steidl-Publishers-2024-2241444648.html",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/steidl-publisher-gottingen.webp",
+  "img_credit": "Фото: Wikimedia Commons",
+  "kind": "person",
+  "vis": "лицо издателя, 2022 (CC BY-SA 4.0)",
+  "archetype": "авторы живут у печатного станка",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "plant-messiah-carlos-magdalena",
+  "title": "Садовник, который возвращает вымершие растения",
+  "hook": "Куст кафе маррон считали вымершим; Карлос Магдалена заставил его цвести, надрезав рыльце и вложив пыльцу в рану",
+  "text": "Карлос Магдалена работает садовником в Кью, ботаническом саду Лондона. Раньше он был барменом. Пресса зовет его «мессией растений». Его самая известная история — кафе маррон. Этот куст с острова Родригес считали вымершим. Растение в Кью цвело, но не давало семян. Магдалена надрезал рыльце цветка и вложил пыльцу прямо в рану. Растение завязало семена. вид спасли надрезом, как на операции. Его девиз: «Растения — алхимики нашей вселенной». В 2025 году National Geographic включил его в список «33» и рассказал, как он спасает виды на грани исчезновения. В марте 2026 года о нем писала Oman Observer.",
+  "geo": "Великобритания, Лондон (Кью)",
+  "publication": "National Geographic",
+  "pub_date": "2025",
+  "source_url": "https://www.nationalgeographic.com/culture/article/carlos-magdalena-nat-geo-33-2025",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 месяца"
+   ],
+   [
+    "Гости",
+    "1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить частную встречу с Магдаленой в тропическом питомнике Кью, закрытом для публики",
+  "last_seen": "2026-03-10",
+  "last_seen_url": "https://www.omanobserver.om/ampArticle/1158409",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/plant-messiah-carlos-magdalena.webp",
+  "img_credit": "Фото: Wikimedia Commons",
+  "kind": "person",
+  "vis": "руки мастера: опыляет цветок кафе маррон в закрытом питомнике Кью (CC BY 4.0, Andrew McRobb)",
+  "archetype": "спасатель последнего экземпляра вида",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "altamira-250-visits",
+  "title": "Альтамира: 250 входов в год",
+  "hook": "В настоящую пещеру с бизонами пускают около 250 человек в год; 20 мест отдали жителям деревни, которым исполнилось 18",
+  "text": "Пещера Альтамира на севере Испании — одна из первых галерей человечества. На ее стенах бизоны палеолита. Пещеру десятки лет держали закрытой ради сохранности рисунков. Большинство туристов видит копию в музее рядом. В настоящую пещеру пускают пять человек в неделю. Их выбирают жребием. За год это около 250 человек. В июне 2025 года делегация правительства Испании в Кантабрии сообщила о квоте: 20 мест получили молодые жители Сантильяна-дель-Мар, которым исполнилось 18. местным подросткам совершеннолетие дает право войти туда, куда не пускают за деньги. Журнал Smithsonian писал об этой лотерее еще в 2014 году. Лотерея работает и сейчас.",
+  "geo": "Испания, Сантильяна-дель-Мар",
+  "publication": "Делегация правительства Испании в Кантабрии",
+  "pub_date": "2025-06-04",
+  "source_url": "https://mptmd.gob.es/en/portal/delegaciones_gobierno/delegaciones/cantabria/actualidad/2025/06/2025_06_04_03",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: от 1 месяца; вход только по жребию"
+   ],
+   [
+    "Гости",
+    "1 человек на место в жребии"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться записать в лист ожидания на вход в настоящую пещеру и сопровождать визит",
+  "last_seen": "2025-06-04",
+  "last_seen_url": "https://mptmd.gob.es/en/portal/delegaciones_gobierno/delegaciones/cantabria/actualidad/2025/06/2025_06_04_03",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/altamira-250-visits.webp",
+  "img_credit": "Фото: Wikimedia Commons",
+  "kind": "access",
+  "vis": "бизон палеолита крупно, фактура камня (копия в музее, public domain)",
+  "archetype": "место в очереди к первоисточнику искусства",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "kyoto-magic-mirror-makkyo",
+  "title": "Зеркало, в котором проступает Христос",
+  "hook": "Бронзовое зеркало выводит на стену скрытый образ; в Японии такие делает одна семья, мастер Акихиса Ямамото в пятом поколении",
+  "text": "Акихиса Ямамото — мастер из Киото. Он делает макке, «волшебные зеркала» из бронзы. С виду это обычное зеркало. Но если направить на него луч света, на стене проступает скрытый рисунок. Это может быть Христос, Будда Амида, журавли или морские звери с виноградом. Глазом рисунок на зеркале не видно. Ямамото продолжает дело семьи в пятом поколении. В интервью Kyoto Journal он сказал: «Насколько я знаю, моя мастерская единственная в Японии, кто делает макке». зеркало молчит, пока на него не упадет солнце. Работы мастера продаются через магазин Suigenkyo и сейчас.",
+  "geo": "Япония, Киото",
+  "publication": "Kyoto Journal",
+  "pub_date": "2014-02",
+  "source_url": "https://kyotojournal.org/our-kyoto/the-magic-mirror-maker/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–6 месяцев на зеркало по эскизу"
+   ],
+   [
+    "Гости",
+    "1–2 человека на визит в мастерскую"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться заказать у мастера зеркало со скрытым образом по эскизу клиента",
+  "last_seen": "2026-11-20",
+  "last_seen_url": "https://suigenkyo.store/collections/akihisa-yamamoto",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/kyoto-magic-mirror-makkyo.webp",
+  "img_credit": "Фото: kyotojournal.org",
+  "kind": "object",
+  "vis": "вещь крупно: отраженный луч рисует на стене образ Христа",
+  "archetype": "скрытое изображение внутри обычной вещи",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "korea-simmani-lee-kyoung-suk",
+  "title": "Женщина, которая ищет дикий женьшень",
+  "hook": "Ли Кен Сук 66 лет, она нашла в горах больше 100 корней; один дикий корень может стоить дороже 100 млн вон",
+  "text": "Ли Кен Сук 66 лет. Она живет в Чансу, в четырех часах езды от Сеула. В Корее таких людей зовут симмани, их около 10 тысяч. Ли начала в 1997 году: случайно нашла корень женьшеня. Через несколько лет она ходила с братом на вершины выше 1000 метров, по пять-шесть часов в день. За это время она выкопала больше 100 корней. В прошлом году она продала корень весом 12 граммов, ему было больше 30 лет. Звери повредили его, и цена была 1 млн вон. Корень в хороших условиях стоит дороже 100 млн вон, это около 69 тысяч долларов. Учитель советовал ей искать под деревьями на северо-восточном склоне, где поют птицы. Перед походом она молится про себя. Весной 2026 года она снова поднялась на гору Попхва.",
+  "geo": "Южная Корея, Чансу",
+  "publication": "The Korea Times",
+  "pub_date": "2026-05-13",
+  "source_url": "https://www.koreatimes.co.kr/lifestyle/koreanheritage/20260513/a-simmani-forager-and-naturalist",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 месяца; лучшее время — конец апреля и май"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–3 человека в хорошей форме, маршрут по горам на несколько часов"
+   ],
+   [
+    "Стоимость",
+    "по запросу; дикий корень — от 1 млн до более 100 млн вон"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить день в горах с симмани и покупку корня с оценкой эксперта.",
+  "last_seen": "2026-05-13",
+  "last_seen_url": "https://www.koreatimes.co.kr/lifestyle/koreanheritage/20260513/a-simmani-forager-and-naturalist",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/korea-simmani-lee-kyoung-suk.webp",
+  "img_credit": "Фото: koreatimes.co.kr",
+  "kind": "person",
+  "vis": "лицо героини на горе, руки с найденным корнем",
+  "archetype": "охота за корнем дороже машины",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "hk-puer-song-pin-hao",
+  "title": "Пуэр, который подорожал в 780 раз",
+  "hook": "Блин пуэра с красной печатью стоил в 1996 году тысячу гонконгских долларов, в 2023-м ушел за 780 тысяч",
+  "text": "Гонконгский аукцион L&H называет себя первым в мире домом, который специализируется на пуэре. Он провел больше 20 таких торгов, продается около 80% лотов. Чай здесь продают прессованными блинами и стопками по семь штук. Блин с красной печатью без обертки стоил в 1996 году тысячу гонконгских долларов. На весенних торгах 2023 года он ушел за 780 тысяч. Весной 2024 года блин Сун Пин Хао с красной печатью продали за 3,5 млн гонконгских долларов, это рекорд. 30 ноября 2025 года дом впервые выставил целую стопку Сун Пин Хао 1917–1930 годов, цену давали по запросу. Самая высокая оценка на тех торгах — стопка Чэнь Юнь Хао 1910-х годов, от 5,5 до 8 млн. Торги идут в Козуэй-Бэй, на 15-м этаже Winsor House.",
+  "geo": "Гонконг, Козуэй-Бэй",
+  "publication": "L&H Auction, пресс-релиз",
+  "pub_date": "2025-11-26",
+  "source_url": "https://lhauction.com.hk/en/blog/detail?id=588",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 месяца, торги дважды в год, весной и осенью"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–4 человека, просмотр лотов за 2–3 дня до торгов"
+   ],
+   [
+    "Стоимость",
+    "лоты от 160 тысяч до 8 млн гонконгских долларов по оценке; часть лотов по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить место на торгах L&H и частный просмотр лотов с экспертом дома.",
+  "last_seen": "2025-11-26",
+  "last_seen_url": "https://lhauction.com.hk/en/blog/detail?id=588",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/hk-puer-song-pin-hao.webp",
+  "img_credit": "Фото: Ash C, CC BY-SA 4.0, Wikimedia Commons",
+  "kind": "object",
+  "vis": "вещь крупно: старинный блин пуэра в обертке с красной печатью",
+  "archetype": "напиток как инвестиция поколений",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "m"
+ },
+ {
+  "id": "academie-epee",
+  "title": "Шпага бессмертного под заказ",
+  "hook": "Для Андрея Макина шпагу академика сделал Chopard: серебро, лягушка из русских сказок и 500 изумрудов",
+  "text": "Члены Французской академии получают шпагу за несколько дней до торжественного приема. Когда-то шпага означала службу в доме короля. Писатель Андрей Макин стал академиком 7 декабря 2016 года. Его шпагу сделал швейцарский ювелир Chopard по заказу академии. Макин сам нарисовал эскизы и передал их мастерам. Над шпагой работали 11 ремесленников. Образ — сибирская зима, любимое время года писателя. Серебряное навершие в виде плетеной веревки держит лягушку из русских сказок. В лягушке 500 изумрудов и 11 бриллиантов, она вращается внутри футляра с сапфирами. Рукоять сделана из двух колб кварца с включениями, это разбитые песочные часы. Из них сыплются золотые бусины. Буква F на рукояти напоминает о двух родинах Макина. Шпагу вручила писательница Даниэль Сальнав.",
+  "geo": "Франция, Париж",
+  "publication": "Journal du Luxe",
+  "pub_date": "2016-12-11",
+  "source_url": "https://www.journalduluxe.fr/chopard-epee-andrei-makine",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 6–12 месяцев, прием академика бывает несколько раз в год"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–2 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу; цена шпаги в источнике не названа"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить приглашение на прием нового академика под Куполом и знакомство с ювелиром, который делает шпаги.",
+  "last_seen": "2026-01-29",
+  "last_seen_url": "https://www.lalibre.be/culture/livres-bd/2026/01/29/deux-mois-et-demi-apres-sa-grace-par-le-president-algerien-boualem-sansal-elu-a-lacademie-francaise-CCALHS5COFG6FJYXCCAVFGYS6E/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/academie-epee.webp",
+  "img_credit": "Фото: Agence Rol. Agence photographique (commanditaire), Public domain, Wikimedia Commons",
+  "kind": "object",
+  "vis": "шпага крупно, камни на эфесе",
+  "archetype": "личное оружие к вступлению в бессмертные",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "freed-pointe-makers",
+  "title": "Мастер с якорем на подошве",
+  "hook": "Мастера пуант Freed ставят на подошву свой знак, якорь или корону; балерины соскребают его, чтобы мастер шил только им",
+  "text": "Пуанты лондонской фабрики Freed шьют вручную на Уэлл-стрит в Хакни. Мастер учится два-три года. Работают шесть дней в неделю, почти 40 туфель в день, около четверти миллиона в год. Каждый мастер ставит на подошву свой знак, чтобы найти автора брака. У Таксима знак «якорь». Он приехал с Кипра 30 лет назад и думал работать в закусочной с рыбой и картошкой. Он большой футбольный фанат и расписан до середины декабря. Рэй, знак «корона», шьет много пар для Нью-Йорк Сити балета и ни разу не был на балете. Мастера не говорят знакомым, что шьют балетные туфли. Примы приезжают на лимузинах с охраной и аплодируют им. А балерины иногда соскребают знак мастера, чтобы он шил только для них.",
+  "geo": "Великобритания, Лондон",
+  "publication": "Spitalfields Life",
+  "pub_date": "2025-06-05",
+  "source_url": "https://spitalfieldslife.com/2025/06/05/the-pointe-shoe-makers-of-hackney-i/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 месяца; пары по меркам — после очереди мастера"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–3 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить визит на фабрику в Хакни и пару пуант по меркам от выбранного мастера.",
+  "last_seen": "2025-06-05",
+  "last_seen_url": "https://spitalfieldslife.com/2025/06/05/the-pointe-shoe-makers-of-hackney-i/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/freed-pointe-makers.webp",
+  "img_credit": "Фото: spitalfieldslife.com",
+  "kind": "person",
+  "vis": "лицо и руки мастера за верстаком",
+  "archetype": "балерина выбирает мастера по знаку",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "f"
+ },
+ {
+  "id": "paganini-cannone",
+  "title": "Скрипка Паганини под охраной в Генуе",
+  "hook": "Скрипку Паганини «Пушка» 1743 года охраняют в Генуе; раз в год на ней играет победитель конкурса Паганини",
+  "text": "Скрипку «Пушка» сделал мастер Бартоломео Джузеппе Гварнери дель Джезу в Кремоне в 1743 году. Паганини назвал ее так за мощный звук. Он завещал скрипку родной Генуе, чтобы ее хранили вечно. Сейчас она лежит в Палаццо Турси, в зале Паганини. Комнату стерегут ученые, эксперты и телохранители. Хранитель Брюс Карлсон играет на ней раз в месяц, чтобы инструмент жил. Раз в год на ней играет победитель конкурса «Премио Паганини». В 2018–2019 годах скрипку вывозили на выставку «Паганини — рок-звезда» во Дворце дожей. 58-й конкурс выиграл 17-летний Аожэ Чжан из Китая. Он получил 30 тысяч евро и 26 октября сыграл на «Пушке» на гала-концерте.",
+  "geo": "Италия, Генуя",
+  "publication": "ArtsJournal / Strings",
+  "pub_date": "2021-05-07",
+  "source_url": "https://www.artsjournal.com/?p=271849",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–6 месяцев, гала-концерт конкурса проходит в октябре"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить место на гала-концерте с «Пушкой» и частный показ скрипки с хранителем.",
+  "last_seen": "2025-10-25",
+  "last_seen_url": "https://www.thestrad.com/news/17-year-old-violinist-wins-the-58th-premio-paganini-international-competition/20409.article",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/paganini-cannone.webp",
+  "img_credit": "Фото: premiopaganini.it",
+  "kind": "object",
+  "vis": "скрипач играет на «Пушке», лицо и смычок",
+  "archetype": "инструмент, который будят избранные",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "marinelli-bell-casting-agnone",
+  "title": "Колокол, который льют с молитвой",
+  "hook": "В литейной Маринелли бронзу при 1200 градусах льют под молитву, и Армандо Маринелли кричит «Санта Мария!»",
+  "text": "Семья Маринелли из Аньоне льет колокола около тысячи лет. Самый ранний подписанный колокол рода датирован 1339 годом. Армандо и Паскуале Маринелли — 26-е поколение. Это вторая по возрасту семейная фирма в мире. С 1924 года литейная может ставить на колокола герб папы. Здесь работают 12 человек, они льют около 50 колоколов в год. Форму делают месяцами, самую сложную — до года. Бронзу из меди и олова греют до 1200 градусов. Священник кропит металл святой водой и читает молитву Деве Марии. Все отвечают: «Молись о нас». Когда бронза идет в форму, Армандо кричит: «Санта Мария!» В 2016 году литейная сделала колокол и бронзовые двери для папы Франциска.",
+  "geo": "Италия, Аньоне",
+  "publication": "Rotary (журнал)",
+  "pub_date": "2017",
+  "source_url": "https://www.rotary.org/en/marinellis-make-special-centennial-bell-rotary",
+  "facts": [
+   [
+    "Подготовка",
+    "малый колокол около 2 месяцев, сложный до года (по источнику), плюс поездка"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 2–10 человек на отливке"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться заказать колокол для семьи или храма и устроить присутствие на отливке с благословением.",
+  "last_seen": "2026",
+  "last_seen_url": "https://www.homofaber.com/en/artisans/pontificia-fonderia-di-campane-marinelli-bellfounding-italy",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/marinelli-bell-casting-agnone.webp",
+  "img_credit": "Фото: Wikimedia Commons",
+  "kind": "craft",
+  "vis": "литейная Marinelli, CC BY-SA 4.0 (сюжет кадра не просмотрен)",
+  "archetype": "присутствие при отливке своего колокола",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "both"
+ },
+ {
+  "id": "peking-paris-bentley-rescue",
+  "title": "Шасси треснуло, к утру Bentley на старте",
+  "hook": "Bentley 1929 года треснул в Монголии; техник прилетел в Алматы, за ночь починил шасси, и в 7 утра машина стартовала",
+  "text": "Джонатан Тернер шел ралли Пекин — Париж на своем Bentley 1929 года. На этой машине он проходил ралли еще в 1997 году. Вместе со штурманом Ником Инглишем они лидировали в классе. В степях Внутренней Монголии старые сварные швы лопнули, шасси треснуло в нескольких местах. В мастерской Vintage Bentley, в 20 минутах от Гудвуда, за несколько часов сделали детали и взяли билет. Старший техник летел всю ночь и прибыл в Алматы в день отдыха. Ночью он починил шасси, заменил магнето, сменил масло и проверил машину. В 7 утра Bentley стоял на старте. В тот же день техник улетел домой в Хитроу. Vintage Bentley работает только с машинами W.O. Bentley 1922–1932 годов.",
+  "geo": "Казахстан, Алматы",
+  "publication": "PreWarCar",
+  "pub_date": "2025-06-16",
+  "source_url": "https://www.prewarcar.com/from-workshop-to-wilderness-a-mechanic-reflects-on-an-unexpected-mission",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1,5–2 года, следующее ралли в 2028 году"
+   ],
+   [
+    "Гости",
+    "экипаж из 2 человек: пилот и штурман"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить клиенту место в экипаже Peking to Paris и поддержку механиков в пути.",
+  "last_seen": "2025-06-16",
+  "last_seen_url": "https://hero-era.com/media/1k5biq3y/p2p2028-mediapack-0325d.pdf",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/peking-paris-bentley-rescue.webp",
+  "img_credit": "Фото: prewarcar.com",
+  "kind": "sport",
+  "vis": "ремонт Bentley в мастерской (кадр не проверен)",
+  "archetype": "механик экипажа на ралли через континент",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "m"
+ },
+ {
+  "id": "gazelles-rally-no-gps",
+  "title": "Восемь дней в пустыне без GPS",
+  "hook": "Армель Медар Ланг в 13-й раз прошла женское ралли по Сахаре с компасом и картой и выиграла зачет электромобилей",
+  "text": "Ралли Аиша де Газель — женская гонка по пустыне Марокко. Телефоны и GPS запрещены. У экипажа есть только компас, карта и чутье. Цель — проехать между точками самый короткий путь, точность важнее скорости. В 2026 году прошло 35-е ралли. Армель Медар Ланг, 51 год, ехала его в 13-й раз. С ней была штурман Синди Рибейру, 38 лет. Они ехали на электрическом Volvo EX40. Батарея лежит под днищем, поэтому на камнях приходилось искать мягкий путь. Через восемь дней, 11 апреля, экипаж финишировал в Эссуэйре первым в зачете электромобилей. Они ехали за фонд Monaco Liver Disorder, он помогает детям с болезнями печени. Фонду передали чек на 6 000 евро.",
+  "geo": "Марокко, Эссуэйра",
+  "publication": "Monaco Tribune",
+  "pub_date": "2026-05-05",
+  "source_url": "https://www.monaco-tribune.com/2026/05/huit-jours-dans-le-desert-sans-gps-un-equipage-courant-pour-monaco-liver-disorder-gagne-le-rallye-des-gazelles/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 6–12 месяцев, ралли раз в год весной"
+   ],
+   [
+    "Гости",
+    "экипаж из 2 женщин"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться собрать экипаж клиентки на ралли Аиша де Газель с подготовкой и благотворительной целью.",
+  "last_seen": "2026-05-05",
+  "last_seen_url": "https://www.monaco-tribune.com/2026/05/huit-jours-dans-le-desert-sans-gps-un-equipage-courant-pour-monaco-liver-disorder-gagne-le-rallye-des-gazelles/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/gazelles-rally-no-gps.webp",
+  "img_credit": "Фото: monaco-tribune.com",
+  "kind": "sport",
+  "vis": "экипаж в пустыне (фото из статьи; для журнала лучше запросить пресс-кит ралли)",
+  "archetype": "штурман женского пустынного ралли",
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "f"
+ },
+ {
+  "id": "maison-bonnet-tortoiseshell",
+  "title": "Очки из последнего черепахового панциря",
+  "hook": "Парижская семья Бонне делает очки из черепахового панциря, купленного до запрета 1970-х, и новый запас взять негде.",
+  "text": "Maison Bonnet делает очки на заказ с 1930-х годов. Мастерскую ведут сыновья Кристиана Бонне. Министерство культуры Франции присвоило ему звание Maître d'Art, мастера искусства. Семья одна из последних работает с настоящим черепаховым панцирем. Новый материал она не покупает с 1970-х, когда торговлю запретили. Старого запаса хватит примерно на пару десятилетий. Одна оправа из панциря требует до 30 часов ручной работы и больше 36 операций. Мастерская выпускает около сотни таких пар в год. Заказ ждут до четырех месяцев. Очки Bonnet носили Ле Корбюзье, Ив Сен-Лоран, Жаклин Кеннеди и Аристотель Онассис. Сегодня примерку проводят в Париже и в Лондоне.",
+  "geo": "Франция, Париж; Великобритания, Лондон",
+  "publication": "Monocle",
+  "pub_date": "",
+  "source_url": "https://monocle.com/design/craft/maison-bonnet-handmade-eyewear/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 недели до записи на примерку; изготовление до 4 месяцев"
+   ],
+   [
+    "Гости",
+    "1 человек, личная примерка в Париже или Лондоне"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться записать на примерку в Париже или Лондоне и заказать оправу из старого запаса панциря.",
+  "last_seen": "2026-11",
+  "last_seen_url": "https://www.maisonbonnet.com/en/history",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/maison-bonnet-tortoiseshell.webp",
+  "img_credit": "Фото: Фото: Maison Bonnet, официальный сайт",
+  "kind": "master",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "он"
+ },
+ {
+  "id": "taxon-expeditions-new-species",
+  "title": "Отпуск, после которого остается новый вид",
+  "hook": "Турист без научного образования ловит в джунглях Борнео паука, которого нет в справочниках, и помогает дать ему имя.",
+  "text": "Голландский биолог Менно Схилтхойзен из Лейденского центра биоразнообразия в 2016 году основал Taxon Expeditions. Это экспедиции для людей без научной подготовки. Участники живут на исследовательской станции, ставят ловушки, выделяют ДНК и вместе с энтомологами ищут неописанные виды. Журналист El Español вернулся из Брунея с двумя кандидатами в новые виды. Прыгающего паука назвали в честь собаки одной из участниц. Находки описывают в научных журналах, а имя виду часто выбирают участники. Так в Брунее появились жук размером с булавочную головку и слизень, названный в честь начальника полевой станции. Ближайшие поездки компании — Суринам, Эквадор и Черногория.",
+  "geo": "Бруней (Борнео); Суринам, Эквадор, Черногория",
+  "publication": "El Español",
+  "pub_date": "2025-04",
+  "source_url": "https://elespanol.com/ciencia/20250421/descubri-nuevas-especies-animales-vacaciones-selva-borneo-sin-tener-idea-ciencia/1003743717196_0.html",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–3 месяца, места в группах ограничены"
+   ],
+   [
+    "Гости",
+    "группа участников экспедиции; подходит взрослым и подросткам"
+   ],
+   [
+    "Стоимость",
+    "из поля кандидата: от 3300 евро за поездку"
+   ]
+  ],
+  "make": "Orbiq может постараться забронировать место в экспедиции и собрать дорогу до станции.",
+  "last_seen": "2026-11",
+  "last_seen_url": "https://taxonexpeditions.com/expeditions/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/taxon-expeditions-new-species.webp",
+  "img_credit": "Фото: Фото: Taxon Expeditions, официальный сайт",
+  "kind": "science",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "семья"
+ },
+ {
+  "id": "save-venice-adopt",
+  "title": "Свой Тициан и своя фигура на мозаике",
+  "hook": "Save Venice продает спасение города по частям: фигура на мозаике Торчелло стоит 10 000 долларов, Христос Пантократор — 40 000.",
+  "text": "Американский фонд Save Venice работает с 1971 года и вернул к жизни больше тысячи произведений. После наводнения 2019 года Bloomberg Businessweek описал его модель: спасение города разложено на отдельные заказы. День работы реставратора стоит 500 долларов. На мозаиках собора Санта-Мария-Ассунта на Торчелло можно взять одну фигуру: животное стоит 10 000 долларов, Христос Пантократор — 40 000. «Благовещение» Тициана в Скуоле Сан-Рокко тогда оценили в 66 000 долларов. Его взял меценат Ричард Рисс, картину отреставрировали и показали публике. Фонд и сейчас открывает новые проекты, например зал Четырех дверей во Дворце дожей.",
+  "geo": "Италия, Венеция",
+  "publication": "Bloomberg Businessweek",
+  "pub_date": "2019-12",
+  "source_url": "https://www.bloomberg.com/news/articles/2019-12-11/to-save-venice-after-its-latest-flood-adopt-a-piece-of-it",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 2–4 недели на выбор проекта и договор с фондом"
+   ],
+   [
+    "Гости",
+    "семья; визит к реставраторам в Венеции"
+   ],
+   [
+    "Стоимость",
+    "из источника 2019 года: день реставратора 500 долларов, фигура на мозаике 10 000–40 000 долларов; текущие проекты по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться подобрать проект в Save Venice и устроить визит к реставраторам.",
+  "last_seen": "2026",
+  "last_seen_url": "https://www.savevenice.org/news-and-stories/room-of-the-four-doors-palazzo-ducale-restoration-begins-with-a-100000-match-opportunity-to-enhance-your-impact",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/save-venice-adopt.webp",
+  "img_credit": "Фото: Фото: Save Venice, пресс-материалы",
+  "kind": "art",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "семья"
+ },
+ {
+  "id": "sevan-bicakci-rings",
+  "title": "Стамбул, вырезанный внутри камня",
+  "hook": "Стамбульский ювелир вырезает купола и сады с обратной стороны камня, и рисунок будто живет внутри кольца.",
+  "text": "Севан Бычакчи пришел учеником в мастерскую на Гранд-базаре в 12 лет. Свою мастерскую он открыл в 1990 году. Его прием — обратная интальо: рисунок режут с изнанки прозрачного камня. Сверху кажется, что внутри кольца стоит дворец или цветет сад. Над одним кольцом работают шесть мастеров: золотых дел мастер, закрепщик, гравер, полировщики и скульптор. От идеи до готовой вещи проходит около четырех месяцев. Ателье в пять этажей стоит рядом с Гранд-базаром. Кольца Бычакчи продают аукционы Phillips и Waddington's, а пресса называет его «властелином колец». Ателье принимает гостей и заказы. Кроме колец, он делает часы и тоже никуда не спешит.",
+  "geo": "Турция, Стамбул",
+  "publication": "Caspian Post",
+  "pub_date": "2023-05",
+  "source_url": "https://caspianpost.com/stories/sevan-bicakci-istanbuls-king-of-rings",
+  "facts": [
+   [
+    "Подготовка",
+    "из источника: около 4 месяцев на изготовление; визит в ателье — оценка Orbiq: 1–2 недели"
+   ],
+   [
+    "Гости",
+    "1–2 человека, визит в ателье в Стамбуле"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить визит в ателье и заказ кольца с сюжетом семьи.",
+  "last_seen": "2026",
+  "last_seen_url": "https://sevanbicakci.com/meet-sevan-bicakci",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/sevan-bicakci-rings.webp",
+  "img_credit": "Фото: Фото: Sevan Bıçakçı, официальный сайт",
+  "kind": "master",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "она"
+ },
+ {
+  "id": "magic-castle-hollywood",
+  "title": "Замок фокусников, где играет призрак",
+  "hook": "В голливудский клуб магов пускают по приглашению члена, а снимать внутри запрещено с 1960-х по просьбе Кэри Гранта.",
+  "text": "Magic Castle в Голливуде принадлежит Академии магических искусств. Клуб занимает викторианский особняк. В нем около 5000 членов, многие из них действующие фокусники. Попасть внутрь можно по приглашению члена клуба. Выходят через потайной книжный шкаф. В баре сидит чучело совы, которое моргает и кивает. В музыкальной комнате каждый вечер играет рояль призрака Ирмы, от Элвиса до Тейлор Свифт. Дресс-код строгий: вечерние платья и бабочки, без денима и кроссовок. Фото внутри запрещены с 1960-х, так хотел Кэри Грант. Гости соседнего Magic Castle Hotel могут запросить столик и шоу. Time Out включает бар замка в список баров Лос-Анджелеса с привидениями.",
+  "geo": "США, Лос-Анджелес",
+  "publication": "National Geographic Traveller",
+  "pub_date": "2026-10",
+  "source_url": "https://www.nationalgeographic.com/travel/article/inside-hollywoods-magic-castle-exclusive",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–3 недели на приглашение через члена клуба"
+   ],
+   [
+    "Гости",
+    "семья или компания, взрослые, вечерний дресс-код"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться получить приглашение на ужин и шоу через членов клуба.",
+  "last_seen": "2026-10",
+  "last_seen_url": "https://www.nationalgeographic.com/travel/article/inside-hollywoods-magic-castle-exclusive",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/magic-castle-hollywood.webp",
+  "img_credit": "Фото: Фото: The Magic Castle, Steve Mitchell, официальный сайт",
+  "kind": "closed",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "семья"
+ },
+ {
+  "id": "roger-w-smith-isle-of-man",
+  "title": "Очередь на очередь к часовщику с Мэна",
+  "hook": "Единственный ученик Джорджа Дэниелса делает около 15 часов в год и шутит про лист ожидания для листа ожидания.",
+  "text": "Роджер Смит работает в перестроенном сельском амбаре на острове Мэн. Великий Джордж Дэниелс выбрал его единственным учеником и оставил ему свои инструменты. Мастерская сама делает каждую деталь и всю отделку. Даже в простой модели около 250 деталей. В год выходит около 15 часов, и Смит не собирается выпускать больше. Клиенты ждут годами и платят от 500 до 850 тысяч сингапурских долларов. Еще в 2014 году одни его часы оценили в 340 тысяч фунтов. Недавно мастерская показала новую Series 6. «Быть часовщиком — все, чем я занимаюсь с 18 лет», — говорит Смит.",
+  "geo": "Великобритания, остров Мэн",
+  "publication": "Esquire Singapore",
+  "pub_date": "2025-08",
+  "source_url": "https://esquiresg.com/island-life-watchmaker-watch-roger-w-smith/",
+  "facts": [
+   [
+    "Подготовка",
+    "из источника: ожидание часов — годы; визит в мастерскую — оценка Orbiq: 1–2 месяца"
+   ],
+   [
+    "Гости",
+    "1–2 человека"
+   ],
+   [
+    "Стоимость",
+    "из источника: 500–850 тыс. сингапурских долларов"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить визит в мастерскую и место в очереди на заказ.",
+  "last_seen": "2025",
+  "last_seen_url": "https://www.the1916company.com/blog/r-w-smiths-series-6-breaks-the-silence-with-a-new-chapter-in-british-horology.html",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/roger-w-smith-isle-of-man.webp",
+  "img_credit": "Фото: Фото: Roger W Smith, пресс-материалы",
+  "kind": "master",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "он"
+ },
+ {
+  "id": "enigmacursor-david-aaron",
+  "title": "Супруги купили динозавра и подарили музею",
+  "hook": "Скелет продавали как известный вид, а ученые нашли в нем новый и назвали Enigmacursor, «загадочный бегун».",
+  "text": "Скелет откопали в 2021–2022 годах в Колорадо и сначала приняли за нанозавра. Лондонская галерея David Aaron выставила его на Frieze Masters за 450 тысяч фунтов. Галерея отдала кости Музею естественной истории на изучение. Там выяснилось, что это неизвестный науке вид. Его назвали Enigmacursor, «загадочный бегун». Покупателями стали американские коллекционеры, которые живут в Лондоне, клиенты галереи. Это их первый динозавр, и они сразу подарили его музею навсегда. Скелет выставлен в лондонском музее. О новом виде музей сообщил отдельным пресс-релизом. Галерея говорит, что за ископаемыми все чаще приходят молодые покупатели из технологий и науки.",
+  "geo": "Великобритания, Лондон; США, Колорадо",
+  "publication": "The Art Newspaper",
+  "pub_date": "2025-07",
+  "source_url": "https://www.theartnewspaper.com/2025/07/09/natural-history-museum-to-display-dinosaur-fossil-after-london-gallery-helps-secure-buyer",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: от нескольких месяцев; зависит от наличия скелетов в галереях и ярмарках"
+   ],
+   [
+    "Гости",
+    "семья; можно устроить показ в музее"
+   ],
+   [
+    "Стоимость",
+    "из источника: 450 тыс. фунтов за этот скелет; другие по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться подобрать скелет через галерею и договориться о показе в музее.",
+  "last_seen": "2026-05",
+  "last_seen_url": "https://www.bloomberg.com/news/audio/2026-05-02/odd-lots-inside-a-booming-market-for-dinosaur-fossils-podcast",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/enigmacursor-david-aaron.webp",
+  "img_credit": "Фото: Wikimedia Commons",
+  "kind": "science",
+  "vis": null,
+  "archetype": null,
+  "issue": "2026-11c",
+  "status": "new",
+  "score_all": 0,
+  "cat": "",
+  "for": "семья"
  }
 ]

@@ -2020,7 +2020,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img_credit": "Фото: Tanner Krolle, официальный сайт",
+  "img_page": "https://www.tannerkrolle.com/pages/bespoke",
+  "img_rejected": "https://www.tannerkrolle.com/cdn/shop/files/1_efc37f3b-ecff-4c22-81ec-6187db1f2c49.jpg?v=1723797482&width=2400",
+  "img_reject_why": "спина человека, нет объекта"
  },
  {
   "id": "jacks-camp-botswana",
@@ -2315,7 +2319,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://lemisios.com/wp-content/uploads/2023/04/cropped-20221104_160756-scaled-1.jpg",
+  "img_credit": "Фото: Lemisios, официальный сайт",
+  "img_page": "https://lemisios.com/about-us/"
  },
  {
   "id": "sosian-horseback-safari",
@@ -2410,7 +2417,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://sosian.com/wp-content/uploads/2024/02/Sosian-2024-sneak-35-jpg.webp",
+  "img_credit": "Фото: Sosian, официальный сайт",
+  "img_page": "https://sosian.com/riding-at-sosian/",
+  "img_hero": true
  },
  {
   "id": "nagatacho-ohka-tokyo",
@@ -2600,7 +2611,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://www.vahineprivateisland.com/_novaimg/5762721-1608171_0_0_4800_3200_2000_1333.jpg",
+  "img_credit": "Фото: Vahine Private Island, официальный сайт",
+  "img_page": "https://www.vahineprivateisland.com/",
+  "img_hero": true
  },
  {
   "id": "deeppura-garh-rajasthan",
@@ -2695,7 +2710,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://deeppuragarh.in/img/home/2.jpg",
+  "img_credit": "Фото: Deeppura Garh, официальный сайт",
+  "img_page": "https://deeppuragarh.in/home"
  },
  {
   "id": "bob-kramer-knives",
@@ -2790,7 +2808,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://kramerknives.com/wp-content/uploads/2018/04/kramerknives-fb-scaled.jpg",
+  "img_credit": "Фото: Kramer Knives, официальный сайт",
+  "img_page": "https://kramerknives.com/"
  },
  {
   "id": "asaba-ryokan",
@@ -2887,7 +2908,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Air Mail"
+  "source_name": "Air Mail",
+  "img": "https://www.asaba-ryokan.com/wp/wp-content/themes/asaba/assets/img/home/fv-02-lg.webp",
+  "img_credit": "Фото: Asaba Ryokan, официальный сайт",
+  "img_page": "https://www.asaba-ryokan.com/en/",
+  "img_hero": true
  },
  {
   "id": "lago-strobel-patagonia",
@@ -3271,7 +3296,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img": "https://nayarabocasdeltoro.com/wp-content/uploads/2025/06/slider-section-1.jpg",
+  "img_credit": "Фото: Nayara Bocas del Toro, официальный сайт",
+  "img_page": "https://nayarabocasdeltoro.com/",
+  "img_hero": true
  },
  {
   "id": "bhagat-golconda-necklace",
@@ -3461,7 +3490,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img": "https://www.moynat.com/cdn/shop/articles/Page_38_6aa9059b-5d40-408c-a673-c316c0ad3c38.jpg?v=1789137753",
+  "img_credit": "Фото: Moynat, официальный сайт",
+  "img_page": "https://www.moynat.com/blogs/personalization/personalization"
  },
  {
   "id": "kubili-house-kruger",
@@ -3556,7 +3588,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img": "https://kubilihouse.com/wp-content/uploads/2026/03/K-KUBILI-BOMA.jpg",
+  "img_credit": "Фото: Kubili House, официальный сайт",
+  "img_page": "https://kubilihouse.com/",
+  "img_hero": true
  },
  {
   "id": "casa-silencio-oaxaca",
@@ -3651,7 +3687,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img": "https://images.squarespace-cdn.com/content/v1/60637121fa98a440766965bf/8e28a42a-5dc2-451c-a6a7-d1766603bbef/elsilencio02+edit.jpg?format=2500w",
+  "img_credit": "Фото: Casa Silencio, официальный сайт",
+  "img_page": "https://www.casasilencio.com/"
  },
  {
   "id": "specht-espresso-melbourne",
@@ -3746,7 +3785,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img": "https://spechtdesign.com/cdn/shop/files/7.png?width=2400",
+  "img_credit": "Фото: Specht Design, официальный сайт",
+  "img_page": "https://spechtdesign.com/collections/specht-espresso-machines"
  },
  {
   "id": "fisher-private-maze",
@@ -4034,7 +4076,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Forbes Life"
+  "source_name": "Forbes Life",
+  "img_credit": "Фото: HOSOO, официальный сайт",
+  "img_page": "https://www.hosoo-kyoto.com/",
+  "img_rejected": "https://www.hosoo-kyoto.com/img/top/bnr_raster-gradient.jpg",
+  "img_reject_why": "абстрактная текстура"
  },
  {
   "id": "arion-press-books",
@@ -4227,7 +4273,11 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report"
+  "source_name": "Robb Report",
+  "img_credit": "Фото: Prince Dimitri, официальный сайт",
+  "img_page": "https://princedimitri.com/",
+  "img_rejected": "https://princedimitri.com/wp-content/uploads/2018/06/Prince-Dimitri-window.jpg",
+  "img_reject_why": "портрет, не глянец"
  },
  {
   "id": "makihara-watchmaker",
@@ -5528,7 +5578,8 @@
   "img_credit": "Фото: Wellington International, официальный сайт",
   "img_page": "https://www.wellingtoninternational.com/",
   "img_rejected": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
-  "img_reject_why": "аэрофото пригорода"
+  "img_reject_why": "аэрофото пригорода",
+  "img": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg"
  },
  {
   "id": "four-charles-standing-guests",
@@ -6207,7 +6258,8 @@
   "img_credit": "Фото: Napcheong Bronzeware (мастерская Ли Бон Джу), официальный сайт",
   "img_page": "https://www.napcheong.com/eng/index.asp",
   "img_rejected": "https://www.napcheong.com/eng/images/main_img2.jpg",
-  "img_reject_why": "файл не открывается"
+  "img_reject_why": "файл не открывается",
+  "img": "https://www.napcheong.com/eng/images/main_img2.jpg"
  },
  {
   "id": "pemako-punakha-bhutan",

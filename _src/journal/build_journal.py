@@ -108,10 +108,16 @@ def diversify(pool):
     return out
 
 
-adults = [i for i in items if not i.get('kids') and i.get('repeat')]  # тест повторения: без поля repeat история в журнал не попадает
+adults = [i for i in items if not i.get('kids') and i.get('repeat') and i.get('theme')]  # тест повторения: без поля repeat история в журнал не попадает
 heroes = [i for i in adults if i.get('img_hero')]
 cover = heroes[0] if heroes else adults[0]
-feed = [cover] + diversify([i for i in adults if i is not cover])
+# одна тема на выпуск: вторая история той же темы в ленту не попадает
+_seen, _pool = {cover.get('theme')}, []
+for _i in sorted([i for i in adults if i is not cover], key=lambda i: -float(i.get('score_all') or 0)):
+    if _i.get('theme') and _i['theme'] in _seen:
+        continue
+    _seen.add(_i.get('theme')); _pool.append(_i)
+feed = [cover] + diversify(_pool)
 page = open(os.path.join(ROOT, 'journal_template.html')).read()
 for k, v in dict(spreads='\n'.join(spread(i) for i in feed), articles='\n'.join(article(i) for i in feed), issue=e(issue_h)).items():
     page = page.replace('@@%s@@' % k, v)

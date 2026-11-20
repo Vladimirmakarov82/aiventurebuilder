@@ -12,7 +12,7 @@ TG = 'https://t.me/vladimir82makarov?text='
 items = json.load(open(os.path.join(ROOT, 'items.json')))
 allitems = [i for i in items if i.get('status') != 'rejected' and i.get('live') != 'closed']
 items = [i for i in allitems if i.get('img')]
-noimg = sorted([i for i in allitems if not i.get('img')], key=lambda i: -float(i.get('score_all') or 0))
+noimg = [i for i in allitems if not i.get('img')]
 items.sort(key=lambda i: (bool(i.get('kids')), -float(i.get('score_all') or 0), i.get('order', 0)))
 issues = sorted({i.get('issue', '') for i in items}, reverse=True)
 issue = issues[0] if issues else ''
@@ -77,7 +77,39 @@ def tile(i, cls):
 adults = [i for i in items if not i.get('kids')]
 heroes = [i for i in adults if i.get('img_hero')]
 cover = heroes[0] if heroes else (adults[0] if adults else items[0])
-rest = [i for i in items if i is not cover]
+rest0 = [i for i in items if i is not cover and not i.get('kids')]
+kids_items = [i for i in items if i is not cover and i.get('kids')]
+
+
+def country(i):
+    return (i.get('geo') or '').split(',')[0].strip()
+
+
+def diversify(pool, last):
+    # жадная раскладка: следующая история — с самым высоким баллом среди тех,
+    # у кого другой тип и другая страна, чем у двух предыдущих; отели не чаще одного раза на три места
+    out, prev = [], list(last)
+    pool = sorted(pool, key=lambda i: -float(i.get('score_all') or 0))
+    while pool:
+        def ok(i, strict):
+            k, c = i.get('kind'), country(i)
+            if any(k == p.get('kind') for p in prev[-2:]) and strict >= 1:
+                return False
+            if any(c == country(p) for p in prev[-2:]) and strict >= 2:
+                return False
+            if k == 'stay' and any(p.get('kind') == 'stay' for p in prev[-2:]) and strict >= 1:
+                return False
+            if i.get('vis') and any(i.get('vis') == p.get('vis') for p in prev[-4:]):
+                return False
+            if prev and plain(i['title']).split()[0] == plain(prev[-1]['title']).split()[0]:
+                return False
+            return True
+        pick = next((i for i in pool if ok(i, 2)), None) or next((i for i in pool if ok(i, 1)), None) or pool[0]
+        out.append(pick); prev.append(pick); pool.remove(pick)
+    return out
+
+
+rest = diversify(rest0, [cover]) + kids_items
 
 # ритм раскладки, как в журнале: широкая, три обычные, две половины, три обычные, высокая...
 PATTERN = ['wide', 'n', 'n', 'n', 'half', 'half', 'n', 'n', 'n', 'wide', 'n', 'n', 'n', 'half', 'half']
@@ -127,6 +159,7 @@ for f in sorted(glob.glob(os.path.join(ROOT, 'research', '*.json'))):
     blocks = ''.join('<div class="db"><h3>%s</h3><div class="dq">%s</div></div>' % (e(bl['name']), ''.join(qitem(it) for it in bl.get('items', []))) for bl in d.get('blocks', []))
     research.append('<article class="dos"><span class="kick">Исследование</span><h2>%s</h2>%s</article>' % (e(d.get('title', '')), blocks))
 
+noimg = diversify(noimg, [])
 more = ''.join('<a class="mi" href="#%s" data-sa="%s"><span class="kick">%s · %s</span><span class="mt">%s</span><span class="md">%s</span></a>' % (e(i['id']), i.get('score_all') or 0, e(i.get('publication') or ''), e(i['geo']), i['title'], i['hook']) for i in noimg)
 page = open(os.path.join(ROOT, 'journal_template.html')).read()
 for k, v in dict(dossiers='\n'.join(dossiers) or '', research='\n'.join(research) or '', cover=cover_html, nav=nav, tiles='\n'.join(tiles), articles='\n'.join(article(i) for i in items + noimg), more=more, issue=e(issue)).items():

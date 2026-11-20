@@ -1,0 +1,909 @@
+{
+  "title": "Что впечатляет людей в разном возрасте",
+  "blocks": [
+    {
+      "name": "Что говорит наука: как с возрастом меняются счастье и впечатления",
+      "items": [
+        {
+          "claim_ru": "Молодые получают больше счастья от необычных переживаний",
+          "quote": "Younger people, who view their future as extensive, gain more happiness from extraordinary experiences",
+          "quote_ru": "Более молодые люди, которые видят свое будущее обширным, получают больше счастья от необычных переживаний",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://ideas.repec.org/a/oup/jconrs/doi10.1086-674724.html",
+          "type": "study"
+        },
+        {
+          "claim_ru": "С возрастом обычные переживания дают столько же счастья, сколько необычные",
+          "quote": "ordinary experiences become increasingly associated with happiness as people get older, such that they produce as much happiness as extraordinary experiences",
+          "quote_ru": "обычные переживания все сильнее связываются со счастьем по мере того, как люди становятся старше, так что они дают столько же счастья, сколько необычные переживания",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://ideas.repec.org/a/oup/jconrs/doi10.1086-674724.html",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Механизм эффекта: с возрастом человек определяет себя через повседневность",
+          "quote": "as people get older they increasingly define themselves by the ordinary experiences that comprise their daily lives",
+          "quote_ru": "по мере того как люди становятся старше, они все больше определяют себя через обычные переживания, из которых состоит их повседневная жизнь",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://ideas.repec.org/a/oup/jconrs/doi10.1086-674724.html",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Смысл счастья меняется с возрастом: от возбуждения к умиротворению",
+          "quote": "Whereas younger people are more likely to associate happiness with excitement, as they get older, they become more likely to associate happiness with peacefulness.",
+          "quote_ru": "Тогда как молодые люди чаще связывают счастье с возбуждением, становясь старше, они чаще связывают счастье с умиротворением.",
+          "source": "The Shifting Meaning of Happiness, Social Psychological and Personality Science 2(4)",
+          "authors": "Cassie Mogilner, Sepandar D. Kamvar, Jennifer Aaker",
+          "year": 2011,
+          "url": "https://static1.squarespace.com/static/615db7baec92614e0cbb04e8/t/61c556985725353bc7b4d229/1640322712701/Mogilner+Kamvar+Aaker+SPPS+2011+Shifting+Meaning+of+Happiness.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Причина сдвига: внимание переходит с будущего на настоящее",
+          "quote": "This change appears to be driven by a redirection of attention from the future to the present as people age.",
+          "quote_ru": "Это изменение, по-видимому, вызвано перенаправлением внимания с будущего на настоящее по мере старения людей.",
+          "source": "The Shifting Meaning of Happiness, Social Psychological and Personality Science 2(4)",
+          "authors": "Cassie Mogilner, Sepandar D. Kamvar, Jennifer Aaker",
+          "year": 2011,
+          "url": "https://static1.squarespace.com/static/615db7baec92614e0cbb04e8/t/61c556985725353bc7b4d229/1640322712701/Mogilner+Kamvar+Aaker+SPPS+2011+Shifting+Meaning+of+Happiness.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Кривая счастья U-образна в 132 странах, минимум около 47–48 лет",
+          "quote": "Averaging across the 257 individual country estimates from developing countries gives an age minimum of 48.2 for well-being",
+          "quote_ru": "Усреднение по 257 отдельным оценкам для развивающихся стран дает минимум благополучия в возрасте 48,2 года",
+          "source": "Is Happiness U-shaped Everywhere? Age and Subjective Well-being in 132 Countries, NBER Working Paper 26641 (опубликовано в Journal of Population Economics, 2021)",
+          "authors": "David G. Blanchflower",
+          "year": 2020,
+          "url": "https://www.nber.org/system/files/working_papers/w26641/w26641.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "В богатых странах минимум благополучия приходится на 47,2 года",
+          "quote": "doing the same across the 187 country estimates for advanced countries gives a similar minimum of 47.2. The happiness curve is everywhere.",
+          "quote_ru": "то же самое по 187 оценкам для развитых стран дает похожий минимум 47,2. Кривая счастья есть везде.",
+          "source": "Is Happiness U-shaped Everywhere? Age and Subjective Well-being in 132 Countries, NBER Working Paper 26641 (опубликовано в Journal of Population Economics, 2021)",
+          "authors": "David G. Blanchflower",
+          "year": 2020,
+          "url": "https://www.nber.org/system/files/working_papers/w26641/w26641.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Впечатления делают людей счастливее, чем вещи",
+          "quote": "experiential purchases—those made with the primary intention of acquiring a life experience—made them happier than material purchases",
+          "quote_ru": "покупки-впечатления, то есть сделанные прежде всего ради получения жизненного опыта, делали их счастливее, чем материальные покупки",
+          "source": "To Do or to Have? That Is the Question, Journal of Personality and Social Psychology 85(6)",
+          "authors": "Leaf Van Boven, Thomas Gilovich",
+          "year": 2003,
+          "url": "https://cdn.vanderbilt.edu/vu-wp0/wp-content/uploads/sites/59/2011/05/06143905/to-do-or-to-have.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Почему впечатления сильнее: они становятся частью личности и связей с людьми",
+          "quote": "experiences make people happier because they are more open to positive reinterpretations, are a more meaningful part of one's identity",
+          "quote_ru": "впечатления делают людей счастливее, потому что они более открыты для позитивного переосмысления и являются более значимой частью личности",
+          "source": "To Do or to Have? That Is the Question, Journal of Personality and Social Psychology 85(6)",
+          "authors": "Leaf Van Boven, Thomas Gilovich",
+          "year": 2003,
+          "url": "https://cdn.vanderbilt.edu/vu-wp0/wp-content/uploads/sites/59/2011/05/06143905/to-do-or-to-have.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Ожидание впечатления само по себе приносит больше радости, чем ожидание вещи",
+          "quote": "waiting for an experience tends to be more pleasurable and exciting than waiting to receive a material good",
+          "quote_ru": "ожидание впечатления, как правило, приятнее и волнительнее, чем ожидание получения материальной вещи",
+          "source": "Waiting for Merlot: Anticipatory Consumption of Experiential and Material Purchases, Psychological Science 25(10)",
+          "authors": "Amit Kumar, Matthew A. Killingsworth, Thomas Gilovich",
+          "year": 2014,
+          "url": "https://bpb-us-e1.wpmucdn.com/blogs.cornell.edu/dist/b/6819/files/2019/12/KumarKillingswothGilovich.14.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Теория социоэмоциональной избирательности: когда горизонт сокращается, люди выбирают эмоционально значимое",
+          "quote": "as time horizons shrink, as they typically do with age, people become increasingly selective, investing greater resources in emotionally meaningful goals and activities.",
+          "quote_ru": "по мере сокращения временных горизонтов, как это обычно бывает с возрастом, люди становятся все более избирательными и вкладывают больше ресурсов в эмоционально значимые цели и занятия.",
+          "source": "Wikipedia: Socioemotional selectivity theory (теория Лоры Карстенсен, Стэнфорд)",
+          "authors": "Wikipedia contributors; теория: Laura L. Carstensen",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Socioemotional_selectivity_theory",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Сдвиг приоритетов идет постепенно и начинается уже в ранней взрослости",
+          "quote": "Research on this theory often compares age groups (e.g., young adulthood vs. old adulthood), but the shift in goal priorities is a gradual process that begins in early adulthood.",
+          "quote_ru": "Исследования этой теории часто сравнивают возрастные группы (например, молодость и старость), но сдвиг приоритетов целей — постепенный процесс, который начинается в ранней взрослости.",
+          "source": "Wikipedia: Socioemotional selectivity theory",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Socioemotional_selectivity_theory",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Близкие отношения сильнее денег и славы держат людей счастливыми всю жизнь",
+          "quote": "Close relationships, more than money or fame, are what keep people happy throughout their lives, the study revealed.",
+          "quote_ru": "Близкие отношения, больше чем деньги или слава, — вот что сохраняет людей счастливыми на протяжении всей жизни, показало исследование.",
+          "source": "Harvard Gazette: Over nearly 80 years, Harvard study has been showing how to live a healthy and happy life (Harvard Study of Adult Development)",
+          "authors": "Liz Mineo (Harvard Staff Writer); руководитель исследования Robert Waldinger",
+          "year": 2017,
+          "url": "https://news.harvard.edu/gazette/story/2017/04/over-nearly-80-years-harvard-study-has-been-showing-how-to-live-a-healthy-and-happy-life/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Тяга к острым ощущениям растет до 15 лет, затем стабильна или снижается",
+          "quote": "Studies indicate it increases between 10-15 years and remains stable or declines thereafter.",
+          "quote_ru": "Исследования показывают, что она растет между 10 и 15 годами, а затем остается стабильной или снижается.",
+          "source": "Wikipedia: Sensation seeking",
+          "authors": "Wikipedia contributors; концепция Marvin Zuckerman",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Sensation_seeking",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Освоение сложного нового навыка, а не легкий досуг, улучшает память у людей 60–90 лет",
+          "quote": "Only the quilting and photography groups, who were confronted with continuous and prolonged mental challenge, improved their memory abilities",
+          "quote_ru": "Только группы, занимавшиеся квилтингом и фотографией и сталкивавшиеся с постоянной и длительной умственной нагрузкой, улучшили память",
+          "source": "UT Dallas News Center о статье The Impact of Sustained Engagement on Cognitive Function in Older Adults: The Synapse Project, Psychological Science",
+          "authors": "Denise C. Park и соавторы",
+          "year": 2013,
+          "url": "https://news.utdallas.edu/health-medicine/mentally-challenging-activities-improve-memory-as",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Трепет полезен: 15-минутные «прогулки трепета» раз в неделю повышали позитивные эмоции пожилых",
+          "quote": "older adults who took weekly 15-minute “awe walks” for eight weeks reported increased positive emotions and less distress in their daily lives.",
+          "quote_ru": "пожилые люди, которые восемь недель еженедельно совершали 15-минутные «прогулки трепета», сообщали о большем количестве позитивных эмоций и меньшем стрессе в повседневной жизни.",
+          "source": "Neuroscience News (пресс-релиз UCSF) о статье Big smile, small self: Awe walks promote prosocial positive emotions in older adults, Emotion",
+          "authors": "Virginia E. Sturm, Dacher Keltner и соавторы",
+          "year": 2020,
+          "url": "https://neurosciencenews.com/awe-walk-emotional-wellbeing-17063/",
+          "type": "study"
+        }
+      ]
+    },
+    {
+      "name": "Деньги, богатство и впечатления: что знают о миллионерах",
+      "items": [
+        {
+          "claim_ru": "Kahneman и Deaton: эмоциональное благополучие перестает расти примерно после $75 тыс. дохода в год",
+          "quote": "Emotional well-being also rises with log income, but there is no further progress beyond an annual income of ∼$75,000.",
+          "quote_ru": "Эмоциональное благополучие тоже растет с логарифмом дохода, но дальше годового дохода около 75 000 долларов прогресса нет.",
+          "source": "High income improves evaluation of life but not emotional well-being, PNAS 107(38)",
+          "authors": "Daniel Kahneman, Angus Deaton",
+          "year": 2010,
+          "url": "https://www.princeton.edu/~deaton/downloads/deaton_kahneman_high_income_improves_evaluation_August2010.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Вывод 2010 года: высокий доход покупает удовлетворенность жизнью, но не счастье",
+          "quote": "We conclude that high income buys life satisfaction but not happiness",
+          "quote_ru": "Мы заключаем, что высокий доход покупает удовлетворенность жизнью, но не счастье",
+          "source": "High income improves evaluation of life but not emotional well-being, PNAS 107(38)",
+          "authors": "Daniel Kahneman, Angus Deaton",
+          "year": 2010,
+          "url": "https://www.princeton.edu/~deaton/downloads/deaton_kahneman_high_income_improves_evaluation_August2010.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Пересмотр 2023 года: у счастливых людей счастье продолжает расти с доходом и даже ускоряется",
+          "quote": "Happiness increases steadily with log(income) among happier people, and even accelerates in the happiest group.",
+          "quote_ru": "Счастье стабильно растет с логарифмом дохода у более счастливых людей и даже ускоряется в самой счастливой группе.",
+          "source": "Income and emotional well-being: A conflict resolved, PNAS 120(10)",
+          "authors": "Matthew A. Killingsworth, Daniel Kahneman, Barbara Mellers",
+          "year": 2023,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2208661120",
+          "type": "study",
+          "license": "CC BY-NC-ND 4.0"
+        },
+        {
+          "claim_ru": "«Плато» дохода есть только у 20% наименее счастливых людей",
+          "quote": "the flattening pattern exists but is restricted to the least happy 20% of the population",
+          "quote_ru": "эффект выхода на плато существует, но ограничен 20% наименее счастливых людей",
+          "source": "Income and emotional well-being: A conflict resolved, PNAS 120(10)",
+          "authors": "Matthew A. Killingsworth, Daniel Kahneman, Barbara Mellers",
+          "year": 2023,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2208661120",
+          "type": "study",
+          "license": "CC BY-NC-ND 4.0"
+        },
+        {
+          "claim_ru": "Иллюзия фокуса: люди преувеличивают влияние любого одного фактора, в том числе дохода, на свое счастье",
+          "quote": "When people consider the impact of any single factor on their well-being -- not only income -- they are prone to exaggerate its importance",
+          "quote_ru": "Когда люди оценивают влияние любого одного фактора на свое благополучие — не только дохода, — они склонны преувеличивать его важность",
+          "source": "Would You Be Happier If You Were Richer? A Focusing Illusion, CEPS Working Paper 125 (опубликовано в Science, 2006)",
+          "authors": "Daniel Kahneman, Alan B. Krueger, David Schkade, Norbert Schwarz, Arthur A. Stone",
+          "year": 2006,
+          "url": "https://gceps.princeton.edu/wp-content/uploads/2017/01/125krueger.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Опрос более 4000 миллионеров: состояние свыше $8–10 млн связано с большим благополучием",
+          "quote": "having more than $8 million in one survey and $10 million in the other — were linked to greater well-being.",
+          "quote_ru": "наличие более 8 млн долларов в одном опросе и 10 млн в другом — было связано с большим благополучием.",
+          "source": "PsyPost о статье The Amount and Source of Millionaires' Wealth (Moderately) Predicts Their Happiness, Personality and Social Psychology Bulletin",
+          "authors": "Grant E. Donnelly, Tianyi Zheng, Emily Haisley, Michael I. Norton",
+          "year": 2018,
+          "url": "https://www.psypost.org/large-amount-wealth-linked-increased-happiness-especially-among-earned/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Заработавшие состояние сами счастливее, чем унаследовавшие",
+          "quote": "participants who reported primarily inheriting or marrying into wealth reported less happiness.",
+          "quote_ru": "участники, которые сообщили, что в основном унаследовали богатство или получили его через брак, сообщали о меньшем счастье.",
+          "source": "PsyPost о статье The Amount and Source of Millionaires' Wealth (Moderately) Predicts Their Happiness, Personality and Social Psychology Bulletin",
+          "authors": "Grant E. Donnelly, Tianyi Zheng, Emily Haisley, Michael I. Norton",
+          "year": 2018,
+          "url": "https://www.psypost.org/large-amount-wealth-linked-increased-happiness-especially-among-earned/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Миллионеры счастливее отчасти потому, что выбирают активный досуг: волонтерство, спорт, хобби",
+          "quote": "the rich were more likely to engage in activities such as volunteering, exercising or having hobbies in their schedule",
+          "quote_ru": "богатые чаще включали в свое расписание такие занятия, как волонтерство, спорт или хобби",
+          "source": "PsyPost о статье Time Use and Happiness of Millionaires: Evidence From the Netherlands, Social Psychological and Personality Science",
+          "authors": "Paul Smeets, Ashley Whillans, René Bekkers, Michael I. Norton",
+          "year": 2020,
+          "url": "https://www.psypost.org/millionaires-are-happier-in-part-because-they-engage-in-less-passive-and-more-active-leisure-activities/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Активный досуг связан с удовлетворенностью жизнью, пассивный — отрицательно",
+          "quote": "active leisure time was positively related to life satisfaction, and passive leisure negatively.",
+          "quote_ru": "время активного досуга было положительно связано с удовлетворенностью жизнью, а пассивного — отрицательно.",
+          "source": "PsyPost о статье Time Use and Happiness of Millionaires: Evidence From the Netherlands, Social Psychological and Personality Science",
+          "authors": "Paul Smeets, Ashley Whillans, René Bekkers, Michael I. Norton",
+          "year": 2020,
+          "url": "https://www.psypost.org/millionaires-are-happier-in-part-because-they-engage-in-less-passive-and-more-active-leisure-activities/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Покупка времени (делегирование нелюбимых дел) повышает счастье, а дефицит времени сильнее у самых богатых",
+          "quote": "Feelings of “time stress”—more common among the wealthiest individuals—also affect happiness.",
+          "quote_ru": "Ощущение «стресса от нехватки времени», более распространенное среди самых богатых людей, тоже влияет на счастье.",
+          "source": "Harvard Magazine о статье Buying time promotes happiness, PNAS 114(32)",
+          "authors": "Ashley V. Whillans, Elizabeth W. Dunn, Paul Smeets, René Bekkers, Michael I. Norton",
+          "year": 2017,
+          "url": "https://www.harvardmagazine.com/2017/10/buying-things-and-happiness?page=all",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Чем выше доход, тем чаще люди выбирают впечатления вместо вещей",
+          "quote": "Respondents' level of income (see Figure 1) was positively associated with their endorsement of experiential over material possessions",
+          "quote_ru": "Уровень дохода респондентов (см. рисунок 1) был положительно связан с их предпочтением впечатлений материальным вещам",
+          "source": "To Do or to Have? That Is the Question, Journal of Personality and Social Psychology 85(6)",
+          "authors": "Leaf Van Boven, Thomas Gilovich",
+          "year": 2003,
+          "url": "https://cdn.vanderbilt.edu/vu-wp0/wp-content/uploads/sites/59/2011/05/06143905/to-do-or-to-have.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Теплые отношения сильнее интеллекта связаны с финансовым успехом (Гарвардское исследование Гранта)",
+          "quote": "Financial success depends on warmth of relationships, not on intelligence.",
+          "quote_ru": "Финансовый успех зависит от теплоты отношений, а не от интеллекта.",
+          "source": "Wikipedia: Grant Study (по книге George Vaillant, Triumphs of Experience, 2012)",
+          "authors": "Wikipedia contributors; исследование: George Vaillant",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Grant_Study",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        }
+      ]
+    },
+    {
+      "name": "30–40 лет: время необычных переживаний",
+      "items": [
+        {
+          "claim_ru": "В 30 лет и раньше счастье чаще связано с возбуждением, чем с покоем (анализ 12 млн блогов по десятилетиям)",
+          "quote": "showing that the meaning of happiness steadily shifts over the life course.",
+          "quote_ru": "показывая, что смысл счастья постепенно меняется на протяжении жизни.",
+          "source": "The Shifting Meaning of Happiness, Social Psychological and Personality Science 2(4)",
+          "authors": "Cassie Mogilner, Sepandar D. Kamvar, Jennifer Aaker",
+          "year": 2011,
+          "url": "https://static1.squarespace.com/static/615db7baec92614e0cbb04e8/t/61c556985725353bc7b4d229/1640322712701/Mogilner+Kamvar+Aaker+SPPS+2011+Shifting+Meaning+of+Happiness.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Молодым особенно ценно копить необычные переживания: они отмечают жизненные этапы и формируют личность",
+          "quote": "Young people actively seeking to define themselves find it particularly rewarding to accumulate extraordinary experiences that mark their progression through life milestones.",
+          "quote_ru": "Молодые люди, которые активно ищут себя, считают особенно ценным накапливать необычные переживания, отмечающие их движение по жизненным этапам.",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1) (пресс-релиз)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://www.sciencedaily.com/releases/2014/02/140211094256.htm",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Стресс и гнев снижаются начиная с 20 с небольшим лет; тревога держится высокой в среднем возрасте",
+          "quote": "Stress and Anger steeply declined from the early 20s, Worry was elevated through middle age and then declined, and Sadness was essentially flat.",
+          "quote_ru": "Стресс и гнев резко снижались с начала третьего десятка, тревога оставалась высокой в среднем возрасте, а затем снижалась, грусть практически не менялась.",
+          "source": "A snapshot of the age distribution of psychological well-being in the United States, PNAS 107(22)",
+          "authors": "Arthur A. Stone, Joseph E. Schwartz, Joan E. Broderick, Angus Deaton",
+          "year": 2010,
+          "url": "https://repec-prod.princeton.edu/econlib/RePEc/pri/papers/1197",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Ограничение данных: отдельных исследований именно по группе 30–40 лет мало; выводы о ней следуют из сравнения «молодые против старших»",
+          "quote": "Research on this theory often compares age groups (e.g., young adulthood vs. old adulthood), but the shift in goal priorities is a gradual process",
+          "quote_ru": "Исследования этой теории часто сравнивают возрастные группы (например, молодость и старость), но сдвиг приоритетов целей — постепенный процесс",
+          "source": "Wikipedia: Socioemotional selectivity theory",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Socioemotional_selectivity_theory",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        }
+      ]
+    },
+    {
+      "name": "40–50 лет: дно кривой и поворот",
+      "items": [
+        {
+          "claim_ru": "Дно U-образной кривой благополучия — около 47–48 лет, в богатых и бедных странах",
+          "quote": "Averaging across the 257 individual country estimates from developing countries gives an age minimum of 48.2 for well-being",
+          "quote_ru": "Усреднение по 257 отдельным оценкам для развивающихся стран дает минимум благополучия в возрасте 48,2 года",
+          "source": "Is Happiness U-shaped Everywhere? Age and Subjective Well-being in 132 Countries, NBER Working Paper 26641 (опубликовано в Journal of Population Economics, 2021)",
+          "authors": "David G. Blanchflower",
+          "year": 2020,
+          "url": "https://www.nber.org/system/files/working_papers/w26641/w26641.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Тревога остается повышенной в среднем возрасте и снижается после",
+          "quote": "Worry was elevated through middle age and then declined",
+          "quote_ru": "Тревога оставалась повышенной в среднем возрасте, а затем снижалась",
+          "source": "A snapshot of the age distribution of psychological well-being in the United States, PNAS 107(22)",
+          "authors": "Arthur A. Stone, Joseph E. Schwartz, Joan E. Broderick, Angus Deaton",
+          "year": 2010,
+          "url": "https://repec-prod.princeton.edu/econlib/RePEc/pri/papers/1197",
+          "type": "study"
+        },
+        {
+          "claim_ru": "«Кризис среднего возраста» из-за старения пережили лишь около 8% опрошенных",
+          "quote": "One study found that 23% of participants had what they called a \"midlife crisis\", but in digging deeper, only one-third of those—8% of the total—said the crisis was associated with awareness of aging.",
+          "quote_ru": "Одно исследование показало, что у 23% участников был, по их словам, «кризис среднего возраста», но при более глубоком анализе лишь треть из них — 8% от общего числа — связали кризис с осознанием старения.",
+          "source": "Wikipedia: Midlife crisis",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Midlife_crisis",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Для большинства середина жизни — время достижений и удовлетворения",
+          "quote": "Given the bulk of the data, it is likely that, for most men, mid-life is a time of achievement and satisfaction.",
+          "quote_ru": "Учитывая основную массу данных, вероятно, что для большинства мужчин середина жизни — это время достижений и удовлетворения.",
+          "source": "Wikipedia: Midlife crisis (цитата обзора Aldwin и Levenson)",
+          "authors": "Wikipedia contributors; Carolyn Aldwin, Michael Levenson",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Midlife_crisis",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "С 45 лет на первый план выходит «генеративность» — желание вкладываться в следующее поколение",
+          "quote": "Erikson argued that this usually develops during middle age (which spans approximately ages 45 through 64) in keeping with his stage-model of psychosocial development.",
+          "quote_ru": "Эриксон утверждал, что она обычно развивается в среднем возрасте (примерно с 45 до 64 лет) в соответствии с его стадийной моделью психосоциального развития.",
+          "source": "Wikipedia: Generativity (концепция Эрика Эриксона)",
+          "authors": "Wikipedia contributors; Erik Erikson",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Generativity",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        }
+      ]
+    },
+    {
+      "name": "50–60 лет: подъем и спокойное счастье",
+      "items": [
+        {
+          "claim_ru": "После 50 лет благополучие растет",
+          "quote": "Global WB and positive Hedonic WB generally had U-shaped age profiles showing increasedWB after the age of 50 years.",
+          "quote_ru": "Общая оценка жизни и позитивные эмоции в целом имели U-образный возрастной профиль с ростом благополучия после 50 лет.",
+          "source": "A snapshot of the age distribution of psychological well-being in the United States, PNAS 107(22)",
+          "authors": "Arthur A. Stone, Joseph E. Schwartz, Joan E. Broderick, Angus Deaton",
+          "year": 2010,
+          "url": "https://repec-prod.princeton.edu/econlib/RePEc/pri/papers/1197",
+          "type": "study"
+        },
+        {
+          "claim_ru": "После 50 люди почти вдвое чаще описывают счастье как покой, чем до 20",
+          "quote": "bloggers older than 50 were almost 2 times as likely to express peaceful happiness as bloggers younger than 20",
+          "quote_ru": "блогеры старше 50 лет почти в 2 раза чаще выражали спокойное счастье, чем блогеры младше 20 лет",
+          "source": "The Shifting Meaning of Happiness, Social Psychological and Personality Science 2(4)",
+          "authors": "Cassie Mogilner, Sepandar D. Kamvar, Jennifer Aaker",
+          "year": 2011,
+          "url": "https://static1.squarespace.com/static/615db7baec92614e0cbb04e8/t/61c556985725353bc7b4d229/1640322712701/Mogilner+Kamvar+Aaker+SPPS+2011+Shifting+Meaning+of+Happiness.pdf",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Удовлетворенность отношениями в 50 лет предсказывает здоровье в 80 лучше холестерина",
+          "quote": "The people who were the most satisfied in their relationships at age 50 were the healthiest at age 80.",
+          "quote_ru": "Люди, которые в 50 лет были больше всего удовлетворены своими отношениями, были самыми здоровыми в 80 лет.",
+          "source": "Harvard Gazette (Harvard Study of Adult Development)",
+          "authors": "Liz Mineo; Robert Waldinger",
+          "year": 2017,
+          "url": "https://news.harvard.edu/gazette/story/2017/04/over-nearly-80-years-harvard-study-has-been-showing-how-to-live-a-healthy-and-happy-life/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "С возрастом самоопределение уходит от событий-вех к повседневным привычкам",
+          "quote": "the experiences they view as self-defining are just as likely to include the routine daily events that reveal how they like to spend their time",
+          "quote_ru": "переживания, которые они считают определяющими себя, с той же вероятностью включают рутинные повседневные события, показывающие, как они любят проводить время",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1) (пресс-релиз)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://www.sciencedaily.com/releases/2014/02/140211094256.htm",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Ограничение данных: блог-анализ Mogilner и соавторов заканчивается группой «50+»; 50–60 и 60+ в нем не разделены",
+          "quote": "The frequencies of peaceful happiness and excited happiness were measured for each age group: teens, 20s, 30s, 40s, and 50s.",
+          "quote_ru": "Частоты спокойного и возбужденного счастья измерялись для каждой возрастной группы: подростки, 20, 30, 40 и 50 лет.",
+          "source": "The Shifting Meaning of Happiness, Social Psychological and Personality Science 2(4)",
+          "authors": "Cassie Mogilner, Sepandar D. Kamvar, Jennifer Aaker",
+          "year": 2011,
+          "url": "https://static1.squarespace.com/static/615db7baec92614e0cbb04e8/t/61c556985725353bc7b4d229/1640322712701/Mogilner+Kamvar+Aaker+SPPS+2011+Shifting+Meaning+of+Happiness.pdf",
+          "type": "study"
+        }
+      ]
+    },
+    {
+      "name": "60+ лет: значимое, близкое и новое",
+      "items": [
+        {
+          "claim_ru": "Когда времени впереди меньше, обычные переживания дают столько же счастья, сколько необычные",
+          "quote": "they produce as much happiness as extraordinary experiences when individuals have limited time remaining.",
+          "quote_ru": "они приносят столько же счастья, сколько необычные переживания, когда у людей остается ограниченное время.",
+          "source": "Happiness from Ordinary and Extraordinary Experiences, Journal of Consumer Research 41(1)",
+          "authors": "Amit Bhattacharjee, Cassie Mogilner",
+          "year": 2014,
+          "url": "https://ideas.repec.org/a/oup/jconrs/doi10.1086-674724.html",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Пожилые лучше управляют эмоциями и реже испытывают негатив — в разных культурах",
+          "quote": "older adults report better control of their emotions and fewer negative emotions than do younger adults.",
+          "quote_ru": "пожилые люди сообщают о лучшем контроле над эмоциями и меньшем количестве негативных эмоций, чем молодые.",
+          "source": "Wikipedia: Socioemotional selectivity theory",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Socioemotional_selectivity_theory",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Пожилые сознательно сужают круг общения до тех, кто дает эмоциональную отдачу",
+          "quote": "older adults systematically hone their social networks so that available social partners satisfy their emotional needs.",
+          "quote_ru": "пожилые люди систематически отбирают свое окружение так, чтобы доступные партнеры по общению удовлетворяли их эмоциональные потребности.",
+          "source": "Wikipedia: Socioemotional selectivity theory",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Socioemotional_selectivity_theory",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        },
+        {
+          "claim_ru": "Для 60–90 лет полезно именно незнакомое и трудное: зона комфорта не развивает",
+          "quote": "it is important to get out and do something unfamiliar and mentally challenging",
+          "quote_ru": "важно выйти из дома и заняться чем-то незнакомым и умственно сложным",
+          "source": "UT Dallas News Center (The Synapse Project, Psychological Science)",
+          "authors": "Denise C. Park",
+          "year": 2013,
+          "url": "https://news.utdallas.edu/health-medicine/mentally-challenging-activities-improve-memory-as",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Трепет перед миром создает «малое я» — здоровое чувство масштаба",
+          "quote": "it promotes what we call ‘small self,’ a healthy sense of proportion between your own self and the bigger picture of the world around you",
+          "quote_ru": "он развивает то, что мы называем «малым я», — здоровое чувство соразмерности между собственным я и большой картиной окружающего мира",
+          "source": "Neuroscience News (пресс-релиз UCSF), исследование Awe walks, Emotion",
+          "authors": "Virginia E. Sturm",
+          "year": 2020,
+          "url": "https://neurosciencenews.com/awe-walk-emotional-wellbeing-17063/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "Эриксон позже признал: забота о следующих поколениях важна и в старости",
+          "quote": "After having experienced old age himself, Erikson believed that generativity maintains a more important role in later life than he initially had thought.",
+          "quote_ru": "Пережив старость сам, Эриксон считал, что генеративность играет более важную роль в поздней жизни, чем он думал изначально.",
+          "source": "Wikipedia: Generativity",
+          "authors": "Wikipedia contributors; Erik Erikson",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Generativity",
+          "type": "review",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        }
+      ]
+    },
+    {
+      "name": "Голоса людей: новое дело, которое перевернуло жизнь",
+      "items": [
+        {
+          "claim_ru": "Брайони Харрис в 65 лет потратила пенсию на обучение психотерапии; в 69 стала психотерапевтом, в 74 у нее успешная практика в Норвегии",
+          "quote": "I just knew it was the right time, and I felt equipped to do it.",
+          "quote_ru": "Я просто знала, что время пришло, и чувствовала себя готовой.",
+          "source": "The Guardian, рубрика A new start after 60: «I became a psychotherapist at 69 and found my calling»",
+          "authors": "Paula Cocozza",
+          "year": 2022,
+          "url": "https://www.theguardian.com/lifeandstyle/2022/mar/07/a-new-start-after-60-i-became-a-psychotherapist-at-69-and-found-my-calling",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Харрис о решении сменить профессию в 65 лет",
+          "quote": "It was the very best thing I ever did for myself.",
+          "quote_ru": "Это было самое лучшее, что я когда-либо сделала для себя.",
+          "source": "The Guardian, рубрика A new start after 60: «I became a psychotherapist at 69 and found my calling»",
+          "authors": "Paula Cocozza",
+          "year": 2022,
+          "url": "https://www.theguardian.com/lifeandstyle/2022/mar/07/a-new-start-after-60-i-became-a-psychotherapist-at-69-and-found-my-calling",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Эдит Эгер (1927 г. р.) пережила Освенцим и получила степень PhD по клинической психологии в 1978 году, примерно в 50 лет",
+          "quote": "It wasn't until decades later, when I was finishing my training as a clinical psychologist, that I realized the cost of my double life.",
+          "quote_ru": "Только спустя десятилетия, когда я заканчивала обучение на клинического психолога, я осознала цену своей двойной жизни.",
+          "source": "Ynetnews: 'Mengele's little dancer' empowers others to break free from mental prisons; даты — Wikipedia: Edith Eger (CC BY-SA 4.0)",
+          "authors": "Noga Shavit-Raz",
+          "year": 2023,
+          "url": "https://www.ynetnews.com/health_science/article/s107lq600n",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Харрисон Форд получил лицензию пилота в 54 года: «Полеты полностью заново изобрели мою жизнь»",
+          "quote": "Flying absolutely reinvented my life.",
+          "quote_ru": "Полеты полностью заново изобрели мою жизнь.",
+          "source": "AARP: How to Age Like Harrison Ford",
+          "authors": "Eric Spitznagel",
+          "year": 2025,
+          "url": "https://www.aarp.org/entertainment/celebrities/harrison-ford-wise-words/",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Форд о причине: хотел проверить, может ли освоить новое и технически сложное",
+          "quote": "I wanted to see whether I could learn something new, especially something really challenging on a technical level that requires hands-on skills.",
+          "quote_ru": "Я хотел проверить, смогу ли я научиться чему-то новому, особенно чему-то по-настоящему сложному технически, что требует навыков рук.",
+          "source": "AARP: How to Age Like Harrison Ford",
+          "authors": "Eric Spitznagel",
+          "year": 2025,
+          "url": "https://www.aarp.org/entertainment/celebrities/harrison-ford-wise-words/",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Алан Расбриджер, главный редактор The Guardian (1953 г. р.), в зрелом возрасте выучил Балладу Шопена №1, занимаясь по 20 минут в день",
+          "quote": "doing something amazingly challenging in your personal life like climbing the Matterhorn or running a marathon, that's the most ambitious thing I've ever tried.",
+          "quote_ru": "если говорить о чем-то невероятно сложном в личной жизни, вроде восхождения на Маттерхорн или марафона, это самое амбициозное, что я когда-либо пробовал.",
+          "source": "The Arts Desk: 10 Questions for Amateur Musician Alan Rusbridger",
+          "authors": "Jasper Rees",
+          "year": 2013,
+          "url": "https://www.theartsdesk.com/node/62790",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Расбриджер: музыка дала равновесие в очень напряженной жизни",
+          "quote": "there was an equilibrium of putting music in that balance of a very stressful life with lots of stressful things going on",
+          "quote_ru": "было равновесие от того, что музыка входила в баланс очень напряженной жизни, где происходило много стрессового",
+          "source": "The Arts Desk: 10 Questions for Amateur Musician Alan Rusbridger",
+          "authors": "Jasper Rees",
+          "year": 2013,
+          "url": "https://www.theartsdesk.com/node/62790",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Психолог Гэри Маркус в 38 лет начал учиться играть на гитаре и написал об этом книгу Guitar Zero",
+          "quote": "But you don't have to give up hope if you want to continue learning",
+          "quote_ru": "Но не нужно терять надежду, если вы хотите продолжать учиться",
+          "source": "Scientific American: Can A Middle-Aged Neophyte Make It to Carnegie Hall?",
+          "authors": "Gary Stix (интервью с Gary Marcus)",
+          "year": 2012,
+          "url": "https://www.scientificamerican.com/article/can-middle-aged-neophyte-make-carnegie-hall/",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Маргарет Норрис впервые села в лодку в 42 года, в 50 стала инструктором RYA по парусу, в 55 — старшим инструктором",
+          "quote": "Finding sailing has made me the person I am today.",
+          "quote_ru": "Парус сделал меня тем человеком, которым я являюсь сегодня.",
+          "source": "RYA (Royal Yachting Association): It's never too late",
+          "authors": "RYA",
+          "year": null,
+          "url": "https://www.rya.org.uk/stories/its-never-too-late/",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Норрис о парусе и возрасте",
+          "quote": "extraordinary things happen to ordinary people when they discover sailing. It gives people so much confidence.",
+          "quote_ru": "с обычными людьми происходят необычные вещи, когда они открывают для себя парус. Он дает людям столько уверенности.",
+          "source": "RYA (Royal Yachting Association): It's never too late",
+          "authors": "RYA",
+          "year": null,
+          "url": "https://www.rya.org.uk/stories/its-never-too-late/",
+          "type": "interview"
+        },
+        {
+          "claim_ru": "Вера Ван ушла из Vogue и Ralph Lauren в 40 лет и стала независимым дизайнером свадебных платьев",
+          "quote": "At 40, she resigned and became an independent bridal wear designer.",
+          "quote_ru": "В 40 лет она уволилась и стала независимым дизайнером свадебной одежды.",
+          "source": "Wikipedia: Vera Wang",
+          "authors": "Wikipedia contributors",
+          "year": 2026,
+          "url": "https://en.wikipedia.org/wiki/Vera_Wang",
+          "type": "guide",
+          "license": "CC BY-SA 4.0 (Wikipedia)"
+        }
+      ]
+    },
+    {
+      "name": "Как выбрать психолога или психотерапевта",
+      "items": [
+        {
+          "claim_ru": "Терапевтический альянс стабильно связан с результатом терапии: метаанализ 295 исследований, более 30 000 пациентов",
+          "quote": "The overall alliance–outcome association for face-to-face psychotherapy was r = .278",
+          "quote_ru": "Общая связь альянса и результата для очной психотерапии составила r = 0,278",
+          "source": "The Alliance in Adult Psychotherapy: A Meta-Analytic Synthesis, Psychotherapy 55(4)",
+          "authors": "Christoph Flückiger, A. C. Del Re, Bruce E. Wampold, Adam O. Horvath",
+          "year": 2018,
+          "url": "https://www.societyforpsychotherapy.org/wp-content/uploads/2018/10/Fluckiger-et-al-2018.pdf",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Связь альянса с результатом одинакова для разных методов, пациентов и стран",
+          "quote": "This relation remains consistent across assessor perspectives, alliance and outcome measures, treatment approaches, patient characteristics, and countries.",
+          "quote_ru": "Эта связь остается стабильной независимо от того, кто оценивает, от способов измерения альянса и результата, подходов к лечению, характеристик пациентов и стран.",
+          "source": "The Alliance in Adult Psychotherapy: A Meta-Analytic Synthesis, Psychotherapy 55(4)",
+          "authors": "Christoph Flückiger, A. C. Del Re, Bruce E. Wampold, Adam O. Horvath",
+          "year": 2018,
+          "url": "https://www.societyforpsychotherapy.org/wp-content/uploads/2018/10/Fluckiger-et-al-2018.pdf",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Тест альянса после первых встреч: три утверждения из опросников альянса",
+          "quote": "Items such as “I believe my therapist is genuinely concerned for my welfare,” “We agree on what is important for me to work on,”",
+          "quote_ru": "Утверждения вроде «Я верю, что мой терапевт искренне заботится о моем благополучии», «Мы согласны в том, над чем мне важно работать»",
+          "source": "The Alliance in Adult Psychotherapy: A Meta-Analytic Synthesis, Psychotherapy 55(4)",
+          "authors": "Christoph Flückiger, A. C. Del Re, Bruce E. Wampold, Adam O. Horvath",
+          "year": 2018,
+          "url": "https://www.societyforpsychotherapy.org/wp-content/uploads/2018/10/Fluckiger-et-al-2018.pdf",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Целевая группа APA: отношения в терапии вносят существенный и устойчивый вклад в результат",
+          "quote": "The psychotherapy relationship makes substantial and consistent contributions to outcome",
+          "quote_ru": "Психотерапевтические отношения вносят существенный и устойчивый вклад в результат",
+          "source": "Psychotherapy Relationships That Work III, Psychotherapy 55(4)",
+          "authors": "John C. Norcross, Michael J. Lambert",
+          "year": 2018,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30335448/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Альянс, эмпатия и ожидания надежно связаны с результатом",
+          "quote": "Factors, such as the working alliance, empathy, expectations, psychoeducation about the disorder, and other so-called “common factors” are robustly related to outcome.",
+          "quote_ru": "Такие факторы, как рабочий альянс, эмпатия, ожидания, психообразование о расстройстве и другие так называемые «общие факторы», надежно связаны с результатом.",
+          "source": "Society for the Advancement of Psychotherapy (APA, отделение 29): What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Терапевты различаются по эффективности, и это устойчиво",
+          "quote": "Some therapists consistently achieve better outcomes with their clients than do other therapists, in clinical trials and in practice.",
+          "quote_ru": "Некоторые терапевты стабильно добиваются лучших результатов со своими клиентами, чем другие, и в клинических испытаниях, и на практике.",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Кто из терапевтов лучше: умеют строить альянс, переживают о своей эффективности и целенаправленно развиваются",
+          "quote": "those therapists who can form an alliance with a range of patients, have a sophisticated set of facilitative interpersonal skills, worry about their effectiveness",
+          "quote_ru": "те терапевты, которые могут выстроить альянс с разными пациентами, обладают развитыми навыками межличностного взаимодействия, переживают о своей эффективности",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Стаж сам по себе не гарантирует результата",
+          "quote": "Therapists do not get better with time or experience.",
+          "quote_ru": "Терапевты не становятся лучше со временем или опытом.",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Метод: преимущество КПТ небольшое; по качеству жизни и благополучию разницы между методами нет",
+          "quote": "There appears to be no differences among treatments for quality of life, well-being, and general psychological functioning.",
+          "quote_ru": "По-видимому, нет различий между методами лечения по качеству жизни, благополучию и общему психологическому функционированию.",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Хороший знак: терапевт регулярно измеряет прогресс клиента — это снижает число неудач",
+          "quote": "Providing information about client progress to the therapist and the client improves the quality of psychotherapy",
+          "quote_ru": "Предоставление информации о прогрессе клиента терапевту и клиенту повышает качество психотерапии",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Гибкость важнее строгого следования протоколу",
+          "quote": "It is those therapists who flexibly provide a treatment who achieve the best outcomes.",
+          "quote_ru": "Лучших результатов добиваются именно те терапевты, которые применяют лечение гибко.",
+          "source": "Society for the Advancement of Psychotherapy: What Do We Know about Psychotherapy?",
+          "authors": "Bruce E. Wampold, Zac E. Imel",
+          "year": 2015,
+          "url": "https://societyforpsychotherapy.org/what-do-we-know-about-psychotherapy-and-what-is-there-left-to-debate/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Цена: современные исследования не находят значимой связи размера оплаты с результатом терапии",
+          "quote": "modern research has shown that fee paying does not necessarily have a significant relationship to outcomes and usage of psychotherapy services.",
+          "quote_ru": "современные исследования показали, что оплата не обязательно имеет значимую связь с результатами и использованием психотерапевтических услуг.",
+          "source": "Society for the Advancement of Psychotherapy: Paying for Psychotherapy: Reframing an Antiquated Perspective",
+          "authors": "Caity Roe и соавторы",
+          "year": 2023,
+          "url": "https://societyforpsychotherapy.org/paying-for-psychotherapy-reframing-an-antiquated-perspective/",
+          "type": "review"
+        },
+        {
+          "claim_ru": "Цена: в рандомизированном эксперименте не платившие клиенты сообщили о меньшем дистрессе, чем платившие",
+          "quote": "Following the therapy session, Ss who had not paid a fee reported reliably lower levels of symptom and problem distress.",
+          "quote_ru": "После сессии испытуемые, которые не платили, сообщали о достоверно более низком уровне симптомов и дистресса.",
+          "source": "Does paying a fee for psychotherapy alter the effectiveness of treatment? Journal of Consulting and Clinical Psychology 52(2)",
+          "authors": "Carol Yoken, Jeffrey S. Berman",
+          "year": 1984,
+          "url": "https://digitalcommons.memphis.edu/facpubs/7762/",
+          "type": "study"
+        },
+        {
+          "claim_ru": "APA: вопросы для первого разговора — лицензия и стаж",
+          "quote": "Are you a licensed psychologist? How many years have you been practicing psychology?",
+          "quote_ru": "Вы лицензированный психолог? Сколько лет вы практикуете психологию?",
+          "source": "American Psychological Association: How to choose a psychologist",
+          "authors": "American Psychological Association",
+          "year": 2026,
+          "url": "https://www.apa.org/topics/psychotherapy/choose-therapist",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "APA: вопрос о доказательности метода для вашей проблемы",
+          "quote": "What kinds of treatments do you use, and have they been proven effective for dealing with my kind of problem or issue?",
+          "quote_ru": "Какие методы вы используете и доказана ли их эффективность для проблемы вроде моей?",
+          "source": "American Psychological Association: How to choose a psychologist",
+          "authors": "American Psychological Association",
+          "year": 2026,
+          "url": "https://www.apa.org/topics/psychotherapy/choose-therapist",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "APA: хороший контакт с психологом критически важен",
+          "quote": "A good rapport with your psychologist is critical.",
+          "quote_ru": "Хороший контакт с вашим психологом критически важен.",
+          "source": "American Psychological Association: How to choose a psychologist",
+          "authors": "American Psychological Association",
+          "year": 2026,
+          "url": "https://www.apa.org/topics/psychotherapy/choose-therapist",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "APA (США): психолог должен иметь лицензию штата, где практикует",
+          "quote": "Psychologists must be licensed by the state or jurisdiction in which they practice.",
+          "quote_ru": "Психологи должны иметь лицензию штата или юрисдикции, в которой они практикуют.",
+          "source": "American Psychological Association: How to choose a psychologist",
+          "authors": "American Psychological Association",
+          "year": 2026,
+          "url": "https://www.apa.org/topics/psychotherapy/choose-therapist",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "BACP (Великобритания): называть себя психотерапевтом может любой, поэтому проверяйте квалификацию",
+          "quote": "Anyone can call themselves a counsellor or psychotherapist and set up in private practice",
+          "quote_ru": "Любой может назвать себя консультантом или психотерапевтом и открыть частную практику",
+          "source": "BACP: How to find a therapist",
+          "authors": "British Association for Counselling and Psychotherapy",
+          "year": 2026,
+          "url": "https://www.bacp.co.uk/about-therapy/how-to-find-a-therapist/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "BACP: чтобы проверить конкретного терапевта, ищите его в реестре BACP",
+          "quote": "If you want to find out whether a specific therapist is a registered BACP member, check the BACP Register.",
+          "quote_ru": "Если вы хотите узнать, является ли конкретный терапевт зарегистрированным членом BACP, проверьте реестр BACP.",
+          "source": "BACP: How to find a therapist",
+          "authors": "British Association for Counselling and Psychotherapy",
+          "year": 2026,
+          "url": "https://www.bacp.co.uk/about-therapy/how-to-find-a-therapist/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "BACP: аккредитованный член — минимум три года практики под супервизией",
+          "quote": "a counsellor must have had training that meets our specific requirements and completed at least three years of supervised clinical practice.",
+          "quote_ru": "консультант должен пройти обучение, отвечающее нашим особым требованиям, и не менее трех лет клинической практики под супервизией.",
+          "source": "BACP: How to find a therapist",
+          "authors": "British Association for Counselling and Psychotherapy",
+          "year": 2026,
+          "url": "https://www.bacp.co.uk/about-therapy/how-to-find-a-therapist/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "BACP: если контакта с терапевтом нет, это нормально — можно обсудить или сменить специалиста",
+          "quote": "Not every therapist is going to be your cup of tea. And that's OK.",
+          "quote_ru": "Не каждый терапевт придется вам по душе. И это нормально.",
+          "source": "BACP: Therapists answer the things you've always wanted to ask",
+          "authors": "British Association for Counselling and Psychotherapy",
+          "year": 2026,
+          "url": "https://www.bacp.co.uk/about-therapy/therapists-answer-the-things-youve-always-wanted-to-ask/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "BACP: границы конфиденциальности терапевт должен объяснить на первой встрече",
+          "quote": "Your therapist should explain confidentiality clearly before or during your first session, including any limits to confidentiality.",
+          "quote_ru": "Ваш терапевт должен ясно объяснить конфиденциальность до или во время первой сессии, включая любые ее ограничения.",
+          "source": "BACP: Therapists answer the things you've always wanted to ask",
+          "authors": "British Association for Counselling and Psychotherapy",
+          "year": 2026,
+          "url": "https://www.bacp.co.uk/about-therapy/therapists-answer-the-things-youve-always-wanted-to-ask/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "NHS: перед выбором частного консультанта проверьте, что он в реестре, аккредитованном PSA",
+          "quote": "Before choosing a private counsellor, make sure they're on a register accredited by the Professional Standards Authority",
+          "quote_ru": "Прежде чем выбрать частного консультанта, убедитесь, что он состоит в реестре, аккредитованном Управлением профессиональных стандартов",
+          "source": "NHS: Counselling",
+          "authors": "NHS",
+          "year": 2025,
+          "url": "https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/counselling/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "NHS: типичный курс — сессии по 50–60 минут, в NHS обычно от 8 до 16 сессий",
+          "quote": "Counselling sessions usually last 50 to 60 minutes. If you get counselling on the NHS, you'll usually have between 8 and 16 sessions.",
+          "quote_ru": "Сессии консультирования обычно длятся 50–60 минут. Если вы получаете консультирование в NHS, обычно у вас будет от 8 до 16 сессий.",
+          "source": "NHS: Counselling",
+          "authors": "NHS",
+          "year": 2025,
+          "url": "https://www.nhs.uk/mental-health/talking-therapies-medicine-treatments/talking-therapies-and-counselling/counselling/",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "PSA: проверяйте регистрацию практика, если платите за частные услуги",
+          "quote": "you should check a practitioner's registration when you: Pay for private services from a health or care practitioner",
+          "quote_ru": "вам следует проверить регистрацию практика, когда вы: платите за частные услуги специалиста в сфере здоровья или ухода",
+          "source": "Professional Standards Authority: Check a Practitioner",
+          "authors": "Professional Standards Authority",
+          "year": 2026,
+          "url": "https://www.professionalstandards.org.uk/check-practitioners",
+          "type": "guide"
+        },
+        {
+          "claim_ru": "HCPC: в Великобритании практикующих психологов можно проверить в государственном реестре HCPC",
+          "quote": "We keep a Register of health and care professionals who meet our standards for their training, professional skills, behaviour and health.",
+          "quote_ru": "Мы ведем реестр специалистов здравоохранения и социальной помощи, которые соответствуют нашим стандартам обучения, профессиональных навыков, поведения и здоровья.",
+          "source": "HCPC: Check the Register (профессия Practitioner psychologist)",
+          "authors": "Health and Care Professions Council",
+          "year": 2026,
+          "url": "https://www.hcpc-uk.org/check-the-register/",
+          "type": "guide"
+        }
+      ]
+    }
+  ]
+}

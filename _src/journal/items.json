@@ -3210,7 +3210,22 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Ninna-ji_and_Ryoan-ji,_Kyoto_-_Ninnaji7751.jpg",
   "img_hero": true,
   "kind": "stay",
-  "vis": "temple"
+  "vis": "temple",
+  "facts": [
+   [
+    "Подготовка",
+    "от 2 месяцев: храм принимает одну группу за ночь, дату подтверждает сам"
+   ],
+   [
+    "Гости",
+    "до 4–5 человек"
+   ],
+   [
+    "Стоимость",
+    "около 1 млн иен за группу, по данным путеводителя Министерства туризма Японии"
+   ]
+  ],
+  "facts_src": "https://www.mlit.go.jp/tagengo-db/common/001563726.pdf"
  },
  {
   "id": "bellerby-globes",

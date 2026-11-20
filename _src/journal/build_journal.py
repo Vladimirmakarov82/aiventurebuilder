@@ -54,118 +54,68 @@ def live_line(i):
     return s
 
 
+
+def facts_html(i):
+    rows = [(k, e(v), '') for k, v in i.get('facts', [])]
+    if i.get('verified_on'):
+        ok = i.get('live') == 'active'
+        s = ('Актуально на ' if ok else 'Нужна перепроверка, проверено ') + dmy(i['verified_on'])
+        if i.get('last_seen'):
+            s += '. Последнее упоминание: ' + dmy(i['last_seen'])
+        rows.append(('Актуальность', e(s), 'ok' if ok else 'q'))
+    srcn = e(i.get('publication') or i.get('source_name') or host(i['source_url']))
+    rows.append(('Источник', '<a href="%s" target="_blank" rel="noopener">%s%s →</a>' % (e(i['source_url']), srcn, e(', ' + dmy(i['pub_date']) if i.get('pub_date') else '')), ''))
+    if i.get('facts_src'):
+        rows.append(('Цифры', '<a href="%s" target="_blank" rel="noopener">%s →</a>' % (e(i['facts_src']), e(host(i['facts_src']))), ''))
+    return '<dl class="facts">' + ''.join('<div><dt>%s</dt><dd class="%s">%s</dd></div>' % (k, c, v) for k, v, c in rows) + '</dl>'
+
+
 def article(i):
     tg = TG + urllib.parse.quote('Хочу такую историю из журнала Orbiq: ' + plain(i['title']))
-    obj = ('<a href="%s" target="_blank" rel="noopener">Сайт мастера</a>' % e(i['object_url'])) if i.get('object_url') else ''
-    return '''<template id="t-%(id)s">%(fig)s
-<div class="ov-body"><span class="kick">%(geo)s · %(cat)s</span><h2>%(title)s</h2><p class="dek">%(hook)s</p><p class="txt">%(text)s</p>
-<div class="make"><span class="kick">Orbiq может постараться устроить</span><p>%(make)s</p><a class="cta" href="%(tg)s" target="_blank" rel="noopener">Хочу такую историю <span>→</span></a></div>
-<a class="orig" href="%(src)s" target="_blank" rel="noopener"><span class="kick">%(srcn)s%(date)s</span><span class="ot">%(atitle)s</span><span class="or">Читать статью →</span></a><p class="live %(lcls)s">%(live)s</p><p class="src">%(obj)s</p></div></template>''' % dict(
-        id=e(i['id']), fig=('<figure class="ov-img"><img src="%s" alt="%s"><figcaption>%s</figcaption></figure>' % (e(i['img']), e(plain(i['title'])), e(i.get('img_credit', '')))) if i.get('img') else '<figure class="ov-img ov-noimg"><span>%s</span></figure>' % e(i.get('publication') or ''), geo=e(i['geo']), cat=e(i['cat']),
-        title=i['title'], hook=i['hook'], text=i['text'], make=i['make'], tg=e(tg), src=e(i['source_url']),
-        srcn=e(i.get('publication') or i.get('source_name') or host(i['source_url'])), obj=obj, date=e(' · ' + i['pub_date'] if i.get('pub_date') else ''), atitle=e(i.get('article_title') or plain(i['title'])), live=e(live_line(i)), lcls='q' if i.get('live')=='unclear' else '')
+    fig = ('<figure class="ov-img"><img src="%s" alt="%s"><figcaption>%s</figcaption></figure>' % (e(i['img']), e(plain(i['title'])), e(i.get('img_credit', '')))) if i.get('img') else '<figure class="ov-img ov-noimg"></figure>'
+    return ('<template id="t-%s">%s<div class="ov-body"><span class="kick">%s</span><h2>%s</h2><p class="dek">%s</p><p class="txt">%s</p>'
+            '%s<a class="cta" href="%s" target="_blank" rel="noopener">Хочу такую историю →</a>'
+            '<p class="end">Orbiq — истории, которые можно повторить</p></div></template>') % (
+        e(i['id']), fig, e(i['geo']), i['title'], i['hook'], i['text'], facts_html(i), e(tg))
 
 
-def tile(i, cls):
-    return '''<a class="t %(cls)s" href="#%(id)s" data-id="%(id)s" data-cat="%(cat)s" data-for="%(for)s" data-kids="%(kids)s" data-sa="%(sa)s" data-sm="%(sm)s" data-sf="%(sf)s">
-<span class="ti"><img src="%(img)s" alt="%(alt)s" loading="lazy"></span>
-<span class="tb"><span class="kick">%(pub)s%(geo)s</span><span class="th">%(title)s</span><span class="td">%(hook)s</span></span>
-</a>''' % dict(cls=cls, id=e(i['id']), cat=e(i['cat']), img=e(i['img']), alt=e(plain(i['title'])), geo=e(i['geo']),
-                title=i['title'], hook=i['hook'], pub=e(i['publication'] + ' · ' if i.get('publication') else ''), kids='1' if i.get('kids') else '0', sa=i.get('score_all') or 0, sm=i.get('score_m') or 0, sf=i.get('score_f') or 0, **{'for': e(' '.join(fors(i)))})
-
-
-adults = [i for i in items if not i.get('kids')]
-heroes = [i for i in adults if i.get('img_hero')]
-cover = heroes[0] if heroes else (adults[0] if adults else items[0])
-rest0 = [i for i in items if i is not cover and not i.get('kids')]
-kids_items = [i for i in items if i is not cover and i.get('kids')]
+def spread(i):
+    return ('<a class="sp" href="#%s"><img src="%s" alt="%s"%s><span class="sh"></span>'
+            '<span class="sb"><span class="kick">%s</span><span class="sh2">%s</span><span class="sd">%s</span><span class="sr">Читать историю →</span></span></a>') % (
+        e(i['id']), e(i['img']), e(plain(i['title'])), '' if i is feed[0] else ' loading="lazy"', e(i['geo']), i['title'], i['hook'])
 
 
 def country(i):
     return (i.get('geo') or '').split(',')[0].strip()
 
 
-def diversify(pool, last):
-    # жадная раскладка: следующая история — с самым высоким баллом среди тех,
-    # у кого другой тип и другая страна, чем у двух предыдущих; отели не чаще одного раза на три места
-    out, prev = [], list(last)
+def diversify(pool):
+    out, prev = [], []
     pool = sorted(pool, key=lambda i: -float(i.get('score_all') or 0))
     while pool:
-        def ok(i, strict):
-            k, c = i.get('kind'), country(i)
-            if any(k == p.get('kind') for p in prev[-2:]) and strict >= 1:
+        def ok(i):
+            if prev and i.get('archetype') and any(i.get('archetype') == p.get('archetype') for p in prev):
                 return False
-            if any(c == country(p) for p in prev[-2:]) and strict >= 2:
+            if any(i.get('kind') == p.get('kind') for p in prev[-2:]):
                 return False
-            if k == 'stay' and any(p.get('kind') == 'stay' for p in prev[-2:]) and strict >= 1:
+            if any(country(i) == country(p) for p in prev[-2:]):
                 return False
             if i.get('vis') and any(i.get('vis') == p.get('vis') for p in prev[-4:]):
                 return False
-            if prev and plain(i['title']).split()[0] == plain(prev[-1]['title']).split()[0]:
-                return False
             return True
-        pick = next((i for i in pool if ok(i, 2)), None) or next((i for i in pool if ok(i, 1)), None) or pool[0]
+        pick = next((i for i in pool if ok(i)), pool[0])
         out.append(pick); prev.append(pick); pool.remove(pick)
     return out
 
 
-rest = diversify(rest0, [cover]) + kids_items
-
-# ритм раскладки, как в журнале: широкая, три обычные, две половины, три обычные, высокая...
-PATTERN = ['wide', 'n', 'n', 'n', 'half', 'half', 'n', 'n', 'n', 'wide', 'n', 'n', 'n', 'half', 'half']
-tiles = [tile(i, PATTERN[k % len(PATTERN)] if not i.get('kids') else 'n') for k, i in enumerate(rest)]
-
-nav = '<button type="button" class="jf on" data-k="all">Все истории</button>' + ''.join(
-    '<button type="button" class="jf" data-k="cat" data-v="%s">%s</button>' % (e(c), e(c)) for c in CATS) + ''.join(
-    '<button type="button" class="jf%s" data-k="for" data-v="%s">%s</button>' % (' kd' if k == 'дети' else '', k, v) for k, v in FOR.items())
-
-cover_html = '''<section class="cover"><img src="%(img)s" alt="%(alt)s"><div class="cv-sh"></div>
-<div class="cv-top"><span class="mast">ORBIQ</span><span class="kick">Журнал · %(issue)s</span></div>
-<a class="cv-b" href="#%(id)s"><span class="kick">История номера · %(pub)s</span><span class="cv-h">%(title)s</span><span class="cv-d">%(hook)s</span><span class="cv-r">Читать историю →</span></a></section>''' % dict(
-    id=e(cover['id']), img=e(cover['img']), alt=e(plain(cover['title'])), issue=e(issue_h), geo=e(cover['geo']), pub=e(cover.get('publication') or cover['geo']), title=cover['title'], hook=cover['hook'])
-
-import glob
-
-
-def qitem(it, extra=''):
-    lic = (' · ' + e(it['license'])) if it.get('license') else ''
-    src = e(it.get('source') or host(it.get('url', '')))
-    meta = ' · '.join(x for x in [e(it.get('authors', '')), str(it.get('year') or it.get('date') or '')] if x)
-    return ('<div class="qi">%s<blockquote>%s</blockquote><p class="qo">%s</p>%s'
-            '<a class="qs" href="%s" target="_blank" rel="noopener">%s%s%s →</a></div>') % (
-        ('<span class="qh">%s</span>' % (it.get('claim_ru') or it.get('item'))) if (it.get('claim_ru') or it.get('item')) else '',
-        e(it.get('quote_ru', '')), e(it.get('quote', '')), extra, e(it.get('url', '')), src, (' · ' + e(meta)) if meta else '', lic)
-
-
-dossiers = []
-for f in sorted(glob.glob(os.path.join(ROOT, 'dossiers', '*.json'))):
-    d = json.load(open(f))
-    blocks = ''
-    for bl in d.get('blocks', []):
-        its = ''
-        for it in bl.get('items', []):
-            extra = ''
-            if it.get('now'):
-                extra += '<p class="now"><b>Сейчас:</b> %s%s</p>' % (e(it['now']), (' <a href="%s" target="_blank" rel="noopener">→</a>' % e(it['now_url'])) if it.get('now_url') else '')
-            if it.get('orbiq'):
-                extra += '<p class="orb">Orbiq может постараться: %s</p>' % e(it['orbiq'])
-            its += qitem(it, extra)
-        blocks += '<div class="db"><h3>%s</h3><div class="dq">%s</div></div>' % (e(bl['name']), its)
-    dossiers.append('<article class="dos" id="d-%s"><span class="kick">Досье</span><h2>%s</h2>%s</article>' % (e(d.get('slug', '')), e(d.get('person', '')), blocks))
-
-research = []
-for f in sorted(glob.glob(os.path.join(ROOT, 'research', '*.json'))):
-    d = json.load(open(f))
-    blocks = ''.join('<div class="db"><h3>%s</h3><div class="dq">%s</div></div>' % (e(bl['name']), ''.join(qitem(it) for it in bl.get('items', []))) for bl in d.get('blocks', []))
-    research.append('<article class="dos"><span class="kick">Исследование</span><h2>%s</h2>%s</article>' % (e(d.get('title', '')), blocks))
-
-noimg = diversify(noimg, [])
-more = ''.join('<a class="mi" href="#%s" data-sa="%s"><span class="kick">%s · %s</span><span class="mt">%s</span><span class="md">%s</span></a>' % (e(i['id']), i.get('score_all') or 0, e(i.get('publication') or ''), e(i['geo']), i['title'], i['hook']) for i in noimg)
+adults = [i for i in items if not i.get('kids')]
+heroes = [i for i in adults if i.get('img_hero')]
+cover = heroes[0] if heroes else adults[0]
+feed = [cover] + diversify([i for i in adults if i is not cover])
 page = open(os.path.join(ROOT, 'journal_template.html')).read()
-for k, v in dict(dossiers='\n'.join(dossiers) or '', research='\n'.join(research) or '', cover=cover_html, nav=nav, tiles='\n'.join(tiles), articles='\n'.join(article(i) for i in items + noimg), more=more, issue=e(issue)).items():
+for k, v in dict(spreads='\n'.join(spread(i) for i in feed), articles='\n'.join(article(i) for i in feed), issue=e(issue_h)).items():
     page = page.replace('@@%s@@' % k, v)
-
 out = os.path.join(SITE, SLUG)
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, 'index.html'), 'w').write(page)
-print('journal:', len(items), 'stories with photos ->', '/' + SLUG + '/')
+print('journal:', len(feed), 'spreads ->', '/' + SLUG + '/')

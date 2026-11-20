@@ -1,0 +1,94 @@
+{
+  "turrell-ta-khut-uruguay": null,
+  "truffle-dealer-cortesi": null,
+  "firsts-london-rare-books": {
+    "img_url": "https://www.firstslondon.com/imager/banners/178255/Firsts-26-DSC_1541_818c9247ef2be48c7964bca94a330cb4.jpg",
+    "page_url": "https://www.firstslondon.com/",
+    "credit": "Фото: Firsts London, официальный сайт",
+    "usage": "official_site",
+    "note": "1500x625, раскрытая иллюстрированная редкая книга на витрине ярмарки. Второй вариант — зал ярмарки с гостями: https://www.firstslondon.com/imager/banners/178257/Firsts-26-DSC_1751_818c9247ef2be48c7964bca94a330cb4.jpg (1500x625). Пресс-кита с фото нет."
+  },
+  "wellington-horse-country": {
+    "img_url": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
+    "page_url": "https://www.wellingtoninternational.com/",
+    "credit": "Фото: Wellington International, официальный сайт",
+    "usage": "official_site",
+    "note": "1920x1080, аэросъемка конного центра Wellington International (бывший PBIEC; pbiec.com из облака не открывается). В Media Center есть фотобанк в Dropbox, но это папка, а не прямой файл. Второй вариант — конкур у арены: https://www.wellingtoninternational.com/wp-content/uploads/2026/11/Nina-Mallevaey-Destine-To-Be-©-SPORTFOT-1890-MH102948-2048x1366.jpg (2048x1366, фото Sportfot)."
+  },
+  "four-charles-standing-guests": null,
+  "ps-private-terminal-lax": null,
+  "bahrain-pearl-diving": null,
+  "yohei-fukuda-tokyo-shoes": {
+    "img_url": "https://yoheifukuda.com/cdn/shop/files/2020.5.13_1800x.jpg?v=1613632877",
+    "page_url": "https://yoheifukuda.com/",
+    "credit": "Фото: Yohei Fukuda, официальный сайт",
+    "usage": "official_site",
+    "note": "1080x1440 (вертикаль, ширина меньше 1200 — больше размера на сайте нет), черные оксфорды на фоне колодок в мастерской. Второй вариант — коричневые броги: https://yoheifukuda.com/cdn/shop/files/2020.5.26_900x.jpg?v=1613636159 (900x1200)."
+  },
+  "aman-kyoto-forgotten-garden": {
+    "img_url": "https://www.aman.com/sites/default/files/2021-02/Aman-Kyoto_Homepage_1.jpg",
+    "page_url": "https://www.aman.com/resorts/aman-kyoto",
+    "credit": "Фото: Aman Kyoto, официальный сайт",
+    "usage": "official_site",
+    "note": "2000x1235, каменная лестница и павильон в лесном саду. Открытого пресс-раздела с фото у Aman нет."
+  },
+  "lee-bong-ju-bronzeware": {
+    "img_url": "https://www.napcheong.com/eng/images/main_img2.jpg",
+    "page_url": "https://www.napcheong.com/eng/index.asp",
+    "credit": "Фото: Napcheong Bronzeware (мастерская Ли Бон Джу), официальный сайт",
+    "usage": "official_site",
+    "note": "1903x471, узкий баннер: кованая бронзовая чаша крупным планом, слева мелкая английская подпись — при верстке нужна обрезка. Других крупных фото на сайте нет (остальные мелкие или с водяным знаком газеты). Слабый вариант."
+  },
+  "pemako-punakha-bhutan": {
+    "img_url": "https://www.pemakohotels.com/images/punakha/Gallery/punakha-home/night.jpg",
+    "page_url": "https://www.pemakohotels.com/punakha/",
+    "credit": "Фото: Pemako Punakha, официальный сайт",
+    "usage": "official_site",
+    "note": "3000x1813, деревянные корпуса отеля в долине вечером с огнями. Второй вариант — аэросъемка у реки: https://www.pemakohotels.com/images/punakha/Banner/pemako-punakha-home.jpg (2806x1403)."
+  },
+  "hajime-asaoka-tourbillon": {
+    "img_url": "https://kuronotokyo.com/cdn/shop/files/Hajime_7.jpg",
+    "page_url": "https://kuronotokyo.com/pages/media-library",
+    "credit": "Фото: Kurono Tokyo, пресс-материалы",
+    "usage": "press_kit",
+    "note": "3976x2652, Хадзимэ Асаока с лупой за станком, черно-белое. Взято из раздела Media Library бренда Kurono Tokyo."
+  },
+  "suyian-laikipia-black-leopard": {
+    "img_url": "https://www.andbeyond.com/wp-content/uploads/sites/5/Kenya-Suyian-Lodge-Aerial-View-1_Website-1920x1080-fill-gravityauto-Q_AutoBest.jpg",
+    "page_url": "https://www.andbeyond.com/our-lodges/africa/kenya/laikipia/andbeyond-suyian-lodge/",
+    "credit": "Фото: andBeyond Suyian Lodge, официальный сайт",
+    "usage": "official_site",
+    "note": "1920x1080, аэросъемка лоджа на закате над плато Лайкипия. У andBeyond есть медиатека library.andbeyond.com, но прямых файлов без входа там нет."
+  },
+  "japan-handmade-kyoto-heirs": null,
+  "farasha-farmhouse-marrakech": {
+    "img_url": "https://images.squarespace-cdn.com/content/v1/669a282a77eb6e5d37c9bf47/1725283656075-IO82F2S2B5DMJZIMZNG5/FARASHA_FARMHOUSE_0032.jpg?format=2500w",
+    "page_url": "https://farashafarmhouse.com/",
+    "credit": "Фото: Farasha Farmhouse, официальный сайт",
+    "usage": "official_site",
+    "note": "2500x3125 (вертикаль), шезлонг под зонтом у бассейна среди трав. Страница /press — список публикаций, не пресс-кит."
+  },
+  "cafe-de-lambre-ginza": {
+    "img_url": "https://cafedelambre.com/cdn/shop/files/about-us.png?v=1770050676&width=2000",
+    "page_url": "https://cafedelambre.com/",
+    "credit": "Фото: Café de l'Ambre, официальный сайт",
+    "usage": "official_site",
+    "note": "1824x1217, интерьер кафе: витражная лампа с вывеской Café de l'Ambre и старая кофемолка. Второй кадр с сайта (чашка) содержит наложенный логотип — не подходит."
+  },
+  "chichibu-ichiro-akuto": null,
+  "china-club-hong-kong": null,
+  "casa-wabi-buried-sculptures": {
+    "img_url": "https://casawabi.org/wp-content/uploads/2023/07/CASA_WABI_AGOSTO_2018_1936.jpg",
+    "page_url": "https://casawabi.org/en/",
+    "credit": "Фото: Casa Wabi, официальный сайт",
+    "usage": "official_site",
+    "note": "1400x934, павильон Casa Wabi (архитектор Тадао Андо) с водным каналом. Сам подземный сад скульптур на сайте не показан."
+  },
+  "il-micio-florence-shoemaker": {
+    "img_url": "https://ilmicio.com/cdn/shop/files/Il_Micio_Hidetaka_Fukaya_Florence_Bespoke_Shoes_Sole_Detail_1780x.jpg?v=1655674024",
+    "page_url": "https://ilmicio.com/",
+    "credit": "Фото: Il Micio, официальный сайт",
+    "usage": "official_site",
+    "note": "1780x1001, руки мастера за работой над подошвой. Второй вариант — колодки и инструменты в мастерской, широкий баннер: https://ilmicio.com/cdn/shop/files/Il_Micio_Florence_Bespoke_Shoes_Home_3000x.jpg?v=1644938503 (3000x1000)."
+  }
+}

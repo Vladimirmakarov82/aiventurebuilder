@@ -1,0 +1,156 @@
+[
+ {
+  "id": "memory-road-morocco",
+  "title": "Дорога, по которой пускают один раз",
+  "geo": "Марокко, от Агадира до Сахары",
+  "object_url": "https://www.thememoryroad.com",
+  "source_url": "https://airmail.news/issues/2026-11-7/a-trip-down-memory-road"
+ },
+ {
+  "id": "le-coual-louis-malle",
+  "title": "Семейный дом Луи Маля открыл двери",
+  "geo": "Франция, регион Ло",
+  "object_url": "",
+  "source_url": "https://airmail.news/issues/2024-11-30/home-is-where-the-art-is"
+ },
+ {
+  "id": "tanner-krolle-van-gogh-trunk",
+  "title": "Сундук, в котором Ван Гог едет в отпуск",
+  "geo": "Великобритания, Лондон",
+  "object_url": "https://tannerkrolle.com/pages/bespoke",
+  "source_url": "https://airmail.news/issues/2019-10-5/trunk-club"
+ },
+ {
+  "id": "lemisios-athens",
+  "title": "Туфли, ради которых летят в Афины",
+  "geo": "Греция, Афины",
+  "object_url": "https://lemisios.com",
+  "source_url": "https://airmail.news/issues/2026-7-11/lemisios"
+ },
+ {
+  "id": "sosian-horseback-safari",
+  "title": "Сафари в седле вместо джипа",
+  "geo": "Кения, плато Лайкипия",
+  "object_url": "https://sosian.com",
+  "source_url": "https://airmail.news/issues/2026-3-28/out-of-the-jeep-into-the-saddle"
+ },
+ {
+  "id": "nagatacho-ohka-tokyo",
+  "title": "Самый тайный ресторан Токио",
+  "geo": "Япония, Токио",
+  "object_url": "",
+  "source_url": "https://airmail.news/issues/2026-10-24/the-most-secret-restaurant-in-tokyo"
+ },
+ {
+  "id": "vahine-private-island",
+  "title": "Остров, где акул больше, чем гостей",
+  "geo": "Французская Полинезия, Таха'а",
+  "object_url": "https://www.vahineprivateisland.com",
+  "source_url": "https://airmail.news/issues/2026-11-14/the-anti-bora-bora"
+ },
+ {
+  "id": "deeppura-garh-rajasthan",
+  "title": "Дом последнего правителя Сикара",
+  "geo": "Индия, Раджастхан",
+  "object_url": "https://www.deeppuragarh.com",
+  "source_url": "https://airmail.news/issues/2020-2-1/rajasthan-reborn"
+ },
+ {
+  "id": "bob-kramer-knives",
+  "title": "Один нож — месяц работы",
+  "geo": "США, Беллингем",
+  "object_url": "https://www.kramerknives.com",
+  "source_url": "https://airmail.news/issues/2026-7-4/the-artisan-set"
+ },
+ {
+  "id": "asaba-ryokan",
+  "title": "Рекан, где остановилось время",
+  "geo": "Япония, Сюдзендзи",
+  "object_url": "https://www.asaba-ryokan.com/en/",
+  "source_url": "https://airmail.news/issues/2025-3-1/where-time-stands-still"
+ },
+ {
+  "id": "lago-strobel-patagonia",
+  "title": "Юрское озеро в Патагонии",
+  "geo": "Аргентина, Патагония",
+  "object_url": "https://www.estancialagunaverde.com",
+  "source_url": "https://airmail.news/issues/2022-5-28/patagonia-on-a-grand-scale"
+ },
+ {
+  "id": "bellerby-globes",
+  "title": "Лондонская мастерская глобусов ручной росписи",
+  "geo": "Великобритания, Лондон",
+  "object_url": "https://bellerbyandco.com",
+  "source_url": "https://www.bloomberg.com/news/articles/2015-08-27/inside-bellerby-and-co-a-look-at-the-painstaking-intricate-art-of-globemaking"
+ },
+ {
+  "id": "nayara-treehouses-panama",
+  "title": "Дом на дереве из древесины Панамского канала",
+  "geo": "Панама, Бокас-дель-Торо",
+  "object_url": "https://nayarabocasdeltoro.com",
+  "source_url": "https://robbreport.com/travel/resorts/nayara-bocas-del-toro-treehouses-1234806614/"
+ },
+ {
+  "id": "bhagat-golconda-necklace",
+  "title": "Ювелир из Мумбаи, продающий вещи до витрины",
+  "geo": "Индия, Мумбаи",
+  "object_url": "",
+  "source_url": "https://robbreport.com/style/jewelry/21-ultimate-gifts-pure-perfection-235975/"
+ },
+ {
+  "id": "hanley-painted-moynat",
+  "title": "Художник, который расписывает сундуки Moynat вручную",
+  "geo": "США, Нью-Йорк",
+  "object_url": "https://www.moynat.com",
+  "source_url": "https://robbreport.com.my/style/fashion/hand-painted-luxury-bag-customisations/"
+ },
+ {
+  "id": "kubili-house-kruger",
+  "title": "Вилла у парка Крюгера с ночевкой под звездами",
+  "geo": "ЮАР, Торнибуш",
+  "object_url": "https://kubilihouse.com",
+  "source_url": "https://robbreport.com/travel/resorts/kubili-house-south-africa-2870025/"
+ },
+ {
+  "id": "casa-silencio-oaxaca",
+  "title": "Отель в долине Тишины с собственной мескальней",
+  "geo": "Мексика, Оахака",
+  "object_url": "https://casasilencio.com",
+  "source_url": "https://robbreport.com/travel/hotels/casa-silencio-mexico-mezcal-hotel-1234637492/"
+ },
+ {
+  "id": "specht-espresso-melbourne",
+  "title": "Мельбурнский мастер кофемашин в духе Porsche 911",
+  "geo": "Австралия, Мельбурн",
+  "object_url": "https://spechtdesign.com",
+  "source_url": "https://robbreport.com/food-drink/dining/coffee-obsessed-men-culture-1236010082/"
+ },
+ {
+  "id": "pedrazzini-wooden-boats",
+  "title": "Цюрихская верфь с секретным числом слоев лака",
+  "geo": "Швейцария, Цюрихское озеро",
+  "object_url": "https://www.pedrazzini.ch",
+  "source_url": "https://robbreport.com/motors/marine/two-boatyards-on-lake-zurich-crafting-unique-builds-for-over-a-century-1234668646/"
+ },
+ {
+  "id": "hosoo-nishijin-kyoto",
+  "title": "Киотский дом, который ткет для Dior и Chanel",
+  "geo": "Япония, Киото",
+  "object_url": "https://hosoo-kyoto.com",
+  "source_url": "https://www.forbes.com/sites/yjeanmundelsalle/2022/04/19/a-japanese-family-business-is-reinventing-traditional-hand-spun-fabrics-for-high-end-interior-design-and-fashion/"
+ },
+ {
+  "id": "prince-dimitri-salon",
+  "title": "Ювелирный салон принца на 57-й улице",
+  "geo": "США, Нью-Йорк",
+  "object_url": "https://princedimitri.com",
+  "source_url": "https://robbreport.com/style/fashion/style-royal-treasure-237225/"
+ },
+ {
+  "id": "makihara-watchmaker",
+  "title": "Бывший повар, который собирает часы дома",
+  "geo": "Япония, Сайтама",
+  "object_url": "",
+  "source_url": "https://robbreport.com/style/watch-collector/4-independent-japanese-watchmakers-that-are-shaking-up-the-horological-world-1234758597/"
+ }
+]

@@ -5422,7 +5422,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Tatler"
+  "source_name": "Tatler",
+  "img": "https://www.firstslondon.com/imager/banners/178255/Firsts-26-DSC_1541_818c9247ef2be48c7964bca94a330cb4.jpg",
+  "img_credit": "Фото: Firsts London, официальный сайт",
+  "img_page": "https://www.firstslondon.com/"
  },
  {
   "id": "wellington-horse-country",
@@ -5519,7 +5522,10 @@
    }
   ],
   "kids": true,
-  "source_name": "Tatler"
+  "source_name": "Tatler",
+  "img": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
+  "img_credit": "Фото: Wellington International, официальный сайт",
+  "img_page": "https://www.wellingtoninternational.com/"
  },
  {
   "id": "four-charles-standing-guests",
@@ -5550,13 +5556,13 @@
   "verified_on": "2026-11-20",
   "last_seen": "2026-06",
   "last_seen_url": "https://joinpearl.co/blogs/what-a-visit-to-4-charles-prime-rib-actually-involves",
-  "live": "active",
-  "live_note": "Ресторан работает, бронь на Resy открывается в 9 утра за 21 день",
+  "live": "unclear",
+  "live_note": "Ресторан работает, бронь на Resy открывается в 9 утра за 21 день Сайт не работает на 20.11.2026.",
   "issue": "2026-11b",
   "status": "new",
-  "score_all": 5.56,
-  "score_m": 6.15,
-  "score_f": 4.9,
+  "score_all": 4.06,
+  "score_m": 4.65,
+  "score_f": 3.4,
   "panel": [
    {
     "p": 1,
@@ -5742,13 +5748,13 @@
   "verified_on": "2026-11-20",
   "last_seen": "2026-11",
   "last_seen_url": "https://reserveps.com/lax/",
-  "live": "active",
-  "live_note": "PS в LAX работает круглосуточно, трансфер к самолету на BMW сохранился; число сюит и цены на сайте не указаны",
+  "live": "unclear",
+  "live_note": "PS в LAX работает круглосуточно, трансфер к самолету на BMW сохранился; число сюит и цены на сайте не указаны Сайт не работает на 20.11.2026.",
   "issue": "2026-11b",
   "status": "new",
-  "score_all": 6.7,
-  "score_m": 6.75,
-  "score_f": 6.62,
+  "score_all": 5.2,
+  "score_m": 5.25,
+  "score_f": 5.12,
   "panel": [
    {
     "p": 1,
@@ -5998,7 +6004,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Robb Report Singapore"
+  "source_name": "Robb Report Singapore",
+  "img": "https://yoheifukuda.com/cdn/shop/files/2020.5.13_1800x.jpg?v=1613632877",
+  "img_credit": "Фото: Yohei Fukuda, официальный сайт",
+  "img_page": "https://yoheifukuda.com/"
  },
  {
   "id": "aman-kyoto-forgotten-garden",
@@ -6093,7 +6102,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Tatler Asia"
+  "source_name": "Tatler Asia",
+  "img": "https://www.aman.com/sites/default/files/2021-02/Aman-Kyoto_Homepage_1.jpg",
+  "img_credit": "Фото: Aman Kyoto, официальный сайт",
+  "img_page": "https://www.aman.com/resorts/aman-kyoto"
  },
  {
   "id": "lee-bong-ju-bronzeware",
@@ -6188,7 +6200,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Monocle"
+  "source_name": "Monocle",
+  "img": "https://www.napcheong.com/eng/images/main_img2.jpg",
+  "img_credit": "Фото: Napcheong Bronzeware (мастерская Ли Бон Джу), официальный сайт",
+  "img_page": "https://www.napcheong.com/eng/index.asp"
  },
  {
   "id": "pemako-punakha-bhutan",
@@ -6283,7 +6298,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Tatler Asia"
+  "source_name": "Tatler Asia",
+  "img": "https://www.pemakohotels.com/images/punakha/Gallery/punakha-home/night.jpg",
+  "img_credit": "Фото: Pemako Punakha, официальный сайт",
+  "img_page": "https://www.pemakohotels.com/punakha/"
  },
  {
   "id": "hajime-asaoka-tourbillon",
@@ -6378,7 +6396,10 @@
    }
   ],
   "kids": false,
-  "source_name": "The Peak Singapore"
+  "source_name": "The Peak Singapore",
+  "img": "https://kuronotokyo.com/cdn/shop/files/Hajime_7.jpg",
+  "img_credit": "Фото: Kurono Tokyo, пресс-материалы",
+  "img_page": "https://kuronotokyo.com/pages/media-library"
  },
  {
   "id": "suyian-laikipia-black-leopard",
@@ -6473,7 +6494,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Wallpaper*"
+  "source_name": "Wallpaper*",
+  "img": "https://www.andbeyond.com/wp-content/uploads/sites/5/Kenya-Suyian-Lodge-Aerial-View-1_Website-1920x1080-fill-gravityauto-Q_AutoBest.jpg",
+  "img_credit": "Фото: andBeyond Suyian Lodge, официальный сайт",
+  "img_page": "https://www.andbeyond.com/our-lodges/africa/kenya/laikipia/andbeyond-suyian-lodge/"
  },
  {
   "id": "japan-handmade-kyoto-heirs",
@@ -6663,7 +6687,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Monocle"
+  "source_name": "Monocle",
+  "img": "https://images.squarespace-cdn.com/content/v1/669a282a77eb6e5d37c9bf47/1725283656075-IO82F2S2B5DMJZIMZNG5/FARASHA_FARMHOUSE_0032.jpg?format=2500w",
+  "img_credit": "Фото: Farasha Farmhouse, официальный сайт",
+  "img_page": "https://farashafarmhouse.com/"
  },
  {
   "id": "cafe-de-lambre-ginza",
@@ -6758,7 +6785,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Monocle"
+  "source_name": "Monocle",
+  "img": "https://cafedelambre.com/cdn/shop/files/about-us.png?v=1770050676&width=2000",
+  "img_credit": "Фото: Café de l'Ambre, официальный сайт",
+  "img_page": "https://cafedelambre.com/"
  },
  {
   "id": "da-ping-huo-private-kitchen",
@@ -7138,7 +7168,10 @@
    }
   ],
   "kids": false,
-  "source_name": "Wallpaper*"
+  "source_name": "Wallpaper*",
+  "img": "https://casawabi.org/wp-content/uploads/2023/07/CASA_WABI_AGOSTO_2018_1936.jpg",
+  "img_credit": "Фото: Casa Wabi, официальный сайт",
+  "img_page": "https://casawabi.org/en/"
  },
  {
   "id": "il-micio-florence-shoemaker",
@@ -7233,6 +7266,9 @@
    }
   ],
   "kids": false,
-  "source_name": "Monocle"
+  "source_name": "Monocle",
+  "img": "https://ilmicio.com/cdn/shop/files/Il_Micio_Hidetaka_Fukaya_Florence_Bespoke_Shoes_Sole_Detail_1780x.jpg?v=1655674024",
+  "img_credit": "Фото: Il Micio, официальный сайт",
+  "img_page": "https://ilmicio.com/"
  }
 ]

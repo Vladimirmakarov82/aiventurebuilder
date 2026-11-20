@@ -1625,7 +1625,7 @@
   "live": "active",
   "live_note": "Сайт с бронированием работает; маршрут 1 200 км (около 750 миль), пять остановок, свежая статья Air Mail 11.2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.55,
   "score_m": 6.88,
   "score_f": 6.16,
@@ -1690,7 +1690,8 @@
   "kids": false,
   "source_name": "Air Mail",
   "kind": "experience",
-  "vis": "memory-road-morocco"
+  "vis": "memory-road-morocco",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "taprobane-island",
@@ -1724,7 +1725,7 @@
   "live": "active",
   "live_note": "Страница аренды у Vladi Private Islands работает, остров сдается целиком; виллу также продают Sri Lanka in Style",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.37,
   "score_m": 6.34,
   "score_f": 6.34,
@@ -1793,7 +1794,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Weligama_Island.jpg",
   "img_hero": true,
   "kind": "stay",
-  "vis": "island"
+  "vis": "island",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "le-coual-louis-malle",
@@ -1825,7 +1827,7 @@
   "live": "unclear",
   "live_note": "Кроме статьи Air Mail 2024 года следов аренды Ле-Куаль не нашел, сайта дома нет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.12,
   "score_m": 3.76,
   "score_f": 4.38,
@@ -1890,7 +1892,8 @@
   "kids": false,
   "source_name": "Air Mail",
   "kind": "stay",
-  "vis": "le-coual-louis-malle"
+  "vis": "le-coual-louis-malle",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "il-delfino-isola-bella",
@@ -1922,7 +1925,7 @@
   "live": "unclear",
   "live_note": "Есть только публикации 2022 года (Air Mail, Linkiesta); сайта Il Delfino и свежих отзывов не нашел",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 3.68,
   "score_m": 3.26,
   "score_f": 4.06,
@@ -1990,7 +1993,8 @@
   "img_credit": "Фото: The Library of Congress from Washington, DC, Unite, No restrictions, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Isola_Bella,_Lake_Maggiore,_Italy_LOC_4711360535.jpg",
   "kind": "stay",
-  "vis": "il-delfino-isola-bella"
+  "vis": "il-delfino-isola-bella",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "tanner-krolle-van-gogh-trunk",
@@ -2022,7 +2026,7 @@
   "live": "active",
   "live_note": "Сайт и страница bespoke работают; марка готовит магазин на Маунт-стрит в Мейфэре",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.75,
   "score_m": 6.94,
   "score_f": 6.46,
@@ -2091,7 +2095,8 @@
   "img_rejected": "https://www.tannerkrolle.com/cdn/shop/files/1_efc37f3b-ecff-4c22-81ec-6187db1f2c49.jpg?v=1723797482&width=2400",
   "img_reject_why": "спина человека, нет объекта",
   "kind": "master",
-  "vis": "tanner-krolle-van-gogh-trunk"
+  "vis": "tanner-krolle-van-gogh-trunk",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "jacks-camp-botswana",
@@ -2125,7 +2130,7 @@
   "live": "active",
   "live_note": "Страница лагеря обновлена в 10.2026, есть тарифы Natural Selection на 2026 год; девять шатров совпадает",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.41,
   "score_m": 6.77,
   "score_f": 5.95,
@@ -2193,7 +2198,8 @@
   "img_credit": "Фото: Eric Kilby, CC BY-SA 4.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Wildebeest_Crossing_the_Salt_Pans.jpg",
   "kind": "stay",
-  "vis": "safari"
+  "vis": "safari",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "moonhole-bequia",
@@ -2227,7 +2233,7 @@
   "live": "active",
   "live_note": "Moonhole Company сдает несколько домов Джонстона, новые тарифы с 1 января 2026; число «три дома» на сайте не подтверждено",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.36,
   "score_m": 6.15,
   "score_f": 6.51,
@@ -2295,7 +2301,8 @@
   "img_credit": "Фото: David Broad, CC BY 3.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Moonhole_art_deco_community,_Bequia,_part_of_St._Vincent_and_the_Grenadines_-_panoramio.jpg",
   "kind": "stay",
-  "vis": "island"
+  "vis": "island",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "lemisios-athens",
@@ -2327,7 +2334,7 @@
   "live": "active",
   "live_note": "Магазин в Колонаки с 1912 года работает, на сайте идет распродажа Black Friday; пошив по меркам после визита в магазин",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.54,
   "score_m": 2.81,
   "score_f": 6.29,
@@ -2395,7 +2402,8 @@
   "img_credit": "Фото: Lemisios, официальный сайт",
   "img_page": "https://lemisios.com/about-us/",
   "kind": "master",
-  "vis": "shoes"
+  "vis": "shoes",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "sosian-horseback-safari",
@@ -2427,7 +2435,7 @@
   "live": "active",
   "live_note": "Сайт Sosian работает, лодж и конные сафари продают сафари-операторы; статья Air Mail 03.2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.75,
   "score_m": 6.33,
   "score_f": 5.1,
@@ -2496,7 +2504,8 @@
   "img_page": "https://sosian.com/riding-at-sosian/",
   "img_hero": true,
   "kind": "experience",
-  "vis": "safari"
+  "vis": "safari",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "nagatacho-ohka-tokyo",
@@ -2528,7 +2537,7 @@
   "live": "active",
   "live_note": "Официального сайта нет; ресторан описан в Air Mail 10.2026 и Tatler Asia, бронь только через консьержей",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.94,
   "score_m": 7.66,
   "score_f": 6.12,
@@ -2593,7 +2602,8 @@
   "kids": false,
   "source_name": "Air Mail",
   "kind": "food",
-  "vis": "nagatacho-ohka-tokyo"
+  "vis": "nagatacho-ohka-tokyo",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "vahine-private-island",
@@ -2625,7 +2635,7 @@
   "live": "active",
   "live_note": "Официальный сайт с бронированием работает; девять бунгало и королевская вилла совпадают",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.8,
   "score_m": 5.75,
   "score_f": 5.75,
@@ -2694,7 +2704,8 @@
   "img_page": "https://www.vahineprivateisland.com/",
   "img_hero": true,
   "kind": "stay",
-  "vis": "island"
+  "vis": "island",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "deeppura-garh-rajasthan",
@@ -2726,7 +2737,7 @@
   "live": "unclear",
   "live_note": "В 2022 году поместье выставили на продажу; сайт deeppuragarh.in показывает только заставку, свежих отзывов не нашел",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.41,
   "score_m": 4.18,
   "score_f": 4.59,
@@ -2794,7 +2805,8 @@
   "img_credit": "Фото: Deeppura Garh, официальный сайт",
   "img_page": "https://deeppuragarh.in/home",
   "kind": "stay",
-  "vis": "palace"
+  "vis": "palace",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "bob-kramer-knives",
@@ -2826,7 +2838,7 @@
   "live": "active",
   "live_note": "Сайт работает: магазин, аукционы ножей, членство; статья Air Mail 07.2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.42,
   "score_m": 5.65,
   "score_f": 3.1,
@@ -2894,7 +2906,8 @@
   "img_credit": "Фото: Kramer Knives, официальный сайт",
   "img_page": "https://kramerknives.com/",
   "kind": "master",
-  "vis": "bob-kramer-knives"
+  "vis": "bob-kramer-knives",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "asaba-ryokan",
@@ -2928,7 +2941,7 @@
   "live": "active",
   "live_note": "Сайт с бронированием работает, рекан есть в гиде Michelin",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.17,
   "score_m": 4.95,
   "score_f": 5.39,
@@ -2997,7 +3010,8 @@
   "img_page": "https://www.asaba-ryokan.com/en/",
   "img_hero": true,
   "kind": "stay",
-  "vis": "asaba-ryokan"
+  "vis": "asaba-ryokan",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "lago-strobel-patagonia",
@@ -3029,7 +3043,7 @@
   "live": "active",
   "live_note": "Сайт Estancia Laguna Verde работает, у агентов открыта запись на сезон 2025–2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.9,
   "score_m": 6.43,
   "score_f": 3.29,
@@ -3094,7 +3108,8 @@
   "kids": false,
   "source_name": "Air Mail",
   "kind": "stay",
-  "vis": "lago-strobel-patagonia"
+  "vis": "lago-strobel-patagonia",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "ninnaji-temple-night",
@@ -3227,7 +3242,7 @@
   "live": "active",
   "live_note": "Мастерская работает, на сайте гид по кастомизации 2025–2026, участвует в Homo Faber 2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.06,
   "score_m": 6.11,
   "score_f": 6.0,
@@ -3292,7 +3307,8 @@
   "kids": false,
   "source_name": "Bloomberg Pursuits",
   "kind": "master",
-  "vis": "bellerby-globes"
+  "vis": "bellerby-globes",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "nayara-treehouses-panama",
@@ -3324,7 +3340,7 @@
   "live": "active",
   "live_note": "Сайт курорта работает, дома на деревьях в списке Caribbean Journal 07.2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.69,
   "score_m": 6.68,
   "score_f": 6.68,
@@ -3393,7 +3409,8 @@
   "img_page": "https://nayarabocasdeltoro.com/",
   "img_hero": true,
   "kind": "stay",
-  "vis": "nayara-treehouses-panama"
+  "vis": "nayara-treehouses-panama",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "bhagat-golconda-necklace",
@@ -3425,7 +3442,7 @@
   "live": "active",
   "live_note": "В 10.2025 Бхагат открыл салон по записи в Мейфэре, делает около 50 вещей в год; сайт virenbhagat.com пустой",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.79,
   "score_m": 4.83,
   "score_f": 6.74,
@@ -3490,7 +3507,8 @@
   "kids": false,
   "source_name": "Robb Report",
   "kind": "master",
-  "vis": "bhagat-golconda-necklace"
+  "vis": "bhagat-golconda-necklace",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "hanley-painted-moynat",
@@ -3522,7 +3540,7 @@
   "live": "unclear",
   "live_note": "Последние следы Хэнли в Moynat 2023–2025 годов; сервис персонализации Moynat работает, но имени Хэнли на сайте марки нет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 2.8,
   "score_m": 1.83,
   "score_f": 3.75,
@@ -3590,7 +3608,8 @@
   "img_credit": "Фото: Moynat, официальный сайт",
   "img_page": "https://www.moynat.com/blogs/personalization/personalization",
   "kind": "master",
-  "vis": "hanley-painted-moynat"
+  "vis": "hanley-painted-moynat",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "kubili-house-kruger",
@@ -3622,7 +3641,7 @@
   "live": "active",
   "live_note": "Сайт виллы в заповеднике Торнибуш работает, дом сдается целиком",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.84,
   "score_m": 5.47,
   "score_f": 6.16,
@@ -3691,7 +3710,8 @@
   "img_page": "https://kubilihouse.com/",
   "img_hero": true,
   "kind": "stay",
-  "vis": "safari"
+  "vis": "safari",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "casa-silencio-oaxaca",
@@ -3723,7 +3743,7 @@
   "live": "active",
   "live_note": "Отель есть в гиде Michelin, сайт casasilencio.com работает",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.95,
   "score_m": 6.59,
   "score_f": 5.22,
@@ -3791,7 +3811,8 @@
   "img_credit": "Фото: Casa Silencio, официальный сайт",
   "img_page": "https://www.casasilencio.com/",
   "kind": "stay",
-  "vis": "casa-silencio-oaxaca"
+  "vis": "casa-silencio-oaxaca",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "specht-espresso-melbourne",
@@ -3823,7 +3844,7 @@
   "live": "active",
   "live_note": "Официальный сайт работает, принимает заказы на индивидуальные машины (Commission a Specht)",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.34,
   "score_m": 6.53,
   "score_f": 4.12,
@@ -3891,7 +3912,8 @@
   "img_credit": "Фото: Specht Design, официальный сайт",
   "img_page": "https://spechtdesign.com/collections/specht-espresso-machines",
   "kind": "master",
-  "vis": "specht-espresso-melbourne"
+  "vis": "specht-espresso-melbourne",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "fisher-private-maze",
@@ -3923,7 +3945,7 @@
   "live": "active",
   "live_note": "Адрес adrianfisherdesign.com не открывается (ошибка сертификата); рабочий сайт бюро mazemaker.com, частные заказы принимают",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.35,
   "score_m": 6.2,
   "score_f": 6.54,
@@ -3991,7 +4013,8 @@
   "img_credit": "Фото: Simon Q from United Kingdom, CC BY 2.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Blenheim_Palace_Maze_(6092866405).jpg",
   "kind": "object",
-  "vis": "fisher-private-maze"
+  "vis": "fisher-private-maze",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "pedrazzini-wooden-boats",
@@ -4023,7 +4046,7 @@
   "live": "active",
   "live_note": "Верфь работает: около 30 сотрудников и около восьми катеров в год по Skippers 01.2026 (в статье до шести); сайт pedrazzini.ch при проверке не открылся",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.46,
   "score_m": 6.76,
   "score_f": 4.03,
@@ -4088,7 +4111,8 @@
   "kids": false,
   "source_name": "Robb Report",
   "kind": "master",
-  "vis": "pedrazzini-wooden-boats"
+  "vis": "pedrazzini-wooden-boats",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "hosoo-nishijin-kyoto",
@@ -4120,7 +4144,7 @@
   "live": "active",
   "live_note": "Галерея HOSOO в Киото работает, в 11.2026 открыта новая выставка; дом основан в 1688 году, сейчас ему около 338 лет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.68,
   "score_m": 4.95,
   "score_f": 6.39,
@@ -4189,7 +4213,8 @@
   "img_rejected": "https://www.hosoo-kyoto.com/img/top/bnr_raster-gradient.jpg",
   "img_reject_why": "абстрактная текстура",
   "kind": "master",
-  "vis": "hosoo-nishijin-kyoto"
+  "vis": "hosoo-nishijin-kyoto",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "arion-press-books",
@@ -4221,7 +4246,7 @@
   "live": "active",
   "live_note": "Издательство работает, есть магазин и новости; адрес arionpress.org не открылся, рабочий сайт arionpress.com",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.56,
   "score_m": 5.91,
   "score_f": 5.21,
@@ -4289,7 +4314,8 @@
   "img_credit": "Фото: Willi Heidelbach, CC BY 2.5, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Metal_movable_type.jpg",
   "kind": "master",
-  "vis": "workshop"
+  "vis": "workshop",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "prince-dimitri-salon",
@@ -4321,7 +4347,7 @@
   "live": "unclear",
   "live_note": "Сайт работает, заявки через форму; салон на 57-й улице и свежие новости 2025–2026 не подтверждены",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.01,
   "score_m": 3.12,
   "score_f": 4.88,
@@ -4390,7 +4416,8 @@
   "img_rejected": "https://princedimitri.com/wp-content/uploads/2018/06/Prince-Dimitri-window.jpg",
   "img_reject_why": "портрет, не глянец",
   "kind": "closed",
-  "vis": "prince-dimitri-salon"
+  "vis": "prince-dimitri-salon",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "makihara-watchmaker",
@@ -4422,7 +4449,7 @@
   "live": "active",
   "live_note": "Интервью Monochrome 03.2026: мастер работает, кандидат AHCI и финалист LV Watch Prize",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.6,
   "score_m": 7.29,
   "score_f": 3.89,
@@ -4487,7 +4514,8 @@
   "kids": false,
   "source_name": "Robb Report",
   "kind": "master",
-  "vis": "makihara-watchmaker"
+  "vis": "makihara-watchmaker",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "private-railcar-amtrak",
@@ -4522,7 +4550,7 @@
   "live": "active",
   "live_note": "Amtrak обновил условия для частных вагонов в 08.2026, AAPRCO ведет список вагонов для чартера; The Glass Slipper в этом списке не нашел",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 8.03,
   "score_m": 8.43,
   "score_f": 7.61,
@@ -4591,7 +4619,8 @@
   "img_rejected": "/img/journal/private-railcar-amtrak.webp",
   "img_reject_why": "промзона, поезда, бетон",
   "kind": "closed",
-  "vis": "private-railcar-amtrak"
+  "vis": "private-railcar-amtrak",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "maharaja-rolls-royce-udaipur",
@@ -4626,7 +4655,7 @@
   "live": "active",
   "live_note": "Музей машин махараджи Удайпура открыт, второй Oberoi Concours прошел в Udaivilas 20-22 февраля 2026",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.02,
   "score_m": 7.21,
   "score_f": 4.78,
@@ -4694,7 +4723,8 @@
   "img_credit": "Фото: Jakub Hałun, CC BY-SA 4.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Rolls_Royce_20-25,_Vintage_Collection_of_Classic_Cars_Museum,_Udaipur,_20191208_0959_7514.jpg",
   "kind": "object",
-  "vis": "palace"
+  "vis": "palace",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "turrell-ta-khut-uruguay",
@@ -4726,7 +4756,7 @@
   "live": "active",
   "live_note": "Posada Ayana работает сезонно с ноября по март, Ta Khut на месте; число номеров в источниках расходится (Forbes 2026: 14 номеров и 2 виллы, Michelin: 8), официальный сайт закрыт для бота",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 7.14,
   "score_m": 6.8,
   "score_f": 7.45,
@@ -4791,7 +4821,8 @@
   "kids": false,
   "source_name": "Vogue",
   "kind": "stay",
-  "vis": "turrell-ta-khut-uruguay"
+  "vis": "turrell-ta-khut-uruguay",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "kisawa-benguerra-mozambique",
@@ -4826,7 +4857,7 @@
   "live": "active",
   "live_note": "Отель работает, от 5500 евро за ночь все включено, обсерватория BCSS и электрические Mini Moke на месте, тарифы 2027 уже опубликованы",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.53,
   "score_m": 6.55,
   "score_f": 6.47,
@@ -4895,7 +4926,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Benguerra_Island_Mozambique_1.jpg",
   "img_hero": true,
   "kind": "stay",
-  "vis": "island"
+  "vis": "island",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "jaipur-city-palace-gudliya-suite",
@@ -4930,7 +4962,7 @@
   "live": "active",
   "live_note": "Сюита Гудлия открыта для брони на Airbnb, цена только после выбора дат; royaljaipur.in переадресует на citypalace.org",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.88,
   "score_m": 6.56,
   "score_f": 7.15,
@@ -4999,7 +5031,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Chandra_Mahal,_City_Palace,_Jaipur,_20191218_1000_9060.jpg",
   "img_hero": true,
   "kind": "stay",
-  "vis": "palace"
+  "vis": "palace",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "bonsai-kimura-apprentice",
@@ -5033,7 +5066,7 @@
   "live": "active",
   "live_note": "Сайт Bonsai Mirai работает, онлайн-обучение Mirai Live; визит в сад только по запросу через info@bonsaimirai.com, открытых дней на сайте нет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.35,
   "score_m": 5.74,
   "score_f": 5.03,
@@ -5101,7 +5134,8 @@
   "img_credit": "Фото: Noahfgodard, CC BY-SA 4.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:California_Juniper_by_Masahiko_Kimura.jpg",
   "kind": "master",
-  "vis": "bonsai-kimura-apprentice"
+  "vis": "bonsai-kimura-apprentice",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "jeong-kwan-temple-kitchen",
@@ -5136,7 +5170,7 @@
   "live": "active",
   "live_note": "Чон Кван в Пэгянса, в июне 2026 Shinsegae провел у нее закрытый темплстей для VIP; templestay действует",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.72,
   "score_m": 6.53,
   "score_f": 6.94,
@@ -5205,7 +5239,8 @@
   "img_page": "https://commons.wikimedia.org/wiki/File:Baekyangsa_2.JPG",
   "img_hero": true,
   "kind": "food",
-  "vis": "temple"
+  "vis": "temple",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "cercle-music-at-wonders",
@@ -5239,7 +5274,7 @@
   "live": "active",
   "live_note": "Поездки Cercle теперь продаются под брендом Cercle Moment (moment.cercle.io), от 6500 евро на человека",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.24,
   "score_m": 5.71,
   "score_f": 4.81,
@@ -5307,7 +5342,8 @@
   "img_credit": "Фото: Leo-setä, CC BY 2.0, Wikimedia Commons",
   "img_page": "https://commons.wikimedia.org/wiki/File:Verbier,_Switzerland,_in_2011.jpg",
   "kind": "experience",
-  "vis": "cercle-music-at-wonders"
+  "vis": "cercle-music-at-wonders",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "gaisho-tokyo",
@@ -5342,7 +5378,7 @@
   "live": "active",
   "live_note": "Интернет-магазин Restir работает, флагман по адресу Akasaka 9-6-17 рядом с Роппонги; свежих новостей о самом гайсе нет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.5,
   "score_m": 5.61,
   "score_f": 7.38,
@@ -5411,7 +5447,8 @@
   "img_rejected": "/img/journal/gaisho-tokyo.webp",
   "img_reject_why": "фасад универмага",
   "kind": "closed",
-  "vis": "gaisho-tokyo"
+  "vis": "gaisho-tokyo",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "truffle-dealer-cortesi",
@@ -5446,7 +5483,7 @@
   "live": "unclear",
   "live_note": "Сайт cortesi.uk работает (Meera Cortesi, London Truffle Queen), но трюфельных выездов на сайте нет, свежих следов после статьи не найдено",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.94,
   "score_m": 5.39,
   "score_f": 4.38,
@@ -5511,7 +5548,8 @@
   "kids": false,
   "source_name": "Tatler",
   "kind": "food",
-  "vis": "truffle-dealer-cortesi"
+  "vis": "truffle-dealer-cortesi",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "firsts-london-rare-books",
@@ -5546,7 +5584,7 @@
   "live": "active",
   "live_note": "Шестая ярмарка прошла в галерее Саатчи 14-17 мая 2026, сайт работает",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.7,
   "score_m": 6.56,
   "score_f": 4.81,
@@ -5614,7 +5652,8 @@
   "img_credit": "Фото: Firsts London, официальный сайт",
   "img_page": "https://www.firstslondon.com/",
   "kind": "object",
-  "vis": "workshop"
+  "vis": "workshop",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "wellington-horse-country",
@@ -5648,7 +5687,7 @@
   "live": "active",
   "live_note": "WEF 2026 шел 13 недель, 10 тысяч зрителей подтверждено; площадка теперь называется Wellington International, pbiec.com отвечает 403",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.42,
   "score_m": 5.09,
   "score_f": 5.71,
@@ -5718,7 +5757,8 @@
   "img_reject_why": "аэрофото пригорода",
   "img": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
   "kind": "closed",
-  "vis": "wellington-horse-country"
+  "vis": "wellington-horse-country",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "four-charles-standing-guests",
@@ -5752,7 +5792,7 @@
   "live": "unclear",
   "live_note": "Ресторан работает, бронь на Resy открывается в 9 утра за 21 день Сайт не работает на 20.11.2026.",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.06,
   "score_m": 4.65,
   "score_f": 3.4,
@@ -5817,7 +5857,8 @@
   "kids": false,
   "source_name": "The New Yorker",
   "kind": "closed",
-  "vis": "four-charles-standing-guests"
+  "vis": "four-charles-standing-guests",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "gouzer-auction-daredevil",
@@ -5851,7 +5892,7 @@
   "live": "closed",
   "live_note": "Гузер давно ушел из Christie's и ведет свою площадку Fair Warning, ближайший лот 17 декабря 2026; сюжет про Christie's устарел",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.64,
   "score_m": 6.1,
   "score_f": 5.08,
@@ -5915,7 +5956,8 @@
   ],
   "kids": false,
   "source_name": "The New Yorker",
-  "vis": "gouzer-auction-daredevil"
+  "vis": "gouzer-auction-daredevil",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "ps-private-terminal-lax",
@@ -5947,7 +5989,7 @@
   "live": "unclear",
   "live_note": "PS в LAX работает круглосуточно, трансфер к самолету на BMW сохранился; число сюит и цены на сайте не указаны Сайт не работает на 20.11.2026.",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.2,
   "score_m": 5.25,
   "score_f": 5.12,
@@ -6012,7 +6054,8 @@
   "kids": false,
   "source_name": "Vanity Fair",
   "kind": "closed",
-  "vis": "ps-private-terminal-lax"
+  "vis": "ps-private-terminal-lax",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "bahrain-pearl-diving",
@@ -6044,7 +6087,7 @@
   "live": "active",
   "live_note": "Выходы работают круглый год через BTEA и Masar Group, до 60 устриц подтверждено; формат обновлен: мелководье с 16 лет, глубже только с сертификатом дайвера",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 7.08,
   "score_m": 7.34,
   "score_f": 6.75,
@@ -6109,7 +6152,8 @@
   "kids": false,
   "source_name": "The Peak Singapore",
   "kind": "experience",
-  "vis": "bahrain-pearl-diving"
+  "vis": "bahrain-pearl-diving",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "yohei-fukuda-tokyo-shoes",
@@ -6141,7 +6185,7 @@
   "live": "active",
   "live_note": "Мастерская в Токио и магазин yoheifukuda.com работают, трансшоу в The Armoury Гонконг; цены и очередь на сайте не указаны",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.87,
   "score_m": 6.19,
   "score_f": 3.47,
@@ -6209,7 +6253,8 @@
   "img_credit": "Фото: Yohei Fukuda, официальный сайт",
   "img_page": "https://yoheifukuda.com/",
   "kind": "master",
-  "vis": "shoes"
+  "vis": "shoes",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "aman-kyoto-forgotten-garden",
@@ -6241,7 +6286,7 @@
   "live": "active",
   "live_note": "Отель открыт для брони на сайте Aman",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.82,
   "score_m": 4.55,
   "score_f": 5.1,
@@ -6309,7 +6354,8 @@
   "img_credit": "Фото: Aman Kyoto, официальный сайт",
   "img_page": "https://www.aman.com/resorts/aman-kyoto",
   "kind": "stay",
-  "vis": "temple"
+  "vis": "temple",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "lee-bong-ju-bronzeware",
@@ -6341,7 +6387,7 @@
   "live": "active",
   "live_note": "Ли Бон Чжу теперь почетный носитель звания, ремесло ведут сын Ли Хен Гын и внук Ли Джи Хо; работы показаны на выставке в Кенджу в ноябре 2025, своего сайта мастерской нет",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.83,
   "score_m": 5.53,
   "score_f": 6.12,
@@ -6410,7 +6456,8 @@
   "img_rejected": "https://www.napcheong.com/eng/images/main_img2.jpg",
   "img_reject_why": "файл не открывается (406)",
   "kind": "master",
-  "vis": "lee-bong-ju-bronzeware"
+  "vis": "lee-bong-ju-bronzeware",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "pemako-punakha-bhutan",
@@ -6442,7 +6489,7 @@
   "live": "active",
   "live_note": "Отель работает, страница Pemako Punakha открыта для брони",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.26,
   "score_m": 6.41,
   "score_f": 6.1,
@@ -6510,7 +6557,8 @@
   "img_credit": "Фото: Pemako Punakha, официальный сайт",
   "img_page": "https://www.pemakohotels.com/punakha/",
   "kind": "stay",
-  "vis": "pemako-punakha-bhutan"
+  "vis": "pemako-punakha-bhutan",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "hajime-asaoka-tourbillon",
@@ -6542,7 +6590,7 @@
   "live": "active",
   "live_note": "Асаока активен, в ноябре 2026 вышел Kurono Tokyo Structure Chronograph S1; личный сайт мастера через прокси не открылся",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.12,
   "score_m": 6.81,
   "score_f": 3.41,
@@ -6610,7 +6658,8 @@
   "img_credit": "Фото: Kurono Tokyo, пресс-материалы",
   "img_page": "https://kuronotokyo.com/pages/media-library",
   "kind": "master",
-  "vis": "hajime-asaoka-tourbillon"
+  "vis": "hajime-asaoka-tourbillon",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "suyian-laikipia-black-leopard",
@@ -6642,7 +6691,7 @@
   "live": "active",
   "live_note": "Лодж открыт с июля 2025, 14 сьютов и 44 тысячи акров подтверждено",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.85,
   "score_m": 6.08,
   "score_f": 5.59,
@@ -6710,7 +6759,8 @@
   "img_credit": "Фото: andBeyond Suyian Lodge, официальный сайт",
   "img_page": "https://www.andbeyond.com/our-lodges/africa/kenya/laikipia/andbeyond-suyian-lodge/",
   "kind": "stay",
-  "vis": "safari"
+  "vis": "safari",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "japan-handmade-kyoto-heirs",
@@ -6742,7 +6792,7 @@
   "live": "unclear",
   "live_note": "Домен japan-handmade.com занят игорным спамом, коллектив, похоже, не работает; Hosoo и Kaikado работают отдельно; месяц следа неизвестен",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.06,
   "score_m": 3.85,
   "score_f": 4.33,
@@ -6807,7 +6857,8 @@
   "kids": false,
   "source_name": "Monocle",
   "kind": "master",
-  "vis": "japan-handmade-kyoto-heirs"
+  "vis": "japan-handmade-kyoto-heirs",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "farasha-farmhouse-marrakech",
@@ -6839,7 +6890,7 @@
   "live": "active",
   "live_note": "Отель и ферма работают, сайт farashafarmhouse.com открывается",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.91,
   "score_m": 5.16,
   "score_f": 6.6,
@@ -6907,7 +6958,8 @@
   "img_credit": "Фото: Farasha Farmhouse, официальный сайт",
   "img_page": "https://farashafarmhouse.com/",
   "kind": "stay",
-  "vis": "farasha-farmhouse-marrakech"
+  "vis": "farasha-farmhouse-marrakech",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "cafe-de-lambre-ginza",
@@ -6939,7 +6991,7 @@
   "live": "active",
   "live_note": "Кофейня работает, в ноябре 2026 в продаже выдержанные зерна урожая 2016; основатель Сэкигути умер в 2018 году",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.49,
   "score_m": 7.25,
   "score_f": 5.66,
@@ -7007,7 +7059,8 @@
   "img_credit": "Фото: Café de l'Ambre, официальный сайт",
   "img_page": "https://cafedelambre.com/",
   "kind": "food",
-  "vis": "cafe-de-lambre-ginza"
+  "vis": "cafe-de-lambre-ginza",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "da-ping-huo-private-kitchen",
@@ -7039,7 +7092,7 @@
   "live": "closed",
   "live_note": "Time Out помечает Da Ping Huo как закрытый, последний адрес Graham Street, а не Холливуд-роуд",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.34,
   "score_m": 6.26,
   "score_f": 6.34,
@@ -7103,7 +7156,8 @@
   ],
   "kids": false,
   "source_name": "Tatler Asia (Hong Kong Tatler)",
-  "vis": "da-ping-huo-private-kitchen"
+  "vis": "da-ping-huo-private-kitchen",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "chichibu-ichiro-akuto",
@@ -7135,7 +7189,7 @@
   "live": "active",
   "live_note": "Винокурня работает, но закрыта для публики, частные визиты только для торговых партнеров через Venture Whisky; сайт через прокси не открылся",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.02,
   "score_m": 6.31,
   "score_f": 3.64,
@@ -7200,7 +7254,8 @@
   "kids": false,
   "source_name": "Monocle",
   "kind": "master",
-  "vis": "chichibu-ichiro-akuto"
+  "vis": "chichibu-ichiro-akuto",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "china-club-hong-kong",
@@ -7232,7 +7287,7 @@
   "live": "active",
   "live_note": "Клуб работает только для членов, пн-сб 7:30-24:00, 13-14 этажи Old Bank of China Building",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 5.56,
   "score_m": 5.83,
   "score_f": 5.22,
@@ -7297,7 +7352,8 @@
   "kids": false,
   "source_name": "Tatler Asia",
   "kind": "closed",
-  "vis": "china-club-hong-kong"
+  "vis": "china-club-hong-kong",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "casa-wabi-buried-sculptures",
@@ -7329,7 +7385,7 @@
   "live": "active",
   "live_note": "Фонд принимает гостей только на экскурсии по записи, ежедневно, взнос 600 песо",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 6.56,
   "score_m": 6.16,
   "score_f": 6.93,
@@ -7397,7 +7453,8 @@
   "img_credit": "Фото: Casa Wabi, официальный сайт",
   "img_page": "https://casawabi.org/en/",
   "kind": "culture",
-  "vis": "casa-wabi-buried-sculptures"
+  "vis": "casa-wabi-buried-sculptures",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  },
  {
   "id": "il-micio-florence-shoemaker",
@@ -7429,7 +7486,7 @@
   "live": "active",
   "live_note": "Сайт мастерской Il Micio di Hidetaka Fukaya работает, заказ обуви во Флоренции",
   "issue": "2026-11b",
-  "status": "new",
+  "status": "rejected",
   "score_all": 4.32,
   "score_m": 5.21,
   "score_f": 3.38,
@@ -7497,6 +7554,7 @@
   "img_credit": "Фото: Il Micio, официальный сайт",
   "img_page": "https://ilmicio.com/",
   "kind": "master",
-  "vis": "shoes"
+  "vis": "shoes",
+  "reject_reason": "2026-11-20: сброс выпуска, остается только храм"
  }
 ]

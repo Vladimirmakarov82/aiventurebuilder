@@ -56,7 +56,7 @@ def live_line(i):
 
 
 def facts_html(i):
-    rows = [(k, e(v), '') for k, v in i.get('facts', [])]
+    rows = ([('Повторить', e(i['repeat'][0].upper() + i['repeat'][1:]), '')] if i.get('repeat') else []) + [(k, e(v), '') for k, v in i.get('facts', [])]
     if i.get('verified_on'):
         ok = i.get('live') == 'active'
         s = ('Актуально на ' if ok else 'Нужна перепроверка, проверено ') + dmy(i['verified_on'])
@@ -108,7 +108,7 @@ def diversify(pool):
     return out
 
 
-adults = [i for i in items if not i.get('kids')]
+adults = [i for i in items if not i.get('kids') and i.get('repeat')]  # тест повторения: без поля repeat история в журнал не попадает
 heroes = [i for i in adults if i.get('img_hero')]
 cover = heroes[0] if heroes else adults[0]
 feed = [cover] + diversify([i for i in adults if i is not cover])

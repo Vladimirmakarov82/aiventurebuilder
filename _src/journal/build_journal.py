@@ -90,20 +90,22 @@ def country(i):
 
 
 def diversify(pool):
+    # штрафы: пейзаж, животное и здание не ближе 9 мест, прочие сюжеты кадра не ближе 4; тип и страна отличаются от двух соседей
     out, prev = [], []
     pool = sorted(pool, key=lambda i: -float(i.get('score_all') or 0))
+    def cost(i):
+        c = 0
+        v = i.get('vis')
+        win = 9 if v in ('пейзаж', 'животное', 'здание') else 4
+        if v and any(v == p.get('vis') for p in prev[-win:]):
+            c += 100
+        if i.get('kind') and any(i.get('kind') == p.get('kind') for p in prev[-2:]):
+            c += 3
+        if country(i) and any(country(i) == country(p) for p in prev[-2:]):
+            c += 3
+        return c
     while pool:
-        def ok(i):
-            if prev and i.get('archetype') and any(i.get('archetype') == p.get('archetype') for p in prev):
-                return False
-            if any(i.get('kind') == p.get('kind') for p in prev[-2:]):
-                return False
-            if any(country(i) == country(p) for p in prev[-2:]):
-                return False
-            if i.get('vis') and any(i.get('vis') == p.get('vis') for p in prev[-4:]):
-                return False
-            return True
-        pick = next((i for i in pool if ok(i)), pool[0])
+        pick = min(pool, key=lambda i: (cost(i), -float(i.get('score_all') or 0)))
         out.append(pick); prev.append(pick); pool.remove(pick)
     return out
 

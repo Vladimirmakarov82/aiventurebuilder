@@ -7966,7 +7966,7 @@
   "archetype": "напиток как инвестиция поколений",
   "issue": "2026-11c",
   "status": "new",
-  "score_all": 0,
+  "score_all": 6.8,
   "cat": "",
   "for": "m",
   "repeat": "купить выдержанный пуэр на тех же торгах",
@@ -8168,7 +8168,7 @@
   "archetype": "механик экипажа на ралли через континент",
   "issue": "2026-11c",
   "status": "new",
-  "score_all": 0,
+  "score_all": 7.3,
   "cat": "",
   "for": "m",
   "repeat": "пройти Пекин — Париж на довоенной машине с механиками за спиной",
@@ -8250,7 +8250,7 @@
   "archetype": null,
   "issue": "2026-11c",
   "status": "new",
-  "score_all": 0,
+  "score_all": 7.0,
   "cat": "",
   "for": "он",
   "repeat": "заказать оправу из того же запаса панциря",
@@ -8295,7 +8295,7 @@
   "archetype": null,
   "issue": "2026-11c",
   "status": "new",
-  "score_all": 0,
+  "score_all": 7.2,
   "cat": "",
   "for": "семья",
   "repeat": "поехать в такую экспедицию и искать неописанный вид вместе с учеными",
@@ -8459,7 +8459,7 @@
   "archetype": null,
   "issue": "2026-11c",
   "status": "new",
-  "score_all": 0,
+  "score_all": 6.9,
   "cat": "",
   "for": "он",
   "repeat": "встать в очередь на часы и побывать в мастерской",
@@ -8546,7 +8546,8 @@
   "archetype": "камень с другой планеты в своей коллекции",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.4
  },
  {
   "id": "nhm-spirit-collection-archie",
@@ -8585,7 +8586,8 @@
   "archetype": "хранилище за закрытой дверью музея",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 6.5
  },
  {
   "id": "gorham-cave-finlayson",
@@ -8620,11 +8622,12 @@
   "img_credit": "Фото: Visit Gibraltar, CC BY 2.0, Wikimedia Commons",
   "theme": "археология и история",
   "kind": null,
-  "vis": null,
+  "vis": "пейзаж",
   "archetype": "визит в дом другого вида людей",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.0
  },
  {
   "id": "arop-dress-rehearsal",
@@ -8663,7 +8666,8 @@
   "archetype": "место на генеральной репетиции до премьеры",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.2
  },
  {
   "id": "mandle-cheung-conducts-toronto-symphony",
@@ -8702,7 +8706,8 @@
   "archetype": "любитель за пультом большого оркестра",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.3
  },
  {
   "id": "iditarider-sled-seat",
@@ -8737,11 +8742,12 @@
   "img_credit": "Фото: Frank Kovalchek, CC BY 2.0, Wikimedia Commons",
   "theme": "зимние приключения",
   "kind": null,
-  "vis": null,
+  "vis": "животное",
   "archetype": "пассажир в санях великой гонки",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 6.8
  },
  {
   "id": "statsraad-lehmkuhl-crew",
@@ -8780,7 +8786,8 @@
   "archetype": "матрос на паруснике столетней давности",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 6.9
  },
  {
   "id": "wiltshire-memory-panorama",
@@ -8819,7 +8826,8 @@
   "archetype": "город, нарисованный по памяти, на заказ",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.0
  },
  {
   "id": "omagari-private-fireworks",
@@ -8858,7 +8866,8 @@
   "archetype": "личный салют после урока у пиротехников",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.1
  },
  {
   "id": "t8-01",
@@ -8893,10 +8902,491 @@
   "img_credit": "Фото: Galerie Patrick Seguin, официальный сайт",
   "theme": "архитектура и дизайн",
   "kind": null,
-  "vis": null,
+  "vis": "здание",
   "archetype": "разборный дом-шедевр в своем саду",
   "status": "new",
   "issue": "2026-11c",
-  "cat": ""
+  "cat": "",
+  "score_all": 7.2
+ },
+ {
+  "id": "ratnapura-mine-to-cut",
+  "title": "Найти свой сапфир в шахте Ратнапуры",
+  "hook": "Wijaya Gems в Ратнапуре запустил тур, где гость сам проходит путь камня: шахта, промывка, огранка",
+  "text": "Ратнапура на юге Шри-Ланки живет камнями. В сентябре 2026 года Daily Mirror писал, что город стоит в центре планов страны на мировой рынок камней. Ювелирный дом Wijaya Gems вместе с отелем Wijaya Holiday Resort запустил для гостей тур с добычей и огранкой камней. О запуске писали Daily Mirror, Sunday Times и Ada Derana. Гость спускается к шахте, видит, как достают породу, а потом идет в мастерскую огранщика. GIA посвятил добыче в Шри-Ланке отдельный репортаж в двух частях: «от шахты до рынка». Деталь для ужина: у камня в кольце есть место рождения, и владелец видел его своими глазами. Тур работает в Ратнапуре.",
+  "geo": "Шри-Ланка, Ратнапура",
+  "publication": "Daily Mirror (Sri Lanka)",
+  "pub_date": "2025-09",
+  "source_url": "https://www.dailymirror.lk/print/business-news/Wijaya-Gems-and-Wijaya-Holiday-Resort-launch-gem-mining-and-cutting-experiential-tour/273-320166",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–5 недель"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить день в шахте с Wijaya Gems, огранку камня и заказ оправы у ювелира",
+  "repeat": "спуститься в шахту Ратнапуры и отдать найденный камень в огранку",
+  "last_seen": "2026-09-05",
+  "last_seen_url": "https://www.dailymirror.lk/business-news/Ratnapura-takes-centre-stage-in-Sri-Lankas-global-gem-trade-push/273-349509",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/ratnapura-mine-to-cut.webp",
+  "img_credit": "Фото: Ilyes Makria / Joalys, CC BY-SA 4.0, Wikimedia Commons",
+  "theme": "ювелирное дело",
+  "kind": null,
+  "vis": "руки старателя в воде держат п",
+  "archetype": "камень от шахты до огранки",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.3
+ },
+ {
+  "id": "aeroclub-como-first-seaplane-flight",
+  "title": "Взять штурвал гидроплана над озером Комо",
+  "hook": "Aero Club Como — старейший клуб гидропланов в мире, и новичок садится в нем за штурвал в первый же день",
+  "text": "Aero Club Como стоит на берегу озера Комо. Его называют старейшим клубом гидропланов в мире. Об этом писали AOPA, Plane & Pilot и журнал Ralph Lauren. У клуба есть летная школа и курс «Твой первый полет на гидроплане». Новичок садится на место пилота рядом с инструктором. Самолет разбегается по воде и взлетает над озером. Plane & Pilot выпустил материал о том, как учатся летать на гидропланах, и отдельно про Италию с гидроплана. Деталь для ужина: взлетная полоса здесь — само озеро. Клуб работает и записывает на первый полет через сайт.",
+  "geo": "Италия, Комо",
+  "publication": "Como Football (история клуба)",
+  "pub_date": "",
+  "source_url": "https://comofootball.com/en/the-story-of-the-worlds-oldest-seaplane-club/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–3 недели, по погоде"
+   ],
+   [
+    "Гости",
+    "1 ученик с инструктором"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить первый полет за штурвалом гидроплана в Aero Club Como",
+  "repeat": "пройти первый полет за штурвалом гидроплана в Aero Club Como",
+  "last_seen": "",
+  "last_seen_url": "https://aeroclubcomo.com/en/courses/il-tuo-primo-volo-in-idrovolante-2/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/aeroclub-como-first-seaplane-flight.webp",
+  "img_credit": "Фото: aeroclubcomo.com",
+  "theme": "авиация",
+  "kind": null,
+  "vis": "руки новичка на штурвале, за с",
+  "archetype": "первый урок в старейшей школе гидропланов",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.0
+ },
+ {
+  "id": "extreme-19th-legend",
+  "title": "Ударить по мячу с вершины горы",
+  "hook": "Extreme 19th в ЮАР вернулся в мае 2026 после семи лет: к ти довозит только вертолет, грин лежит на 430 м ниже",
+  "text": "Extreme 19th — лунка на курорте Legend Golf & Safari в провинции Лимпопо. Ти стоит на вершине горы Ханглип. Попасть туда можно только на вертолете. TechCrunch писал, что ти выше грина на 1 400 футов, это около 430 метров. GolfPass называет лунку самым длинным пар-3 в мире. Курорт был закрыт, и лунка вернулась в мае 2026 года после семи лет перерыва. Об этом писали BusinessTech и Golf Inspired. Деталь для ужина: мяч летит вниз почти полминуты, и игрок видит грин размером с монету. Курорт снова принимает гостей, до него около трех часов от Йоханнесбурга.",
+  "geo": "ЮАР, Лимпопо",
+  "publication": "BusinessTech",
+  "pub_date": "2026",
+  "source_url": "https://businesstech.co.za/news/property/863112/legendary-golf-and-safari-resort-reopens-in-south-africa-with-one-hole-only-accessible-via-helicopter/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 2–4 недели"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 1–4 игрока за вылет"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить вылет на Extreme 19th и раунд на Legend Golf & Safari Resort",
+  "repeat": "сыграть Extreme 19th с вершины горы Ханглип",
+  "last_seen": "2026-05",
+  "last_seen_url": "https://nomadlawyer.org/iconic-extreme-19th-returns-may-2026",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/extreme-19th-legend.webp",
+  "img_credit": "Фото: golfpass.com",
+  "theme": "гольф",
+  "kind": null,
+  "vis": "пейзаж",
+  "archetype": "удар с горы, куда возит вертолет",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.2
+ },
+ {
+  "id": "tuna-chart-ireland",
+  "title": "Пометить гигантского тунца у берегов Ирландии",
+  "hook": "В Ирландии синего тунца ловят только ради науки: рыбу метят и отпускают по программе Tuna CHART",
+  "text": "Tuna CHART — научная программа Inland Fisheries Ireland. Синего тунца ловят только капитаны с разрешением, рыбу метят и отпускают. В феврале 2026 года RTE и Connaught Telegraph писали, что Ирландия снова ищет капитанов для программы по самому крупному тунцу в мире. В 2025 году первого тунца сезона поймали и пометили в заливе Донегол, сообщили Donegal Live и Highland Radio. В Великобритании действует похожая рыбалка с отпуском рыбы. Деталь для ужина: метка потом показывает ученым путь рыбы через Атлантику. Гость выходит в море на лодке такого капитана.",
+  "geo": "Ирландия, Донегол",
+  "publication": "RTE",
+  "pub_date": "2026-02-18",
+  "source_url": "https://www.rte.ie/news/2026/0218/1559197-atlantic-bluefin-tuna",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 месяца, сезон летом и осенью"
+   ],
+   [
+    "Гости",
+    "оценка Orbiq: 2–4 рыбака на лодке"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить выход в море с капитаном программы Tuna CHART",
+  "repeat": "выйти в море с капитаном Tuna CHART и пометить синего тунца",
+  "last_seen": "2026-02-18",
+  "last_seen_url": "https://www.rte.ie/news/2026/0218/1559197-atlantic-bluefin-tuna",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/tuna-chart-ireland.webp",
+  "img_credit": "Фото: Inland Fisheries Ireland (fisheriesireland.ie)",
+  "theme": "охота и рыбалка",
+  "kind": null,
+  "vis": "животное",
+  "archetype": "рыбалка ради науки: метка на гиганте",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 6.7
+ },
+ {
+  "id": "bes-arctic-norway-2027",
+  "title": "Отправить внука в арктическую экспедицию",
+  "hook": "British Exploring Society набирает молодых участников в экспедицию «Arctic Norway 2027»; общество входит в список экспедиций Королевского географического общества",
+  "text": "British Exploring Society отправляет молодых людей в настоящие экспедиции. На сайте общества уже открыта страница экспедиции «Arctic Norway 2027». Рядом стоят другие маршруты: Киргизия и полуостров Нойдарт в Шотландии. У каждой экспедиции своя команда руководителей, их имена и роли общество публикует заранее. Королевское географическое общество перечисляет British Exploring Society среди своих экспедиционных возможностей. Из поля общество выкладывает заметки «Updates from the field», так семья может следить за маршрутом. Деталь для ужина: подарок внуку здесь — место в экспедиции за полярным кругом, со своей палаткой и своим дневником. Набор идет по заявкам, страница «Applications open soon» предупреждает о старте приема.",
+  "geo": "Норвегия, Арктика",
+  "publication": "British Exploring Society",
+  "pub_date": "2026",
+  "source_url": "https://www.britishexploring.org/expeditions/arctic-norway/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: заявка за 6–12 месяцев до выезда"
+   ],
+   [
+    "Гости",
+    "молодой участник экспедиции, один"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться подать заявку и подготовить участника к экспедиции 2027 года",
+  "repeat": "отправить внука в арктическую экспедицию British Exploring Society",
+  "last_seen": "2026",
+  "last_seen_url": "https://www.britishexploring.org/expeditions/arctic-norway/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/bes-arctic-norway-2027.webp",
+  "img_credit": "Фото: British Exploring Society (britishexploring.org)",
+  "theme": "образование детей",
+  "kind": null,
+  "vis": "подросток в штормовке тянет са",
+  "archetype": "подросток в настоящей полярной экспедиции",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.1
+ },
+ {
+  "id": "vinnies-ceo-sleepout",
+  "title": "Ночь на улице с главами компаний",
+  "hook": "Двадцать лет главы компаний Австралии раз в год спят на улице; Vinnies CEO Sleepout собрал $83 млн на помощь бездомным",
+  "text": "Vinnies CEO Sleepout проходит в Австралии каждый год. Одну зимнюю ночь руководители компаний спят на улице под открытым небом. Перед этим каждый собирает пожертвования на помощь бездомным. В 2025 году акция отметила 20 лет. За это время она собрала $83 млн по стране, из них $25 млн в Новом Южном Уэльсе. Отраслевое издание Third Sector пишет, что сумма скоро превысит $100 млн. Участвуют и университеты: Университет Гриффита писал о своем участии в 2025 году. Похожая ночь есть в Манчестере. Деталь для ужина: руководители крупных компаний добровольно спят на картоне в холодную ночь.",
+  "geo": "Австралия",
+  "publication": "St Vincent de Paul Society (Vinnies)",
+  "pub_date": "2025",
+  "source_url": "https://www.vinnies.org.au/nsw/media-releases/vinnies-ceo-sleepout-marks-20-years-with-83-million-raised-nationally-25-in-nsw",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: регистрация за 2–3 месяца до июня"
+   ],
+   [
+    "Гости",
+    "руководитель компании, один"
+   ],
+   [
+    "Стоимость",
+    "минимальный сбор пожертвований — по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться зарегистрировать участника и помочь со сбором пожертвований",
+  "repeat": "провести ночь на улице в Vinnies CEO Sleepout",
+  "last_seen": "2025-05-29",
+  "last_seen_url": "https://news.griffith.edu.au/2025/05/29/ceo-sleepout-2025/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/vinnies-ceo-sleepout.webp",
+  "img_credit": "Фото: Vinnies WA (vinnies.org.au)",
+  "theme": "благотворительность",
+  "kind": null,
+  "vis": "руководитель в пальто в спальн",
+  "archetype": "ночь без крыши ради чужих людей",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 6.4
+ },
+ {
+  "id": "name-a-rose",
+  "title": "Роза с именем близкого человека",
+  "hook": "Питомник Antique Rose Emporium дает заказчику назвать сорт розы; так же Harkness называет розы в честь людей",
+  "text": "Antique Rose Emporium — питомник старинных роз. У него есть услуга Rose Naming: сорт розы получает имя, которое выберет заказчик. Британский питомник Harkness Roses тоже называет розы в честь людей. На выставке RHS Chelsea 2025 он показал новые сорта, среди них розу «Rosemary Day». Королевское садоводческое общество ведет свою программу Commemorative Plant Naming: растение называют в память о человеке. Так появилась роза «Catherine» в честь принцессы Уэльской. Розу в честь герцога Эдинбургского королева сама посадила в Виндзоре, и ее можно купить. Деталь для ужина: сорт будут сажать в чужих садах, и имя вашего близкого будет цвести у людей, которые его не знали.",
+  "geo": "США; Великобритания",
+  "publication": "Antique Rose Emporium; Harkness Roses",
+  "pub_date": "2025-05-21",
+  "source_url": "https://antiqueroseemporium.com/pages/rose-naming",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: от 1 сезона"
+   ],
+   [
+    "Гости",
+    "семья"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться договориться с питомником и устроить посадку именной розы в саду семьи",
+  "repeat": "назвать сорт розы именем близкого человека",
+  "last_seen": "2025-05-21",
+  "last_seen_url": "https://www.roses.co.uk/blog/2025/05/21/new-harkness-roses-introduced-at-rhs-chelsea-flower-show-2025/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/name-a-rose.webp",
+  "img_credit": "Фото: Harkness Roses (roses.co.uk)",
+  "theme": "сады и растения",
+  "kind": null,
+  "vis": "бутон новой розы крупно в капл",
+  "archetype": "цветок с именем близкого",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.0
+ },
+ {
+  "id": "feau-boiseries-paris-paneling",
+  "title": "Кабинет в панелях из старого Парижа",
+  "hook": "Семейная мастерская Feau 150 лет хранит в Париже тайный склад старинных деревянных панелей и обшивает ими комнаты под заказ",
+  "text": "Feau Boiseries работает с деревом 150 лет. Журналы называют ее парижский склад тайным живым музеем и секретным архивом архитектурного антиквариата. Там хранят старинные панели-буазери из парижских домов. Мастерская собирает из них комнату заново или делает обшивку по старому образцу. В конце XIX века Feau отделывала дома американской знати эпохи Позолоченного века. Сейчас у мастерской есть шоурум в нью-йоркском D&D Building. Feau входит в Comite Colbert, клуб французских домов роскоши. В 2026 году о ней писал Frederic Magazine в обзоре ручной отделки стен. Деталь для ужина: стены вашего кабинета могли стоять в Париже двести лет назад. Сначала они стоят на складе, куда пускают по приглашению.",
+  "geo": "Франция, Париж; США, Нью-Йорк",
+  "publication": "Messy Nessy Chic; Business of Home; Frederic Magazine",
+  "pub_date": "2026-04",
+  "source_url": "https://messynessychic.com/2018/06/28/a-secret-living-museum-in-paris",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 2–4 недели на визит на склад; сама обшивка — месяцы"
+   ],
+   [
+    "Гости",
+    "1–4 человека на визит"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить закрытый визит на склад Feau и встречу с мастерской по проекту кабинета или библиотеки",
+  "repeat": "заказать у Feau обшивку кабинета панелями по старым парижским образцам",
+  "last_seen": "2026-04",
+  "last_seen_url": "https://fredericmagazine.com/2026/04/craftsmanship-artisan-wall-treatments/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/feau-boiseries-paris-paneling.webp",
+  "img_credit": "Фото: Feau Boiseries (feauboiseries.com)",
+  "theme": "дом и интерьер",
+  "kind": null,
+  "vis": "руки реставратора на резной зо",
+  "archetype": "комната из архива старых панелей",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 6.9
+ },
+ {
+  "id": "pitcairn-silver-supporter",
+  "title": "Неделя на Питкэрне, куда ходит одно судно",
+  "hook": "На остров Питкэрн в Тихом океане ходит одно пассажирское судно Silver Supporter; на 2025–2026 годы открыт новый график рейсов",
+  "text": "Питкэрн — британская территория в южной части Тихого океана. Остров связан с историей корабля «Баунти». Аэропорта нет. Регулярно сюда ходит одно судно, MV Silver Supporter. Рейсы идут через Французскую Полинезию. В 2025 году остров добавил в график шесть новых пассажирских рейсов. Туристический офис Visit Pitcairn опубликовал расписание на 2025–2026 годы и принимает брони. Британская газета писала о человеке, который ехал за историей «Баунти» и нашел на Питкэрне свой рай. Деталь для ужина: гость приезжает на остров тем же судном, что везет почту и продукты. Обратно он уезжает только со следующим рейсом. Поэтому поездка длится неделю или больше.",
+  "geo": "Острова Питкэрн (Великобритания)",
+  "publication": "Visit Pitcairn",
+  "pub_date": "2025",
+  "source_url": "https://visitpitcairn.pn/the-pitkern-blog/20252026-shipping-schedule-is-now",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–6 месяцев, места на судне ограничены"
+   ],
+   [
+    "Гости",
+    "1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу; цены рейсов на странице Far and Away Adventures"
+   ]
+  ],
+  "make": "Orbiq может постараться забронировать каюту на Silver Supporter и проживание на острове",
+  "repeat": "доплыть на Silver Supporter до Питкэрна и прожить там неделю",
+  "last_seen": "2025",
+  "last_seen_url": "https://www.visitpitcairn.pn/mv-silver-supporter",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/pitcairn-silver-supporter.webp",
+  "img_credit": "Фото: Visit Pitcairn (visitpitcairn.pn)",
+  "theme": "путешествия",
+  "kind": null,
+  "vis": "пейзаж",
+  "archetype": "рейс на остров с одним судном",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.1
+ },
+ {
+  "id": "london-sheep-drive-freemen",
+  "title": "Прогнать овец через лондонский мост",
+  "hook": "Раз в год свободные граждане лондонского Сити гонят овец через мост через Темзу; в сентябре 2026 года стадо прошло по Саутуоркскому мосту",
+  "text": "Почетные граждане лондонского Сити (freemen) по старой традиции имеют право прогнать овец через мост. Раз в год это право исполняют. Праздник ведет гильдия торговцев шерстью Worshipful Company of Woolmen. 28 сентября 2025 года прошел очередной прогон. В сентябре 2026 года стадо прошло по Саутуоркскому мосту, сообщал Euronews. Участвуют члены старинных гильдий Сити и бизнесмены. Билеты на участие продают заранее. Звание почетного гражданина Сити может получить частный человек. New Statesman писал в октябре 2026 года: «овец предоставят». Деталь для ужина: вы гоните живых овец через Темзу в центре Лондона. Это ваше законное право.",
+  "geo": "Великобритания, Лондон",
+  "publication": "Euronews; New Statesman; IanVisits",
+  "pub_date": "2026-09",
+  "source_url": "https://www.newstatesman.com/business/2026/10/sheep-will-be-provided",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 3–6 месяцев на звание Freedom of the City и билет"
+   ],
+   [
+    "Гости",
+    "1–2 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться оформить звание Freedom of the City через гильдию и билет на прогон овец",
+  "repeat": "получить звание почетного гражданина Сити и сам прогнать овец через мост",
+  "last_seen": "2026-09-28",
+  "last_seen_url": "https://de.euronews.com/video/2026/09/28/southwark-bridge-in-london-wird-beim-jahrlichen-sheep-drive-zur-wollparade",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/london-sheep-drive-freemen.webp",
+  "img_credit": "Фото: The Worshipful Company of Woolmen (woolmen.com)",
+  "theme": "закрытые клубы и общества",
+  "kind": null,
+  "vis": "человек в костюме гонит овец п",
+  "archetype": "старинное право гражданина гильдии",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.3
+ },
+ {
+  "id": "marinella-naples-ties",
+  "title": "Галстук из неаполитанской лавки, открытой на рассвете",
+  "hook": "Лавка галстуков Marinella в Неаполе больше ста лет открывается в 6:30 утра; в 2026 году ее портнихи шили галстуки на глазах у гостей в Кортине",
+  "text": "Семья Маринелла шьет галстуки в Неаполе больше ста лет. Маленькая лавка открывается в 6:30 утра, как в начале прошлого века. Об этом в 2024 году рассказывал портал Libero. Сейчас дело ведут Маурицио Маринелла и его сын Алессандро. Семья отказывает крупным международным группам: «Чудеса не продаются», писал Fortune Italia. В марте 2026 года Marinella привезла своих портних в Кортину на WinteRace. Они шили галстуки при гостях. Лавка шьет галстуки под заказ. Клиент выбирает шелк и рисунок. Деталь для ужина: галстук можно выбрать в Неаполе раньше, чем город проснется.",
+  "geo": "Италия, Неаполь",
+  "publication": "Il Fatto Quotidiano; Libero; Fortune Italia",
+  "pub_date": "2026-03-20",
+  "source_url": "https://www.ilfattoquotidiano.it/2026/03/20/un-filo-di-seta-tra-napoli-e-le-dolomiti-marinella-porta-le-sue-sarte-a-cortina-e-cuce-dal-vivo-leleganza-senza-tempo-della-winterace-2026/8330988/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 1–2 недели на утренний визит; пошив — по срокам лавки"
+   ],
+   [
+    "Гости",
+    "1–3 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить визит в лавку в 6:30 и заказ галстуков из выбранного шелка",
+  "repeat": "прийти в лавку Marinella в 6:30 и заказать галстуки под себя",
+  "last_seen": "2026-03-20",
+  "last_seen_url": "https://www.ilfattoquotidiano.it/2026/03/20/un-filo-di-seta-tra-napoli-e-le-dolomiti-marinella-porta-le-sue-sarte-a-cortina-e-cuce-dal-vivo-leleganza-senza-tempo-della-winterace-2026/8330988/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/marinella-naples-ties.webp",
+  "img_credit": "Фото: E. Marinella (emarinella.eu)",
+  "theme": "мода для мужчин",
+  "kind": null,
+  "vis": "руки портнихи складывают шелко",
+  "archetype": "утренний визит к семейному мастеру",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 6.6
+ },
+ {
+  "id": "dominica-sperm-whales",
+  "title": "В воде рядом с кашалотами Доминики",
+  "hook": "Доминика создала первый в мире заповедник кашалотов и записала их защиту в закон; это единственное место, где с ними можно плавать",
+  "text": "В ноябре 2023 года Доминика объявила первый в мире заповедник для кашалотов. Национальное географическое общество сообщило об этом в пресс-релизе. Кашалотов там называют «героями углерода»: они помогают океану поглощать углерод. В сентябре 2026 года журнал Haute Living написал: Доминика — единственное место, где можно плавать с кашалотами. Остров записал их защиту в закон. Число разрешений на такие выходы ограничено. Канадский оператор Untold Story Travel собрал пакет поездки к этим китам. Деталь для ужина: это единственная страна, где с кашалотами плавают по закону.",
+  "geo": "Доминика",
+  "publication": "Haute Living; National Geographic Society",
+  "pub_date": "2026-09",
+  "source_url": "https://hauteliving.com/2026/09/the-only-place-you-can-swim-with-sperm-whales-has-written-their-protection-into-law/796478/",
+  "facts": [
+   [
+    "Подготовка",
+    "оценка Orbiq: 2–4 месяца, разрешения ограничены"
+   ],
+   [
+    "Гости",
+    "1–4 человека"
+   ],
+   [
+    "Стоимость",
+    "по запросу"
+   ]
+  ],
+  "make": "Orbiq может постараться устроить выходы в море с лицензированным оператором и встречу с исследователями кашалотов",
+  "repeat": "поплавать рядом с кашалотами у Доминики по разрешению",
+  "last_seen": "2026-09",
+  "last_seen_url": "https://hauteliving.com/2026/09/the-only-place-you-can-swim-with-sperm-whales-has-written-their-protection-into-law/796478/",
+  "live": "active",
+  "verified_on": "2026-11-20",
+  "img": "/img/journal/dominica-sperm-whales.webp",
+  "img_credit": "Фото: National Geographic Society (nationalgeographic.org)",
+  "theme": "природа и животные",
+  "kind": null,
+  "vis": "животное",
+  "archetype": "в воде рядом с гигантом",
+  "status": "new",
+  "issue": "2026-11c",
+  "cat": "",
+  "score_all": 7.4
  }
 ]

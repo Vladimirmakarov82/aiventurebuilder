@@ -1,0 +1,1714 @@
+[
+ {
+  "name": "Crimson Education",
+  "url": "https://www.crimsoneducation.org",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "IvyWise",
+  "url": "https://www.ivywise.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Ivy Coach",
+  "url": "https://www.ivycoach.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Command Education",
+  "url": "https://www.commandeducation.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Top Tier Admissions",
+  "url": "https://www.toptieradmissions.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Advantage Testing",
+  "url": "https://www.advantagetesting.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "тьюторское агентство",
+  "top": true
+ },
+ {
+  "name": "Bonas MacFarlane",
+  "url": "https://www.bonasmacfarlane.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Gabbitas Education",
+  "url": "https://www.gabbitas.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Tutors International",
+  "url": "https://www.tutors-international.com",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "тьюторское агентство",
+  "top": true
+ },
+ {
+  "name": "Keystone Tutors",
+  "url": "https://www.keystonetutors.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": true
+ },
+ {
+  "name": "Carfax Education",
+  "url": "https://www.carfax-education.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Quintessentially Education",
+  "url": "https://quintessentially.com/education",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Oxbridge Applications",
+  "url": "https://www.oxbridgeapplications.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": true
+ },
+ {
+  "name": "Institut Le Rosey",
+  "url": "https://www.rosey.ch",
+  "country": "Швейцария",
+  "city": "Роль",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Aiglon College",
+  "url": "https://www.aiglon.ch",
+  "country": "Швейцария",
+  "city": "Вийяр-сюр-Оллон",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "College du Leman",
+  "url": "https://www.cdl.ch",
+  "country": "Швейцария",
+  "city": "Версуа",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Lyceum Alpinum Zuoz",
+  "url": "https://www.lyceum-alpinum.ch",
+  "country": "Швейцария",
+  "city": "Цуоц",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Institut auf dem Rosenberg",
+  "url": "https://www.instrosenberg.ch",
+  "country": "Швейцария",
+  "city": "Санкт-Галлен",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Eton College",
+  "url": "https://www.etoncollege.com",
+  "country": "Великобритания",
+  "city": "Итон",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Harrow School",
+  "url": "https://www.harrowschool.org.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Winchester College",
+  "url": "https://www.winchestercollege.org",
+  "country": "Великобритания",
+  "city": "Винчестер",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Westminster School",
+  "url": "https://www.westminster.org.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Wycombe Abbey",
+  "url": "https://www.wycombeabbey.com",
+  "country": "Великобритания",
+  "city": "Хай-Уикем",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Phillips Exeter Academy",
+  "url": "https://www.exeter.edu",
+  "country": "США",
+  "city": "Эксетер",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Phillips Academy Andover",
+  "url": "https://www.andover.edu",
+  "country": "США",
+  "city": "Андовер",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Choate Rosemary Hall",
+  "url": "https://www.choate.edu",
+  "country": "США",
+  "city": "Уоллингфорд",
+  "type": "частный пансион",
+  "top": true
+ },
+ {
+  "name": "Spark Admissions",
+  "url": "https://www.sparkadmissions.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Collegewise",
+  "url": "https://collegewise.com",
+  "country": "США",
+  "city": "Ирвайн",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "InGenius Prep",
+  "url": "https://ingeniusprep.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Cardinal Education",
+  "url": "https://www.cardinaleducation.com",
+  "country": "США",
+  "city": "Пало-Альто",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Expert Admissions",
+  "url": "https://www.expertadmissions.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Solomon Admissions Consulting",
+  "url": "https://www.solomonadmissions.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "College Coach",
+  "url": "https://www.getintocollege.com",
+  "country": "США",
+  "city": "Ньютон",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "ThinkTank Learning",
+  "url": "https://www.thinktanklearning.com",
+  "country": "США",
+  "city": "Сан-Хосе",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Empowerly",
+  "url": "https://empowerly.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Signet Education",
+  "url": "https://www.signeteducation.com",
+  "country": "США",
+  "city": "Кембридж (Массачусетс)",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "ArborBridge",
+  "url": "https://arborbridge.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Applerouth",
+  "url": "https://www.applerouth.com",
+  "country": "США",
+  "city": "Атланта",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Private Prep",
+  "url": "https://www.privateprep.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Revolution Prep",
+  "url": "https://www.revolutionprep.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Cambridge Coaching",
+  "url": "https://www.cambridgecoaching.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Quad Education",
+  "url": "https://www.quadeducation.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "The Princeton Review",
+  "url": "https://www.princetonreview.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Lumiere Education",
+  "url": "https://www.lumiere-education.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "исследовательские программы",
+  "top": false
+ },
+ {
+  "name": "Polygence",
+  "url": "https://www.polygence.org",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "исследовательские программы",
+  "top": false
+ },
+ {
+  "name": "Dukes Education",
+  "url": "https://www.dukeseducation.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Lanterna Education",
+  "url": "https://lanterna.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "The Good Schools Guide Advice Service",
+  "url": "https://www.goodschoolsguide.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Simply Learning Tuition",
+  "url": "https://www.simplylearningtuition.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Enjoy Education",
+  "url": "https://www.enjoyeducation.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Fleet Tutors",
+  "url": "https://www.fleet-tutors.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Owl Tutors",
+  "url": "https://owltutors.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Tutor House",
+  "url": "https://www.tutorhouse.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "The Profs",
+  "url": "https://www.theprofs.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Tutorfair",
+  "url": "https://www.tutorfair.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "TutorChase",
+  "url": "https://www.tutorchase.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Kings Education",
+  "url": "https://www.kingseducation.com",
+  "country": "Великобритания",
+  "city": "Борнмут",
+  "type": "подготовительный колледж",
+  "top": false
+ },
+ {
+  "name": "Bright World Guardianships",
+  "url": "https://www.brightworldguardianships.com",
+  "country": "Великобритания",
+  "city": "Брайтон",
+  "type": "опекунское агентство",
+  "top": false
+ },
+ {
+  "name": "ITS Education Asia",
+  "url": "https://www.itseducation.asia",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "тьюторское агентство",
+  "top": false
+ },
+ {
+  "name": "Smapse",
+  "url": "https://smapse.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Begin Group",
+  "url": "https://www.begingroup.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "консультант по поступлению",
+  "top": false
+ },
+ {
+  "name": "Wellington College",
+  "url": "https://www.wellingtoncollege.org.uk",
+  "country": "Великобритания",
+  "city": "Кроуторн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Charterhouse",
+  "url": "https://www.charterhouse.org.uk",
+  "country": "Великобритания",
+  "city": "Годалминг",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Rugby School",
+  "url": "https://www.rugbyschool.co.uk",
+  "country": "Великобритания",
+  "city": "Рагби",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Marlborough College",
+  "url": "https://www.marlboroughcollege.org",
+  "country": "Великобритания",
+  "city": "Мальборо",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Radley College",
+  "url": "https://www.radley.org.uk",
+  "country": "Великобритания",
+  "city": "Абингдон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Cheltenham Ladies' College",
+  "url": "https://www.cheltladiescollege.org",
+  "country": "Великобритания",
+  "city": "Челтнем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Benenden School",
+  "url": "https://www.benenden.school",
+  "country": "Великобритания",
+  "city": "Бененден",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Brighton College",
+  "url": "https://www.brightoncollege.org.uk",
+  "country": "Великобритания",
+  "city": "Брайтон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Tonbridge School",
+  "url": "https://www.tonbridge-school.co.uk",
+  "country": "Великобритания",
+  "city": "Тонбридж",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Oundle School",
+  "url": "https://www.oundleschool.org.uk",
+  "country": "Великобритания",
+  "city": "Ундл",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Uppingham School",
+  "url": "https://www.uppingham.co.uk",
+  "country": "Великобритания",
+  "city": "Аппингем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Sherborne School",
+  "url": "https://www.sherborne.org",
+  "country": "Великобритания",
+  "city": "Шерборн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Stowe School",
+  "url": "https://www.stowe.co.uk",
+  "country": "Великобритания",
+  "city": "Бакингем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The King's School Canterbury",
+  "url": "https://www.kings-school.co.uk",
+  "country": "Великобритания",
+  "city": "Кентербери",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Gordonstoun",
+  "url": "https://www.gordonstoun.org.uk",
+  "country": "Великобритания",
+  "city": "Элгин",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Millfield",
+  "url": "https://www.millfieldschool.com",
+  "country": "Великобритания",
+  "city": "Стрит",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Roedean School",
+  "url": "https://www.roedean.co.uk",
+  "country": "Великобритания",
+  "city": "Брайтон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Sevenoaks School",
+  "url": "https://www.sevenoaksschool.org",
+  "country": "Великобритания",
+  "city": "Севеноукс",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Bedales School",
+  "url": "https://www.bedales.org.uk",
+  "country": "Великобритания",
+  "city": "Питерсфилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Downe House",
+  "url": "https://www.downehouse.net",
+  "country": "Великобритания",
+  "city": "Тэтчем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St Mary's School Ascot",
+  "url": "https://www.st-marys-ascot.co.uk",
+  "country": "Великобритания",
+  "city": "Аскот",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Cranleigh School",
+  "url": "https://www.cranleigh.org",
+  "country": "Великобритания",
+  "city": "Кранли",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Ardingly College",
+  "url": "https://www.ardingly.com",
+  "country": "Великобритания",
+  "city": "Ардингли",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Epsom College",
+  "url": "https://www.epsomcollege.org.uk",
+  "country": "Великобритания",
+  "city": "Эпсом",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Malvern College",
+  "url": "https://www.malverncollege.org.uk",
+  "country": "Великобритания",
+  "city": "Малверн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Shrewsbury School",
+  "url": "https://www.shrewsbury.org.uk",
+  "country": "Великобритания",
+  "city": "Шрусбери",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Repton School",
+  "url": "https://www.repton.org.uk",
+  "country": "Великобритания",
+  "city": "Рептон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Bradfield College",
+  "url": "https://www.bradfieldcollege.org.uk",
+  "country": "Великобритания",
+  "city": "Брэдфилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Felsted School",
+  "url": "https://www.felsted.org",
+  "country": "Великобритания",
+  "city": "Фелстед",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Fettes College",
+  "url": "https://www.fettes.com",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Loretto School",
+  "url": "https://www.loretto.com",
+  "country": "Великобритания",
+  "city": "Масселборо",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Merchiston Castle School",
+  "url": "https://www.merchiston.co.uk",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Clifton College",
+  "url": "https://cliftoncollege.com",
+  "country": "Великобритания",
+  "city": "Бристоль",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Cheltenham College",
+  "url": "https://www.cheltenhamcollege.org",
+  "country": "Великобритания",
+  "city": "Челтнем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Stonyhurst College",
+  "url": "https://www.stonyhurst.ac.uk",
+  "country": "Великобритания",
+  "city": "Клитеро",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Haileybury",
+  "url": "https://www.haileybury.com",
+  "country": "Великобритания",
+  "city": "Хартфорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Lancing College",
+  "url": "https://www.lancingcollege.co.uk",
+  "country": "Великобритания",
+  "city": "Лансинг",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Canford School",
+  "url": "https://www.canford.com",
+  "country": "Великобритания",
+  "city": "Уимборн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Bryanston School",
+  "url": "https://www.bryanston.co.uk",
+  "country": "Великобритания",
+  "city": "Бландфорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Christ's Hospital",
+  "url": "https://www.christs-hospital.org.uk",
+  "country": "Великобритания",
+  "city": "Хоршем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Mill Hill School",
+  "url": "https://www.millhill.org.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Dulwich College",
+  "url": "https://www.dulwich.org.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Concord College",
+  "url": "https://www.concordcollegeuk.com",
+  "country": "Великобритания",
+  "city": "Шрусбери",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Badminton School",
+  "url": "https://www.badmintonschool.co.uk",
+  "country": "Великобритания",
+  "city": "Бристоль",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Queenswood School",
+  "url": "https://www.queenswood.org",
+  "country": "Великобритания",
+  "city": "Хатфилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Heathfield School",
+  "url": "https://www.heathfieldschool.net",
+  "country": "Великобритания",
+  "city": "Аскот",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Tudor Hall School",
+  "url": "https://www.tudorhallschool.com",
+  "country": "Великобритания",
+  "city": "Банбери",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Oakham School",
+  "url": "https://www.oakham.rutland.sch.uk",
+  "country": "Великобритания",
+  "city": "Окем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St Edward's Oxford",
+  "url": "https://www.stedwardsoxford.org",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Ludgrove School",
+  "url": "https://www.ludgrove.net",
+  "country": "Великобритания",
+  "city": "Уокингем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Summer Fields",
+  "url": "https://www.summerfields.com",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Dragon School",
+  "url": "https://www.dragonschool.org",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "MPW (Mander Portman Woodward)",
+  "url": "https://www.mpw.ac.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "подготовительный колледж",
+  "top": false
+ },
+ {
+  "name": "d'Overbroeck's",
+  "url": "https://www.doverbroecks.com",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "подготовительный колледж",
+  "top": false
+ },
+ {
+  "name": "UWC Atlantic",
+  "url": "https://www.atlanticcollege.org",
+  "country": "Великобритания",
+  "city": "Ллантвит-Мейджор",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "UWC (United World Colleges)",
+  "url": "https://www.uwc.org",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Clongowes Wood College",
+  "url": "https://www.clongowes.net",
+  "country": "Ирландия",
+  "city": "Клейн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Beau Soleil",
+  "url": "https://www.beausoleil.ch",
+  "country": "Швейцария",
+  "city": "Вийяр-сюр-Оллон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Leysin American School",
+  "url": "https://www.las.ch",
+  "country": "Швейцария",
+  "city": "Лейзен",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Institut Montana Zugerberg",
+  "url": "https://www.institut-montana.ch",
+  "country": "Швейцария",
+  "city": "Цуг",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Brillantmont International School",
+  "url": "https://www.brillantmont.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St. George's International School Montreux",
+  "url": "https://www.stgeorges.ch",
+  "country": "Швейцария",
+  "city": "Монтре",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "TASIS The American School in Switzerland",
+  "url": "https://www.tasis.ch",
+  "country": "Швейцария",
+  "city": "Монтаньола",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Ecole Lemania",
+  "url": "https://www.lemania.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Ecole Internationale de Geneve (Ecolint)",
+  "url": "https://www.ecolint.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "International School of Lausanne",
+  "url": "https://www.isl.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Haut-Lac International Bilingual School",
+  "url": "https://www.haut-lac.ch",
+  "country": "Швейцария",
+  "city": "Сен-Легье",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Ecole Champittet",
+  "url": "https://www.champittet.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "La Garenne International School",
+  "url": "https://www.la-garenne.ch",
+  "country": "Швейцария",
+  "city": "Вийяр-сюр-Оллон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Florimont",
+  "url": "https://www.florimont.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Zurich International School",
+  "url": "https://www.zis.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Inter-Community School Zurich",
+  "url": "https://www.icsz.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "International School Basel",
+  "url": "https://www.isbasel.ch",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Alpadia",
+  "url": "https://www.alpadia.com",
+  "country": "Швейцария",
+  "city": "Монтре",
+  "type": "летние программы",
+  "top": false
+ },
+ {
+  "name": "Les Elfes International",
+  "url": "https://www.leselfes.com",
+  "country": "Швейцария",
+  "city": "Вербье",
+  "type": "летние программы",
+  "top": false
+ },
+ {
+  "name": "International School of Monaco",
+  "url": "https://www.ismonaco.org",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Ecole des Roches",
+  "url": "https://www.ecoledesroches.com",
+  "country": "Франция",
+  "city": "Верней-сюр-Авр",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "International School of Paris",
+  "url": "https://www.isparis.edu",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Ecole Jeannine Manuel",
+  "url": "https://www.ecolejeanninemanuel.org",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Schule Schloss Salem",
+  "url": "https://www.schule-schloss-salem.de",
+  "country": "Германия",
+  "city": "Залем",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Stiftung Louisenlund",
+  "url": "https://www.louisenlund.de",
+  "country": "Германия",
+  "city": "Гюби",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Munich International School",
+  "url": "https://www.mis-munich.de",
+  "country": "Германия",
+  "city": "Штарнберг",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Berlin Brandenburg International School",
+  "url": "https://www.bbis.de",
+  "country": "Германия",
+  "city": "Кляйнмахнов",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Amadeus International School Vienna",
+  "url": "https://www.amadeus-vienna.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Vienna International School",
+  "url": "https://www.vis.ac.at",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Sotogrande International School",
+  "url": "https://www.sis.ac",
+  "country": "Испания",
+  "city": "Сотогранде",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Школа Летово",
+  "url": "https://letovo.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Deerfield Academy",
+  "url": "https://deerfield.edu",
+  "country": "США",
+  "city": "Дирфилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Hotchkiss School",
+  "url": "https://www.hotchkiss.org",
+  "country": "США",
+  "city": "Лейквилл",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Lawrenceville School",
+  "url": "https://www.lawrenceville.org",
+  "country": "США",
+  "city": "Лоренсвилл",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St. Paul's School",
+  "url": "https://www.sps.edu",
+  "country": "США",
+  "city": "Конкорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Groton School",
+  "url": "https://www.groton.org",
+  "country": "США",
+  "city": "Гротон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Milton Academy",
+  "url": "https://www.milton.edu",
+  "country": "США",
+  "city": "Милтон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Taft School",
+  "url": "https://www.taftschool.org",
+  "country": "США",
+  "city": "Уотертаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Middlesex School",
+  "url": "https://www.mxschool.edu",
+  "country": "США",
+  "city": "Конкорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Peddie School",
+  "url": "https://www.peddie.org",
+  "country": "США",
+  "city": "Хайтстаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Hill School",
+  "url": "https://www.thehill.org",
+  "country": "США",
+  "city": "Поттстаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Loomis Chaffee",
+  "url": "https://www.loomischaffee.org",
+  "country": "США",
+  "city": "Виндзор",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Thacher School",
+  "url": "https://www.thacher.org",
+  "country": "США",
+  "city": "Охай",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Cate School",
+  "url": "https://www.cate.org",
+  "country": "США",
+  "city": "Карпинтерия",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Emma Willard School",
+  "url": "https://www.emmawillard.org",
+  "country": "США",
+  "city": "Трой",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Miss Porter's School",
+  "url": "https://www.missporters.org",
+  "country": "США",
+  "city": "Фармингтон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Episcopal High School",
+  "url": "https://www.episcopalhighschool.org",
+  "country": "США",
+  "city": "Александрия",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Woodberry Forest School",
+  "url": "https://www.woodberry.org",
+  "country": "США",
+  "city": "Вудберри-Форест",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Blair Academy",
+  "url": "https://www.blair.edu",
+  "country": "США",
+  "city": "Блэрстаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Mercersburg Academy",
+  "url": "https://www.mercersburg.edu",
+  "country": "США",
+  "city": "Мерсерсберг",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Northfield Mount Hermon",
+  "url": "https://www.nmhschool.org",
+  "country": "США",
+  "city": "Гилл",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Kent School",
+  "url": "https://www.kent-school.edu",
+  "country": "США",
+  "city": "Кент",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St. George's School",
+  "url": "https://www.stgeorges.edu",
+  "country": "США",
+  "city": "Мидлтаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Concord Academy",
+  "url": "https://www.concordacademy.org",
+  "country": "США",
+  "city": "Конкорд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Berkshire School",
+  "url": "https://www.berkshireschool.org",
+  "country": "США",
+  "city": "Шеффилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The Webb Schools",
+  "url": "https://www.webb.org",
+  "country": "США",
+  "city": "Клермонт",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Suffield Academy",
+  "url": "https://www.suffieldacademy.org",
+  "country": "США",
+  "city": "Саффилд",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Harrow International School Hong Kong",
+  "url": "https://www.harrowhongkong.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Chinese International School",
+  "url": "https://www.cis.edu.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Hong Kong International School",
+  "url": "https://www.hkis.edu.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "German Swiss International School",
+  "url": "https://www.gsis.edu.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Kellett School",
+  "url": "https://www.kellettschool.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "UWC South East Asia",
+  "url": "https://www.uwcsea.edu.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Tanglin Trust School",
+  "url": "https://www.tts.edu.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Singapore American School",
+  "url": "https://www.sas.edu.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Stamford American International School",
+  "url": "https://www.sais.edu.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Dulwich College International",
+  "url": "https://www.dulwich.org",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "UWC ISAK Japan",
+  "url": "https://uwcisak.jp",
+  "country": "Япония",
+  "city": "Каруидзава",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "The American School in Japan",
+  "url": "https://www.asij.ac.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Harrow International School Bangkok",
+  "url": "https://www.harrowschool.ac.th",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Nord Anglia Education",
+  "url": "https://www.nordangliaeducation.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Cognita",
+  "url": "https://www.cognita.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Inspired Education",
+  "url": "https://www.inspirededu.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "GEMS Education",
+  "url": "https://www.gemseducation.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Globeducate",
+  "url": "https://www.globeducate.com",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Taaleem",
+  "url": "https://www.taaleem.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Aldar Education",
+  "url": "https://www.aldareducation.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "школьная группа",
+  "top": false
+ },
+ {
+  "name": "Repton School Dubai",
+  "url": "https://www.reptondubai.org",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Dubai College",
+  "url": "https://www.dubaicollege.org",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Jumeirah English Speaking School",
+  "url": "https://www.jess.sch.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Dubai English Speaking School",
+  "url": "https://www.dess.org",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Cranleigh Abu Dhabi",
+  "url": "https://www.cranleigh.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Brighton College Abu Dhabi",
+  "url": "https://www.brightoncollege.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Swiss International Scientific School in Dubai",
+  "url": "https://www.sisd.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "British School Al Khubairat",
+  "url": "https://www.britishschool.sch.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Doha College",
+  "url": "https://www.dohacollege.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Michaelhouse",
+  "url": "https://www.michaelhouse.org",
+  "country": "ЮАР",
+  "city": "Балгоуэн",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Hilton College",
+  "url": "https://www.hiltoncollege.com",
+  "country": "ЮАР",
+  "city": "Хилтон",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St Andrew's College",
+  "url": "https://www.sacschool.com",
+  "country": "ЮАР",
+  "city": "Макханда",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Bishops Diocesan College",
+  "url": "https://www.bishops.org.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St John's College",
+  "url": "https://www.stjohnscollege.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Kearsney College",
+  "url": "https://www.kearsney.com",
+  "country": "ЮАР",
+  "city": "Ботас-Хилл",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Herschel Girls School",
+  "url": "https://www.herschel.org.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Diocesan School for Girls",
+  "url": "https://www.dsgschool.com",
+  "country": "ЮАР",
+  "city": "Макханда",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "St Alban's College",
+  "url": "https://www.stalbanscollege.com",
+  "country": "ЮАР",
+  "city": "Претория",
+  "type": "частный пансион",
+  "top": false
+ },
+ {
+  "name": "Reddam House",
+  "url": "https://www.reddamhouse.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "международная школа",
+  "top": false
+ },
+ {
+  "name": "Holland Park Education",
+  "url": "https://www.hollandparkeducation.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "консультант по поступлению",
+  "top": false
+ }
+]

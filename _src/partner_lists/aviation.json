@@ -1,0 +1,1602 @@
+[
+ {
+  "name": "NetJets",
+  "url": "https://www.netjets.com",
+  "country": "США",
+  "city": "Колумбус",
+  "type": "долевое владение и джет-карты",
+  "top": true
+ },
+ {
+  "name": "VistaJet",
+  "url": "https://www.vistajet.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "оператор и подписка",
+  "top": true
+ },
+ {
+  "name": "Flexjet",
+  "url": "https://www.flexjet.com",
+  "country": "США",
+  "city": "Кливленд",
+  "type": "долевое владение и джет-карты",
+  "top": true
+ },
+ {
+  "name": "Wheels Up",
+  "url": "https://wheelsup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "оператор и джет-карты",
+  "top": true
+ },
+ {
+  "name": "XO",
+  "url": "https://flyxo.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "оператор и чартер",
+  "top": true
+ },
+ {
+  "name": "Luxaviation",
+  "url": "https://www.luxaviation.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "оператор",
+  "top": true
+ },
+ {
+  "name": "Jet Aviation",
+  "url": "https://www.jetaviation.com",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "оператор и управление",
+  "top": true
+ },
+ {
+  "name": "TAG Aviation",
+  "url": "https://www.tagaviation.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "оператор и управление",
+  "top": true
+ },
+ {
+  "name": "Air Charter Service",
+  "url": "https://www.aircharterservice.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер чартера",
+  "top": true
+ },
+ {
+  "name": "GlobeAir",
+  "url": "https://www.globeair.com",
+  "country": "Австрия",
+  "city": "Линц",
+  "type": "оператор",
+  "top": true
+ },
+ {
+  "name": "Jetcraft",
+  "url": "https://www.jetcraft.com",
+  "country": "США",
+  "city": "Роли",
+  "type": "брокер продажи самолетов",
+  "top": true
+ },
+ {
+  "name": "Comlux",
+  "url": "https://www.comlux.com",
+  "country": "Швейцария",
+  "city": "Шиндельлеги",
+  "type": "оператор VIP-лайнеров",
+  "top": true
+ },
+ {
+  "name": "Sentient Jet",
+  "url": "https://www.sentient.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "джет-карты",
+  "top": true
+ },
+ {
+  "name": "Jet Linx",
+  "url": "https://www.jetlinx.com",
+  "country": "США",
+  "city": "Омаха",
+  "type": "оператор и джет-карты",
+  "top": true
+ },
+ {
+  "name": "PlaneSense",
+  "url": "https://www.planesense.com",
+  "country": "США",
+  "city": "Портсмут",
+  "type": "долевое владение",
+  "top": true
+ },
+ {
+  "name": "Magellan Jets",
+  "url": "https://www.magellanjets.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "джет-карты",
+  "top": true
+ },
+ {
+  "name": "Victor",
+  "url": "https://www.flyvictor.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер чартера",
+  "top": true
+ },
+ {
+  "name": "LunaJets",
+  "url": "https://www.lunajets.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "брокер чартера",
+  "top": true
+ },
+ {
+  "name": "Jetex",
+  "url": "https://www.jetex.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "FBO-сеть",
+  "top": true
+ },
+ {
+  "name": "Royal Jet",
+  "url": "https://www.royaljetgroup.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "оператор",
+  "top": true
+ },
+ {
+  "name": "The Jet Business",
+  "url": "https://www.thejetbusiness.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер продажи самолетов",
+  "top": true
+ },
+ {
+  "name": "Qatar Executive",
+  "url": "https://www.qatarexec.com.qa",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "оператор",
+  "top": true
+ },
+ {
+  "name": "Airshare",
+  "url": "https://www.flyairshare.com",
+  "country": "США",
+  "city": "Ленекса",
+  "type": "долевое владение",
+  "top": false
+ },
+ {
+  "name": "Nicholas Air",
+  "url": "https://www.nicholasair.com",
+  "country": "США",
+  "city": "Оксфорд",
+  "type": "долевое владение и джет-карты",
+  "top": false
+ },
+ {
+  "name": "Jetfly",
+  "url": "https://www.jetfly.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "долевое владение",
+  "top": false
+ },
+ {
+  "name": "Silver Air",
+  "url": "https://www.silverair.com",
+  "country": "США",
+  "city": "Санта-Барбара",
+  "type": "оператор и долевое владение",
+  "top": false
+ },
+ {
+  "name": "AirSprint",
+  "url": "https://www.airsprint.com",
+  "country": "Канада",
+  "city": "Калгари",
+  "type": "долевое владение",
+  "top": false
+ },
+ {
+  "name": "flyExclusive",
+  "url": "https://flyexclusive.com",
+  "country": "США",
+  "city": "Кинстон",
+  "type": "оператор и джет-карты",
+  "top": false
+ },
+ {
+  "name": "Tradewind Aviation",
+  "url": "https://www.flytradewind.com",
+  "country": "США",
+  "city": "Оксфорд",
+  "type": "оператор и джет-карты",
+  "top": false
+ },
+ {
+  "name": "Amalfi Jets",
+  "url": "https://amalfijets.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "джет-карты",
+  "top": false
+ },
+ {
+  "name": "Private Jet Card Comparisons",
+  "url": "https://privatejetcardcomparisons.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "сравнение джет-карт",
+  "top": false
+ },
+ {
+  "name": "DC Aviation",
+  "url": "https://www.dc-aviation.com",
+  "country": "Германия",
+  "city": "Штутгарт",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Gama Aviation",
+  "url": "https://www.gamaaviation.com",
+  "country": "Великобритания",
+  "city": "Фарнборо",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "ExecuJet",
+  "url": "https://www.execujet.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "оператор и FBO",
+  "top": false
+ },
+ {
+  "name": "Empire Aviation Group",
+  "url": "https://www.empireaviation.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Metrojet",
+  "url": "https://www.metrojet.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Deer Jet",
+  "url": "https://www.deerjet.com",
+  "country": "Китай",
+  "city": "Пекин",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Flying Group",
+  "url": "https://www.flyinggroup.aero",
+  "country": "Бельгия",
+  "city": "Антверпен",
+  "type": "оператор и продажа",
+  "top": false
+ },
+ {
+  "name": "Clay Lacy Aviation",
+  "url": "https://www.claylacy.com",
+  "country": "США",
+  "city": "Ван-Найс",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Saxonair",
+  "url": "https://www.saxonair.com",
+  "country": "Великобритания",
+  "city": "Норидж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Cat Aviation",
+  "url": "https://www.cat-aviation.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Avcon Jet",
+  "url": "https://www.avconjet.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Wijet",
+  "url": "https://www.wijet.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Valljet",
+  "url": "https://www.valljet.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Sirio",
+  "url": "https://www.sirio.aero",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Omni Aviation",
+  "url": "https://www.omni.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Gestair",
+  "url": "https://www.gestair.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Elit'Avia",
+  "url": "https://www.elitavia.com",
+  "country": "Словения",
+  "city": "Любляна",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "FAI rent-a-jet",
+  "url": "https://www.fai.ag",
+  "country": "Германия",
+  "city": "Нюрнберг",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Air Charter Scotland",
+  "url": "https://www.aircharterscotland.com",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Alpha Star",
+  "url": "https://www.alphastarcorp.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "DC Aviation Al-Futtaim",
+  "url": "https://www.dc-aviation.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Phenix Jet",
+  "url": "https://www.phenixjet.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "National Airways Corporation",
+  "url": "https://www.nac.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "оператор и продажа",
+  "top": false
+ },
+ {
+  "name": "Monacair",
+  "url": "https://www.monacair.mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "Heli Air Monaco",
+  "url": "https://www.heliairmonaco.com",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "Starjet",
+  "url": "https://www.starjetinc.com",
+  "country": "США",
+  "city": "Атланта",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Global Jet",
+  "url": "https://www.globaljet.aero",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Luxwing",
+  "url": "https://www.luxwing.com",
+  "country": "Мальта",
+  "city": "Мальта",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Execuflight",
+  "url": "https://www.execuflight.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Pinnacle Aviation",
+  "url": "https://www.pinnacleaviation.com",
+  "country": "США",
+  "city": "Сан-Антонио",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "International Jet Management",
+  "url": "https://www.ijm.at",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Jet Story",
+  "url": "https://www.jetstory.com",
+  "country": "Польша",
+  "city": "Варшава",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Albinati Aeronautics",
+  "url": "https://www.albinati.aero",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Centreline",
+  "url": "https://www.centreline.aero",
+  "country": "Великобритания",
+  "city": "Бристоль",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Falcon Aviation Services",
+  "url": "https://www.falconaviation.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Unisky",
+  "url": "https://unisky.aero",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Air Alsie",
+  "url": "https://www.alsie.com",
+  "country": "Дания",
+  "city": "Сеннерборг",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "ASL Group",
+  "url": "https://www.aslgroup.eu",
+  "country": "Бельгия",
+  "city": "Брюссель",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Desert Jet",
+  "url": "https://desertjet.com",
+  "country": "США",
+  "city": "Термал",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "GainJet",
+  "url": "https://www.gainjet.com",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Hop-A-Jet",
+  "url": "https://hopajetworldwide.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "JetAccess",
+  "url": "https://flyjetaccess.com",
+  "country": "США",
+  "city": "Лас-Вегас",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Sparfell",
+  "url": "https://www.sparfell.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Sun Air Jets",
+  "url": "https://www.sunairjets.com",
+  "country": "США",
+  "city": "Камарильо",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Talon Air",
+  "url": "https://www.talonair.com",
+  "country": "США",
+  "city": "Фармингдейл",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Contour Aviation",
+  "url": "https://www.contouraviation.com",
+  "country": "США",
+  "city": "Смирна",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "MJets",
+  "url": "https://mjets.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Arab Wings",
+  "url": "https://www.arabwings.com.jo",
+  "country": "Иордания",
+  "city": "Амман",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Astonjet",
+  "url": "https://astonjet.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Elite Jets",
+  "url": "https://www.elitejets.com",
+  "country": "США",
+  "city": "Нейплс",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Heli Securite",
+  "url": "https://www.helisecurite.fr",
+  "country": "Франция",
+  "city": "Ле-Кане-де-Мор",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "L.J. Aviation",
+  "url": "https://www.ljaviation.com",
+  "country": "США",
+  "city": "Латроб",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Wing Aviation",
+  "url": "https://www.wingaviation.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Bookajet",
+  "url": "https://www.bookajet.com",
+  "country": "Великобритания",
+  "city": "Фарнборо",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Grafair",
+  "url": "https://grafair.se",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Gulf Helicopters",
+  "url": "https://www.gulfhelicopters.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "IXAIR",
+  "url": "https://ixair.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Mountain Aviation",
+  "url": "https://www.mountainaviation.com",
+  "country": "США",
+  "city": "Денвер",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Oyonnair",
+  "url": "https://www.oyonnair.com",
+  "country": "Франция",
+  "city": "Лион",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Pentastar Aviation",
+  "url": "https://www.pentastaraviation.com",
+  "country": "США",
+  "city": "Уотерфорд",
+  "type": "оператор и FBO",
+  "top": false
+ },
+ {
+  "name": "Prince Aviation",
+  "url": "https://www.princeaviation.com",
+  "country": "Сербия",
+  "city": "Белград",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Western Air Charter",
+  "url": "https://www.westernaircharter.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Seletar Jet",
+  "url": "https://www.seletarjet.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "оператор и управление",
+  "top": false
+ },
+ {
+  "name": "Guardian Air",
+  "url": "https://www.guardianair.co",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Starspeed",
+  "url": "https://www.starspeed.co.uk",
+  "country": "Великобритания",
+  "city": "Фэрокс",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "E-Aviation",
+  "url": "https://www.e-aviation.de",
+  "country": "Германия",
+  "city": "Штутгарт",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Amelia",
+  "url": "https://flyamelia.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "оператор",
+  "top": false
+ },
+ {
+  "name": "Skyservice",
+  "url": "https://skyservice.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "оператор и FBO",
+  "top": false
+ },
+ {
+  "name": "Reliant Air",
+  "url": "https://www.flyreliant.com",
+  "country": "США",
+  "city": "Данбери",
+  "type": "FBO и оператор",
+  "top": false
+ },
+ {
+  "name": "Heliservices Hong Kong",
+  "url": "https://heliservices.com.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "вертолетный оператор",
+  "top": false
+ },
+ {
+  "name": "AirX Charter",
+  "url": "https://www.airx.aero",
+  "country": "Мальта",
+  "city": "Мальта",
+  "type": "оператор VIP-лайнеров",
+  "top": false
+ },
+ {
+  "name": "Solairus Aviation",
+  "url": "https://www.solairus.aero",
+  "country": "США",
+  "city": "Петалума",
+  "type": "управление и чартер",
+  "top": false
+ },
+ {
+  "name": "Priester Aviation",
+  "url": "https://www.priesterav.com",
+  "country": "США",
+  "city": "Уилинг",
+  "type": "управление и чартер",
+  "top": false
+ },
+ {
+  "name": "Northern Jet",
+  "url": "https://northernjet.com",
+  "country": "США",
+  "city": "Гранд-Рапидс",
+  "type": "управление и чартер",
+  "top": false
+ },
+ {
+  "name": "Prime Jet",
+  "url": "https://primejet.com",
+  "country": "США",
+  "city": "Эль-Кахон",
+  "type": "управление и чартер",
+  "top": false
+ },
+ {
+  "name": "Western Aircraft",
+  "url": "https://www.westair.com",
+  "country": "США",
+  "city": "Бойсе",
+  "type": "продажа и управление",
+  "top": false
+ },
+ {
+  "name": "Vista Aircraft Management",
+  "url": "https://vistaaircraftmanagement.com",
+  "country": "США",
+  "city": "Ван-Найс",
+  "type": "управление самолетами",
+  "top": false
+ },
+ {
+  "name": "ACI Jet",
+  "url": "https://www.acijet.com",
+  "country": "США",
+  "city": "Сан-Луис-Обиспо",
+  "type": "FBO и управление",
+  "top": false
+ },
+ {
+  "name": "Jetstream Aviation",
+  "url": "https://www.jetstreamaviation.com",
+  "country": "США",
+  "city": "Бойсе",
+  "type": "управление и чартер",
+  "top": false
+ },
+ {
+  "name": "PrivateFly",
+  "url": "https://www.privatefly.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Air Partner",
+  "url": "https://www.airpartner.com",
+  "country": "Великобритания",
+  "city": "Гатвик",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Paramount Business Jets",
+  "url": "https://www.paramountbusinessjets.com",
+  "country": "США",
+  "city": "Мидлбург",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Stratos Jets",
+  "url": "https://www.stratosjets.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Fly Alliance",
+  "url": "https://www.flyalliance.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "FXAIR",
+  "url": "https://www.fxair.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Hunt & Palmer",
+  "url": "https://www.huntandpalmer.com",
+  "country": "Великобритания",
+  "city": "Кроли",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Jettly",
+  "url": "https://www.jettly.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "evoJets",
+  "url": "https://www.evojets.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Fly Aeolus",
+  "url": "https://www.flyaeolus.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Monarch Air Group",
+  "url": "https://www.monarchairgroup.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Jet Charter Company",
+  "url": "https://www.jetcharter.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Private Jet Charter UK",
+  "url": "https://www.privatejetcharter.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Chapman Freeborn",
+  "url": "https://www.chapmanfreeborn.aero",
+  "country": "Великобритания",
+  "city": "Кроли",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Air Charter Advisors",
+  "url": "https://www.aircharteradvisors.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Mercury Jets",
+  "url": "https://www.mercuryjets.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Jet Partners",
+  "url": "https://jet-partners.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "JetVip",
+  "url": "https://jetvip.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Villiers",
+  "url": "https://www.villiers.ai",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Unity Jets",
+  "url": "https://www.unityjets.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Aeroaffaires",
+  "url": "https://www.aeroaffaires.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "JAL Business Aviation",
+  "url": "https://www.jalba.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "брокер чартера",
+  "top": false
+ },
+ {
+  "name": "Bitlux",
+  "url": "https://bitlux.com",
+  "country": "США",
+  "city": "Бока-Ратон",
+  "type": "членство и чартер",
+  "top": false
+ },
+ {
+  "name": "JSX",
+  "url": "https://www.jsx.com",
+  "country": "США",
+  "city": "Даллас",
+  "type": "полупубличные перелеты",
+  "top": false
+ },
+ {
+  "name": "Aero",
+  "url": "https://aero.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "полупубличные перелеты",
+  "top": false
+ },
+ {
+  "name": "Surf Air",
+  "url": "https://www.surfair.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "полупубличные перелеты",
+  "top": false
+ },
+ {
+  "name": "Guardian Jet",
+  "url": "https://www.guardianjet.com",
+  "country": "США",
+  "city": "Гилфорд",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Colibri Aircraft",
+  "url": "https://www.colibriaircraft.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Avpro",
+  "url": "https://www.avprojets.com",
+  "country": "США",
+  "city": "Аннаполис",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Elliott Jets",
+  "url": "https://www.elliottjets.com",
+  "country": "США",
+  "city": "Молин",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "OGARAJETS",
+  "url": "https://www.ogarajets.com",
+  "country": "США",
+  "city": "Атланта",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Jeteffect",
+  "url": "https://www.jeteffect.com",
+  "country": "США",
+  "city": "Лонг-Бич",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Hagerty Jet Group",
+  "url": "https://www.hagertyjetgroup.com",
+  "country": "США",
+  "city": "Сан-Диего",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Freestream Aircraft",
+  "url": "https://www.freestream.com",
+  "country": "США",
+  "city": "Тетерборо",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Leviate Air Group",
+  "url": "https://www.leviateair.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Jet Executive",
+  "url": "https://www.jet-executive.com",
+  "country": "Германия",
+  "city": "Дюссельдорф",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Hatt & Associates",
+  "url": "https://www.hattaviation.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Aero Asset",
+  "url": "https://www.aeroasset.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер продажи вертолетов",
+  "top": false
+ },
+ {
+  "name": "Jet Transactions",
+  "url": "https://www.jettransactions.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "JetHQ",
+  "url": "https://jethq.com",
+  "country": "США",
+  "city": "Канзас-Сити",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "jetAVIVA",
+  "url": "https://www.jetaviva.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Charlie Bravo Aviation",
+  "url": "https://www.charliebravoaviation.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Asian Sky Group",
+  "url": "https://www.asianskygroup.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "брокер продажи самолетов",
+  "top": false
+ },
+ {
+  "name": "Duncan Aviation",
+  "url": "https://www.duncanaviation.aero",
+  "country": "США",
+  "city": "Линкольн",
+  "type": "продажа и техобслуживание",
+  "top": false
+ },
+ {
+  "name": "Banyan Air Service",
+  "url": "https://www.banyanair.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "FBO и продажа",
+  "top": false
+ },
+ {
+  "name": "Cutter Aviation",
+  "url": "https://cutteraviation.com",
+  "country": "США",
+  "city": "Финикс",
+  "type": "FBO и продажа",
+  "top": false
+ },
+ {
+  "name": "Oriens Aviation",
+  "url": "https://www.oriensaviation.com",
+  "country": "Великобритания",
+  "city": "Биггин-Хилл",
+  "type": "продажа самолетов",
+  "top": false
+ },
+ {
+  "name": "Sloane Helicopters",
+  "url": "https://sloanehelicopters.com",
+  "country": "Великобритания",
+  "city": "Сиуэлл",
+  "type": "продажа вертолетов",
+  "top": false
+ },
+ {
+  "name": "Elliott Aviation",
+  "url": "https://elliottaviation.com",
+  "country": "США",
+  "city": "Молин",
+  "type": "ТО и продажа",
+  "top": false
+ },
+ {
+  "name": "Mente Group",
+  "url": "https://www.mentegroup.com",
+  "country": "США",
+  "city": "Даллас",
+  "type": "консалтинг по покупке",
+  "top": false
+ },
+ {
+  "name": "Global Jet Capital",
+  "url": "https://www.globaljetcapital.com",
+  "country": "США",
+  "city": "Бока-Ратон",
+  "type": "финансирование самолетов",
+  "top": false
+ },
+ {
+  "name": "Global Aerospace",
+  "url": "https://www.global-aero.com",
+  "country": "США",
+  "city": "Морристаун",
+  "type": "страхование самолетов",
+  "top": false
+ },
+ {
+  "name": "Signature Aviation",
+  "url": "https://www.signatureaviation.com",
+  "country": "США",
+  "city": "Орландо",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Harrods Aviation",
+  "url": "https://www.harrodsaviation.com",
+  "country": "Великобритания",
+  "city": "Лутон",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Hong Kong Business Aviation Centre",
+  "url": "https://www.hkbac.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Sky Valet",
+  "url": "https://www.skyvalet.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Atlantic Aviation",
+  "url": "https://www.atlanticaviation.com",
+  "country": "США",
+  "city": "Плано",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Million Air",
+  "url": "https://millionair.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Modern Aviation",
+  "url": "https://modernjetcenter.com",
+  "country": "США",
+  "city": "Денвер",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Sheltair Aviation",
+  "url": "https://www.sheltairaviation.com",
+  "country": "США",
+  "city": "Форт-Лодердейл",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Galaxy FBO",
+  "url": "https://galaxyfbo.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Wilson Air Center",
+  "url": "https://www.wilsonair.com",
+  "country": "США",
+  "city": "Мемфис",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Avflight",
+  "url": "https://www.avflight.com",
+  "country": "США",
+  "city": "Анн-Арбор",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Monterey Jet Center",
+  "url": "https://www.montereyjetcenter.com",
+  "country": "США",
+  "city": "Монтерей",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Fontainebleau Aviation",
+  "url": "https://fontainebleauaviation.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "FBO",
+  "top": false
+ },
+ {
+  "name": "Universal Aviation",
+  "url": "https://www.universalaviation.aero",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "FBO-сеть",
+  "top": false
+ },
+ {
+  "name": "Farnborough Airport",
+  "url": "https://www.farnboroughairport.com",
+  "country": "Великобритания",
+  "city": "Фарнборо",
+  "type": "бизнес-аэропорт",
+  "top": false
+ },
+ {
+  "name": "London Biggin Hill Airport",
+  "url": "https://www.bigginhillairport.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "бизнес-аэропорт",
+  "top": false
+ },
+ {
+  "name": "London Oxford Airport",
+  "url": "https://www.oxfordairport.co.uk",
+  "country": "Великобритания",
+  "city": "Оксфорд",
+  "type": "бизнес-аэропорт",
+  "top": false
+ },
+ {
+  "name": "Lanseria International Airport",
+  "url": "https://lanseria.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "бизнес-аэропорт",
+  "top": false
+ },
+ {
+  "name": "Aerovip",
+  "url": "https://aerovip.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "VIP-обслуживание в аэропортах",
+  "top": false
+ },
+ {
+  "name": "Nice Cote d'Azur Airport",
+  "url": "https://www.nice.aeroport.fr",
+  "country": "Франция",
+  "city": "Ницца",
+  "type": "аэропорт бизнес-авиации",
+  "top": false
+ },
+ {
+  "name": "Geneva Airport",
+  "url": "https://www.gva.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "аэропорт бизнес-авиации",
+  "top": false
+ },
+ {
+  "name": "Blade",
+  "url": "https://www.blade.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вертолетный и джет-чартер",
+  "top": false
+ },
+ {
+  "name": "Saker Aviation",
+  "url": "https://sakeraviation.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вертолетный терминал",
+  "top": false
+ },
+ {
+  "name": "Titan Airways",
+  "url": "https://www.titan-airways.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "VIP-авиакомпания",
+  "top": false
+ },
+ {
+  "name": "Lufthansa Technik VIP",
+  "url": "https://www.lufthansa-technik.com",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "VIP-интерьеры",
+  "top": false
+ },
+ {
+  "name": "AMAC Aerospace",
+  "url": "https://www.amacaerospace.com",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "VIP-интерьеры",
+  "top": false
+ },
+ {
+  "name": "Edese Doret Industrial Design",
+  "url": "https://edesedoret.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "дизайн интерьеров самолетов",
+  "top": false
+ },
+ {
+  "name": "JSSI",
+  "url": "https://jetsupport.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "программы ТО",
+  "top": false
+ },
+ {
+  "name": "Sky Harbour",
+  "url": "https://www.skyharbour.group",
+  "country": "США",
+  "city": "Уэст-Харрисон",
+  "type": "частные ангары",
+  "top": false
+ },
+ {
+  "name": "Vista Global",
+  "url": "https://www.vistaglobal.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "холдинг",
+  "top": false
+ },
+ {
+  "name": "Gulfstream",
+  "url": "https://www.gulfstream.com",
+  "country": "США",
+  "city": "Саванна",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Bombardier",
+  "url": "https://businessaircraft.bombardier.com",
+  "country": "Канада",
+  "city": "Монреаль",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Dassault Falcon",
+  "url": "https://www.dassaultfalcon.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Embraer Executive Jets",
+  "url": "https://www.embraer.com/executive-jets-overview/en/",
+  "country": "Бразилия",
+  "city": "Сан-Жозе-дус-Кампус",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Textron Aviation",
+  "url": "https://txtav.com",
+  "country": "США",
+  "city": "Уичито",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Pilatus",
+  "url": "https://www.pilatus-aircraft.com",
+  "country": "Швейцария",
+  "city": "Штанс",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "HondaJet",
+  "url": "https://www.hondajet.com",
+  "country": "США",
+  "city": "Гринсборо",
+  "type": "производитель",
+  "top": false
+ },
+ {
+  "name": "Boeing Business Jets",
+  "url": "https://businessjets.boeing.com",
+  "country": "США",
+  "city": "Сиэтл",
+  "type": "производитель",
+  "top": false
+ }
+]

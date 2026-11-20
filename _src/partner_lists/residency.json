@@ -1,0 +1,1626 @@
+[
+ {
+  "name": "Henley & Partners",
+  "url": "https://www.henleyglobal.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Arton Capital",
+  "url": "https://www.artoncapital.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Latitude",
+  "url": "https://www.latitudeworld.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "CS Global Partners",
+  "url": "https://www.csglobalpartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Astons",
+  "url": "https://www.astons.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Global Citizen Solutions",
+  "url": "https://www.globalcitizensolutions.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Immigrant Invest",
+  "url": "https://www.immigrantinvest.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Apex Capital Partners",
+  "url": "https://www.apexcapitalpartners.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Imperial & Legal",
+  "url": "https://www.imperial-legal.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Harvey Law Group",
+  "url": "https://www.harveylawcorporation.com",
+  "country": "Канада",
+  "city": "Монреаль",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Fragomen",
+  "url": "https://www.fragomen.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "BAL",
+  "url": "https://www.bal.com",
+  "country": "США",
+  "city": "Даллас",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Laura Devine Immigration",
+  "url": "https://www.lauradevine.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Kingsley Napley",
+  "url": "https://www.kingsleynapley.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Gherson",
+  "url": "https://www.gherson.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Mishcon de Reya",
+  "url": "https://www.mishcon.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": true
+ },
+ {
+  "name": "Withers",
+  "url": "https://www.withersworldwide.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": true
+ },
+ {
+  "name": "Farrer & Co",
+  "url": "https://www.farrer.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": true
+ },
+ {
+  "name": "Wolfsdorf Rosenthal",
+  "url": "https://www.wolfsdorf.com",
+  "country": "США",
+  "city": "Санта-Моника",
+  "type": "иммиграционная юрфирма",
+  "top": true
+ },
+ {
+  "name": "EB5 Capital",
+  "url": "https://www.eb5capital.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "EB-5 центр",
+  "top": true
+ },
+ {
+  "name": "Al Tamimi & Company",
+  "url": "https://www.tamimi.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": true
+ },
+ {
+  "name": "La Vida",
+  "url": "https://www.goldenvisas.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "инвестиционная миграция",
+  "top": true
+ },
+ {
+  "name": "Savory & Partners",
+  "url": "https://www.savoryandpartners.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Nomad Capitalist",
+  "url": "https://www.nomadcapitalist.com",
+  "country": "Малайзия",
+  "city": "Куала-Лумпур",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Get Golden Visa",
+  "url": "https://www.getgoldenvisa.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Migronis",
+  "url": "https://www.migronis.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "RIF Trust",
+  "url": "https://www.riftrust.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Citizenship Invest",
+  "url": "https://www.citizenshipinvest.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "iWorld",
+  "url": "https://www.iworld.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Mercan Group",
+  "url": "https://www.mercan.com",
+  "country": "Канада",
+  "city": "Монреаль",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Atlantic Bridge",
+  "url": "https://www.atlanticbridge.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Portugal Homes",
+  "url": "https://www.portugalhomes.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Range Developments",
+  "url": "https://rangedevelopments.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер CBI",
+  "top": false
+ },
+ {
+  "name": "Lexidy",
+  "url": "https://www.lexidy.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Caiado Guerreiro",
+  "url": "https://www.caiadoguerreiro.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "PLMJ",
+  "url": "https://www.plmj.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Vieira de Almeida",
+  "url": "https://www.vda.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Morais Leitao",
+  "url": "https://www.mlgts.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "ECIJA (Antas da Cunha Ecija)",
+  "url": "https://www.ecija.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Balcells Group",
+  "url": "https://www.balcellsgroup.com",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Garrigues",
+  "url": "https://www.garrigues.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Cuatrecasas",
+  "url": "https://www.cuatrecasas.com",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Bernitsas Law",
+  "url": "https://www.bernitsaslaw.com",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Kyriakides Georgopoulos",
+  "url": "https://www.kglawfirm.gr",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Chetcuti Cauchi Advocates",
+  "url": "https://www.ccmalta.com",
+  "country": "Мальта",
+  "city": "Слима",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "CSB Group",
+  "url": "https://www.csbgroup.com",
+  "country": "Мальта",
+  "city": "Биркиркара",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Ganado Advocates",
+  "url": "https://www.ganado.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "GVZH Advocates",
+  "url": "https://www.gvzh.mt",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Camilleri Preziosi",
+  "url": "https://www.camilleripreziosi.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Fenech & Fenech Advocates",
+  "url": "https://www.fenechlaw.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Nexia BT",
+  "url": "https://www.nexiabt.com",
+  "country": "Мальта",
+  "city": "Сан-Гвянн",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Mamo TCV Advocates",
+  "url": "https://www.mamotcv.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Elias Neocleous & Co",
+  "url": "https://www.neo.law",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Andreas Neocleous & Co",
+  "url": "https://www.neocleous.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Chrysses Demetriades & Co",
+  "url": "https://www.demetriades.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Michael Kyprianou Law Firm",
+  "url": "https://www.kyprianou.com",
+  "country": "Кипр",
+  "city": "Никосия",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Lex Caribbean",
+  "url": "https://lexcaribbean.com",
+  "country": "Тринидад и Тобаго",
+  "city": "Порт-оф-Спейн",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Daniel Brantley",
+  "url": "https://www.danielbrantley.com",
+  "country": "Сент-Китс и Невис",
+  "city": "Чарлстаун",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Penningtons Manches Cooper",
+  "url": "https://www.penningtonslaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Fieldfisher",
+  "url": "https://www.fieldfisher.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Charles Russell Speechlys",
+  "url": "https://www.charlesrussellspeechlys.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Payne Hicks Beach",
+  "url": "https://www.phb.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Magrath Sheldrick",
+  "url": "https://www.magrath.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Smith Stone Walters",
+  "url": "https://www.smithstonewalters.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Davidson Morris",
+  "url": "https://www.davidsonmorris.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Sable International",
+  "url": "https://www.sableinternational.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Bates Wells",
+  "url": "https://www.bateswells.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Lewis Silkin",
+  "url": "https://www.lewissilkin.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Taylor Wessing",
+  "url": "https://www.taylorwessing.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Macfarlanes",
+  "url": "https://www.macfarlanes.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Boodle Hatfield",
+  "url": "https://www.boodlehatfield.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Harbottle & Lewis",
+  "url": "https://www.harbottle.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Klasko Immigration Law Partners",
+  "url": "https://www.klaskolaw.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Miller Mayer",
+  "url": "https://www.millermayer.com",
+  "country": "США",
+  "city": "Итака",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Siskind Susser",
+  "url": "https://www.visalaw.com",
+  "country": "США",
+  "city": "Мемфис",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Kurzban Kurzban Tetzeli & Pratt",
+  "url": "https://www.kktplaw.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Greenberg Traurig",
+  "url": "https://www.gtlaw.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Baker McKenzie",
+  "url": "https://www.bakermckenzie.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Berardi Immigration Law",
+  "url": "https://www.berardiimmigrationlaw.com",
+  "country": "США",
+  "city": "Буффало",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Mona Shah & Associates",
+  "url": "https://www.monashah.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Wildes & Weinberg",
+  "url": "https://www.wildeslaw.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Murthy Law Firm",
+  "url": "https://www.murthy.com",
+  "country": "США",
+  "city": "Оуингс-Миллс",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "CMB Regional Centers",
+  "url": "https://www.cmbeb5visa.com",
+  "country": "США",
+  "city": "Рок-Айленд",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "US Immigration Fund",
+  "url": "https://visaeb-5.com",
+  "country": "США",
+  "city": "Джупитер",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "EB5AN",
+  "url": "https://eb5visainvestments.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "Golden Gate Global",
+  "url": "https://www.3gfund.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "Civitas Capital Group",
+  "url": "https://www.civitascapital.com",
+  "country": "США",
+  "city": "Даллас",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "Green Card Fund",
+  "url": "https://www.greencardfund.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "Vialto Partners",
+  "url": "https://www.vialtopartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "глобальная мобильность",
+  "top": false
+ },
+ {
+  "name": "Newland Chase",
+  "url": "https://www.newlandchase.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "глобальная мобильность",
+  "top": false
+ },
+ {
+  "name": "Envoy Global",
+  "url": "https://www.envoyglobal.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "глобальная мобильность",
+  "top": false
+ },
+ {
+  "name": "Santa Fe Relocation",
+  "url": "https://www.santaferelocation.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "глобальная мобильность",
+  "top": false
+ },
+ {
+  "name": "Cartus",
+  "url": "https://www.cartus.com",
+  "country": "США",
+  "city": "Дэнбери",
+  "type": "глобальная мобильность",
+  "top": false
+ },
+ {
+  "name": "Kendris",
+  "url": "https://www.kendris.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Lenz & Staehelin",
+  "url": "https://www.lenzstaehelin.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "MLL Legal (ex-Froriep)",
+  "url": "https://www.mll-legal.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Vischer",
+  "url": "https://www.vischer.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Schellenberg Wittmer",
+  "url": "https://www.swlegal.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Niederer Kraft Frey",
+  "url": "https://www.nkf.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Walder Wyss",
+  "url": "https://www.walderwyss.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Gordon S. Blair",
+  "url": "https://www.gordonblair.com",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Ogier",
+  "url": "https://www.ogier.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Mourant",
+  "url": "https://www.mourant.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Carey Olsen",
+  "url": "https://www.careyolsen.com",
+  "country": "Гернси",
+  "city": "Сент-Питер-Порт",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Collas Crill",
+  "url": "https://www.collascrill.com",
+  "country": "Гернси",
+  "city": "Сент-Питер-Порт",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Appleby",
+  "url": "https://www.applebyglobal.com",
+  "country": "Бермуды",
+  "city": "Гамильтон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Maisto e Associati",
+  "url": "https://www.maisto.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Chiomenti",
+  "url": "https://www.chiomenti.net",
+  "country": "Италия",
+  "city": "Рим",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "BonelliErede",
+  "url": "https://www.belex.com",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Hadef & Partners",
+  "url": "https://www.hadefpartners.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "BSA Ahmad Bin Hezeem & Associates",
+  "url": "https://www.bsalaw.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Galadari Advocates",
+  "url": "https://www.galadarilaw.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "STA Law Firm",
+  "url": "https://www.stalawfirm.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Virtuzone",
+  "url": "https://www.virtuzone.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Shuraa Business Setup",
+  "url": "https://www.shuraa.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Rikvin",
+  "url": "https://www.rikvin.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Paul Hype Page",
+  "url": "https://www.paulhypepage.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "InCorp Asia",
+  "url": "https://www.incorp.asia",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Rajah & Tann Asia",
+  "url": "https://www.rajahtannasia.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Drew & Napier",
+  "url": "https://www.drewnapier.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "WongPartnership",
+  "url": "https://www.wongpartnership.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Allen & Gledhill",
+  "url": "https://www.allenandgledhill.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Tanner De Witt",
+  "url": "https://www.tannerdewitt.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Anderson Mori & Tomotsune",
+  "url": "https://www.amt-law.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Nishimura & Asahi",
+  "url": "https://www.nishimura.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Mori Hamada & Matsumoto",
+  "url": "https://www.mhmjapan.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Thailand Privilege Card",
+  "url": "https://www.thailandprivilege.co.th",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "программа резидентства",
+  "top": false
+ },
+ {
+  "name": "Xpatweb",
+  "url": "https://www.xpatweb.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Intergate Immigration",
+  "url": "https://www.intergate-immigration.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Werksmans Attorneys",
+  "url": "https://www.werksmans.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Istanbul Homes",
+  "url": "https://www.istanbulhomes.com",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "гражданство через недвижимость",
+  "top": false
+ },
+ {
+  "name": "Antalya Homes",
+  "url": "https://www.antalyahomes.com",
+  "country": "Турция",
+  "city": "Анталья",
+  "type": "гражданство через недвижимость",
+  "top": false
+ },
+ {
+  "name": "Property Turkey",
+  "url": "https://www.propertyturkey.com",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "гражданство через недвижимость",
+  "top": false
+ },
+ {
+  "name": "Tisoro Global",
+  "url": "https://www.tisoroglobal.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "CitizenX",
+  "url": "https://www.citizenx.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "The Wandering Investor",
+  "url": "https://www.thewanderinginvestor.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Passport Legacy",
+  "url": "https://www.passportlegacy.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Global Residence Index",
+  "url": "https://www.globalresidenceindex.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Sovereign Group",
+  "url": "https://www.sovereigngroup.com",
+  "country": "Гибралтар",
+  "city": "Гибралтар",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Private Law",
+  "url": "https://www.private.law",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Vardanyan & Partners",
+  "url": "https://www.armenian-lawyer.com",
+  "country": "Армения",
+  "city": "Ереван",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Secret Bay",
+  "url": "https://www.secretbay.dm",
+  "country": "Доминика",
+  "city": "Портсмут",
+  "type": "девелопер CBI",
+  "top": false
+ },
+ {
+  "name": "Silversands Grenada",
+  "url": "https://www.silversandscollection.com",
+  "country": "Гренада",
+  "city": "Сент-Джорджес",
+  "type": "девелопер CBI",
+  "top": false
+ },
+ {
+  "name": "Immigration Advice Service",
+  "url": "https://www.iasservices.org.uk",
+  "country": "Великобритания",
+  "city": "Манчестер",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Latitude Law",
+  "url": "https://www.latitudelaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Richmond Chambers",
+  "url": "https://immigrationbarrister.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Wedlake Bell",
+  "url": "https://www.wedlakebell.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Forsters",
+  "url": "https://www.forsters.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Stephenson Harwood",
+  "url": "https://www.stephensonharwood.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Hunters Law",
+  "url": "https://www.hunterslaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Collyer Bristow",
+  "url": "https://www.collyerbristow.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Howard Kennedy",
+  "url": "https://www.howardkennedy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Edwin Coe",
+  "url": "https://www.edwincoe.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Fladgate",
+  "url": "https://www.fladgate.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Hamlins",
+  "url": "https://www.hamlins.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Keystone Law",
+  "url": "https://www.keystonelaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Holland & Knight",
+  "url": "https://www.hklaw.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Akerman",
+  "url": "https://www.akerman.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Duane Morris",
+  "url": "https://www.duanemorris.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Cyrus D. Mehta & Partners",
+  "url": "https://www.cyrusmehta.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "CanAm Enterprises",
+  "url": "https://www.canamenterprises.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "EB-5 центр",
+  "top": false
+ },
+ {
+  "name": "Bayfront Law",
+  "url": "https://www.bayfrontlaw.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Lee & Lee",
+  "url": "https://www.leenlee.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Siam Legal International",
+  "url": "https://www.siam-legal.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Tilleke & Gibbins",
+  "url": "https://www.tilleke.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Emerhub",
+  "url": "https://www.emerhub.com",
+  "country": "Индонезия",
+  "city": "Джакарта",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Seven Stones Indonesia",
+  "url": "https://www.sevenstonesindonesia.com",
+  "country": "Индонезия",
+  "city": "Бали",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Al Suwaidi & Company",
+  "url": "https://www.alsuwaidi.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Afridi & Angell",
+  "url": "https://www.afridi-angell.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Business Link UAE",
+  "url": "https://www.businesslinkuae.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "релокация бизнеса",
+  "top": false
+ },
+ {
+  "name": "Meydan Free Zone",
+  "url": "https://www.meydanfz.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "фризона и резидентство",
+  "top": false
+ },
+ {
+  "name": "DMCC",
+  "url": "https://www.dmcc.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "фризона и резидентство",
+  "top": false
+ },
+ {
+  "name": "IFZA",
+  "url": "https://www.ifza.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "фризона и резидентство",
+  "top": false
+ },
+ {
+  "name": "RAKEZ",
+  "url": "https://www.rakez.com",
+  "country": "ОАЭ",
+  "city": "Рас-эль-Хайма",
+  "type": "фризона и резидентство",
+  "top": false
+ },
+ {
+  "name": "WH Partners",
+  "url": "https://www.whpartners.eu",
+  "country": "Мальта",
+  "city": "Сент-Джулианс",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Acumum",
+  "url": "https://www.acumum.com",
+  "country": "Мальта",
+  "city": "Слима",
+  "type": "инвестиционная миграция",
+  "top": false
+ },
+ {
+  "name": "Zampa Debattista",
+  "url": "https://www.zampadebattista.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Christodoulos G. Vassiliades & Co",
+  "url": "https://www.vasslaw.com",
+  "country": "Кипр",
+  "city": "Никосия",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Patrikios Pavlou & Associates",
+  "url": "https://www.pavlaw.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Zepos & Yannopoulos",
+  "url": "https://www.zeya.com",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Karatzas & Partners",
+  "url": "https://www.karatza-partners.gr",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Drakopoulos Law",
+  "url": "https://www.drakopoulos-law.com",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Lambadarios Law Firm",
+  "url": "https://www.lambadarioslaw.gr",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "SRS Legal",
+  "url": "https://www.srslegal.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Abreu Advogados",
+  "url": "https://www.abreuadvogados.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Macedo Vitorino",
+  "url": "https://www.macedovitorino.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Uria Menendez",
+  "url": "https://www.uria.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Perez-Llorca",
+  "url": "https://www.perezllorca.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Gianni & Origoni",
+  "url": "https://www.gop.it",
+  "country": "Италия",
+  "city": "Рим",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Tax Partner AG",
+  "url": "https://www.taxpartner.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Pestalozzi",
+  "url": "https://www.pestalozzilaw.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Bar & Karrer",
+  "url": "https://www.baerkarrer.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Homburger",
+  "url": "https://www.homburger.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Marxer & Partner",
+  "url": "https://www.marxer.law",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Bedell Cristin",
+  "url": "https://www.bedellcristin.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Moroglu Arseven",
+  "url": "https://www.morogluarseven.com",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Ocorian",
+  "url": "https://www.ocorian.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "JTC Group",
+  "url": "https://www.jtcgroup.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Dentons",
+  "url": "https://www.dentons.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Clyde & Co",
+  "url": "https://www.clydeco.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Vistra",
+  "url": "https://www.vistra.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "частный клиент",
+  "top": false
+ },
+ {
+  "name": "Oldham, Li & Nie",
+  "url": "https://www.olnlaw.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "иммиграционная юрфирма",
+  "top": false
+ },
+ {
+  "name": "ONC Lawyers",
+  "url": "https://www.onc.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "частный клиент",
+  "top": false
+ }
+]

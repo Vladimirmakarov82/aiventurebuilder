@@ -1,0 +1,2170 @@
+[
+ {
+  "name": "Forge Global",
+  "url": "https://forgeglobal.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "вторичный рынок",
+  "top": true
+ },
+ {
+  "name": "EquityZen",
+  "url": "https://equityzen.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вторичный рынок",
+  "top": true
+ },
+ {
+  "name": "Clarity (бывший Hiive)",
+  "url": "https://www.clarity.com",
+  "country": "Канада",
+  "city": "Ванкувер",
+  "type": "вторичный рынок",
+  "top": true
+ },
+ {
+  "name": "Nasdaq Private Market",
+  "url": "https://www.nasdaqprivatemarket.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "вторичный рынок",
+  "top": true
+ },
+ {
+  "name": "Moonfare",
+  "url": "https://www.moonfare.com",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "платформа частных рынков",
+  "top": true
+ },
+ {
+  "name": "iCapital",
+  "url": "https://icapital.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "платформа частных рынков",
+  "top": true
+ },
+ {
+  "name": "CAIS",
+  "url": "https://www.caisgroup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "платформа частных рынков",
+  "top": true
+ },
+ {
+  "name": "ADDX",
+  "url": "https://addx.co",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "платформа частных рынков",
+  "top": true
+ },
+ {
+  "name": "AngelList",
+  "url": "https://www.angellist.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "синдикаты",
+  "top": true
+ },
+ {
+  "name": "Republic",
+  "url": "https://republic.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "краудинвестинг",
+  "top": true
+ },
+ {
+  "name": "OurCrowd",
+  "url": "https://www.ourcrowd.com",
+  "country": "Израиль",
+  "city": "Иерусалим",
+  "type": "краудинвестинг",
+  "top": true
+ },
+ {
+  "name": "Alumni Ventures",
+  "url": "https://www.av.vc",
+  "country": "США",
+  "city": "Манчестер",
+  "type": "венчурный фонд для частных",
+  "top": true
+ },
+ {
+  "name": "Blackstone",
+  "url": "https://www.blackstone.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "KKR",
+  "url": "https://www.kkr.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Apollo",
+  "url": "https://www.apollo.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Partners Group",
+  "url": "https://www.partnersgroup.com",
+  "country": "Швейцария",
+  "city": "Баар",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "EQT",
+  "url": "https://eqtgroup.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Ardian",
+  "url": "https://www.ardian.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Investcorp",
+  "url": "https://www.investcorp.com",
+  "country": "Бахрейн",
+  "city": "Манама",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Hamilton Lane",
+  "url": "https://www.hamiltonlane.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "частный капитал",
+  "top": true
+ },
+ {
+  "name": "Lexington Partners",
+  "url": "https://www.lexingtonpartners.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "фонд вторичных сделок",
+  "top": true
+ },
+ {
+  "name": "Coller EQT",
+  "url": "https://www.collereqt.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонд вторичных сделок",
+  "top": true
+ },
+ {
+  "name": "Sequoia Capital",
+  "url": "https://www.sequoiacap.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": true
+ },
+ {
+  "name": "Andreessen Horowitz",
+  "url": "https://a16z.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": true
+ },
+ {
+  "name": "Index Ventures",
+  "url": "https://www.indexventures.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": true
+ },
+ {
+  "name": "Octopus Ventures",
+  "url": "https://octopusventures.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд для частных",
+  "top": true
+ },
+ {
+  "name": "Lakestar",
+  "url": "https://www.lakestar.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "венчурный фонд",
+  "top": true
+ },
+ {
+  "name": "Antler",
+  "url": "https://www.antler.co",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": true
+ },
+ {
+  "name": "Augment",
+  "url": "https://www.augment.market",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Caplight",
+  "url": "https://www.caplight.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Carta",
+  "url": "https://carta.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Setter Capital",
+  "url": "https://www.settercapital.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Rainmaker Securities",
+  "url": "https://www.rainmakersecurities.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "InvestX",
+  "url": "https://investx.com",
+  "country": "Канада",
+  "city": "Ванкувер",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Manhattan Venture Partners",
+  "url": "https://www.manhattanvp.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "Upmarket",
+  "url": "https://www.upmarket.co",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "вторичный рынок",
+  "top": false
+ },
+ {
+  "name": "StartEngine",
+  "url": "https://www.startengine.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Destiny Tech100",
+  "url": "https://destiny.xyz",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "публичный фонд pre-IPO",
+  "top": false
+ },
+ {
+  "name": "Private Shares Fund",
+  "url": "https://www.privatesharesfund.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "публичный фонд pre-IPO",
+  "top": false
+ },
+ {
+  "name": "Neostellar Capital (бывший SuRo Capital)",
+  "url": "https://neostellar.vc",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "публичный фонд pre-IPO",
+  "top": false
+ },
+ {
+  "name": "ARK Venture Fund",
+  "url": "https://www.ark-funds.com",
+  "country": "США",
+  "city": "Сент-Питерсберг",
+  "type": "публичный фонд pre-IPO",
+  "top": false
+ },
+ {
+  "name": "Titanbay",
+  "url": "https://www.titanbay.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Bite Investments",
+  "url": "https://www.biteinvestments.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Delio",
+  "url": "https://www.delio.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Opto Investments",
+  "url": "https://www.optoinvest.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Allocate",
+  "url": "https://www.allocate.co",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Willow Wealth (бывший Yieldstreet)",
+  "url": "https://www.willowwealth.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Fundrise",
+  "url": "https://fundrise.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Percent",
+  "url": "https://percent.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный кредит",
+  "top": false
+ },
+ {
+  "name": "InvestaX",
+  "url": "https://www.investax.io",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Alta",
+  "url": "https://alta.exchange",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Endowus",
+  "url": "https://endowus.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "платформа частных рынков",
+  "top": false
+ },
+ {
+  "name": "Lighthouse Canton",
+  "url": "https://www.lighthouse-canton.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "управление капиталом",
+  "top": false
+ },
+ {
+  "name": "Long Angle",
+  "url": "https://www.longangle.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "сообщество HNWI",
+  "top": false
+ },
+ {
+  "name": "Securitize",
+  "url": "https://securitize.io",
+  "country": "США",
+  "city": "Майами",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "tZERO",
+  "url": "https://www.tzero.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "Archax",
+  "url": "https://www.archax.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "Taurus",
+  "url": "https://www.taurushq.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "Sygnum",
+  "url": "https://www.sygnum.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "Aktionariat",
+  "url": "https://aktionariat.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "токенизация",
+  "top": false
+ },
+ {
+  "name": "Wefunder",
+  "url": "https://wefunder.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Crowdcube",
+  "url": "https://www.crowdcube.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Odin",
+  "url": "https://joinodin.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Sydecar",
+  "url": "https://www.sydecar.io",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Allocations",
+  "url": "https://www.allocations.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "SyndicateRoom",
+  "url": "https://www.syndicateroom.com",
+  "country": "Великобритания",
+  "city": "Кембридж",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Envestors",
+  "url": "https://envestors.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Angel Investment Network",
+  "url": "https://www.angelinvestmentnetwork.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Cambridge Angels",
+  "url": "https://www.cambridgeangels.com",
+  "country": "Великобритания",
+  "city": "Кембридж",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Keiretsu Forum",
+  "url": "https://www.keiretsuforum.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "TCA Venture Group (Tech Coast Angels)",
+  "url": "https://tcaventuregroup.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Golden Seeds",
+  "url": "https://goldenseeds.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "New York Angels",
+  "url": "https://www.newyorkangels.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Band of Angels",
+  "url": "https://www.bandangels.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Gaingels",
+  "url": "https://gaingels.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Hustle Fund",
+  "url": "https://www.hustlefund.vc",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "SICTIC",
+  "url": "https://www.sictic.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Business Angels Switzerland",
+  "url": "https://www.businessangels.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Verve Ventures",
+  "url": "https://www.verve.vc",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Companisto",
+  "url": "https://www.companisto.com",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Invesdor",
+  "url": "https://www.invesdor.com",
+  "country": "Финляндия",
+  "city": "Хельсинки",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "SeedBlink",
+  "url": "https://seedblink.com",
+  "country": "Румыния",
+  "city": "Бухарест",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "iAngels",
+  "url": "https://www.iangels.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Eureeca",
+  "url": "https://eureeca.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Venture Souq",
+  "url": "https://www.venturesouq.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Hong Kong Business Angel Network",
+  "url": "https://www.hkban.org",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "AngelCentral",
+  "url": "https://www.angelcentral.co",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Fundinno",
+  "url": "https://fundinno.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "Uprise.Africa",
+  "url": "https://www.uprise.africa",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "краудинвестинг",
+  "top": false
+ },
+ {
+  "name": "AngelsDeck Global Ventures",
+  "url": "https://www.adgv.vc",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "ангельская сеть",
+  "top": false
+ },
+ {
+  "name": "Freedom24",
+  "url": "https://freedom24.com",
+  "country": "Кипр",
+  "city": "Лимассол",
+  "type": "брокер с доступом к IPO",
+  "top": false
+ },
+ {
+  "name": "Carlyle",
+  "url": "https://www.carlyle.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Brookfield",
+  "url": "https://www.brookfield.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Blue Owl",
+  "url": "https://www.blueowl.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Ares Management",
+  "url": "https://www.aresmgmt.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "TPG",
+  "url": "https://www.tpg.com",
+  "country": "США",
+  "city": "Форт-Уэрт",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Warburg Pincus",
+  "url": "https://warburgpincus.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Bain Capital",
+  "url": "https://www.baincapital.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "CVC Capital Partners",
+  "url": "https://www.cvc.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Permira",
+  "url": "https://www.permira.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Cinven",
+  "url": "https://www.cinven.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "BC Partners",
+  "url": "https://www.bcpartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Apax Partners",
+  "url": "https://www.apax.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "PAI Partners",
+  "url": "https://www.paipartners.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Eurazeo",
+  "url": "https://www.eurazeo.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Tikehau Capital",
+  "url": "https://www.tikehaucapital.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Siparex",
+  "url": "https://www.siparex.com",
+  "country": "Франция",
+  "city": "Лион",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "3i Group",
+  "url": "https://www.3i.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "ICG",
+  "url": "https://www.icgam.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Hg",
+  "url": "https://hgcapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Triton",
+  "url": "https://www.triton-partners.com",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Nordic Capital",
+  "url": "https://www.nordiccapital.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Unigestion",
+  "url": "https://www.unigestion.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "LGT Capital Partners",
+  "url": "https://www.lgtcp.com",
+  "country": "Швейцария",
+  "city": "Пфеффикон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Capital Dynamics",
+  "url": "https://www.capdyn.com",
+  "country": "Швейцария",
+  "city": "Цуг",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Schroders Capital",
+  "url": "https://www.schroderscapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Goldman Sachs Asset Management",
+  "url": "https://am.gs.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Neuberger Berman",
+  "url": "https://www.nb.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "StepStone Group",
+  "url": "https://www.stepstonegroup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Pantheon",
+  "url": "https://www.pantheon.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонд фондов",
+  "top": false
+ },
+ {
+  "name": "Adams Street Partners",
+  "url": "https://www.adamsstreetpartners.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "фонд фондов",
+  "top": false
+ },
+ {
+  "name": "HarbourVest",
+  "url": "https://www.harbourvest.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "фонд фондов",
+  "top": false
+ },
+ {
+  "name": "Emerald Technology Ventures",
+  "url": "https://www.emerald.vc",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Ethos Private Equity",
+  "url": "https://ethos.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Mubadala Capital",
+  "url": "https://www.mubadalacapital.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Lunate",
+  "url": "https://www.lunate.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Gulf Islamic Investments",
+  "url": "https://www.gii.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "SHUAA Capital",
+  "url": "https://www.shuaa.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Al Mal Capital",
+  "url": "https://www.almalcapital.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Rasmala",
+  "url": "https://www.rasmala.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Arqaam Capital",
+  "url": "https://www.arqaamcapital.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Jadwa Investment",
+  "url": "https://www.jadwa.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Alkhabeer Capital",
+  "url": "https://www.alkhabeer.com",
+  "country": "Саудовская Аравия",
+  "city": "Джидда",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Riyad Capital",
+  "url": "https://www.riyadcapital.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Shorooq Partners",
+  "url": "https://shorooq.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "BECO Capital",
+  "url": "https://www.becocapital.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Global Ventures",
+  "url": "https://www.global.vc",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "MEVP",
+  "url": "https://www.mevp.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Wamda",
+  "url": "https://www.wamda.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Further Ventures",
+  "url": "https://further.vc",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "STV",
+  "url": "https://stv.vc",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Raed Ventures",
+  "url": "https://raed.vc",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Impact46",
+  "url": "https://impact46.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Sanabil Investments",
+  "url": "https://www.sanabil.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "частный капитал",
+  "top": false
+ },
+ {
+  "name": "Jada Fund of Funds",
+  "url": "https://www.jada.com.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "фонд фондов",
+  "top": false
+ },
+ {
+  "name": "Founders Fund",
+  "url": "https://foundersfund.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "General Catalyst",
+  "url": "https://www.generalcatalyst.com",
+  "country": "США",
+  "city": "Кембридж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Lightspeed Venture Partners",
+  "url": "https://lsvp.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Kleiner Perkins",
+  "url": "https://www.kleinerperkins.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Accel",
+  "url": "https://www.accel.com",
+  "country": "США",
+  "city": "Пало-Альто",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Greylock",
+  "url": "https://greylock.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Benchmark",
+  "url": "https://www.benchmark.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Bessemer Venture Partners",
+  "url": "https://www.bvp.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Insight Partners",
+  "url": "https://www.insightpartners.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Tiger Global",
+  "url": "https://www.tigerglobal.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Coatue",
+  "url": "https://www.coatue.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Thrive Capital",
+  "url": "https://thrivecap.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Khosla Ventures",
+  "url": "https://www.khoslaventures.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "NEA",
+  "url": "https://www.nea.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Battery Ventures",
+  "url": "https://www.battery.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Redpoint",
+  "url": "https://www.redpoint.com",
+  "country": "США",
+  "city": "Вудсайд",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Felicis",
+  "url": "https://www.felicis.com",
+  "country": "США",
+  "city": "Менло-Парк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "First Round Capital",
+  "url": "https://firstround.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Lux Capital",
+  "url": "https://www.luxcapital.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "8VC",
+  "url": "https://www.8vc.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Ribbit Capital",
+  "url": "https://ribbitcap.com",
+  "country": "США",
+  "city": "Пало-Альто",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "DST Global",
+  "url": "https://dst.global",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Fifth Wall",
+  "url": "https://fifthwall.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "SV Angel",
+  "url": "https://svangel.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Slow Ventures",
+  "url": "https://slow.co",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Village Global",
+  "url": "https://www.villageglobal.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Y Combinator",
+  "url": "https://www.ycombinator.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "акселератор",
+  "top": false
+ },
+ {
+  "name": "500 Global",
+  "url": "https://500.co",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Techstars",
+  "url": "https://www.techstars.com",
+  "country": "США",
+  "city": "Боулдер",
+  "type": "акселератор",
+  "top": false
+ },
+ {
+  "name": "SOSV",
+  "url": "https://sosv.com",
+  "country": "США",
+  "city": "Принстон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Plug and Play",
+  "url": "https://www.plugandplaytechcenter.com",
+  "country": "США",
+  "city": "Саннивейл",
+  "type": "акселератор",
+  "top": false
+ },
+ {
+  "name": "Atomico",
+  "url": "https://atomico.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Balderton Capital",
+  "url": "https://www.balderton.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Phoenix Court (LocalGlobe)",
+  "url": "https://www.phoenixcourt.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Seedcamp",
+  "url": "https://seedcamp.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Notion Capital",
+  "url": "https://www.notioncapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Felix Capital",
+  "url": "https://www.felixcap.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Mosaic Ventures",
+  "url": "https://www.mosaicventures.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Air Street Capital",
+  "url": "https://www.airstreet.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Plural",
+  "url": "https://www.plural.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Passion Capital",
+  "url": "https://www.passioncapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Hoxton Ventures",
+  "url": "https://hoxtonventures.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Playfair Capital",
+  "url": "https://playfair.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Firstminute Capital",
+  "url": "https://www.firstminute.capital",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Backed VC",
+  "url": "https://backed.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Kindred Capital",
+  "url": "https://kindredcapital.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Octopus Investments",
+  "url": "https://octopusinvestments.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Molten Ventures",
+  "url": "https://www.moltenventures.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "публичный венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Foresight Group",
+  "url": "https://www.foresight.group",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Downing",
+  "url": "https://www.downing.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Calculus Capital",
+  "url": "https://www.calculuscapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Mercia",
+  "url": "https://www.mercia.co.uk",
+  "country": "Великобритания",
+  "city": "Хенли-ин-Арден",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Pembroke VCT",
+  "url": "https://www.pembrokevct.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Albion Capital",
+  "url": "https://albion.vc",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Deepbridge Capital",
+  "url": "https://www.deepbridge.com",
+  "country": "Великобритания",
+  "city": "Честер",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Par Equity",
+  "url": "https://www.parequity.com",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "фонды EIS и VCT",
+  "top": false
+ },
+ {
+  "name": "Northzone",
+  "url": "https://northzone.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Creandum",
+  "url": "https://www.creandum.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Heartcore Capital",
+  "url": "https://www.heartcore.com",
+  "country": "Дания",
+  "city": "Копенгаген",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "byFounders",
+  "url": "https://byfounders.vc",
+  "country": "Дания",
+  "city": "Копенгаген",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Maki.vc",
+  "url": "https://maki.vc",
+  "country": "Финляндия",
+  "city": "Хельсинки",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Inventure",
+  "url": "https://www.inventure.vc",
+  "country": "Финляндия",
+  "city": "Хельсинки",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Lifeline Ventures",
+  "url": "https://lifelineventures.com",
+  "country": "Финляндия",
+  "city": "Хельсинки",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Redalpine",
+  "url": "https://www.redalpine.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "b2venture",
+  "url": "https://www.b2venture.vc",
+  "country": "Швейцария",
+  "city": "Санкт-Галлен",
+  "type": "синдикаты",
+  "top": false
+ },
+ {
+  "name": "Founderful",
+  "url": "https://founderful.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Earlybird",
+  "url": "https://earlybird.com",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Point Nine",
+  "url": "https://www.pointnine.com",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "HV Capital",
+  "url": "https://www.hvcapital.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Cherry Ventures",
+  "url": "https://www.cherry.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Project A",
+  "url": "https://www.project-a.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Global Founders Capital",
+  "url": "https://www.globalfounders.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Picus Capital",
+  "url": "https://www.picuscap.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Visionaries Club",
+  "url": "https://www.visionaries.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "468 Capital",
+  "url": "https://www.468cap.com",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "La Famiglia",
+  "url": "https://www.lafamiglia.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Atlantic Labs",
+  "url": "https://atlantic.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Vsquared Ventures",
+  "url": "https://www.vsquared.vc",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "UVC Partners",
+  "url": "https://www.uvcpartners.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Tomahawk.VC",
+  "url": "https://www.tomahawk.vc",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Speedinvest",
+  "url": "https://www.speedinvest.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Partech",
+  "url": "https://partechpartners.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Kima Ventures",
+  "url": "https://www.kimaventures.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Elaia",
+  "url": "https://www.elaia.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Daphni",
+  "url": "https://www.daphni.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Alven",
+  "url": "https://www.alven.co",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Serena",
+  "url": "https://www.serena.vc",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Frst",
+  "url": "https://www.frst.vc",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Blisce",
+  "url": "https://www.blisce.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "360 Capital",
+  "url": "https://www.360cap.vc",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "P101",
+  "url": "https://www.p101.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Seaya Andromeda",
+  "url": "https://www.seaya.vc",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Kibo Ventures",
+  "url": "https://www.kiboventures.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "K Fund",
+  "url": "https://www.kfund.vc",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Samaipata",
+  "url": "https://www.samaipata.vc",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Pitango",
+  "url": "https://www.pitango.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Aleph",
+  "url": "https://aleph.vc",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Entree Capital",
+  "url": "https://entreecap.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "TLV Partners",
+  "url": "https://www.tlv.partners",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "JVP",
+  "url": "https://www.jvpvc.com",
+  "country": "Израиль",
+  "city": "Иерусалим",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Vintage Investment Partners",
+  "url": "https://www.vintageinvestmentpartners.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "фонд вторичных сделок",
+  "top": false
+ },
+ {
+  "name": "Peak XV Partners",
+  "url": "https://www.peakxv.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Vertex Holdings",
+  "url": "https://vertexholdings.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Golden Gate Ventures",
+  "url": "https://goldengate.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "East Ventures",
+  "url": "https://east.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Jungle Ventures",
+  "url": "https://www.jungle.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Openspace",
+  "url": "https://www.openspacecapital.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Monk's Hill Ventures",
+  "url": "https://www.monkshill.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Wavemaker Partners",
+  "url": "https://wavemaker.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Iterative",
+  "url": "https://www.iterative.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Insignia Ventures",
+  "url": "https://www.insignia.vc",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Horizons Ventures",
+  "url": "https://www.horizonsventures.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Gobi Partners",
+  "url": "https://www.gobivc.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "JAFCO",
+  "url": "https://www.jafco.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Globis Capital Partners",
+  "url": "https://globiscapital.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Coral Capital",
+  "url": "https://coralcap.co",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "DNX Ventures",
+  "url": "https://www.dnx.vc",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Incubate Fund",
+  "url": "https://incubatefund.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "SBI Investment",
+  "url": "https://www.sbinvestment.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Knife Capital",
+  "url": "https://www.knifecap.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Kalon Venture Partners",
+  "url": "https://www.kalonvp.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "4Di Capital",
+  "url": "https://www.4dicapital.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "HAVAIC",
+  "url": "https://www.havaic.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Runa Capital",
+  "url": "https://runacap.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Flint Capital",
+  "url": "https://www.flintcap.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "венчурный фонд",
+  "top": false
+ },
+ {
+  "name": "Target Global",
+  "url": "https://onetarget.vc",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "венчурный фонд",
+  "top": false
+ }
+]

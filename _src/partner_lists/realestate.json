@@ -1,0 +1,2050 @@
+[
+ {
+  "name": "Knight Frank",
+  "url": "https://www.knightfrank.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Savills",
+  "url": "https://www.savills.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Sotheby's International Realty",
+  "url": "https://www.sothebysrealty.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Christie's International Real Estate",
+  "url": "https://www.christiesrealestate.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Engel & Volkers",
+  "url": "https://www.engelvoelkers.com",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Douglas Elliman",
+  "url": "https://www.elliman.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Compass",
+  "url": "https://www.compass.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "The Agency",
+  "url": "https://www.theagencyre.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Hilton & Hyland",
+  "url": "https://www.hiltonhyland.com",
+  "country": "США",
+  "city": "Беверли-Хиллз",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Barnes International Realty",
+  "url": "https://www.barnes-international.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "John Taylor",
+  "url": "https://www.john-taylor.com",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Beauchamp Estates",
+  "url": "https://www.beauchamp.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Property Vision",
+  "url": "https://www.propertyvision.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": true
+ },
+ {
+  "name": "Black Brick",
+  "url": "https://www.blackbrick.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": true
+ },
+ {
+  "name": "Grosvenor",
+  "url": "https://www.grosvenor.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": true
+ },
+ {
+  "name": "Related Companies",
+  "url": "https://www.related.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": true
+ },
+ {
+  "name": "Related Group",
+  "url": "https://www.relatedgroup.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": true
+ },
+ {
+  "name": "Four Seasons",
+  "url": "https://www.fourseasons.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "бренд резиденций",
+  "top": true
+ },
+ {
+  "name": "Aman",
+  "url": "https://www.aman.com",
+  "country": "Швейцария",
+  "city": "Баар",
+  "type": "бренд резиденций",
+  "top": true
+ },
+ {
+  "name": "Luxhabitat Sotheby's International Realty",
+  "url": "https://www.luxhabitat.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Emaar Properties",
+  "url": "https://www.emaar.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": true
+ },
+ {
+  "name": "DAMAC Properties",
+  "url": "https://www.damacproperties.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": true
+ },
+ {
+  "name": "Omniyat",
+  "url": "https://www.omniyat.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": true
+ },
+ {
+  "name": "Pam Golding Properties",
+  "url": "https://www.pamgolding.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": true
+ },
+ {
+  "name": "Strutt & Parker",
+  "url": "https://www.struttandparker.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Chestertons",
+  "url": "https://www.chestertons.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Hamptons",
+  "url": "https://www.hamptons.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Aston Chase",
+  "url": "https://www.astonchase.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Wetherell",
+  "url": "https://www.wetherell.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Winkworth",
+  "url": "https://www.winkworth.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Harrods Estates",
+  "url": "https://www.harrodsestates.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Pastor Real Estate",
+  "url": "https://www.pastorrealestate.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "John D Wood & Co",
+  "url": "https://www.johndwood.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Robert Holmes & Co",
+  "url": "https://www.robertholmes.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Jackson-Stops",
+  "url": "https://www.jackson-stops.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Henry & James",
+  "url": "https://www.henryandjames.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Glentree Estates",
+  "url": "https://www.glentree.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Kay & Co",
+  "url": "https://www.kayandco.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Maskells",
+  "url": "https://www.maskells.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Sotheby's International Realty UK",
+  "url": "https://www.sothebysrealty.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Fine & Country",
+  "url": "https://www.fineandcountry.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "The Buying Solution",
+  "url": "https://www.thebuyingsolution.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Garrington Property Finders",
+  "url": "https://www.garrington.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Middleton Advisors",
+  "url": "https://www.middletonadvisors.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Recoco Property Search",
+  "url": "https://www.recoco.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Heaton & Partners",
+  "url": "https://www.heatonpartners.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Berkeley Group",
+  "url": "https://www.berkeleygroup.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Northacre",
+  "url": "https://www.northacre.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Mount Anvil",
+  "url": "https://www.mountanvil.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Native Land",
+  "url": "https://www.nativeland.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Ballymore",
+  "url": "https://www.ballymoregroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Battersea Power Station",
+  "url": "https://www.batterseapowerstation.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Finchatton",
+  "url": "https://www.finchatton.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Galliard Homes",
+  "url": "https://www.galliardhomes.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Londonewcastle",
+  "url": "https://www.londonewcastle.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Chelsea Barracks",
+  "url": "https://www.chelseabarracks.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Brown Harris Stevens",
+  "url": "https://www.bhsusa.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Corcoran",
+  "url": "https://www.corcoran.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Serhant",
+  "url": "https://www.serhant.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Nest Seekers International",
+  "url": "https://www.nestseekers.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Leslie J. Garfield",
+  "url": "https://www.lesliegarfield.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Warburg Realty",
+  "url": "https://www.warburgrealty.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Bespoke Real Estate",
+  "url": "https://www.bespokerealestate.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Modlin Group",
+  "url": "https://www.modlingroup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Saunders & Associates",
+  "url": "https://www.hamptonsrealestate.com",
+  "country": "США",
+  "city": "Бриджхэмптон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Daniel Gale Sotheby's International Realty",
+  "url": "https://www.danielgale.com",
+  "country": "США",
+  "city": "Хантингтон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Houlihan Lawrence",
+  "url": "https://www.houlihanlawrence.com",
+  "country": "США",
+  "city": "Рай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "William Raveis",
+  "url": "https://www.raveis.com",
+  "country": "США",
+  "city": "Шелтон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "LandVest",
+  "url": "https://www.landvest.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "ONE Sotheby's International Realty",
+  "url": "https://www.onesothebysrealty.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Cervera Real Estate",
+  "url": "https://www.cervera.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Jills Zeder Group",
+  "url": "https://www.jillszeder.com",
+  "country": "США",
+  "city": "Майами-Бич",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Premier Estate Properties",
+  "url": "https://www.premierestateproperties.com",
+  "country": "США",
+  "city": "Палм-Бич",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Lang Realty",
+  "url": "https://www.langrealty.com",
+  "country": "США",
+  "city": "Бока-Ратон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Carolwood Estates",
+  "url": "https://www.carolwoodre.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Westside Estate Agency",
+  "url": "https://www.weahomes.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Rodeo Realty",
+  "url": "https://www.rodeore.com",
+  "country": "США",
+  "city": "Беверли-Хиллз",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Golden Gate Sotheby's International Realty",
+  "url": "https://www.ggsir.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Aspen Snowmass Sotheby's International Realty",
+  "url": "https://www.aspensnowmasssir.com",
+  "country": "США",
+  "city": "Аспен",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Slifer Smith & Frampton",
+  "url": "https://www.vailrealestate.com",
+  "country": "США",
+  "city": "Вейл",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Hall and Hall",
+  "url": "https://www.hallandhall.com",
+  "country": "США",
+  "city": "Боузмен",
+  "type": "ранчо и земли",
+  "top": false
+ },
+ {
+  "name": "Live Water Properties",
+  "url": "https://www.livewaterproperties.com",
+  "country": "США",
+  "city": "Джексон",
+  "type": "ранчо и земли",
+  "top": false
+ },
+ {
+  "name": "Fay Ranches",
+  "url": "https://www.fayranches.com",
+  "country": "США",
+  "city": "Боузмен",
+  "type": "ранчо и земли",
+  "top": false
+ },
+ {
+  "name": "Berkshire Hathaway HomeServices",
+  "url": "https://www.bhhs.com",
+  "country": "США",
+  "city": "Ирвин",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Coldwell Banker Global Luxury",
+  "url": "https://www.coldwellbankerluxury.com",
+  "country": "США",
+  "city": "Мэдисон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Extell Development",
+  "url": "https://www.extell.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Witkoff",
+  "url": "https://www.witkoff.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Macklowe Properties",
+  "url": "https://www.macklowe.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "JDS Development Group",
+  "url": "https://www.jdsdevelopment.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Vornado Realty Trust",
+  "url": "https://www.vno.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Fortune International Group",
+  "url": "https://www.fortuneintl.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Terra Group",
+  "url": "https://www.terragroup.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Dezer Development",
+  "url": "https://www.dezer.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Two Roads Development",
+  "url": "https://www.tworoadsdevelopment.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Turnberry",
+  "url": "https://www.turnberry.com",
+  "country": "США",
+  "city": "Авентура",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Lionheart Capital",
+  "url": "https://www.lionheartcapital.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Bentley Residences Miami",
+  "url": "https://www.bentleyresidences.com",
+  "country": "США",
+  "city": "Санни-Айлс-Бич",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Aston Martin Residences",
+  "url": "https://www.astonmartinresidences.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Six Senses",
+  "url": "https://www.sixsenses.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Mandarin Oriental",
+  "url": "https://www.mandarinoriental.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Rosewood Hotels & Resorts",
+  "url": "https://www.rosewoodhotels.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "One&Only Resorts",
+  "url": "https://www.oneandonlyresorts.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Bulgari Hotels & Resorts",
+  "url": "https://www.bulgarihotels.com",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Daniel Feau",
+  "url": "https://www.danielfeau.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Emile Garcin",
+  "url": "https://www.emilegarcin.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Kretz Family Real Estate",
+  "url": "https://www.kretzfamily.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Varenne Immobilier",
+  "url": "https://www.varenne.fr",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Michael Zingraf Real Estate",
+  "url": "https://www.michaelzingraf.com",
+  "country": "Франция",
+  "city": "Канны",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Cote d'Azur Sotheby's International Realty",
+  "url": "https://www.cotedazur-sothebysrealty.com",
+  "country": "Франция",
+  "city": "Канны",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Agence Savills Courchevel",
+  "url": "https://www.savills.fr",
+  "country": "Франция",
+  "city": "Куршевель",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Miells & Partners",
+  "url": "https://www.miells.com",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Dahler",
+  "url": "https://www.dahlercompany.com",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Von Poll Immobilien",
+  "url": "https://www.von-poll.com",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Aigner Immobilien",
+  "url": "https://www.aigner-immobilien.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Riedel Immobilien",
+  "url": "https://www.riedel-immobilien.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Naef Prestige Knight Frank",
+  "url": "https://www.naef.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Cardis Sotheby's International Realty",
+  "url": "https://www.cardis.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Comptoir Immobilier",
+  "url": "https://www.comptoir-immo.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Walde Immobilien",
+  "url": "https://www.walde.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Swixim",
+  "url": "https://www.swixim.com",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Lucas Fox",
+  "url": "https://www.lucasfox.com",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Drumelia Real Estate",
+  "url": "https://www.drumelia.com",
+  "country": "Испания",
+  "city": "Марбелья",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Panorama Properties",
+  "url": "https://www.panoramamarbella.com",
+  "country": "Испания",
+  "city": "Марбелья",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Terra Meridiana",
+  "url": "https://www.terrameridiana.com",
+  "country": "Испания",
+  "city": "Марбелья",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Porta Mallorquina",
+  "url": "https://www.portamallorquina.com",
+  "country": "Испания",
+  "city": "Пальма",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Mallorca Sotheby's",
+  "url": "https://www.mallorca-sothebysrealty.com",
+  "country": "Испания",
+  "city": "Пальма",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Porta da Frente Christie's",
+  "url": "https://www.portadafrente.com",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Quintela + Penalva Knight Frank",
+  "url": "https://www.quintelaepenalva.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Romolini Immobiliare",
+  "url": "https://www.romolini.com",
+  "country": "Италия",
+  "city": "Ареццо",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Lionard Luxury Real Estate",
+  "url": "https://www.lionard.com",
+  "country": "Италия",
+  "city": "Флоренция",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Italy Sotheby's International Realty",
+  "url": "https://www.italy-sothebysrealty.com",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Great Estate",
+  "url": "https://www.great-estate.com",
+  "country": "Италия",
+  "city": "Флоренция",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Betterhomes",
+  "url": "https://www.bhomes.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Driven Properties",
+  "url": "https://www.drivenproperties.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "fam Properties",
+  "url": "https://www.famproperties.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Allsopp & Allsopp",
+  "url": "https://www.allsoppandallsopp.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Espace Real Estate",
+  "url": "https://www.espace.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Haus & Haus",
+  "url": "https://www.hausandhaus.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Metropolitan Premium Properties",
+  "url": "https://www.metropolitan.realestate",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Provident Estate",
+  "url": "https://www.providentestate.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Unique Properties",
+  "url": "https://www.uniqueproperties.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Select Group",
+  "url": "https://www.select-group.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Ellington Properties",
+  "url": "https://www.ellingtonproperties.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Sobha Realty",
+  "url": "https://www.sobharealty.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Nakheel",
+  "url": "https://www.nakheel.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Meraas",
+  "url": "https://www.meraas.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Binghatti",
+  "url": "https://www.binghatti.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Aldar Properties",
+  "url": "https://www.aldar.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Arada",
+  "url": "https://www.arada.com",
+  "country": "ОАЭ",
+  "city": "Шарджа",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Dar Global",
+  "url": "https://www.dar.global",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "ROSHN",
+  "url": "https://www.roshn.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Red Sea Global",
+  "url": "https://www.redseaglobal.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Diriyah Company",
+  "url": "https://www.diriyah.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "United Development Company",
+  "url": "https://www.udcqatar.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Qatari Diar",
+  "url": "https://www.qataridiar.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Swire Properties",
+  "url": "https://www.swireproperties.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Sun Hung Kai Properties",
+  "url": "https://www.shkp.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Henderson Land",
+  "url": "https://www.hld.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "CK Asset Holdings",
+  "url": "https://www.ckah.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "New World Development",
+  "url": "https://www.nwd.com.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Sino Land",
+  "url": "https://www.sino.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Hongkong Land",
+  "url": "https://www.hkland.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Midland Realty",
+  "url": "https://www.midland.com.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Habitat Property",
+  "url": "https://www.habitat-property.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "OKAY.com",
+  "url": "https://www.okay.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "CapitaLand",
+  "url": "https://www.capitaland.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "City Developments",
+  "url": "https://www.cdl.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "GuocoLand",
+  "url": "https://www.guocoland.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "UOL Group",
+  "url": "https://www.uol.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Wing Tai Holdings",
+  "url": "https://www.wingtaiasia.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Far East Organization",
+  "url": "https://www.fareast.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Huttons Asia",
+  "url": "https://www.huttonsgroup.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "PropNex",
+  "url": "https://www.propnex.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "ERA Singapore",
+  "url": "https://www.era.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "OrangeTee & Tie",
+  "url": "https://www.orangetee.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Mitsui Fudosan",
+  "url": "https://www.mitsuifudosan.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Mitsubishi Estate",
+  "url": "https://www.mec.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Sumitomo Realty & Development",
+  "url": "https://www.sumitomo-rd.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Mori Building",
+  "url": "https://www.mori.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Tokyu Land",
+  "url": "https://www.tokyu-land.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Nomura Real Estate",
+  "url": "https://www.nomura-re.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Ken Corporation",
+  "url": "https://www.kencorp.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Housing Japan",
+  "url": "https://www.housingjapan.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Plaza Homes",
+  "url": "https://www.realestate-tokyo.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Seeff Properties",
+  "url": "https://www.seeff.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Lew Geffen Sotheby's International Realty",
+  "url": "https://www.sothebysrealty.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Dogon Group Properties",
+  "url": "https://www.dgproperties.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Greeff Christie's International Real Estate",
+  "url": "https://www.greeff.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Jawitz Properties",
+  "url": "https://www.jawitz.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Chas Everitt",
+  "url": "https://www.chaseveritt.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Fine & Country South Africa",
+  "url": "https://www.fineandcountry.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Steyn City",
+  "url": "https://www.steyncity.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "V&A Waterfront",
+  "url": "https://www.waterfront.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Kalinka Group",
+  "url": "https://www.kalinka-realty.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Penny Lane Realty",
+  "url": "https://www.penny-lane.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Intermark",
+  "url": "https://www.intermark.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Contact Real Estate",
+  "url": "https://www.contact-realty.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Whitewill",
+  "url": "https://www.whitewill.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Tranio",
+  "url": "https://www.tranio.ru",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "NF Group",
+  "url": "https://www.nf-group.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Capital Group",
+  "url": "https://www.capitalgroup.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "MR Group",
+  "url": "https://www.mr-group.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Donstroy",
+  "url": "https://donstroy.moscow",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Sminex",
+  "url": "https://www.sminex.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Barkli",
+  "url": "https://www.barkli.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Vesper",
+  "url": "https://www.vesper.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Metrium",
+  "url": "https://www.metrium.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Marsh & Parsons",
+  "url": "https://www.marshandparsons.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Russell Simpson",
+  "url": "https://www.russellsimpson.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Arlington Residential",
+  "url": "https://www.arlingtonresidential.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Domus Nova",
+  "url": "https://www.domusnova.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Lurot Brand",
+  "url": "https://www.lurotbrand.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Carter Jonas",
+  "url": "https://www.carterjonas.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Inigo",
+  "url": "https://www.inigo.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "The Modern House",
+  "url": "https://www.themodernhouse.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "YOO",
+  "url": "https://www.yoo.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Sereno",
+  "url": "https://www.sereno.com",
+  "country": "США",
+  "city": "Пало-Альто",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "EWM Realty International",
+  "url": "https://www.ewm.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Hawaii Life",
+  "url": "https://www.hawaiilife.com",
+  "country": "США",
+  "city": "Гонолулу",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Hines",
+  "url": "https://www.hines.com",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Zeckendorf Development",
+  "url": "https://www.zeckendorf.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Baccarat Hotels",
+  "url": "https://www.baccarathotels.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Raffles Hotels & Resorts",
+  "url": "https://www.raffles.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Fairmont",
+  "url": "https://www.fairmont.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Kempinski",
+  "url": "https://www.kempinski.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Jumeirah",
+  "url": "https://www.jumeirah.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Cheval Blanc",
+  "url": "https://www.chevalblanc.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Dorchester Collection",
+  "url": "https://www.dorchestercollection.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "The Peninsula Hotels",
+  "url": "https://www.peninsula.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Banyan Tree Group",
+  "url": "https://www.banyantree.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Nobu Hospitality",
+  "url": "https://www.nobuhotels.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Ritz-Carlton",
+  "url": "https://www.ritzcarlton.com",
+  "country": "США",
+  "city": "Бетесда",
+  "type": "бренд резиденций",
+  "top": false
+ },
+ {
+  "name": "Imkan",
+  "url": "https://www.imkan.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Modon Holding",
+  "url": "https://www.modon.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Eagle Hills",
+  "url": "https://www.eaglehills.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Barwa Real Estate",
+  "url": "https://www.barwa.com.qa",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Landscope Christie's International Real Estate",
+  "url": "https://www.landscope.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Level Group",
+  "url": "https://www.level.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Exotiq Property",
+  "url": "https://www.exotiqproperty.com",
+  "country": "Индонезия",
+  "city": "Бали",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Leptos Estates",
+  "url": "https://www.leptosestates.com",
+  "country": "Кипр",
+  "city": "Пафос",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Pafilia",
+  "url": "https://www.pafilia.com",
+  "country": "Кипр",
+  "city": "Пафос",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Korantina Homes",
+  "url": "https://www.korantinahomes.com",
+  "country": "Кипр",
+  "city": "Пафос",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Aristo Developers",
+  "url": "https://www.aristodevelopers.com",
+  "country": "Кипр",
+  "city": "Пафос",
+  "type": "девелопер премиум",
+  "top": false
+ },
+ {
+  "name": "Lamda Development",
+  "url": "https://www.lamdadev.com",
+  "country": "Греция",
+  "city": "Афины",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Porto Montenegro",
+  "url": "https://www.portomontenegro.com",
+  "country": "Черногория",
+  "city": "Тиват",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Lustica Bay",
+  "url": "https://www.lusticabay.com",
+  "country": "Черногория",
+  "city": "Тиват",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Quinta do Lago",
+  "url": "https://www.quintadolago.com",
+  "country": "Португалия",
+  "city": "Алгарве",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Sotogrande",
+  "url": "https://www.sotogrande.com",
+  "country": "Испания",
+  "city": "Сотогранде",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "La Zagaleta",
+  "url": "https://www.lazagaleta.com",
+  "country": "Испания",
+  "city": "Бенаавис",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Val de Vie Estate",
+  "url": "https://www.valdevie.co.za",
+  "country": "ЮАР",
+  "city": "Паарль",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Chateau Group",
+  "url": "https://www.chateaugroupusa.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Property Markets Group",
+  "url": "https://www.propertymg.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "девелопер резиденций",
+  "top": false
+ },
+ {
+  "name": "Kristina Szekely",
+  "url": "https://www.ksmarbella.com",
+  "country": "Испания",
+  "city": "Марбелья",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Sotheby's International Realty France Monaco",
+  "url": "https://www.sothebysrealty-france.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "элитное агентство",
+  "top": false
+ },
+ {
+  "name": "Pryor & Co",
+  "url": "https://www.henrypryor.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "байер-агент",
+  "top": false
+ },
+ {
+  "name": "Living on the Cote d'Azur",
+  "url": "https://www.livingonthecotedazur.com",
+  "country": "Франция",
+  "city": "Антиб",
+  "type": "байер-агент",
+  "top": false
+ }
+]

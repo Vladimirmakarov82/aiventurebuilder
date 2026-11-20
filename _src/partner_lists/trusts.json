@@ -1,0 +1,1634 @@
+[
+ {
+  "name": "Vistra",
+  "url": "https://www.vistra.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "корпоративный провайдер",
+  "top": true
+ },
+ {
+  "name": "TMF Group",
+  "url": "https://www.tmf-group.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "корпоративный провайдер",
+  "top": true
+ },
+ {
+  "name": "IQ-EQ",
+  "url": "https://iqeq.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "корпоративный провайдер",
+  "top": true
+ },
+ {
+  "name": "JTC Group",
+  "url": "https://www.jtcgroup.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": true
+ },
+ {
+  "name": "Ocorian",
+  "url": "https://www.ocorian.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": true
+ },
+ {
+  "name": "Apex Group",
+  "url": "https://www.apexgroup.com",
+  "country": "Бермуды",
+  "city": "Гамильтон",
+  "type": "администратор фондов",
+  "top": true
+ },
+ {
+  "name": "Intertrust Group (CSC)",
+  "url": "https://www.intertrustgroup.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "корпоративный провайдер",
+  "top": true
+ },
+ {
+  "name": "Zedra",
+  "url": "https://www.zedra.com",
+  "country": "Швейцария",
+  "city": "Цуг",
+  "type": "трастовая компания",
+  "top": true
+ },
+ {
+  "name": "Trident Trust",
+  "url": "https://www.tridenttrust.com",
+  "country": "Британские Виргинские острова",
+  "city": "Тортола",
+  "type": "трастовая компания",
+  "top": true
+ },
+ {
+  "name": "Tricor Group",
+  "url": "https://www.tricorglobal.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "корпоративный провайдер",
+  "top": true
+ },
+ {
+  "name": "Maples Group",
+  "url": "https://maples.com",
+  "country": "Каймановы острова",
+  "city": "Джорджтаун",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Ogier",
+  "url": "https://www.ogier.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Walkers",
+  "url": "https://www.walkersglobal.com",
+  "country": "Каймановы острова",
+  "city": "Джорджтаун",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Mourant",
+  "url": "https://www.mourant.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Carey Olsen",
+  "url": "https://www.careyolsen.com",
+  "country": "Гернси",
+  "city": "Сент-Питер-Порт",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Appleby",
+  "url": "https://www.applebyglobal.com",
+  "country": "Бермуды",
+  "city": "Гамильтон",
+  "type": "офшорная юрфирма",
+  "top": true
+ },
+ {
+  "name": "Withers",
+  "url": "https://www.withersworldwide.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Farrer & Co",
+  "url": "https://www.farrer.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Macfarlanes",
+  "url": "https://www.macfarlanes.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Charles Russell Speechlys",
+  "url": "https://www.charlesrussellspeechlys.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Baker McKenzie Private Wealth",
+  "url": "https://www.bakermckenzie.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "McDermott Will & Schulte",
+  "url": "https://www.mwe.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Wilmington Trust",
+  "url": "https://www.wilmingtontrust.com",
+  "country": "США",
+  "city": "Уилмингтон",
+  "type": "трастовый банк",
+  "top": true
+ },
+ {
+  "name": "Fiduciary Trust International",
+  "url": "https://www.fiduciarytrust.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "трастовый банк",
+  "top": true
+ },
+ {
+  "name": "Butterfield Trust",
+  "url": "https://www.butterfieldgroup.com",
+  "country": "Бермуды",
+  "city": "Гамильтон",
+  "type": "трастовый банк",
+  "top": true
+ },
+ {
+  "name": "Lenz & Staehelin",
+  "url": "https://www.lenzstaehelin.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Al Tamimi & Company",
+  "url": "https://www.tamimi.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": true
+ },
+ {
+  "name": "Crestbridge",
+  "url": "https://www.crestbridge.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Aztec Group",
+  "url": "https://www.aztecgroup.co.uk",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Praxis",
+  "url": "https://www.praxisgroup.com",
+  "country": "Гернси",
+  "city": "Сент-Питер-Порт",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Suntera Global",
+  "url": "https://www.suntera.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Highvern",
+  "url": "https://www.highvern.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Hawksford",
+  "url": "https://www.hawksford.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Equiom",
+  "url": "https://www.equiom.com",
+  "country": "Остров Мэн",
+  "city": "Дуглас",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Belasko",
+  "url": "https://www.belasko.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Accuro",
+  "url": "https://www.accuro.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Dixcart",
+  "url": "https://www.dixcart.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Sovereign Group",
+  "url": "https://www.sovereigngroup.com",
+  "country": "Гибралтар",
+  "city": "Гибралтар",
+  "type": "корпоративный провайдер",
+  "top": false
+ },
+ {
+  "name": "Amicorp",
+  "url": "https://www.amicorp.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "корпоративный провайдер",
+  "top": false
+ },
+ {
+  "name": "Asiaciti Trust",
+  "url": "https://www.asiaciti.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Bolder Group",
+  "url": "https://www.boldergroup.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Alter Domus",
+  "url": "https://www.alterdomus.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Citco",
+  "url": "https://www.citco.com",
+  "country": "Каймановы острова",
+  "city": "Джорджтаун",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Waystone",
+  "url": "https://www.waystone.com",
+  "country": "Ирландия",
+  "city": "Дублин",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Carne Group",
+  "url": "https://www.carnegroup.com",
+  "country": "Ирландия",
+  "city": "Дублин",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Alpadis Group",
+  "url": "https://www.alpadis.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Kendris",
+  "url": "https://www.kendris.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Fidinam",
+  "url": "https://www.fidinam.com",
+  "country": "Швейцария",
+  "city": "Лугано",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "First Advisory Group",
+  "url": "https://first.li",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Allgemeines Treuunternehmen (ATU)",
+  "url": "https://www.atu.li",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Morgan & Morgan",
+  "url": "https://www.morimor.com",
+  "country": "Панама",
+  "city": "Панама",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Maitland",
+  "url": "https://www.maitlandgroup.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Sanlam Trust",
+  "url": "https://www.sanlamtrust.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Capital Legacy",
+  "url": "https://www.capitallegacy.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "CSB Group",
+  "url": "https://www.csbgroup.com",
+  "country": "Мальта",
+  "city": "Бирзеббуджа",
+  "type": "корпоративный провайдер",
+  "top": false
+ },
+ {
+  "name": "Whittier Trust",
+  "url": "https://www.whittiertrust.com",
+  "country": "США",
+  "city": "Пасадина",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Chevy Chase Trust",
+  "url": "https://www.chevychasetrust.com",
+  "country": "США",
+  "city": "Бетесда",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "South Dakota Trust Company",
+  "url": "https://www.sdtrustco.com",
+  "country": "США",
+  "city": "Су-Фолс",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Alaska Trust Company",
+  "url": "https://www.alaskatrust.com",
+  "country": "США",
+  "city": "Анкоридж",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Argent Trust",
+  "url": "https://www.argenttrust.com",
+  "country": "США",
+  "city": "Рустон",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "Greenleaf Trust",
+  "url": "https://www.greenleaftrust.com",
+  "country": "США",
+  "city": "Каламазу",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Fiduciary Trust Company",
+  "url": "https://www.fiduciary-trust.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Mitsubishi UFJ Trust and Banking",
+  "url": "https://www.tr.mufg.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Sumitomo Mitsui Trust Bank",
+  "url": "https://www.smtb.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Mizuho Trust & Banking",
+  "url": "https://www.mizuho-tb.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "трастовый банк",
+  "top": false
+ },
+ {
+  "name": "Bedell Cristin",
+  "url": "https://www.bedellcristin.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Harneys",
+  "url": "https://www.harneys.com",
+  "country": "Британские Виргинские острова",
+  "city": "Тортола",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Conyers",
+  "url": "https://www.conyers.com",
+  "country": "Бермуды",
+  "city": "Гамильтон",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Collas Crill",
+  "url": "https://www.collascrill.com",
+  "country": "Гернси",
+  "city": "Сент-Питер-Порт",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Campbells",
+  "url": "https://www.campbellslegal.com",
+  "country": "Каймановы острова",
+  "city": "Джорджтаун",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Travers Thorp Alberga",
+  "url": "https://www.traversthorpalberga.com",
+  "country": "Каймановы острова",
+  "city": "Джорджтаун",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Forbes Hare",
+  "url": "https://www.forbeshare.com",
+  "country": "Британские Виргинские острова",
+  "city": "Тортола",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Higgs & Johnson",
+  "url": "https://www.higgsjohnson.com",
+  "country": "Багамы",
+  "city": "Нассау",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Lennox Paton",
+  "url": "https://www.lennoxpaton.com",
+  "country": "Багамы",
+  "city": "Нассау",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Baker & Partners",
+  "url": "https://www.bakerandpartners.com",
+  "country": "Джерси",
+  "city": "Сент-Хелиер",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Hassans",
+  "url": "https://www.gibraltarlawyers.com",
+  "country": "Гибралтар",
+  "city": "Гибралтар",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "ISOLAS",
+  "url": "https://www.isolas.gi",
+  "country": "Гибралтар",
+  "city": "Гибралтар",
+  "type": "офшорная юрфирма",
+  "top": false
+ },
+ {
+  "name": "Boodle Hatfield",
+  "url": "https://www.boodlehatfield.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Payne Hicks Beach",
+  "url": "https://www.phb.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Forsters",
+  "url": "https://www.forsters.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Mishcon de Reya",
+  "url": "https://www.mishcon.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Taylor Wessing",
+  "url": "https://www.taylorwessing.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Wedlake Bell",
+  "url": "https://wedlakebell.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Penningtons Manches Cooper",
+  "url": "https://www.penningtonslaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Maurice Turnor Gardner",
+  "url": "https://www.mtgllp.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Hunters Law",
+  "url": "https://www.hunterslaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Kingsley Napley",
+  "url": "https://www.kingsleynapley.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Stewarts",
+  "url": "https://www.stewartslaw.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Burges Salmon",
+  "url": "https://www.burges-salmon.com",
+  "country": "Великобритания",
+  "city": "Бристоль",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Irwin Mitchell Private Wealth",
+  "url": "https://www.irwinmitchell.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Cripps",
+  "url": "https://www.cripps.co.uk",
+  "country": "Великобритания",
+  "city": "Танбридж-Уэллс",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Howard Kennedy",
+  "url": "https://www.howardkennedy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Fladgate",
+  "url": "https://www.fladgate.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Stephenson Harwood",
+  "url": "https://www.shlegal.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Collyer Bristow",
+  "url": "https://www.collyerbristow.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Michelmores",
+  "url": "https://www.michelmores.com",
+  "country": "Великобритания",
+  "city": "Эксетер",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Trowers & Hamlins",
+  "url": "https://www.trowers.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Mills & Reeve",
+  "url": "https://www.mills-reeve.com",
+  "country": "Великобритания",
+  "city": "Кембридж",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Moore Barlow",
+  "url": "https://www.moorebarlow.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Russell-Cooke",
+  "url": "https://www.russell-cooke.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "BDB Pitmans",
+  "url": "https://www.bdbpitmans.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Rawlinson & Hunter",
+  "url": "https://www.rawlinson-hunter.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Saffery",
+  "url": "https://www.saffery.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Dixon Wilson",
+  "url": "https://www.dixonwilson.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Blick Rothenberg",
+  "url": "https://www.blickrothenberg.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Buzzacott",
+  "url": "https://www.buzzacott.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Kozusko Harris Duncan",
+  "url": "https://www.kozlaw.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Holland & Knight",
+  "url": "https://www.hklaw.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Katten",
+  "url": "https://katten.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Proskauer",
+  "url": "https://www.proskauer.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Milbank",
+  "url": "https://www.milbank.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Debevoise & Plimpton",
+  "url": "https://www.debevoise.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Kramer Levin",
+  "url": "https://www.kramerlevin.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Loeb & Loeb",
+  "url": "https://www.loeb.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Greenberg Traurig",
+  "url": "https://www.gtlaw.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Akerman",
+  "url": "https://www.akerman.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Day Pitney",
+  "url": "https://www.daypitney.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Bryan Cave Leighton Paisner",
+  "url": "https://www.bclplaw.com",
+  "country": "США",
+  "city": "Сент-Луис",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Venable",
+  "url": "https://www.venable.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Hodgson Russ",
+  "url": "https://www.hodgsonruss.com",
+  "country": "США",
+  "city": "Буффало",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Farrell Fritz",
+  "url": "https://www.farrellfritz.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Pillsbury Winthrop Shaw Pittman",
+  "url": "https://www.pillsburylaw.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Ropes & Gray",
+  "url": "https://www.ropesgray.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Choate Hall & Stewart",
+  "url": "https://www.choate.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Goodwin",
+  "url": "https://www.goodwinlaw.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Cozen O'Connor",
+  "url": "https://www.cozen.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Duane Morris",
+  "url": "https://www.duanemorris.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Nixon Peabody",
+  "url": "https://www.nixonpeabody.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Morgan Lewis",
+  "url": "https://www.morganlewis.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Moses & Singer",
+  "url": "https://www.mosessinger.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Fox Rothschild",
+  "url": "https://www.foxrothschild.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Schellenberg Wittmer",
+  "url": "https://www.swlegal.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Walder Wyss",
+  "url": "https://www.walderwyss.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Tavernier Tschanz",
+  "url": "https://www.taverniertschanz.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Bar & Karrer",
+  "url": "https://www.baerkarrer.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Niederer Kraft Frey",
+  "url": "https://www.nkf.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Pestalozzi",
+  "url": "https://pestalozzilaw.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "MME",
+  "url": "https://www.mme.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Kellerhals Carrard",
+  "url": "https://www.kellerhals-carrard.ch",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Froriep",
+  "url": "https://www.froriep.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Oberson Abels",
+  "url": "https://www.obersonabels.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Vischer",
+  "url": "https://www.vischer.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Altenburger",
+  "url": "https://www.altenburger.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Marxer & Partner",
+  "url": "https://www.marxerpartner.com",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Batliner Wanger Batliner",
+  "url": "https://www.bwb.li",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Gasser Partner",
+  "url": "https://www.gasserpartner.com",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Arendt & Medernach",
+  "url": "https://www.arendt.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Elvinger Hoss Prussen",
+  "url": "https://www.elvingerhoss.lu",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Loyens & Loeff",
+  "url": "https://www.loyensloeff.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Flick Gocke Schaumburg",
+  "url": "https://www.fgs.de",
+  "country": "Германия",
+  "city": "Бонн",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "P+P Pollath + Partners",
+  "url": "https://www.pplaw.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Noerr",
+  "url": "https://www.noerr.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Peters, Schonberger & Partner",
+  "url": "https://www.psp.eu",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "налоговый консультант",
+  "top": false
+ },
+ {
+  "name": "Wolf Theiss",
+  "url": "https://www.wolftheiss.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Fidal",
+  "url": "https://www.fidal.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Delsol Avocats",
+  "url": "https://www.delsolavocats.com",
+  "country": "Франция",
+  "city": "Лион",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "CMS Monaco",
+  "url": "https://cms.law/en/mco",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Chiomenti",
+  "url": "https://www.chiomenti.net",
+  "country": "Италия",
+  "city": "Рим",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Maisto e Associati",
+  "url": "https://www.maisto.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Cuatrecasas",
+  "url": "https://www.cuatrecasas.com",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Garrigues",
+  "url": "https://www.garrigues.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Uria Menendez",
+  "url": "https://www.uria.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Elias Neocleous & Co",
+  "url": "https://www.neo.law",
+  "country": "Кипр",
+  "city": "Лимасол",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Chrysses Demetriades & Co",
+  "url": "https://www.demetriades.com",
+  "country": "Кипр",
+  "city": "Лимасол",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Michael Kyprianou",
+  "url": "https://www.kyprianou.com",
+  "country": "Кипр",
+  "city": "Никосия",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "GANADO Advocates",
+  "url": "https://www.ganado.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Camilleri Preziosi",
+  "url": "https://www.camilleripreziosi.com",
+  "country": "Мальта",
+  "city": "Валлетта",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Rajah & Tann",
+  "url": "https://www.rajahtannasia.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Allen & Gledhill",
+  "url": "https://www.allenandgledhill.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Drew & Napier",
+  "url": "https://www.drewnapier.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "WongPartnership",
+  "url": "https://www.wongpartnership.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Charltons",
+  "url": "https://www.charltonslaw.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Nishimura & Asahi",
+  "url": "https://www.nishimura.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Anderson Mori & Tomotsune",
+  "url": "https://www.amt-law.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Hadef & Partners",
+  "url": "https://www.hadefpartners.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Galadari",
+  "url": "https://www.galadarilaw.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "BSA Law",
+  "url": "https://www.bsalaw.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Afridi & Angell",
+  "url": "https://www.afridi-angell.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Webber Wentzel",
+  "url": "https://www.webberwentzel.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Bowmans",
+  "url": "https://www.bowmanslaw.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Cliffe Dekker Hofmeyr",
+  "url": "https://www.cliffedekkerhofmeyr.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "ENSafrica",
+  "url": "https://www.ensafrica.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Werksmans",
+  "url": "https://www.werksmans.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Пепеляев Групп",
+  "url": "https://www.pgplaw.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Егоров, Пугинский, Афанасьев и партнеры (ЕПАМ)",
+  "url": "https://www.epam.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "ALRUD",
+  "url": "https://www.alrud.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Инфралекс",
+  "url": "https://infralex.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Fieldfisher",
+  "url": "https://www.fieldfisher.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Gowling WLG",
+  "url": "https://gowlingwlg.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Squire Patton Boggs",
+  "url": "https://www.squirepattonboggs.com",
+  "country": "США",
+  "city": "Кливленд",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Dentons",
+  "url": "https://www.dentons.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Clyde & Co",
+  "url": "https://www.clydeco.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Cumberland Trust",
+  "url": "https://www.cumberlandtrust.com",
+  "country": "США",
+  "city": "Нэшвилл",
+  "type": "трастовая компания",
+  "top": false
+ },
+ {
+  "name": "SS&C Technologies",
+  "url": "https://www.ssctech.com",
+  "country": "США",
+  "city": "Виндзор",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Langham Hall",
+  "url": "https://www.langhamhall.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Gen II Fund Services",
+  "url": "https://www.gen2fund.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "администратор фондов",
+  "top": false
+ },
+ {
+  "name": "Mori Hamada & Matsumoto",
+  "url": "https://www.mhmjapan.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "TMI Associates",
+  "url": "https://www.tmi.gr.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Nagashima Ohno & Tsunematsu",
+  "url": "https://www.noandt.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Tanner De Witt",
+  "url": "https://www.tannerdewitt.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "ONC Lawyers",
+  "url": "https://www.onc.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Shook Lin & Bok",
+  "url": "https://www.shooklin.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Tabacks",
+  "url": "https://www.tabacks.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "юрфирма частного капитала",
+  "top": false
+ },
+ {
+  "name": "Витвет",
+  "url": "https://vitvet.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "юрфирма частного капитала",
+  "top": false
+ }
+]

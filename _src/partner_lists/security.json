@@ -1,0 +1,1842 @@
+[
+ {
+  "name": "Kroll",
+  "url": "https://www.kroll.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "разведка и расследования",
+  "top": true
+ },
+ {
+  "name": "Control Risks",
+  "url": "https://www.controlrisks.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "разведка и расследования",
+  "top": true
+ },
+ {
+  "name": "K2 Integrity",
+  "url": "https://www.k2integrity.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "разведка и расследования",
+  "top": true
+ },
+ {
+  "name": "Nardello & Co",
+  "url": "https://nardelloandco.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "разведка и расследования",
+  "top": true
+ },
+ {
+  "name": "Hakluyt",
+  "url": "https://www.hakluyt.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "корпоративная разведка",
+  "top": true
+ },
+ {
+  "name": "S-RM",
+  "url": "https://www.s-rminform.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "разведка и расследования",
+  "top": true
+ },
+ {
+  "name": "Pinkerton",
+  "url": "https://pinkerton.com",
+  "country": "США",
+  "city": "Анн-Арбор",
+  "type": "личная охрана",
+  "top": true
+ },
+ {
+  "name": "Gavin de Becker & Associates",
+  "url": "https://gavindebecker.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "личная охрана",
+  "top": true
+ },
+ {
+  "name": "Global Guardian",
+  "url": "https://www.globalguardian.com",
+  "country": "США",
+  "city": "Маклин",
+  "type": "защита семьи",
+  "top": true
+ },
+ {
+  "name": "Concentric",
+  "url": "https://www.concentric.io",
+  "country": "США",
+  "city": "Сиэтл",
+  "type": "защита семьи",
+  "top": true
+ },
+ {
+  "name": "Blackstone Consultancy",
+  "url": "https://www.blackstoneconsultancy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "личная охрана",
+  "top": true
+ },
+ {
+  "name": "International SOS",
+  "url": "https://www.internationalsos.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "медицина и эвакуация",
+  "top": true
+ },
+ {
+  "name": "Global Rescue",
+  "url": "https://www.globalrescue.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "медицина и эвакуация",
+  "top": true
+ },
+ {
+  "name": "BlackCloak",
+  "url": "https://blackcloak.io",
+  "country": "США",
+  "city": "Орландо",
+  "type": "кибербезопасность семей",
+  "top": true
+ },
+ {
+  "name": "Group-IB",
+  "url": "https://www.group-ib.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "кибербезопасность",
+  "top": true
+ },
+ {
+  "name": "Schillings",
+  "url": "https://www.schillingspartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "защита репутации",
+  "top": true
+ },
+ {
+  "name": "Brunswick Group",
+  "url": "https://www.brunswickgroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": true
+ },
+ {
+  "name": "FGS Global",
+  "url": "https://fgsglobal.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": true
+ },
+ {
+  "name": "Teneo",
+  "url": "https://www.teneo.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": true
+ },
+ {
+  "name": "Carter-Ruck",
+  "url": "https://www.carter-ruck.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": true
+ },
+ {
+  "name": "Mishcon de Reya",
+  "url": "https://www.mishcon.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": true
+ },
+ {
+  "name": "Chubb",
+  "url": "https://www.chubb.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "страхование HNWI",
+  "top": true
+ },
+ {
+  "name": "PURE Insurance",
+  "url": "https://www.pureinsurance.com",
+  "country": "США",
+  "city": "Уайт-Плейнс",
+  "type": "страхование HNWI",
+  "top": true
+ },
+ {
+  "name": "Hiscox",
+  "url": "https://www.hiscox.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование HNWI",
+  "top": true
+ },
+ {
+  "name": "Lloyd's",
+  "url": "https://www.lloyds.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страховой рынок",
+  "top": true
+ },
+ {
+  "name": "Marsh",
+  "url": "https://www.marsh.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "страховой брокер",
+  "top": true
+ },
+ {
+  "name": "Aon",
+  "url": "https://www.aon.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страховой брокер",
+  "top": true
+ },
+ {
+  "name": "WTW",
+  "url": "https://www.wtwco.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страховой брокер",
+  "top": true
+ },
+ {
+  "name": "CrowdStrike",
+  "url": "https://www.crowdstrike.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "кибербезопасность",
+  "top": true
+ },
+ {
+  "name": "Mintz Group",
+  "url": "https://www.mintzgroup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Exiger",
+  "url": "https://www.exiger.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "FTI Consulting",
+  "url": "https://www.fticonsulting.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Guidepost Solutions",
+  "url": "https://www.guidepostsolutions.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Raedas",
+  "url": "https://www.raedas.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "корпоративная разведка",
+  "top": false
+ },
+ {
+  "name": "Aperio Intelligence",
+  "url": "https://www.aperio-intelligence.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "корпоративная разведка",
+  "top": false
+ },
+ {
+  "name": "Sibylline",
+  "url": "https://www.sibylline.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "анализ рисков",
+  "top": false
+ },
+ {
+  "name": "Black Cube",
+  "url": "https://www.blackcube.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "корпоративная разведка",
+  "top": false
+ },
+ {
+  "name": "Intelligo",
+  "url": "https://www.intelligogroup.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Forensic Risk Alliance",
+  "url": "https://www.forensicrisk.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Veracity Worldwide",
+  "url": "https://www.veracityworldwide.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Berkeley Research Group",
+  "url": "https://www.thinkbrg.com",
+  "country": "США",
+  "city": "Эмервилл",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "AlixPartners",
+  "url": "https://www.alixpartners.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Kobre & Kim",
+  "url": "https://www.kobrekim.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "возврат активов",
+  "top": false
+ },
+ {
+  "name": "Neotas",
+  "url": "https://www.neotas.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Strider",
+  "url": "https://www.striderintel.com",
+  "country": "США",
+  "city": "Арлингтон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Sayari",
+  "url": "https://sayari.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Castellum.AI",
+  "url": "https://www.castellum.ai",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Quantexa",
+  "url": "https://www.quantexa.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "ComplyAdvantage",
+  "url": "https://complyadvantage.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Nisos",
+  "url": "https://www.nisos.com",
+  "country": "США",
+  "city": "Александрия",
+  "type": "разведка и расследования",
+  "top": false
+ },
+ {
+  "name": "Jensen Hughes",
+  "url": "https://www.jensenhughes.com",
+  "country": "США",
+  "city": "Балтимор",
+  "type": "консалтинг безопасности",
+  "top": false
+ },
+ {
+  "name": "Diligencia",
+  "url": "https://www.diligenciagroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Corporate Trust",
+  "url": "https://www.corporate-trust.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "консалтинг безопасности",
+  "top": false
+ },
+ {
+  "name": "Result Group",
+  "url": "https://result-group.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "консалтинг безопасности",
+  "top": false
+ },
+ {
+  "name": "Amarante International",
+  "url": "https://www.amarante.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "консалтинг безопасности",
+  "top": false
+ },
+ {
+  "name": "GEOS",
+  "url": "https://www.groupegeos.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "консалтинг безопасности",
+  "top": false
+ },
+ {
+  "name": "GardaWorld",
+  "url": "https://www.garda.com",
+  "country": "Канада",
+  "city": "Монреаль",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Crisis24",
+  "url": "https://www.crisis24.com",
+  "country": "Канада",
+  "city": "Монреаль",
+  "type": "защита в поездках",
+  "top": false
+ },
+ {
+  "name": "Allied Universal",
+  "url": "https://www.aus.com",
+  "country": "США",
+  "city": "Санта-Ана",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Securitas",
+  "url": "https://www.securitas.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "G4S",
+  "url": "https://www.g4s.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Prosegur",
+  "url": "https://www.prosegur.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "TorchStone Global",
+  "url": "https://www.torchstoneglobal.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "личная охрана",
+  "top": false
+ },
+ {
+  "name": "Ackerman Group",
+  "url": "https://www.ackermangroup.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "антипохищение",
+  "top": false
+ },
+ {
+  "name": "Constellis",
+  "url": "https://www.constellis.com",
+  "country": "США",
+  "city": "Рестон",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Optimal Risk",
+  "url": "https://optimalrisk.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "личная охрана",
+  "top": false
+ },
+ {
+  "name": "Northcott Global Solutions",
+  "url": "https://www.northcottglobalsolutions.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "защита в поездках",
+  "top": false
+ },
+ {
+  "name": "Solace Global",
+  "url": "https://www.solaceglobal.com",
+  "country": "Великобритания",
+  "city": "Пул",
+  "type": "защита в поездках",
+  "top": false
+ },
+ {
+  "name": "Salamanca Group",
+  "url": "https://www.salamancagroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "защита семьи",
+  "top": false
+ },
+ {
+  "name": "MedAire",
+  "url": "https://www.medaire.com",
+  "country": "США",
+  "city": "Темпе",
+  "type": "медицина и эвакуация",
+  "top": false
+ },
+ {
+  "name": "Healix",
+  "url": "https://www.healix.com",
+  "country": "Великобритания",
+  "city": "Эшер",
+  "type": "медицина и эвакуация",
+  "top": false
+ },
+ {
+  "name": "Transguard Group",
+  "url": "https://www.transguardgroup.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Certis",
+  "url": "https://www.certisgroup.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "AETOS",
+  "url": "https://www.aetos.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "ALSOK",
+  "url": "https://www.alsok.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Secom",
+  "url": "https://www.secom.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Guardforce",
+  "url": "https://www.guardforce.com.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Fidelity Services Group",
+  "url": "https://www.fidelity-services.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Bidvest Protea Coin",
+  "url": "https://www.proteacoin.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Stallion Security",
+  "url": "https://www.stallion.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Brink's",
+  "url": "https://www.brinks.com",
+  "country": "США",
+  "city": "Ричмонд",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Malca-Amit",
+  "url": "https://www.malca-amit.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Swiss Gold Safe",
+  "url": "https://www.swissgoldsafe.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "IBV International Vaults",
+  "url": "https://www.ibvvaults.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Gunnebo",
+  "url": "https://www.gunnebo.com",
+  "country": "Швеция",
+  "city": "Гетеборг",
+  "type": "физическая защита",
+  "top": false
+ },
+ {
+  "name": "Halo Privacy",
+  "url": "https://haloprivacy.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "кибербезопасность семей",
+  "top": false
+ },
+ {
+  "name": "360 Privacy",
+  "url": "https://360privacy.io",
+  "country": "США",
+  "city": "Нэшвилл",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Fortalice Solutions",
+  "url": "https://www.fortalicesolutions.com",
+  "country": "США",
+  "city": "Шарлотт",
+  "type": "кибербезопасность семей",
+  "top": false
+ },
+ {
+  "name": "Mitnick Security",
+  "url": "https://www.mitnicksecurity.com",
+  "country": "США",
+  "city": "Лас-Вегас",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "ZeroFox",
+  "url": "https://www.zerofox.com",
+  "country": "США",
+  "city": "Балтимор",
+  "type": "цифровая защита",
+  "top": false
+ },
+ {
+  "name": "Doppel",
+  "url": "https://www.doppel.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "цифровая защита",
+  "top": false
+ },
+ {
+  "name": "Constella Intelligence",
+  "url": "https://constella.ai",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "цифровая защита",
+  "top": false
+ },
+ {
+  "name": "Cypfer",
+  "url": "https://www.cypfer.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "DeleteMe",
+  "url": "https://joindeleteme.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Optery",
+  "url": "https://www.optery.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Privacy Bee",
+  "url": "https://privacybee.com",
+  "country": "США",
+  "city": "Окленд",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Incogni",
+  "url": "https://incogni.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Kanary",
+  "url": "https://www.kanary.com",
+  "country": "США",
+  "city": "Сиэтл",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Aura",
+  "url": "https://www.aura.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "цифровая приватность",
+  "top": false
+ },
+ {
+  "name": "Silent Circle",
+  "url": "https://www.silentcircle.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "защищенная связь",
+  "top": false
+ },
+ {
+  "name": "Threema",
+  "url": "https://threema.com",
+  "country": "Швейцария",
+  "city": "Пфеффикон",
+  "type": "защищенная связь",
+  "top": false
+ },
+ {
+  "name": "Proton",
+  "url": "https://proton.me",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "защищенная связь",
+  "top": false
+ },
+ {
+  "name": "Bittium",
+  "url": "https://www.bittium.com",
+  "country": "Финляндия",
+  "city": "Оулу",
+  "type": "защищенная связь",
+  "top": false
+ },
+ {
+  "name": "NCC Group",
+  "url": "https://www.nccgroup.com",
+  "country": "Великобритания",
+  "city": "Манчестер",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Ensign InfoSecurity",
+  "url": "https://www.ensigninfosecurity.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Cyfirma",
+  "url": "https://www.cyfirma.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Help AG",
+  "url": "https://www.helpag.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "CPX",
+  "url": "https://www.cpx.net",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Kaspersky",
+  "url": "https://www.kaspersky.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Positive Technologies",
+  "url": "https://www.ptsecurity.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "BI.ZONE",
+  "url": "https://bi.zone",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "F6 (бывший F.A.C.C.T.)",
+  "url": "https://www.f6.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "InfoWatch",
+  "url": "https://www.infowatch.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Sodali & Co (Powerscourt)",
+  "url": "https://sodali.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Portland Communications",
+  "url": "https://portland-communications.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Hawthorn Advisors",
+  "url": "https://www.hawthornadvisors.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Pagefield",
+  "url": "https://www.pagefield.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Tulchan Communications",
+  "url": "https://www.tulchangroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Hanbury Strategy",
+  "url": "https://hanburystrategy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Byfield Consultancy",
+  "url": "https://www.byfieldconsultancy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "судебный PR",
+  "top": false
+ },
+ {
+  "name": "Infinite Global",
+  "url": "https://www.infiniteglobal.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "судебный PR",
+  "top": false
+ },
+ {
+  "name": "Edelman",
+  "url": "https://www.edelman.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Burson",
+  "url": "https://www.bursonglobal.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Weber Shandwick",
+  "url": "https://webershandwick.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "ASDA'A BCW",
+  "url": "https://asdaa-bcw.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Withers",
+  "url": "https://www.withersworldwide.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Harbottle & Lewis",
+  "url": "https://www.harbottle.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Taylor Hampton",
+  "url": "https://www.taylorhampton.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Payne Hicks Beach",
+  "url": "https://www.phb.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Farrer & Co",
+  "url": "https://www.farrer.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Lewis Silkin",
+  "url": "https://www.lewissilkin.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "ReputationDefender",
+  "url": "https://www.reputationdefender.com",
+  "country": "США",
+  "city": "Редвуд-Сити",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "Igniyte",
+  "url": "https://www.igniyte.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "Status Labs",
+  "url": "https://statuslabs.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "BrandYourself",
+  "url": "https://brandyourself.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "Reputation X",
+  "url": "https://www.reputationx.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "NetReputation",
+  "url": "https://www.netreputation.com",
+  "country": "США",
+  "city": "Сарасота",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "Erase.com",
+  "url": "https://www.erase.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "онлайн-репутация",
+  "top": false
+ },
+ {
+  "name": "AXA XL",
+  "url": "https://axaxl.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование искусства",
+  "top": false
+ },
+ {
+  "name": "Berkley One",
+  "url": "https://www.berkleyone.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "страхование HNWI",
+  "top": false
+ },
+ {
+  "name": "AIG",
+  "url": "https://www.aig.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "страхование HNWI",
+  "top": false
+ },
+ {
+  "name": "Beazley",
+  "url": "https://www.beazley.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Markel",
+  "url": "https://www.markel.com",
+  "country": "США",
+  "city": "Глен-Аллен",
+  "type": "страхование искусства",
+  "top": false
+ },
+ {
+  "name": "Starr Insurance",
+  "url": "https://www.starrcompanies.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "страхование авиации",
+  "top": false
+ },
+ {
+  "name": "Global Aerospace",
+  "url": "https://www.global-aero.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование авиации",
+  "top": false
+ },
+ {
+  "name": "Helvetia",
+  "url": "https://www.helvetia.com",
+  "country": "Швейцария",
+  "city": "Санкт-Галлен",
+  "type": "страхование искусства",
+  "top": false
+ },
+ {
+  "name": "Tokio Marine",
+  "url": "https://www.tokiomarine.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Santam",
+  "url": "https://www.santam.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "страхование HNWI",
+  "top": false
+ },
+ {
+  "name": "Camargue Underwriting Managers",
+  "url": "https://www.camargue.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "страхование HNWI",
+  "top": false
+ },
+ {
+  "name": "Hollard",
+  "url": "https://www.hollard.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Sukoon Insurance",
+  "url": "https://www.sukoon.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Pantaenius",
+  "url": "https://www.pantaenius.com",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "страхование яхт",
+  "top": false
+ },
+ {
+  "name": "Novamar Insurance",
+  "url": "https://www.novamarinsurance.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "страхование яхт",
+  "top": false
+ },
+ {
+  "name": "Gallagher",
+  "url": "https://www.ajg.com",
+  "country": "США",
+  "city": "Роллинг-Медоуз",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Lockton",
+  "url": "https://global.lockton.com",
+  "country": "США",
+  "city": "Канзас-Сити",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Howden",
+  "url": "https://www.howdengroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "HUB International",
+  "url": "https://www.hubinternational.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Alliant Insurance Services",
+  "url": "https://alliant.com",
+  "country": "США",
+  "city": "Ирвайн",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Brown & Brown",
+  "url": "https://www.bbrown.com",
+  "country": "США",
+  "city": "Дейтона-Бич",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Lycetts",
+  "url": "https://www.lycetts.co.uk",
+  "country": "Великобритания",
+  "city": "Ньюкасл",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Gurr Johns",
+  "url": "https://www.gurrjohns.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "оценка ценностей",
+  "top": false
+ },
+ {
+  "name": "Diot-Siaci",
+  "url": "https://www.diot-siaci.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Kessler",
+  "url": "https://www.kessler.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "Funk",
+  "url": "https://www.funk-gruppe.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "страховой брокер",
+  "top": false
+ },
+ {
+  "name": "J.S. Held",
+  "url": "https://www.jsheld.com",
+  "country": "США",
+  "city": "Джерико",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Kharon",
+  "url": "https://www.kharon.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "проверка контрагентов",
+  "top": false
+ },
+ {
+  "name": "Charles River Associates",
+  "url": "https://www.crai.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "StoneTurn",
+  "url": "https://stoneturn.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Ankura",
+  "url": "https://ankura.com",
+  "country": "США",
+  "city": "Вашингтон",
+  "type": "расследования",
+  "top": false
+ },
+ {
+  "name": "Quorum Cyber (Kivu)",
+  "url": "https://www.quorumcyber.com",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "реагирование на кибератаки",
+  "top": false
+ },
+ {
+  "name": "Arete",
+  "url": "https://areteir.com",
+  "country": "США",
+  "city": "Бока-Ратон",
+  "type": "реагирование на кибератаки",
+  "top": false
+ },
+ {
+  "name": "Chainalysis",
+  "url": "https://www.chainalysis.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "крипторасследования",
+  "top": false
+ },
+ {
+  "name": "Elliptic",
+  "url": "https://www.elliptic.co",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "крипторасследования",
+  "top": false
+ },
+ {
+  "name": "TRM Labs",
+  "url": "https://www.trmlabs.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "крипторасследования",
+  "top": false
+ },
+ {
+  "name": "Omni Bridgeway",
+  "url": "https://omnibridgeway.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "возврат активов",
+  "top": false
+ },
+ {
+  "name": "Mitie Security",
+  "url": "https://www.mitie.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Corps Security",
+  "url": "https://www.corpssecurity.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Wilson James",
+  "url": "https://www.wilsonjames.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Kotter",
+  "url": "https://www.koetter.de",
+  "country": "Германия",
+  "city": "Эссен",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "Protectas",
+  "url": "https://www.protectas.com",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "охрана",
+  "top": false
+ },
+ {
+  "name": "World Travel Protection",
+  "url": "https://worldtravelprotection.com",
+  "country": "Австралия",
+  "city": "Сидней",
+  "type": "защита в поездках",
+  "top": false
+ },
+ {
+  "name": "Collinson",
+  "url": "https://www.collinsongroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "медицина и эвакуация",
+  "top": false
+ },
+ {
+  "name": "Riskline",
+  "url": "https://www.riskline.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "защита в поездках",
+  "top": false
+ },
+ {
+  "name": "Dataminr",
+  "url": "https://www.dataminr.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мониторинг угроз",
+  "top": false
+ },
+ {
+  "name": "Everbridge",
+  "url": "https://www.everbridge.com",
+  "country": "США",
+  "city": "Берлингтон",
+  "type": "мониторинг угроз",
+  "top": false
+ },
+ {
+  "name": "Ontic",
+  "url": "https://ontic.co",
+  "country": "США",
+  "city": "Остин",
+  "type": "мониторинг угроз",
+  "top": false
+ },
+ {
+  "name": "Seerist",
+  "url": "https://seerist.com",
+  "country": "США",
+  "city": "Рестон",
+  "type": "мониторинг угроз",
+  "top": false
+ },
+ {
+  "name": "Bolster",
+  "url": "https://bolster.ai",
+  "country": "США",
+  "city": "Лос-Альтос",
+  "type": "цифровая защита",
+  "top": false
+ },
+ {
+  "name": "Darktrace",
+  "url": "https://www.darktrace.com",
+  "country": "Великобритания",
+  "city": "Кембридж",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Check Point",
+  "url": "https://www.checkpoint.com",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "ESET",
+  "url": "https://www.eset.com",
+  "country": "Словакия",
+  "city": "Братислава",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Bitdefender",
+  "url": "https://www.bitdefender.com",
+  "country": "Румыния",
+  "city": "Бухарест",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "1Password",
+  "url": "https://1password.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Yubico",
+  "url": "https://www.yubico.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "кибербезопасность",
+  "top": false
+ },
+ {
+  "name": "Ledger",
+  "url": "https://www.ledger.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "защита криптоактивов",
+  "top": false
+ },
+ {
+  "name": "Trezor",
+  "url": "https://trezor.io",
+  "country": "Чехия",
+  "city": "Прага",
+  "type": "защита криптоактивов",
+  "top": false
+ },
+ {
+  "name": "Casa",
+  "url": "https://keys.casa",
+  "country": "США",
+  "city": "Денвер",
+  "type": "защита криптоактивов",
+  "top": false
+ },
+ {
+  "name": "Unchained",
+  "url": "https://unchained.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "защита криптоактивов",
+  "top": false
+ },
+ {
+  "name": "Joele Frank",
+  "url": "https://www.joelefrank.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Headland",
+  "url": "https://www.headlandconsultancy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "CDR (Citigate Dewe Rogerson)",
+  "url": "https://cdrconsultancy.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Lansons",
+  "url": "https://www.lansons.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Luther Pendragon",
+  "url": "https://www.luther.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "SEC Newgate",
+  "url": "https://www.secnewgate.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "кризисные коммуникации",
+  "top": false
+ },
+ {
+  "name": "Simons Muirhead Burton",
+  "url": "https://www.smb.london",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Brett Wilson",
+  "url": "https://www.brettwilson.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Clare Locke",
+  "url": "https://www.clarelocke.com",
+  "country": "США",
+  "city": "Александрия",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Lavely & Singer",
+  "url": "https://www.lavelysinger.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "юристы по репутации",
+  "top": false
+ },
+ {
+  "name": "Zurich Insurance",
+  "url": "https://www.zurich.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Ecclesiastical",
+  "url": "https://www.ecclesiastical.com",
+  "country": "Великобритания",
+  "city": "Глостер",
+  "type": "страхование наследия",
+  "top": false
+ },
+ {
+  "name": "Plum Underwriting",
+  "url": "https://plum-underwriting.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование HNWI",
+  "top": false
+ },
+ {
+  "name": "Berkshire Hathaway Specialty",
+  "url": "https://bhspecialty.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Liberty Specialty Markets",
+  "url": "https://www.libertyspecialtymarkets.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Canopius",
+  "url": "https://www.canopius.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Ascot Group",
+  "url": "https://www.ascotgroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Hagerty",
+  "url": "https://www.hagerty.com",
+  "country": "США",
+  "city": "Траверс-Сити",
+  "type": "страхование коллекционных авто",
+  "top": false
+ },
+ {
+  "name": "Tawuniya",
+  "url": "https://www.tawuniya.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "GIG Gulf",
+  "url": "https://www.gig-gulf.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "страхование",
+  "top": false
+ },
+ {
+  "name": "Loomis",
+  "url": "https://www.loomis.com",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Geneva Freeports",
+  "url": "https://www.geneva-freeports.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Silver Bullion",
+  "url": "https://www.silverbullion.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "хранение ценностей",
+  "top": false
+ },
+ {
+  "name": "Chubbsafes",
+  "url": "https://www.chubbsafes.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "сейфы",
+  "top": false
+ },
+ {
+  "name": "Dottling",
+  "url": "https://www.doettling.com",
+  "country": "Германия",
+  "city": "Штутгарт",
+  "type": "сейфы",
+  "top": false
+ },
+ {
+  "name": "Stockinger",
+  "url": "https://www.stockinger.com",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "сейфы",
+  "top": false
+ },
+ {
+  "name": "Buben & Zorweg",
+  "url": "https://www.buben-zorweg.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "сейфы",
+  "top": false
+ },
+ {
+  "name": "Brown Safe",
+  "url": "https://www.brownsafe.com",
+  "country": "США",
+  "city": "Валли-Сентер",
+  "type": "сейфы",
+  "top": false
+ },
+ {
+  "name": "INKAS Armored",
+  "url": "https://www.inkasarmored.com",
+  "country": "Канада",
+  "city": "Торонто",
+  "type": "бронированные авто",
+  "top": false
+ },
+ {
+  "name": "International Armored Group",
+  "url": "https://www.interarmored.com",
+  "country": "ОАЭ",
+  "city": "Рас-эль-Хайма",
+  "type": "бронированные авто",
+  "top": false
+ },
+ {
+  "name": "Texas Armoring",
+  "url": "https://www.texasarmoring.com",
+  "country": "США",
+  "city": "Сан-Антонио",
+  "type": "бронированные авто",
+  "top": false
+ },
+ {
+  "name": "Alpine Armoring",
+  "url": "https://www.alpineco.com",
+  "country": "США",
+  "city": "Чантилли",
+  "type": "бронированные авто",
+  "top": false
+ }
+]

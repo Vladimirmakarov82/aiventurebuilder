@@ -390,6 +390,49 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
       <ol class="steps5"><li><b>1</b><span>Заявка</span></li><li><b>2</b><span>Интервью с основателем</span></li><li><b>3</b><span>Проверка историй и клиентов</span></li><li><b>4</b><span>Место в сегменте</span></li><li><b>5</b><span>Первые знакомства с клиентами сети</span></li></ol>
       <style>.req li span{line-height:1.45}.steps5{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.steps5 li{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;background:rgba(127,127,127,.08);font-size:14px;line-height:1.3}.steps5 b{color:var(--or);font-size:20px}@media (max-width:760px){.steps5{grid-template-columns:1fr}.steps5 li{flex-direction:row;align-items:center;gap:14px}}</style>
     </div>
+    <div class="card" id="segments" data-seats="Мест для партнеров: &lt;b&gt;2&lt;/b&gt; · свободно: &lt;b&gt;2&lt;/b&gt;" data-more="Показать все" data-top="лидер сегмента">
+      <div class="kick mono"><span class="dot" style="background:var(--vi)"></span>Сегменты сети</div>
+      <h2 class="display hl">12 сегментов услуг для HNWI <span class="lt">В каждом сегменте 2 места для партнеров</span></h2>
+      <div class="sg-tabs" id="sgTabs"></div>
+      <div class="sg-head"><span class="sg-seats" id="sgSeats"></span><input class="sg-q" id="sgQ" type="search" placeholder="Поиск по компаниям и странам" autocomplete="off"></div>
+      <ul class="sg-list" id="sgList"></ul>
+      <button class="sg-more" id="sgMore" type="button" hidden>Показать все</button>
+      <style>
+      .sg-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:18px -4px 0;padding:0 4px 4px}.sg-tabs::-webkit-scrollbar{display:none}
+      .sg-tabs button{flex:0 0 auto;font:inherit;font-size:14px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;white-space:nowrap;transition:.2s}
+      .sg-tabs button i{font-style:normal;opacity:.5;margin-left:6px;font-size:12px}
+      .sg-tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+      .sg-head{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:16px 0 6px;flex-wrap:wrap}
+      .sg-seats{font-family:var(--mono,ui-monospace,monospace);font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+      .sg-seats b{color:var(--or)}
+      .sg-q{font:inherit;font-size:15px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--ink);min-width:0;flex:1 1 220px;max-width:340px}
+      .sg-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px}
+      .sg-list li{border-top:1px solid var(--line)}
+      .sg-list a{display:flex;flex-direction:column;gap:3px;padding:12px 0;color:inherit;text-decoration:none}
+      .sg-list a:hover .sg-n{color:var(--or)}
+      .sg-n{font-weight:600;font-size:15px;line-height:1.3;transition:color .2s}
+      .sg-n.t::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--or);margin-left:8px;vertical-align:middle}
+      .sg-m{font-size:13px;opacity:.6;line-height:1.35}
+      .sg-more{margin-top:14px;font:inherit;font-size:15px;font-weight:600;padding:12px 18px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer}
+      @media (max-width:760px){.sg-list{grid-template-columns:1fr}.sg-q{max-width:none}}
+      </style>
+      <script>
+      (function(){
+        var en=document.documentElement.lang==='en',R=document.getElementById('segments').dataset,L={seats:R.seats,more:R.more+' ',top:R.top};
+        var tabs=document.getElementById('sgTabs'),list=document.getElementById('sgList'),q=document.getElementById('sgQ'),more=document.getElementById('sgMore'),seats=document.getElementById('sgSeats'),D=null,cur=0,all=false;
+        function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+        function host(u){try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return ''}}
+        function render(){var s=D.segments[cur],t=q.value.trim().toLowerCase(),it=s.items.filter(function(x){return !t||(x[0]+' '+x[2]+' '+x[3]).toLowerCase().indexOf(t)>-1});var n=all||t?it.length:Math.min(40,it.length);
+          list.innerHTML=it.slice(0,n).map(function(x){var m=[x[2],x[3],host(x[1])].filter(Boolean).join(' · ');return '<li><a href="'+esc(x[1])+'" target="_blank" rel="noopener"><span class="sg-n'+(x[4]?' t':'')+'"'+(x[4]?' title="'+L.top+'"':'')+'>'+esc(x[0])+'</span><span class="sg-m">'+esc(m)+'</span></a></li>'}).join('');
+          more.hidden=n>=it.length;more.textContent=L.more+it.length;seats.innerHTML=L.seats}
+        function tabsHtml(){tabs.innerHTML=D.segments.map(function(s,i){return '<button type="button" class="'+(i===cur?'on':'')+'" data-i="'+i+'">'+esc(en?s.en:s.ru)+'<i>'+s.items.length+'</i></button>'}).join('')}
+        tabs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=+b.dataset.i;all=false;q.value='';tabsHtml();render()});
+        q.addEventListener('input',render);more.addEventListener('click',function(){all=true;render()});
+        function load(){if(D)return;fetch('segments.json').then(function(r){return r.json()}).then(function(j){D=j;tabsHtml();render()})}
+        if('IntersectionObserver'in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){load();io.disconnect()}},{rootMargin:'600px'});io.observe(document.getElementById('segments'))}else load();
+      })();
+      </script>
+    </div>
     </div>
     <div class="card">
       <h2 class="h2">Направления специализации партнера</h2>

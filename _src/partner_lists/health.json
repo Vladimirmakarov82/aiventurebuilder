@@ -1,0 +1,1754 @@
+[
+ {
+  "name": "Clinique La Prairie",
+  "url": "https://www.cliniquelaprairie.com",
+  "country": "Швейцария",
+  "city": "Монтре",
+  "type": "клиника долголетия",
+  "top": true
+ },
+ {
+  "name": "SHA Wellness Clinic",
+  "url": "https://shawellness.com",
+  "country": "Испания",
+  "city": "Альфас-дель-Пи",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Lanserhof",
+  "url": "https://www.lanserhof.com",
+  "country": "Австрия",
+  "city": "Ланс",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Chenot Palace Weggis",
+  "url": "https://www.chenot.com",
+  "country": "Швейцария",
+  "city": "Веггис",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Buchinger Wilhelmi",
+  "url": "https://www.buchinger-wilhelmi.com",
+  "country": "Германия",
+  "city": "Иберлинген",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "VIVAMAYR",
+  "url": "https://www.vivamayr.com",
+  "country": "Австрия",
+  "city": "Мария-Верт",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Mayo Clinic",
+  "url": "https://www.mayoclinic.org",
+  "country": "США",
+  "city": "Рочестер",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Cleveland Clinic",
+  "url": "https://my.clevelandclinic.org",
+  "country": "США",
+  "city": "Кливленд",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Johns Hopkins Medicine",
+  "url": "https://www.hopkinsmedicine.org",
+  "country": "США",
+  "city": "Балтимор",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Fountain Life",
+  "url": "https://www.fountainlife.com",
+  "country": "США",
+  "city": "Нейплс",
+  "type": "клиника долголетия",
+  "top": true
+ },
+ {
+  "name": "Human Longevity Inc",
+  "url": "https://humanlongevity.com",
+  "country": "США",
+  "city": "Сан-Диего",
+  "type": "клиника долголетия",
+  "top": true
+ },
+ {
+  "name": "Biograph",
+  "url": "https://www.biograph.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника долголетия",
+  "top": true
+ },
+ {
+  "name": "Kusnacht Practice",
+  "url": "https://kusnachtpractice.com",
+  "country": "Швейцария",
+  "city": "Кюснахт",
+  "type": "ментальное здоровье",
+  "top": true
+ },
+ {
+  "name": "Paracelsus Recovery",
+  "url": "https://www.paracelsus-recovery.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "ментальное здоровье",
+  "top": true
+ },
+ {
+  "name": "Hirslanden",
+  "url": "https://www.hirslanden.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "The London Clinic",
+  "url": "https://www.thelondonclinic.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "HCA Healthcare UK",
+  "url": "https://www.hcahealthcare.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Cleveland Clinic London",
+  "url": "https://clevelandcliniclondon.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Mayo Clinic Healthcare London",
+  "url": "https://mayoclinichealthcare.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": true
+ },
+ {
+  "name": "Bumrungrad International Hospital",
+  "url": "https://www.bumrungrad.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Chiva-Som",
+  "url": "https://www.chivasom.com",
+  "country": "Таиланд",
+  "city": "Хуахин",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Kamalaya",
+  "url": "https://kamalaya.com",
+  "country": "Таиланд",
+  "city": "Самуи",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Cleveland Clinic Abu Dhabi",
+  "url": "https://www.clevelandclinicabudhabi.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Raffles Medical Group",
+  "url": "https://www.rafflesmedicalgroup.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Mount Elizabeth Hospital",
+  "url": "https://www.mountelizabeth.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": true
+ },
+ {
+  "name": "Canyon Ranch",
+  "url": "https://www.canyonranch.com",
+  "country": "США",
+  "city": "Тусон",
+  "type": "медицинский ретрит",
+  "top": true
+ },
+ {
+  "name": "Sollis Health",
+  "url": "https://www.sollishealth.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "медицинский консьерж",
+  "top": true
+ },
+ {
+  "name": "Private Medical",
+  "url": "https://www.privatemedical.org",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "медицинский консьерж",
+  "top": true
+ },
+ {
+  "name": "PinnacleCare",
+  "url": "https://www.pinnaclecare.com",
+  "country": "США",
+  "city": "Балтимор",
+  "type": "медицинский консьерж",
+  "top": true
+ },
+ {
+  "name": "SIP Medical Family Office",
+  "url": "https://www.sip.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "медицинский консьерж",
+  "top": true
+ },
+ {
+  "name": "Prenuvo",
+  "url": "https://www.prenuvo.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Next Health",
+  "url": "https://www.next-health.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "клиника долголетия",
+  "top": false
+ },
+ {
+  "name": "Cenegenics",
+  "url": "https://www.cenegenics.com",
+  "country": "США",
+  "city": "Лас-Вегас",
+  "type": "клиника долголетия",
+  "top": false
+ },
+ {
+  "name": "Function Health",
+  "url": "https://www.functionhealth.com",
+  "country": "США",
+  "city": "Остин",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Superpower",
+  "url": "https://superpower.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Parsley Health",
+  "url": "https://www.parsleyhealth.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "MDVIP",
+  "url": "https://www.mdvip.com",
+  "country": "США",
+  "city": "Бока-Ратон",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "Private Health Management",
+  "url": "https://www.privatehealth.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "WorldClinic",
+  "url": "https://www.worldclinic.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "Concierge Choice Physicians",
+  "url": "https://www.choice.md",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "Pritikin Longevity Center",
+  "url": "https://www.pritikin.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Golden Door",
+  "url": "https://goldendoor.com",
+  "country": "США",
+  "city": "Сан-Маркос",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Miraval",
+  "url": "https://www.miravalresorts.com",
+  "country": "США",
+  "city": "Тусон",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Cal-a-Vie Health Spa",
+  "url": "https://www.cal-a-vie.com",
+  "country": "США",
+  "city": "Виста",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "The Ranch Malibu",
+  "url": "https://www.theranchmalibu.com",
+  "country": "США",
+  "city": "Малибу",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Sensei Lanai",
+  "url": "https://www.sensei.com",
+  "country": "США",
+  "city": "Ланаи",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Rancho La Puerta",
+  "url": "https://rancholapuerta.com",
+  "country": "Мексика",
+  "city": "Текате",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Passages Malibu",
+  "url": "https://www.passagesmalibu.com",
+  "country": "США",
+  "city": "Малибу",
+  "type": "ментальное здоровье",
+  "top": false
+ },
+ {
+  "name": "Hospital for Special Surgery",
+  "url": "https://www.hss.edu",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Memorial Sloan Kettering",
+  "url": "https://www.mskcc.org",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "MD Anderson Cancer Center",
+  "url": "https://www.mdanderson.org",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Massachusetts General Hospital",
+  "url": "https://www.massgeneral.org",
+  "country": "США",
+  "city": "Бостон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "NewYork-Presbyterian",
+  "url": "https://www.nyp.org",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Mount Sinai",
+  "url": "https://www.mountsinai.org",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Cedars-Sinai",
+  "url": "https://www.cedars-sinai.org",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Stanford Health Care",
+  "url": "https://stanfordhealthcare.org",
+  "country": "США",
+  "city": "Пало-Альто",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "UCLA Health",
+  "url": "https://www.uclahealth.org",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "NYU Langone Health",
+  "url": "https://nyulangone.org",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Weill Cornell Medicine",
+  "url": "https://weillcornell.org",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Penn Medicine",
+  "url": "https://www.pennmedicine.org",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Duke Health",
+  "url": "https://www.dukehealth.org",
+  "country": "США",
+  "city": "Дарем",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "UCSF Health",
+  "url": "https://www.ucsfhealth.org",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Houston Methodist",
+  "url": "https://www.houstonmethodist.org",
+  "country": "США",
+  "city": "Хьюстон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Dana-Farber Cancer Institute",
+  "url": "https://www.dana-farber.org",
+  "country": "США",
+  "city": "Бостон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Boston Children's Hospital",
+  "url": "https://www.childrenshospital.org",
+  "country": "США",
+  "city": "Бостон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Brigham and Women's Hospital",
+  "url": "https://www.brighamandwomens.org",
+  "country": "США",
+  "city": "Бостон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Northwestern Medicine",
+  "url": "https://www.nm.org",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Cromwell Hospital",
+  "url": "https://www.cromwellhospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "King Edward VII's Hospital",
+  "url": "https://www.kingedwardvii.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "The Wellington Hospital",
+  "url": "https://www.thewellingtonhospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "The Princess Grace Hospital",
+  "url": "https://www.theprincessgracehospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "The Harley Street Clinic",
+  "url": "https://www.theharleystreetclinic.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "London Bridge Hospital",
+  "url": "https://www.londonbridgehospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "The Lister Hospital",
+  "url": "https://www.thelisterhospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "The Portland Hospital",
+  "url": "https://www.theportlandhospital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "OneWelbeck",
+  "url": "https://www.onewelbeck.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Schoen Clinic London",
+  "url": "https://www.schoen-clinic.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Echelon Health",
+  "url": "https://www.echelonhealth.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Randox Health",
+  "url": "https://www.randoxhealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Re:Cognition Health",
+  "url": "https://www.re-cognitionhealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Fortius Clinic",
+  "url": "https://www.fortiusclinic.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "London Medical",
+  "url": "https://www.londonmedical.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Doctorcall",
+  "url": "https://www.doctorcall.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "Nightingale Hospital",
+  "url": "https://www.nightingalehospital.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "ментальное здоровье",
+  "top": false
+ },
+ {
+  "name": "Priory",
+  "url": "https://www.priorygroup.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "ментальное здоровье",
+  "top": false
+ },
+ {
+  "name": "Castle Craig Hospital",
+  "url": "https://www.castlecraig.co.uk",
+  "country": "Великобритания",
+  "city": "Шотландия",
+  "type": "ментальное здоровье",
+  "top": false
+ },
+ {
+  "name": "Champneys",
+  "url": "https://www.champneys.com",
+  "country": "Великобритания",
+  "city": "Тринг",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Grayshott Health Spa",
+  "url": "https://www.grayshottspa.com",
+  "country": "Великобритания",
+  "city": "Грейшотт",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Swiss Medical Network",
+  "url": "https://www.swissmedical.net",
+  "country": "Швейцария",
+  "city": "Женолье",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Clinique Nescens",
+  "url": "https://www.nescens.com",
+  "country": "Швейцария",
+  "city": "Женолье",
+  "type": "клиника долголетия",
+  "top": false
+ },
+ {
+  "name": "Privatklinik Bethanien",
+  "url": "https://www.klinikbethanien.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Klinik Pyramide am See",
+  "url": "https://www.pyramide.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Schulthess Klinik",
+  "url": "https://www.schulthess-klinik.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Universitatsspital Zurich",
+  "url": "https://www.usz.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Inselspital Bern",
+  "url": "https://www.insel.ch",
+  "country": "Швейцария",
+  "city": "Берн",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "CHUV Lausanne",
+  "url": "https://www.chuv.ch",
+  "country": "Швейцария",
+  "city": "Лозанна",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hopitaux Universitaires de Geneve",
+  "url": "https://www.hug.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Clinique Valmont",
+  "url": "https://www.cliniquevalmont.ch",
+  "country": "Швейцария",
+  "city": "Глион",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Grand Resort Bad Ragaz",
+  "url": "https://www.resortragaz.ch",
+  "country": "Швейцария",
+  "city": "Бад-Рагац",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Burgenstock Resort, Waldhotel Health & Medical Excellence",
+  "url": "https://www.buergenstock.ch",
+  "country": "Швейцария",
+  "city": "Бюргеншток",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Klinik Gut",
+  "url": "https://www.klinik-gut.ch",
+  "country": "Швейцария",
+  "city": "Санкт-Мориц",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Merian Iselin",
+  "url": "https://www.merianiselin.ch",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Privatklinik Hohenegg",
+  "url": "https://www.hohenegg.ch",
+  "country": "Швейцария",
+  "city": "Майлен",
+  "type": "ментальное здоровье",
+  "top": false
+ },
+ {
+  "name": "Clinique des Grangettes",
+  "url": "https://www.grangettes.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hopital de la Tour",
+  "url": "https://www.la-tour.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Kurhaus Cademario",
+  "url": "https://www.kurhauscademario.com",
+  "country": "Швейцария",
+  "city": "Кадемарио",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Charite",
+  "url": "https://www.charite.de",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Universitatsklinikum Heidelberg",
+  "url": "https://www.klinikum.uni-heidelberg.de",
+  "country": "Германия",
+  "city": "Гейдельберг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Klinikum rechts der Isar TUM",
+  "url": "https://www.mri.tum.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "LMU Klinikum",
+  "url": "https://www.lmu-klinikum.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Universitatsklinikum Hamburg-Eppendorf",
+  "url": "https://www.uke.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Asklepios Kliniken",
+  "url": "https://www.asklepios.com",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Helios Kliniken",
+  "url": "https://www.helios-gesundheit.de",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Schon Klinik",
+  "url": "https://www.schoen-klinik.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Max Grundig Klinik",
+  "url": "https://www.max-grundig-klinik.de",
+  "country": "Германия",
+  "city": "Бюль",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Preventicum",
+  "url": "https://www.preventicum.de",
+  "country": "Германия",
+  "city": "Эссен",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Medical Park",
+  "url": "https://www.medicalpark.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Park Igls",
+  "url": "https://www.park-igls.at",
+  "country": "Австрия",
+  "city": "Иглс",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Rudolfinerhaus",
+  "url": "https://www.rudolfinerhaus.at",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Wiener Privatklinik",
+  "url": "https://www.wiener-privatklinik.com",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Palazzo Fiuggi",
+  "url": "https://www.palazzofiuggi.com",
+  "country": "Италия",
+  "city": "Фьюджи",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Lefay Resort & Spa",
+  "url": "https://www.lefayresorts.com",
+  "country": "Италия",
+  "city": "Гарньяно",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Preidlhof",
+  "url": "https://www.preidlhof.it",
+  "country": "Италия",
+  "city": "Натурнс",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Terme di Saturnia",
+  "url": "https://www.termedisaturnia.it",
+  "country": "Италия",
+  "city": "Сатурния",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Humanitas",
+  "url": "https://www.humanitas.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Ospedale San Raffaele",
+  "url": "https://www.hsr.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Istituto Europeo di Oncologia",
+  "url": "https://www.ieo.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Policlinico Gemelli",
+  "url": "https://www.policlinicogemelli.it",
+  "country": "Италия",
+  "city": "Рим",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Quironsalud",
+  "url": "https://www.quironsalud.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Clinica Universidad de Navarra",
+  "url": "https://www.cun.es",
+  "country": "Испания",
+  "city": "Памплона",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hospital Clinic Barcelona",
+  "url": "https://www.clinicbarcelona.org",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Centro Medico Teknon",
+  "url": "https://www.teknon.es",
+  "country": "Испания",
+  "city": "Барселона",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Vithas",
+  "url": "https://www.vithas.es",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "HM Hospitales",
+  "url": "https://www.hmhospitales.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "CUF",
+  "url": "https://www.cuf.pt",
+  "country": "Португалия",
+  "city": "Лиссабон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Euphoria Retreat",
+  "url": "https://www.euphoriaretreat.com",
+  "country": "Греция",
+  "city": "Мистрас",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "American Hospital of Paris",
+  "url": "https://www.american-hospital.org",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Institut Curie",
+  "url": "https://curie.fr",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Gustave Roussy",
+  "url": "https://www.gustaveroussy.fr",
+  "country": "Франция",
+  "city": "Вильжюиф",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Centre Hospitalier Princesse Grace",
+  "url": "https://www.chpg.mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Centre Cardio-Thoracique de Monaco",
+  "url": "https://www.ccm.mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "IM2S Monaco",
+  "url": "https://www.im2s.mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Acibadem",
+  "url": "https://www.acibadem.com.tr",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Memorial Healthcare Group",
+  "url": "https://www.memorial.com.tr",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "American Hospital Istanbul",
+  "url": "https://www.amerikanhastanesi.org",
+  "country": "Турция",
+  "city": "Стамбул",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Sheba Medical Center",
+  "url": "https://www.shebaonline.org",
+  "country": "Израиль",
+  "city": "Рамат-Ган",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Tel Aviv Sourasky Medical Center (Ichilov)",
+  "url": "https://www.tasmc.org.il",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Assuta Medical Centers",
+  "url": "https://www.assuta.co.il",
+  "country": "Израиль",
+  "city": "Тель-Авив",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Rambam Health Care Campus",
+  "url": "https://www.rambam.org.il",
+  "country": "Израиль",
+  "city": "Хайфа",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Herzliya Medical Center",
+  "url": "https://www.hmc.co.il",
+  "country": "Израиль",
+  "city": "Герцлия",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Mediclinic Middle East",
+  "url": "https://www.mediclinic.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "American Hospital Dubai",
+  "url": "https://www.ahdubai.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "King's College Hospital London Dubai",
+  "url": "https://kingscollegehospitaldubai.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Dubai London Clinic",
+  "url": "https://www.dubailondonclinic.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Healthpoint",
+  "url": "https://www.healthpoint.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Burjeel Holdings",
+  "url": "https://burjeel.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "M42",
+  "url": "https://m42.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "NMC Healthcare",
+  "url": "https://nmc.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Imperial College London Diabetes Centre",
+  "url": "https://www.icldc.ae",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Moorfields Eye Hospital Dubai",
+  "url": "https://www.moorfields.ae",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "King Faisal Specialist Hospital",
+  "url": "https://www.kfshrc.edu.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Dr. Sulaiman Al Habib Medical Group",
+  "url": "https://hmg.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Johns Hopkins Aramco Healthcare",
+  "url": "https://www.jhah.com",
+  "country": "Саудовская Аравия",
+  "city": "Дахран",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Sidra Medicine",
+  "url": "https://www.sidra.org",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hamad Medical Corporation",
+  "url": "https://www.hamad.qa",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Al Ahli Hospital",
+  "url": "https://www.ahlihospital.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Gleneagles Hospital Singapore",
+  "url": "https://www.gleneagles.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Parkway Pantai",
+  "url": "https://www.parkwaypantai.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Singapore General Hospital",
+  "url": "https://www.sgh.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "National University Hospital",
+  "url": "https://www.nuh.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "National Cancer Centre Singapore",
+  "url": "https://www.nccs.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Thomson Medical",
+  "url": "https://www.thomsonmedical.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Farrer Park Hospital",
+  "url": "https://www.farrerpark.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Mount Alvernia Hospital",
+  "url": "https://mtalvernia.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hong Kong Sanatorium & Hospital",
+  "url": "https://www.hksh-hospital.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Matilda International Hospital",
+  "url": "https://www.matilda.org",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Gleneagles Hospital Hong Kong",
+  "url": "https://gleneagles.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Hong Kong Adventist Hospital",
+  "url": "https://www.hkah.org.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Canossa Hospital",
+  "url": "https://www.canossahospital.org.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "CUHK Medical Centre",
+  "url": "https://www.cuhkmc.hk",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "St. Luke's International Hospital",
+  "url": "https://hospital.luke.ac.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Tokyo Midtown Clinic",
+  "url": "https://www.tokyomidtown-mc.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Kameda Medical Center",
+  "url": "https://www.kameda.com",
+  "country": "Япония",
+  "city": "Камогава",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Medical Excellence Japan",
+  "url": "https://medicalexcellencejapan.org",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "медицинский консьерж",
+  "top": false
+ },
+ {
+  "name": "Juntendo University Hospital",
+  "url": "https://www.juntendo.ac.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Keio University Hospital",
+  "url": "https://www.hosp.keio.ac.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Mitsui Memorial Hospital",
+  "url": "https://www.mitsuihosp.or.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Samsung Medical Center",
+  "url": "https://www.samsunghospital.com",
+  "country": "Южная Корея",
+  "city": "Сеул",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Asan Medical Center",
+  "url": "https://www.amc.seoul.kr",
+  "country": "Южная Корея",
+  "city": "Сеул",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Bangkok Hospital",
+  "url": "https://www.bangkokhospital.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Samitivej Hospital",
+  "url": "https://www.samitivejhospitals.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "RAKxa Integrative Wellness",
+  "url": "https://www.rakxawellness.com",
+  "country": "Таиланд",
+  "city": "Бангкок",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Prince Court Medical Centre",
+  "url": "https://www.princecourt.com",
+  "country": "Малайзия",
+  "city": "Куала-Лумпур",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Apollo Hospitals",
+  "url": "https://www.apollohospitals.com",
+  "country": "Индия",
+  "city": "Ченнаи",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Medanta",
+  "url": "https://www.medanta.org",
+  "country": "Индия",
+  "city": "Гургаон",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Ananda in the Himalayas",
+  "url": "https://www.anandaspa.com",
+  "country": "Индия",
+  "city": "Ришикеш",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "COMO Shambhala Estate",
+  "url": "https://www.comohotels.com",
+  "country": "Индонезия",
+  "city": "Бали",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Joali Being",
+  "url": "https://www.joalibeing.com",
+  "country": "Мальдивы",
+  "city": "Атолл Баа",
+  "type": "медицинский ретрит",
+  "top": false
+ },
+ {
+  "name": "Netcare",
+  "url": "https://www.netcare.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Mediclinic Southern Africa",
+  "url": "https://www.mediclinic.co.za",
+  "country": "ЮАР",
+  "city": "Стелленбос",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Life Healthcare",
+  "url": "https://www.lifehealthcare.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Melomed",
+  "url": "https://www.melomed.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "International SOS",
+  "url": "https://www.internationalsos.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "медицинский ассистанс",
+  "top": false
+ },
+ {
+  "name": "Global Rescue",
+  "url": "https://www.globalrescue.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "медицинский ассистанс",
+  "top": false
+ },
+ {
+  "name": "Medjet",
+  "url": "https://medjetassist.com",
+  "country": "США",
+  "city": "Бирмингем",
+  "type": "медицинский ассистанс",
+  "top": false
+ },
+ {
+  "name": "MedAire",
+  "url": "https://www.medaire.com",
+  "country": "США",
+  "city": "Темпе",
+  "type": "медицинский ассистанс",
+  "top": false
+ },
+ {
+  "name": "Healix International",
+  "url": "https://www.healix.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "медицинский ассистанс",
+  "top": false
+ },
+ {
+  "name": "Bupa Global",
+  "url": "https://www.bupaglobal.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "премиальное медстрахование",
+  "top": false
+ },
+ {
+  "name": "Cigna Global",
+  "url": "https://www.cignaglobal.com",
+  "country": "США",
+  "city": "Блумфилд",
+  "type": "премиальное медстрахование",
+  "top": false
+ },
+ {
+  "name": "AXA Global Healthcare",
+  "url": "https://www.axaglobalhealthcare.com",
+  "country": "Великобритания",
+  "city": "Танбридж-Уэллс",
+  "type": "премиальное медстрахование",
+  "top": false
+ },
+ {
+  "name": "Allianz Care",
+  "url": "https://www.allianzcare.com",
+  "country": "Ирландия",
+  "city": "Дублин",
+  "type": "премиальное медстрахование",
+  "top": false
+ },
+ {
+  "name": "William Russell",
+  "url": "https://www.william-russell.com",
+  "country": "Великобритания",
+  "city": "Гилфорд",
+  "type": "премиальное медстрахование",
+  "top": false
+ },
+ {
+  "name": "Европейский медицинский центр (EMC)",
+  "url": "https://www.emcmos.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "клиника для иностранцев",
+  "top": false
+ },
+ {
+  "name": "Медси",
+  "url": "https://medsi.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "GMS Clinic",
+  "url": "https://www.gmsclinic.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "K+31",
+  "url": "https://k31.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Медскан",
+  "url": "https://medscan.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "Клиника Чайка",
+  "url": "https://chaika.com",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "превентивная медицина",
+  "top": false
+ },
+ {
+  "name": "АВА-Петер (Скандинавия)",
+  "url": "https://www.ava-peter.ru",
+  "country": "Россия",
+  "city": "Санкт-Петербург",
+  "type": "клиника для иностранцев",
+  "top": false
+ }
+]

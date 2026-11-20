@@ -1,0 +1,1802 @@
+[
+ {
+  "name": "UBS Global Wealth Management",
+  "url": "https://www.ubs.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Julius Baer",
+  "url": "https://www.juliusbaer.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Pictet",
+  "url": "https://www.group.pictet",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Lombard Odier",
+  "url": "https://www.lombardodier.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "J.P. Morgan Private Bank",
+  "url": "https://privatebank.jpmorgan.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Goldman Sachs Private Wealth Management",
+  "url": "https://www.goldmansachs.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Morgan Stanley Wealth Management",
+  "url": "https://www.morganstanley.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Citi Private Bank",
+  "url": "https://www.privatebank.citibank.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "BNP Paribas Wealth Management",
+  "url": "https://wealthmanagement.bnpparibas",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "HSBC Private Bank",
+  "url": "https://www.privatebanking.hsbc.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Edmond de Rothschild",
+  "url": "https://www.edmond-de-rothschild.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Rothschild & Co Wealth Management",
+  "url": "https://www.rothschildandco.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "EFG International",
+  "url": "https://www.efginternational.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Vontobel",
+  "url": "https://www.vontobel.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Union Bancaire Privee (UBP)",
+  "url": "https://www.ubp.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "LGT Private Banking",
+  "url": "https://www.lgt.com",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Bank J. Safra Sarasin",
+  "url": "https://www.jsafrasarasin.com",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Coutts",
+  "url": "https://www.coutts.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Bessemer Trust",
+  "url": "https://www.bessemertrust.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мультисемейный офис",
+  "top": true
+ },
+ {
+  "name": "Rockefeller Capital Management",
+  "url": "https://www.rockco.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мультисемейный офис",
+  "top": true
+ },
+ {
+  "name": "Stonehage Fleming",
+  "url": "https://www.stonehagefleming.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "мультисемейный офис",
+  "top": true
+ },
+ {
+  "name": "Northern Trust Wealth Management",
+  "url": "https://www.northerntrust.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "BofA Private Bank",
+  "url": "https://www.privatebank.bankofamerica.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Deutsche Bank Wealth Management",
+  "url": "https://www.deutschewealth.com",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Indosuez Wealth Management",
+  "url": "https://ca-indosuez.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "DBS Private Bank",
+  "url": "https://www.dbs.com.sg/private-bank",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Bank of Singapore",
+  "url": "https://www.bankofsingapore.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Iconiq Capital",
+  "url": "https://www.iconiqcapital.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "мультисемейный офис",
+  "top": true
+ },
+ {
+  "name": "Investec Wealth & Investment",
+  "url": "https://www.investec.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "частный банк",
+  "top": true
+ },
+ {
+  "name": "Mirabaud",
+  "url": "https://www.mirabaud.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Bordier & Cie",
+  "url": "https://www.bordier.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Gonet & Cie",
+  "url": "https://www.gonet.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Syz",
+  "url": "https://www.syzgroup.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Rahn+Bodmer",
+  "url": "https://www.rahnbodmer.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Reichmuth & Co",
+  "url": "https://www.reichmuthco.ch",
+  "country": "Швейцария",
+  "city": "Люцерн",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Bergos",
+  "url": "https://www.bergos.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Maerki Baumann",
+  "url": "https://www.maerki-baumann.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Heritage",
+  "url": "https://www.heritage.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "REYL Intesa Sanpaolo",
+  "url": "https://www.reyl.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Piguet Galland",
+  "url": "https://www.piguetgalland.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "CBH Compagnie Bancaire Helvetique",
+  "url": "https://www.cbhbank.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Corner Banca",
+  "url": "https://www.corner.ch",
+  "country": "Швейцария",
+  "city": "Лугано",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banca del Ceresio",
+  "url": "https://www.ceresio.ch",
+  "country": "Швейцария",
+  "city": "Лугано",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Cramer",
+  "url": "https://www.banquecramer.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Lienhardt & Partner Privatbank",
+  "url": "https://www.lienhardt.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Hyposwiss Private Bank Geneve",
+  "url": "https://www.hyposwiss.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Dreyfus Sohne & Cie Banquiers",
+  "url": "https://www.dreyfusbank.ch",
+  "country": "Швейцария",
+  "city": "Базель",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Zurcher Kantonalbank Private Banking",
+  "url": "https://www.zkb.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Paris Bertrand",
+  "url": "https://www.parisbertrand.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Bonhote",
+  "url": "https://www.bonhote.ch",
+  "country": "Швейцария",
+  "city": "Невшатель",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Thaler",
+  "url": "https://www.banquethaler.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "PKB Privatbank",
+  "url": "https://www.pkb.ch",
+  "country": "Швейцария",
+  "city": "Лугано",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "1291 Group",
+  "url": "https://www.1291group.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Prime Partners",
+  "url": "https://www.primepartners.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Bruellan",
+  "url": "https://www.bruellan.ch",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Notz Stucki",
+  "url": "https://www.notzstucki.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Sallfort",
+  "url": "https://www.sallfort.com",
+  "country": "Швейцария",
+  "city": "Женева",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Wergen & Partner",
+  "url": "https://www.wergen.ch",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Marcuard Family Office",
+  "url": "https://www.marcuard.com",
+  "country": "Швейцария",
+  "city": "Цюрих",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "VP Bank",
+  "url": "https://www.vpbank.com",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Liechtensteinische Landesbank (LLB)",
+  "url": "https://www.llb.li",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Bank Frick",
+  "url": "https://www.bankfrick.li",
+  "country": "Лихтенштейн",
+  "city": "Бальцерс",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Kaiser Partner",
+  "url": "https://www.kaiserpartner.com",
+  "country": "Лихтенштейн",
+  "city": "Вадуц",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Quintet Private Bank",
+  "url": "https://www.quintet.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque de Luxembourg",
+  "url": "https://www.banquedeluxembourg.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Havilland",
+  "url": "https://www.banquehavilland.com",
+  "country": "Люксембург",
+  "city": "Люксембург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Degroof Petercam",
+  "url": "https://www.degroofpetercam.com",
+  "country": "Бельгия",
+  "city": "Брюссель",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Van Lanschot Kempen",
+  "url": "https://www.vanlanschotkempen.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "ABN AMRO Private Banking",
+  "url": "https://www.abnamro.com",
+  "country": "Нидерланды",
+  "city": "Амстердам",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "C. Hoare & Co",
+  "url": "https://www.hoaresbank.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Barclays Private Bank",
+  "url": "https://privatebanking.barclays.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Kleinwort Hambros",
+  "url": "https://www.kleinworthambros.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Arbuthnot Latham",
+  "url": "https://www.arbuthnotlatham.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Weatherbys Private Bank",
+  "url": "https://www.weatherbys.bank",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Brown Shipley",
+  "url": "https://www.brownshipley.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Hampden & Co",
+  "url": "https://www.hampdenandco.com",
+  "country": "Великобритания",
+  "city": "Эдинбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Rathbones",
+  "url": "https://www.rathbones.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "St. James's Place",
+  "url": "https://www.sjp.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "RBC Brewin Dolphin",
+  "url": "https://www.brewin.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Cazenove Capital",
+  "url": "https://www.cazenovecapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Quilter Cheviot",
+  "url": "https://www.quiltercheviot.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Evelyn Partners",
+  "url": "https://www.evelyn.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Close Brothers Asset Management",
+  "url": "https://www.closebrothersam.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Sandaire",
+  "url": "https://www.sandaire.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Waverton",
+  "url": "https://www.waverton.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Ruffer",
+  "url": "https://www.ruffer.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Troy Asset Management",
+  "url": "https://www.taml.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Partners Capital",
+  "url": "https://www.partners-cap.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Saranac Partners",
+  "url": "https://www.saranacpartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "JM Finn",
+  "url": "https://www.jmfinn.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Killik & Co",
+  "url": "https://www.killik.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Charles Stanley",
+  "url": "https://www.charles-stanley.co.uk",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Brooks Macdonald",
+  "url": "https://www.brooksmacdonald.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Canaccord Wealth",
+  "url": "https://www.canaccordwealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Sarasin & Partners",
+  "url": "https://www.sarasinandpartners.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Stanhope Capital",
+  "url": "https://www.stanhopecapital.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Signia Wealth",
+  "url": "https://www.signiawealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Netwealth",
+  "url": "https://www.netwealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "цифровой wealth",
+  "top": false
+ },
+ {
+  "name": "Vestra Wealth",
+  "url": "https://www.vestrawealth.com",
+  "country": "Великобритания",
+  "city": "Лондон",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Berenberg",
+  "url": "https://www.berenberg.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Metzler",
+  "url": "https://www.metzler.com",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Hauck Aufhauser Lampe",
+  "url": "https://www.hal-privatbank.com",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "M.M.Warburg & CO",
+  "url": "https://www.mmwarburg.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Donner & Reuschel",
+  "url": "https://www.donner-reuschel.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Merck Finck",
+  "url": "https://www.merckfinck.de",
+  "country": "Германия",
+  "city": "Мюнхен",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Furstlich Castell'sche Bank",
+  "url": "https://www.castell-bank.de",
+  "country": "Германия",
+  "city": "Вюрцбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Quirin Privatbank",
+  "url": "https://www.quirinprivatbank.de",
+  "country": "Германия",
+  "city": "Берлин",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Deutsche Oppenheim Family Office",
+  "url": "https://www.deutsche-oppenheim.de",
+  "country": "Германия",
+  "city": "Кельн",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "FERI",
+  "url": "https://www.feri.de",
+  "country": "Германия",
+  "city": "Бад-Хомбург",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "HQ Trust",
+  "url": "https://www.hqtrust.de",
+  "country": "Германия",
+  "city": "Бад-Хомбург",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Flossbach von Storch",
+  "url": "https://www.flossbachvonstorch.de",
+  "country": "Германия",
+  "city": "Кельн",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Marcard, Stein & Co",
+  "url": "https://www.marcard.de",
+  "country": "Германия",
+  "city": "Гамбург",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Focam",
+  "url": "https://www.focam.de",
+  "country": "Германия",
+  "city": "Франкфурт",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Bank Gutmann",
+  "url": "https://www.gutmann.at",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Schoellerbank",
+  "url": "https://www.schoellerbank.at",
+  "country": "Австрия",
+  "city": "Вена",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Bankhaus Spangler",
+  "url": "https://www.spaengler.at",
+  "country": "Австрия",
+  "city": "Зальцбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Societe Generale Private Banking",
+  "url": "https://www.privatebanking.societegenerale.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Transatlantique",
+  "url": "https://www.banquetransatlantique.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banque Hottinguer",
+  "url": "https://www.hottinguer.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Lazard Freres Gestion",
+  "url": "https://www.lazardfreresgestion.fr",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Neuflize OBC",
+  "url": "https://www.neuflizeobc.fr",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Oddo BHF",
+  "url": "https://www.oddo-bhf.com",
+  "country": "Франция",
+  "city": "Париж",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "CMB Monaco",
+  "url": "https://www.cmb.mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "UBS Monaco",
+  "url": "https://www.ubs.com/mc",
+  "country": "Монако",
+  "city": "Монако",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banca Generali",
+  "url": "https://www.bancagenerali.com",
+  "country": "Италия",
+  "city": "Триест",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Fideuram",
+  "url": "https://www.fideuram.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banca Mediolanum",
+  "url": "https://www.bancamediolanum.it",
+  "country": "Италия",
+  "city": "Милан",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Ersel",
+  "url": "https://www.ersel.it",
+  "country": "Италия",
+  "city": "Турин",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banca Patrimoni Sella",
+  "url": "https://www.bancapatrimoni.it",
+  "country": "Италия",
+  "city": "Турин",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Andbank",
+  "url": "https://www.andbank.com",
+  "country": "Андорра",
+  "city": "Андорра-ла-Велья",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Banca March",
+  "url": "https://www.bancamarch.es",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "A&G Banca Privada",
+  "url": "https://www.ayg.es",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Abante",
+  "url": "https://www.abanteasesores.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Santander Private Banking",
+  "url": "https://www.santanderprivatebanking.com",
+  "country": "Испания",
+  "city": "Мадрид",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Carnegie Private Banking",
+  "url": "https://www.carnegie.se",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Formue",
+  "url": "https://formue.no",
+  "country": "Норвегия",
+  "city": "Осло",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Soderberg & Partners",
+  "url": "https://www.soderbergpartners.se",
+  "country": "Швеция",
+  "city": "Стокгольм",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Merrill Private Wealth Management",
+  "url": "https://www.ml.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Wells Fargo Private Bank",
+  "url": "https://www.wellsfargo.com/the-private-bank/",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "BNY Wealth",
+  "url": "https://www.bny.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "PNC Private Bank",
+  "url": "https://www.pnc.com",
+  "country": "США",
+  "city": "Питтсбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "RBC Wealth Management",
+  "url": "https://www.rbcwealthmanagement.com",
+  "country": "США",
+  "city": "Миннеаполис",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "CIBC Private Wealth",
+  "url": "https://www.private.cibc.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Safra National Bank of New York",
+  "url": "https://www.safra.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Brown Brothers Harriman",
+  "url": "https://www.bbh.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Glenmede",
+  "url": "https://www.glenmede.com",
+  "country": "США",
+  "city": "Филадельфия",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Bernstein Private Wealth Management",
+  "url": "https://www.bernstein.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Neuberger Berman Private Wealth",
+  "url": "https://www.nb.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Brown Advisory",
+  "url": "https://www.brownadvisory.com",
+  "country": "США",
+  "city": "Балтимор",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "AlTi Global (Tiedemann)",
+  "url": "https://www.alti-global.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Cresset",
+  "url": "https://cressetcapital.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Pathstone",
+  "url": "https://pathstone.com",
+  "country": "США",
+  "city": "Энглвуд",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Silvercrest Asset Management",
+  "url": "https://www.silvercrestgroup.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Aspiriant",
+  "url": "https://aspiriant.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Gresham Partners",
+  "url": "https://www.greshampartners.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Wetherby Asset Management",
+  "url": "https://www.wetherby.com",
+  "country": "США",
+  "city": "Сан-Франциско",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Bel Air Investment Advisors",
+  "url": "https://www.belair-llc.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Ballentine Partners",
+  "url": "https://www.ballentinepartners.com",
+  "country": "США",
+  "city": "Уолтем",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Twin Focus",
+  "url": "https://www.twinfocus.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Pitcairn",
+  "url": "https://www.pitcairn.com",
+  "country": "США",
+  "city": "Дженкинтаун",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Geller",
+  "url": "https://www.gellerco.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Cambridge Associates",
+  "url": "https://www.cambridgeassociates.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Creative Planning",
+  "url": "https://creativeplanning.com",
+  "country": "США",
+  "city": "Оверленд-Парк",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Fisher Investments",
+  "url": "https://www.fisherinvestments.com",
+  "country": "США",
+  "city": "Плано",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Mariner",
+  "url": "https://www.mariner.com",
+  "country": "США",
+  "city": "Оверленд-Парк",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Wealth Enhancement Group",
+  "url": "https://www.wealthenhancement.com",
+  "country": "США",
+  "city": "Миннеаполис",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Hightower Advisors",
+  "url": "https://hightoweradvisors.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "CAPTRUST",
+  "url": "https://www.captrust.com",
+  "country": "США",
+  "city": "Роли",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Edelman Financial Engines",
+  "url": "https://www.edelmanfinancialengines.com",
+  "country": "США",
+  "city": "Бостон",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Sanctuary Wealth",
+  "url": "https://www.sanctuarywealth.com",
+  "country": "США",
+  "city": "Индианаполис",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Mercer Advisors",
+  "url": "https://www.merceradvisors.com",
+  "country": "США",
+  "city": "Денвер",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Corient",
+  "url": "https://www.corient.com",
+  "country": "США",
+  "city": "Майами",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Cerity Partners",
+  "url": "https://ceritypartners.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Focus Financial Partners",
+  "url": "https://www.focusfinancialpartners.com",
+  "country": "США",
+  "city": "Нью-Йорк",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Savant Wealth Management",
+  "url": "https://www.savantwealth.com",
+  "country": "США",
+  "city": "Рокфорд",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Beacon Pointe",
+  "url": "https://beaconpointe.com",
+  "country": "США",
+  "city": "Ньюпорт-Бич",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Moneta",
+  "url": "https://www.moneta.com",
+  "country": "США",
+  "city": "Сент-Луис",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Lido Advisors",
+  "url": "https://www.lidoadvisors.com",
+  "country": "США",
+  "city": "Лос-Анджелес",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "William Blair Private Wealth",
+  "url": "https://www.williamblair.com",
+  "country": "США",
+  "city": "Чикаго",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Robert W. Baird Private Wealth",
+  "url": "https://www.rwbaird.com",
+  "country": "США",
+  "city": "Милуоки",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Raymond James",
+  "url": "https://www.raymondjames.com",
+  "country": "США",
+  "city": "Сент-Питерсберг",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "UOB Private Bank",
+  "url": "https://www.uob.com.sg",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Standard Chartered Private Bank",
+  "url": "https://www.sc.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "BOCHK Private Banking",
+  "url": "https://www.bochk.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Nomura Wealth Management",
+  "url": "https://www.nomura.com",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "SMBC Nikko Securities",
+  "url": "https://www.smbcnikko.co.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Daiwa Securities",
+  "url": "https://www.daiwa.jp",
+  "country": "Япония",
+  "city": "Токио",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Raffles Family Office",
+  "url": "https://www.rafflesfamilyoffice.com",
+  "country": "Гонконг",
+  "city": "Гонконг",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Lighthouse Canton",
+  "url": "https://www.lighthousecanton.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Golden Equator Wealth",
+  "url": "https://www.goldenequator.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "мультисемейный офис",
+  "top": false
+ },
+ {
+  "name": "Kristal.AI",
+  "url": "https://kristal.ai",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "цифровой wealth",
+  "top": false
+ },
+ {
+  "name": "Endowus",
+  "url": "https://endowus.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "цифровой wealth",
+  "top": false
+ },
+ {
+  "name": "Providend",
+  "url": "https://providend.com",
+  "country": "Сингапур",
+  "city": "Сингапур",
+  "type": "независимый управляющий",
+  "top": false
+ },
+ {
+  "name": "Emirates NBD Private Banking",
+  "url": "https://www.emiratesnbd.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "First Abu Dhabi Bank Private Banking",
+  "url": "https://www.bankfab.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Mashreq Private Banking",
+  "url": "https://www.mashreq.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "ADCB Private Banking",
+  "url": "https://www.adcb.com",
+  "country": "ОАЭ",
+  "city": "Абу-Даби",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Emirates Investment Bank",
+  "url": "https://www.eibank.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Arqaam Capital",
+  "url": "https://www.arqaamcapital.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Rasmala",
+  "url": "https://www.rasmala.com",
+  "country": "ОАЭ",
+  "city": "Дубай",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Investcorp",
+  "url": "https://www.investcorp.com",
+  "country": "Бахрейн",
+  "city": "Манама",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "QNB Private Banking",
+  "url": "https://www.qnb.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "QInvest",
+  "url": "https://www.qinvest.com",
+  "country": "Катар",
+  "city": "Доха",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Jadwa Investment",
+  "url": "https://www.jadwa.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Al Rajhi Capital",
+  "url": "https://www.alrajhi-capital.sa",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Riyad Capital",
+  "url": "https://www.riyadcapital.com",
+  "country": "Саудовская Аравия",
+  "city": "Эр-Рияд",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "SEDCO Capital",
+  "url": "https://www.sedcocapital.com",
+  "country": "Саудовская Аравия",
+  "city": "Джидда",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "Alkhabeer Capital",
+  "url": "https://www.alkhabeer.com",
+  "country": "Саудовская Аравия",
+  "city": "Джидда",
+  "type": "инвестиционный дом",
+  "top": false
+ },
+ {
+  "name": "RMB Private Bank",
+  "url": "https://www.rmbprivatebank.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Nedbank Private Wealth",
+  "url": "https://www.nedbankprivatewealth.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Citadel",
+  "url": "https://www.citadel.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Sanlam Private Wealth",
+  "url": "https://www.sanlamprivatewealth.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "PSG Wealth",
+  "url": "https://www.psg.co.za",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Anchor Capital",
+  "url": "https://www.anchorcapital.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Melville Douglas",
+  "url": "https://www.melvilledouglas.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Brenthurst Wealth",
+  "url": "https://www.brenthurstwealth.co.za",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Sasfin Wealth",
+  "url": "https://www.sasfin.com",
+  "country": "ЮАР",
+  "city": "Йоханнесбург",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Ninety One",
+  "url": "https://ninetyone.com",
+  "country": "ЮАР",
+  "city": "Кейптаун",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "Сбер Private Banking",
+  "url": "https://www.sberbank.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Альфа-Банк A-Club",
+  "url": "https://alfabank.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Газпромбанк Private Banking",
+  "url": "https://www.gazprombank.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "ВТБ Private Banking",
+  "url": "https://www.vtb.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Т-Банк Private",
+  "url": "https://www.tbank.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "частный банк",
+  "top": false
+ },
+ {
+  "name": "Атон",
+  "url": "https://www.aton.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "wealth-бутик",
+  "top": false
+ },
+ {
+  "name": "БКС Ультима",
+  "url": "https://bcs.ru",
+  "country": "Россия",
+  "city": "Москва",
+  "type": "wealth-бутик",
+  "top": false
+ }
+]

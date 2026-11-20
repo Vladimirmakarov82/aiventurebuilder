@@ -3,7 +3,7 @@
 import re, sys, os
 D = os.path.dirname(os.path.abspath(__file__)) + '/'
 s = open(D + 'partners.html', encoding='utf-8').read()
-s = s.replace(' ', ' ').replace('&nbsp;', ' ')
+s = s.replace(chr(160), ' ').replace('&nbsp;', ' ').replace(chr(0x2060), '')
 
 T = [
  # head and header
@@ -19,9 +19,9 @@ T = [
  ('Для партнеров', 'For partners'),
  ('Orbiq предоставляет целевую аудиторию и инфраструктуру <span class="lt">для построения партнерской сети командам, предоставляющим уникальные услуги для HNWI</span>',
   'Orbiq provides the target audience and infrastructure <span class="lt">for teams with unique services for HNWIs to build a partner network</span>'),
- ('клиентов с капиталом $10–50 млн', 'clients with $10–50M in wealth'),
- ('клиента с капиталом $1–10 млн', 'clients with $1–10M in wealth'),
- ('клиентов с капиталом $0,5–1 млн', 'clients with $0.5–1M in wealth'),
+ ('клиентов с капиталом $10–50 млн', 'clients with $10\u2060–\u206050M in wealth'),
+ ('клиента с капиталом $1–10 млн', 'clients with $1\u2060–\u206010M in wealth'),
+ ('клиентов с капиталом $0,5–1 млн', 'clients with $0.5\u2060–\u20601M in wealth'),
  # blocks 2 and 3
  ('</span>Партнерская сеть</div>', '</span>Partner network</div>'),
  ('Orbiq предоставляет инфраструктуру <span class="lt">для построения партнерской сети для распространения услуг</span>',

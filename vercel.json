@@ -1,1 +1,61 @@
-{"cleanUrls": true, "trailingSlash": true, "redirects": [{"source": "/journal-c0f4ba", "destination": "/journal/", "permanent": true}, {"source": "/journal-c0f4ba/", "destination": "/journal/", "permanent": true}, {"source": "/journal-c0f4ba/(.*)", "destination": "/journal/", "permanent": true}]}
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/journal-c0f4ba",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal-c0f4ba/",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal-c0f4ba/(.*)",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu/",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-a/",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-b/",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-c/",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-a",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-b",
+      "destination": "/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/menu-c",
+      "destination": "/journal/",
+      "permanent": true
+    }
+  ]
+}

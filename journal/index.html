@@ -42,8 +42,14 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 .ov-noimg{background:var(--ink)}
 @media (max-width:900px){.ov-in{grid-template-columns:1fr}.ov-img{position:relative;height:62svh}.facts div{grid-template-columns:1fr;gap:4px}}
 @media (prefers-reduced-motion:reduce){.sp img,.sb{transition:none;transform:none;opacity:1}}
+.ms{position:fixed;z-index:11;top:calc(env(safe-area-inset-top) + 64px);left:0;right:0;display:flex;gap:26px;overflow-x:auto;padding:0 var(--g);scrollbar-width:none;mask-image:linear-gradient(90deg,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}
+.ms::-webkit-scrollbar{display:none}
+.ms a,.ms span{flex:none;color:rgba(255,255,255,.72);font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid transparent;transition:color .3s,border-color .3s;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.ms a:hover,.ms a.cur{color:#fff;border-color:#fff}
+.ms span.soon{color:rgba(255,255,255,.38);cursor:default}
+.ms.off{opacity:0;transform:translateY(-10px);pointer-events:none}
 </style></head><body>
-<div class="mast"><b>ORBIQ</b><span class="kick">ноябрь 2026</span></div>
+<div class="mast"><b>ORBIQ</b><span class="kick">ноябрь 2026</span></div><nav class="ms" id="ms" aria-label="Разделы журнала"><a href="/journal/" class="cur">Главная лента</a><a href="/journal/wealth/">Наследие</a><a href="/journal/sport/">Спорт</a><span class="soon" title="Раздел скоро откроется">Здоровье</span><span class="soon" title="Раздел скоро откроется">Душа</span><span class="soon" title="Раздел скоро откроется">Искусство</span><span class="soon" title="Раздел скоро откроется">Для нее</span><span class="soon" title="Раздел скоро откроется">Дети</span><span class="soon" title="Раздел скоро откроется">Хобби</span><span class="soon" title="Раздел скоро откроется">Коллекции</span><span class="soon" title="Раздел скоро откроется">Автомобили</span><span class="soon" title="Раздел скоро откроется">Благотворительность</span><span class="soon" title="Раздел скоро откроется">Вкус</span></nav>
 <main id="feed"><a class="sp" href="#ninnaji-temple-night"><img src="/img/journal/ninnaji-temple-night.webp" alt="Ночь в императорском храме Киото"><span class="sh"></span><span class="sb"><span class="kick">Япония, Киото</span><span class="sh2">Ночь в императорском храме Киото</span><span class="sd">Когда ворота Нинна-дзи закрываются на ночь, весь храм остается в распоряжении пяти гостей.</span><span class="sr">Читать историю →</span></span></a>
 <a class="sp" href="#mars-meteorite-darryl-pitt"><img src="/img/journal/mars-meteorite-darryl-pitt.webp" alt="Кусок Марса на аукционе" loading="lazy"><span class="sh"></span><span class="sb"><span class="kick">США, Нигер</span><span class="sh2">Кусок Марса на аукционе</span><span class="sd">Самый большой кусок Марса на Земле ушел на Sotheby's за 5,3 млн долларов; куски поменьше стоят намного дешевле</span><span class="sr">Читать историю →</span></span></a>
 <a class="sp" href="#dominica-sperm-whales"><img src="/img/journal/dominica-sperm-whales.webp" alt="Плавание с кашалотами у берегов Доминики" loading="lazy"><span class="sh"></span><span class="sb"><span class="kick">Доминика</span><span class="sh2">Плавание с кашалотами у берегов Доминики</span><span class="sd">В 2023 году Доминика объявила первый в мире морской заповедник для кашалотов, в 2025 году закрепила его законом; плавать рядом с китами можно по разрешению</span><span class="sr">Читать историю →</span></span></a>
@@ -112,5 +118,6 @@ document.getElementById('ovx').addEventListener('click',function(){close(true)})
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&cur)close(true)});
 window.addEventListener('popstate',function(){var h=location.hash.slice(1);h?open(h,false):close(false)});
 if(location.hash)open(location.hash.slice(1),false);
+var ms=document.getElementById('ms');if(ms){var tk=0;window.addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(function(){tk=0;ms.classList.toggle('off',window.scrollY>40)})}},{passive:true})}
 })();
 </script></body></html>

@@ -4421,9 +4421,10 @@
   ],
   "kids": false,
   "source_name": "Vanity Fair",
-  "img": "/img/journal/private-railcar-amtrak.webp",
   "img_credit": "Фото: Pi.1415926535, CC BY-SA 3.0, Wikimedia Commons",
-  "img_page": "https://commons.wikimedia.org/wiki/File:Private_cars_at_14th_Street_Coach_Yard,_December_2018.JPG"
+  "img_page": "https://commons.wikimedia.org/wiki/File:Private_cars_at_14th_Street_Coach_Yard,_December_2018.JPG",
+  "img_rejected": "/img/journal/private-railcar-amtrak.webp",
+  "img_reject_why": "промзона, поезда, бетон"
  },
  {
   "id": "maharaja-rolls-royce-udaipur",
@@ -5224,9 +5225,10 @@
   ],
   "kids": false,
   "source_name": "Vogue",
-  "img": "/img/journal/gaisho-tokyo.webp",
   "img_credit": "Фото: Lombroso, CC BY-SA 4.0, Wikimedia Commons",
-  "img_page": "https://commons.wikimedia.org/wiki/File:Isetan_Department_Store_Shinjuku_Store_(2019-05-01).jpg"
+  "img_page": "https://commons.wikimedia.org/wiki/File:Isetan_Department_Store_Shinjuku_Store_(2019-05-01).jpg",
+  "img_rejected": "/img/journal/gaisho-tokyo.webp",
+  "img_reject_why": "фасад универмага"
  },
  {
   "id": "truffle-dealer-cortesi",
@@ -5523,9 +5525,10 @@
   ],
   "kids": true,
   "source_name": "Tatler",
-  "img": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
   "img_credit": "Фото: Wellington International, официальный сайт",
-  "img_page": "https://www.wellingtoninternational.com/"
+  "img_page": "https://www.wellingtoninternational.com/",
+  "img_rejected": "https://www.wellingtoninternational.com/wp-content/uploads/2025/10/Wellington-International-Aerial-Photo-copy.jpg",
+  "img_reject_why": "аэрофото пригорода"
  },
  {
   "id": "four-charles-standing-guests",
@@ -6201,9 +6204,10 @@
   ],
   "kids": false,
   "source_name": "Monocle",
-  "img": "https://www.napcheong.com/eng/images/main_img2.jpg",
   "img_credit": "Фото: Napcheong Bronzeware (мастерская Ли Бон Джу), официальный сайт",
-  "img_page": "https://www.napcheong.com/eng/index.asp"
+  "img_page": "https://www.napcheong.com/eng/index.asp",
+  "img_rejected": "https://www.napcheong.com/eng/images/main_img2.jpg",
+  "img_reject_why": "файл не открывается"
  },
  {
   "id": "pemako-punakha-bhutan",

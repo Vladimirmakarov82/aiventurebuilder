@@ -1,0 +1,276 @@
+# Builds partners.en.html from partners.html. Run: python3 partners_en.py
+# Fails if any Cyrillic text is left: add the missing pair to T.
+import re, sys, os
+D = os.path.dirname(os.path.abspath(__file__)) + '/'
+s = open(D + 'partners.html', encoding='utf-8').read()
+s = s.replace(' ', ' ').replace('&nbsp;', ' ')
+
+T = [
+ # head and header
+ ('<html lang="ru">', '<html lang="en">'),
+ ('Orbiq · Партнерам', 'Orbiq · For partners'),
+ ('href="/ru/" aria-label="Orbiq"', 'href="/" aria-label="Orbiq"'),
+ ("orbiq-partner-demo-v16", "orbiq-partner-demo-en-v1"),
+ ("rec.lang='ru-RU'", "rec.lang='en-US'"),
+ ('>Кабинет<', '>Dashboard<'),
+ ('>Клиенты Orbiq<', '>Orbiq clients<'),
+ ('<span>Демо</span>', '<span>Demo</span>'),
+ # block 1
+ ('Для партнеров', 'For partners'),
+ ('Orbiq предоставляет целевую аудиторию и инфраструктуру <span class="lt">для построения партнерской сети командам, предоставляющим уникальные услуги для HNWI</span>',
+  'Orbiq provides the target audience and infrastructure <span class="lt">for teams with unique services for HNWIs to build a partner network</span>'),
+ ('клиентов с капиталом $10–50 млн', 'clients with $10–50M in wealth'),
+ ('клиента с капиталом $1–10 млн', 'clients with $1–10M in wealth'),
+ ('клиентов с капиталом $0,5–1 млн', 'clients with $0.5–1M in wealth'),
+ # blocks 2 and 3
+ ('</span>Партнерская сеть</div>', '</span>Partner network</div>'),
+ ('Orbiq предоставляет инфраструктуру <span class="lt">для построения партнерской сети для распространения услуг</span>',
+  'Orbiq provides the infrastructure <span class="lt">to build a partner network that distributes the services of</span>'),
+ ('</span>Консьерж-сервис</div>', '</span>Concierge service</div>'),
+ ('Orbiq предоставляет инфраструктуру <span class="lt">для предоставления консьерж-сервиса для существующих клиентов</span>',
+  'Orbiq provides the infrastructure <span class="lt">to run a concierge service for the existing clients of</span>'),
+ ('<span>Бизнес-клубов</span>', '<span>Business clubs</span>'),
+ ('<span>Индивидуальных консультантов</span>', '<span>Independent advisors</span>'),
+ ('<span>Компаний с узкой специализацией</span>', '<span>Niche specialist firms</span>'),
+ ('Orbiq является оператором и получает % или фиксированную оплату.', 'Orbiq acts as the operator and takes a % or a fixed fee.'),
+ ('Условия согласовываются индивидуально.', 'Terms are agreed case by case.'),
+ # stage 1
+ ('Этап 1 · Первые 15 партнеров', 'Stage 1 · The first 15 partners'),
+ ('Старт взаимодействия с клиентами начинается с подарка трехмесячной подписки на консьерж Orbiq',
+  'Work with clients starts with a gift: a three-month subscription to the Orbiq concierge'),
+ ('Клиенты партнера получают подарок: 3 месяца сервиса, который стоит $10 000 в год. Клиенты остаются за партнером.',
+  'The partner’s clients get a gift: 3 months of a service that costs $10 000 a year. The clients stay with the partner.'),
+ ('Услугу партнера предлагают своим клиентам 14 других партнеров. К 140 клиентам партнера приводит человек, которому они доверяют.',
+  '14 other partners offer the partner’s service to their clients. A person they trust brings the partner to 140 clients.'),
+ ('Партнер зарабатывает на услугах других партнеров для своих клиентов. Кому и что предложить, подбирает AI.',
+  'The partner earns on other partners’ services for its clients. AI picks what to offer and to whom.'),
+ ('Каждый клиент, который остался в Orbiq, приносит партнеру $3 000 в год.',
+  'Every client who stays with Orbiq brings the partner $3 000 a year.'),
+ ('Взнос $20 000 дает партнеру $150 000–200 000 за год', 'A $20 000 fee brings a partner $150 000–200,000 a year'),
+ ('2 клиента подключили у другого партнера услугу с ежемесячной оплатой. Партнер получает до $5 000 в месяц с каждого.',
+  '2 clients took another partner’s service with a monthly fee. The partner gets up to $5 000 a month from each.'),
+ ('4 клиента купили разовые услуги других партнеров. Доля партнера в среднем $7 500 со сделки.',
+  '4 clients bought one-off services from other partners. The partner’s share averages $7 500 per deal.'),
+ ('6 клиентов остались в Orbiq. Каждый приносит партнеру $3 000 в год.',
+  '6 clients stayed with Orbiq. Each brings the partner $3 000 a year.'),
+ ('Итого $168 000 за год.', 'Total: $168 000 a year.'),
+ ('Расчет сделан без учета продажи услуг партнера новым клиентам, полученным из сети Orbiq.',
+  'The estimate leaves out sales of the partner’s own services to new clients from the Orbiq network.'),
+ ('Услуги на старте', 'Services at launch'),
+ ('/* шаги */', '/* steps */'), ('/* страница клиента */', '/* client page */'),
+ # picker
+ ('Направления специализации партнера', 'The partner’s areas of expertise'),
+ ('Можно отметить несколько.', 'Several can be selected.'),
+ ('placeholder="Свое направление"', 'placeholder="Another area"'),
+ ('Показать клиентов', 'Show clients'),
+ # audience
+ ('118 клиентов. Каждому закрытый доступ в Orbiq подарил эксперт, которому он доверяет',
+  '118 clients. Each got private access to Orbiq as a gift from an expert they trust'),
+ ('Клиент с капиталом ждет совета от того, кому доверяет. Этот эксперт стал его личным консьержем и предлагает ему услуги партнеров Orbiq.',
+  'A wealthy client waits for advice from someone they trust. That expert became their personal concierge and offers them the services of Orbiq partners.'),
+ ('Кто подарил доступ', 'Who gifted the access'),
+ ('Эксперты предлагают этим клиентам услугу партнера, который подарил доступ в Orbiq своим клиентам',
+  'Experts offer these clients the service of a partner who gifted Orbiq access to its own clients'),
+ ('Клиент получает доступ от имени партнера и остается с ним. Партнер становится его личным консьержем. Когда клиент оплатит год, партнер получит 30% его взноса.',
+  'The client gets access in the partner’s name and stays with the partner. The partner becomes the client’s personal concierge. When the client pays for the year, the partner gets 30% of the fee.'),
+ ('Посмотреть условия', 'See the terms'),
+ ('>Сегмент<', '>Segment<'),
+ ('<span>Капитал:</span>', '<span>Wealth:</span>'),
+ ('Прибыль компаний', 'Company profits'),
+ ('</i>Недвижимость</span>', '</i>Real estate</span>'),
+ ('Ликвидные активы', 'Liquid assets'),
+ ('Показать еще', 'Show more'),
+ # terms
+ ('Условия для партнера', 'Partner terms'),
+ ('Закрытый доступ в Orbiq для клиентов партнера в подарок', 'Private access to Orbiq as a gift for the partner’s clients'),
+ ('Доступ в Orbiq стоит клиенту $10 000 в год. Первые 3 месяца партнер дарит по своему коду.',
+  'Orbiq access costs a client $10 000 a year. The partner gifts the first 3 months with a personal code.'),
+ ('Клиент оплатил год: партнер получает 30% его взноса, это $3 000 в год с каждого клиента.',
+  'The client pays for the year: the partner gets 30% of the fee, $3 000 a year from each client.'),
+ ('Услугу партнера предлагают своим клиентам все партнеры Orbiq.', 'All Orbiq partners offer the partner’s service to their clients.'),
+ ('<div class="pn">Партнер</div>', '<div class="pn">Partner</div>'),
+ ('<div class="pn">Партнер-инвестор</div>', '<div class="pn">Partner-investor</div>'),
+ ('вступительный взнос', 'joining fee'),
+ ('<small>один раз</small>', '<small>one time</small>'),
+ ('10 подарочных кодов на 3 месяца, это подарков на $25 000', '10 gift codes for 3 months each, $25 000 worth of gifts'),
+ ('30% взноса каждого своего клиента', '30% of the fee of every own client'),
+ ('<li>Услугу предлагают партнеры Orbiq</li>', '<li>Orbiq partners offer the service</li>'),
+ ('Подарочные коды без лимита', 'Unlimited gift codes'),
+ ('2% Orbiq по оценке $2,5 млн', '2% of Orbiq at a $2.5M valuation'),
+ ('Услуга первая в своем направлении', 'The service is listed first in its area'),
+ ('>Выбрать<', '>Choose<'),
+ ('Запуск при 15 партнерах.', 'Launch at 15 partners.'),
+ ('Взнос клиента делится так: 30% партнеру, который привел клиента, 70% Orbiq.',
+  'The client’s fee is split: 30% to the partner who brought the client, 70% to Orbiq.'),
+ ('Подключение ведет Orbiq: звонок на 30 минут, описание услуги, доступ для клиентов по списку партнера.',
+  'Orbiq runs the onboarding: a 30-minute call, a write-up of the service, access for the clients on the partner’s list.'),
+ ('>Назад<', '>Back<'),
+ # call
+ ('<h1>Подключение ведет Orbiq</h1>', '<h1>Orbiq runs the onboarding</h1>'),
+ ('Звонок на 30 минут. После него Orbiq сам описывает услугу и открывает доступ клиентам партнера.',
+  'A 30-minute call. After it Orbiq writes up the service and opens access for the partner’s clients.'),
+ ('Имя или название компании', 'Name or company name'),
+ ('Телефон или Telegram', 'Phone or Telegram'),
+ ('Когда удобно созвониться', 'A good time for the call'),
+ ('Заказать звонок', 'Request a call'),
+ # dashboard
+ ('>Подарить доступ клиенту<', '>Gift access to a client<'),
+ ('Сменить тариф', 'Change plan'),
+ ('<div class="kick mono">Клиенты партнера</div>', '<div class="kick mono">The partner’s clients</div>'),
+ ('Фамилия не нужна. Клиент записан за партнером. Он получает 3 месяца доступа в подарок от имени партнера.',
+  'No last name needed. The client is recorded under the partner and gets 3 months of access as a gift in the partner’s name.'),
+ ('placeholder="Имя"', 'placeholder="First name"'),
+ ('placeholder="Капитал, $ млн"', 'placeholder="Wealth, $M"'),
+ ('placeholder="Чем занимается"', 'placeholder="What they do"'),
+ ('placeholder="Чем занимается его компания"', 'placeholder="What their company does"'),
+ ('>Подарить доступ<', '>Gift access<'),
+ ('Запросы клиентов', 'Client requests'),
+ ('Вознаграждение партнера', 'The partner’s reward'),
+ ('Клиент называет задачу, партнер связывает его со специалистом Orbiq. Когда клиент оплатит год, партнер получит 30% его взноса.',
+  'The client names a task, the partner connects the client with an Orbiq specialist. When the client pays for the year, the partner gets 30% of the fee.'),
+ ('</span>Подключение ведет Orbiq</div>', '</span>Orbiq runs the onboarding</div>'),
+ ('Заявка на звонок принята', 'Call request received'),
+ ('<h3>Звонок на 30 минут</h3>', '<h3>A 30-minute call</h3>'),
+ ('Orbiq задает вопросы про услугу и условия для партнеров.', 'Orbiq asks about the service and the terms for partners.'),
+ ('<h3>Услугу предлагают партнеры Orbiq</h3>', '<h3>Orbiq partners offer the service</h3>'),
+ ('Orbiq описывает услугу сам и согласует текст с партнером.', 'Orbiq writes up the service and agrees the text with the partner.'),
+ ('Изменить контакт', 'Edit contact'),
+ ('</span>Правила</div>', '</span>Rules</div>'),
+ ('Чей клиент<i>', 'Whose client<i>'),
+ ('Клиент остается за тем, кто подарил ему доступ. Другой партнер выполняет свою задачу, связь с клиентом держит первый.',
+  'The client stays with whoever gifted the access. Another partner does the task, the first one keeps the relationship with the client.'),
+ ('Кто кому платит<i>', 'Who pays whom<i>'),
+ ('Клиент платит Orbiq $10 000 в год за доступ. Взнос делится: 30% партнеру, который привел клиента, 70% Orbiq. Услугу клиент оплачивает исполнителю отдельно.',
+  'The client pays Orbiq $10 000 a year for access. The fee is split: 30% to the partner who brought the client, 70% to Orbiq. The client pays the service provider separately.'),
+ ('Начать заново', 'Start over'),
+ # client view
+ ('Вернуться в кабинет', 'Back to dashboard'),
+ ('Orbiq · закрытый доступ', 'Orbiq · private access'),
+ ('placeholder="Задача"', 'placeholder="Task"'),
+ ('>Отправить<', '>Send<'),
+ ('</i>Голосом<', '</i>Voice<'),
+ ('Демо. Данные хранятся только в этом браузере.', 'Demo. Data is stored only in this browser.'),
+ # JS: data
+ ("{n:'Партнер',p:'$20 000',q:10},{n:'Партнер-инвестор',p:'$50 000',q:0}", "{n:'Partner',p:'$20 000',q:10},{n:'Partner-investor',p:'$50 000',q:0}"),
+ ("{n:'$10–50 млн'", "{n:'$10–50M'"), ("{n:'$1–10 млн'", "{n:'$1–10M'"), ("{n:'$0,5–1 млн'", "{n:'$0.5–1M'"),
+ ("function fcap(c){return c>=1?'$'+String(c.toFixed(1)).replace('.',',')+' млн':'$'+Math.round(c*100)*10+' тыс'}",
+  "function fcap(c){return c>=1?'$'+c.toFixed(1)+'M':'$'+Math.round(c*100)*10+'K'}"),
+ ("function plural(n,f){var a=n%10,b=n%100;return a===1&&b!==11?f[0]:a>=2&&a<=4&&(b<10||b>=20)?f[1]:f[2]}", "function plural(n,f){return n===1?f[0]:f[1]}"),
+ ("['клиенту','клиентам','клиентам']", "['client','clients','clients']"),
+ ("replace(/\\B(?=(\\d{3})+$)/g,' ')", "replace(/\\B(?=(\\d{3})+$)/g,',')"),
+ # JS: strings
+ ("data-dir=\"\">Другое</button>", "data-dir=\"\">Other</button>"),
+ ('Ни одно направление пока не отмечено', 'No area selected yet'),
+ ("'. Доступ подарил эксперт: '", "'. Access gifted by an expert: '"),
+ ("'Тариф изменен: '", "'Plan changed: '"),
+ ("'Сохранить'", "'Save'"), ("'Сохранено'", "'Saved'"),
+ ("'Поле с именем пустое'", "'The name field is empty'"),
+ ('Контакт пустой. По нему Orbiq назначит звонок', 'The contact is empty. Orbiq uses it to set up the call'),
+ ("'Тариф: '", "'Plan: '"),
+ ("'Доступ подарен: '+n+' из '+q", "'Access gifted: '+n+' of '+q"),
+ ("'Доступ подарен: '+n+' '+plural", "'Access gifted to '+n+' '+plural"),
+ ("'Когда эти клиенты оплатят год, партнер получит $'", "'When these clients pay for the year, the partner gets $'"),
+ ("' в год: 30% каждого взноса.'", "' a year: 30% of each fee.'"),
+ ('Первыми идут лучшие клиенты. Клиент получает 3 месяца доступа в подарок от партнера.', 'The best clients go first. Each gets 3 months of access as a gift from the partner.'),
+ ('>Доступ клиента</button>', '>Client access</button>'),
+ ('Здесь появятся клиенты с доступом', 'Clients with access will appear here'),
+ ('Первый запрос появится, когда клиент назовет задачу', 'The first request appears once a client names a task'),
+ ("'Все места тарифа заняты: '+q+'. Больше мест дает следующий тариф'", "'All plan seats are taken: '+q+'. The next plan gives more seats'"),
+ ('Поле с именем пустое. Достаточно имени без фамилии', 'The name field is empty. A first name is enough'),
+ ('Капитал указан числом в $ млн', 'Wealth goes in as a number in $M'),
+ ('Поле «Чем занимается» пустое', 'The “What they do” field is empty'),
+ ("toast('Доступ подарен: '+v)", "toast('Access gifted: '+v)"),
+ ("'Так доступ видит клиент: '", "'How the client sees the access: '"),
+ ("' · закрытый доступ в Orbiq'", "' · private access to Orbiq'"),
+ ("'Личный консьерж: '", "'Personal concierge: '"),
+ ("'. Первые 3 месяца в подарок, дальше $10 000 в год. Любая задача одним сообщением, AI-помощник передаст ее сразу.'",
+  "'. The first 3 months are a gift, then $10 000 a year. Any task in one message, the AI assistant passes it on right away.'"),
+ ("'Здравствуйте, '+c.name+'. Задачу можно написать или сказать голосом. Orbiq подключит нужного эксперта.'",
+  "'Hello, '+c.name+'. A task can be typed or said by voice. Orbiq will bring in the right expert.'"),
+ ("'Партнер ведет лично'", "'The partner handles it personally'"),
+ ("'Этим занимается '+S.name+' лично. Запрос уже передан.'", "S.name+' handles this personally. The request is passed on.'"),
+ ("'Услуга партнера Orbiq: '+d.toLowerCase()+'. Клиента нужно связать со специалистом'", "'Orbiq partner service: '+d.toLowerCase()+'. The client needs an intro to the specialist'"),
+ ("'Принято. '+S.name+' подключит специалиста Orbiq по направлению «'+catName(cat)+'». Дальше нужны срок и бюджет.'",
+  "'Got it. '+S.name+' will bring in an Orbiq specialist in “'+catName(cat)+'”. Next come the timing and budget.'"),
+ ("'Orbiq подбирает специалиста'", "'Orbiq is finding a specialist'"),
+ ("'Принято. Запрос передан: '+S.name+'. Специалиста под эту задачу подберет Orbiq.'",
+  "'Got it. The request went to '+S.name+'. Orbiq will find a specialist for this task.'"),
+ ('/* вход */', '/* entry */'), ('/* клиенты Orbiq */', '/* Orbiq clients */'), ('/* тариф и звонок */', '/* plan and call */'),
+ ('/* кабинет */', '/* dashboard */'), ('/* консьерж клиента */', '/* client concierge */'),
+]
+
+# service areas, categories, people: whole JS lines replaced
+DIRS = """var DIRS=[
+ {n:'Rare watches',c:'rare',s:['Sourcing a rare model to order','Authenticity and history check','Buyback and trade-in','Service by a certified watchmaker']},
+ {n:'Fine jewelry',c:'rare',s:['Bespoke jewelry','Stone sourcing','Valuation and appraisal','Buying at auction']},
+ {n:'Visas and residency',c:'res',s:['Turnkey residence permit','Visas for family and staff','Application support','Status renewal']},
+ {n:'Real estate',c:'home',s:['Property search abroad','Developer and title check','Deal support','Rental management']},
+ {n:'Private aviation',c:'fly',s:['Charter for any route','Discounted empty legs','Flying with pets','Meet and transfer']},
+ {n:'Yachts',c:'yacht',s:['Yacht charter for any route','Buying and selling a yacht','Crew and management','Berth and maintenance']},
+ {n:'Cars',c:'auto',s:['Rare car to order','Vehicle history check','Delivery and customs','Collection storage']},
+ {n:'Investments',c:'cap',s:['Access to pre-IPO deals','Fund selection for a set goal','Deal due diligence','Portfolio report']},
+ {n:'Banks and accounts',c:'bank',s:['Opening an account abroad','Bank selection for a set goal','Support through bank compliance','Premium cards']},
+ {n:'Law and asset structuring',c:'law',s:['Asset holding structure','Family trust','Deal support','Estate planning']},
+ {n:'Tax and family office',c:'tax',s:['Family tax planning','Turnkey family office','Asset reporting','Change of tax residency']},
+ {n:'Schools and universities',c:'edu',s:['School selection for a child','Admissions preparation','Application support','Guardian in the country of study']},
+ {n:'Medicine',c:'med',s:['Clinic and doctor selection','Second opinion','Treatment travel arrangements','Annual check-up']},
+ {n:'Art',c:'art',s:['Works for a collection','Provenance check','Buying at auction','Storage and insurance']},
+ {n:'Travel and hotels',c:'trip',s:['Turnkey trip','Off-market villas and hotels','Expeditions','On-site support']},
+ {n:'Private events',c:'event',s:['Tickets to private events','Private parties','Access to private clubs','Celebration planning']},
+ {n:'Security',c:'safe',s:['Personal protection','Counterparty check','Family data protection','Travel security']},
+ {n:'Household staff',c:'staff',s:['Household staff search','Nannies and governesses','Estate manager','Candidate screening']},
+ {n:'Business club',c:'club',s:['Club membership','Private member meetings','Introductions inside the club','Club trips']},
+ {n:'Investor community',c:'club',s:['Community membership','Access to community deals','Project reviews with members','Co-investments']},
+ {n:'Entrepreneur community',c:'club',s:['Community membership','Industry groups','Introductions to members','Business reviews with members']},
+ {n:'Financial advisor',c:'cap',s:['Personal financial plan','Portfolio review','Instrument selection','Decision support']},
+ {n:'Financial security',c:'safe',s:['Counterparty checks','Account and asset protection','Risk audit','Dispute support']},
+ {n:'Wealth management',c:'cap',s:['Wealth management strategy','Portfolio for family goals','Portfolio reports','Access to private deals']},
+ {n:'Digital infrastructure',c:'digi',s:['Secure VPN','Access to AI tools','Family device setup','Private messaging protection']},
+ {n:'AI search visibility',c:'biz',s:['Company visibility in AI answers','Mentions audit','Content for AI search','Rankings report']},
+ {n:'Celebrity introductions',c:'celeb',s:['Invitation to a private event','Personal introduction','Taking part in a project','A greeting from a public figure']}
+];"""
+CATS = """var CATS=[
+ {c:'edu',n:'Schools and universities',d:'Selection, admissions, guardian'},
+ {c:'res',n:'Residency and visas',d:'Residence permit, family visas'},
+ {c:'home',n:'Real estate',d:'Property search and deal support'},
+ {c:'fly',n:'Private flights',d:'Charter for any route, meet and greet'},
+ {c:'med',n:'Health',d:'Clinic, doctor, second opinion'},
+ {c:'cap',n:'Investments',d:'Pre-IPO deals and funds'},
+ {c:'rare',n:'Rare items',d:'Watches, jewelry, bags to order'},
+ {c:'art',n:'Art',d:'Collection, provenance, auction'},
+ {c:'event',n:'Private events',d:'Tickets and access where seats are gone'},
+ {c:'yacht',n:'Yachts',d:'Charter, purchase, crew'},
+ {c:'auto',n:'Cars',d:'Rare models, delivery, storage'},
+ {c:'bank',n:'Banks and accounts',d:'Account abroad, bank selection'},
+ {c:'law',n:'Law and asset structuring',d:'Trust, deals, inheritance'},
+ {c:'tax',n:'Tax and family office',d:'Planning and reporting'},
+ {c:'trip',n:'Travel and hotels',d:'Turnkey trip, private villas'},
+ {c:'safe',n:'Security',d:'Protection, checks, data security'},
+ {c:'staff',n:'Household staff',d:'Search and screening of household staff'}
+];"""
+KW = "var KW={fly:['plane','jet','flight','charter','fly'],yacht:['yacht','boat'],rare:['watch','bag','birkin','patek','rolex','jewel','ring'],home:['house','villa','apartment','property','penthouse','real estate'],edu:['school','universit','college','stud'],res:['visa','residen','passport','citizenship'],med:['doctor','clinic','health','check-up','checkup','medic'],cap:['invest','ipo','fund'],art:['painting','art','auction'],event:['ticket','concert','event','race','formula'],auto:['car','ferrari','porsche'],bank:['account','bank','card'],law:['trust','lawyer','structur','inherit','estate plan'],tax:['tax'],trip:['hotel','trip','travel','vacation','holiday'],safe:['guard','security','protect'],staff:['nanny','staff','driver','chef']};"
+NM = "var NM=['Andrey','Sergey','Ivan','Mikhail','Dmitry','Alexey','Oleg','Igor','Pavel','Nikolay','Viktor','Roman','Konstantin','Evgeny','Artem','Vladislav','Grigory','Maxim','Timur','Boris','Leonid','Vadim','Stanislav','Yury','Denis','Anton','Kirill','Georgy','Ruslan','Mark','Elena','Olga','Natalia','Marina','Irina','Anna','Tatiana','Svetlana','Ekaterina','Yulia','Arseny','Fedor','Vasily','Petr','Ilya','Eduard','Zakhar','Rinat','David','Lev'];"
+JOBS = "var JOBS=['Owns a construction company','Co-owns an IT company','Owns a clinic chain','Residential real estate developer','Owns a logistics company','Private investor','Owns a packaging plant','Co-owns a retail chain','Owns an agricultural holding','Co-owns a pharmaceutical company','Owns a restaurant chain','Co-owns a metals trading firm'];"
+STAGS = '<div class="stags"><span>Financial advisor</span><span>Financial security</span><span>Pre-IPO</span><span>Rare watches</span><span>Wealth management</span><span>Digital infrastructure</span><span>AI search visibility</span><span>Celebrity introductions</span></div>'
+
+def block(src, start, end, new):
+    i = src.index(start); j = src.index(end, i) + len(end)
+    return src[:i] + new + src[j:]
+s = block(s, 'var DIRS=[', '\n];', DIRS)
+s = block(s, 'var CATS=[', '\n];', CATS)
+s = block(s, 'var KW={', '};', KW)
+s = block(s, 'var NM=[', '];', NM)
+s = block(s, 'var JOBS=[', '];', JOBS)
+s = block(s, '<div class="stags">', '</div>', STAGS)
+
+miss = []
+for ru, en in sorted(T, key=lambda p: -len(p[0])):
+    if ru not in s: miss.append(ru)
+    s = s.replace(ru, en)
+s = re.sub(r'\$(\d{1,3}) (\d{3})', r'$\1,\2', s)
+
+left = [(n + 1, l.strip()[:160]) for n, l in enumerate(s.split('\n')) if re.search('[А-Яа-яЁё]', l)]
+for m in miss: print('NOT FOUND:', m[:90])
+for n, l in left: print('CYRILLIC', n, l)
+open(D + 'partners.en.html', 'w', encoding='utf-8').write(s)
+sys.exit(1 if left or miss else 0)

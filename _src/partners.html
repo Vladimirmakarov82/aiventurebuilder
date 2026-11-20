@@ -35,7 +35,7 @@ button{-webkit-tap-highlight-color:transparent}
 :focus-visible{outline:3px solid var(--or);outline-offset:3px}
 
 .nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px var(--gut);margin-inline:calc(-1*var(--gut));background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-stretch:112%;font-size:17px;letter-spacing:-.02em;white-space:nowrap;border:0;background:none;padding:0;cursor:pointer}
+.brand{display:flex;text-decoration:none;color:inherit;align-items:center;gap:10px;font-weight:600;font-stretch:112%;font-size:17px;letter-spacing:-.02em;white-space:nowrap;border:0;background:none;padding:0;cursor:pointer}
 .brand svg{width:30px;height:30px;flex:none}
 .brand .o{transform-origin:60px 60px;animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -326,18 +326,16 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 .plans.two{grid-template-columns:repeat(2,minmax(0,1fr))}@media (max-width:760px){.plans.two{grid-template-columns:1fr}}
 .ben.st{margin-top:4px}.ben.st li{border-top:1px solid rgba(255,255,255,.16);font-size:16px}.stage .kick .dot{background:var(--or)}.stags{display:flex;flex-wrap:wrap;gap:8px}.stags span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 12px;font-size:14px}
 @media (prefers-color-scheme:dark){.ben.st li{border-top-color:rgba(0,0,0,.14)}.stags span{border-color:rgba(0,0,0,.2)}}
-.swt{display:flex;justify-content:center;padding-top:10px}.swt div{display:inline-flex;padding:4px;border-radius:999px;background:var(--soft);gap:2px}.swt a{font-family:var(--m);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:999px;color:var(--mute);min-height:36px;display:inline-flex;align-items:center;white-space:nowrap}.swt a.on{background:var(--ink);color:var(--bg)}.swt a:not(.on):hover{color:var(--ink)}
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="wrap">
-<nav class="swt" aria-label="Раздел сайта"><div><a href="/ru/">Клиентам</a><a class="on" href="/ru/partners/" aria-current="page">Партнерам</a></div></nav>
 <header class="nav">
-  <button class="brand" id="home" aria-label="Orbiq">
+  <a class="brand" id="home" href="/ru/" aria-label="Orbiq">
     <svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#FF4D00"/><g class="o" fill="#fff"><circle cx="60" cy="22" r="7"/><circle cx="92.9" cy="41" r="7"/><circle cx="92.9" cy="79" r="7"/><circle cx="60" cy="98" r="7"/><circle cx="27.1" cy="79" r="7"/><circle cx="27.1" cy="41" r="7"/></g><circle cx="60" cy="60" r="16" fill="#fff"/></svg>
     <b>Orbiq</b>
-  </button>
+  </a>
   <div class="seg" id="seg" role="tablist" hidden>
     <button role="tab" data-go="cab" aria-selected="true">Кабинет</button>
     <button role="tab" data-go="aud" aria-selected="false">Клиенты Orbiq</button>
@@ -370,23 +368,23 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     </div>
     <div class="cta2 stage" style="margin-top:0">
       <div class="kick mono" style="color:inherit;opacity:.7"><span class="dot"></span>Этап 1 · Первые 15 партнеров</div>
-      <h2>Вы дарите Orbiq 10 своим клиентам. Вашу услугу предлагают еще 140 клиентам с капиталом</h2>
+      <h2>Старт взаимодействия с клиентами начинается с подарка трехмесячной подписки на консьерж Orbiq</h2>
       <ol class="ben st">
-        <li><b>01</b><span>Ваши клиенты получают от вас подарок: 3 месяца сервиса, который стоит $10 000 в год. Клиенты остаются вашими.</span></li>
-        <li><b>02</b><span>Вашу услугу предлагают своим клиентам 14 других партнеров. К 140 клиентам вас приводит человек, которому они доверяют.</span></li>
-        <li><b>03</b><span>Вы зарабатываете на услугах других партнеров для ваших клиентов. Кому и что предложить, подбирает AI.</span></li>
-        <li><b>04</b><span>Каждый ваш клиент, который остался в Orbiq, приносит вам $3 000 в год.</span></li>
+        <li><b>01</b><span>Клиенты партнера получают подарок: 3 месяца сервиса, который стоит $10 000 в год. Клиенты остаются за партнером.</span></li>
+        <li><b>02</b><span>Услугу партнера предлагают своим клиентам 14 других партнеров. К 140 клиентам партнера приводит человек, которому они доверяют.</span></li>
+        <li><b>03</b><span>Партнер зарабатывает на услугах других партнеров для своих клиентов. Кому и что предложить, подбирает AI.</span></li>
+        <li><b>04</b><span>Каждый клиент, который остался в Orbiq, приносит партнеру $3 000 в год.</span></li>
       </ol>
       <style>.yr{list-style:none;margin:0;padding:0;display:grid;gap:10px;background:none}.yr li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.08)}.yr b{font-size:22px;letter-spacing:-.03em;color:var(--or);white-space:nowrap}.yr span{font-size:15px;line-height:1.4}.yrh{font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em;line-height:1.1;font-weight:600;margin-top:10px}@media (prefers-color-scheme:dark){.yr li{background:rgba(0,0,0,.07)}}@media (max-width:420px){.yr li{grid-template-columns:1fr;gap:4px}}</style>
-      <p class="yrh">Взнос $20 000 дает партнеру $150 000–200&nbsp;000 за год</p>
-      <ul class="yr"><li><b>$120 000</b><span>2 ваших клиента подключили у другого партнера услугу с ежемесячной оплатой. Вы получаете до $5 000 в месяц с каждого.</span></li><li><b>$30 000</b><span>4 ваших клиента купили разовые услуги других партнеров. Ваша доля в среднем $7 500 со сделки.</span></li><li><b>$18 000</b><span>6 ваших клиентов остались в Orbiq. Каждый приносит вам $3 000 в год.</span></li></ul>
-      <p style="margin-top:2px"><b>Итого $168 000 за год.</b> Расчет сделан без учета продажи ваших услуг новым клиентам, полученным из сети Orbiq.</p>
+      <p class="yrh">Взнос $20 000 дает партнеру $150 000–200 000 за год</p>
+      <ul class="yr"><li><b>$120 000</b><span>2 клиента подключили у другого партнера услугу с ежемесячной оплатой. Партнер получает до $5 000 в месяц с каждого.</span></li><li><b>$30 000</b><span>4 клиента купили разовые услуги других партнеров. Доля партнера в среднем $7 500 со сделки.</span></li><li><b>$18 000</b><span>6 клиентов остались в Orbiq. Каждый приносит партнеру $3 000 в год.</span></li></ul>
+      <p style="margin-top:2px"><b>Итого $168 000 за год.</b> Расчет сделан без учета продажи услуг партнера новым клиентам, полученным из сети Orbiq.</p>
       <p class="mono" style="opacity:.7;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px">Услуги на старте</p>
       <div class="stags"><span>Финансовый советник</span><span>Финансовая безопасность</span><span>Pre-IPO</span><span>Редкие часы</span><span>Управление капиталом</span><span>Цифровая инфраструктура</span><span>Продвижение в нейросетях</span><span>Знакомства с селебрити</span></div>
     </div>
     </div>
     <div class="card">
-      <h2 class="h2">Выберите направления вашей специализации</h2>
+      <h2 class="h2">Направления специализации партнера</h2>
       <p class="sub">Можно отметить несколько.</p>
       <div class="chips" id="wDirs" style="margin-top:18px"></div>
       <input class="field" id="wOwn" placeholder="Свое направление" autocomplete="off" maxlength="40" style="margin-top:10px" hidden>
@@ -406,8 +404,8 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <label class="lab">Кто подарил доступ</label>
     <div class="srcs" id="srcs"></div>
     <div class="cta2" id="aCta">
-      <h2>Чтобы эксперты предлагали этим клиентам вашу услугу, подарите доступ в Orbiq своим клиентам</h2>
-      <p>Клиент получает доступ от вашего имени и остается с вами. Вы становитесь его личным консьержем. Когда он оплатит год, вы получите 30% его взноса.</p>
+      <h2>Эксперты предлагают этим клиентам услугу партнера, который подарил доступ в Orbiq своим клиентам</h2>
+      <p>Клиент получает доступ от имени партнера и остается с ним. Партнер становится его личным консьержем. Когда клиент оплатит год, партнер получит 30% его взноса.</p>
       <div><button class="btn" data-go="plan"><span class="roll"><span>Посмотреть условия</span><span>Посмотреть условия</span></span></button></div>
     </div>
     <label class="lab">Сегмент</label>
@@ -421,25 +419,25 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 <section class="view" id="v-plan">
   <div class="card">
     <div class="kick mono"><span class="dot"></span>Условия для партнера</div>
-    <h1 class="h2">Закрытый доступ в Orbiq для ваших клиентов. Подарок от вас</h1>
+    <h1 class="h2">Закрытый доступ в Orbiq для клиентов партнера в подарок</h1>
     <ol class="ben">
-      <li><b>01</b><span>Доступ в Orbiq стоит клиенту $10 000 в год. Первые 3 месяца вы дарите ему по своему коду.</span></li>
-      <li><b>02</b><span>Клиент оплатил год: вы получаете 30% его взноса, это $3 000 в год с каждого клиента.</span></li>
-      <li><b>03</b><span>Вашу услугу предлагают своим клиентам все партнеры Orbiq.</span></li>
+      <li><b>01</b><span>Доступ в Orbiq стоит клиенту $10 000 в год. Первые 3 месяца партнер дарит по своему коду.</span></li>
+      <li><b>02</b><span>Клиент оплатил год: партнер получает 30% его взноса, это $3 000 в год с каждого клиента.</span></li>
+      <li><b>03</b><span>Услугу партнера предлагают своим клиентам все партнеры Orbiq.</span></li>
     </ol>
     <div class="plans two">
-      <div class="plan"><div class="pn">Партнер</div><div class="pp">$20 000<small>вступительный взнос</small></div><ul><li>10 подарочных кодов на 3 месяца, это подарков на $25 000</li><li>30% взноса каждого вашего клиента</li><li>Вашу услугу предлагают партнеры Orbiq</li></ul><button class="btn" data-plan="0">Выбрать</button></div>
-      <div class="plan top"><div class="pn">Партнер-инвестор</div><div class="pp">$50 000<small>один раз</small></div><ul><li>Подарочные коды без лимита</li><li>2% Orbiq по оценке $2,5 млн</li><li>30% взноса каждого вашего клиента</li><li>Ваша услуга первая в своем направлении</li></ul><button class="btn" data-plan="1">Выбрать</button></div>
+      <div class="plan"><div class="pn">Партнер</div><div class="pp">$20 000<small>вступительный взнос</small></div><ul><li>10 подарочных кодов на 3 месяца, это подарков на $25 000</li><li>30% взноса каждого своего клиента</li><li>Услугу предлагают партнеры Orbiq</li></ul><button class="btn" data-plan="0">Выбрать</button></div>
+      <div class="plan top"><div class="pn">Партнер-инвестор</div><div class="pp">$50 000<small>один раз</small></div><ul><li>Подарочные коды без лимита</li><li>2% Orbiq по оценке $2,5 млн</li><li>30% взноса каждого своего клиента</li><li>Услуга первая в своем направлении</li></ul><button class="btn" data-plan="1">Выбрать</button></div>
     </div>
     <p class="sub" style="margin-top:18px"><b style="color:var(--ink)">Запуск при 15 партнерах.</b> Взнос клиента делится так: 30% партнеру, который привел клиента, 70% Orbiq.</p>
-    <p class="sub" style="margin-top:18px">Подключение ведет Orbiq: звонок на 30 минут, описание вашей услуги, доступ для клиентов по вашему списку.</p>
+    <p class="sub" style="margin-top:18px">Подключение ведет Orbiq: звонок на 30 минут, описание услуги, доступ для клиентов по списку партнера.</p>
     <div class="row" style="margin-top:14px"><button class="textbtn" id="plBack">Назад</button></div>
   </div>
 </section>
 
 <section class="view" id="v-call">
   <div class="wiz">
-    <div class="who"><div class="mono" id="clPlan"></div><h1>Подключение ведет Orbiq</h1><p>Звонок на 30 минут. После него Orbiq сам описывает вашу услугу и открывает доступ вашим клиентам.</p></div>
+    <div class="who"><div class="mono" id="clPlan"></div><h1>Подключение ведет Orbiq</h1><p>Звонок на 30 минут. После него Orbiq сам описывает услугу и открывает доступ клиентам партнера.</p></div>
     <div class="card" style="margin-top:12px">
       <label class="lab" for="iName" style="margin-top:0">Имя или название компании</label>
       <input class="field" id="iName" autocomplete="off" maxlength="40">
@@ -467,9 +465,9 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     </div>
 
     <div class="card block or c7" id="bClients">
-      <div class="kick mono">Ваши клиенты</div>
+      <div class="kick mono">Клиенты партнера</div>
       <h2 class="h3">Подарить доступ клиенту</h2>
-      <p class="sub">Фамилия не нужна. Клиент записан за вами. Он получает 3 месяца доступа в подарок от вашего имени.</p>
+      <p class="sub">Фамилия не нужна. Клиент записан за партнером. Он получает 3 месяца доступа в подарок от имени партнера.</p>
       <form id="fClient" style="margin-top:14px" novalidate>
         <div class="row">
           <input class="field" id="iClient" placeholder="Имя" autocomplete="off" maxlength="30">
@@ -486,9 +484,9 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     </div>
 
     <div class="card c5">
-      <div class="kick mono"><span class="dot" style="background:var(--gr)"></span>Запросы ваших клиентов</div>
-      <h2 class="h3">Ваше вознаграждение</h2>
-      <p class="sub">Клиент называет задачу, вы связываете его со специалистом Orbiq. Когда клиент оплатит год, вы получите 30% его взноса.</p>
+      <div class="kick mono"><span class="dot" style="background:var(--gr)"></span>Запросы клиентов</div>
+      <h2 class="h3">Вознаграждение партнера</h2>
+      <p class="sub">Клиент называет задачу, партнер связывает его со специалистом Orbiq. Когда клиент оплатит год, партнер получит 30% его взноса.</p>
       <ul class="list" id="lReq"></ul>
     </div>
 
@@ -496,15 +494,15 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
       <div class="kick mono"><span class="dot" style="background:var(--vi)"></span>Подключение ведет Orbiq</div>
       <ol class="steps">
         <li class="done"><span class="n">✓</span><div><h3 style="text-decoration:none;color:var(--ink)">Заявка на звонок принята</h3><p id="cCall"></p></div></li>
-        <li><span class="n">2</span><div><h3>Звонок на 30 минут</h3><p>Orbiq задает вопросы про вашу услугу и условия для партнеров.</p></div></li>
-        <li><span class="n">3</span><div><h3>Вашу услугу предлагают партнеры Orbiq</h3><p>Orbiq описывает услугу сам и согласует текст с вами.</p></div></li>
+        <li><span class="n">2</span><div><h3>Звонок на 30 минут</h3><p>Orbiq задает вопросы про услугу и условия для партнеров.</p></div></li>
+        <li><span class="n">3</span><div><h3>Услугу предлагают партнеры Orbiq</h3><p>Orbiq описывает услугу сам и согласует текст с партнером.</p></div></li>
       </ol>
       <div class="row" style="margin-top:14px"><button class="btn soft sm" id="edit">Изменить контакт</button></div>
     </div>
 
     <div class="card c5">
       <div class="kick mono"><span class="dot"></span>Правила</div>
-      <details><summary>Чей клиент<i>+</i></summary><p>Клиент остается за тем, кто подарил ему доступ. Другой партнер выполняет свою задачу, связь с клиентом держите вы.</p></details>
+      <details><summary>Чей клиент<i>+</i></summary><p>Клиент остается за тем, кто подарил ему доступ. Другой партнер выполняет свою задачу, связь с клиентом держит первый.</p></details>
       <details><summary>Кто кому платит<i>+</i></summary><p>Клиент платит Orbiq $10 000 в год за доступ. Взнос делится: 30% партнеру, который привел клиента, 70% Orbiq. Услугу клиент оплачивает исполнителю отдельно.</p></details>
       <div class="row" style="margin-top:12px"><button class="textbtn" id="reset">Начать заново</button></div>
     </div>
@@ -518,7 +516,7 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <div class="card" style="margin-top:12px">
       <div class="chat" id="chat"></div>
       <div class="chin">
-        <textarea class="field" id="chI" placeholder="Что нужно" maxlength="400"></textarea>
+        <textarea class="field" id="chI" placeholder="Задача" maxlength="400"></textarea>
         <div class="row">
           <button class="btn sm" id="chS" style="flex:1">Отправить</button>
           <button class="btn soft sm mic" id="mic" hidden><i></i>Голосом</button>
@@ -623,7 +621,6 @@ $('wDirs').onclick=function(e){var b=e.target.closest('[data-dir]');if(!b)return
  sync();$('e0').textContent='';save();renderW();if(!b.dataset.dir&&S.own)$('wOwn').focus()};
 $('wOwn').oninput=function(){S.custom=this.value;sync();save()};
 $('wGo').onclick=function(){sync();if(!S.spec){$('e0').textContent='Ни одно направление пока не отмечено';return}go('aud')};
-$('home').onclick=function(){go(S.done?'cab':'welcome')};
 /* клиенты Orbiq */
 function renderAud(){
  var cnt={};PPL.forEach(function(p){var i=leadI(p);cnt[i]=(cnt[i]||0)+1});
@@ -656,9 +653,9 @@ function renderCab(){
  $('cPlan').textContent='Тариф: '+pl.n+' · '+pl.p;
  $('cH').textContent=q?'Доступ подарен: '+n+' из '+q:'Доступ подарен: '+n+' '+plural(n,['клиенту','клиентам','клиентам']);
  $('lvb').style.width=(q?Math.min(100,Math.round(n/q*100)):100)+'%';
- $('cSub').textContent=n?'Когда эти клиенты оплатят год, вы получите $'+String(n*3000).replace(/\B(?=(\d{3})+$)/g,' ')+' в год: 30% каждого взноса.':'Начните с лучших клиентов. Клиент получает 3 месяца доступа в подарок от вас.';
+ $('cSub').textContent=n?'Когда эти клиенты оплатят год, партнер получит $'+String(n*3000).replace(/\B(?=(\d{3})+$)/g,' ')+' в год: 30% каждого взноса.':'Первыми идут лучшие клиенты. Клиент получает 3 месяца доступа в подарок от партнера.';
  $('cCall').textContent=S.name+' · '+S.contact+(S.when?' · '+S.when:'');
- $('lClients').innerHTML=n?S.clients.map(function(c,i){return '<li><div>'+esc(c.name)+' · '+fcap(c.cap)+'<small>'+esc(c.job)+(c.co?' · '+esc(c.co):'')+'</small></div><button class="open" data-cli="'+i+'">Доступ клиента</button></li>'}).reverse().join(''):'<li class="empty">Здесь появятся ваши клиенты с доступом</li>';
+ $('lClients').innerHTML=n?S.clients.map(function(c,i){return '<li><div>'+esc(c.name)+' · '+fcap(c.cap)+'<small>'+esc(c.job)+(c.co?' · '+esc(c.co):'')+'</small></div><button class="open" data-cli="'+i+'">Доступ клиента</button></li>'}).reverse().join(''):'<li class="empty">Здесь появятся клиенты с доступом</li>';
  $('lReq').innerHTML=S.reqs.length?S.reqs.map(function(r){return '<li><div>'+esc(r.who)+'<small>'+esc(r.text)+'</small><small>'+esc(r.to)+'</small></div><span class="tag">'+r.date+'</span></li>'}).reverse().join(''):'<li class="empty">Первый запрос появится, когда клиент назовет задачу</li>';
 }
 $('fClient').onsubmit=function(e){e.preventDefault();var v=$('iClient').value.trim(),c=parseFloat($('iCap').value.replace(',','.')),j=$('iJob').value.trim(),co=$('iCo').value.trim(),q=PL[S.plan].q;
@@ -678,17 +675,17 @@ document.addEventListener('click',function(e){
 function renderCli(){
  var c=S.clients[S.cur];if(!c){S.view='cab';render();return}
  $('asT').textContent='Так доступ видит клиент: '+c.name;
- $('kH').textContent=c.name+', ваш закрытый доступ в Orbiq';
- $('kP').textContent='Ваш личный консьерж: '+S.name+'. Первые 3 месяца в подарок, дальше $10 000 в год. Любая задача одним сообщением, AI-помощник передаст ее сразу.';
- if(!log.length)log=[{b:1,t:'Здравствуйте, '+c.name+'. Напишите или скажите, что нужно. Я подключу нужного эксперта.'}];
+ $('kH').textContent=c.name+' · закрытый доступ в Orbiq';
+ $('kP').textContent='Личный консьерж: '+S.name+'. Первые 3 месяца в подарок, дальше $10 000 в год. Любая задача одним сообщением, AI-помощник передаст ее сразу.';
+ if(!log.length)log=[{b:1,t:'Здравствуйте, '+c.name+'. Задачу можно написать или сказать голосом. Orbiq подключит нужного эксперта.'}];
  $('chat').innerHTML=log.map(function(m){return '<div class="msg '+(m.b?'b':'u')+'">'+esc(m.t)+'</div>'}).join('');
  setTimeout(function(){var x=$('chat').lastElementChild;if(x&&log.length>1)x.scrollIntoView({block:'center',behavior:'smooth'})},50);
 }
 function ask(){var t=$('chI').value.trim();if(!t)return;$('chI').value='';var c=S.clients[S.cur],low=t.toLowerCase(),cat=null;
  Object.keys(KW).some(function(k){if(KW[k].some(function(w){return low.indexOf(w)>=0})){cat=k;return true}});
  log.push({b:0,t:t});var mine=cat&&ownCats().indexOf(cat)>=0,d=cat?dirFor(cat):null,to,ans;
- if(mine){to='Ведете вы лично';ans='Этим занимается '+S.name+' лично. Запрос уже передан.'}
- else if(d){to='Услуга партнера Orbiq: '+d.toLowerCase()+'. Свяжите клиента со специалистом';ans='Принято. '+S.name+' свяжет вас со специалистом Orbiq по направлению «'+catName(cat)+'». Уточните срок и бюджет.'}
+ if(mine){to='Партнер ведет лично';ans='Этим занимается '+S.name+' лично. Запрос уже передан.'}
+ else if(d){to='Услуга партнера Orbiq: '+d.toLowerCase()+'. Клиента нужно связать со специалистом';ans='Принято. '+S.name+' подключит специалиста Orbiq по направлению «'+catName(cat)+'». Дальше нужны срок и бюджет.'}
  else{to='Orbiq подбирает специалиста';ans='Принято. Запрос передан: '+S.name+'. Специалиста под эту задачу подберет Orbiq.'}
  log.push({b:1,t:ans});S.reqs.push({who:c.name,text:t,to:to,date:today()});save();renderCli()}
 $('chS').onclick=ask;

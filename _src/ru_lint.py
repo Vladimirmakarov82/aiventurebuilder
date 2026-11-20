@@ -89,7 +89,7 @@ SOFT = [
 
 def visible_text(path):
     s = open(path, encoding='utf-8').read()
-    s = re.sub(r'<nav class="swt".*?</nav>', '', s, flags=re.S)  # переключатель «Клиентам / Партнерам»: навигация, владелец просил
+    s = re.sub(r'<a class="mono plink".*?</a>', '', s)  # ссылка «Партнерам» в футере: навигация, владелец просил
     s = re.sub(r'<script.*?</script>|<style.*?</style>|<svg.*?</svg>', ' ', s, flags=re.S)
     s = re.sub(r'<head>.*?</head>', ' ', s, flags=re.S)
     s = re.sub(r'<[^>]+>', '\n', s)

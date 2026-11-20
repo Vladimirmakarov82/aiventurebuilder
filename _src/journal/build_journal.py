@@ -6,7 +6,7 @@ import json, html, os, re, urllib.parse
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = os.environ.get('JOURNAL_SITE') or os.path.join(ROOT, '..', 'site')
-SLUG = 'journal-c0f4ba'
+SLUG = 'journal'
 TG = 'https://t.me/vladimir82makarov?text='
 
 items = json.load(open(os.path.join(ROOT, 'items.json')))

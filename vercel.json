@@ -1,1 +1,1 @@
-{"cleanUrls":true,"trailingSlash":true}
+{"cleanUrls": true, "trailingSlash": true, "redirects": [{"source": "/journal-c0f4ba/:path*", "destination": "/journal/", "permanent": true}]}

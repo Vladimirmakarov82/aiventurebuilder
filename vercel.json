@@ -158,5 +158,17 @@
       "permanent": true
     }
   ],
-  "ignoreCommand": "exit 1"
+  "ignoreCommand": "exit 1",
+  "functions": {
+    "api/j.mjs": {
+      "includeFiles": "api/_data/**",
+      "maxDuration": 60
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/j?r=cron",
+      "schedule": "10 8 * * *"
+    }
+  ]
 }

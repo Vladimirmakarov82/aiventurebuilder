@@ -1,0 +1,7 @@
+{
+  "name": "orbiq-site",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test api/_core.test.mjs" },
+  "dependencies": { "@vercel/blob": "^2.9.0" }
+}

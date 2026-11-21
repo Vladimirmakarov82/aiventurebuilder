@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 process.env.BLOB_READ_WRITE_TOKEN = 'x'; process.env.EMAIL_MODE = 'test'; process.env.ADMIN_KEY = 'adminkey123';
 const keys = (await import('node:fs')).readFileSync('/tmp/keys.txt', 'utf8').trim().split(/\s+/);
-process.env.SESSION_SECRET = keys[0]; process.env.CONTENT_KEY = keys[1];
+process.env.SESSION_SECRET = keys[0];
 const { default: H } = await import('./api/j.mjs');
 const jar = {};
 async function call(r, { body, q = '', cookie = '', method } = {}) {
@@ -15,10 +15,10 @@ const ck = (h) => [].concat(h['set-cookie'] || []).map(c => c.split(';')[0]).joi
 const ok = (name) => console.log('✓', name);
 const A = ['ninnaji-temple-night', 'nhm-spirit-collection-archie', 'gorham-cave-finlayson']; // знак «Ночные ключи»
 // гость
-let r = await call('article', { q: '&id=' + A[0] }); assert.equal(r.s, 401); ok('гость не получает полный текст (401)');
-r = await call('article', { q: '&id=nope' }); assert.equal(r.s, 404); ok('несуществующая статья: 404 без раскрытия');
-// самостоятельной регистрации нет
-r = await call('auth/request', { body: { email: 'stranger@example.com', ret: '/journal/' } }); assert.equal(r.j.generic, true); assert.ok(!r.j.test_link); ok('незнакомый адрес не получает ссылку (нет открытой регистрации)');
+let r = await call('progress', { body: { id: A[0], type: 'explore' } }); assert.equal(r.s, 401); ok('гость читает открыто, но не отмечает прогресс без входа (401)');
+r = await call('me'); assert.equal(r.j.user, null); ok('гость без аккаунта: профиль пустой');
+// добровольная регистрация открыта для любого адреса
+r = await call('auth/request', { body: { email: 'stranger@example.com', ret: '/journal/' } }); assert.ok(r.j.test_link); { const ts = new URL(r.j.test_link).searchParams.get('t'); const rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(ts) }); assert.ok(ck(rr.h).includes('oj=')); } ok('любой адрес может завести профиль по ссылке из письма');
 const forged = (await import('node:crypto')); // поддельный токен входа без приглашения не создает аккаунт
 r = await call('admin/login', { body: { key: 'adminkey123' } }); const CA = ck(r.h);
 r = await call('admin/grant', { body: { email: 'founder@example.com', first: 'Анна', last: 'Орлова', sendLogin: true }, cookie: CA }); assert.ok(r.j.test_link); ok('административное предоставление доступа первому участнику');
@@ -37,7 +37,7 @@ const C = ck(r.h);
 r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t) }); assert.equal(r.h.location, '/journal/?login=used'); ok('ссылка подтверждения одноразовая');
 r = await call('invite/accept', { body: { t: invTok } }); assert.equal(r.s, 410); ok('приглашение активирует только один аккаунт');
 r = await call('invite/list', { cookie: CF }); assert.equal(r.j.invites[0].status, 'accepted'); assert.equal(r.j.left, 2); ok('принятое приглашение расходует слот окончательно');
-r = await call('article', { q: '&id=' + A[0], cookie: C }); assert.equal(r.s, 200); assert.ok(r.j.text.length > 100); assert.equal(r.j.state, 'not_explored'); ok('авторизованный читает статью, состояние not_explored');
+r = await call('me', { cookie: C }); assert.ok(r.j.user); assert.ok(!r.j.user.ops[A[0]]); ok('приглашенный вошел, состояние not_explored');
 // изучено не дает знак
 r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: C }); assert.equal(r.j.state, 'explored'); assert.equal(r.j.levels['night-keys'], 0); ok('«Изучено» без награды');
 // 0→1→2→3
@@ -53,7 +53,7 @@ r = await call('auth/request', { body: { email: 'reader@example.com', ret: '/jou
 r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t2) }); const C2 = ck(r.h);
 r = await call('me', { cookie: C2 }); assert.equal(r.j.levels['night-keys'], 1); ok('прогресс сохраняется после повторного входа');
 // истекшая сессия
-r = await call('article', { q: '&id=' + A[0], cookie: 'oj=broken.token' }); assert.equal(r.s, 401); ok('истекшая или поддельная сессия: повторный вход');
+r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: 'oj=broken.token' }); assert.equal(r.s, 401); ok('истекшая или поддельная сессия: повторный вход');
 // клиент не может назначить уровень
 r = await call('progress', { body: { id: A[0], type: 'level', to: 3 }, cookie: C2 }); assert.equal(r.s, 400); ok('клиент не назначает уровень сам');
 // редакция: статусы
@@ -61,7 +61,7 @@ r = await call('admin/state'); assert.equal(r.s, 403); ok('редакция за
 r = await call('admin/status', { body: { id: A[1], status: 'scheduled', at: '2030-01-01T10:00:00+03:00' }, cookie: CA }); assert.equal(r.s, 409); ok('переход published→scheduled запрещен');
 r = await call('admin/score', { body: { id: A[1], surprise: 5, rarity: 5, share: 5, access: 5, trust: 3 }, cookie: CA });
 r = await call('admin/status', { body: { id: A[1], status: 'draft' }, cookie: CA }); assert.equal(r.s, 200); ok('снятие с публикации published→draft');
-r = await call('article', { q: '&id=' + A[1], cookie: C2 }); assert.equal(r.s, 404); ok('снятая статья недоступна по прямой ссылке');
+r = await call('progress', { body: { id: A[1], type: 'explore' }, cookie: C2 }); assert.notEqual(r.s, 200); ok('снятую статью нельзя отметить');
 r = await call('status'); assert.ok(r.j.hidden.includes(A[1])); ok('снятая статья скрывается из каталога');
 r = await call('admin/status', { body: { id: A[1], status: 'published' }, cookie: CA }); assert.equal(r.s, 409); ok('достоверность 3 блокирует публикацию');
 r = await call('admin/status', { body: { id: A[1], status: 'archived' }, cookie: CA }); assert.equal(r.s, 409); ok('переход draft→archived запрещен');
@@ -90,7 +90,7 @@ r = await call('admin/tg', { body: { action: 'save', article: A[0], text: 'Те�
 r = await call('admin/tg', { body: { action: 'ready', id: pid }, cookie: CA }); r = await call('admin/tg', { body: { action: 'send', id: pid }, cookie: CA }); assert.equal(r.s, 503); ok('Telegram без токена: отправка не имитируется');
 // блокировка
 r = await call('admin/block', { body: { email: 'reader@example.com', block: true }, cookie: CA });
-r = await call('article', { q: '&id=' + A[0], cookie: C2 }); assert.equal(r.s, 403); ok('заблокированный аккаунт не читает и не отмечает');
+r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: C2 }); assert.notEqual(r.s, 200); ok('заблокированный аккаунт не отмечает');
 // реферальная метка: невалидная игнорируется на клиенте; регистрация по ссылке учтена
 // отзыв, истечение, привязка к почте, пересланная ссылка
 r = await call('invite/create', { body: { first: 'Ольга', last: 'Смирнова', email: 'olga@example.com' }, cookie: CF }); const t3 = new URL(r.j.link).searchParams.get('t'); const left1 = r.j.left;
@@ -103,10 +103,10 @@ const d4 = JSON.parse(globalThis.__BLOB.get(k4).body); d4.expires = '2020-01-01T
 r = await call('invite/info', { q: '&t=' + t4 }); assert.equal(r.j.error, 'expired'); r = await call('invite/list', { cookie: CF }); assert.equal(r.j.invites.find(v => v.first === 'Петр').status, 'expired'); assert.equal(r.j.left, 2); ok('истечение срока: приглашение недействительно, слот возвращен');
 r = await call('invite/renew', { body: { id: d4.id }, cookie: CF }); assert.ok(r.j.link); r = await call('invite/info', { q: '&t=' + t4 }); assert.notEqual(r.s, 200); ok('продление выдает новую ссылку, старая перестает работать');
 // попытка принять чужое приглашение под другой почтой: токен подтверждения подписан сервером, подменить почту нельзя
-r = await call('article', { q: '&id=' + A[0] }); assert.equal(r.s, 401); ok('пересланная ссылка на статью не дает доступа');
+r = await call('tips'); assert.equal(r.s, 200); ok('находки участников открыты всем');
 const users = [...globalThis.__BLOB.keys()].filter(k => k.startsWith('users/')).map(k => JSON.parse(globalThis.__BLOB.get(k).body));
 const iv = users.find(u => u.email === 'reader@example.com'); const fo = users.find(u => u.email === 'founder@example.com'); assert.equal(iv.invitedBy, fo.id); ok('связь пригласившего и приглашенного сохранена');
-assert.equal(users.length, 2); ok('аккаунты созданы только по приглашению или решению редакции');
+assert.equal(users.length, 3); ok('аккаунты: по решению редакции, по приглашению и добровольный');
 r = await call('admin/stats', { cookie: CA }); assert.equal(r.j.viaInvite, 1); assert.equal(r.j.invites.accepted, 1); assert.ok(r.j.events.signup >= 1); ok('аналитика приглашений: принято 1, пришел по приглашению 1');
 const keysInEvents = [...globalThis.__BLOB.keys()].filter(k => k.startsWith('events/')); assert.ok(keysInEvents.every(k => !k.includes('@'))); ok('в аналитике нет почты и других личных данных');
 console.log('\nВсе сценарии пройдены:', keysInEvents.length, 'событий');

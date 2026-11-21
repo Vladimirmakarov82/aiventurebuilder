@@ -60,17 +60,9 @@ async function sput(p, obj) { if (!STORE_OK) throw new NoStore(); await put(p, J
 async function slist(prefix, limit = 1000) { if (!STORE_OK) throw new NoStore(); const out = []; let cursor; do { const r = await list({ prefix, cursor, limit: 1000 }); out.push(...r.blobs); cursor = r.hasMore ? r.cursor : null; } while (cursor && out.length < limit); return out; }
 async function sdel(p) { if (STORE_OK) await del(p).catch(() => {}); }
 
-// ---------- контент (зашифрован, ключ в CONTENT_KEY) ----------
+// ---------- контент (открыт на сайте; здесь нужен админке, рассылке и проверке статусов) ----------
 let CONTENT = null;
-function content() {
-  if (CONTENT) return CONTENT;
-  const raw = fs.readFileSync(path.join(DIR, '_data', 'content.bin'));
-  const key = Buffer.from(ENV.CONTENT_KEY || '', 'hex');
-  const iv = raw.subarray(0, 12), tag = raw.subarray(12, 28), data = raw.subarray(28);
-  const d = crypto.createDecipheriv('aes-256-gcm', key, iv); d.setAuthTag(tag);
-  CONTENT = JSON.parse(Buffer.concat([d.update(data), d.final()]).toString());
-  return CONTENT;
-}
+function content() { return CONTENT || (CONTENT = JSON.parse(fs.readFileSync(path.join(DIR, '_data', 'content.json'), 'utf8'))); }
 const ACH = JSON.parse(fs.readFileSync(path.join(DIR, '_data', 'achievements.json')));
 
 async function statusMap() { return (STORE_OK && await sget('content/status.json').catch(() => null)) || {}; }
@@ -135,7 +127,7 @@ R['auth/request'] = async (req, res) => {
   try { if (!(await rateLimit('ip:' + ip, 8, 60)) || !(await rateLimit('em:' + email, 3, 15))) return send(res, 429, { error: 'Слишком много запросов. Попробуйте через несколько минут' }); }
   catch (e) { if (e instanceof NoStore) return send(res, 503, { error: 'Регистрация временно недоступна: хранилище не подключено' }); throw e; }
   const ret = String(b.ret || '/journal/').startsWith('/journal') ? String(b.ret || '/journal/') : '/journal/';
-  // самостоятельной регистрации нет: ссылку получают только участники
+  // регистрация добровольная и открыта для любого адреса; приглашение дает только отметку «приглашенный»
   const u = await loadUser(uidOf(email));
   const generic = { ok: true, generic: true };
   if (u && u.blocked) return send(res, 200, generic);
@@ -145,7 +137,8 @@ R['auth/request'] = async (req, res) => {
       const vt = sign({ e: email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + 30 * 60000 });
       return deliverLogin(req, res, email, vt, { generic: true });
     }
-    await logEvent('login_nonmember'); return send(res, 200, generic);
+    const nt = sign({ e: email, r: ret, nw: 1, ref: String(b.ref || '').slice(0, 40), j: rid(12), exp: Date.now() + 30 * 60000 }); // открытая регистрация
+    return deliverLogin(req, res, email, nt, { generic: true });
   }
   const tok = sign({ e: email, r: ret, j: rid(12), exp: Date.now() + 30 * 60000 });
   return deliverLogin(req, res, email, tok, { generic: true });
@@ -184,7 +177,8 @@ R['auth/verify'] = async (req, res) => {
       target = invInfo.target || target;
     }
   }
-  if (!u) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=noaccess'); return res.end(); }
+  if (!u && t.nw) { u = { id: uid, email: t.e, first: '', last: '', created: new Date().toISOString(), ref: t.ref || '', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 }; await update(`users/${uid}.json`, (cur) => cur ? { noop: 1 } : { doc: u }); await logEvent('signup', '', 'open', t.ref || ''); }
+  if (!u) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=expired'); return res.end(); }
   const seen = new Date().toISOString(); await update(`users/${uid}.json`, (cur) => ({ doc: { ...(cur || u), seen } }));
   setCookie(res, 'oj', sign({ u: uid, e: t.e, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
   res.statusCode = 302; res.setHeader('Location', target); res.end();
@@ -259,17 +253,6 @@ R['invite/accept'] = async (req, res) => { // письмо со ссылкой �
 
 R['logout'] = async (req, res) => { setCookie(res, 'oj', '', 0); send(res, 200, { ok: true }); };
 
-R['article'] = async (req, res) => {
-  const id = new URL(req.url, 'http://x').searchParams.get('id') || '';
-  const a = content().articles[id]; if (!a) return send(res, 404, { error: 'not_found' });
-  const st = await statusMap(); if (!isLive(id, st)) return send(res, 404, { error: 'not_found' });
-  const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
-  let u = null; try { u = await loadUser(s.u); } catch (e) { if (!(e instanceof NoStore)) throw e; }
-  if (u && u.blocked) return send(res, 403, { error: 'blocked' });
-  await logEvent('open', id);
-  send(res, 200, { id, text: a.text, facts: a.facts, state: u ? oppState(u, id) : 'not_explored' });
-};
-
 R['progress'] = async (req, res) => { // explore | complete | undo: сервер проверяет и считает сам
   const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
   const b = await body(req); const id = String(b.id || ''); const type = String(b.type || '');
@@ -300,7 +283,7 @@ R['unsub'] = async (req, res) => {
 
 R['event'] = async (req, res) => {
   const b = await body(req);
-  const ok = ['share_intent', 'share_click', 'copy_ok', 'landing', 'landing_bad', 'gate_view', 'gate_submit', 'badge_share', 'ach_open', 'org_open', 'next_open', 'tg_click', 'mail_click', 'preview_view'];
+  const ok = ['share_intent', 'share_click', 'copy_ok', 'landing', 'landing_bad', 'gate_view', 'gate_submit', 'badge_share', 'ach_open', 'org_open', 'next_open', 'tg_click', 'mail_click', 'preview_view', 'open'];
   if (ok.includes(b.type)) await logEvent(b.type, b.a, b.ch, b.s).catch(() => {});
   send(res, 200, { ok: true });
 };
@@ -316,7 +299,7 @@ R['discovery'] = async (req, res) => {
   await sput(`rec/${rec.id}.json`, rec); await logEvent('discovery'); send(res, 200, { ok: true });
 };
 
-// Асимметрия: рекомендации участников (видят только участники, публикует редакция)
+// Асимметрия: рекомендации участников (видят все, присылают участники, публикует редакция)
 const TIP_CATS = ['food', 'doctor', 'asset', 'service'];
 R['tip/create'] = async (req, res) => {
   const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
@@ -329,8 +312,7 @@ R['tip/create'] = async (req, res) => {
   if (!(await rateLimit('tip:' + s.u, 5, 1440))) return send(res, 429, { error: 'Не больше пяти рекомендаций в сутки' });
   await sput(`rec/${tip.id}.json`, tip); await logEvent('tip_created', '', tip.cat); send(res, 200, { ok: true });
 };
-R['tips'] = async (req, res) => { // опубликованные рекомендации: только участникам
-  const s = await me(req); if (!s) return send(res, 401, { error: 'login' }); const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });
+R['tips'] = async (req, res) => { // опубликованные рекомендации открыты всем
   const bl = await slist('rec/', 2000); const out = [];
   for (const x of bl) { const r = await sget(x.pathname); if (r && r.kind === 'tip' && r.status === 'published' && !(r.until && r.until < today())) out.push({ id: r.id, cat: r.cat, title: r.title, city: r.city, why: r.why, link: r.link, price: r.price, until: r.until, author: r.credit ? r.author : '', note: r.reason || '' }); }
   out.sort((a, b) => (a.id < b.id ? 1 : -1)); send(res, 200, { tips: out });

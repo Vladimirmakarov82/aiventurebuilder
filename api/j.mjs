@@ -308,6 +308,25 @@ R['discovery'] = async (req, res) => {
   await sput(`rec/${rec.id}.json`, rec); await logEvent('discovery'); send(res, 200, { ok: true });
 };
 
+// Асимметрия: рекомендации участников (видят только участники, публикует редакция)
+const TIP_CATS = ['food', 'doctor', 'asset', 'service'];
+R['tip/create'] = async (req, res) => {
+  const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
+  const b = await body(req); if (b.website) return send(res, 200, { ok: true });
+  const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });
+  const f = (k, n) => String(b[k] || '').trim().slice(0, n);
+  if (!TIP_CATS.includes(b.cat)) return send(res, 400, { error: 'Выберите тип рекомендации' });
+  const tip = { id: Date.now() + '-' + rid(5), kind: 'tip', uid: s.u, cat: b.cat, title: f('title', 140), city: f('city', 80), why: f('why', 1200), link: f('link', 500), price: f('price', 80), until: f('until', 20), credit: !!b.credit, author: b.credit ? [u.first, u.last].filter(Boolean).join(' ') : '', status: 'new', at: new Date().toISOString() };
+  if (!tip.title || !tip.why) return send(res, 400, { error: 'Заполните название и почему это стоит своих денег' });
+  if (!(await rateLimit('tip:' + s.u, 5, 1440))) return send(res, 429, { error: 'Не больше пяти рекомендаций в сутки' });
+  await sput(`rec/${tip.id}.json`, tip); await logEvent('tip_created', '', tip.cat); send(res, 200, { ok: true });
+};
+R['tips'] = async (req, res) => { // опубликованные рекомендации: только участникам
+  const s = await me(req); if (!s) return send(res, 401, { error: 'login' }); const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });
+  const bl = await slist('rec/', 2000); const out = [];
+  for (const x of bl) { const r = await sget(x.pathname); if (r && r.kind === 'tip' && r.status === 'published' && !(r.until && r.until < today())) out.push({ id: r.id, cat: r.cat, title: r.title, city: r.city, why: r.why, link: r.link, price: r.price, until: r.until, author: r.credit ? r.author : '', note: r.reason || '' }); }
+  out.sort((a, b) => (a.id < b.id ? 1 : -1)); send(res, 200, { tips: out });
+};
 R['og'] = async (req, res) => { // обложка для мессенджеров: ручная замена или автоматическая
   const q = new URL(req.url, 'http://x').searchParams; const id = (q.get('id') || '').replace(/[^a-z0-9-]/g, '');
   const ov = (await sget('content/og.json').catch(() => null)) || {};

@@ -3,14 +3,16 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { put, get, list, del } from '@vercel/blob';
 import { apply, levels as coreLevels, artTransition, artLive, recTransition, msgTransition, oppState } from './_core.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const ENV = process.env;
 const SITE = ENV.SITE_URL || 'https://orbiqgroup.com';
 const TZ = 'Europe/Moscow';
-const STORE_OK = !!ENV.BLOB_READ_WRITE_TOKEN;
+const KVK = Object.keys(ENV).find(k => /(KV_REST_API_URL|REDIS_REST_URL|REST_API_URL)$/.test(k) && !/READ_ONLY/.test(k));
+const KV_URL = KVK ? ENV[KVK] : '';
+const KV_TOKEN = KVK ? (ENV[KVK.replace(/URL$/, 'TOKEN')] || '') : '';
+const STORE_OK = !!(KV_URL && KV_TOKEN);
 
 // ---------- утилиты ----------
 const b64u = (b) => Buffer.from(b).toString('base64url');
@@ -33,32 +35,34 @@ async function body(req) { if (req.body && typeof req.body === 'object') return 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = () => new Date().toLocaleDateString('sv-SE', { timeZone: TZ });
 
-// ---------- хранилище (Vercel Blob, private) ----------
+// ---------- хранилище (Upstash Redis через REST: документы JSON по ключам) ----------
 class NoStore extends Error {}
-async function sget(p) {
+async function kv(cmd) {
   if (!STORE_OK) throw new NoStore();
-  try { const r = await get(p, { access: 'private', useCache: false }); if (!r) return null; const t = await new Response(r.stream).text(); return JSON.parse(t); }
-  catch (e) { if (String(e && e.name).includes('NotFound') || /not ?found|404|403 Forbidden/i.test(String(e))) return null; throw e; } // приватный blob без файла отвечает 403
+  const r = await fetch(KV_URL, { method: 'POST', headers: { Authorization: `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify(cmd) });
+  const j = await r.json().catch(() => ({})); if (!r.ok || j.error) throw new Error('kv ' + r.status + ' ' + (j.error || '')); return j.result;
 }
-async function sgetE(p) {
-  if (!STORE_OK) throw new NoStore();
-  const r = await get(p, { access: 'private', useCache: false }).catch(e => { if (String(e).match(/not ?found|404|403 Forbidden/i)) return null; throw e; });
-  if (!r) return { doc: null, etag: null };
-  return { doc: JSON.parse(await new Response(r.stream).text()), etag: (r.blob && r.blob.etag) || null };
-}
-// транзакционное обновление документа: условная запись по ETag с повтором
+async function sget(p) { const v = await kv(['GET', p]); return v == null ? null : JSON.parse(v); }
+async function sgetE(p) { const v = await kv(['GET', p]); return v == null ? { doc: null, etag: null } : { doc: JSON.parse(v), etag: v }; }
+// транзакционное обновление документа: запись только если документ не изменился с момента чтения (сравнение на стороне Redis)
+const CAS = "local c=redis.call('GET',KEYS[1]) if (ARGV[1]=='' and c==false) or c==ARGV[1] then redis.call('SET',KEYS[1],ARGV[2]) return 1 end return 0";
 async function update(p, fn) {
   for (let i = 0; i < 8; i++) {
     const { doc, etag } = await sgetE(p); const res = await fn(doc); if (!res || !res.doc) return res;
-    try { await put(p, JSON.stringify(res.doc), { access: 'private', addRandomSuffix: false, contentType: 'application/json', ...(etag ? { ifMatch: etag } : { allowOverwrite: false }) }); return res; }
-    catch (e) { const m = `${e && e.name} ${e && e.message} ${e && e.constructor && e.constructor.name}`; if (!/Precondition|ETag|already exists|exists/i.test(m)) throw e; await new Promise(r => setTimeout(r, 150 * (i + 1) + Math.random() * 150)); }
+    if (await kv(['EVAL', CAS, '1', p, etag || '', JSON.stringify(res.doc)]) === 1) return res;
+    await new Promise(r => setTimeout(r, 60 * (i + 1) + Math.random() * 80));
   }
   throw new Error('conflict');
 }
-async function auditLog(who, what, obj) { if (STORE_OK) await put(`audit/${today()}/${Date.now()}-${rid(4)}.json`, JSON.stringify({ who, what, obj, at: new Date().toISOString() }), { access: 'private', addRandomSuffix: false, contentType: 'application/json' }).catch(() => {}); }
-async function sput(p, obj) { if (!STORE_OK) throw new NoStore(); await put(p, JSON.stringify(obj), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' }); }
-async function slist(prefix, limit = 1000) { if (!STORE_OK) throw new NoStore(); const out = []; let cursor; do { const r = await list({ prefix, cursor, limit: 1000 }); out.push(...r.blobs); cursor = r.hasMore ? r.cursor : null; } while (cursor && out.length < limit); return out; }
-async function sdel(p) { if (STORE_OK) await del(p).catch(() => {}); }
+async function auditLog(who, what, obj) { if (STORE_OK) { await kv(['LPUSH', 'audit', JSON.stringify({ who, what, obj, at: new Date().toISOString() })]).catch(() => {}); await kv(['LTRIM', 'audit', '0', '4999']).catch(() => {}); } }
+async function sput(p, obj) { await kv(['SET', p, JSON.stringify(obj)]); }
+async function slist(prefix, limit = 1000) {
+  if (prefix === 'events/') { const l = await kv(['LRANGE', 'events', '0', String(limit - 1)]); return (l || []).map(x => ({ pathname: 'events/' + x })); }
+  const out = []; let cur = '0';
+  do { const [n, keys] = await kv(['SCAN', cur, 'MATCH', prefix + '*', 'COUNT', '1000']); cur = String(n); for (const k of keys) out.push({ pathname: k }); } while (cur !== '0' && out.length < limit);
+  return out.sort((a, b) => (a.pathname < b.pathname ? -1 : 1)).slice(0, limit);
+}
+async function sdel(p) { if (STORE_OK) await kv(['DEL', p]).catch(() => {}); }
 
 // ---------- контент (открыт на сайте; здесь нужен админке, рассылке и проверке статусов) ----------
 let CONTENT = null;
@@ -77,15 +81,14 @@ const opsView = (u) => { const o = {}; for (const [k, v] of Object.entries((u &&
 async function logEvent(type, a = '', ch = '', s = '') {
   if (!STORE_OK) return;
   const clean = (x) => String(x || '-').replace(/[^a-zA-Z0-9-]/g, '').slice(0, 60) || '-';
-  await put(`events/${today()}/${Date.now()}_${clean(type)}_${clean(a)}_${clean(ch)}_${clean(s)}_${rid(4)}.e`, '1', { access: 'private', addRandomSuffix: false }).catch(() => {});
+  await kv(['LPUSH', 'events', `${Date.now()}_${clean(type)}_${clean(a)}_${clean(ch)}_${clean(s)}_${rid(4)}.e`]).catch(() => {});
 }
 async function rateLimit(key, max, windowMin) {
   if (!STORE_OK) return true;
   const slot = Math.floor(Date.now() / (windowMin * 60000));
-  const p = `rl/${sha(key).slice(0, 20)}-${slot}.json`;
-  const cur = (await sget(p).catch(() => null)) || { n: 0 };
-  if (cur.n >= max) return false;
-  cur.n++; await sput(p, cur).catch(() => {}); return true;
+  const p = `rl/${sha(key).slice(0, 20)}-${slot}`;
+  const n = await kv(['INCR', p]); if (n === 1) await kv(['EXPIRE', p, String(windowMin * 60 + 5)]).catch(() => {});
+  return n <= max;
 }
 
 // ---------- почта (Resend) ----------

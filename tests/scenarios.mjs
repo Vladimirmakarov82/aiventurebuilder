@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-process.env.BLOB_READ_WRITE_TOKEN = 'x'; process.env.EMAIL_MODE = 'test'; process.env.ADMIN_KEY = 'adminkey123';
+process.env.KV_REST_API_URL = 'https://kv.test'; process.env.KV_REST_API_TOKEN = 'x'; await import('./kvmock.mjs'); process.env.EMAIL_MODE = 'test'; process.env.ADMIN_KEY = 'adminkey123';
 const keys = (await import('node:fs')).readFileSync('/tmp/keys.txt', 'utf8').trim().split(/\s+/);
 process.env.SESSION_SECRET = keys[0];
 const { default: H } = await import('./api/j.mjs');
@@ -82,7 +82,7 @@ r = await call('admin/letter', { body: { action: 'save', id: 'n1', main: [A[0], 
 r = await call('admin/letter', { body: { action: 'ready', id: 'n1' }, cookie: CA }); assert.equal(r.s, 200);
 r = await call('admin/letter', { body: { action: 'send', id: 'n1', confirm: 'ОТПРАВИТЬ' }, cookie: CA }); assert.equal(r.s, 503); ok('без ключа почты отправка не имитируется');
 process.env.RESEND_API_KEY = 'k'; let fail = true; const sentTo = [];
-globalThis.fetch = async (u, o) => { const b = JSON.parse(o.body); if (fail) return new Response('{}', { status: 500 }); sentTo.push(b.to); return new Response('{"id":"m1"}', { status: 200 }); };
+globalThis.fetch = ((_f) => async (u, o) => { if (u === 'https://kv.test') return _f(u, o); const b = JSON.parse(o.body); if (fail) return new Response('{}', { status: 500 }); sentTo.push(b.to); return new Response('{"id":"m1"}', { status: 200 }); })(globalThis.fetch);
 r = await call('admin/letter', { body: { action: 'send', id: 'n1', confirm: 'ОТПРАВИТЬ' }, cookie: CA }); assert.equal(r.s, 502); assert.equal(r.j.failed, 1); ok('сбой провайдера: статус Failed и причина');
 fail = false; r = await call('admin/letter', { body: { action: 'send', id: 'n1', confirm: 'ОТПРАВИТЬ' }, cookie: CA }); assert.equal(r.s, 200); assert.equal(r.j.sent, 1);
 r = await call('admin/letter', { body: { action: 'send', id: 'n1', confirm: 'ОТПРАВИТЬ' }, cookie: CA }); assert.equal(r.s, 409); assert.equal(sentTo.length, 1); ok('повтор после сбоя без дублей, Sent не отправляется второй раз');

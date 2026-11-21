@@ -58,104 +58,54 @@
       "permanent": true
     },
     {
-      "source": "/journal/sport",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/discoveries",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/sport/",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/discoveries/",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/health",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/lifestyle",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/health/",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/lifestyle/",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/hobby",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/family",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/hobby/",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/family/",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/cars",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/meaning",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/cars/",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/meaning/",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/taste",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
+      "source": "/journal/privacy",
+      "destination": "/journal/",
+      "permanent": false
     },
     {
-      "source": "/journal/taste/",
-      "destination": "/journal/lifestyle/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/her",
-      "destination": "/journal/family/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/her/",
-      "destination": "/journal/family/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/kids",
-      "destination": "/journal/family/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/kids/",
-      "destination": "/journal/family/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/charity",
-      "destination": "/journal/meaning/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/charity/",
-      "destination": "/journal/meaning/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/spirit",
-      "destination": "/journal/meaning/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/spirit/",
-      "destination": "/journal/meaning/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/security",
-      "destination": "/journal/privacy/",
-      "permanent": true
-    },
-    {
-      "source": "/journal/security/",
-      "destination": "/journal/privacy/",
-      "permanent": true
+      "source": "/journal/privacy/",
+      "destination": "/journal/",
+      "permanent": false
     }
   ],
   "ignoreCommand": "exit 1",

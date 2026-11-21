@@ -34,7 +34,7 @@ r = await call('invite/accept', { body: { t: invTok } }); assert.ok(r.j.test_lin
 const t = new URL(r.j.test_link).searchParams.get('t');
 r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t) }); assert.equal(r.s, 302); assert.equal(r.h.location, '/journal/discoveries/#' + A[0]); ok('после активации открывается исходная статья');
 const C = ck(r.h);
-r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t) }); assert.equal(r.h.location, '/journal/?login=used'); ok('ссылка подтверждения одноразовая');
+r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t) }); assert.equal(r.h.location, '/journal/profile/?login=used'); ok('ссылка подтверждения одноразовая');
 r = await call('invite/accept', { body: { t: invTok } }); assert.equal(r.s, 410); ok('приглашение активирует только один аккаунт');
 r = await call('invite/list', { cookie: CF }); assert.equal(r.j.invites[0].status, 'accepted'); assert.equal(r.j.left, 2); ok('принятое приглашение расходует слот окончательно');
 r = await call('me', { cookie: C }); assert.ok(r.j.user); assert.ok(!r.j.user.ops[A[0]]); ok('приглашенный вошел, состояние not_explored');

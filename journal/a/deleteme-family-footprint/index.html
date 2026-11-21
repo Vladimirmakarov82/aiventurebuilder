@@ -168,6 +168,13 @@ button{color:inherit}
 .been.on{color:var(--ink)}.been.on i{border-color:var(--ink)}.been.on i:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
 [data-full]{display:flex;flex-direction:column;gap:22px}
 [data-full]:empty{display:none}
+/* знак раздела на странице раздела */
+.sb1{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.sb1 h2{font-family:var(--s);font-weight:600;font-size:clamp(34px,4vw,52px);line-height:1;margin:0 0 8px}
+.sb1-l{font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.sb1-r{font-size:16px;line-height:1.5;color:#555;max-width:520px;margin:0}
+.sb1-d{font-size:15px;margin:12px 0 0}.sb1-d a{text-decoration:underline;text-underline-offset:3px}
+.sb1>div{flex:1 1 280px}
 .emb .m-rim{fill:none;stroke:#C9C3B8;stroke-width:1.2}.emb .m-face{fill:none;stroke:#C9C3B8;stroke-width:.8}.emb .m-line{stroke:#C9C3B8;stroke-width:.7}.emb .m-glyph{fill:none;stroke:#A9A398;stroke-width:1.1;stroke-linejoin:round}.emb .m-dot{fill:#A9A398}.emb.lv1 .m-face,.emb.lv1 .m-rim{fill:url(#oj-s);stroke:#8C8F93}.emb.lv1 .m-line{stroke:#6E7176}.emb.lv1 .m-glyph{stroke:#4C4F53;fill:rgba(255,255,255,.35)}.emb.lv1 .m-dot{fill:#4C4F53}.emb.lv2 .m-face,.emb.lv2 .m-rim{fill:url(#oj-g);stroke:#8A6B33}.emb.lv2 .m-line{stroke:#6B5227}.emb.lv2 .m-glyph{stroke:#4F3B17;fill:rgba(255,244,214,.3)}.emb.lv2 .m-dot{fill:#4F3B17}.emb.lv3 .m-face,.emb.lv3 .m-rim{fill:url(#oj-b);stroke:#0B0B0B}.emb.lv3 .m-line{stroke:#9C968B}.emb.lv3 .m-glyph{stroke:#D8D1C3;fill:none}.emb.lv3 .m-dot{fill:#D8D1C3}</style></head><body><div class="mast"><a class="logo" href="/journal/"><b>ORBIQ</b></a><span class="kick">Открытие для вас<a class="acct" id="acct" href="/journal/profile/">Вход</a></span></div><main class="sharepage"><div class="sp in"><img src="/img/journal/deleteme-family-footprint.webp" alt=""><span class="sh"></span><span class="sb"><span class="kick">США</span><span class="sh2">Цифровой след семьи под контролем DeleteMe</span><span class="sd">DeleteMe убирает домашние адреса и личные данные руководителей и их семей с сайтов брокеров данных.</span><span class="acts" style="margin-top:8px"><a class="btn" href="/journal/security/#deleteme-family-footprint" style="background:#fff;color:#111">Читать историю →</a></span></span></div></main><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="oj-s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F4F2"/><stop offset=".5" stop-color="#B9BBBD"/><stop offset="1" stop-color="#8C8F93"/></linearGradient><linearGradient id="oj-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9D7A6"/><stop offset=".5" stop-color="#BE9A55"/><stop offset="1" stop-color="#8A6B33"/></linearGradient><linearGradient id="oj-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".55" stop-color="#202020"/><stop offset="1" stop-color="#0B0B0B"/></linearGradient></defs></svg><script>(function(){
 var API='/api/j/?r=';
 function api(r,o){o=o||{};var init={method:o.body?'POST':'GET',credentials:'same-origin',headers:{}};if(o.body){init.headers['Content-Type']='application/json';init.body=JSON.stringify(o.body)}
@@ -175,9 +182,9 @@ function api(r,o){o=o||{};var init={method:o.body?'POST':'GET',credentials:'same
 function ev(type,a,ch,s){api('event',{body:{type:type,a:a||'',ch:ch||'',s:s||''}})}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var LS={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-var ME=null,ACH=window.OJ_ACH||[],IDX=window.OJ_IDX||{},ALLACH=window.OJ_ALL||null;
+var ME=null,SECS=window.OJ_SEC||[],IDX=window.OJ_IDX||{};
 window.OJ={api:api,ev:ev,esc:esc};
-var LV=['Знак не получен','Серебряный знак','Золотой знак','Черный знак'];
+var LV=['Знак не получен','Серебряный знак','Золотой знак','Черный знак'],LVS=['Не начато','Серебро','Золото','Черный знак'];
 // входящая ссылка: непрозрачный идентификатор, без персональных данных
 var qs=new URLSearchParams(location.search),sref=qs.get('s');
 if(sref){if(/^[A-Za-z0-9]{10}$/.test(sref)){LS.set('oj_s',sref);ev('landing',(location.pathname.match(/\/a\/([^/]+)/)||[])[1]||'','',sref)}else ev('landing_bad')}
@@ -186,9 +193,11 @@ var lq=qs.get('invite')||qs.get('login');if(lq){var MSG={expired:'Ссылка �
 api('status').then(function(j){(j.hidden||[]).forEach(function(id){var a=document.querySelector('a.sp[href="#'+id+'"]');if(a)a.remove()})});
 function rid(){var c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789',s='';var r=(window.crypto&&crypto.getRandomValues)?crypto.getRandomValues(new Uint8Array(10)):null;for(var i=0;i<10;i++)s+=c[(r?r[i]:Math.floor(Math.random()*256))%c.length];return s}
 function opState(id){return(ME&&ME.ops&&ME.ops[id])||'not_explored'}
-function achOf(id){for(var i=0;i<ACH.length;i++)if(ACH[i].items.indexOf(id)>=0)return ACH[i];if(ALLACH)for(var d in ALLACH)for(var j=0;j<ALLACH[d].length;j++)if(ALLACH[d][j].items.indexOf(id)>=0)return ALLACH[d][j];return null}
-function nOf(a){return a.items.filter(function(i){return opState(i)==='completed'}).length}
-function medal(a,n,size){var im=a.items.map(function(i,k){var t=IDX[i]||{};return '<img class="s'+k+(opState(i)==='completed'?' on':'')+'" src="'+(t.th||'')+'" alt="" loading="lazy">'}).join('');
+function secById(s){for(var i=0;i<SECS.length;i++)if(SECS[i].id===s)return SECS[i];return null}
+function achOf(id){return secById((IDX[id]||{}).sec)}
+function doneOf(a){return a.items.filter(function(i){return opState(i)==='completed'})}
+function nOf(a){return Math.min(3,doneOf(a).length)}
+function medal(a,n,size){var d=doneOf(a).slice(0,3),pad=a.items.filter(function(i){return d.indexOf(i)<0}),ids=d.concat(pad).slice(0,3);var im=ids.map(function(i,k){var t=IDX[i]||{};return '<img class="s'+k+(k<n?' on':'')+'" src="'+(t.th||'')+'" alt="" loading="lazy">'}).join('');
  return '<span class="coin lv'+n+'"'+(size?' style="--cs:'+size+'px"':'')+'><span class="cw">'+im+'</span><svg class="cl" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50V0M50 50L93.3 75M50 50L6.7 75"/></svg></span>'}
 // ---- подарок ----
 var sheet=document.createElement('div');sheet.className='sheet';sheet.innerHTML='<div class="sheet-in" role="dialog" aria-modal="true"><h3 id="gh">Подарить открытие</h3><p class="note" id="gs"></p><label class="row note" id="gpl" style="display:none"><input type="checkbox" id="gp"> Показать мой знак получателю</label><textarea id="gm" placeholder="Несколько слов от себя (необязательно)"></textarea><div class="grid"><button class="btn" data-ch="tg" type="button">Telegram</button><button class="btn" data-ch="wa" type="button">WhatsApp</button><button class="btn ghost" data-ch="copy" type="button">Скопировать ссылку</button><button class="btn ghost" data-ch="native" type="button">Другое…</button></div><p class="note" id="gn"></p><div id="ginv" hidden></div><button class="undo" type="button" data-close>Закрыть</button></div>';
@@ -221,7 +230,6 @@ sheet.addEventListener('click',function(e){if(e.target===sheet||e.target.hasAttr
  if(ch==='wa')window.open('https://wa.me/?text='+encodeURIComponent(text+'\n'+url),'_blank');
  if(ch==='copy'){(navigator.clipboard?navigator.clipboard.writeText((msg?msg+'\n':'')+url):Promise.reject()).then(function(){document.getElementById('gn').textContent='Ссылка скопирована';ev('copy_ok',GIFT.id,'copy',GIFT.s)}).catch(function(){window.prompt('Ссылка',url)})}
  if(ch==='native'&&navigator.share)navigator.share({title:GIFT.title,text:msg||GIFT.title,url:url}).catch(function(){})});
-document.addEventListener('click',function(e){var b=e.target.closest('[data-bshare]');if(!b)return;var a=achOf(b.getAttribute('data-bshare'));if(a){var n=ME?nOf(a):0;gift({kind:'badge',id:a.id,level:n,path:'/journal/badge/'+a.id+'/',head:'Поделиться открытием',title:'Три открытия: '+a.name})}});
 // ---- вход ----
 function gateHtml(){return '<form class="gate-min" data-gate><input type="email" name="email" required autocomplete="email" placeholder="Ваш email" aria-label="Ваш email"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Продолжить</button><p class="note" data-gn></p></form>'}
 window.OJ.gateHtml=gateHtml;
@@ -234,27 +242,24 @@ document.addEventListener('submit',function(e){var f=e.target.closest('form[data
   else{n.className='note err';n.textContent=j.error||'Не получилось, попробуйте еще раз'}})});
 // ---- знаки раздела ----
 function cardMini(i){var t=IDX[i]||{};return '<a class="dc" href="'+(t.href||'#'+i)+'" data-next style="display:block"><p class="kick" style="color:var(--mute)">'+esc(t.geo||'')+'</p><h3 style="font-size:20px">'+esc(t.title||i)+'</h3></a>'}
-function renderAch(changed){var box=document.getElementById('achg');if(!box)return;
- box.innerHTML=ACH.map(function(a){var n=ME?nOf(a):0;return '<article class="medal" id="m-'+a.id+'"><div class="medal-h">'+medal(a,n)+'<div><h3>'+esc(a.name)+'</h3><div class="lv">'+LV[n]+' · '+n+'/3</div></div></div><p>'+esc(a.desc)+'</p><ol>'+a.items.map(function(i){var t=IDX[i]||{},st=opState(i);return '<li class="'+(st==='completed'?'d':'')+'"><a href="'+(t.href||('#'+i))+'"><b></b><span>'+esc(t.title||i)+(st==='explored'?' <em class="note">· изучено</em>':'')+'</span></a></li>'}).join('')+'</ol><button class="msh" type="button" data-bshare="'+a.id+'">Поделиться открытием</button></article>'}).join('');
- (changed||[]).forEach(function(c){var s=document.querySelector('#m-'+c.id+' svg');if(s&&c.to>c.from)s.classList.add('up')})}
+function renderAch(){var box=document.getElementById('achg');if(!box)return;var a=secById(window.OJ_HERE);if(!a){box.innerHTML='';return}
+ var n=ME?nOf(a):0,d=ME?doneOf(a):[];
+ box.innerHTML='<div class="sb1">'+medal(a,n,148)+'<div><h2>'+esc(a.name)+'</h2><p class="sb1-l">'+LVS[n]+' · '+n+'/3</p><p class="sb1-r">Любые три открытия раздела: первое дает серебро, второе — золото, третье — черный знак. Засчитываются открытия, организованные вместе с Orbiq.</p>'+
+  (d.length?'<p class="sb1-d">Подтверждено: '+d.map(function(i){return '<a href="'+esc((IDX[i]||{}).href||'#')+'">'+esc((IDX[i]||{}).title||i)+'</a>'}).join(', ')+'</p>':'')+'</div></div>'}
 var achSec=document.getElementById('ach');if(achSec&&'IntersectionObserver'in window){var seen=0;new IntersectionObserver(function(es){if(!seen&&es[0].isIntersecting){seen=1;ev('ach_open')}}).observe(achSec)}
 // ---- статья ----
-function levelMsg(a,c){var t=['','Первое открытие совершено.','Два открытия из трех.','Все три открытия совершены.'][c.to];return '<div class="gate" style="gap:10px"><div class="inach">'+medal(a,c.to,72).replace('class="coin','class="coin up')+'<div><h3 style="font-size:22px">'+esc(a.name)+'. '+LV[c.to]+'.</h3><p>'+t+'</p></div></div>'+nextHtml(a,c.to)+'</div>'}
-function nextHtml(a,n){if(n>=1&&n<3){var rest=a.items.filter(function(i){return opState(i)!=='completed'});return '<p class="note">Впереди еще '+(rest.length===2?'две истории':'одна история')+'.</p><div class="dirs" style="margin:0">'+rest.map(cardMini).join('')+'</div>'}
- if(n===3){var pool=ACH.filter(function(x){return x.id!==a.id&&nOf(x)<3});if(pool.length){var x=pool[0];return '<p class="note">Близкий знак в этом разделе: «'+esc(x.name)+'».</p><div class="dirs" style="margin:0">'+cardMini(x.items[0])+'</div>'}}return ''}
 function fill(id,root){window.OJ_CUR=id;var box=root.querySelector('[data-full]');if(!box)return;var t=IDX[id]||{};
  root.querySelectorAll('.cta').forEach(function(c){if(c._b)return;c._b=1;c.addEventListener('click',function(){ev('org_open',id)})});
  if(!box._ev){box._ev=1;ev('open',id)}
  if(!window.OJ_ME_READY||(ME&&ME.blocked)){box.innerHTML='';return}
  var a=achOf(id),busy=false;if(ME)ME.ops=ME.ops||{};
  function html(){var st=opState(id),n=a?nOf(a):0,h='';
-  if(a)h+='<div class="ser"><button type="button" class="ser-c" data-p="ach" aria-label="Все три истории">'+medal(a,n,72)+'</button><div><p class="ser-k">Знак «'+esc(a.name)+'» · '+n+'/3</p><p class="ser-t">Одно из трех открытий знака. Сектор медальона вручает Orbiq, когда открытие организовано вместе с нами.</p><button type="button" class="lnk" data-p="ach">Все три истории</button></div></div><div data-achx hidden><div class="dirs" style="margin:6px 0 0">'+a.items.filter(function(x){return x!==id}).map(cardMini).join('')+'</div></div>';
+  if(a)h+='<div class="ser">'+medal(a,n,72)+'<div><p class="ser-k">Знак «'+esc(a.name)+'» · '+n+'/3</p><p class="ser-t">Любые три открытия раздела дают знак: первое — серебро, второе — золото, третье — черный. Засчитываются открытия, организованные вместе с Orbiq.</p></div></div>';
   if(ME)h+=st==='completed'?'<p class="been on" style="cursor:default"><i></i>Открытие совершено с Orbiq</p>':'<button type="button" class="been'+(st==='explored'?' on':'')+'" data-p="been" aria-pressed="'+(st==='explored')+'"><i></i>Я здесь был</button>';
   return h}
  box.innerHTML=html();
  if(box._cl)return;box._cl=1;
  box.addEventListener('click',function(e){var d=e.target.closest('[data-p]');if(!d)return;var p=d.getAttribute('data-p');
-  if(p==='ach'){var x=box.querySelector('[data-achx]');if(x){x.hidden=!x.hidden;ev('ach_open',a&&a.id)}return}
   if(p!=='been'||!ME||busy)return;busy=true;var type=opState(id)==='explored'?'unexplore':'explore';d.classList.toggle('on');
   api('progress',{body:{id:id,type:type}}).then(function(res){busy=false;if(res._s!==200){d.classList.toggle('on');return}
    if(res.state==='not_explored')delete ME.ops[id];else ME.ops[id]=res.state;box.innerHTML=html()})});
@@ -281,6 +286,6 @@ function tips(){var b=document.getElementById('tipsb');if(!b)return;var CAT={foo
   var f=b.querySelector('[data-tip]');f.onsubmit=function(e){e.preventDefault();var bt=f.querySelector('button'),n=f.querySelector('[data-tn]');if(bt.disabled)return;bt.disabled=true;
    api('tip/create',{body:{cat:f.cat.value,title:f.title.value,city:f.city.value,why:f.why.value,price:f.price.value,until:f.until.value,link:f.link.value,credit:f.credit.checked,website:f.website.value}}).then(function(x){bt.disabled=false;if(x.ok){f.reset();n.className='note ok';n.textContent='Спасибо. Редакция проверит находку перед публикацией.'}else{n.className='note err';n.textContent=x.error||'Не отправилось'}})}})}
 var mfx=document.getElementById('mf');if(mfx)mfx.addEventListener('click',function(e){var bt=e.target.closest('button');if(!bt)return;var f=bt.getAttribute('data-f');document.querySelectorAll('.tip').forEach(function(t){t.style.display=(!f||t.getAttribute('data-t')===f)?'':'none'})});
-window.OJ.state=function(){return ME};window.OJ.medal=medal;window.OJ.nOf=function(a){return nOf(a)};window.OJ.LV=LV;window.OJ.IDX=IDX;
+window.OJ.state=function(){return ME};window.OJ.medal=medal;window.OJ.nOf=function(a){return nOf(a)};window.OJ.doneOf=doneOf;window.OJ.SECS=SECS;window.OJ.LVS=LVS;window.OJ.IDX=IDX;
 })();
 </script></body></html>

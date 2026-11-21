@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { apply, levels, artTransition, artLive, recTransition, msgTransition, oppState } from './_core.mjs';
-const ACH = { lifestyle: [{ id: 'g1', current: 1, versions: [{ v: 1, items: ['a', 'b', 'c'] }] }] };
-const U = () => ({ id: 'u1', ops: {}, pins: {} });
+const ACH = { sections: [{ id: 'g1', name: 'Вкус', items: ['a', 'b', 'c', 'd', 'e'] }, { id: 'g2', name: 'Спорт', items: ['x'] }] };
+const U = () => ({ id: 'u1', ops: {} });
 const now = '2026-11-21T10:00:00Z';
 const run = (u, type, id, av = true) => apply(u, { type, id, now }, ACH, av);
 
@@ -29,11 +29,14 @@ test('изучение не дает знак и независимо от со�
 });
 test('недоступная возможность не принимается', () => { const r = run(U(), 'complete', 'a', false); assert.equal(r.error, 'unavailable'); });
 test('заблокированный аккаунт не меняет состояние', () => { const u = { ...U(), blocked: true }; assert.equal(run(u, 'complete', 'a').error, 'blocked'); });
-test('изменение состава: закрепленная версия сохраняет черный знак', () => {
-  let u = U(); for (const i of ['a', 'b', 'c']) u = run(u, 'complete', i).user;
-  const ACH2 = { lifestyle: [{ id: 'g1', current: 2, versions: [{ v: 1, items: ['a', 'b', 'c'] }, { v: 2, items: ['a', 'b', 'd'] }] }] };
-  assert.equal(levels(u, ACH2).g1, 3);
-  const fresh = apply(U(), { type: 'complete', id: 'd', now }, ACH2, true); assert.equal(fresh.levels.g1, 1); assert.equal(fresh.user.pins.g1, 2);
+test('засчитываются любые три разных открытия раздела, четвертое не повышает уровень', () => {
+  let u = U(); for (const i of ['e', 'b', 'd']) u = run(u, 'complete', i).user; assert.equal(levels(u, ACH).g1, 3);
+  const r = run(u, 'complete', 'a'); assert.equal(r.levels.g1, 3); assert.deepEqual(r.changed, []);
+  const r2 = run(r.user, 'undo', 'e'); assert.equal(r2.levels.g1, 3); assert.equal(levels(r2.user, ACH).g2, 0);
+});
+test('раздел с одной возможностью дает максимум один сегмент', () => { const r = run(U(), 'complete', 'x'); assert.equal(r.levels.g2, 1); });
+test('старые подтверждения переносятся без потерь: уровень считается из сохраненных открытий', () => {
+  const old = { id: 'u', ops: { a: { completed_at: now }, c: { completed_at: now } }, pins: { 'night-keys': 1 } }; assert.equal(levels(old, ACH).g1, 2);
 });
 test('архивирование статьи не отнимает заработанное', () => {
   let u = U(); for (const i of ['a', 'b']) u = run(u, 'complete', i).user; assert.equal(levels(u, ACH).g1, 2);

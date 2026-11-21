@@ -13,7 +13,7 @@ async function call(r, { body, q = '', cookie = '', method } = {}) {
 }
 const ck = (h) => [].concat(h['set-cookie'] || []).map(c => c.split(';')[0]).join('; ');
 const ok = (name) => console.log('✓', name);
-const A = ['ninnaji-temple-night', 'nhm-spirit-collection-archie', 'gorham-cave-finlayson']; // знак «Ночные ключи»
+const A = ["grinzane-truffle-auction", "best-of-panama-geisha", "islay-own-cask"]; // три открытия раздела «Вкус»
 // гость
 let r = await call('progress', { body: { id: A[0], type: 'explore' } }); assert.equal(r.s, 401); ok('гость читает открыто, но не отмечает прогресс без входа (401)');
 r = await call('me'); assert.equal(r.j.user, null); ok('гость без аккаунта: профиль пустой');
@@ -39,20 +39,20 @@ r = await call('invite/accept', { body: { t: invTok } }); assert.equal(r.s, 410)
 r = await call('invite/list', { cookie: CF }); assert.equal(r.j.invites[0].status, 'accepted'); assert.equal(r.j.left, 2); ok('принятое приглашение расходует слот окончательно');
 r = await call('me', { cookie: C }); assert.ok(r.j.user); assert.ok(!r.j.user.ops[A[0]]); ok('приглашенный вошел, состояние not_explored');
 // изучено не дает знак
-r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: C }); assert.equal(r.j.state, 'explored'); assert.equal(r.j.levels['night-keys'], 0); ok('«Я здесь был» без награды');
+r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: C }); assert.equal(r.j.state, 'explored'); assert.equal(r.j.levels['taste'], 0); ok('«Я здесь был» без награды');
 // 0→1→2→3: знаки вручает редакция
 r = await call('progress', { body: { id: A[0], type: 'complete' }, cookie: C }); assert.equal(r.s, 400); ok('читатель не может сам получить знак');
-r = await call('admin/award', { body: { email: 'reader@example.com', id: A[0], action: 'complete' }, cookie: CA }); assert.deepEqual(r.j.changed, [{ id: 'night-keys', from: 0, to: 1 }]); assert.equal((await call('me', { cookie: C })).j.levels['night-keys'], 1); ok('редакция вручила первое открытие: серебро');
+r = await call('admin/award', { body: { email: 'reader@example.com', id: A[0], action: 'complete' }, cookie: CA }); assert.deepEqual(r.j.changed, [{ id: 'taste', from: 0, to: 1 }]); assert.equal((await call('me', { cookie: C })).j.levels['taste'], 1); ok('редакция вручила первое открытие: серебро');
 r = await call('admin/award', { body: { email: 'reader@example.com', id: A[0], action: 'complete' }, cookie: CA }); assert.deepEqual(r.j.changed, []); ok('повторное вручение не меняет прогресс');
-await Promise.all([await call('admin/award', { body: { email: 'reader@example.com', id: A[1], action: 'complete' }, cookie: CA }), await call('admin/award', { body: { email: 'reader@example.com', id: A[1], action: 'complete' }, cookie: CA })]); assert.equal((await call('me', { cookie: C })).j.levels['night-keys'], 2); ok('одновременные вручения засчитаны один раз: золото');
-r = await call('admin/award', { body: { email: 'reader@example.com', id: A[2], action: 'complete' }, cookie: CA }); assert.equal((await call('me', { cookie: C })).j.levels['night-keys'], 3); ok('третье открытие: черный знак');
-r = await call('admin/award', { body: { email: 'reader@example.com', id: A[2], action: 'undo' }, cookie: CA }); assert.equal((await call('me', { cookie: C })).j.levels['night-keys'], 2); assert.equal(r.j.state, 'not_explored'); ok('снятие: 3→2, статус возвращен');
+await Promise.all([await call('admin/award', { body: { email: 'reader@example.com', id: A[1], action: 'complete' }, cookie: CA }), await call('admin/award', { body: { email: 'reader@example.com', id: A[1], action: 'complete' }, cookie: CA })]); assert.equal((await call('me', { cookie: C })).j.levels['taste'], 2); ok('одновременные вручения засчитаны один раз: золото');
+r = await call('admin/award', { body: { email: 'reader@example.com', id: A[2], action: 'complete' }, cookie: CA }); assert.equal((await call('me', { cookie: C })).j.levels['taste'], 3); ok('третье открытие: черный знак');
+r = await call('admin/award', { body: { email: 'reader@example.com', id: A[2], action: 'undo' }, cookie: CA }); assert.equal((await call('me', { cookie: C })).j.levels['taste'], 2); assert.equal(r.j.state, 'not_explored'); ok('снятие: 3→2, статус возвращен');
 r = await call('admin/award', { body: { email: 'reader@example.com', id: A[0], action: 'undo' }, cookie: CA }); assert.equal(r.j.state, 'explored'); ok('снятие у отмеченного «был здесь»: completed→explored');
 r = await call('admin/award', { body: { email: 'reader@example.com', id: A[0], action: 'complete' }, cookie: CA }); r = await call('progress', { body: { id: A[0], type: 'unexplore' }, cookie: C }); assert.equal(r.j.state, 'completed'); ok('«был здесь» не снимает врученное');
 // повторный вход сохраняет прогресс
 r = await call('auth/request', { body: { email: 'reader@example.com', ret: '/journal/' } }); const t2 = new URL(r.j.test_link).searchParams.get('t');
 r = await call('auth/verify', { q: '&t=' + encodeURIComponent(t2) }); const C2 = ck(r.h);
-r = await call('me', { cookie: C2 }); assert.equal(r.j.levels['night-keys'], 2); ok('прогресс сохраняется после повторного входа');
+r = await call('me', { cookie: C2 }); assert.equal(r.j.levels['taste'], 2); ok('прогресс сохраняется после повторного входа');
 // истекшая сессия
 r = await call('progress', { body: { id: A[0], type: 'explore' }, cookie: 'oj=broken.token' }); assert.equal(r.s, 401); ok('истекшая или поддельная сессия: повторный вход');
 // клиент не может назначить уровень
@@ -66,7 +66,7 @@ r = await call('progress', { body: { id: A[1], type: 'explore' }, cookie: C2 });
 r = await call('status'); assert.ok(r.j.hidden.includes(A[1])); ok('снятая статья скрывается из каталога');
 r = await call('admin/status', { body: { id: A[1], status: 'published' }, cookie: CA }); assert.equal(r.s, 409); ok('достоверность 3 блокирует публикацию');
 r = await call('admin/status', { body: { id: A[1], status: 'archived' }, cookie: CA }); assert.equal(r.s, 409); ok('переход draft→archived запрещен');
-r = await call('me', { cookie: C2 }); assert.equal(r.j.levels['night-keys'], 2); ok('снятие статьи не отнимает заработанное');
+r = await call('me', { cookie: C2 }); assert.equal(r.j.levels['taste'], 2); ok('снятие статьи не отнимает заработанное');
 r = await call('admin/award', { body: { email: 'reader@example.com', id: A[1] }, cookie: CA }); assert.equal(r.s, 409); ok('снятое с публикации открытие не вручается');
 // находка читателя → Contributor один раз
 r = await call('discovery', { body: { title: 'Мастер нэцкэ в Киото', desc: 'Описание' }, cookie: C2 }); assert.equal(r.s, 200);

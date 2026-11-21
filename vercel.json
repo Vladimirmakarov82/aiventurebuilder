@@ -106,6 +106,11 @@
       "source": "/journal/privacy/",
       "destination": "/journal/",
       "permanent": false
+    },
+    {
+      "source": "/journal/badge/:p*",
+      "destination": "/journal/profile/",
+      "permanent": false
     }
   ],
   "ignoreCommand": "exit 1",

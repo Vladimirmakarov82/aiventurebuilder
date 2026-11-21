@@ -10,20 +10,18 @@ export function recTransition(from, to) { return (REC_T[from] || []).includes(to
 const MSG_T = { draft: ['ready', 'cancelled'], ready: ['scheduled', 'draft', 'sending', 'cancelled'], scheduled: ['sending', 'ready', 'cancelled'], sending: ['sent', 'failed'], failed: ['sending', 'cancelled'], sent: [], cancelled: ['draft'] };
 export function msgTransition(from, to) { return (MSG_T[from] || []).includes(to); }
 
-// состав знака: версия, закрепленная за пользователем с первого прохождения
-export function achItems(a, pins) { const v = (pins && pins[a.id]) || a.current; const ver = a.versions.find(x => x.v === v) || a.versions.find(x => x.v === a.current); return ver.items; }
+// один раздел = один знак: любые три разных подтвержденных открытия раздела; больше трех не считается
 export function levels(user, ACH) {
-  const ops = (user && user.ops) || {}, pins = (user && user.pins) || {}, out = {};
-  for (const list of Object.values(ACH)) for (const a of list) out[a.id] = achItems(a, pins).filter(i => ops[i] && ops[i].completed_at).length;
+  const ops = (user && user.ops) || {}, out = {};
+  for (const sec of ACH.sections) out[sec.id] = Math.min(3, sec.items.filter(i => ops[i] && ops[i].completed_at).length);
   return out;
 }
 export function oppState(user, id) { const o = (user.ops || {})[id] || {}; return o.completed_at ? 'completed' : o.explored_at ? 'explored' : 'not_explored'; }
-function containing(ACH, id) { const r = []; for (const list of Object.values(ACH)) for (const a of list) if (a.versions.find(v => v.v === a.current).items.includes(id)) r.push(a); return r; }
 function audit(u, ev) { u.history = (u.history || []).concat([{ ...ev, at: new Date().toISOString() }]).slice(-300); }
 
 // события: explore | complete | undo; результат детерминирован и идемпотентен
 export function apply(user, ev, ACH, available) {
-  const u = JSON.parse(JSON.stringify(user)); u.ops = u.ops || {}; u.pins = u.pins || {};
+  const u = JSON.parse(JSON.stringify(user)); u.ops = u.ops || {};
   if (u.blocked) return { user, error: 'blocked' };
   const before = levels(u, ACH); const o = u.ops[ev.id] || {};
   if (ev.type === 'explore') { if (!o.explored_at) { o.explored_at = ev.now; u.ops[ev.id] = o; audit(u, { t: 'explore', id: ev.id }); } }
@@ -31,7 +29,6 @@ export function apply(user, ev, ACH, available) {
     if (!available) return { user, error: 'unavailable' };
     if (!o.completed_at) {
       o.completed_at = ev.now; u.ops[ev.id] = o;
-      for (const a of containing(ACH, ev.id)) if (!u.pins[a.id]) u.pins[a.id] = a.current;
       audit(u, { t: 'complete', id: ev.id });
     }
   } else if (ev.type === 'unexplore') {
@@ -44,5 +41,3 @@ export function apply(user, ev, ACH, available) {
   for (const c of changed) audit(u, { t: 'level', id: c.id, from: c.from, to: c.to });
   return { user: u, levels: after, changed, state: oppState(u, ev.id) };
 }
-// сколько пользователей затронет новая версия состава: закрепили старую и еще не завершили
-export function affectedByVersionChange(users, a) { return users.filter(u => u.pins && u.pins[a.id] && u.pins[a.id] !== a.current + 1).length; }

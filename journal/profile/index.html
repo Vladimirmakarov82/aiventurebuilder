@@ -213,6 +213,38 @@ button{color:inherit}
 .sp-i.on img{box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px #b5862a;filter:none}
 .sp-all{display:inline-block;margin-top:20px;font-size:15px;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
 @media (max-width:520px){.g13{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 4px}.g13-b{min-width:0;padding:8px 2px 12px}.g13-b b{font-size:15px;overflow-wrap:anywhere;hyphens:auto}.g13-b small{font-size:9px;letter-spacing:.06em}.g13-b .coin{--cs:86px!important}}
+body.lgb .mast{background:transparent!important;box-shadow:none!important;color:#fff!important}
+body.lgb .pf{background:#0c0c0d;padding:0;min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.lg-wall{position:absolute;inset:-10% -5%;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;transform:rotate(-8deg) scale(1.15);opacity:.55}
+.lg-wall:after{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(12,12,13,.25) 0%,rgba(12,12,13,.55) 45%,#0c0c0d 82%)}
+.lg-c{display:flex;flex-direction:column;gap:10px;animation:lgup 70s linear infinite}
+.lg-c:nth-child(2n){animation-direction:reverse;animation-duration:85s}
+.lg-c img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px}
+@keyframes lgup{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media (prefers-reduced-motion:reduce){.lg-c{animation:none}}
+.lg-card{position:relative;z-index:2;width:min(460px,100%);padding:28px 24px calc(env(safe-area-inset-bottom) + 40px);color:#f4f1ec;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
+@media (min-width:700px){body.lgb .pf{align-items:center}.lg-card{background:rgba(20,20,22,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:40px 36px}}
+.lg-card .coin{--cs:76px;box-shadow:0 14px 40px -12px rgba(0,0,0,.8);animation:cup 1.6s cubic-bezier(.16,1,.3,1)}
+.lg-card .coin .cl path{stroke:#0c0c0d}
+.lg-card h1{font-family:var(--s);font-weight:500;font-size:clamp(40px,10vw,56px);line-height:1;letter-spacing:-.02em;margin:10px 0 0;color:#fff}
+.lg-sub{margin:0 0 10px;font-size:16px;line-height:1.45;color:rgba(244,241,236,.7)}
+.lg-f{display:flex;align-items:center;width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 6px 6px 22px;transition:border-color .3s,background .3s}
+.lg-f:focus-within{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.12)}
+.lg-f input[type=email]{flex:1;min-width:0;background:none;border:0!important;outline:none;color:#fff;font:inherit;font-size:17px;padding:12px 0!important}
+.lg-f input::placeholder{color:rgba(244,241,236,.5)}
+.lg-f button{flex:none;width:50px;height:50px;border-radius:50%;border:0;background:#f4f1ec;cursor:pointer;display:grid;place-items:center;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.lg-f button svg{width:22px;height:22px;fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lg-f button:active{transform:scale(.94)}
+.lg-f.busy button{animation:lgp 1s ease-in-out infinite}
+@keyframes lgp{50%{transform:scale(.9);opacity:.7}}
+.lg-n{margin:4px 0 0;font-size:13px;line-height:1.45;color:rgba(244,241,236,.5)}
+.lg-m{width:100%}
+.lg-e{color:#ff9b85;margin:4px 0 0;font-size:14px}
+.lg-ok{display:flex;flex-direction:column;align-items:center;gap:14px;animation:cup 1s cubic-bezier(.16,1,.3,1)}
+.lg-ok svg{width:46px;height:46px;fill:none;stroke:#f4f1ec;stroke-width:1.4;stroke-linejoin:round}
+.lg-ok p{margin:0;font-size:16px;line-height:1.5;color:rgba(244,241,236,.85)}
+.lg-ok .btn{background:#f4f1ec;color:#111;width:100%}
+.lg-l{background:none;border:0;color:rgba(244,241,236,.6);font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .inv-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .inv-top b{font-family:var(--s);font-weight:600;font-size:28px}
 .inv-form{display:flex;flex-direction:column;gap:18px;max-width:440px;margin-top:22px}
@@ -230,10 +262,21 @@ button{color:inherit}
 <script>
 window.OJ_PAGE=function(ME,j){var p=document.getElementById('pf'),E=OJ.esc;
  if(!ME){
-  p.innerHTML='<h1>Orbiq Journal</h1><p style="color:var(--mute);margin:-8px 0 28px;font-size:17px">Вход нужен только для личного профиля: открытия, знаки и приглашения</p><form class="pf-in pf-row" id="lg"><input type="email" name="email" required autocomplete="email" placeholder="Ваш email" aria-label="Ваш email"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn go" type="submit">Продолжить</button><p class="msg" id="lgm"></p></form>';
-  var f=document.getElementById('lg');f.onsubmit=function(e){e.preventDefault();var b=f.querySelector('button'),m=document.getElementById('lgm');if(b.disabled)return;b.disabled=true;m.textContent='';
-   OJ.api('auth/request',{body:{email:f.email.value,website:f.website.value,ret:'/journal/profile/'}}).then(function(r){b.disabled=false;
-    if(r.ok){m.innerHTML='Отправили ссылку для входа на почту'+(r.test_link?'<br><a href="'+E(r.test_link)+'" style="text-decoration:underline">Предпросмотр: открыть ссылку</a>':'')}else m.textContent=r.error||'Попробуйте еще раз'})};return}
+  document.body.classList.add('lgb');
+  var th=Object.keys(OJ.IDX).map(function(k){return OJ.IDX[k].th}).filter(Boolean);for(var i=th.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=th[i];th[i]=th[j];th[j]=t}
+  var col=function(o){var a=th.slice(o,o+9);return '<div class="lg-c">'+a.concat(a).map(function(u){return '<img src="'+u+'" alt="" loading="lazy">'}).join('')+'</div>'};
+  var sec=OJ.SECS[Math.floor(Math.random()*OJ.SECS.length)],coin='<span class="coin lv3" style="--cs:76px"><span class="cw">'+sec.items.slice(0,3).map(function(i,k){return '<img class="s'+k+' on" src="'+(OJ.IDX[i]||{}).th+'" alt="">'}).join('')+'</span><svg class="cl" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50V0M50 50L93.3 75M50 50L6.7 75"/></svg></span>';
+  p.innerHTML='<div class="lg-wall" aria-hidden="true">'+col(0)+col(9)+col(18)+col(27)+'</div><div class="lg-card">'+coin+
+   '<h1>Личный кабинет</h1><p class="lg-sub">Открытия, знаки и приглашения в одном профиле</p>'+
+   '<form id="lg" class="lg-f"><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Email" aria-label="Email"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" aria-label="Войти"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>'+
+   '<div id="lgm" class="lg-m"></div><p class="lg-n">Пароль не нужен: ссылка для входа придет на почту и будет работать год</p></div>';
+  var f=document.getElementById('lg');f.onsubmit=function(e){e.preventDefault();var b=f.querySelector('button'),m=document.getElementById('lgm');if(b.disabled)return;b.disabled=true;f.classList.add('busy');m.textContent='';
+   OJ.api('auth/request',{body:{email:f.email.value,website:f.website.value,ret:'/journal/profile/'}}).then(function(r){b.disabled=false;f.classList.remove('busy');
+    if(r.ok){var em=f.email.value,dom=(em.split('@')[1]||'').toLowerCase(),box=dom==='gmail.com'?'https://mail.google.com/mail/u/0/#search/from%3Ajournal%40orbiqgroup.com':(/yandex|ya\.ru/.test(dom)?'https://mail.yandex.ru':(/icloud|me\.com/.test(dom)?'https://www.icloud.com/mail':(/mail\.ru|bk\.ru|inbox\.ru|list\.ru/.test(dom)?'https://e.mail.ru/inbox':'')));
+     f.style.display='none';document.querySelector('.lg-n').style.display='none';
+     m.innerHTML='<div class="lg-ok"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 7 9-7"/></svg><p>Письмо отправлено на <b>'+E(em)+'</b>. Откройте его и нажмите «Войти в профиль».</p>'+(box?'<a class="btn" href="'+box+'" target="_blank" rel="noopener">Открыть почту</a>':'')+(r.test_link?'<a class="lg-l" href="'+E(r.test_link)+'">Предпросмотр: войти</a>':'')+'<button type="button" class="lg-l" id="lgr">Другой email</button></div>';
+     document.getElementById('lgr').onclick=function(){location.reload()}}
+    else{m.innerHTML='<p class="lg-e">'+E(r.error||'Не получилось, попробуйте еще раз')+'</p>'}})};return}
  var S=OJ.SECS,LVS=OJ.LVS,IX=OJ.IDX,cnt=[0,0,0,0],done=0;
  var rows=S.map(function(a){var n=OJ.nOf(a);cnt[n]++;done+=n;return {a:a,n:n}});
  var ach='<div class="col-top"><div class="col-n"><b id="cnum">'+done+'</b><span>открытий из '+(S.length*3)+'</span></div><div class="col-lv"><span><i class="l1"></i>Серебро <b>'+cnt[1]+'</b></span><span><i class="l2"></i>Золото <b>'+cnt[2]+'</b></span><span><i class="l3"></i>Черный <b>'+cnt[3]+'</b></span></div></div>'+

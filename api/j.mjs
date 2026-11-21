@@ -99,7 +99,7 @@ async function mail(to, subject, html) {
   return { ok: r.ok, reason: r.ok ? '' : ('resend_' + r.status) };
 }
 function loginMail(link) {
-  return `<div style="font-family:Georgia,serif;max-width:520px;margin:auto;padding:32px;color:#111"><p style="letter-spacing:.3em;font-size:13px">ORBIQ</p><h1 style="font-weight:500">Вход в Orbiq Journal</h1><p>Ссылка действует 30 минут и открывает статью, с которой начался вход.</p><p><a href="${esc(link)}" style="display:inline-block;background:#111;color:#fff;padding:14px 22px;text-decoration:none;border-radius:999px">Открыть журнал</a></p><p style="color:#777;font-size:13px">Если письмо пришло по ошибке, его можно удалить.</p></div>`;
+  return `<div style="font-family:Georgia,serif;max-width:520px;margin:auto;padding:32px;color:#111"><p style="letter-spacing:.3em;font-size:13px">ORBIQ</p><h1 style="font-weight:500">Вход в Orbiq Journal</h1><p>Ссылку можно сохранить: она открывает профиль на любом устройстве в течение года.</p><p><a href="${esc(link)}" style="display:inline-block;background:#111;color:#fff;padding:14px 22px;text-decoration:none;border-radius:999px">Войти в профиль</a></p><p style="color:#777;font-size:13px">Если письмо пришло по ошибке, его можно удалить.</p></div>`;
 }
 
 // ---------- админ ----------
@@ -137,13 +137,13 @@ R['auth/request'] = async (req, res) => {
   if (!u) { // действующее приглашение на этот адрес: ссылка подтверждения и активации
     const ix = await sget(`invidx/${sha(email).slice(0, 32)}.json`); const inv = ix && await sget(`inv/${ix.id}.json`);
     if (inv && inv.status === 'created' && Date.parse(inv.expires) > Date.now() && inv.email === email) {
-      const vt = sign({ e: email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + 30 * 60000 });
+      const vt = sign({ e: email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + LINK_TTL });
       return deliverLogin(req, res, email, vt, { generic: true });
     }
-    const nt = sign({ e: email, r: ret, nw: 1, ref: String(b.ref || '').slice(0, 40), j: rid(12), exp: Date.now() + 30 * 60000 }); // открытая регистрация
+    const nt = sign({ e: email, r: ret, nw: 1, ref: String(b.ref || '').slice(0, 40), j: rid(12), exp: Date.now() + LINK_TTL }); // открытая регистрация
     return deliverLogin(req, res, email, nt, { generic: true });
   }
-  const tok = sign({ e: email, r: ret, j: rid(12), exp: Date.now() + 30 * 60000 });
+  const tok = sign({ e: email, r: ret, j: rid(12), exp: Date.now() + LINK_TTL });
   return deliverLogin(req, res, email, tok, { generic: true });
 };
 async function deliverLogin(req, res, email, tok, extra = {}) {
@@ -157,9 +157,6 @@ async function deliverLogin(req, res, email, tok, extra = {}) {
 R['auth/verify'] = async (req, res) => {
   const q = new URL(req.url, 'http://x').searchParams; const t = unsign(q.get('t') || '');
   if (!t) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=expired'); return res.end(); }
-  const used = `used/${sha(t.j).slice(0, 24)}.json`;
-  if (await sget(used)) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=used'); return res.end(); }
-  await sput(used, { at: Date.now() });
   const uid = uidOf(t.e); let u = await loadUser(uid);
   if (u && u.blocked) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=suspended'); return res.end(); }
   let target = t.r || '/journal/';
@@ -192,6 +189,7 @@ const INV_DAYS = 30;
 const invHash = (tok) => sha('inv|' + tok).slice(0, 40);
 function invView(inv) { const st = (inv.status === 'created' && Date.parse(inv.expires) < Date.now()) ? 'expired' : inv.status; return { id: inv.id, first: inv.first, last: inv.last, status: st, created: inv.created, expires: inv.expires, target: inv.targetTitle || '' }; }
 async function myInvites(u) { const out = []; for (const id of (u.invites || [])) { const inv = await sget(`inv/${id}.json`); if (inv) out.push(inv); } return out; }
+const LINK_TTL = 365 * 864e5; // ссылка для входа работает год и много раз: вход всегда в одно нажатие
 const INVITE_UNLIMITED = ENV.INVITE_LIMITED !== '1'; // решение Владимира 21.11.2026: приглашения без лимита на старте
 function slotsLeft(u, invs) { if (INVITE_UNLIMITED) return 999; const used = invs.map(invView).filter(v => v.status === 'created' || v.status === 'accepted').length; return Math.max(0, (u.inviteLimit ?? 3) - used); }
 function inviteLink(req, tok) { const host = req.headers['x-forwarded-host'] || req.headers.host; return `https://${host}/journal/invite/?t=${tok}`; }
@@ -250,7 +248,7 @@ R['invite/accept'] = async (req, res) => { // письмо со ссылкой �
   if (!(await rateLimit('inva:' + ip, 10, 60))) return send(res, 429, { error: 'Слишком много попыток' });
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(tok)) return send(res, 404, { error: 'invalid' });
   const inv = await sget(`inv/${invHash(tok)}.json`); if (!inv || invView(inv).status !== 'created') return send(res, 410, { error: 'Приглашение недействительно' });
-  const vt = sign({ e: inv.email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + 30 * 60000 });
+  const vt = sign({ e: inv.email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + LINK_TTL });
   const masked = inv.email.replace(/^(.).*(@.*)$/, '$1•••$2');
   return deliverLogin(req, res, inv.email, vt, { sentTo: masked });
 };
@@ -394,7 +392,7 @@ R['admin/grant'] = async (req, res) => { // административное п�
   const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return send(res, 400, { error: 'Проверьте адрес' });
   const uid = uidOf(email); const out = await update(`users/${uid}.json`, (u) => u ? { noop: 1 } : { doc: { id: uid, email, first: String(b.first || '').slice(0, 60), last: String(b.last || '').slice(0, 60), created: new Date().toISOString(), grantedBy: 'admin', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 } });
   await auditLog('editor', 'grant', { uid }); await logEvent('member_granted');
-  if (b.sendLogin) { const tok = sign({ e: email, r: '/journal/', j: rid(12), exp: Date.now() + 30 * 60000 }); return deliverLogin(req, res, email, tok, { existed: !!out.noop }); }
+  if (b.sendLogin) { const tok = sign({ e: email, r: '/journal/', j: rid(12), exp: Date.now() + LINK_TTL }); return deliverLogin(req, res, email, tok, { existed: !!out.noop }); }
   send(res, 200, { ok: true, existed: !!out.noop });
 };
 R['admin/limit'] = async (req, res) => {

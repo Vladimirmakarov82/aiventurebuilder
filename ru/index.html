@@ -818,7 +818,6 @@ button{font:inherit}
 
   <footer class="foot">
     <a class="brand" href="#top"><svg viewBox="0 0 120 120"><use href="#mark"/></svg>Orbiq</a>
-    <button class="tg" id="tg" type="button"><span class="h">@vladimir82makarov</span><span class="c" id="tgc">Скопировать</span></button>
     <a class="mono" href="mailto:private@orbiqgroup.com">private@orbiqgroup.com</a>
     <a class="mono" href="/credits/" style="opacity:.5">Photo credits</a>
     <a class="mono plink" href="/journal/">Журнал</a> <a class="mono plink" href="/ru/partners/">Партнерам</a>
@@ -1003,7 +1002,7 @@ button{font:inherit}
   mb.addEventListener('click',function(){setMotion(still)});if(reduce)setMotion(false);
 
   var tg=$('tg'),tgc=$('tgc');
-  tg.addEventListener('click',function(){var ok=function(){tgc.textContent='Скопировано';setTimeout(function(){tgc.textContent='Скопировать'},1600)};
+  if(tg)tg.addEventListener('click',function(){var ok=function(){tgc.textContent='Скопировано';setTimeout(function(){tgc.textContent='Скопировать'},1600)};
     var sel=function(){var r=document.createRange();r.selectNodeContents(tg.querySelector('.h'));var s=getSelection();s.removeAllRanges();s.addRange(r);tgc.textContent='Выделено'};
     try{navigator.clipboard.writeText('@vladimir82makarov').then(ok,sel)}catch(e){sel()}});
 })();

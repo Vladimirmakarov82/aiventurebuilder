@@ -175,7 +175,7 @@
   mb.addEventListener('click',function(){setMotion(still)});if(reduce)setMotion(false);
 
   var tg=$('tg'),tgc=$('tgc');
-  tg.addEventListener('click',function(){var ok=function(){tgc.textContent='Copied';setTimeout(function(){tgc.textContent='Copy'},1600)};
+  if(tg)tg.addEventListener('click',function(){var ok=function(){tgc.textContent='Copied';setTimeout(function(){tgc.textContent='Copy'},1600)};
     var sel=function(){var r=document.createRange();r.selectNodeContents(tg.querySelector('.h'));var s=getSelection();s.removeAllRanges();s.addRange(r);tgc.textContent='Selected'};
     try{navigator.clipboard.writeText('@vladimir82makarov').then(ok,sel)}catch(e){sel()}});
 })();

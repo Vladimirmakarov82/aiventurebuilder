@@ -156,9 +156,9 @@ async function deliverLogin(req, res, email, tok, extra = {}) {
 
 R['auth/verify'] = async (req, res) => {
   const q = new URL(req.url, 'http://x').searchParams; const t = unsign(q.get('t') || '');
-  if (!t) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=expired'); return res.end(); }
+  if (!t) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=expired'); return res.end(); }
   const used = `used/${sha(t.j).slice(0, 24)}.json`;
-  if (await sget(used)) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=used'); return res.end(); }
+  if (await sget(used)) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=used'); return res.end(); }
   await sput(used, { at: Date.now() });
   const uid = uidOf(t.e); let u = await loadUser(uid);
   if (u && u.blocked) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=suspended'); return res.end(); }
@@ -181,7 +181,7 @@ R['auth/verify'] = async (req, res) => {
     }
   }
   if (!u && t.nw) { u = { id: uid, email: t.e, first: '', last: '', created: new Date().toISOString(), ref: t.ref || '', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 }; await update(`users/${uid}.json`, (cur) => cur ? { noop: 1 } : { doc: u }); await logEvent('signup', '', 'open', t.ref || ''); }
-  if (!u) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=expired'); return res.end(); }
+  if (!u) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=expired'); return res.end(); }
   const seen = new Date().toISOString(); await update(`users/${uid}.json`, (cur) => ({ doc: { ...(cur || u), seen } }));
   setCookie(res, 'oj', sign({ u: uid, e: t.e, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
   res.statusCode = 302; res.setHeader('Location', target); res.end();

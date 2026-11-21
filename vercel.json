@@ -167,7 +167,7 @@
   },
   "crons": [
     {
-      "path": "/api/j?r=cron",
+      "path": "/api/j/?r=cron",
       "schedule": "10 8 * * *"
     }
   ]

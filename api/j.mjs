@@ -144,7 +144,7 @@ R['auth/request'] = async (req, res) => {
 };
 async function deliverLogin(req, res, email, tok, extra = {}) {
   const host = req.headers['x-forwarded-host'] || req.headers.host;
-  const link = `https://${host}/api/j?r=auth/verify&t=${encodeURIComponent(tok)}`;
+  const link = `https://${host}/api/j/?r=auth/verify&t=${encodeURIComponent(tok)}`;
   if (ENV.RESEND_API_KEY) { const m = await mail(email, 'Вход в Orbiq Journal', loginMail(link)); if (!m.ok) return send(res, 502, { error: 'Письмо не отправлено, попробуйте позже' }); return send(res, 200, { ok: true, ...extra }); }
   if (ENV.EMAIL_MODE === 'test') return send(res, 200, { ok: true, test_link: link, ...extra });
   return send(res, 503, { error: 'Отправка писем не подключена' });
@@ -395,7 +395,7 @@ function letterHtml(L, uid) {
   const c = content(); const host = SITE;
   const card = (id, big) => { const a = c.articles[id]; if (!a) return ''; const url = `${host}/journal/a/${id}/?utm=letter`;
     return `<tr><td style="padding:0 0 28px"><a href="${url}"><img src="${host}${a.img}" width="560" style="width:100%;max-width:560px;display:block;border:0"></a><p style="font:12px monospace;letter-spacing:.15em;text-transform:uppercase;color:#888;margin:14px 0 6px">${esc(a.geo)}</p><h2 style="font:600 ${big ? 26 : 21}px Georgia,serif;margin:0 0 8px"><a href="${url}" style="color:#111;text-decoration:none">${esc(a.title)}</a></h2><p style="font:16px/1.5 Georgia,serif;color:#333;margin:0">${esc(a.hook)}</p></td></tr>`; };
-  const unsub = uid ? `${host}/api/j?r=unsub&t=${encodeURIComponent(sign({ u: uid }))}` : '#';
+  const unsub = uid ? `${host}/api/j/?r=unsub&t=${encodeURIComponent(sign({ u: uid }))}` : '#';
   return `<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec"><tr><td align="center" style="padding:32px 16px"><table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;padding:32px"><tr><td style="padding-bottom:24px"><p style="font:600 15px Georgia,serif;letter-spacing:.35em">ORBIQ</p><p style="font:12px monospace;letter-spacing:.15em;color:#888">THE ORBIQ LETTER · ${esc(L.date || '')}</p>${L.intro ? `<p style="font:17px/1.55 Georgia,serif">${esc(L.intro)}</p>` : ''}</td></tr>${(L.main || []).map(i => card(i, true)).join('')}<tr><td style="padding:0 0 10px;font:12px monospace;letter-spacing:.15em;color:#888">РЕКОМЕНДАЦИЯ РЕДАКЦИИ</td></tr>${L.extra ? card(L.extra, false) : ''}<tr><td style="font:12px Georgia,serif;color:#999;padding-top:12px">Письмо можно переслать другу: ссылки открывают превью без регистрации. <a href="${unsub}" style="color:#999">Отписаться</a></td></tr></table></td></tr></table>`;
 }
 R['admin/letter'] = async (req, res) => {

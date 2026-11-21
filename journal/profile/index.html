@@ -140,6 +140,34 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 @media (prefers-reduced-motion:reduce){.coin,.coin .cw img{transition:none}.coin.up{animation:none}}
 /* шапка на светлых страницах не наезжает на текст */
 body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink);background:var(--bg);padding-bottom:16px;pointer-events:auto;box-shadow:0 1px 0 var(--line)}
+/* финал статьи */
+button{color:inherit}
+.fin{display:flex;flex-direction:column;gap:44px;margin-top:18px;padding-top:34px;border-top:1px solid var(--line)}
+.fin .cta{align-self:stretch;justify-content:space-between;padding:20px 26px;font-size:17px}
+.post{display:flex;flex-direction:column;gap:14px}
+.post-k{font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0}
+.post-c{display:block;padding:0;border:0;background:none;cursor:pointer;border-radius:18px;overflow:hidden;transform:rotate(-1.2deg);box-shadow:0 22px 40px -22px rgba(20,16,10,.55);transition:transform .7s cubic-bezier(.16,1,.3,1),box-shadow .7s cubic-bezier(.16,1,.3,1);aspect-ratio:1200/630;background:#ddd}
+.post-c img{display:block;width:100%;height:100%;object-fit:cover}
+@media (hover:hover){.post-c:hover{transform:rotate(0) translateY(-3px);box-shadow:0 30px 50px -24px rgba(20,16,10,.6)}}
+.post-c:active{transform:scale(.98)}
+.post-t{margin:2px 0 0;font-size:14px;color:var(--mute)}
+.sh{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.sh-b{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;padding:6px 0;cursor:pointer;font:inherit}
+.sh-b svg{width:54px;height:54px;padding:15px;border-radius:50%;background:#fff;border:1px solid var(--line);fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:background .3s,stroke .3s,transform .4s cubic-bezier(.16,1,.3,1)}
+.sh-b span{font-family:var(--m);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+@media (hover:hover){.sh-b:hover svg{background:var(--ink);stroke:var(--bg);transform:translateY(-2px)}}
+.sh-b:active svg{transform:scale(.94)}
+.post-n{min-height:18px;margin:0;font-size:14px;color:#2f7d4f}
+.ser{display:flex;gap:18px;align-items:center}
+.ser-c{background:none;border:0;padding:0;cursor:pointer;flex:none}
+.ser-k{font-family:var(--s);font-size:22px;line-height:1.1;margin:0 0 6px}
+.ser-t{font-size:14px;line-height:1.45;color:#555;margin:0 0 8px}
+.lnk{background:none;border:0;padding:0;font:inherit;font-size:14px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.been{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:none;border:0;padding:4px 0;font:inherit;font-size:15px;color:var(--mute);cursor:pointer;margin:0}
+.been i{width:18px;height:18px;border-radius:50%;border:1.5px solid #b4aea3;position:relative;transition:border-color .3s}
+.been.on{color:var(--ink)}.been.on i{border-color:var(--ink)}.been.on i:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
+[data-full]{display:flex;flex-direction:column;gap:22px}
+[data-full]:empty{display:none}
 .emb .m-rim{fill:none;stroke:#C9C3B8;stroke-width:1.2}.emb .m-face{fill:none;stroke:#C9C3B8;stroke-width:.8}.emb .m-line{stroke:#C9C3B8;stroke-width:.7}.emb .m-glyph{fill:none;stroke:#A9A398;stroke-width:1.1;stroke-linejoin:round}.emb .m-dot{fill:#A9A398}.emb.lv1 .m-face,.emb.lv1 .m-rim{fill:url(#oj-s);stroke:#8C8F93}.emb.lv1 .m-line{stroke:#6E7176}.emb.lv1 .m-glyph{stroke:#4C4F53;fill:rgba(255,255,255,.35)}.emb.lv1 .m-dot{fill:#4C4F53}.emb.lv2 .m-face,.emb.lv2 .m-rim{fill:url(#oj-g);stroke:#8A6B33}.emb.lv2 .m-line{stroke:#6B5227}.emb.lv2 .m-glyph{stroke:#4F3B17;fill:rgba(255,244,214,.3)}.emb.lv2 .m-dot{fill:#4F3B17}.emb.lv3 .m-face,.emb.lv3 .m-rim{fill:url(#oj-b);stroke:#0B0B0B}.emb.lv3 .m-line{stroke:#9C968B}.emb.lv3 .m-glyph{stroke:#D8D1C3;fill:none}.emb.lv3 .m-dot{fill:#D8D1C3}</style></head><body><div class="mast"><a class="logo" href="/journal/"><b>ORBIQ</b></a><span class="kick"><a class="acct" id="acct" href="/journal/profile/"></a></span></div><style>
 .pf{background:var(--bg);min-height:100svh;color:var(--ink);padding:calc(env(safe-area-inset-top) + 120px) var(--g) 90px}
 .pf h1{font-family:var(--s);font-weight:600;font-size:clamp(46px,7vw,96px);line-height:.95;letter-spacing:-.02em;margin:0 0 clamp(28px,5vh,48px)}
@@ -203,9 +231,9 @@ window.OJ_PAGE=function(ME,j){var p=document.getElementById('pf'),E=OJ.esc;
  var near=list.filter(function(x){return x.n>0&&x.n<3}).sort(function(p,q){return q.n-p.n}).slice(0,4);
  function nextOf(a){var o=OJ.state().ops||{},k=a.items.filter(function(i){return o[i]!=='completed'})[0];return k&&OJ.IDX[k]}
  var ach='<div class="col-top"><div class="col-n"><b id="cnum">'+got.length+'</b><span>знаков из '+list.length+'</span></div><div class="col-lv"><span><i class="l1"></i>Серебро <b>'+cnt[1]+'</b></span><span><i class="l2"></i>Золото <b>'+cnt[2]+'</b></span><span><i class="l3"></i>Черный <b>'+cnt[3]+'</b></span></div></div>'+
-  '<p class="col-rule">Каждый знак собирается из трех историй. Отметка «Я это сделал» открывает сектор медальона: один сектор дает серебро, два — золото, три — черный знак.</p>'+
+  '<p class="col-rule">Каждый знак собирается из трех историй. Сектор медальона вручает Orbiq, когда открытие организовано вместе с нами: один сектор дает серебро, два — золото, три — черный знак.</p>'+
   (near.length?'<div class="near">'+near.map(function(x){var t=nextOf(x.a);return '<a class="nr" href="'+(t?t.href:'#')+'">'+OJ.medal(x.a,x.n,96)+'<div><small>'+LVW[x.n]+' · '+x.n+'/3</small><h3>'+E(x.a.name)+'</h3><p>'+(t?'До '+(x.n===1?'золота':'черного знака')+' одна история: «'+E(t.title)+'»':'')+'</p></div></a>'}).join('')+'</div>'
-  :'<div class="nr-e"><p>Первый медальон начинается с любой истории. Внизу каждой истории есть отметка «Я это сделал».</p><a class="btn" href="/journal/">К историям</a></div>');
+  :'<div class="nr-e"><p>Первый медальон начинается с любой истории. Под каждой историей есть кнопка «Хочу такую историю»: Orbiq организует открытие и вручит сектор знака.</p><a class="btn" href="/journal/">К историям</a></div>');
  dirs.forEach(function(d){var L=list.filter(function(x){return x.d===d});if(!L.length)return;L.sort(function(p,q){return q.n-p.n});
   var g=L.filter(function(x){return x.n}).length,url='/journal/'+(d[0]?d[0]+'/':'')+'#ach';
   ach+='<div class="sec-h"><a href="'+url+'">'+E(d[1])+'</a><span>'+g+' / '+L.length+'</span></div><div class="strip">'+L.map(function(x){return '<a class="bd lv'+x.n+'" href="'+url+'">'+OJ.medal(x.a,x.n,88)+'<span>'+E(x.a.name)+'</span><em>'+(x.n?LVW[x.n]:x.n+'/3')+'</em></a>'}).join('')+'</div>'});
@@ -302,34 +330,32 @@ function levelMsg(a,c){var t=['','Первое открытие совершен
 function nextHtml(a,n){if(n>=1&&n<3){var rest=a.items.filter(function(i){return opState(i)!=='completed'});return '<p class="note">Впереди еще '+(rest.length===2?'две истории':'одна история')+'.</p><div class="dirs" style="margin:0">'+rest.map(cardMini).join('')+'</div>'}
  if(n===3){var pool=ACH.filter(function(x){return x.id!==a.id&&nOf(x)<3});if(pool.length){var x=pool[0];return '<p class="note">Близкий знак в этом разделе: «'+esc(x.name)+'».</p><div class="dirs" style="margin:0">'+cardMini(x.items[0])+'</div>'}}return ''}
 function fill(id,root){window.OJ_CUR=id;var box=root.querySelector('[data-full]');if(!box)return;var t=IDX[id]||{};
- root.querySelectorAll('[data-gift]').forEach(function(g){if(g._b)return;g._b=1;g.addEventListener('click',function(){gift({kind:'article',id:id,path:'/journal/a/'+id+'/',title:t.title||document.title})})});
  root.querySelectorAll('.cta').forEach(function(c){if(c._b)return;c._b=1;c.addEventListener('click',function(){ev('org_open',id)})});
  if(!box._ev){box._ev=1;ev('open',id)}
- if(!window.OJ_ME_READY){box.innerHTML='';return}
- if(ME&&ME.blocked){box.innerHTML='';return}
- var a=achOf(id),busy=false,msg='';
- if(!ME){ // гость: игровых форм нет, только компактный вход по желанию
-  box.innerHTML='<div class="done-row"><button class="chk" type="button" data-lg><i></i>Сохранить в достижения</button></div><div data-lgf hidden><p class="note" style="margin:4px 0 10px">Войдите по почте, чтобы отмечать открытия и собирать знаки</p>'+gateHtml()+'</div>';
-  box.querySelector('[data-lg]').onclick=function(){box.querySelector('[data-lgf]').hidden=false;box.querySelector('[data-lg]').parentNode.hidden=true;ev('gate_view',id)};return}
- ME.ops=ME.ops||{};
- function row(){var st=opState(id),n=a?nOf(a):0;
-  return '<div class="done-row">'+(st==='not_explored'?'<button class="chk" type="button" data-p="explore"><i></i>Отметить как изученное</button>':'<span class="chk on" style="cursor:default"><i></i>Изучено</span>')+
-   (st==='completed'?'<span class="chk on" style="cursor:default"><i></i>Совершено</span><button class="undo" type="button" data-p="undo">Отменить отметку</button>':'<button class="chk" type="button" data-p="ask"><i></i>Я это сделал</button>')+
-   '<span class="lbl">«Изучено» отмечает прочитанное. «Совершено» — то, что пережито в жизни. Знаки дают только совершенные открытия.</span></div>'+
-   '<div data-ask hidden class="gate" style="gap:12px"><p style="font-weight:600;color:var(--ink)">Добавить это открытие к достижениям?</p><div class="acts"><button class="btn" type="button" data-p="complete">Добавить</button><button class="btn ghost" type="button" data-p="no">Не сейчас</button></div></div>'+
-   (msg||'')+(a?'<div class="inach">'+medal(a,n,54)+'<span>«'+esc(a.name)+'» — одно из трех открытий · '+n+'/3 <button class="undo" type="button" data-p="ach">Показать все три</button></span></div><div data-achx hidden>'+'<div class="dirs" style="margin:6px 0 0">'+a.items.map(cardMini).join('')+'</div></div>':'')}
- box.innerHTML='<div data-row>'+row()+'</div>';
+ if(!window.OJ_ME_READY||(ME&&ME.blocked)){box.innerHTML='';return}
+ var a=achOf(id),busy=false;if(ME)ME.ops=ME.ops||{};
+ function html(){var st=opState(id),n=a?nOf(a):0,h='';
+  if(a)h+='<div class="ser"><button type="button" class="ser-c" data-p="ach" aria-label="Все три истории">'+medal(a,n,72)+'</button><div><p class="ser-k">Знак «'+esc(a.name)+'» · '+n+'/3</p><p class="ser-t">Одно из трех открытий знака. Сектор медальона вручает Orbiq, когда открытие организовано вместе с нами.</p><button type="button" class="lnk" data-p="ach">Все три истории</button></div></div><div data-achx hidden><div class="dirs" style="margin:6px 0 0">'+a.items.filter(function(x){return x!==id}).map(cardMini).join('')+'</div></div>';
+  if(ME)h+=st==='completed'?'<p class="been on" style="cursor:default"><i></i>Открытие совершено с Orbiq</p>':'<button type="button" class="been'+(st==='explored'?' on':'')+'" data-p="been" aria-pressed="'+(st==='explored')+'"><i></i>Я здесь был</button>';
+  return h}
+ box.innerHTML=html();
  if(box._cl)return;box._cl=1;
- box.addEventListener('click',function(e){var d=e.target.closest('[data-p]');if(!d||!ME)return;var p=d.getAttribute('data-p'),r=box.querySelector('[data-row]');
-  if(p==='ask'){r.querySelector('[data-ask]').hidden=false;return}if(p==='no'){r.querySelector('[data-ask]').hidden=true;return}
-  if(p==='ach'){r.querySelector('[data-achx]').hidden=false;ev('ach_open',a&&a.id);return}
-  if(busy)return;busy=true;var prev=ME.ops[id];d.disabled=true;
-  api('progress',{body:{id:id,type:p}}).then(function(res){busy=false;
-   if(res._s!==200){d.disabled=false;if(res._s===401){ME=null;fill(id,root);return}msg='<p class="note err">'+esc(res.error||'Не сохранилось. Состояние не изменилось')+'</p>';if(prev)ME.ops[id]=prev;r.innerHTML=row();return}
-   if(res.state==='not_explored')delete ME.ops[id];else ME.ops[id]=res.state;msg='';
-   (res.changed||[]).forEach(function(c){if(c.to>c.from&&a&&c.id===a.id)msg=levelMsg(a,c)});
-   r.innerHTML=row();renderAch(res.changed)})});
+ box.addEventListener('click',function(e){var d=e.target.closest('[data-p]');if(!d)return;var p=d.getAttribute('data-p');
+  if(p==='ach'){var x=box.querySelector('[data-achx]');if(x){x.hidden=!x.hidden;ev('ach_open',a&&a.id)}return}
+  if(p!=='been'||!ME||busy)return;busy=true;var type=opState(id)==='explored'?'unexplore':'explore';d.classList.toggle('on');
+  api('progress',{body:{id:id,type:type}}).then(function(res){busy=false;if(res._s!==200){d.classList.toggle('on');return}
+   if(res.state==='not_explored')delete ME.ops[id];else ME.ops[id]=res.state;box.innerHTML=html()})});
  box.addEventListener('click',function(e){if(e.target.closest('[data-next]'))ev('next_open',id)})}
+// ---- подарить открытие: открытка и каналы
+document.addEventListener('click',function(e){var b=e.target.closest('[data-share]');if(!b)return;var id=window.OJ_CUR;if(!id)return;
+ var t=IDX[id]||{},s=rid(),url=location.origin+'/journal/a/'+id+'/?s='+s,title=t.title||document.title,ch=b.getAttribute('data-share'),root=b.closest('.post'),n=root&&root.querySelector('[data-sn]');
+ function note(x){if(n){n.textContent=x;setTimeout(function(){n.textContent=''},2600)}}
+ ev('share_click',id,ch,s);
+ if(ch==='native'){if(navigator.share){navigator.share({title:title,text:title,url:url}).catch(function(){})}else ch='copy'}
+ if(ch==='tg')window.open('https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(title),'_blank');
+ if(ch==='wa')window.open('https://wa.me/?text='+encodeURIComponent(title+'\n'+url),'_blank');
+ if(ch==='sms')location.href='sms:&body='+encodeURIComponent(title+' '+url);
+ if(ch==='copy'){(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){note('Ссылка скопирована');ev('copy_ok',id,'copy',s)}).catch(function(){window.prompt('Ссылка',url)})}});
 window.OJ_after=fill;
 // ---- аккаунт ----
 api('me').then(function(j){ME=j.user||null;window.OJ_ME_READY=1;var acct=document.getElementById('acct');if(acct){acct.textContent=ME?'Профиль':'Вход';acct.href='/journal/profile/'}

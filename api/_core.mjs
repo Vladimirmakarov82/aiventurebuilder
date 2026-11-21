@@ -34,6 +34,8 @@ export function apply(user, ev, ACH, available) {
       for (const a of containing(ACH, ev.id)) if (!u.pins[a.id]) u.pins[a.id] = a.current;
       audit(u, { t: 'complete', id: ev.id });
     }
+  } else if (ev.type === 'unexplore') {
+    if (o.explored_at && !o.completed_at) { delete o.explored_at; if (Object.keys(o).length) u.ops[ev.id] = o; else delete u.ops[ev.id]; audit(u, { t: 'unexplore', id: ev.id }); }
   } else if (ev.type === 'undo') {
     if (o.completed_at) { delete o.completed_at; if (o.explored_at) u.ops[ev.id] = o; else delete u.ops[ev.id]; audit(u, { t: 'undo', id: ev.id }); }
   } else return { user, error: 'bad_event' };

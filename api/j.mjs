@@ -253,10 +253,10 @@ R['invite/accept'] = async (req, res) => { // письмо со ссылкой �
 
 R['logout'] = async (req, res) => { setCookie(res, 'oj', '', 0); send(res, 200, { ok: true }); };
 
-R['progress'] = async (req, res) => { // explore | complete | undo: сервер проверяет и считает сам
+R['progress'] = async (req, res) => { // читатель отмечает только «Я здесь был»; знаки вручает редакция (admin/award)
   const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
   const b = await body(req); const id = String(b.id || ''); const type = String(b.type || '');
-  if (!['explore', 'complete', 'undo'].includes(type)) return send(res, 400, { error: 'bad_event' });
+  if (!['explore', 'unexplore'].includes(type)) return send(res, 400, { error: 'bad_event' });
   if (!content().articles[id]) return send(res, 404, { error: 'not_found' });
   const st = await statusMap(); const available = isLive(id, st);
   if (type === 'explore' && !available) return send(res, 404, { error: 'not_found' });
@@ -368,6 +368,16 @@ R['admin/recs'] = async (req, res) => {
   const bl = await slist('rec/', 500); const recs = [];
   for (const x of bl) { const r = await sget(x.pathname); if (r) { delete r.uid; recs.push(r); } }
   recs.sort((a, b) => (a.at < b.at ? 1 : -1)); send(res, 200, { recs });
+};
+R['admin/award'] = async (req, res) => { // редакция вручает открытие, организованное вместе с Orbiq, или снимает его
+  if (!isAdmin(req)) return send(res, 403, { error: 'admin' });
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const id = String(b.id || ''); const type = b.action === 'undo' ? 'undo' : 'complete';
+  if (!content().articles[id]) return send(res, 404, { error: 'Статья не найдена' });
+  const st = await statusMap(); const available = isLive(id, st);
+  const out = await update(`users/${uidOf(email)}.json`, (u) => { if (!u) return { err: 404, msg: 'Участник не найден' }; const r = apply(u, { type, id, now: new Date().toISOString() }, ACH, available); if (r.error) return { err: 409, msg: r.error === 'unavailable' ? 'Статья снята с публикации' : r.error }; return { doc: r.user, r }; });
+  if (out.err) return send(res, out.err, { error: out.msg });
+  await auditLog('editor', 'award_' + type, { uid: uidOf(email), id }); for (const c of out.r.changed) await logEvent(c.to > c.from ? 'level' + c.to : 'leveldown' + c.to, c.id);
+  send(res, 200, { ok: true, state: out.r.state, changed: out.r.changed });
 };
 R['admin/block'] = async (req, res) => {
   if (!isAdmin(req)) return send(res, 403, { error: 'admin' });

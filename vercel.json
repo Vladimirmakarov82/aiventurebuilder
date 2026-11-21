@@ -157,5 +157,6 @@
       "destination": "/journal/privacy/",
       "permanent": true
     }
-  ]
+  ],
+  "ignoreCommand": "exit 1"
 }

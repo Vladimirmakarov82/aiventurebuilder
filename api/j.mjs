@@ -135,13 +135,20 @@ R['auth/request'] = async (req, res) => {
   try { if (!(await rateLimit('ip:' + ip, 8, 60)) || !(await rateLimit('em:' + email, 3, 15))) return send(res, 429, { error: 'Слишком много запросов. Попробуйте через несколько минут' }); }
   catch (e) { if (e instanceof NoStore) return send(res, 503, { error: 'Регистрация временно недоступна: хранилище не подключено' }); throw e; }
   const ret = String(b.ret || '/journal/').startsWith('/journal') ? String(b.ret || '/journal/') : '/journal/';
-  const tok = sign({ e: email, r: ret, s: String(b.ref || '').slice(0, 20), j: rid(12), exp: Date.now() + 30 * 60000 });
+  // самостоятельной регистрации нет: ссылку получают только участники
+  const u = await loadUser(uidOf(email));
+  const generic = { ok: true, generic: true };
+  if (!u || u.blocked) { await logEvent('login_nonmember'); return send(res, 200, generic); }
+  const tok = sign({ e: email, r: ret, j: rid(12), exp: Date.now() + 30 * 60000 });
+  return deliverLogin(req, res, email, tok);
+};
+async function deliverLogin(req, res, email, tok, extra = {}) {
   const host = req.headers['x-forwarded-host'] || req.headers.host;
   const link = `https://${host}/api/j?r=auth/verify&t=${encodeURIComponent(tok)}`;
-  if (ENV.RESEND_API_KEY) { const m = await mail(email, 'Вход в Orbiq Journal', loginMail(link)); if (!m.ok) return send(res, 502, { error: 'Письмо не отправлено, попробуйте позже' }); return send(res, 200, { ok: true }); }
-  if (ENV.EMAIL_MODE === 'test') return send(res, 200, { ok: true, test_link: link });
-  send(res, 503, { error: 'Отправка писем не подключена' });
-};
+  if (ENV.RESEND_API_KEY) { const m = await mail(email, 'Вход в Orbiq Journal', loginMail(link)); if (!m.ok) return send(res, 502, { error: 'Письмо не отправлено, попробуйте позже' }); return send(res, 200, { ok: true, ...extra }); }
+  if (ENV.EMAIL_MODE === 'test') return send(res, 200, { ok: true, test_link: link, ...extra });
+  return send(res, 503, { error: 'Отправка писем не подключена' });
+}
 
 R['auth/verify'] = async (req, res) => {
   const q = new URL(req.url, 'http://x').searchParams; const t = unsign(q.get('t') || '');
@@ -149,13 +156,97 @@ R['auth/verify'] = async (req, res) => {
   const used = `used/${sha(t.j).slice(0, 24)}.json`;
   if (await sget(used)) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=used'); return res.end(); }
   await sput(used, { at: Date.now() });
-  const uid = uidOf(t.e); let u = await loadUser(uid); const isNew = !u;
-  if (u && u.blocked) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=blocked'); return res.end(); }
-  if (!u) u = { id: uid, email: t.e, created: new Date().toISOString(), ref: t.s || '', letter: false, ops: {}, pins: {}, contributor: false, blocked: false };
-  u.last = new Date().toISOString(); await sput(`users/${uid}.json`, u);
-  if (isNew) await logEvent('signup', '', '', t.s);
+  const uid = uidOf(t.e); let u = await loadUser(uid);
+  if (u && u.blocked) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=suspended'); return res.end(); }
+  let target = t.r || '/journal/';
+  if (t.inv) { // активация персонального приглашения
+    const ip = `inv/${t.inv}.json`; let invInfo = null;
+    const out = await update(ip, (inv) => {
+      if (!inv) return { err: 'gone' };
+      if (inv.email !== t.e) return { err: 'email' };
+      if (inv.status === 'accepted') return { err: inv.acceptedUid === uid ? 'again' : 'used' };
+      if (inv.status !== 'created' || Date.parse(inv.expires) < Date.now()) return { err: 'expired' };
+      invInfo = inv; return { doc: { ...inv, status: 'accepted', accepted_at: new Date().toISOString(), acceptedUid: uid } };
+    });
+    if (out.err && out.err !== 'again') { res.statusCode = 302; res.setHeader('Location', '/journal/?invite=' + out.err); return res.end(); }
+    if (invInfo) {
+      await sdel(`invidx/${sha(t.e).slice(0, 32)}.json`);
+      if (!u) { u = { id: uid, email: t.e, first: invInfo.first, last: invInfo.last, created: new Date().toISOString(), invitedBy: invInfo.inviter, invite: invInfo.id, ref: invInfo.s || '', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 }; await sput(`users/${uid}.json`, u); await logEvent('signup', '', 'invite', invInfo.s || ''); }
+      await logEvent('invite_accepted', '', '', String(Math.round((Date.now() - Date.parse(invInfo.created)) / 3600000)));
+      target = invInfo.target || target;
+    }
+  }
+  if (!u) { res.statusCode = 302; res.setHeader('Location', '/journal/?login=noaccess'); return res.end(); }
+  const seen = new Date().toISOString(); await update(`users/${uid}.json`, (cur) => ({ doc: { ...(cur || u), seen } }));
   setCookie(res, 'oj', sign({ u: uid, e: t.e, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
-  res.statusCode = 302; res.setHeader('Location', t.r || '/journal/'); res.end();
+  res.statusCode = 302; res.setHeader('Location', target); res.end();
+};
+
+// ---------- персональные приглашения ----------
+const INV_DAYS = 30;
+const invHash = (tok) => sha('inv|' + tok).slice(0, 40);
+function invView(inv) { const st = (inv.status === 'created' && Date.parse(inv.expires) < Date.now()) ? 'expired' : inv.status; return { id: inv.id, first: inv.first, last: inv.last, status: st, created: inv.created, expires: inv.expires, target: inv.targetTitle || '' }; }
+async function myInvites(u) { const out = []; for (const id of (u.invites || [])) { const inv = await sget(`inv/${id}.json`); if (inv) out.push(inv); } return out; }
+function slotsLeft(u, invs) { const used = invs.map(invView).filter(v => v.status === 'created' || v.status === 'accepted').length; return Math.max(0, (u.inviteLimit ?? 3) - used); }
+function inviteLink(req, tok) { const host = req.headers['x-forwarded-host'] || req.headers.host; return `https://${host}/journal/invite/?t=${tok}`; }
+R['invite/list'] = async (req, res) => {
+  const s = await me(req); if (!s) return send(res, 401, { error: 'login' }); const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });
+  const invs = await myInvites(u); send(res, 200, { left: slotsLeft(u, invs), limit: u.inviteLimit ?? 3, invites: invs.map(invView).reverse() });
+};
+R['invite/create'] = async (req, res) => {
+  const s = await me(req); if (!s) return send(res, 401, { error: 'login' });
+  const b = await body(req); if (b.website) return send(res, 200, { ok: true });
+  const first = String(b.first || '').trim().slice(0, 60), last = String(b.last || '').trim().slice(0, 60), email = String(b.email || '').trim().toLowerCase();
+  if (!first || !last) return send(res, 400, { error: 'Укажите имя и фамилию' });
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return send(res, 400, { error: 'Проверьте адрес почты' });
+  if (!(await rateLimit('invc:' + s.u, 10, 1440))) return send(res, 429, { error: 'Слишком много приглашений за сутки' });
+  const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });
+  if (email === u.email) return send(res, 400, { error: 'Это ваш собственный адрес' });
+  if (await loadUser(uidOf(email))) return send(res, 409, { error: 'Этот человек уже участник Orbiq Journal' });
+  const invs = await myInvites(u); if (slotsLeft(u, invs) < 1) return send(res, 409, { error: 'Свободных приглашений нет' });
+  const ix = `invidx/${sha(email).slice(0, 32)}.json`; const prev = await sget(ix);
+  if (prev) { const p = await sget(`inv/${prev.id}.json`); if (p && invView(p).status === 'created') return send(res, 409, { error: 'У этого адреса уже есть действующее приглашение' }); }
+  const tok = crypto.randomBytes(32).toString('base64url'); const id = invHash(tok);
+  const target = String(b.target || '').startsWith('/journal/') ? String(b.target).slice(0, 200) : '';
+  const inv = { id, inviter: s.u, inviterName: [u.first, u.last].filter(Boolean).join(' ') || '', showName: !!b.showName, first, last, email, msg: String(b.msg || '').slice(0, 600), target, targetTitle: String(b.targetTitle || '').slice(0, 200), s: String(b.s || '').slice(0, 12), status: 'created', created: new Date().toISOString(), expires: new Date(Date.now() + INV_DAYS * 864e5).toISOString() };
+  await sput(`inv/${id}.json`, inv); await sput(ix, { id });
+  await update(`users/${s.u}.json`, (cur) => ({ doc: { ...cur, invites: [...(cur.invites || []), id] } }));
+  await logEvent('invite_created', '', b.ch || '', ''); await auditLog(s.u, 'invite_create', { id });
+  send(res, 200, { ok: true, link: inviteLink(req, tok), left: slotsLeft(u, [...invs, inv]) });
+};
+async function myInvite(req, id) { const s = await me(req); if (!s) return { err: 401 }; const u = await loadUser(s.u); if (!u || !(u.invites || []).includes(id)) return { err: 404 }; return { s, u }; }
+R['invite/revoke'] = async (req, res) => {
+  const b = await body(req); const m = await myInvite(req, b.id); if (m.err) return send(res, m.err, { error: 'not_found' });
+  const out = await update(`inv/${b.id}.json`, (inv) => (inv && inv.status === 'created') ? { doc: { ...inv, status: 'revoked', revoked_at: new Date().toISOString() } } : { err: 409 });
+  if (out.err) return send(res, 409, { error: 'Отозвать можно только непринятое приглашение' });
+  await sdel(`invidx/${sha(out.doc.email).slice(0, 32)}.json`); await logEvent('invite_revoked'); send(res, 200, { ok: true });
+};
+R['invite/renew'] = async (req, res) => { // повторная отправка: новый токен и новый срок, старая ссылка перестает работать
+  const b = await body(req); const m = await myInvite(req, b.id); if (m.err) return send(res, m.err, { error: 'not_found' });
+  const old = await sget(`inv/${b.id}.json`); if (!old || !['created', 'expired'].includes(invView(old).status)) return send(res, 409, { error: 'Продлить можно только непринятое приглашение' });
+  if (invView(old).status === 'expired' && slotsLeft(m.u, await myInvites(m.u)) < 1) return send(res, 409, { error: 'Свободных приглашений нет' });
+  const tok = crypto.randomBytes(32).toString('base64url'); const id = invHash(tok);
+  await sput(`inv/${id}.json`, { ...old, id, status: 'created', created: old.created, renewed: new Date().toISOString(), expires: new Date(Date.now() + INV_DAYS * 864e5).toISOString() });
+  await sput(`inv/${old.id}.json`, { ...old, status: 'revoked', replacedBy: id }); await sput(`invidx/${sha(old.email).slice(0, 32)}.json`, { id });
+  await update(`users/${m.s.u}.json`, (cur) => ({ doc: { ...cur, invites: [...(cur.invites || []).filter(x => x !== old.id), id] } }));
+  send(res, 200, { ok: true, link: inviteLink(req, tok) });
+};
+R['invite/info'] = async (req, res) => { // публично по токену: без email и персональных данных приглашенного
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0];
+  if (!(await rateLimit('invi:' + ip, 40, 60))) return send(res, 429, { error: 'Слишком много попыток' });
+  const tok = new URL(req.url, 'http://x').searchParams.get('t') || ''; if (!/^[A-Za-z0-9_-]{40,50}$/.test(tok)) return send(res, 404, { error: 'invalid' });
+  const inv = await sget(`inv/${invHash(tok)}.json`); if (!inv) return send(res, 404, { error: 'invalid' });
+  const v = invView(inv); if (v.status !== 'created') return send(res, 410, { error: v.status });
+  send(res, 200, { first: inv.first, inviter: inv.showName ? inv.inviterName : '', msg: inv.msg, target: inv.targetTitle || '' });
+};
+R['invite/accept'] = async (req, res) => { // письмо со ссылкой подтверждения на адрес из приглашения
+  const b = await body(req); const tok = String(b.t || ''); const ip = (req.headers['x-forwarded-for'] || '').split(',')[0];
+  if (!(await rateLimit('inva:' + ip, 10, 60))) return send(res, 429, { error: 'Слишком много попыток' });
+  if (!/^[A-Za-z0-9_-]{40,50}$/.test(tok)) return send(res, 404, { error: 'invalid' });
+  const inv = await sget(`inv/${invHash(tok)}.json`); if (!inv || invView(inv).status !== 'created') return send(res, 410, { error: 'Приглашение недействительно' });
+  const vt = sign({ e: inv.email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + 30 * 60000 });
+  const masked = inv.email.replace(/^(.).*(@.*)$/, '$1•••$2');
+  return deliverLogin(req, res, inv.email, vt, { sentTo: masked });
 };
 
 R['logout'] = async (req, res) => { setCookie(res, 'oj', '', 0); send(res, 200, { ok: true }); };
@@ -275,13 +366,30 @@ R['admin/block'] = async (req, res) => {
   const out = await update(`users/${uid}.json`, (u) => u ? { doc: { ...u, blocked: !!b.block } } : { err: 404 });
   if (out.err) return send(res, 404, { error: 'Пользователь не найден' }); await auditLog('editor', b.block ? 'block' : 'unblock', { uid }); send(res, 200, { ok: true });
 };
+R['admin/grant'] = async (req, res) => { // административное предоставление доступа
+  if (!isAdmin(req)) return send(res, 403, { error: 'admin' });
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return send(res, 400, { error: 'Проверьте адрес' });
+  const uid = uidOf(email); const out = await update(`users/${uid}.json`, (u) => u ? { noop: 1 } : { doc: { id: uid, email, first: String(b.first || '').slice(0, 60), last: String(b.last || '').slice(0, 60), created: new Date().toISOString(), grantedBy: 'admin', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 } });
+  await auditLog('editor', 'grant', { uid }); await logEvent('member_granted');
+  if (b.sendLogin) { const tok = sign({ e: email, r: '/journal/', j: rid(12), exp: Date.now() + 30 * 60000 }); return deliverLogin(req, res, email, tok, { existed: !!out.noop }); }
+  send(res, 200, { ok: true, existed: !!out.noop });
+};
+R['admin/limit'] = async (req, res) => {
+  if (!isAdmin(req)) return send(res, 403, { error: 'admin' });
+  const b = await body(req); const uid = uidOf(String(b.email || '').trim().toLowerCase()); const n = Math.max(0, Math.min(50, parseInt(b.limit, 10) || 0));
+  const out = await update(`users/${uid}.json`, (u) => u ? { doc: { ...u, inviteLimit: n } } : { err: 404 });
+  if (out.err) return send(res, 404, { error: 'Участник не найден' }); await auditLog('editor', 'limit', { uid, n }); send(res, 200, { ok: true });
+};
 R['admin/stats'] = async (req, res) => {
   if (!isAdmin(req)) return send(res, 403, { error: 'admin' });
   const bl = await slist('events/', 20000); const by = {}, ch = {};
   for (const x of bl) { const f = x.pathname.split('/').pop().split('_'); const t = f[1]; by[t] = (by[t] || 0) + 1; if (t === 'share_click') ch[f[3]] = (ch[f[3]] || 0) + 1; }
-  const ul = await slist('users/', 5000); const dist = { 1: 0, 2: 0, 3: 0 }; let withDone = 0, withExplore = 0, letter = 0, viaRef = 0;
-  for (const x of ul) { const u = await sget(x.pathname); if (!u) continue; const lv = levels(u); for (const v of Object.values(lv)) if (v) dist[v]++; const ops = Object.values(u.ops || {}); if (ops.some(o => o.completed_at)) withDone++; if (ops.some(o => o.explored_at)) withExplore++; if (u.letter) letter++; if (u.ref) viaRef++; }
-  send(res, 200, { events: by, channels: ch, users: ul.length, withDone, withExplore, letter, viaRef, badges: dist });
+  const ul = await slist('users/', 5000); const dist = { 1: 0, 2: 0, 3: 0 }; let withDone = 0, withExplore = 0, letter = 0, viaRef = 0, viaInvite = 0, active30 = 0;
+  for (const x of ul) { const u = await sget(x.pathname); if (!u) continue; const lv = levels(u); for (const v of Object.values(lv)) if (v) dist[v]++; const ops = Object.values(u.ops || {}); if (ops.some(o => o.completed_at)) withDone++; if (ops.some(o => o.explored_at)) withExplore++; if (u.letter) letter++; if (u.ref) viaRef++; if (u.invitedBy) viaInvite++; if (u.seen && Date.now() - Date.parse(u.seen) < 30 * 864e5) active30++; }
+  const il = await slist('inv/', 5000); const inv = { created: 0, accepted: 0, revoked: 0, expired: 0, hours: [] };
+  for (const x of il) { const v = await sget(x.pathname); if (!v || v.replacedBy) continue; const st = invView(v).status; inv[st] = (inv[st] || 0) + 1; if (st === 'accepted') inv.hours.push((Date.parse(v.accepted_at) - Date.parse(v.created)) / 3600000); }
+  inv.medianHours = inv.hours.length ? inv.hours.sort((a, b) => a - b)[Math.floor(inv.hours.length / 2)].toFixed(1) : null; delete inv.hours;
+  send(res, 200, { events: by, channels: ch, users: ul.length, withDone, withExplore, letter, viaRef, viaInvite, active30, badges: dist, invites: inv });
 };
 function letterHtml(L, uid) {
   const c = content(); const host = SITE;

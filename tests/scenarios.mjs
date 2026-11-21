@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-process.env.KV_REST_API_URL = 'https://kv.test'; process.env.KV_REST_API_TOKEN = 'x'; await import('./kvmock.mjs'); process.env.EMAIL_MODE = 'test'; process.env.ADMIN_KEY = 'adminkey123';
+process.env.KV_REST_API_URL = 'https://kv.test'; process.env.KV_REST_API_TOKEN = 'x'; await import('./kvmock.mjs'); process.env.EMAIL_MODE = 'test'; process.env.INVITE_LIMITED = '1'; process.env.ADMIN_KEY = 'adminkey123';
 const keys = (await import('node:fs')).readFileSync('/tmp/keys.txt', 'utf8').trim().split(/\s+/);
 process.env.SESSION_SECRET = keys[0];
 const { default: H } = await import('./api/j.mjs');

@@ -192,7 +192,8 @@ const INV_DAYS = 30;
 const invHash = (tok) => sha('inv|' + tok).slice(0, 40);
 function invView(inv) { const st = (inv.status === 'created' && Date.parse(inv.expires) < Date.now()) ? 'expired' : inv.status; return { id: inv.id, first: inv.first, last: inv.last, status: st, created: inv.created, expires: inv.expires, target: inv.targetTitle || '' }; }
 async function myInvites(u) { const out = []; for (const id of (u.invites || [])) { const inv = await sget(`inv/${id}.json`); if (inv) out.push(inv); } return out; }
-function slotsLeft(u, invs) { const used = invs.map(invView).filter(v => v.status === 'created' || v.status === 'accepted').length; return Math.max(0, (u.inviteLimit ?? 3) - used); }
+const INVITE_UNLIMITED = ENV.INVITE_LIMITED !== '1'; // решение Владимира 21.11.2026: приглашения без лимита на старте
+function slotsLeft(u, invs) { if (INVITE_UNLIMITED) return 999; const used = invs.map(invView).filter(v => v.status === 'created' || v.status === 'accepted').length; return Math.max(0, (u.inviteLimit ?? 3) - used); }
 function inviteLink(req, tok) { const host = req.headers['x-forwarded-host'] || req.headers.host; return `https://${host}/journal/invite/?t=${tok}`; }
 R['invite/list'] = async (req, res) => {
   const s = await me(req); if (!s) return send(res, 401, { error: 'login' }); const u = await loadUser(s.u); if (!u || u.blocked) return send(res, 403, { error: 'member' });

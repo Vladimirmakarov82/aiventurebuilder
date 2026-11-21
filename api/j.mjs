@@ -138,9 +138,17 @@ R['auth/request'] = async (req, res) => {
   // самостоятельной регистрации нет: ссылку получают только участники
   const u = await loadUser(uidOf(email));
   const generic = { ok: true, generic: true };
-  if (!u || u.blocked) { await logEvent('login_nonmember'); return send(res, 200, generic); }
+  if (u && u.blocked) return send(res, 200, generic);
+  if (!u) { // действующее приглашение на этот адрес: ссылка подтверждения и активации
+    const ix = await sget(`invidx/${sha(email).slice(0, 32)}.json`); const inv = ix && await sget(`inv/${ix.id}.json`);
+    if (inv && inv.status === 'created' && Date.parse(inv.expires) > Date.now() && inv.email === email) {
+      const vt = sign({ e: email, r: inv.target || '/journal/', inv: inv.id, j: rid(12), exp: Date.now() + 30 * 60000 });
+      return deliverLogin(req, res, email, vt, { generic: true });
+    }
+    await logEvent('login_nonmember'); return send(res, 200, generic);
+  }
   const tok = sign({ e: email, r: ret, j: rid(12), exp: Date.now() + 30 * 60000 });
-  return deliverLogin(req, res, email, tok);
+  return deliverLogin(req, res, email, tok, { generic: true });
 };
 async function deliverLogin(req, res, email, tok, extra = {}) {
   const host = req.headers['x-forwarded-host'] || req.headers.host;

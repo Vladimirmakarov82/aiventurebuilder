@@ -212,9 +212,9 @@ window.OJ.gateHtml=gateHtml;
 document.addEventListener('submit',function(e){var f=e.target.closest('form[data-gate]');if(!f)return;e.preventDefault();var n=f.parentNode.querySelector('[data-gn]'),btn=f.querySelector('button');if(btn.disabled)return;btn.disabled=true;n.className='note';n.textContent='Отправляем…';
  ev('gate_submit',window.OJ_CUR||'');
  api('auth/request',{body:{email:f.email.value,website:f.website.value,ret:location.pathname+(window.OJ_CUR?'#'+window.OJ_CUR:''),ref:LS.get('oj_s')||''}}).then(function(j){btn.disabled=false;
-  if(j.ok&&j.test_link){n.className='note ok';n.innerHTML='Тестовый режим предпросмотра: письмо не отправляется. <a href="'+esc(j.test_link)+'" style="text-decoration:underline">Войти по ссылке</a>'}
-  else if(j.ok&&j.generic){n.className='note';n.textContent='Если этот адрес принадлежит участнику, на него придет ссылка для входа. Доступ к журналу открывается только по персональному приглашению.'}
-  else if(j.ok){n.className='note ok';n.textContent='Письмо отправлено. Ссылка действует 30 минут.'}
+  if(j.ok&&j.test_link){n.className='note ok';n.innerHTML='Если для этого адреса доступен вход, мы отправим ссылку на почту.<br><span class="note">Предпросмотр, письма не уходят: <a href="'+esc(j.test_link)+'" style="text-decoration:underline">ссылка</a></span>'}
+  else if(j.ok&&j.generic){n.className='note';n.textContent='Если для этого адреса доступен вход, мы отправим ссылку на почту'}
+  else if(j.ok){n.className='note';n.textContent='Если для этого адреса доступен вход, мы отправим ссылку на почту'}
   else{n.className='note err';n.textContent=j.error||'Не получилось, попробуйте еще раз'}})});
 // ---- знаки раздела ----
 function cardMini(i){var t=IDX[i]||{};return '<a class="dc" href="'+(t.href||'#'+i)+'" data-next style="display:block"><p class="kick" style="color:var(--mute)">'+esc(t.geo||'')+'</p><h3 style="font-size:20px">'+esc(t.title||i)+'</h3></a>'}

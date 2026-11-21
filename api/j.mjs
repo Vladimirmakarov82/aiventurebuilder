@@ -38,11 +38,11 @@ class NoStore extends Error {}
 async function sget(p) {
   if (!STORE_OK) throw new NoStore();
   try { const r = await get(p, { access: 'private', useCache: false }); if (!r) return null; const t = await new Response(r.stream).text(); return JSON.parse(t); }
-  catch (e) { if (String(e && e.name).includes('NotFound') || String(e).includes('not found') || String(e).includes('404')) return null; throw e; }
+  catch (e) { if (String(e && e.name).includes('NotFound') || /not ?found|404|403 Forbidden/i.test(String(e))) return null; throw e; } // приватный blob без файла отвечает 403
 }
 async function sgetE(p) {
   if (!STORE_OK) throw new NoStore();
-  const r = await get(p, { access: 'private', useCache: false }).catch(e => { if (String(e).match(/not ?found|404/i)) return null; throw e; });
+  const r = await get(p, { access: 'private', useCache: false }).catch(e => { if (String(e).match(/not ?found|404|403 Forbidden/i)) return null; throw e; });
   if (!r) return { doc: null, etag: null };
   return { doc: JSON.parse(await new Response(r.stream).text()), etag: (r.blob && r.blob.etag) || null };
 }

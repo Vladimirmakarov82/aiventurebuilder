@@ -139,7 +139,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 @media (hover:hover){a:hover>.coin,.bd:hover .coin{transform:scale(1.04) rotate(-3deg)}}
 @media (prefers-reduced-motion:reduce){.coin,.coin .cw img{transition:none}.coin.up{animation:none}}
 /* шапка на светлых страницах не наезжает на текст */
-body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink);background:linear-gradient(var(--bg) 70%,rgba(244,241,236,0));padding-bottom:18px;pointer-events:auto}
+body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink);background:var(--bg);padding-bottom:16px;pointer-events:auto;box-shadow:0 1px 0 var(--line)}
 .emb .m-rim{fill:none;stroke:#C9C3B8;stroke-width:1.2}.emb .m-face{fill:none;stroke:#C9C3B8;stroke-width:.8}.emb .m-line{stroke:#C9C3B8;stroke-width:.7}.emb .m-glyph{fill:none;stroke:#A9A398;stroke-width:1.1;stroke-linejoin:round}.emb .m-dot{fill:#A9A398}.emb.lv1 .m-face,.emb.lv1 .m-rim{fill:url(#oj-s);stroke:#8C8F93}.emb.lv1 .m-line{stroke:#6E7176}.emb.lv1 .m-glyph{stroke:#4C4F53;fill:rgba(255,255,255,.35)}.emb.lv1 .m-dot{fill:#4C4F53}.emb.lv2 .m-face,.emb.lv2 .m-rim{fill:url(#oj-g);stroke:#8A6B33}.emb.lv2 .m-line{stroke:#6B5227}.emb.lv2 .m-glyph{stroke:#4F3B17;fill:rgba(255,244,214,.3)}.emb.lv2 .m-dot{fill:#4F3B17}.emb.lv3 .m-face,.emb.lv3 .m-rim{fill:url(#oj-b);stroke:#0B0B0B}.emb.lv3 .m-line{stroke:#9C968B}.emb.lv3 .m-glyph{stroke:#D8D1C3;fill:none}.emb.lv3 .m-dot{fill:#D8D1C3}</style></head><body><div class="mast"><a class="logo" href="/journal/"><b>ORBIQ</b></a><span class="kick"><a class="acct" id="acct" href="/journal/profile/"></a></span></div><style>
 .pf{background:var(--bg);min-height:100svh;color:var(--ink);padding:calc(env(safe-area-inset-top) + 120px) var(--g) 90px}
 .pf h1{font-family:var(--s);font-weight:600;font-size:clamp(46px,7vw,96px);line-height:.95;letter-spacing:-.02em;margin:0 0 clamp(28px,5vh,48px)}
@@ -152,11 +152,11 @@ body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink)
 .pf section{border-top:1px solid var(--line);padding:28px 0;max-width:980px}
 .pf h2{font-family:var(--m);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 18px}
 .col-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px}
-.col-n b{display:block;font-family:var(--s);font-weight:500;font-size:clamp(72px,12vw,148px);line-height:.85;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.col-n b{display:block;font-family:var(--s);font-weight:500;font-size:clamp(72px,12vw,148px);line-height:.85;letter-spacing:-.04em;font-variant-numeric:lining-nums tabular-nums}
 .col-n span{display:block;font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:14px}
 .col-lv{display:flex;gap:22px;flex-wrap:wrap}
 .col-lv span{display:flex;align-items:center;gap:9px;font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.col-lv b{font-family:var(--s);font-size:26px;letter-spacing:0;color:var(--ink);font-weight:500}
+.col-lv b{font-family:var(--s);font-size:26px;letter-spacing:0;color:var(--ink);font-weight:500;font-variant-numeric:lining-nums tabular-nums}
 .col-lv i{width:14px;height:14px;border-radius:50%;display:inline-block}
 .col-lv .l1{background:conic-gradient(#f7f7f7,#a7abb1,#eceef1,#878c93,#f7f7f7)}.col-lv .l2{background:conic-gradient(#fff3c9,#b5862a,#f6d97c,#8a6416,#fff3c9)}.col-lv .l3{background:#0b0b0b;box-shadow:0 0 0 1px #c9a24a}
 .col-rule{font-size:16px;line-height:1.5;color:#555;max-width:560px;margin:22px 0 0}
@@ -172,7 +172,7 @@ body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink)
 .sec-h span{font-family:var(--m);font-size:11px;letter-spacing:.12em;color:var(--mute);font-variant-numeric:tabular-nums}
 .strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--g) 10px;margin:0 calc(var(--g)*-1);scrollbar-width:none}
 .strip::-webkit-scrollbar{display:none}
-.bd{flex:none;width:112px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:var(--ink)}
+.bd{flex:none;width:100px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:var(--ink)}
 .bd span{font-size:13px;line-height:1.25}
 .bd em{font-style:normal;font-family:var(--m);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .bd.lv0 span{color:#8b867d}
@@ -208,7 +208,7 @@ window.OJ_PAGE=function(ME,j){var p=document.getElementById('pf'),E=OJ.esc;
   :'<div class="nr-e"><p>Первый медальон начинается с любой истории. Внизу каждой истории есть отметка «Я это сделал».</p><a class="btn" href="/journal/">К историям</a></div>');
  dirs.forEach(function(d){var L=list.filter(function(x){return x.d===d});if(!L.length)return;L.sort(function(p,q){return q.n-p.n});
   var g=L.filter(function(x){return x.n}).length,url='/journal/'+(d[0]?d[0]+'/':'')+'#ach';
-  ach+='<div class="sec-h"><a href="'+url+'">'+E(d[1])+'</a><span>'+g+' / '+L.length+'</span></div><div class="strip">'+L.map(function(x){return '<a class="bd lv'+x.n+'" href="'+url+'">'+OJ.medal(x.a,x.n,96)+'<span>'+E(x.a.name)+'</span><em>'+(x.n?LVW[x.n]:x.n+'/3')+'</em></a>'}).join('')+'</div>'});
+  ach+='<div class="sec-h"><a href="'+url+'">'+E(d[1])+'</a><span>'+g+' / '+L.length+'</span></div><div class="strip">'+L.map(function(x){return '<a class="bd lv'+x.n+'" href="'+url+'">'+OJ.medal(x.a,x.n,88)+'<span>'+E(x.a.name)+'</span><em>'+(x.n?LVW[x.n]:x.n+'/3')+'</em></a>'}).join('')+'</div>'});
  p.innerHTML='<h1>Профиль</h1><section><h2>Коллекция знаков</h2>'+ach+'</section><section><h2>Приглашения</h2><div id="iv"></div></section><section><h2>The Orbiq Letter</h2><div class="sw"><span>Еженедельное письмо</span><button class="tg'+(ME.letter?' on':'')+'" id="lt" type="button" role="switch" aria-checked="'+!!ME.letter+'" aria-label="The Orbiq Letter"></button></div></section><button class="out" id="lo" type="button">Выйти</button>';
  (function(){var el=document.getElementById('cnum');if(!el)return;var to=+el.textContent;if(!to||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1400),e=1-Math.pow(2,-10*k);el.textContent=Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)})();
  var lt=document.getElementById('lt');lt.onclick=function(){var on=!ME.letter;lt.classList.toggle('on',on);lt.disabled=true;OJ.api('letter',{body:{on:on}}).then(function(r){lt.disabled=false;if(r._s!==200){lt.classList.toggle('on',!on);return}ME.letter=on;lt.setAttribute('aria-checked',on)})};

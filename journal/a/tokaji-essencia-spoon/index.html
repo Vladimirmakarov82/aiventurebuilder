@@ -76,7 +76,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 .chk.on{background:var(--ink);color:var(--bg)}.chk.on i{border-color:var(--bg)}.chk.on i:after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--bg)}
 .undo{font-size:14px;text-decoration:underline;text-underline-offset:3px;background:none;border:0;cursor:pointer;color:var(--mute)}
 .inach{display:flex;gap:14px;align-items:center;font-size:15px;color:#333}
-.inach svg{width:54px;height:54px;flex:none}
+.inach>svg{width:54px;height:54px;flex:none}
 .sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .sheet.on{opacity:1;visibility:visible}
 .sheet-in{width:min(560px,100%);background:var(--bg);border-radius:22px 22px 0 0;padding:26px var(--g) calc(env(safe-area-inset-bottom) + 26px);transform:translateY(30px);transition:transform .45s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;gap:14px}
@@ -91,8 +91,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 .ach-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
 .medal{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
 .medal-h{display:flex;gap:16px;align-items:center}
-.medal-h svg{width:82px;height:82px;flex:none;transition:transform .9s cubic-bezier(.16,1,.3,1),filter .9s}
-.medal-h svg.up{animation:mup 1.6s cubic-bezier(.16,1,.3,1)}
+.medal-h>svg{width:82px;height:82px;flex:none;transition:transform .9s cubic-bezier(.16,1,.3,1),filter .9s}
+.medal-h>svg.up{animation:mup 1.6s cubic-bezier(.16,1,.3,1)}
 @keyframes mup{0%{transform:scale(.86);filter:brightness(.8)}55%{transform:scale(1.04);filter:brightness(1.18)}100%{transform:scale(1);filter:none}}
 .medal h3{font-family:var(--s);font-weight:600;font-size:23px;line-height:1.05;margin:0}
 .medal .lv{font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:6px}
@@ -113,11 +113,33 @@ img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-d
 .dirs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:18px 0 40px}
 .dirs .dc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
 .dirs .dc h3{font-family:var(--s);font-size:24px;margin:0 0 8px}
-.mini{display:flex;flex-wrap:wrap;gap:6px}.mini svg{width:34px;height:34px}
+.mini{display:flex;flex-wrap:wrap;gap:6px}.mini>svg{width:34px;height:34px}
 .sharepage .sp{cursor:default}
 .ov-body .lock{font-size:15px;color:var(--mute)}
 .gate-min{display:flex;flex-direction:column;gap:14px;max-width:420px;margin-top:6px}.gate-min input[type=email]{font:inherit;font-size:18px;padding:0 0 12px;border:0;border-bottom:1px solid var(--ink);background:transparent;outline:none;border-radius:0}.gate-min input::placeholder{color:#9a958c}.gate-min .btn{align-self:flex-start}
 [hidden]{display:none!important}
+
+/* медальон: три истории — три сектора */
+.coin{--cs:96px;position:relative;display:inline-block;width:var(--cs);height:var(--cs);border-radius:50%;flex:none;padding:calc(var(--cs)*.055);box-shadow:inset 0 0 0 1px #d3cdc2;background:transparent;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.coin .cw{position:relative;display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#e8e3da}
+.coin .cw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(.85) brightness(1.08);opacity:.32;transition:filter 1s cubic-bezier(.16,1,.3,1),opacity 1s cubic-bezier(.16,1,.3,1)}
+.coin .cw img.on{filter:none;opacity:1}
+.coin .s0{clip-path:polygon(50% 50%,50% 0,100% 0,100% 78.9%)}
+.coin .s1{clip-path:polygon(50% 50%,100% 78.9%,100% 100%,0 100%,0 78.9%)}
+.coin .s2{clip-path:polygon(50% 50%,0 78.9%,0 0,50% 0)}
+.coin .cl{position:absolute;left:5.5%;top:5.5%;width:89%;height:89%;pointer-events:none}
+.coin .cl path{stroke:var(--bg);stroke-width:1.6;fill:none}
+.coin.lv1{background:conic-gradient(from 200deg,#f7f7f7,#a7abb1,#eceef1,#878c93,#f7f7f7);box-shadow:0 6px 18px -10px rgba(0,0,0,.35)}
+.coin.lv2{background:conic-gradient(from 200deg,#fff3c9,#b5862a,#f6d97c,#8a6416,#fff3c9);box-shadow:0 8px 22px -10px rgba(138,100,22,.55)}
+.coin.lv3{background:conic-gradient(from 200deg,#3d3d3d,#050505,#2b2b2b,#000,#3d3d3d);box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
+.coin.lv3 .cw{box-shadow:0 0 0 1px #c9a24a}
+.coin.up{animation:cup 1.4s cubic-bezier(.16,1,.3,1)}
+@keyframes cup{0%{transform:scale(.82) rotate(-25deg)}100%{transform:none}}
+.medal-h .coin{--cs:84px}
+@media (hover:hover){a:hover>.coin,.bd:hover .coin{transform:scale(1.04) rotate(-3deg)}}
+@media (prefers-reduced-motion:reduce){.coin,.coin .cw img{transition:none}.coin.up{animation:none}}
+/* шапка на светлых страницах не наезжает на текст */
+body:has(.pf) .mast,body:has(.page) .mast{mix-blend-mode:normal;color:var(--ink);background:linear-gradient(var(--bg) 70%,rgba(244,241,236,0));padding-bottom:18px;pointer-events:auto}
 .emb .m-rim{fill:none;stroke:#C9C3B8;stroke-width:1.2}.emb .m-face{fill:none;stroke:#C9C3B8;stroke-width:.8}.emb .m-line{stroke:#C9C3B8;stroke-width:.7}.emb .m-glyph{fill:none;stroke:#A9A398;stroke-width:1.1;stroke-linejoin:round}.emb .m-dot{fill:#A9A398}.emb.lv1 .m-face,.emb.lv1 .m-rim{fill:url(#oj-s);stroke:#8C8F93}.emb.lv1 .m-line{stroke:#6E7176}.emb.lv1 .m-glyph{stroke:#4C4F53;fill:rgba(255,255,255,.35)}.emb.lv1 .m-dot{fill:#4C4F53}.emb.lv2 .m-face,.emb.lv2 .m-rim{fill:url(#oj-g);stroke:#8A6B33}.emb.lv2 .m-line{stroke:#6B5227}.emb.lv2 .m-glyph{stroke:#4F3B17;fill:rgba(255,244,214,.3)}.emb.lv2 .m-dot{fill:#4F3B17}.emb.lv3 .m-face,.emb.lv3 .m-rim{fill:url(#oj-b);stroke:#0B0B0B}.emb.lv3 .m-line{stroke:#9C968B}.emb.lv3 .m-glyph{stroke:#D8D1C3;fill:none}.emb.lv3 .m-dot{fill:#D8D1C3}</style></head><body><div class="mast"><a class="logo" href="/journal/"><b>ORBIQ</b></a><span class="kick">Открытие для вас<a class="acct" id="acct" href="/journal/profile/">Вход</a></span></div><main class="sharepage"><div class="sp in"><img src="/img/journal/tokaji-essencia-spoon.webp" alt=""><span class="sh"></span><span class="sb"><span class="kick">Венгрия, Токай</span><span class="sh2">Токайская эссенция на хрустальной ложке</span><span class="sd">Токайскую эссенцию Royal Tokaji называют одним из самых редких вин мира, а в Венгрии о ней говорят: солнце на ложке.</span><span class="acts" style="margin-top:8px"><a class="btn" href="/journal/taste/#tokaji-essencia-spoon" style="background:#fff;color:#111">Читать историю →</a></span></span></div></main><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="oj-s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F4F2"/><stop offset=".5" stop-color="#B9BBBD"/><stop offset="1" stop-color="#8C8F93"/></linearGradient><linearGradient id="oj-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9D7A6"/><stop offset=".5" stop-color="#BE9A55"/><stop offset="1" stop-color="#8A6B33"/></linearGradient><linearGradient id="oj-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".55" stop-color="#202020"/><stop offset="1" stop-color="#0B0B0B"/></linearGradient></defs></svg><script>(function(){
 var API='/api/j/?r=';
 function api(r,o){o=o||{};var init={method:o.body?'POST':'GET',credentials:'same-origin',headers:{}};if(o.body){init.headers['Content-Type']='application/json';init.body=JSON.stringify(o.body)}
@@ -138,7 +160,8 @@ function rid(){var c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'
 function opState(id){return(ME&&ME.ops&&ME.ops[id])||'not_explored'}
 function achOf(id){for(var i=0;i<ACH.length;i++)if(ACH[i].items.indexOf(id)>=0)return ACH[i];if(ALLACH)for(var d in ALLACH)for(var j=0;j<ALLACH[d].length;j++)if(ALLACH[d][j].items.indexOf(id)>=0)return ALLACH[d][j];return null}
 function nOf(a){return a.items.filter(function(i){return opState(i)==='completed'}).length}
-function medal(a,n,size){return a.svg.replace('class="emb"','class="emb lv'+n+'"'+(size?' style="width:'+size+'px;height:'+size+'px"':''))}
+function medal(a,n,size){var im=a.items.map(function(i,k){var t=IDX[i]||{};return '<img class="s'+k+(opState(i)==='completed'?' on':'')+'" src="'+(t.th||'')+'" alt="" loading="lazy">'}).join('');
+ return '<span class="coin lv'+n+'"'+(size?' style="--cs:'+size+'px"':'')+'><span class="cw">'+im+'</span><svg class="cl" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50V0M50 50L93.3 75M50 50L6.7 75"/></svg></span>'}
 // ---- подарок ----
 var sheet=document.createElement('div');sheet.className='sheet';sheet.innerHTML='<div class="sheet-in" role="dialog" aria-modal="true"><h3 id="gh">Подарить открытие</h3><p class="note" id="gs"></p><label class="row note" id="gpl" style="display:none"><input type="checkbox" id="gp"> Показать мой знак получателю</label><textarea id="gm" placeholder="Несколько слов от себя (необязательно)"></textarea><div class="grid"><button class="btn" data-ch="tg" type="button">Telegram</button><button class="btn" data-ch="wa" type="button">WhatsApp</button><button class="btn ghost" data-ch="copy" type="button">Скопировать ссылку</button><button class="btn ghost" data-ch="native" type="button">Другое…</button></div><p class="note" id="gn"></p><div id="ginv" hidden></div><button class="undo" type="button" data-close>Закрыть</button></div>';
 document.body.appendChild(sheet);
@@ -188,7 +211,7 @@ function renderAch(changed){var box=document.getElementById('achg');if(!box)retu
  (changed||[]).forEach(function(c){var s=document.querySelector('#m-'+c.id+' svg');if(s&&c.to>c.from)s.classList.add('up')})}
 var achSec=document.getElementById('ach');if(achSec&&'IntersectionObserver'in window){var seen=0;new IntersectionObserver(function(es){if(!seen&&es[0].isIntersecting){seen=1;ev('ach_open')}}).observe(achSec)}
 // ---- статья ----
-function levelMsg(a,c){var t=['','Первое открытие совершено.','Два открытия из трех.','Все три открытия совершены.'][c.to];return '<div class="gate" style="gap:10px"><div class="inach">'+medal(a,c.to,64).replace('class="emb','class="emb up')+'<div><h3 style="font-size:22px">'+esc(a.name)+'. '+LV[c.to]+'.</h3><p>'+t+'</p></div></div>'+nextHtml(a,c.to)+'</div>'}
+function levelMsg(a,c){var t=['','Первое открытие совершено.','Два открытия из трех.','Все три открытия совершены.'][c.to];return '<div class="gate" style="gap:10px"><div class="inach">'+medal(a,c.to,72).replace('class="coin','class="coin up')+'<div><h3 style="font-size:22px">'+esc(a.name)+'. '+LV[c.to]+'.</h3><p>'+t+'</p></div></div>'+nextHtml(a,c.to)+'</div>'}
 function nextHtml(a,n){if(n>=1&&n<3){var rest=a.items.filter(function(i){return opState(i)!=='completed'});return '<p class="note">Впереди еще '+(rest.length===2?'две истории':'одна история')+'.</p><div class="dirs" style="margin:0">'+rest.map(cardMini).join('')+'</div>'}
  if(n===3){var pool=ACH.filter(function(x){return x.id!==a.id&&nOf(x)<3});if(pool.length){var x=pool[0];return '<p class="note">Близкий знак в этом разделе: «'+esc(x.name)+'».</p><div class="dirs" style="margin:0">'+cardMini(x.items[0])+'</div>'}}return ''}
 function fill(id,root){window.OJ_CUR=id;var box=root.querySelector('[data-full]');if(!box)return;var t=IDX[id]||{};
@@ -232,6 +255,6 @@ function tips(){var b=document.getElementById('tipsb');if(!b)return;var CAT={foo
   var f=b.querySelector('[data-tip]');f.onsubmit=function(e){e.preventDefault();var bt=f.querySelector('button'),n=f.querySelector('[data-tn]');if(bt.disabled)return;bt.disabled=true;
    api('tip/create',{body:{cat:f.cat.value,title:f.title.value,city:f.city.value,why:f.why.value,price:f.price.value,until:f.until.value,link:f.link.value,credit:f.credit.checked,website:f.website.value}}).then(function(x){bt.disabled=false;if(x.ok){f.reset();n.className='note ok';n.textContent='Спасибо. Редакция проверит находку перед публикацией.'}else{n.className='note err';n.textContent=x.error||'Не отправилось'}})}})}
 var mfx=document.getElementById('mf');if(mfx)mfx.addEventListener('click',function(e){var bt=e.target.closest('button');if(!bt)return;var f=bt.getAttribute('data-f');document.querySelectorAll('.tip').forEach(function(t){t.style.display=(!f||t.getAttribute('data-t')===f)?'':'none'})});
-window.OJ.state=function(){return ME};window.OJ.medal=medal;window.OJ.nOf=function(a){return nOf(a)};window.OJ.LV=LV;
+window.OJ.state=function(){return ME};window.OJ.medal=medal;window.OJ.nOf=function(a){return nOf(a)};window.OJ.LV=LV;window.OJ.IDX=IDX;
 })();
 </script></body></html>

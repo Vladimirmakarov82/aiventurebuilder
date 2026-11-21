@@ -48,10 +48,10 @@ async function sgetE(p) {
 }
 // транзакционное обновление документа: условная запись по ETag с повтором
 async function update(p, fn) {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 8; i++) {
     const { doc, etag } = await sgetE(p); const res = await fn(doc); if (!res || !res.doc) return res;
     try { await put(p, JSON.stringify(res.doc), { access: 'private', addRandomSuffix: false, contentType: 'application/json', ...(etag ? { ifMatch: etag } : { allowOverwrite: false }) }); return res; }
-    catch (e) { if (!String(e && (e.name || e)).match(/Precondition|already exists|exists/i)) throw e; await new Promise(r => setTimeout(r, 60 + Math.random() * 120)); }
+    catch (e) { const m = `${e && e.name} ${e && e.message} ${e && e.constructor && e.constructor.name}`; if (!/Precondition|ETag|already exists|exists/i.test(m)) throw e; await new Promise(r => setTimeout(r, 150 * (i + 1) + Math.random() * 150)); }
   }
   throw new Error('conflict');
 }

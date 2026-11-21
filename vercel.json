@@ -56,6 +56,106 @@
       "source": "/journal/menu-c",
       "destination": "/journal/",
       "permanent": true
+    },
+    {
+      "source": "/journal/sport",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/sport/",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/health",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/health/",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/hobby",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/hobby/",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/cars",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/cars/",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/taste",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/taste/",
+      "destination": "/journal/lifestyle/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/her",
+      "destination": "/journal/family/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/her/",
+      "destination": "/journal/family/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/kids",
+      "destination": "/journal/family/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/kids/",
+      "destination": "/journal/family/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/charity",
+      "destination": "/journal/meaning/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/charity/",
+      "destination": "/journal/meaning/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/spirit",
+      "destination": "/journal/meaning/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/spirit/",
+      "destination": "/journal/meaning/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/security",
+      "destination": "/journal/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/journal/security/",
+      "destination": "/journal/privacy/",
+      "permanent": true
     }
   ]
 }

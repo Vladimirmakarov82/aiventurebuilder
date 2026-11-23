@@ -128,7 +128,7 @@ tg:'<path d="m22 2-10 10M22 2l-7 20-4-9-9-4 20-7z"/>',
 upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>'
 };
 function ic(n,cls){return '<svg class="i'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true">'+(IC[n]||'')+'</svg>'}
-function btn(label,cls,attrs,icon){return '<button '+(/type=/.test(attrs||'')?'':'type="button" ')+'class="btn '+(cls||'')+'" '+(attrs||'')+'>'+(icon?ic(icon):'')+'<span class="r"><span>'+label+'</span><span aria-hidden="true">'+label+'</span></span></button>'}
+function btn(label,cls,attrs,icon){return '<button '+(/type=/.test(attrs||'')?'':'type="button" ')+'class="btn '+(cls||'')+'" '+(attrs||'')+'>'+(icon?ic(icon):'')+'<span>'+label+'</span></button>'}
 
 /* ================= Поиск идентификаторов (на устройстве) ================= */
 var STOP_CAPS=/^(О|В|На|По|С|У|К|Из|За|Для|Он|Она|Они|Его|Ее|Их|Это|Как|Что|Где|Когда|Есть|Был|Была|Сейчас|Также|Любит|Хочет|Раздел|Дело|Семья|Интересы|Предпочтения|Планы|Портрет|Факт|Гипотеза|Неизвестно)$/;
@@ -1223,9 +1223,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSheet()
 /* Магнит и подсветка под курсором */
 if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.addEventListener('pointermove',function(e){
-    var b=e.target.closest&&e.target.closest('.mag');
-    $$('.mag.act').forEach(function(x){if(x!==b){x.classList.remove('act');x.classList.add('back');x.style.transform=''}});
-    if(b&&!b.disabled){var r=b.getBoundingClientRect();var dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);b.classList.add('act');b.classList.remove('back');b.style.transform='translate('+(dx*.22).toFixed(1)+'px,'+(dy*.32).toFixed(1)+'px)'}
     var s=e.target.closest&&e.target.closest('.spot');if(s){var q=s.getBoundingClientRect();s.style.setProperty('--x',(e.clientX-q.left)+'px');s.style.setProperty('--y',(e.clientY-q.top)+'px')}
   },{passive:true});
 }

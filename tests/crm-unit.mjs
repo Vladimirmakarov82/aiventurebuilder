@@ -168,13 +168,31 @@ r = await call('clients'); assert.equal(r.s, 401); ok('без входа → 401
 r = await call('me'); assert.equal(r.j.role, null); assert.equal(r.h['cache-control'], 'no-store'); ok('me без входа: role null, no-store');
 
 // владелец: ссылка + ключ
-r = await call('auth/request', { body: { email: 'boss@example.com' } }); assert.ok(r.j.test_link);
+r = await call('auth/request', { body: { email: 'boss@example.com' } }); assert.ok(r.j.test_link); const OLINK = r.j.test_link;
 let rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(r.j.test_link).get('t')) }); assert.equal(rr.s, 302); const O0 = ck(rr.h);
 rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(r.j.test_link).get('t')) }); assert.doesNotMatch(rr.h.location, /expired/); ok('ссылка входа работает повторно 30 дней (решение Владимира)');
 r = await call('partners', { cookie: O0 }); assert.equal(r.s, 403); r = await call('me', { cookie: O0 }); assert.equal(r.j.owner, false); assert.equal(r.j.needKey, true); ok('владелец без ключа не получает прав');
-r = await call('auth/owner-key', { body: { key: 'wrong-key-12' }, cookie: O0 }); assert.equal(r.s, 403);
-r = await call('auth/owner-key', { body: { key: 'owner-key-123' }, cookie: O0 }); assert.equal(r.s, 200); const O = ck(r.h);
+r = await call('auth/owner-key', { body: { key: 'wrong-key-12' }, cookie: O0 }); assert.equal(r.s, 409); assert.equal(r.j.needSet, true);
+r = await call('auth/owner-key', { body: { key: 'owner-key-123' }, cookie: O0 }); assert.equal(r.s, 200); let O = ck(r.h);
 r = await call('me', { cookie: O }); assert.equal(r.j.owner, true); ok('владелец: ссылка из письма + ключ → права владельца');
+// пароль владельца: задать, войти, сбросить через почту
+{ let v0 = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(OLINK).get('t')) }); const O0b = ck(v0.h); let m = await call('me', { cookie: O0b }); assert.equal(m.j.needSet, true);
+  let x = await call('auth/owner-setpw', { body: { password: 'short' }, cookie: O0b }); assert.equal(x.s, 400);
+  x = await call('auth/owner-setpw', { body: { password: 'Strong-pass-2026' }, cookie: O0b }); assert.equal(x.s, 200); const P1 = ck(x.h);
+  assert.equal((await call('partners', { cookie: P1 })).s, 200); assert.equal((await call('partners', { cookie: O })).s, 401); ok('пароль задан, старые сессии владельца погашены');
+  x = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(OLINK).get('t')) }); const O1 = ck(x.h);
+  assert.equal((await call('me', { cookie: O1 })).j.needSet, false);
+  assert.equal((await call('auth/owner-setpw', { body: { password: 'Another-pass-2026' }, cookie: O1 })).s, 403); ok('второй раз задать пароль без сброса нельзя');
+  assert.equal((await call('auth/owner-key', { body: { key: 'Wrong-pass-2026' }, cookie: O1 })).s, 403);
+  x = await call('auth/owner-key', { body: { key: 'Strong-pass-2026' }, cookie: O1 }); assert.equal(x.s, 200); const M1 = ck(x.h); ok('вход владельца по паролю');
+  x = await call('auth/owner-reset', { body: {}, cookie: M1 });assert.ok(x.j.test_link);
+  const tr = linkParams(x.j.test_link).get('t'); let y = await call('auth/reset', { q: '&t=' + encodeURIComponent(tr) }); assert.equal(y.s, 302); const R1 = ck(y.h);
+  assert.match((await call('auth/reset', { q: '&t=' + encodeURIComponent(tr) })).h.location, /expired/); ok('ссылка сброса одноразовая');
+  assert.equal((await call('me', { cookie: R1 })).j.needSet, true);
+  y = await call('auth/owner-setpw', { body: { password: 'Brand-new-pass-26' }, cookie: R1 }); assert.equal(y.s, 200); const P2 = ck(y.h);
+  assert.equal((await call('partners', { cookie: M1 })).s, 401); assert.equal((await call('partners', { cookie: P2 })).s, 200); ok('сброс пароля через почту, старые сессии погашены');
+  x = await call('auth/owner-reset', { body: { email: 'stranger@example.com' } }); assert.equal(x.s, 200); assert.ok(!x.j.test_link); ok('сброс на чужую почту: тот же ответ без письма');
+  O = P2; }
 r = await call('auth/request', { body: { email: 'stranger@example.com' } }); assert.equal(r.s, 200); assert.ok(!r.j.test_link); ok('чужой адрес: тот же ответ без письма');
 
 // партнеры

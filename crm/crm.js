@@ -346,12 +346,14 @@ var Demo=(function(){
 
   function call(r,b,q){
     if(AS==='login'&&r==='me')return {role:null};
-    if(AS==='key'&&r==='me')return {role:null,needKey:true};
+    if(AS==='key'&&r==='me')return {role:null,needKey:true,needSet:Q.get('set')==='1'};
     switch(r){
     case 'me':if(isOwner())return {role:'owner',owner:true,partner:{id:'orbiq',name:'Владимир',tier:'paid',suspended:false,tg:{connected:true}}};
       var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on}}};
     case 'auth/request':return {ok:true,test_link:'#/clients'};
-    case 'auth/owner-key':if(String(b.key||'').length<4)fail(401,'Ключ не подошел');AS='owner';ME='orbiq';return {ok:true};
+    case 'auth/owner-key':if(String(b.key||'').length<4)fail(403,'Пароль не подошел');AS='owner';ME='orbiq';return {ok:true};
+    case 'auth/owner-setpw':if(String(b.password||'').length<10)fail(400,'Пароль от 10 символов');AS='owner';ME='orbiq';return {ok:true};
+    case 'auth/owner-reset':return {ok:true};
     case 'auth/logout':return {ok:true};
     case 'clients':{
       var sc=q.scope||'mine';
@@ -542,9 +544,17 @@ function loginStats(){var box=$('#lst');if(!box)return;
     if(tk){var t=document.createElement('div');t.className='ltk';t.setAttribute('aria-label','Последние запросы в сети');t.innerHTML='<div class="ltk-in" style="--d:'+Math.max(20,(d.ticker||[]).length*5)+'s">'+tk+tk+'</div>';$('.lgn').appendChild(t)}
   }).catch(function(){box.innerHTML=''})}
 function vKey(){
-  $('#root').innerHTML='<div class="lgn">'+wall()+'<span class="lg-logo">ORBIQ</span><span class="lg-tag">'+E(CAB.tag)+' · второй шаг</span><div class="lg-card">'+coin(true)+'<h1>'+words('Ключ владельца')+'</h1><p class="lg-sub">Почта подтверждена. Введите ключ, чтобы открыть кабинет владельца</p><form class="lg-f" id="kf"><label class="sr" for="kk">Ключ</label><input id="kk" type="password" autocomplete="current-password" placeholder="Ключ" required><button type="submit" aria-label="Войти">'+ic('ar')+'</button></form><p class="lg-e" id="kerr" hidden></p><p class="lg-n">Сессия владельца действует 12 часов</p></div></div>';
-  var f=$('#kf');f.addEventListener('submit',function(e){e.preventDefault();var k=$('#kk').value;if(!k)return;f.classList.add('busy');
-    api('auth/owner-key',{key:k}).then(function(){return boot('#/mine')}).catch(function(e2){f.classList.remove('busy');var er=$('#kerr');er.hidden=false;er.textContent=e2.status===429?'Слишком много попыток. Попробуйте позже':'Ключ не подошел'})});
+  var set=!!(S.me&&S.me.needSet);
+  $('#root').innerHTML='<div class="lgn">'+wall()+'<span class="lg-logo">ORBIQ</span><span class="lg-tag">'+E(CAB.tag)+' · второй шаг</span><div class="lg-card">'+coin(true)+'<h1 class="sm">'+(set?'НОВЫЙ ПАРОЛЬ':'ПАРОЛЬ')+'</h1><p class="lg-sub">'+(set?'Почта подтверждена. Придумайте пароль от 10 символов: дальше вход по почте и паролю':'Почта подтверждена. Введите пароль владельца')+'</p><form class="lg-f" id="kf"><label class="sr" for="kk">Пароль</label><input id="kk" type="password" autocomplete="'+(set?'new-password':'current-password')+'" placeholder="'+(set?'Новый пароль':'Пароль')+'" minlength="'+(set?10:1)+'" required><button type="button" class="lg-eye" id="keye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="'+(set?'Сохранить пароль':'Войти')+'">'+ic('ar')+'</button></form><p class="lg-e" id="kerr" hidden></p>'+(set?'<p class="lg-n">Сессия владельца действует 12 часов</p>':'<p class="lg-n"><button type="button" class="lg-lnk" id="kfg">Забыли пароль?</button></p>')+'</div></div>';
+  var f=$('#kf'),inp=$('#kk'),er=$('#kerr');
+  function err(t){er.hidden=false;er.textContent=t}
+  $('#keye').addEventListener('click',function(){inp.type=inp.type==='password'?'text':'password';inp.focus()});
+  f.addEventListener('submit',function(e){e.preventDefault();var k=inp.value;if(!k)return;if(set&&k.length<10)return err('Нужно от 10 символов');f.classList.add('busy');er.hidden=true;
+    (set?api('auth/owner-setpw',{password:k}):api('auth/owner-key',{key:k})).then(function(){return boot('#/mine')}).catch(function(e2){f.classList.remove('busy');
+      if(e2.status===409){S.me.needSet=true;return vKey()}
+      err(e2.status===429?'Слишком много попыток. Попробуйте через 15 минут':set?(e2.message||'Пароль не сохранен'):'Пароль не подошел')})});
+  var fg=$('#kfg');if(fg)fg.addEventListener('click',function(){fg.disabled=true;
+    api('auth/owner-reset',{}).then(function(){fg.parentNode.textContent='Ссылка для нового пароля отправлена на почту. Она действует 1 час'}).catch(function(e2){fg.disabled=false;err(e2.status===429?'Слишком много запросов. Попробуйте позже':'Письмо не отправлено, попробуйте позже')})});
 }
 
 /* ================= Клиенты ================= */
@@ -1557,6 +1567,6 @@ window.addEventListener('hashchange',function(){S.viewAs='own';render()});
 // вкладки карточки переключаются на месте: без перерисовки страницы и без прыжка наверх
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('nav.tabs a[data-tab]');if(!a||!S.card||!$('#tabc'))return;e.preventDefault();
   history.replaceState(null,'',a.getAttribute('href'));[].forEach.call(a.parentNode.children,function(x){x.classList.toggle('on',x===a)});renderTab(S.card,a.getAttribute('data-tab'))},true);
-if(DEMO){var dm=document.createElement('div');dm.className='demo';dm.innerHTML='Демо <select aria-label="Роль">'+[['owner','Владелец'],['new','Новый партнер'],['basic','Базовый партнер'],['paid','Партнер Orbiq'],['networker','Нетворкер'],['login','Вход'],['key','Ключ владельца']].map(function(o){return '<option value="'+o[0]+'"'+(Demo.as()===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select>';document.body.appendChild(dm);dm.querySelector('select').addEventListener('change',function(){var u=new URL(location.href);u.searchParams.set('as',this.value);u.hash='';location.href=u.toString()})}
+if(DEMO){var dm=document.createElement('div');dm.className='demo';dm.innerHTML='Демо <select aria-label="Роль">'+[['owner','Владелец'],['new','Новый партнер'],['basic','Базовый партнер'],['paid','Партнер Orbiq'],['networker','Нетворкер'],['login','Вход'],['key','Пароль владельца']].map(function(o){return '<option value="'+o[0]+'"'+(Demo.as()===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select>';document.body.appendChild(dm);dm.querySelector('select').addEventListener('change',function(){var u=new URL(location.href);u.searchParams.set('as',this.value);u.hash='';location.href=u.toString()})}
 boot();
 })();

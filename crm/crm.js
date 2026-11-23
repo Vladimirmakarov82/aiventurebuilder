@@ -579,7 +579,7 @@ function vClients(mode){
   if(isOwner())L.scope=om?'mine':'all';else if(!hasNet())L.scope='mine';
   S.lastList=isOwner()?(om?'#/mine':'#/clients'):'#/clients';
   var t=ptier();
-  var acts=isOwner()&&!om?'':btn('Добавить клиента','pri mag','data-a="newc"','plus');
+  var acts=isOwner()&&!om?'':(isOwner()?'':btn('Загрузить списком','soft','data-a="bulk"','upload'))+btn('Добавить клиента','pri mag','data-a="newc"','plus');
   var anon=isOwner()&&!om?'':'<div class="anon rv"><span class="ico">'+ic('lock')+'</span><ol><li><b>01</b>Имя или псевдоним, без фамилии</li><li><b>02</b>Контакты остаются у вас</li><li><b>03</b>'+(om?'Сеть видит пометку «Ведет Orbiq»':'Клиенты остаются за вами. Другие партнеры видят их обезличенно')+'</li></ol><button type="button" class="lk" data-a="howsee">Как видят партнеры</button></div>';
   var scope=isOwner()?'':'<div class="seg" role="tablist"><button type="button" class="'+(L.scope==='mine'?'on':'')+'" data-a="scope" data-v="mine">Мои</button><button type="button" class="'+(L.scope==='all'?'on':'')+'" data-a="scope" data-v="all" '+(hasNet()?'':'disabled title="Откроется со статусом «Базовый партнер»"')+'>Все</button></div>';
   var ints=Object.keys(S.seenInterests).concat(INTERESTS_BASE).filter(function(v,i,a){return a.indexOf(v)===i}).sort();
@@ -1217,9 +1217,13 @@ var A={
   cmore:function(){var t=$('#more').value.trim();if(t.length<5){toast('Допишите пару фактов','alert');return}stopRec();var P=S.pending[S.card.id];if(P.keep)P.keep();P.appendMode=true;scrubStage(S.card.id,t,P.source)},
   cconfirm:function(el){confirmCheck(el)},
   leadf:function(el){S.leadF=el.getAttribute('data-v');vFit()},
+  getlead:function(el){getLeadSheet(el.getAttribute('data-c'))},
+  bulk:function(){bulkSheet()},
+  leavefocus:function(){leaveFocus();vFit()},
+  upgrade:function(){api('product/suggest',{text:'Хочу статус «Партнер Orbiq» ($20 000 в год), чтобы связаться с лидами сети'}).then(function(){closeSheet();toast('Orbiq свяжется с вами')}).catch(function(e){toast(e.message,'alert')})},
   cpy:function(){},
-  howto:function(){S.tour=1;if(location.hash!=='#/fit')location.hash='#/fit';else render()},
-  gate:function(){var rn=readyN();toast('Предлагать можно после '+rn.need+' карточек. Сейчас '+rn.n,'lock');setTimeout(function(){go('#/new')},700)},
+  howto:function(){go('#/help')},
+  gate:function(){getLeadSheet('')},
   pkfill:function(){var r=S.rq;var parts=[];if($('[data-pk="offer"]:checked'))parts.push('Для вашего клиента «'+r.alias+'» есть предложение: '+r.offer);if($('[data-pk="terms"]:checked'))parts.push('Условия: '+r.terms);if($('[data-pk="att"]:checked'))parts.push('Во вложении: '+r.attachment.name);parts.push('Обсудите с клиентом?');var ta=$('form.comp[data-to="cardOwner"] textarea');ta.value=parts.join('\n');ta.style.height='auto';ta.style.height=Math.min(220,ta.scrollHeight+4)+'px';ta.dispatchEvent(new Event('input'));ta.focus()},
   pffin:function(el){var pid=el.getAttribute('data-p'),v=el.getAttribute('data-v');var r=$('[data-fr="'+pid+'"]').value.trim();if(!r){toast('Впишите основание решения','alert');return}api('pf/final',{pid:pid,decision:v,reason:r}).then(function(){toast('Решение отправлено партнеру');vReviews()}).catch(function(e){toast(e.message,'alert')})}
 };
@@ -1539,22 +1543,46 @@ function stageHtml(t){var rn=readyN();var st=t==='paid'||t==='basic'?3:(S.me.par
   var it=[['Занесите своих клиентов',rn.n+' из '+rn.need+' карточек','#/new'],['Проверка Orbiq','2–3 дня после '+rn.need+' карточек',''],['Предлагайте лидам','через Orbiq, клиент остается за вами','']];
   return '<div class="stg rv"><div class="stg-h"><span class="kick">Ваш этап</span><b>'+(st===1?'Шаг 1 из 3. Занесите '+rn.need+' своих клиентов, чтобы предлагать лидам':st===2?'Шаг 2 из 3. Orbiq проверяет ваш портфель':'Шаг 3 из 3. Предлагайте лидам через Orbiq')+'</b></div><ol class="stg-l">'+it.map(function(x,k){var c=k+1<st?'done':k+1===st?'cur':'';return '<li class="'+c+'"><i>'+(k+1<st?ic('check'):k+1)+'</i><span><b>'+x[0]+'</b><small>'+x[1]+'</small></span>'+(k===0&&st===1?'<i class="gate-p"><i style="width:'+Math.min(100,Math.round(rn.n/rn.need*100))+'%"></i></i>':'')+'</li>'}).join('')+'</ol><div class="row">'+(st===1?btn('Добавить клиента','pri','data-a="go" data-h="#/new"','plus')+'<a class="btn soft" href="#/help">'+ic('note')+'Как быстро занести 50</a>':'<a class="btn soft" href="#/help">'+ic('note')+'Сценарий разговора</a>')+'</div></div>'}
 function vFit(){
-  loading('fit');var t=ptier();
+  var t=ptier();var first=!isOwner()&&localStorage.getItem('oc_tour')!=='1'&&t!=='paid';
+  document.body.classList.toggle('focus',first);
+  loading('fit');
   Promise.all([api('fit/list'),loadSent()]).then(function(rr){var d=rr[0]||{};var rows=d.rows||[];var tot=d.total!=null?d.total:rows.length;var pot=d.potential||{};
-    var can=d.canOffer!=null?!!d.canOffer:(t==='basic'||t==='paid');var lim=rqLimit();
+    var can=d.canOffer!=null?!!d.canOffer:(t==='basic'||t==='paid');var lim=rqLimit();S.leads=rows;
     var f=S.leadF||'all';var cnt={all:rows.length,hot:0,warm:0,int:0};rows.forEach(function(r){var k=leadKind(r);if(k==='hot')cnt.hot++;else if(k==='warm'||k==='cold')cnt.warm++;else cnt.int++});
     var L=rows.filter(function(r){var k=leadKind(r);return f==='all'||(f==='hot'&&k==='hot')||(f==='warm'&&(k==='warm'||k==='cold'))||(f==='int'&&k==='int')});
-    page('fit',hd('Клиенты сети под ваш продукт','Лиды')+stageHtml(t)+
-    '<div class="fit-top"><div class="card dk spot rv"><span class="kick" style="color:var(--dmute)">Лидов под ваш продукт</span><div class="k" style="color:#fff"><span id="ftot">0</span><small>'+plural(tot,'лид','лида','лидов')+'</small></div><p class="hint" style="color:var(--dmute)">Из них горячих: '+cnt.hot+'</p></div>'+
-    '<div class="card rv" style="--i:1"><span class="kick">Потенциал в год</span><div class="k" style="font-size:clamp(32px,3vw,50px);white-space:nowrap">'+E(range(pot))+'</div><p class="hint">Оценка по вашему доходу с клиента. Не обещание продаж</p></div></div>'+
-    '<div class="tools lead-f"><div class="pills">'+[['all','Все'],['hot','Горячие'],['warm','Теплые'],['int','По интересам']].map(function(x){return '<button type="button" class="'+(f===x[0]?'on':'')+'" data-a="leadf" data-v="'+x[0]+'">'+(x[0]==='hot'?'<i class="dot hot"></i>':x[0]==='warm'?'<i class="dot warm"></i>':'')+x[1]+' <span class="cnt">'+cnt[x[0]]+'</span></button>'}).join('')+'</div><p class="hint lead-leg"><i class="dot hot"></i>Горячий: запрос за 7 дней · <i class="dot warm"></i>Теплый: за 30 дней · По интересам: запроса нет, интересы совпадают</p></div>'+
-    (L.length?'<div class="dos">'+L.map(function(r,i){var k=leadKind(r),dd=leadAge(r);var rq=can?btn('Предложить через Orbiq','sm '+(k==='hot'?'pri':'dark'),'data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':''),'send'):btn('Предложить','sm soft lkb','data-a="gate"','lock');
-      return '<article class="dos-r rv'+(t==='new'?' locked':'')+'" style="--i:'+Math.min(i,10)+'"><div class="stack" style="gap:10px"><div class="lead-b '+k+'"><i class="dot '+k+'"></i><b>'+LK[k][0]+'</b>'+(dd!=null?'<span>запрос '+agoD(dd)+'</span>':'<span>'+LK[k][1]+'</span>')+'</div>'+(r.reqText?'<p class="lead-q">«'+E(r.reqText)+'»</p>':'')+'<h3><span class="bl">'+E(r.alias)+'</span> <span class="chip line">'+E(ageL(r.age))+'</span><span class="chip line">'+E(capL(r.capital))+'</span></h3><p class="dz bl">'+E(r.dossier||'')+'</p></div>'+
-      '<div class="side2"><div class="pot">'+E(range(r.potential))+'<small>Потенциал в год</small></div><span class="lb">'+ic('shield')+'Ведет '+E(r.leadBy||'партнер сети')+'</span>'+rq+'</div></article>'}).join('')+'</div>'
-     :'<div class="card">'+emptyBox(rows.length?'В этом фильтре пусто':'Лидов пока нет',rows.length?'Посмотрите все лиды':'Лиды появятся, когда в сети будут клиенты под ваш продукт','<a class="btn sec" href="#/product">Мой продукт</a>')+'</div>')+
-    '<nav class="qlinks">'+[['product','Мой продукт','gift'],['status','Статус','star'],['requests','Обращения','msg'],['plans','Планы','cal'],['notify','Уведомления','bell']].map(function(x){return '<a href="#/'+x[0]+'" class="'+(gated(x[0])?'lk':'')+'">'+ic(x[2])+x[1]+(gated(x[0])?ic('lock','lki'):'')+'</a>'}).join('')+'</nav>',
-    function(){count($('#ftot'),0,tot,1300);if(S.tour)setTimeout(function(){tour(fitTour(tot,pot,t,cnt))},900)});
+    var nm=((S.me.partner||{}).name||'').split(' ')[0];
+    var head='<header class="lh rv">'+(first?'<div class="lh-top"><span class="lh-logo">ORBIQ</span><button type="button" class="lnk2" data-a="leavefocus">Открыть кабинет '+ic('ar')+'</button></div>':'')+
+      '<span class="kick">'+(first&&nm?E(nm)+', ':'')+'клиенты сети под ваш продукт</span><h1 class="lh-t"><span id="ftot">0</span> '+plural(tot,'лид','лида','лидов')+(cnt.hot?' <em>· '+cnt.hot+' '+plural(cnt.hot,'горячий','горячих','горячих')+'</em>':'')+'</h1>'+
+      '<p class="lh-s">Предприниматели с капиталом от $3 млн, которых привели партнеры Orbiq. Потенциал для вас <b>'+E(range(pot))+'</b> в год</p></header>';
+    page('fit',head+
+    '<div class="tools lead-f"><div class="pills">'+[['all','Все'],['hot','Горячие'],['warm','Теплые'],['int','По интересам']].map(function(x){return '<button type="button" class="'+(f===x[0]?'on':'')+'" data-a="leadf" data-v="'+x[0]+'">'+(x[0]==='hot'?'<i class="dot hot"></i>':x[0]==='warm'?'<i class="dot warm"></i>':x[0]==='int'?'<i class="dot int"></i>':'')+x[1]+' <span class="cnt">'+cnt[x[0]]+'</span></button>'}).join('')+'</div><p class="hint lead-leg">Горячий: запрос на ваш продукт за последние 7 дней. Теплый: за 30 дней. По интересам: запроса нет, совпадают интересы</p></div>'+
+    (L.length?'<div class="leads">'+L.map(function(r,i){var k=leadKind(r),dd=leadAge(r);
+      var act=can?btn('Предложить через Orbiq','sm '+(k==='hot'?'pri':'dark'),'data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':''),'send'):btn(k==='hot'?'Связаться':'Предложить','sm '+(k==='hot'?'pri':'dark'),'data-a="getlead" data-c="'+E(r.cid)+'"','send');
+      return '<article class="ld rv '+k+'" style="--i:'+Math.min(i,12)+'"><div class="ld-top"><span class="lead-b '+k+'"><i class="dot '+k+'"></i><b>'+LK[k][0]+'</b>'+(dd!=null?'<span>· запрос '+agoD(dd)+'</span>':'')+'</span><span class="ld-pot">'+E(range(r.potential))+'<small>ваш доход</small></span></div>'+
+        (r.reqText?'<p class="ld-q">«'+E(r.reqText)+'»</p>':'')+
+        '<div class="ld-who"><span class="ld-av">'+E((r.alias||'?').charAt(0))+'</span><div><b>'+E(r.alias)+'</b><span>'+E(ageL(r.age))+' · капитал '+E(capL(r.capital))+'</span></div></div>'+
+        '<p class="ld-d">'+E(r.dossier||'')+'</p>'+(r.whyFit?'<p class="ld-w">'+ic('spark')+E(r.whyFit)+'</p>':'')+
+        '<div class="ld-f"><span class="lb">'+ic('shield')+'Ведет '+E(r.leadBy||'партнер сети')+'</span>'+act+'</div></article>'}).join('')+'</div>'
+     :'<div class="card">'+emptyBox(rows.length?'В этом фильтре пусто':'Лидов пока нет',rows.length?'Посмотрите все лиды':'Лиды появятся, когда в сети будут клиенты под ваш продукт','')+'</div>')+
+    (first?'':'<nav class="qlinks">'+[['product','Мой продукт','gift'],['status','Статус','star'],['requests','Обращения','msg'],['plans','Планы','cal'],['notify','Уведомления','bell']].map(function(x){return '<a href="#/'+x[0]+'" class="'+(gated(x[0])?'lk':'')+'">'+ic(x[2])+x[1]+(gated(x[0])?ic('lock','lki'):'')+'</a>'}).join('')+'</nav>'),
+    function(){count($('#ftot'),0,tot,1400)});
   }).catch(function(e){page('fit',e.status===403?'<div class="card">'+emptyBox('Лиды недоступны','Они строятся под продукт поставщика')+'</div>':errBox(e))});
+}
+function leaveFocus(){localStorage.setItem('oc_tour','1');document.body.classList.remove('focus');S.tour=0}
+function getLeadSheet(cid){var r=(S.leads||[]).find(function(x){return x.cid===cid})||{};var rn=readyN();
+  var el=sheet('<div class="kick">'+E(r.alias||'Лид')+(r.reqText?' · «'+E(r.reqText)+'»':'')+'</div><h2>Как получить этого клиента</h2><p class="hint">Связь с клиентами сети идет через Orbiq. Откройте доступ одним из двух способов</p>'+
+   '<div class="gopt"><section class="go1"><span class="kick">Бесплатно · 2 минуты</span><h3>Загрузите список своих клиентов</h3><ul><li>Только имена, без фамилий и контактов. Никто, включая Orbiq, не узнает, кто это</li><li>Клиенты остаются за вами навсегда</li><li>Запросы и детали добавите потом, когда будет время</li><li>Когда у вас '+rn.need+' клиентов с заполненными карточками, Orbiq проверяет портфель и открывает вам связь с лидами</li></ul>'+btn('Загрузить список клиентов','pri','data-a="bulk"','upload')+'<small class="mu">Сейчас у вас '+rn.n+' из '+rn.need+'</small></section>'+
+   '<section class="go2"><span class="kick">Сразу</span><h3>Станьте Партнером Orbiq</h3><ul><li>Связь с горячими лидами сразу, без лимита</li><li>Видите новые запросы на 72 часа раньше остальных</li><li>Два места на направление, ваш продукт в приоритете</li></ul><p class="go2-p">$20 000 в год</p>'+btn('Обсудить с Orbiq','dark','data-a="upgrade"','msg')+'</section></div>',true);
+}
+function bulkSheet(){closeSheet();
+  var el=sheet('<div class="kick">Мои клиенты</div><h2>Загрузить список клиентов</h2><p class="hint">Одна строка, один клиент. Имя и все, что знаете, через запятую. Без фамилий, телефонов и почты. Например: «Андрей, 52 года, логистика, ищет дом в Испании»</p><textarea class="ta" id="blk" style="min-height:240px" placeholder="Андрей, 52, логистика, ищет дом в Испании&#10;Ирина, 45, сеть клиник, дети учатся в Лондоне&#10;Олег, 60, агробизнес"></textarea><div class="row" style="justify-content:space-between"><span class="hint" id="blkn">0 клиентов</span>'+btn('Загрузить','pri','id="blkgo"','upload')+'</div><p class="err" id="blke" hidden></p>',true);
+  var ta=$('#blk',el),n=$('#blkn',el);var lines=function(){return ta.value.split('\n').map(function(x){return x.trim()}).filter(Boolean).slice(0,300)};
+  ta.addEventListener('input',function(){var k=lines().length;n.textContent=k+' '+plural(k,'клиент','клиента','клиентов')});
+  $('#blkgo',el).addEventListener('click',function(){var L=lines();if(!L.length)return;var b=this;b.disabled=true;var ok=0,i=0;
+    var next=function(){if(i>=L.length){toast('Загружено: '+ok+' '+plural(ok,'клиент','клиента','клиентов'));closeSheet();leaveFocus();go('#/clients');return}
+      var line=L[i++];var parts=line.split(/[,;—–-]/);var alias=parts[0].replace(/[^\p{L}\p{N} .'’\-]/gu,'').trim().slice(0,30)||('Клиент '+i);var rest=parts.slice(1).join(',').trim();
+      var tryAlias=function(a,k){return api(rest.length>=20?'client/intake':'client/create',rest.length>=20?{alias:a,text:line}:{alias:a}).then(function(){ok++;n.textContent='Загружено '+ok+' из '+L.length}).catch(function(e){if(e.status===409&&k<9)return tryAlias(alias+' '+(k+2),k+1);})};
+      tryAlias(alias,0).then(next,next)};next()});
 }
 
 function productView(pr,opt){opt=opt||{};pr=pr||{};var e=pr.typicalEarnPerClient||{};
@@ -1667,6 +1695,7 @@ function render(){
   if(OWNER_ONLY[r]&&!isOwner())r='clients';if(r==='plans'&&isOwner())r='mine';
   if(r==='demand'||r==='portfolio'||r==='tariff')r=isOwner()?'mine':(r==='demand'?'fit':'status');
   if((r==='fit'||r==='product')&&ptier()==='networker')r='clients';
+  if(r!=='fit'&&document.body.classList.contains('focus'))leaveFocus();
   var fn=ROUTES[r]||vClients;
   try{var p=fn(parts.slice(1));if(p&&p.catch)p.catch(function(e){page(r,errBox(e))})}catch(e){console.error(e);page(r,errBox(e))}
 }
@@ -1674,7 +1703,7 @@ function boot(to){
   return api('me').then(function(m){S.me=m;
     if(m&&m.role&&!m.needKey){if(!$('#root .app'))$('#root').innerHTML='';if(to)location.hash=to;else if(!location.hash||location.hash==='#/login')location.hash='#/'+(m.owner?'partners':(m.partner&&m.partner.kind==='networker'?'clients':'fit'))}
     render();
-    if(m.role==='partner'&&!m.needKey&&(Q.get('onb')==='1'||Q.get('welcome')==='1'||(!DEMO&&localStorage.getItem('oc_tour')!=='1'))){S.tour=1;var tg=ptier()==='networker'?'#/clients':'#/fit';if(location.hash!==tg)location.hash=tg;else render()}
+    if(m.role==='partner'&&!m.needKey&&(Q.get('onb')==='1'||Q.get('welcome')==='1'||(!DEMO&&localStorage.getItem('oc_tour')!=='1'))){if(Q.get('onb')==='1')localStorage.removeItem('oc_tour');var tg=ptier()==='networker'?'#/clients':'#/fit';if(location.hash!==tg)location.hash=tg;else render()}
   }).catch(function(){S.me={role:null};render()});
 }
 window.addEventListener('hashchange',function(){S.viewAs='own';render()});

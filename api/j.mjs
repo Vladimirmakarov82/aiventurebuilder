@@ -15,8 +15,9 @@ const KV_TOKEN = KVK ? (ENV[KVK.replace(/URL$/, 'TOKEN')] || '') : '';
 const STORE_OK = !!(KV_URL && KV_TOKEN);
 
 // ---------- утилиты ----------
+const DEV_RANDOM = crypto.randomBytes(32).toString('hex');
 const b64u = (b) => Buffer.from(b).toString('base64url');
-const hmac = (s) => crypto.createHmac('sha256', ENV.SESSION_SECRET || 'dev').update(s).digest('base64url');
+const hmac = (s) => crypto.createHmac('sha256', ENV.SESSION_SECRET || (ENV.VERCEL_ENV ? DEV_RANDOM : 'dev')).update(s).digest('base64url');
 function sign(obj) { const p = b64u(JSON.stringify(obj)); return p + '.' + hmac(p); }
 function unsign(tok) {
   if (!tok || tok.indexOf('.') < 0) return null;
@@ -74,7 +75,7 @@ function isLive(id, st) { const a = content().articles[id]; if (!a) return false
 function statusOf(id, st) { const a = content().articles[id]; return (st[id] && st[id].status) || (a && a.status) || 'published'; }
 
 // ---------- пользователи ----------
-async function me(req) { const c = cookies(req); const s = unsign(c.oj); if (!s || !s.u) return null; return s; }
+async function me(req) { const c = cookies(req); const s = unsign(c.oj); if (!s || !s.u || !s.e || !(s.exp > Date.now())) return null; return s; } // токен отписки {u} сессией не считается
 async function loadUser(uid) { return await sget(`users/${uid}.json`); }
 const levels = (user) => coreLevels(user, ACH);
 const opsView = (u) => { const o = {}; for (const [k, v] of Object.entries((u && u.ops) || {})) o[k] = v.completed_at ? 'completed' : 'explored'; return o; };

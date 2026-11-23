@@ -179,6 +179,56 @@ button{color:inherit}
 /* верхняя подложка для читаемости меню на фото */
 body:has(.sp):not(:has(.page)) .mast{mix-blend-mode:normal}
 body:has(.sp):not(:has(.page)) .mast::after{content:'';position:absolute;z-index:-1;top:0;left:0;right:0;height:calc(env(safe-area-inset-top) + 170px);background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.36) 60%,transparent);pointer-events:none}
+/* личная подборка клиента */
+.pz-h{position:relative;background:#0E0E10;color:#fff;padding:calc(env(safe-area-inset-top) + 64px + var(--msh,34px) + clamp(20px,6vh,72px)) var(--g) clamp(30px,6vh,72px);display:flex;flex-direction:column;gap:16px;overflow:hidden}
+.pz-h::after{content:"";position:absolute;right:-12vw;top:-30%;width:60vw;height:60vw;border-radius:50%;border:1px solid rgba(255,255,255,.08);pointer-events:none}
+.pz-h .kick{color:rgba(255,255,255,.6)}
+.pz-t{font-family:var(--s);font-weight:600;font-size:clamp(44px,7.4vw,128px);line-height:.95;letter-spacing:-.03em;margin:0;max-width:14ch;text-wrap:balance}
+.pz-n{color:var(--or)}
+.pz-s{margin:0;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:rgba(255,255,255,.82)}
+.pz-c{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
+.pz-c span{font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.86)}
+.pz-i{align-self:flex-start;color:#fff;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,.4);padding:10px 0 2px;min-height:44px;display:inline-flex;align-items:flex-end;gap:6px}
+.pz-i:hover{border-color:#fff}
+.pz-w{position:relative;transition:height .7s cubic-bezier(.16,1,.3,1),opacity .45s}
+.pz-w.pz-out{opacity:0;overflow:hidden}
+.pz-w:has(.sp.hid){display:none}
+.pz-on .pz-w .sb{padding-bottom:calc(env(safe-area-inset-bottom) + 150px)}
+.pz-b{align-self:flex-start;font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--or);color:#111;padding:8px 12px;border-radius:999px;font-weight:600}
+.pz-a{position:absolute;left:var(--g);right:var(--g);bottom:calc(env(safe-area-inset-bottom) + clamp(22px,5vh,44px));z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:1150px}
+.pz-a button{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:999px;min-height:44px;padding:0 16px;cursor:pointer;transition:transform .12s cubic-bezier(.22,1,.36,1),background .25s,color .25s}
+.pz-a button:active{transform:scale(.97)}
+.pz-a button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.pz-want{background:var(--or);color:#111;font-size:15px!important;min-height:48px!important;padding:0 22px!important}
+.pz-want.done{background:#fff;color:#111}
+.pz-row{display:flex;gap:8px;flex-wrap:wrap}
+.pz-row button{background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media (hover:hover){.pz-row button:hover{background:rgba(255,255,255,.26)}}
+.pz-row button[aria-pressed=true]{background:#fff;color:#111}
+.pz-d{background:var(--bg);color:var(--ink);padding:clamp(56px,10vh,110px) var(--g) clamp(28px,5vh,48px)}
+.pz-d h2{font-family:var(--s);font-weight:600;font-size:clamp(34px,4.4vw,64px);line-height:1;letter-spacing:-.02em;margin:10px 0 0}
+.pz-d .kick{color:var(--mute)}
+.pz-toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 16px);z-index:95;transform:translate(-50%,-20px);width:max-content;opacity:0;background:#111;color:#fff;font-size:15px;padding:14px 20px;border-radius:999px;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);transition:opacity .35s,transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+.pz-toast.on{opacity:1;transform:translate(-50%,0)}
+.pz-toast.err{background:#A32B00}
+@media (max-width:600px){.pz-want{flex:1 1 100%}.pz-row{flex:1 1 100%}.pz-row button{flex:1 1 auto;padding:0 10px;font-size:13.5px}.pz-on .pz-w .sb{padding-bottom:calc(env(safe-area-inset-bottom) + 160px)}}
+#feed>.pz-w:first-child .pz-a{bottom:calc(env(safe-area-inset-bottom) + 64px)}
+.pz-on #feed>.pz-w:first-child .sb{padding-bottom:calc(env(safe-area-inset-bottom) + 200px)}
+@media (prefers-reduced-motion:reduce){.pz-w,.pz-toast,.pz-a button{transition:none}}
+.pz-f{display:none}
+@media (min-width:900px){
+ .pz-f{display:block;position:absolute;right:calc(var(--g) + 4vw);top:50%;width:min(30vw,420px);aspect-ratio:1;translate:0 -42%;pointer-events:none}
+ .pz-f span{position:absolute;left:50%;top:50%;width:52%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -24px rgba(0,0,0,.85);transform:translate(-50%,-50%) translateX(calc((var(--k) - 1) * 46%)) rotate(calc((var(--k) - 1) * 7deg)) translateY(calc(var(--k) * 4%));animation:pzf 1.2s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--k) * 90ms + 200ms)}
+ .pz-f span:nth-child(1){z-index:3;transform:translate(-50%,-50%) translateX(-58%) rotate(-7deg) translateY(4%)}
+ .pz-f span:nth-child(2){z-index:2;transform:translate(-50%,-50%) rotate(1deg) translateY(-6%)}
+ .pz-f span:nth-child(3){z-index:1;transform:translate(-50%,-50%) translateX(58%) rotate(7deg) translateY(8%)}
+ .pz-f img{width:100%;height:100%;object-fit:cover;display:block}
+ .pz-f b{position:absolute;left:10px;bottom:10px;font-family:var(--m);font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.55);padding:6px 8px;border-radius:999px;backdrop-filter:blur(6px)}
+ .pz-f span:nth-child(1) b{background:var(--or);color:#111}
+ .pz-f span:not(:first-child) b{display:none}
+}
+@keyframes pzf{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.pz-f span{animation:none}}
 .emb .m-rim{fill:none;stroke:#C9C3B8;stroke-width:1.2}.emb .m-face{fill:none;stroke:#C9C3B8;stroke-width:.8}.emb .m-line{stroke:#C9C3B8;stroke-width:.7}.emb .m-glyph{fill:none;stroke:#A9A398;stroke-width:1.1;stroke-linejoin:round}.emb .m-dot{fill:#A9A398}.emb.lv1 .m-face,.emb.lv1 .m-rim{fill:url(#oj-s);stroke:#8C8F93}.emb.lv1 .m-line{stroke:#6E7176}.emb.lv1 .m-glyph{stroke:#4C4F53;fill:rgba(255,255,255,.35)}.emb.lv1 .m-dot{fill:#4C4F53}.emb.lv2 .m-face,.emb.lv2 .m-rim{fill:url(#oj-g);stroke:#8A6B33}.emb.lv2 .m-line{stroke:#6B5227}.emb.lv2 .m-glyph{stroke:#4F3B17;fill:rgba(255,244,214,.3)}.emb.lv2 .m-dot{fill:#4F3B17}.emb.lv3 .m-face,.emb.lv3 .m-rim{fill:url(#oj-b);stroke:#0B0B0B}.emb.lv3 .m-line{stroke:#9C968B}.emb.lv3 .m-glyph{stroke:#D8D1C3;fill:none}.emb.lv3 .m-dot{fill:#D8D1C3}</style></head><body><div class="mast"><a class="logo" href="/journal/"><b>ORBIQ</b></a><span class="kick">Открытие в подарок<a class="acct" id="acct" href="/journal/profile/">Вход</a></span></div><main class="sharepage"><div class="sp in"><img src="/img/journal/lapland-ice-tracks.webp" alt=""><span class="sh"></span><span class="sb"><span class="kick">Швеция, Лапландия</span><span class="sh2">Тринадцать гоночных трасс на льду Лапландии</span><span class="sd">На замерзшем озере в шведской Лапландии создают ледовые версии известных гоночных трасс, где можно испытать автомобиль в зимних условиях.</span><span class="acts" style="margin-top:8px"><a class="btn" href="/journal/cars/#lapland-ice-tracks" style="background:#fff;color:#111">Читать историю →</a></span></span></div></main><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="oj-s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F4F2"/><stop offset=".5" stop-color="#B9BBBD"/><stop offset="1" stop-color="#8C8F93"/></linearGradient><linearGradient id="oj-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9D7A6"/><stop offset=".5" stop-color="#BE9A55"/><stop offset="1" stop-color="#8A6B33"/></linearGradient><linearGradient id="oj-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A4A4A"/><stop offset=".55" stop-color="#202020"/><stop offset="1" stop-color="#0B0B0B"/></linearGradient></defs></svg><script>(function(){
 var API='/api/j/?r=';
 function api(r,o){o=o||{};var init={method:o.body?'POST':'GET',credentials:'same-origin',headers:{}};if(o.body){init.headers['Content-Type']='application/json';init.body=JSON.stringify(o.body)}
@@ -294,4 +344,77 @@ window.OJ.state=function(){return ME};window.OJ.medal=medal;window.OJ.nOf=functi
 })();
 
 ;(function(){var m=document.getElementById('ms'),c=m&&m.querySelector('.cur');if(c){var x=c.offsetLeft-m.clientWidth/2+c.offsetWidth/2;m.scrollLeft=Math.max(0,x)}})();
+/* Личная подборка клиента Orbiq (приглашение из CRM). Гость и обычный читатель видят журнал без изменений */
+;(function(){
+var feed=document.getElementById('feed');if(!feed||!window.fetch)return;
+var IDX=window.OJ_IDX||{},HOME=!window.OJ_HERE,N=6,RM=matchMedia('(prefers-reduced-motion:reduce)');
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function crm(r,b){var o={method:b?'POST':'GET',credentials:'same-origin',headers:{}};if(b){o.headers['Content-Type']='application/json';o.body=JSON.stringify(b)}
+ return fetch('/api/crm?r='+r,o).then(function(x){return x.json().catch(function(){return{}}).then(function(j){j._s=x.status;return j})}).catch(function(){return{_s:0,error:'Нет соединения. Изменение не сохранено'}})}
+function ruDate(iso){var d=new Date(iso);return isNaN(d)?'':d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'}).replace(/ /g,' ')}
+function idOf(sp){var h=sp.getAttribute('href')||sp.getAttribute('data-id')||'';return h.charAt(0)==='#'?h.slice(1):(sp.getAttribute('data-id')||'')}
+function secName(id){var t=IDX[id]||{},m=(t.href||'').match(/\/journal\/([^/]+)\//),a=m&&document.querySelector('#ms a[href$="/'+m[1]+'/"]');return a?a.textContent:''}
+var toastEl=null,toastT=0;
+function toast(t,err){if(!toastEl){toastEl=document.createElement('div');toastEl.className='pz-toast';toastEl.setAttribute('role','status');document.body.appendChild(toastEl)}
+ toastEl.textContent=t;toastEl.classList.toggle('err',!!err);toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('on')},2800)}
+var ACTS='<div class="pz-a" role="group" aria-label="Ваша реакция"><button type="button" class="pz-want" data-act="want">Хочу воспользоваться</button><div class="pz-row"><button type="button" data-act="like" aria-pressed="false">Мне интересно</button><button type="button" data-act="less">Меньше такого</button><button type="button" data-act="hide">Скрыть</button></div></div>';
+function wrap(sp,id){var w=document.createElement('div');w.className='pz-w';w.setAttribute('data-pz',id);if(sp.parentNode)sp.parentNode.insertBefore(w,sp);w.appendChild(sp);w.insertAdjacentHTML('beforeend',ACTS);return w}
+function make(id){var t=IDX[id];if(!t)return null;var d=document.createElement('div');d.className='sp in';d.setAttribute('data-id',id);d.setAttribute('role','link');d.tabIndex=0;d.setAttribute('aria-label',t.title);
+ d.innerHTML='<img src="'+esc(t.img||t.th)+'" alt="" loading="lazy"><span class="sh"></span><span class="sb"><span class="kick">'+esc(t.geo||'')+'</span><span class="sh2">'+esc(t.title)+'</span><span class="sd">'+esc(t.hook||'')+'</span><span class="sr">Читать историю →</span></span>';
+ var go=function(){location.href=t.href};d.addEventListener('click',go);d.addEventListener('keydown',function(e){if(e.key==='Enter')go()});return d}
+function collapse(w,done){if(RM.matches){w.remove();done&&done();return}var h=w.offsetHeight;w.style.height=h+'px';w.offsetHeight;w.classList.add('pz-out');w.style.height='0px';setTimeout(function(){w.remove();done&&done()},720)}
+var tries=0;(function wait(){if(window.OJ_ME_READY){if(window.OJ&&OJ.state&&OJ.state())start();return}if(tries++<200)setTimeout(wait,40)})();
+function start(){crm('client/feed').then(function(f){
+ if(f._s!==200||!f.personal||!Array.isArray(f.items))return;
+ document.body.classList.add('pz-on');
+ var order=f.items.filter(function(id){return IDX[id]}),rank={};order.forEach(function(id,i){rank[id]=i});
+ var spreads=[].slice.call(feed.querySelectorAll('.sp'));
+ // скрытое и отклоненное: статьи журнала, которых нет в подборке клиента
+ spreads.forEach(function(sp){var id=idOf(sp);if(id&&IDX[id]&&!(id in rank))sp.remove()});
+ spreads=[].slice.call(feed.querySelectorAll('.sp'));
+ var byId={};spreads.forEach(function(sp){byId[idOf(sp)]=sp});
+ var first=feed.firstChild,mine=[];
+ if(HOME){
+  var top=order.slice(0,N),secs=[];top.forEach(function(id){var n=secName(id);if(n&&secs.indexOf(n)<0)secs.push(n)});
+  var h=document.createElement('section');h.className='pz-h';
+  h.innerHTML='<p class="kick">Персональный выпуск'+(f.until?' · доступ до '+esc(ruDate(f.until)):'')+'</p>'+
+   '<h1 class="pz-t"><span class="pz-n">'+esc(f.name||'')+(f.name?',':'')+'</span> '+(f.name?'это ваша подборка':'Это ваша подборка')+'</h1>'+
+   '<p class="pz-s">Вы можете менять интересы в любой момент</p>'+
+   (secs.length?'<p class="pz-c">'+secs.slice(0,4).map(function(s){return '<span>'+esc(s)+'</span>'}).join('')+'</p>':'')+
+   (f.seat===2?'':'<a class="pz-i" href="/i/">Пригласить близкого <span aria-hidden="true">→</span></a>');
+  h.insertAdjacentHTML('beforeend','<div class="pz-f" aria-hidden="true">'+top.slice(0,3).map(function(id,i){var t=IDX[id];return '<span style="--k:'+i+'"><img src="'+esc(t.img||t.th)+'" alt=""><b>'+esc(secName(id)||t.geo||'')+'</b></span>'}).join('')+'</div>');
+  feed.insertBefore(h,first);var mk=document.createComment('pz');feed.insertBefore(mk,h.nextSibling);
+  top.forEach(function(id,i){var sp=byId[id]||make(id);if(!sp)return;var w=wrap(sp,id);feed.insertBefore(w,mk);mine.push(id);
+   if(i===0){var sb=sp.querySelector('.sb');if(sb)sb.insertAdjacentHTML('afterbegin','<span class="pz-b">Подходит вам первым</span>')}});
+  var rest=[].slice.call(feed.querySelectorAll(':scope > .sp'));
+  if(rest.length){var dv=document.createElement('section');dv.className='pz-d';dv.innerHTML='<p class="kick">Весь выпуск</p><h2>Остальные истории номера</h2>';feed.insertBefore(dv,mk.nextSibling)}
+  rest.forEach(function(sp){wrap(sp,idOf(sp))});
+ }else{
+  var list=spreads.filter(function(sp){return sp.parentNode===feed}).sort(function(a,b){var x=rank[idOf(a)],y=rank[idOf(b)];return (x==null?1e9:x)-(y==null?1e9:y)});
+  var anchor=feed.querySelector(':scope > :not(.sp)');
+  list.forEach(function(sp){var w=wrap(sp,idOf(sp));anchor?feed.insertBefore(w,anchor):feed.appendChild(w)});
+ }
+ var busy={};
+ feed.addEventListener('click',function(e){var b=e.target.closest('[data-act]');if(!b)return;e.preventDefault();e.stopPropagation();
+  var w=b.closest('.pz-w'),id=w&&w.getAttribute('data-pz'),act=b.getAttribute('data-act');if(!id||busy[id+act])return;
+  if(act==='like'&&b.getAttribute('aria-pressed')==='true')return;
+  busy[id+act]=1;
+  if(act==='hide'||act==='less'){var at=w.nextSibling,par=w.parentNode;collapse(w);
+   crm('client/interest',{itemId:id,action:act}).then(function(r){busy[id+act]=0;
+    if(r._s!==200){if(at&&at.parentNode===par)par.insertBefore(w,at);else par.appendChild(w);w.classList.remove('pz-out');w.style.height='';toast(r.error||'Не получилось. Попробуйте еще раз',1);return}
+    toast(act==='hide'?'Скрыто. Больше не покажем':'Учтем: такого будет меньше');
+    if(HOME&&Array.isArray(r.items)){var shown={};[].forEach.call(feed.querySelectorAll('.pz-w'),function(x){shown[x.getAttribute('data-pz')]=1});
+     var nx=r.items.filter(function(x){return IDX[x]&&!shown[x]&&x!==id})[0],last=null;
+     [].forEach.call(feed.querySelectorAll('.pz-w'),function(x){if(mine.indexOf(x.getAttribute('data-pz'))>=0)last=x});
+     mine=mine.filter(function(x){return x!==id});
+     if(nx&&last){var ex=feed.querySelector('.pz-w[data-pz="'+nx+'"]');var sp=make(nx);if(sp){var nw=wrap(sp,nx);last.parentNode.insertBefore(nw,last.nextSibling);mine.push(nx)}}}
+   });return}
+  b.disabled=true;
+  crm('client/interest',{itemId:id,action:act}).then(function(r){busy[id+act]=0;
+   if(r._s!==200){b.disabled=false;toast(r.error||'Не получилось. Попробуйте еще раз',1);return}
+   if(act==='like'){b.disabled=false;b.setAttribute('aria-pressed','true');b.textContent='Мне интересно ✓';toast('Учтем в вашей подборке')}
+   if(act==='want'){b.textContent='Запрос отправлен';b.classList.add('done');toast((r.next&&r.next.text)||'Мы передали запрос. С вами свяжутся, чтобы уточнить детали')}
+  })},true);
+});}
+})();
 </script></body></html>

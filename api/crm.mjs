@@ -836,7 +836,7 @@ async function issuePinv(req, p) {
 post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | networker; профиль продукта из свободного текста
   await need(req, 'owner.admin'); const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const name = String(b.name || '').trim().slice(0, 80);
   if (!name) return send(res, 400, { error: 'Укажите имя партнера' }); if (!EMAIL_RE.test(email)) return send(res, 400, { error: 'Проверьте адрес почты' });
-  if (ownerEmails().includes(email)) return send(res, 409, { error: 'Это адрес владельца Orbiq' });
+  if (ownerEmails().includes(email)) return send(res, 409, { error: 'Это адрес Founder Orbiq' });
   const kind = b.kind === 'networker' ? 'networker' : 'supplier'; const productText = String(b.productText || '');
   if (productText.length > 30000) return send(res, 400, { error: 'Текст длиннее 30 000 символов' });
   let product = null, engine = null;

@@ -948,3 +948,18 @@ html{font-family:var(--f)}
 .lgn .lg-card h1{font-size:clamp(22px,6.4vw,32px);letter-spacing:.26em;padding-left:.26em}
 @media (max-width:860px){.lgn .lg-card h1{font-size:clamp(20px,6.6vw,28px);letter-spacing:.24em;padding-left:.24em}}
 .lgn .lg-card h1{margin-top:6px}
+/* ачивка: медаль с одной ясной картинкой, подпись и точки */
+.ach{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ach .coin{--cs:104px;padding:calc(var(--cs)*.045)}
+.ach .coin .cw img{opacity:0;transform:scale(1.08);transition:opacity .9s var(--e-out),transform 2.6s ease-out}
+.ach .coin .cw img.on{opacity:1;transform:scale(1)}
+.ach .coin .sh{position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,rgba(255,240,200,.35) 50%,transparent 65%);background-size:250% 100%;animation:achsh 5.2s ease-in-out infinite;mix-blend-mode:screen;pointer-events:none}
+@keyframes achsh{0%,60%{background-position:120% 0}100%{background-position:-120% 0}}
+.ach-l{position:relative;display:grid;min-height:14px}
+.ach-l span{grid-area:1/1;font-family:var(--m,'Geist Mono',monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#e9d29a;opacity:0;transform:translateY(4px);transition:opacity .6s,transform .6s var(--e-out);white-space:nowrap}
+.ach-l span.on{opacity:1;transform:none}
+.ach-d{display:flex;gap:6px}
+.ach-d i{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .4s,width .4s}
+.ach-d i.on{background:#e9d29a;width:14px;border-radius:2px}
+@media (max-width:860px){.ach .coin{--cs:88px}}
+@media (prefers-reduced-motion:reduce){.ach .coin .sh{animation:none}}

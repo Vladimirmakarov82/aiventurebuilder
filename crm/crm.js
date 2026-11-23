@@ -152,6 +152,7 @@ function adapt(r,d){
   case 'rq/get':case 'rq/send':if(r==='rq/send')return d;var q=d.rq||d;q.at=q.at||q.created;q.cardOwner=q.owner||{};q.initiator=q.initiator||{name:'Orbiq'};
     q.attachment=(q.attachments||[]).find(function(a){return a.from==='initiator'})||null;q.threads={initiator:msgs((q.threads||{}).initiator),cardOwner:msgs((q.threads||{}).cardOwner)};return q;
   case 'pf/all':return d.portfolios||[];
+  case 'catalog':return d.items||[];
   case 'pf/status':var al={};(d.rows||[]).forEach(function(x){al[x.cid]=x.alias});d.sample=(d.sample||[]).map(function(x){return typeof x==='string'?{cid:x,alias:al[x]}:x});return d;
   case 'tg/link':if(d.link&&!d.url)d.url=d.link;return d;
   }
@@ -179,7 +180,7 @@ var Demo=(function(){
   var C={
     c_atlas:cl({id:'c_atlas',owner:'p_irina',alias:'Атлас',age:'55–64',capital:'10–25',kids:2,investing:'active',interests:['Часы','Архитектура','Яхтинг'],
       requests:[{id:'r1',cat:'citizenship',text:'Второе гражданство в Европе для всей семьи, сроки важны',status:'open',at:day(-12),public:true},{id:'r2',cat:'realty',text:'Дом у моря в Испании, рядом с хорошей школой',status:'open',at:day(-6),public:true}],
-      publicText:{r1:'Второе гражданство в Европе для семьи'},
+      publicText:{r1:'Второе гражданство в Европе для семьи'},invites:['3f9a1c27b8e04d6aa1c2e3f4a5b6c7d8e9f0a1b2','8c21d0e9f7a64b3c2d1e0f9a8b7c6d5e4f3a2b1c'],linkId:'l_demo01',
       cells:cells({'about.age':['55–64'],'about.region':['Поволжье, большой город'],'about.places':['Дубай зимой, Альпы на Рождество'],'business.source':['Строительство, 2000-е'],'business.now':['Девелопмент жилых кварталов'],'family.circle':['Отдыхает с супругой и младшим сыном'],'family.kids':['Двое детей, 14 и 19 лет'],'interests.time':['Яхтинг в Средиземном море'],'interests.subject':['Независимые часовщики, ручная отделка'],'prefs.style':['Голосовые сообщения вечером','hypothesis'],'plans.asked':['Гражданство для семьи'],'plans.next':['Купить дом в Испании до лета'],'prefs.no':['Без шумных мероприятий'],'family.gift':['','na']}),
       relation:{role:'Клиент по часам',lastContact:'2026-10',topic:'Часы к юбилею'},capitalBasis:'Доля в девелоперской компании, оценка по открытой отчетности',
       history:[{at:day(-40),what:'Карточка создана'},{at:day(-12),what:'Добавлен запрос: гражданство'},{at:day(-3),what:'Добавлены два интереса'}]}),
@@ -191,7 +192,7 @@ var Demo=(function(){
       publicText:{r4:'Семейный портрет у современного художника'},
       cells:cells({'about.age':['65+'],'about.region':['Москва и Подмосковье'],'about.places':['Флоренция каждую весну'],'business.source':['Фармдистрибуция'],'family.circle':['С дочерью'],'family.kids':['Трое взрослых детей, пятеро внуков'],'interests.time':['Опера, сады'],'interests.subject':['Итальянская живопись'],'interests.memory':['Закрытая экскурсия по Уффици'],'prefs.formats':['Камерные события'],'plans.asked':['Портрет'],'plans.timing':['К юбилею в марте']}),relation:{role:'Давняя клиентка',lastContact:'2026-09',topic:'Подарок внучке'}}),
     c_borey:cl({id:'c_borey',owner:'p_irina',alias:'Борей',age:'35–44',capital:'1–3',kids:0,investing:'active',interests:['Технологии'],requests:[{id:'r6',cat:'finance',text:'Счет в швейцарском банке',status:'closed',at:day(-30),public:true}]}),
-    c_granit:cl({id:'c_granit',owner:'p_mark',alias:'Гранит',age:'55–64',capital:'10–25',kids:2,investing:'active',interests:['Часы','Охота'],requests:[{id:'r7',cat:'watches',text:'Редкие независимые часы к 60-летию',status:'open',at:day(-5),public:true}],publicText:{r7:'Редкие независимые часы к юбилею'},cells:cells({'about.age':['55–64'],'interests.subject':['Часы ручной сборки']}),relation:{role:'Клиент по ВНЖ',lastContact:'2026-11',topic:'Португалия'}}),
+    c_granit:cl({id:'c_granit',owner:'p_mark',alias:'Гранит',linkId:'l_demo01',age:'55–64',capital:'10–25',kids:2,investing:'active',interests:['Часы','Охота'],requests:[{id:'r7',cat:'watches',text:'Редкие независимые часы к 60-летию',status:'open',at:day(-5),public:true}],publicText:{r7:'Редкие независимые часы к юбилею'},cells:cells({'about.age':['55–64'],'interests.subject':['Часы ручной сборки']}),relation:{role:'Клиент по ВНЖ',lastContact:'2026-11',topic:'Португалия'}}),
     c_kedr:cl({id:'c_kedr',owner:'p_mark',alias:'Кедр',age:'45–54',capital:'3–10',kids:1,investing:'sometimes',interests:['Горы','Образование'],requests:[{id:'r8',cat:'education',text:'Летний лагерь в Швейцарии для дочери 12 лет',status:'open',at:day(-3),public:true}],publicText:{r8:'Летний лагерь в Швейцарии для ребенка'}}),
     c_neptun:cl({id:'c_neptun',owner:'p_vera',alias:'Нептун',age:'45–54',capital:'25–100',kids:2,investing:'active',interests:['Яхты','Вино'],requests:[{id:'r9',cat:'realty',text:'Вилла на Сардинии',status:'open',at:day(-8),public:true},{id:'r10',cat:'watches',text:'Часы к рождению внука',status:'open',at:day(-1),public:true}],publicText:{r9:'Вилла на побережье Италии',r10:'Часы к рождению внука'}}),
     c_orion:cl({id:'c_orion',owner:'p_oleg',alias:'Орион',age:'55–64',capital:'3–10',kids:2,investing:'no',interests:['Рыбалка'],requests:[{id:'r11',cat:'security',text:'Охрана для поездок',status:'open',at:day(-2),public:true}]}),
@@ -233,13 +234,17 @@ var Demo=(function(){
   };
   var DEMAND={realty:{count:7,examples:[{text:'Дом у моря в Испании, рядом со школой',age:'55–64',capital:'10–25',when:'до лета'},{text:'Вилла на побережье Италии',age:'45–54',capital:'25–100',when:'в течение года'},{text:'Квартира в Дубае для сдачи',age:'35–44',capital:'3–10',when:'1–3 месяца'}]},
     aviation:{count:3,examples:[{text:'Джет-карта на зимний сезон',age:'45–54',capital:'3–10',when:'до декабря'}]}};
-  var ICAL=null;
+  var ICAL=null,INVREV={};
+  var CAT=[{id:'roger-w-smith-isle-of-man',title:'Мастерская Роджера Смита на острове Мэн',themes:['watches'],format:'Визит',region:'Остров Мэн',online:false,terms:'Через Orbiq',cost:'По запросу',deadline:day(22).slice(0,10),verifiedAt:day(-2).slice(0,10),status:'available',deliver:'Частный визит и очередь на заказ',next:'Запрос через партнера',confirmBy:'Orbiq'},
+    {id:'mille-miglia-centenary',title:'Столетие гонки Mille Miglia',themes:['travel'],format:'Событие',region:'Италия',online:false,terms:'Заявка',cost:'от €12 000',deadline:day(58).slice(0,10),verifiedAt:day(-5).slice(0,10),status:'available',deliver:'Место в команде сопровождения',next:'Запись у организатора',confirmBy:'Организатор'},
+    {id:'japan-akiya-bank',title:'Дом с историей у моря',themes:['realty'],format:'Услуга',region:'Испания',online:false,terms:'',cost:'',deadline:'',verifiedAt:'',status:'idea',deliver:'Подборка из трех домов',next:'Исследование',confirmBy:'Партнер по недвижимости'},
+    {id:'art-basel-qatar-2027',title:'Второй Art Basel в Дохе',themes:['art','travel'],format:'Событие',region:'Катар',online:false,terms:'VIP-карта',cost:'Бесплатно',deadline:day(-3).slice(0,10),verifiedAt:day(-30).slice(0,10),status:'available',deliver:'Превью для коллекционеров',next:'Запрос через партнера',confirmBy:'Orbiq'}];
 
   function meP(){return P[ME]}
   function isOwner(){return AS==='owner'}
   function net(){if(isOwner())return true;var p=meP();return p&&!p.suspended&&(p.tier==='trial'||p.tier==='paid')}
   function view(c){return {id:c.id,alias:c.alias,age:c.age,capital:c.capital,kids:c.kids,investing:c.investing,interests:c.interests.slice(),requests:c.requests.filter(function(r){return r.status==='open'&&r.public}).map(function(r){return {id:r.id,cat:r.cat,text:c.publicText[r.id]||''}}),mine:false}}
-  function full(c){var o=clone(c);o.mine=c.owner===ME;if(isOwner()){o.ownerName=(P[c.owner]||{}).name}return o}
+  function full(c){var o=clone(c);o.mine=c.owner===ME;if(isOwner()){o.ownerName=(P[c.owner]||{}).name;o.partner={id:c.owner,name:o.ownerName}}return o}
   function nextTask(cid){var t=(TASKS[ME]||[]).filter(function(t){return t.cid===cid&&!t.done}).sort(function(a,b){return a.due<b.due?-1:1})[0];return t?{title:t.title,due:t.due}:null}
   function filt(list,q){return list.filter(function(c){
     if(q.q&&norm(c.alias).indexOf(norm(q.q))<0)return false;
@@ -341,8 +346,15 @@ var Demo=(function(){
     case 'partner/payment':{needOwner();var pp2=P[b.pid];pp2.paid=pp2.paid||{seats:[]};pp2.paid['pay'+b.which]=b.at;if(b.which===1){var d=new Date(b.at);d.setDate(d.getDate()+90);pp2.paid.pay2Due=d.toISOString()}audit('Платеж '+b.which,pp2.name+' · $'+b.amount);return {ok:true}}
     case 'seat/list':{needOwner();return Object.keys(CATS).map(function(c){return {cat:c,max:2,seats:Object.keys(P).filter(function(k){return P[k].paid&&(P[k].paid.seats||[]).indexOf(c)>=0}).map(function(k){return {pid:k,name:P[k].name}}),waitlist:c==='watches'?[{name:'Заявка в листе ожидания'}]:[]}})}
     case 'audit':needOwner();return AUD.slice(0,+(q.limit||100));
-    case 'invite/create':{var p3=meP();if(isOwner()||!p3||p3.tier!=='paid')fail(403,'Семейные приглашения доступны на платном тарифе');own(b.cid);audit('Приглашение семьи',b.cid);return {link:'https://orbiqgroup.com/i/?t='+Math.random().toString(36).slice(2,18),expires:day(14)}}
+    case 'invite/create':{var p3=meP();if(isOwner()||!p3||p3.tier!=='paid')fail(403,'Семейные приглашения доступны на платном тарифе');var ci=own(b.cid);ci.invites=(ci.invites||[]).concat([Math.random().toString(16).slice(2)+Math.random().toString(16).slice(2)]);audit('Приглашение семьи',b.cid);return {link:'https://orbiqgroup.com/i/?t='+Math.random().toString(36).slice(2,18),expires:day(14)}}
     case 'tg/link':return {url:'https://t.me/orbiq_bot?start='+Math.random().toString(36).slice(2,12)};
+    case 'note/edit':{var k3=ME+'/'+b.cid;var nn=(NOTES[k3]||[]).find(function(n){return n.id===b.id});if(!nn)fail(404,'Заметка не найдена');nn.text=b.text;nn.edited=nowISO();return {ok:true}}
+    case 'invite/revoke':{if(INVREV[b.id])fail(409,'Отозвать можно только неактивированное приглашение');INVREV[b.id]=1;audit('Отзыв приглашения семьи',b.id.slice(0,8));return {ok:true}}
+    case 'client/link':{needOwner();var A=C[b.cidA],Bc=C[b.cidB];if(!A||!Bc)fail(404,'Карточка не найдена');var lid=A.linkId||Bc.linkId||('l_'+Math.random().toString(36).slice(2,10));A.linkId=lid;Bc.linkId=lid;audit('Связь карточек',A.alias+' + '+Bc.alias);return {ok:true,linkId:lid,cids:[A.id,Bc.id]}}
+    case 'client/primary':{needOwner();var ids=b.linkId?Object.keys(C).filter(function(k){return C[k].linkId===b.linkId}):[b.cid];if(!ids.some(function(k){return C[k].owner===b.pid}))fail(400,'Основным может быть только партнер, который ведет карточку этого человека');var pr={pid:b.pid,at:nowISO(),by:'client'};ids.forEach(function(k){C[k].primary=pr});audit('Основной партнер',P[b.pid].name);return {ok:true,primary:pr}}
+    case 'catalog':return CAT;
+    case 'catalog/upsert':{needOwner();var it=b.item;if(!it||!it.id||!it.title)fail(400,'Нужны ID и название');CAT=CAT.filter(function(x){return x.id!==it.id});CAT.unshift(it);audit('Правка каталога',it.id);return {ok:true}}
+    case 'catalog/del':needOwner();CAT=CAT.filter(function(x){return x.id!==b.id});return {ok:true};
     case 'pf/all':needOwner();return Object.keys(PF).map(function(k){var f=PF[k];return {pid:k,name:P[k].name,status:f.status,submittedAt:f.submittedAt,sample:f.sample}});
     case 'pf/extend':needOwner();PF[b.pid].sample.push('c_granit');return {ok:true};
     case 'intro/use':{needOwner();var pi=P[b.pid];if(pi.tier==='paid')return {ok:true,paid:true};if(pi.tier!=='trial')fail(409,'Пробная квота доступна только после допуска к пробе');if(pi.trial.used>=pi.trial.quota)fail(409,'Пробные знакомства исчерпаны');pi.trial.used++;audit('Знакомство засчитано',pi.name);return {ok:true,counted:true,used:pi.trial.used,quota:pi.trial.quota}}
@@ -381,7 +393,7 @@ function initials(n){return String(n||'?').trim().slice(0,1).toUpperCase()}
 
 /* ================= Каркас ================= */
 function navItems(){
-  if(isOwner())return [['inbox','Входящие','inbox'],['clients','Клиенты','users'],['partners','Партнеры','handshake'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['notify','Уведомления','bell']];
+  if(isOwner())return [['inbox','Входящие','inbox'],['clients','Клиенты','users'],['partners','Партнеры','handshake'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['catalog','Каталог','spark'],['notify','Уведомления','bell']];
   var t=tier(),a=[['clients','Клиенты','users']];
   if(t==='candidate')a.push(['demand','Спрос','chart']);
   a.push(['plans','Планы','cal'],['requests','Обращения','msg']);
@@ -393,7 +405,7 @@ function shell(active){
     var p=S.me.partner||{};var role=isOwner()?'Владелец Orbiq':TIER[p.tier]||'';
     var items=navItems();
     var nav=items.map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span>'+(n[0]==='inbox'?'<span class="n" id="inN" hidden></span>':'')+'</a>'}).join('');
-    if(isOwner())nav='<div class="grp">Orbiq</div>'+items.slice(0,6).map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span>'+(n[0]==='inbox'?'<span class="n" id="inN" hidden></span>':'')+'</a>'}).join('')+'<div class="grp">Мое</div>'+items.slice(6).map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span></a>'}).join('');
+    if(isOwner())nav='<div class="grp">Orbiq</div>'+items.slice(0,7).map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span>'+(n[0]==='inbox'?'<span class="n" id="inN" hidden></span>':'')+'</a>'}).join('')+'<div class="grp">Мое</div>'+items.slice(7).map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span></a>'}).join('');
     var tb=items.slice(0,4).map(function(n){return '<a href="#/'+n[0]+'" data-nav="'+n[0]+'">'+ic(n[2])+'<span>'+n[1]+'</span>'+(n[0]==='inbox'?'<span class="n" id="inN2" hidden></span>':'')+'</a>'}).join('')+'<button type="button" data-a="more">'+ic('more')+'<span>Еще</span></button>';
     root.innerHTML='<div class="app"><aside class="side"><a class="logo" href="#/"><span><b>ORBIQ</b><small>'+(isOwner()?'Кабинет владельца':'Кабинет партнера')+'</small></span></a><nav class="nav">'+nav+'</nav><div class="mebox"><span class="av">'+E(initials(p.name))+'</span><span><b>'+E(p.name||'')+'</b><small>'+E(role)+'</small></span><button type="button" data-a="logout" title="Выйти" aria-label="Выйти">'+ic('out')+'</button></div></aside>'+
       '<div><header class="top"><span><b>ORBIQ</b><br><small>'+E(role)+'</small></span><span class="av" style="width:34px;height:34px;border-radius:50%;background:conic-gradient(from 200deg,#fff3c9,#b5862a,#f6d97c,#8a6416,#fff3c9);display:grid;place-items:center;font-family:var(--s);font-weight:700">'+E(initials(p.name))+'</span></header><main class="main" id="main"></main></div><nav class="tabbar">'+tb+'</nav></div>';
@@ -557,6 +569,11 @@ function renderTab(c,tab){var b=$('#tabc');if(!b)return;
   tabProfile(c,b);
 }
 function pillGroup(k,opts,val,ro){return '<div class="pills" data-k="'+k+'">'+opts.map(function(o){return '<button type="button" class="'+(String(val)===String(o[0])?'on':'')+'" '+(ro?'disabled':'data-a="setf" data-k="'+k+'" data-v="'+E(o[0])+'"')+'>'+E(o[1])+'</button>'}).join('')+'</div>'}
+function ownerLinkBlock(c){var pr=c.primary&&c.primary.pid;
+  return '<section class="card rv" style="--i:3"><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2>Один человек у нескольких партнеров</h2><span class="lock-l">'+ic('lock')+'Только владелец Orbiq</span></div>'+
+  '<div class="grid2"><div class="stack" style="gap:8px"><span class="lbl">Связь</span><p style="margin:0">'+(c.linkId?'<span class="chip ok">'+ic('check')+'Связана</span> <small class="mu" style="font-family:var(--m)">'+E(c.linkId)+'</small>':'<span class="mu">Не связана с другими карточками</span>')+'</p>'+btn('Связать с другой карточкой','sm dark','data-a="clink"','handshake')+'</div>'+
+  '<div class="stack" style="gap:8px"><span class="lbl">Основной партнер семьи</span><p style="margin:0">'+(pr?'<b id="prname">'+E(c.primaryName||pr)+'</b> <span class="hint">с '+E(fmtDate(c.primary.at))+'</span>':'<span class="mu">Не выбран</span>')+'</p>'+btn(pr?'Изменить':'Выбрать','sm sec','data-a="cprim"','star')+'</div></div>'+
+  '<p class="hint" style="margin-top:12px">Связать можно после подтверждения клиента или сверки при регистрации. Обе частные карточки, заметки и история сохраняются. Согласованные сделки не меняются.</p></section>'}
 function tabProfile(c,b){
   var ro=!c.mine;
   var reqs=(c.requests||[]).map(function(r){return reqBlock(c,r,ro)}).join('')||'<p class="hint">Запросов пока нет. Добавьте то, с чем клиент обращался или что хочет сделать.</p>';
@@ -577,9 +594,12 @@ function tabProfile(c,b){
     '<div class="fld"><label for="rl2">Когда общались</label><input class="in" type="month" id="rl2" data-rel="lastContact" value="'+E(rel.lastContact||'')+'" '+(ro?'disabled':'')+'></div>'+
     '<div class="fld"><label for="rl3">Что обсуждали</label><input class="in" id="rl3" data-rel="topic" value="'+E(rel.topic||'')+'" placeholder="Подарок к юбилею" '+(ro?'disabled':'')+'></div></div>'+
     '<div class="fld" style="margin-top:14px"><label for="cb">Основание оценки капитала</label><textarea class="ta" id="cb" style="min-height:80px" placeholder="Источник, период, чья доля. Должность или покупка часов капитал не подтверждают" '+(ro?'disabled':'')+'>'+E(c.capitalBasis||'')+'</textarea></div></section>'+
+  (!ro&&(c.invites||[]).length?'<section class="card rv" style="--i:3"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2>Приглашения семьи</h2><span class="kick">'+c.invites.length+'</span></div><div class="ql">'+c.invites.map(function(id,i){return '<div><span class="tchk on" style="background:var(--ink);border-color:var(--ink)">'+ic('gift')+'</span><span class="grow">Приглашение '+(i+1)+' <small class="mu" style="font-family:var(--m);font-size:11px">'+E(String(id).slice(0,8))+'</small></span><button type="button" class="link mute" data-a="invrev" data-id="'+E(id)+'">Отозвать</button></div>'}).join('')+'</div><p class="hint" style="margin-top:8px">Отозвать можно, пока ссылку не активировали.</p></section>':'')+
+  (ro&&isOwner()?ownerLinkBlock(c):'')+
   (ro?'':'<div class="row" style="justify-content:flex-end"><button type="button" class="link mute" data-a="archive">'+ic('archive')+' Убрать в архив</button></div>')+
   '</div>';
   segs(b);
+  if(ro&&isOwner()&&c.primary&&c.primary.pid)api('partners').then(function(ps){var x=ps.find(function(q){return q.id===c.primary.pid});var e=$('#prname');if(x&&e)e.textContent=x.name}).catch(function(){});
   if(ro)return;
   var al=$('#alias');al.addEventListener('change',function(){var v=cleanAlias(al.value);if(!v||v===c.alias){al.value=c.alias;return}patch({alias:v}).then(function(){var h=$('.ch h1 .mask>span');if(h)h.textContent=v}).catch(function(e){var er=$('#aerr');er.hidden=false;er.innerHTML=ic('alert')+E(e.message);al.value=c.alias})});
   $('#intf').addEventListener('submit',function(e){e.preventDefault();var v=$('#intin').value.trim();if(!v)return;var a=(c.interests||[]).slice();if(a.map(norm).indexOf(norm(v))<0)a.push(v);patch({interests:a}).then(function(){renderTab(S.card,'profile')})});
@@ -615,7 +635,7 @@ function vNetCard(c){
 }
 
 /* ---------- Подборка и «К разговору» ---------- */
-function itemCard(it,i){return '<article class="item rv" style="--i:'+i+'"><div class="im" style="background-image:url('+img(it.itemId)+')"></div><div class="bd"><h3>'+E(it.title)+'</h3><p class="why">'+ic('spark')+'<span>'+E(it.why||'')+'</span></p><div class="dl"><span><b>Что получит:</b> '+E(it.deliver||'—')+'</span><span><b>Кто подтверждает:</b> '+E(it.confirmBy||'—')+'</span></div></div></article>'}
+function itemCard(it,i){return '<article class="item rv" style="--i:'+i+'"><div class="im" style="background-image:url('+E(it.cover||img(it.itemId))+')"></div><div class="bd"><h3>'+E(it.title)+'</h3><p class="why">'+ic('spark')+'<span>'+E(it.why||'')+'</span></p><div class="dl"><span><b>Что получит:</b> '+E(it.deliver||'—')+'</span><span><b>Кто подтверждает:</b> '+E(it.confirmBy||'—')+'</span></div></div></article>'}
 function tabMatch(c,b){
   b.innerHTML='<div class="skel" style="height:320px"></div>';
   api('client/match',null,{id:c.id}).then(function(m){
@@ -639,7 +659,7 @@ function tabNotes(c,b){
   b.innerHTML='<div class="skel" style="height:200px"></div>';
   api('note/list',null,{cid:c.id}).then(function(ns){
     b.innerHTML='<div class="stack lg"><form class="card rv stack" id="nfm"><div class="row" style="justify-content:space-between"><h2>Заметка для себя</h2><span class="lock-l">'+ic('lock')+'Видите только вы. Orbiq тоже не видит</span></div><textarea class="ta" id="ntx" placeholder="Мысль, наблюдение, что не забыть" style="min-height:96px"></textarea><div class="row">'+btn('Сохранить заметку','dark sm','type="submit"','check')+'</div></form>'+
-    '<div class="stack">'+(ns.length?ns.map(function(n,i){return '<div class="note rv" style="--i:'+i+'"><div>'+E(n.text).replace(/\n/g,'<br>')+'</div><div class="nf"><span>'+E(fmtDate(n.at,true))+'</span><span class="row" style="gap:4px">'+(hasNet()&&!isOwner()?'<button type="button" class="btn xs soft" data-a="nfwd" data-n="'+E(n.id)+'">'+ic('send')+'Передать через Orbiq</button>':'')+'<button type="button" class="ibtn" data-a="ndel" data-n="'+E(n.id)+'" aria-label="Удалить">'+ic('trash')+'</button></span></div></div>'}).join(''):'<p class="hint">Заметок пока нет</p>')+'</div></div>';
+    '<div class="stack">'+(ns.length?ns.map(function(n,i){return '<div class="note rv" style="--i:'+i+'" data-note="'+E(n.id)+'"><div class="nt">'+E(n.text).replace(/\n/g,'<br>')+(n.edited?' <small class="mu" style="font-size:11px">изменено</small>':'')+'</div><div class="nf"><span>'+E(fmtDate(n.at,true))+'</span><span class="row" style="gap:4px">'+(hasNet()&&!isOwner()?'<button type="button" class="btn xs soft" data-a="nfwd" data-n="'+E(n.id)+'">'+ic('send')+'Передать через Orbiq</button>':'')+'<button type="button" class="ibtn" data-a="nedit" data-n="'+E(n.id)+'" aria-label="Изменить" title="Изменить">'+ic('note')+'</button><button type="button" class="ibtn" data-a="ndel" data-n="'+E(n.id)+'" aria-label="Удалить">'+ic('trash')+'</button></span></div></div>'}).join(''):'<p class="hint">Заметок пока нет</p>')+'</div></div>';
     S.notes=ns;
     $('#nfm').addEventListener('submit',function(e){e.preventDefault();var t=$('#ntx').value.trim();if(!t)return;api('note/add',{cid:c.id,text:t}).then(function(){toast('Заметка сохранена');tabNotes(c,b)})});
   }).catch(function(e){b.innerHTML=errBox(e)});
@@ -930,12 +950,50 @@ function vReviews(){
     page('reviews',hd('Выборочная проверка','Проверки портфелей')+'<div class="infob rv" style="margin-bottom:16px">'+ic('shield')+'<span>Сверка идет в отдельной закрытой сессии. Имена, документы и ссылки сюда не записываются: остаются дата, решение по трем пунктам и нейтральная причина.</span></div>'+
     (rows.length?rows.map(function(x,i){var s=x.s;return '<div class="card rv stack" style="--i:'+i+';margin-bottom:16px"><div class="row" style="justify-content:space-between"><div><span class="kick">Отправлено '+E(fmtDate(s.submittedAt))+'</span><h2 style="font-family:var(--s);font-size:30px;margin-top:4px">'+E(x.p.name)+'</h2></div><span class="chip dark">Зачтено '+s.counted+' из '+(s.of||30)+'</span></div>'+
       (s.sample||[]).map(function(c){var dd=(s.decisions||{})[c.cid]||{};return '<form class="pub" data-pfd="'+E(x.p.id)+'" data-cid="'+E(c.cid)+'" style="gap:12px"><div class="row" style="justify-content:space-between"><b style="font-size:16px">'+E(c.alias||c.cid)+'</b>'+(dd.at?'<span class="chip ok">Решение записано</span>':'')+'</div><div class="dec">'+D.map(function(k){return '<div><span>'+k[1]+'</span><div class="seg" data-k="'+k[0]+'">'+[['yes','Да'],['no','Нет'],['insufficient','Мало сведений']].map(function(o){return '<button type="button" class="'+(dd[k[0]]===o[0]?'on':'')+'" data-v="'+o[0]+'">'+o[1]+'</button>'}).join('')+'</div></div>'}).join('')+'</div><div class="row"><input class="in grow" name="reason" placeholder="Нейтральная причина" value="'+E(dd.reason||'')+'" style="background:#fff">'+btn('Записать','sm dark','type="submit"','check')+'</div></form>'}).join('')+
-      '<div class="row" style="border-top:1px solid var(--line);padding-top:14px"><input class="in grow" data-fr="'+E(x.p.id)+'" placeholder="Основание решения, его увидит партнер">'+btn('Одобрить','sm pri','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="approve"','check')+btn('Запросить уточнение','sm sec','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="clarify"')+btn('Отказать','sm danger','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="reject"')+'<button type="button" class="link mute" data-a="pfext" data-p="'+E(x.p.id)+'">Расширить выборку</button>'+'</div></div>'}).join(''):'<div class="card">'+emptyBox('Проверок нет','Здесь появятся портфели кандидатов, отправленные на проверку')+'</div>'),function(m){
+      '<div class="row" style="border-top:1px solid var(--line);padding-top:14px"><input class="in grow" data-fr="'+E(x.p.id)+'" placeholder="Основание решения, его увидит партнер">'+(function(){var ok=(s.sample||[]).length&&(s.sample||[]).every(function(c){var d=(s.decisions||{})[c.cid]||{};return d.exists==='yes'&&d.relation==='yes'&&d.capital==='yes'});return btn('Одобрить','sm pri','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="approve"'+(ok?'':' disabled title="Нужно «Да» по трем пунктам у каждой карточки выборки"'),'check')+(ok?'':'<span class="hint" style="flex-basis:100%">Одобрить можно после «Да» по трем пунктам у каждой карточки выборки</span>')})()+btn('Запросить уточнение','sm sec','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="clarify"')+btn('Отказать','sm danger','data-a="pffin" data-p="'+E(x.p.id)+'" data-v="reject"')+'<button type="button" class="link mute" data-a="pfext" data-p="'+E(x.p.id)+'">Расширить выборку</button>'+'</div></div>'}).join(''):'<div class="card">'+emptyBox('Проверок нет','Здесь появятся портфели кандидатов, отправленные на проверку')+'</div>'),function(m){
       $$('form[data-pfd] .seg',m).forEach(function(sg){sg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;$$('button',sg).forEach(function(x){x.classList.toggle('on',x===b)});segs(sg.parentNode)})});
       $$('form[data-pfd]',m).forEach(function(f){f.addEventListener('submit',function(e){e.preventDefault();var o={pid:f.getAttribute('data-pfd'),cid:f.getAttribute('data-cid'),reason:f.reason.value.trim()};$$('.seg',f).forEach(function(sg){var on=sg.querySelector('button.on');o[sg.getAttribute('data-k')]=on?on.getAttribute('data-v'):''});
         api('pf/decide',o).then(function(){toast('Решение записано');vReviews()}).catch(function(e2){toast(e2.message,'alert')})})});
     });
   }).catch(function(e){page('reviews',errBox(e))});
+}
+
+/* ================= Владелец: каталог ================= */
+var THEMES=Object.keys(CATS).filter(function(k){return k!=='other'});
+function vCatalog(){
+  loading('catalog');
+  api('catalog').then(function(l){S.catalog=l;var f=S.catF||'';var q=norm(S.catQ||'');
+    var L=l.filter(function(x){return (!f||x.status===f)&&(!q||norm(x.title+' '+x.id).indexOf(q)>=0)});
+    var cnt=function(v){return l.filter(function(x){return !v||x.status===v}).length};
+    page('catalog',hd('Предложения для подборок','Каталог',btn('Добавить предложение','pri mag','data-a="catnew"','plus'))+
+    '<div class="tools"><div class="pills">'+[['','Все'],['available','Можно сейчас'],['idea','Идея для поиска']].map(function(x){return '<button type="button" class="'+(f===x[0]?'on':'')+'" data-a="catf" data-v="'+x[0]+'">'+x[1]+' <span style="font-family:var(--m);font-size:10.5px;opacity:.55;margin-left:4px">'+cnt(x[0])+'</span></button>'}).join('')+'</div><label class="search">'+ic('search')+'<input class="in" type="search" id="catq" placeholder="Поиск" value="'+E(S.catQ||'')+'"></label></div>'+
+    '<div class="tbl-w rv">'+(L.length?'<table class="tbl"><thead><tr><th>Предложение</th><th>Статус</th><th>Темы</th><th>Формат</th><th>Регион</th><th>Дедлайн</th><th class="sr">Действия</th></tr></thead><tbody>'+L.slice(0,S.catN||40).map(function(x){var late=x.deadline&&x.deadline<new Date().toISOString().slice(0,10);
+      return '<tr style="cursor:default"><td class="c-nm"><span class="nm" style="white-space:normal"><span class="mring" style="border-radius:8px;background:#ddd url('+E(x.cover||img(x.id))+') center/cover;width:44px;height:44px"></span><span style="display:flex;flex-direction:column;gap:2px">'+E(x.title)+'<small class="mu" style="font-weight:400;font-family:var(--m);font-size:10.5px">'+E(x.id)+'</small></span></span></td>'+
+      '<td class="c-rq">'+(x.status==='idea'?'<span class="chip warn">Идея</span>':'<span class="chip ok">Можно сейчас</span>')+'</td><td class="x" data-l="Темы">'+(x.themes||[]).slice(0,3).map(function(t){return '<span class="chip" style="margin:2px">'+E(CATS[t]||t)+'</span>'}).join('')+'</td><td class="x" data-l="Формат">'+E(x.format||'—')+(x.online?' · онлайн':'')+'</td><td class="x" data-l="Регион">'+E(x.region||'—')+'</td><td class="x num" data-l="Дедлайн" style="'+(late?'color:var(--err)':'')+'">'+(x.deadline?E(fmtDate(x.deadline)):'—')+'</td>'+
+      '<td class="c-exp"><span class="row" style="gap:2px;flex-wrap:nowrap"><button type="button" class="ibtn" data-a="catedit" data-id="'+E(x.id)+'" aria-label="Изменить">'+ic('note')+'</button><button type="button" class="ibtn" data-a="catdel" data-id="'+E(x.id)+'" aria-label="Удалить">'+ic('trash')+'</button></span></td></tr>'}).join('')+'</tbody></table>'+(L.length>(S.catN||40)?'<div style="padding:14px;text-align:center">'+btn('Показать еще '+Math.min(40,L.length-(S.catN||40)),'sm soft','data-a="catmore"','down')+'</div>':''):emptyBox('Пусто','Добавьте первое предложение: оно попадет в подборки партнеров',btn('Добавить предложение','sec','data-a="catnew"','plus')))+'</div>',function(m){
+      var qi=$('#catq',m),tm;qi.addEventListener('input',function(){clearTimeout(tm);tm=setTimeout(function(){S.catQ=qi.value;vCatalog()},300)})});
+  }).catch(function(e){page('catalog',errBox(e))});
+}
+function catalogSheet(x){x=x||{status:'available',themes:[],prepDays:14};var th={};(x.themes||[]).forEach(function(t){th[t]=1});
+  var el=sheet('<div class="kick">'+(x.id?'Правка':'Новое предложение')+'</div><h2>'+(x.id?E(x.title):'Добавить в каталог')+'</h2><form class="stack" id="ctf">'+
+  '<div class="grid2"><div class="fld"><label>ID (латиница, без пробелов)</label><input class="in" name="id" value="'+E(x.id||'')+'" '+(x.id?'readonly':'')+' pattern="[A-Za-z0-9_-]+" required></div><div class="fld"><label>Статус</label><div class="seg" id="cts"><button type="button" class="'+(x.status!=='idea'?'on':'')+'" data-v="available">Можно сейчас</button><button type="button" class="'+(x.status==='idea'?'on':'')+'" data-v="idea">Идея для поиска</button></div></div></div>'+
+  '<div class="fld"><label>Название</label><input class="in" name="title" value="'+E(x.title||'')+'" required></div>'+
+  '<div class="fld"><label>Темы</label><div class="pills" id="ctt">'+THEMES.map(function(k){return '<button type="button" class="'+(th[k]?'on':'')+'" data-c="'+k+'">'+E(CATS[k])+'</button>'}).join('')+'</div></div>'+
+  '<div class="grid3"><div class="fld"><label>Формат</label><input class="in" name="format" value="'+E(x.format||'')+'" placeholder="Событие, опыт, услуга"></div><div class="fld"><label>Регион</label><input class="in" name="region" value="'+E(x.region||'')+'"></div><div class="fld"><label>Дедлайн</label><input class="in" type="date" name="deadline" value="'+E(x.deadline||'')+'"></div></div>'+
+  '<label class="chk"><input type="checkbox" name="online" '+(x.online?'checked':'')+'><span>Можно онлайн</span></label>'+
+  '<div class="grid2"><div class="fld"><label>Условия</label><input class="in" name="terms" value="'+E(x.terms||'')+'"></div><div class="fld"><label>Стоимость</label><input class="in" name="cost" value="'+E(x.cost||'')+'"></div></div>'+
+  '<div class="fld"><label>Что получит клиент</label><input class="in" name="deliver" value="'+E(x.deliver||'')+'"></div>'+
+  '<div class="grid2"><div class="fld"><label>Следующий шаг для клиента</label><input class="in" name="next" value="'+E(x.next||'')+'" placeholder="Запрос через партнера, запись у организатора"></div><div class="fld"><label>Кто подтверждает</label><input class="in" name="confirmBy" value="'+E(x.confirmBy||'Orbiq')+'"></div></div>'+
+  '<div class="grid2"><div class="fld"><label>Обложка: путь /img/... или https://</label><input class="in" name="cover" value="'+E(x.cover||'')+'" placeholder="'+E(x.id?img(x.id):'/img/journal/t/....webp')+'"></div><div class="fld"><label>Проверено</label><input class="in" type="date" name="verifiedAt" value="'+E((x.verifiedAt||'').slice(0,10))+'"></div></div>'+
+  '<p class="err" id="cter" hidden></p><div class="row">'+btn('Сохранить','pri','type="submit"','check')+'</div></form>',true);
+  var st=x.status==='idea'?'idea':'available';
+  $('#cts',el).addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st=b.getAttribute('data-v');$$('#cts button',el).forEach(function(z){z.classList.toggle('on',z===b)});segs(el)});
+  $('#ctt',el).addEventListener('click',function(e){var b=e.target.closest('[data-c]');if(!b)return;var k=b.getAttribute('data-c');th[k]=!th[k];b.classList.toggle('on',th[k])});
+  $('#ctf',el).addEventListener('submit',function(e){e.preventDefault();var f=e.target,er=$('#cter',el);var id=f.id.value.trim();
+    if(!/^[A-Za-z0-9_-]+$/.test(id)||!f.title.value.trim()){er.hidden=false;er.innerHTML=ic('alert')+'Нужны ID латиницей и название';return}
+    if(st==='available'&&f.deadline.value&&!f.verifiedAt.value){er.hidden=false;er.innerHTML=ic('alert')+'Для срочного предложения укажите дату проверки';return}
+    var item={id:id,title:f.title.value.trim(),themes:Object.keys(th).filter(function(k){return th[k]}),format:f.format.value.trim(),region:f.region.value.trim(),online:f.online.checked,terms:f.terms.value.trim(),cost:f.cost.value.trim(),deadline:f.deadline.value,verifiedAt:f.verifiedAt.value,status:st,deliver:f.deliver.value.trim(),confirmBy:f.confirmBy.value.trim(),cover:f.cover.value.trim(),next:f.next.value.trim(),dates:x.dates||'',prepDays:x.prepDays==null?14:x.prepDays};
+    api('catalog/upsert',{item:item}).then(function(){closeSheet();toast('Каталог обновлен');vCatalog()}).catch(function(e2){er.hidden=false;er.innerHTML=ic('alert')+E(e2.message)})});
 }
 
 /* ================= Владелец: архив, журнал ================= */
@@ -1023,6 +1081,28 @@ var A={
   owrite:function(){var c=S.card;var s2=sheet('<div class="kick">От имени Orbiq</div><h2>Написать партнеру</h2><p class="hint">Сообщение придет '+E(c.ownerName||'партнеру')+' в раздел «Обращения». Контакты из текста удаляются.</p><textarea class="ta" id="owt" style="min-height:140px" placeholder="Например: по клиенту «'+E(c.alias)+'» есть предложение"></textarea><div class="row">'+btn('Отправить','pri','id="owgo"','send')+'</div>');
     $('#owgo',s2).addEventListener('click',function(){var t=$('#owt',s2).value.trim();if(!t)return;api('owner/write',{pid:c.partner?c.partner.id:c.owner,cid:c.id,text:t}).then(function(){closeSheet();toast('Отправлено','send')}).catch(function(e){toast(e.message,'alert')})})},
   pfext:function(el){api('pf/extend',{pid:el.getAttribute('data-p')}).then(function(){toast('Выборка расширена');vReviews()}).catch(function(e){toast(e.message,'alert')})},
+  nedit:function(el){var id=el.getAttribute('data-n');var n=(S.notes||[]).find(function(x){return x.id===id});var box=el.closest('.note');if(!n||!box||box.querySelector('textarea'))return;
+    var nt=box.querySelector('.nt');nt.innerHTML='<textarea class="ta" style="min-height:90px;background:#fff">'+E(n.text)+'</textarea><div class="row" style="margin-top:8px">'+btn('Сохранить','xs dark','data-a="nsave" data-n="'+E(id)+'"','check')+'<button type="button" class="link mute" data-a="ncancel">Отмена</button></div>';nt.querySelector('textarea').focus()},
+  nsave:function(el){var box=el.closest('.note');var t=box.querySelector('textarea').value.trim();if(!t){toast('Пустая заметка','alert');return}api('note/edit',{cid:S.card.id,id:el.getAttribute('data-n'),text:t}).then(function(){toast('Заметка изменена');renderTab(S.card,'notes')}).catch(function(e){toast(e.message,'alert')})},
+  ncancel:function(){renderTab(S.card,'notes')},
+  invrev:function(el){if(!confirm('Отозвать приглашение? Ссылка перестанет работать'))return;api('invite/revoke',{id:el.getAttribute('data-id')}).then(function(){toast('Приглашение отозвано');el.replaceWith(Object.assign(document.createElement('span'),{className:'chip line',textContent:'Отозвано'}))}).catch(function(e){toast(e.status===409?'Ссылку уже активировали или отозвали':e.message,'alert')})},
+  clink:function(){var c=S.card;var s2=sheet('<div class="kick">Карточка «'+E(c.alias)+'»</div><h2>Связать с другой карточкой</h2><label class="search" style="max-width:none">'+ic('search')+'<input class="in" id="lkq" placeholder="Поиск по имени"></label><div class="finds" id="lkl" style="max-height:300px"><div class="skel" style="height:120px"></div></div><div class="fld"><label>Кто подтвердил</label><div class="pills" id="lkc"><button type="button" class="on" data-v="client">Клиент подтвердил</button><button type="button" data-v="registration">Сверка при регистрации</button></div></div><p class="hint">Совпадение возраста, интересов и капитала само по себе не основание.</p><div class="row">'+btn('Связать','pri','id="lkgo" disabled','handshake')+'</div>',true);
+    var rows=[],pick=null,by='client';
+    var draw=function(){var q=norm($('#lkq',s2).value);$('#lkl',s2).innerHTML=rows.filter(function(r){return r.id!==c.id&&(!q||norm(r.alias).indexOf(q)>=0)}).map(function(r){return '<label><input type="radio" name="lk" value="'+E(r.id)+'"'+(pick===r.id?' checked':'')+'><span><b>'+E(r.alias)+'</b> <span class="mu">· '+E(ageL(r.age))+' · '+E(capL(r.capital))+'</span></span><span class="ty">'+E(r.ownerName||'')+'</span></label>'}).join('')||'<p class="hint">Ничего не нашли</p>'};
+    api('clients',null,{scope:'all'}).then(function(r){rows=r;draw()}).catch(function(e){$('#lkl',s2).innerHTML=errBox(e)});
+    $('#lkq',s2).addEventListener('input',draw);
+    $('#lkl',s2).addEventListener('change',function(e){pick=e.target.value;$('#lkgo',s2).disabled=false});
+    $('#lkc',s2).addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;by=b.getAttribute('data-v');$$('#lkc button',s2).forEach(function(x){x.classList.toggle('on',x===b)})});
+    $('#lkgo',s2).addEventListener('click',function(){api('client/link',{cidA:c.id,cidB:pick,confirmedBy:by}).then(function(){closeSheet();toast('Карточки связаны');render()}).catch(function(e){toast(e.message,'alert')})})},
+  cprim:function(){var c=S.card;var s2=sheet('<div class="kick">По выбору клиента</div><h2>Основной партнер семьи</h2><div class="finds" id="prl"><div class="skel" style="height:120px"></div></div><p class="hint">Основным может быть только партнер, который ведет карточку этого человека.</p><div class="row">'+btn('Сохранить','pri','id="prgo" disabled','check')+'</div>');
+    var pick=null;api('partners').then(function(ps){$('#prl',s2).innerHTML=ps.map(function(p){var mine=p.id===(c.partner&&c.partner.id||c.owner);return '<label><input type="radio" name="pr" value="'+E(p.id)+'"><span><b>'+E(p.name)+'</b></span><span class="ty">'+(mine?'ведет эту карточку':'')+'</span></label>'}).join('')}).catch(function(e){$('#prl',s2).innerHTML=errBox(e)});
+    $('#prl',s2).addEventListener('change',function(e){pick=e.target.value;$('#prgo',s2).disabled=false});
+    $('#prgo',s2).addEventListener('click',function(){var b={pid:pick};if(c.linkId)b.linkId=c.linkId;else b.cid=c.id;api('client/primary',b).then(function(){closeSheet();toast('Основной партнер сохранен');render()}).catch(function(e){toast(e.message,'alert')})})},
+  catnew:function(){catalogSheet(null)},
+  catedit:function(el){catalogSheet((S.catalog||[]).find(function(x){return x.id===el.getAttribute('data-id')}))},
+  catdel:function(el){if(!confirm('Удалить из каталога?'))return;api('catalog/del',{id:el.getAttribute('data-id')}).then(function(){toast('Удалено');vCatalog()}).catch(function(e){toast(e.message,'alert')})},
+  catf:function(el){S.catF=el.getAttribute('data-v');S.catN=40;vCatalog()},
+  catmore:function(){var y=scrollY;S.catN=(S.catN||40)+40;vCatalog();setTimeout(function(){scrollTo(0,y)},400)},
   pkfill:function(){var r=S.rq;var parts=[];if($('[data-pk="offer"]:checked'))parts.push('Для вашего клиента «'+r.alias+'» есть предложение: '+r.offer);if($('[data-pk="terms"]:checked'))parts.push('Условия: '+r.terms);if($('[data-pk="att"]:checked'))parts.push('Во вложении: '+r.attachment.name);parts.push('Обсудите с клиентом?');var ta=$('form.comp[data-to="cardOwner"] textarea');ta.value=parts.join('\n');ta.style.height='auto';ta.style.height=Math.min(220,ta.scrollHeight+4)+'px';ta.dispatchEvent(new Event('input'));ta.focus()},
   pffin:function(el){var pid=el.getAttribute('data-p'),v=el.getAttribute('data-v');var r=$('[data-fr="'+pid+'"]').value.trim();if(!r){toast('Впишите основание решения','alert');return}api('pf/final',{pid:pid,decision:v,reason:r}).then(function(){toast('Решение отправлено партнеру');vReviews()}).catch(function(e){toast(e.message,'alert')})}
 };
@@ -1047,8 +1127,8 @@ window.addEventListener('resize',function(){segs()});
 
 /* ================= Маршруты и запуск ================= */
 var ROUTES={clients:vClients,'new':vNew,c:vCard,plans:vPlans,requests:vRequests,portfolio:vPortfolio,tariff:vTariff,notify:vNotify,demand:vDemand,
-  partners:vPartners,inbox:vInbox,reviews:vReviews,archive:vArchive,audit:vAudit};
-var OWNER_ONLY={partners:1,inbox:1,reviews:1,archive:1,audit:1};
+  partners:vPartners,inbox:vInbox,catalog:vCatalog,reviews:vReviews,archive:vArchive,audit:vAudit};
+var OWNER_ONLY={partners:1,inbox:1,reviews:1,archive:1,audit:1,catalog:1};
 function render(){
   stopRec();closeSheet();
   if(S.me&&S.me.needKey)return vKey();if(!S.me||!S.me.role)return vLogin();

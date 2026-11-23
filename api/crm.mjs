@@ -133,7 +133,11 @@ async function notify(who, event, key) {
 // ---------- сессия ----------
 const OWNER_TTL = 12 * 3600e3, PARTNER_TTL = 30 * 864e5, LOGIN_TTL = 30 * 864e5; // решение Владимира: ссылка входа не должна быстро сгорать — 30 дней, можно открывать повторно
 // SEC: у каждой сессии свой id (j); выход заносит его в стоп-лист до конца срока. Сессия владельца привязана к ADMIN_KEY: смена ключа гасит ее
-const keyTag = () => sha('crm-admin|' + (ENV.ADMIN_KEY || '')).slice(0, 16);
+// пароль владельца: scrypt; тег сессии зависит от хеша пароля, смена пароля гасит все сессии владельца
+const pwHash = (pw, salt) => crypto.scryptSync(String(pw), salt, 64, { N: 16384, r: 8, p: 1 }).toString('hex');
+const pwCheck = (pw, rec) => { if (!rec || !rec.salt || !rec.hash) return false; const h = Buffer.from(pwHash(pw, rec.salt), 'hex'), g = Buffer.from(rec.hash, 'hex'); return h.length === g.length && crypto.timingSafeEqual(h, g); };
+const ownerPw = async () => ((await sget('crm/owner.json')) || {}).pw || null;
+const keyTag = (rec) => sha('crm-pw|' + ((rec && rec.hash) || ('admin|' + (ENV.ADMIN_KEY || '')))).slice(0, 16);
 const sxKey = (j) => `crm/sx/${sha('sx|' + j).slice(0, 32)}`;
 async function revokeSession(s) { if (s && s.j) { const ttl = Math.max(60, Math.ceil(((s.exp || Date.now()) - Date.now()) / 1000) + 60); await kv(['SET', sxKey(s.j), '1', 'EX', String(ttl)]).catch(() => {}); } }
 // владелец Orbiq ведет свою CRM: владелец таких карточек — специальный id «orbiq» (SPEC-v2 §1)
@@ -142,7 +146,7 @@ async function migrateTier(p) { const out = await update(`crm/p/${p.id}.json`, (
 async function session(req) {
   const s = unsign(cookies(req).oc); if (!s) return { role: null };
   if (s.j && await kv(['GET', sxKey(s.j)])) return { role: null, dead: true };
-  if (s.r === 'owner') { if (!s.e || !ownerEmails().includes(s.e)) return { role: null, dead: true }; if (s.mfa && s.kt !== keyTag()) return { role: null, dead: true }; return { role: s.mfa ? 'owner' : 'owner0', email: s.e, s, p: s.mfa ? ORBIQ : undefined }; }
+  if (s.r === 'owner') { if (!s.e || !ownerEmails().includes(s.e)) return { role: null, dead: true }; if (s.mfa && s.kt !== keyTag(await ownerPw())) return { role: null, dead: true }; return { role: s.mfa ? 'owner' : 'owner0', email: s.e, s, p: s.mfa ? ORBIQ : undefined }; }
   if (s.r === 'partner') {
     const p = await sget(`crm/p/${s.u}.json`);
     if (!p || p.suspended || p.sessVer !== s.v) return { role: null, dead: true };
@@ -310,19 +314,52 @@ get('auth/verify', async (req, res) => {
   if (out.err) return redirect(res, out.err === 2 ? '/crm/?login=suspended' : '/crm/?login=expired');
   partnerCookie(res, out.doc); return redirect(res, '/crm/');
 });
-post('auth/owner-key', async (req, res) => {
-  const c0 = await session(req); const s = c0.s; if (!s || s.r !== 'owner' || !ownerEmails().includes(s.e)) return send(res, 403, { error: 'Недостаточно прав' });
-  if (!(await rateLimit('crm-okey:' + s.e, 5, 15))) return send(res, 429, { error: 'Слишком много попыток' });
-  const b = await body(req); const k = String(b.key || ''); const good = ENV.ADMIN_KEY || '';
-  if (!good || !safeEq(k, good)) { await audit('owner', 'owner0', 'owner_login', {}, '', 'fail'); await new Promise(r => setTimeout(r, 300)); return send(res, 403, { error: 'Неверный ключ' }); }
+async function ownerMfa(res, s, rec) {
   await revokeSession(s); // повышение прав = новая сессия, прежняя гасится
-  setCookie(res, 'oc', sign({ u: 'owner', r: 'owner', e: s.e, mfa: true, kt: keyTag(), j: rid(16), exp: Date.now() + OWNER_TTL }), OWNER_TTL / 1000);
-  await audit('owner', 'owner', 'owner_login'); send(res, 200, { ok: true });
+  setCookie(res, 'oc', sign({ u: 'owner', r: 'owner', e: s.e, mfa: true, kt: keyTag(rec), j: rid(16), exp: Date.now() + OWNER_TTL }), OWNER_TTL / 1000);
+}
+const owner0 = async (req) => { const c0 = await session(req); const s = c0.s; return s && s.r === 'owner' && ownerEmails().includes(s.e) ? s : null; };
+post('auth/owner-key', async (req, res) => {
+  const s = await owner0(req); if (!s) return send(res, 403, { error: 'Недостаточно прав' });
+  if (!(await rateLimit('crm-okey:' + s.e, 5, 15))) return send(res, 429, { error: 'Слишком много попыток' });
+  const b = await body(req); const k = String(b.key || ''); const rec = await ownerPw();
+  const adm = !!ENV.ADMIN_KEY && safeEq(k, ENV.ADMIN_KEY); // запасной ключ владельца из настроек сервера
+  if (!rec && !adm) return send(res, 409, { error: 'Сначала придумайте пароль', needSet: true });
+  if (!adm && !pwCheck(k, rec)) { await audit('owner', 'owner0', 'owner_login', {}, '', 'fail'); await new Promise(r => setTimeout(r, 300)); return send(res, 403, { error: 'Пароль не подошел' }); }
+  await ownerMfa(res, s, rec); await audit('owner', 'owner', 'owner_login'); send(res, 200, { ok: true });
+});
+// задать пароль: первый раз после входа по ссылке из письма или после ссылки сброса
+post('auth/owner-setpw', async (req, res) => {
+  const s = await owner0(req); if (!s) return send(res, 403, { error: 'Недостаточно прав' });
+  if (!(await rateLimit('crm-opw:' + s.e, 5, 15))) return send(res, 429, { error: 'Слишком много попыток' });
+  const cur = await ownerPw(); if (cur && !(s.rs && s.rs > (cur.at || 0))) return send(res, 403, { error: 'Пароль уже задан. Сбросьте его через почту' });
+  const b = await body(req); const pw = String(b.password || '');
+  if (pw.length < 10 || pw.length > 200) return send(res, 400, { error: 'Пароль от 10 символов' });
+  const salt = rid(16); const rec = { salt, hash: pwHash(pw, salt), at: Date.now() };
+  await update('crm/owner.json', (d) => ({ doc: { ...(d || {}), pw: rec } }));
+  await ownerMfa(res, s, rec); await audit('owner', 'owner', cur ? 'owner_pw_reset' : 'owner_pw_set'); send(res, 200, { ok: true });
+});
+// сброс пароля: ссылка уходит только на почту владельца, одноразовая, 1 час
+post('auth/owner-reset', async (req, res) => {
+  const b = await body(req); const s = await owner0(req); const email = (s && s.e) || String(b.email || '').trim().toLowerCase();
+  if (!(await rateLimit('crm-ipr:' + ipOf(req), 5, 60)) || !(await rateLimit('crm-ors:' + email, 3, 60))) return send(res, 429, { error: 'Слишком много запросов. Попробуйте позже' });
+  if (!ownerEmails().includes(email)) return send(res, 200, { ok: true });
+  const t = sign({ e: email, k: 'crmr', j: rid(16), exp: Date.now() + 3600e3 });
+  const link = `https://${linkHost(req)}/api/crm?r=auth/reset&t=${encodeURIComponent(t)}`;
+  return deliver(res, email, 'Сброс пароля Orbiq Room', mailBox('Сброс пароля', 'Ссылка действует 1 час и открывается один раз. После перехода придумайте новый пароль.', link, 'Задать новый пароль'), {}, { test_link: link });
+});
+get('auth/reset', async (req, res) => {
+  const t = unsign(query(req).get('t') || '');
+  if (!t || t.k !== 'crmr' || !t.j || !ownerEmails().includes(t.e)) return redirect(res, '/crm/?login=expired');
+  if (!(await createNX(`crm/rsu/${sha('rs|' + t.j).slice(0, 32)}`, 1))) return redirect(res, '/crm/?login=expired');
+  await revokeSession(unsign(cookies(req).oc));
+  setCookie(res, 'oc', sign({ u: 'owner', r: 'owner', e: t.e, mfa: false, rs: Date.now(), j: rid(16), exp: Date.now() + 3600e3 }), 3600);
+  return redirect(res, '/crm/?key=1');
 });
 post('auth/logout', async (req, res) => { await revokeSession(unsign(cookies(req).oc)); setCookie(res, 'oc', '', 0); send(res, 200, { ok: true }); });
 get('me', async (req, res) => {
   const c = await session(req);
-  if (c.role === 'owner' || c.role === 'owner0') { const o = (await sget('crm/owner.json')) || {}; return send(res, 200, { role: 'owner', owner: c.role === 'owner', mfa: c.role === 'owner', needKey: c.role !== 'owner', partner: null, tg: { connected: !!(o.tg && o.tg.chatId) } }); }
+  if (c.role === 'owner' || c.role === 'owner0') { const o = (await sget('crm/owner.json')) || {}; const pwr = c.role !== 'owner' ? await ownerPw() : 1; return send(res, 200, { role: 'owner', owner: c.role === 'owner', mfa: c.role === 'owner', needKey: c.role !== 'owner', needSet: c.role !== 'owner' && (!pwr || !!(c.s.rs && c.s.rs > (pwr.at || 0))), partner: null, tg: { connected: !!(o.tg && o.tg.chatId) } }); }
   if (c.role !== 'partner') return send(res, 200, { role: null, partner: null, owner: false });
   const p = c.p; const t = c.tier;
   if (!p.lastSeen || Date.now() - Date.parse(p.lastSeen) > 3600e3) await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, lastSeen: nowIso() } } : { noop: 1 }).catch(() => {});

@@ -243,7 +243,7 @@ await T('A1', 'owner без ключа', 'без второго фактора �
   need(denied(a), 'audit ' + E(a)); need(denied(c) || rowsOf(c.j).length === 0, 'clients all ' + E(c)); return `audit ${a.s}, clients ${c.s}`;
 });
 await T('A1', 'owner', 'неверный ADMIN_KEY → отказ, роль не выдана', async () => {
-  const r = await as(OWnoMfa, 'auth/owner-key', { body: { key: 'wrong-key' } }); need(denied(r) || r.s === 400 || r.s === 429, E(r));
+  const r = await as(OWnoMfa, 'auth/owner-key', { body: { key: 'wrong-key' } }); need(denied(r) || r.s === 400 || r.s === 409 || r.s === 429, E(r));
   const t = OWnoMfa.clone(); t.absorb(r.h); const p = await as(t, 'partners'); need(denied(p), 'partners после неверного ключа ' + E(p)); return E(r);
 });
 { const r = await as(OWs, 'auth/owner-key', { body: { key: ADMIN_KEY } }); OWs.absorb(r.h); ctx.ownerKey = r; }

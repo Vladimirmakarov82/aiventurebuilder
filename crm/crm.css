@@ -956,3 +956,10 @@ html{font-family:var(--f)}
 .coin .sg.s2 img{left:31%;top:38%}
 .coin .sg.s1 img{left:0;top:48%;width:100%;height:52%;transform:none}
 @media (max-width:860px){.lgn .coin{--cs:92px}}
+/* второй шаг владельца: пароль */
+.lgn .lg-card h1.sm{font-size:clamp(20px,5vw,28px);letter-spacing:.24em;padding-left:.24em}
+.lg-f .lg-eye{flex:none;width:40px;height:40px;margin-right:4px;border:0;border-radius:50%;background:transparent;color:rgba(244,241,236,.55);display:grid;place-items:center;cursor:pointer;transition:color .2s,background .2s}
+.lg-f .lg-eye:hover{color:#fff;background:rgba(255,255,255,.06)}
+.lg-f .lg-eye svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.lg-lnk{background:none;border:0;padding:0;font:inherit;color:rgba(244,241,236,.7);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lg-lnk:hover{color:#fff}

@@ -131,6 +131,16 @@ export function mergePatch(card, p) {
   return c;
 }
 function syncFromCells(c) { const a = c.cells && c.cells['about.age']; if (a && a.kind === 'fact') { const r = ageRange(a.v); if (r) c.age = r; } }
+// упоминание возраста человека: годы календаря, стаж знакомства и возраст детей не считаются; score — насколько конкретно
+const AGE_NOT = /знаком|дружим|работа|опыт|стаж|назад|в течение|уже \d|сын|доч|внук|ребен|дет(и|ей|ям)|жен[аеыу]|супруг|компани|бизнес|фирм/;
+export function ageMention(s) {
+  const t = low(s); let m;
+  if ((m = /(?:ему|ей|возраст[а-я]*|исполнилось)\s*[:—-]?\s*(?:около|примерно|под|за|почти|чуть больше)?\s*(?<![\d.,])(\d{2})(?![\d.,%])/.exec(t))) return { range: ageRange(m[1]), score: /около|примерно|под|за|почти|чуть/.test(m[0]) ? 3 : 4 };
+  if (AGE_NOT.test(t)) return null;
+  if ((m = /(?<![\d.,])(\d{2})(?![\d.,%])\s*(лет|года?)(?![а-я])/.exec(t))) return { range: ageRange(m[1]), score: 2 };
+  if ((m = /(?:около|под|за|примерно)\s*(?<![\d.,])(\d{2})(?![\d.,%])(?!\s*(млн|млрд|миллион|тыс|\$|€|%|год))/.exec(t)) && /лет|возраст|ему|ей/.test(t)) return { range: ageRange(m[1]), score: 1 };
+  return null;
+}
 export function ageRange(v) {
   if (AGES.includes(v)) return v; const m = /(\d{2})/.exec(String(v || '')); if (!m) return '';
   const n = +m[1]; return n < 35 ? '<35' : n < 45 ? '35–44' : n < 55 ? '45–54' : n < 65 ? '55–64' : '65+';
@@ -271,13 +281,13 @@ const RULES = [
   ['prefs.no', /не предлага|не нравит|не любит|не интересн|отказал|раздража|больше не /],
   ['family.gift', /подар|для жены|для дочер|для сына|для внук/],
   ['family.kids', /(^|[^а-я])(дети|детей|детям|дочь|дочер|сын|внук|ребен)/],
-  ['about.age', /\d{2}\s*(лет|год)|возраст/],
+  ['about.age', { test: (t) => !!ageMention(t) }],
   ['family.circle', /(^|[^а-я])(жена|женой|жену|супруг|с семьей|семья|с друзьями)/],
   ['about.region', /живет|проживает|резидент|родом/],
   ['about.places', /бывает|ездит|летает|отдыха|проводит (зиму|лето)/],
-  ['business.source', /заработал|сколотил|основн\w* капитал|состояни|основал|продал (бизнес|компан)/],
+  ['business.source', /заработал|сколотил|сделал (состояние|деньги)|основн[а-я]* капитал|состояни|основал|основатель|собственник|владеет|владел|продал (бизнес|компан|долю)|построил (бизнес|компан)|дистрибуц|производств|девелоп|строительн|нефт|ритейл|сеть (магазин|аптек|клиник)|^(бизнес|сфера|отрасль|дело)\s*[:—-]/],
   ['business.project', /развить|хотел бы (запустить|построить|создать)|новый проект/],
-  ['business.now', /сейчас занимается|управляет|владеет|инвестир|вложил|совладел|директор|бизнес/],
+  ['business.now', /сейчас занимается|управляет|инвестир|вложил|совладел|директор|бизнес/],
   ['interests.memory', /запомнил|впечатлил|вспомина/],
   ['interests.subject', /коллекц|увлека|часы|часов|архитект|искусств|живопис|(^|[^а-я])вин(о|а|ом)([^а-я]|$)|винодел|яхт|авиац|гольф|охот|джаз|опер/],
   ['interests.time', /свободн\w* врем|хобби|любит|выходны|досуг/],
@@ -295,8 +305,10 @@ function kindOf(s) {
   if (/возможно|кажется|наверное|вероятно|похоже|гипотез|может быть|предполага/.test(t)) return 'hypothesis';
   return 'fact';
 }
+const REL_SENT = /последний раз|виделись|общались|созванивались|переписывались|познакомил|знакомы (с|по|через)|через общих/;
 function cellFor(s, sector) {
   const t = low(s);
+  if (!sector && REL_SENT.test(t)) { const a = ageMention(t); return a && a.score >= 3 ? 'about.age' : ''; } // знакомство идет в relation; явный возраст в той же фразе сохраняем
   for (const [cell, re] of RULES) { if (sector && !cell.startsWith(sector + '.')) continue; if (re.test(t)) return cell; }
   return sector ? SECTOR_DEFAULT[sector] : '';
 }
@@ -331,10 +343,11 @@ export function buildProposals(card, items) {
   for (const it of items) {
     if (!CELL_KEYS.includes(it.cell) || !KINDS.includes(it.kind)) continue;
     let value = String(it.value || '').trim().slice(0, 300); if (!value) continue;
-    if (it.cell === 'about.age' && it.kind === 'fact') value = ageRange(value) || value;
+    if (it.cell === 'about.age' && it.kind === 'fact') value = (ageMention(value) || {}).range || ageRange(value) || value;
     const cur = by.get(it.cell);
-    if (!cur) { by.set(it.cell, { cell: it.cell, value, kind: it.kind }); continue; }
-    if (cur.kind === it.kind) { if (!low(cur.value).includes(low(value))) cur.value = (cur.value + '; ' + value).slice(0, 500); }
+    if (!cur) { by.set(it.cell, { cell: it.cell, value, kind: it.kind, ...(it.cell === 'about.age' ? { ageScore: it.ageScore || (ageMention(it.value) || {}).score || 0 } : {}) }); continue; }
+    if (cur.kind === it.kind && it.cell === 'about.age') { const sc = it.ageScore || (ageMention(it.value) || {}).score || 0; if (sc > (cur.ageScore || 0)) { cur.value = value; cur.ageScore = sc; } }
+    else if (cur.kind === it.kind) { if (!low(cur.value).includes(low(value))) cur.value = (cur.value + '; ' + value).slice(0, 500); }
     else { // в одной ячейке факт и догадка: факт важнее, догадка остается отдельной подсказкой
       const keepNew = it.kind === 'fact' || (cur.kind === 'unknown' && it.kind === 'hypothesis');
       skipped.push({ cell: it.cell, value: keepNew ? cur.value : value, kind: keepNew ? cur.kind : it.kind });
@@ -347,14 +360,14 @@ export function buildProposals(card, items) {
     if (ex && ex.kind === 'fact' && p.kind === 'fact' && normText(ex.v) !== normText(p.value)) {
       p.conflict = { current: ex.v, src: ex.src }; contradictions.push({ cell: p.cell, q: QUESTIONS[p.cell], values: [ex.v, p.value], note: ex.src === 'client' ? 'Клиент сам уточнил это значение' : 'Отличается от сохраненного' });
     }
-    p.q = QUESTIONS[p.cell]; proposals.push(p);
+    delete p.ageScore; p.q = QUESTIONS[p.cell]; proposals.push(p);
   }
   return { proposals, contradictions, skipped };
 }
 
 // ---------- интересы ----------
 export const TAGS = [
-  ['Часы', /часы|часов(ые|ой|ых)|часовщ|watch/], ['Архитектура', /архитект/], ['Искусство', /искусств|живопис|галере|картин|художник/],
+  ['Часы', /часы|часами|часам([^а-я]|$)|часов(ые|ой|ых)|часовщ|watch/], ['Архитектура', /архитект/], ['Искусство', /искусств|живопис|галере|картин|художник/],
   ['Вино', /(^|[^а-я])вин(о|а|ом|ные|ный)([^а-я]|$)|винодел|сомелье/], ['Гастрономия', /гастроном|ресторан|трюфел|кухн/],
   ['Путешествия', /путешеств|поездк|экспедиц/], ['Яхты', /яхт/], ['Авиация', /авиац|самолет|джет|вертолет/], ['Автомобили', /автомоб|суперкар|ралли/],
   ['Спорт', /спорт|гольф|теннис|лыж|регат|марафон/], ['Охота и рыбалка', /охот|рыбалк/], ['Здоровье', /здоров|медиц|клиник|долголет/],
@@ -375,7 +388,7 @@ export function applyItems(card, items, src = 'md', now = new Date().toISOString
   for (const it of items || []) {
     if (!it || !CELL_KEYS.includes(it.cell) || !KINDS.includes(it.kind)) { errors.push(it && it.cell); continue; }
     let value = String(it.value ?? '').trim().slice(0, 500);
-    if (it.cell === 'about.age' && it.kind === 'fact') value = ageRange(value) || value;
+    if (it.cell === 'about.age' && it.kind === 'fact') value = (ageMention(value) || {}).range || ageRange(value) || value;
     const cur = c.cells[it.cell];
     if (cur && cur.kind === 'fact' && (it.kind === 'hypothesis' || it.kind === 'unknown')) continue; // догадка не затирает факт
     if (cur && cur.kind === it.kind && normText(cur.v) === normText(value)) continue;
@@ -479,4 +492,82 @@ export function feedFor(card, catalog, prefs = {}, now = Date.now(), opts = {}) 
   for (const id of items) { if (jids.has(id)) continue; const it = avail.find(x => x.id === id);
     cards[id] = { id, title: it.title, ...(it.cover ? { cover: it.cover } : {}), terms: it.terms || it.deliver || '', cost: it.cost || '', deadline: it.deadline || '', next: it.next || (it.online ? 'Перейти к организатору' : 'Запрос партнеру Orbiq') }; }
   return { items, themes, matched: m.length, why, cards };
+}
+
+// ---------- свободный текст → все поля карточки (резерв без модели) ----------
+const NUMW = { 'один': 1, 'одна': 1, 'одного': 1, 'двое': 2, 'два': 2, 'две': 2, 'двух': 2, 'трое': 3, 'три': 3, 'трех': 3, 'четверо': 4, 'четыре': 4, 'пятеро': 5, 'пять': 5 };
+export const CAT_RE = [
+  ['citizenship', /гражданств|внж|вид на жительство|паспорт|резидентств|golden visa|виз[аыу]/], ['realty', /недвижим|вилл|квартир|апартамент|(^|[^а-я])дом(а|у)?([^а-я]|$)|участок/],
+  ['watches', /часы|часов(ой|ые)|часовщ/], ['preipo', /pre-?ipo|ipo|стартап|венчур|акци/], ['finance', /перевод|счет в банке|банк|финанс|кредит|деньги за рубеж/],
+  ['security', /охран|безопасн/], ['health', /клиник|здоров|лечен|медиц|обследован|чекап/], ['education', /школ|университет|образован|учеб|поступ/],
+  ['aviation', /яхт|самолет|джет|вертолет/], ['art', /искусств|картин|галере|художник/], ['legal', /наслед|завещ|юрист|траст|структурир|фонд семь/],
+  ['digital', /сайт|цифров|кибер|it-|айти/], ['travel', /путешеств|поездк|тур[ау ]|отдых|отел|сафари|экспедиц/],
+];
+export const catOf = (t) => { const s = low(t); const m = CAT_RE.find(([, re]) => re.test(s)); return m ? m[0] : 'other'; };
+export function capitalRange(n) { return n < 1 ? '<1' : n < 3 ? '1–3' : n < 10 ? '3–10' : n < 25 ? '10–25' : n < 100 ? '25–100' : '100+'; }
+const sentencesOf = (text) => String(text || '').split(/\r?\n|(?<=[.!?;])\s+/).map(s => s.replace(/^[-*•#\s]+/, '').trim()).filter(s => s.length > 2);
+const MONTHS = 'январ|феврал|март|апрел|мая|май|июн|июл|август|сентябр|октябр|ноябр|декабр';
+export function heuristicFields(text) {
+  const fields = {}; const requests = []; const ss = sentencesOf(text); let ageBest = {};
+  for (const s of ss) {
+    const t = low(s);
+    { const a = ageMention(s); if (a && a.score > (ageBest.score || 0)) { ageBest = a; fields.age = a.range; } }
+    if (!fields.capital && /капитал|состояни|активы|стоит|оценива|млн|млрд|миллион|миллиард/.test(t)) {
+      let n = null; const m = /(\d+(?:[.,]\d+)?)\s*(млрд|миллиард|млн|миллион|m\b|mln)/.exec(t);
+      if (m) n = parseFloat(m[1].replace(',', '.')) * (/млрд|миллиард/.test(m[2]) ? 1000 : 1); else if (/миллиард/.test(t)) n = 1000;
+      if (n != null && /капитал|состояни|актив|оценива|стоит|личн/.test(t)) { fields.capital = capitalRange(n); if (!fields.capitalBasis) fields.capitalBasis = s.slice(0, 300); }
+    }
+    if (!fields.capitalBasis && /продал (бизнес|долю|компан)|доля в|оценка (капитала|состояния)|владеет долей|выплат.*дивиденд/.test(t)) fields.capitalBasis = s.slice(0, 300);
+    if (fields.kids == null) {
+      if (/детей нет|без детей|нет детей/.test(t)) fields.kids = 0;
+      else { const m = /(\d+|один|одна|двое|два|две|трое|три|четверо|четыре|пятеро|пять)\s*(дет|ребен|сын|доч|внук)/.exec(t); if (m) fields.kids = /^\d+$/.test(m[1]) ? +m[1] : NUMW[m[1]];
+        else if (/(сын|дочь|дочка)\s+и\s+(сын|дочь|дочка)/.test(t)) fields.kids = 2; else if (/(^|[^а-я])(есть сын|есть дочь|его сын|его дочь|сын учится|дочь учится)/.test(t)) fields.kids = 1; }
+    }
+    if (!fields.investing) { if (/активно инвест|регулярно инвест|постоянно инвест/.test(t)) fields.investing = 'active'; else if (/иногда инвест|время от времени инвест|изредка/.test(t)) fields.investing = 'sometimes'; else if (/не инвест|сейчас не вкладыва|инвестиции на паузе/.test(t)) fields.investing = 'no'; }
+    if (/ищет|хочет|нужн|нужен|просил|запрос|планирует (купить|получить|переех|оформ)|подбира|интересуется покупк|думает о покупк/.test(t) && !/не предлага|не хочет/.test(t))
+      requests.push({ cat: catOf(s), text: s.replace(/[.;]+$/, '').slice(0, 200) });
+    const r = fields.relation || {};
+    if (!r.role && /(мой|моя|наш) (клиент|друг|знаком|партнер|сосед|коллег)|знаком(ы|ились|илась|ился)?( с| по| через|ство)|познакомил|через (общих |общего )?(друз|знаком|коллег|партнер|клуб)|друг семьи|бывш[а-я]* коллег|покупал у (меня|нас)|работали вместе|клиент (по|с)/.test(t)) r.role = s.replace(/[.;]+$/, '').slice(0, 200);
+    if (!r.lastContact && /общал|виделись|встречал|созванивал|разговаривал|последний раз|писал|переписыва/.test(t)) {
+      const m = new RegExp(`((${MONTHS})[а-я]*(\\s+\\d{4})?|\\d{4}|на прошлой неделе|на этой неделе|вчера|недавно|в прошлом месяце|в этом месяце|месяц назад)`).exec(t);
+      if (m) r.lastContact = m[1].slice(0, 40);
+      else { const k = /(последний раз [а-я]+|виделись|общались|созванивались|встречались)\s+(.+)/.exec(t); if (k) r.lastContact = k[2].replace(/[.;,].*$/, '').slice(0, 40); }
+    }
+    if (!r.topic) { const m = /(обсуждали|говорили о|говорили об|говорили про|разговор (о|про)|советовался (о|по)|по поводу|по вопросу)\s+(.+)/.exec(s.toLowerCase().replace(/ё/g, 'е')); if (m) r.topic = m[m.length - 1].replace(/[.;]+$/, '').slice(0, 200); }
+    if (r.role || r.lastContact || r.topic) fields.relation = { role: r.role || '', lastContact: r.lastContact || '', topic: r.topic || '' };
+  }
+  const tags = new Set(); for (const s of ss) if (/увлека|любит|хобби|интересуется|коллекц|в свободное время|страсть/.test(low(s)) && !/не любит/.test(low(s))) for (const g of tagsFrom(s)) tags.add(g);
+  if (tags.size) fields.interests = [...tags].slice(0, 12);
+  const seen = new Set(); const reqs = requests.filter(x => { const k = normText(x.text); if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 10);
+  return { fields, requests: reqs };
+}
+// поля от модели или правил → только допустимые значения
+export function cleanFields(f = {}) {
+  const out = {}; const s = (v, n) => String(v ?? '').trim().slice(0, n);
+  if (f.age) { const a = AGES.includes(f.age) ? f.age : ageRange(f.age); if (a) out.age = a; }
+  if (f.capital) { let c = CAPS.includes(f.capital) ? f.capital : ''; if (!c) { const m = /(\d+(?:[.,]\d+)?)/.exec(String(f.capital)); if (m) c = capitalRange(parseFloat(m[1].replace(',', '.'))); } if (c) out.capital = c; }
+  if (f.kids !== undefined && f.kids !== null && f.kids !== '') { const n = Number(f.kids); if (Number.isInteger(n) && n >= 0 && n <= 20) out.kids = n; }
+  if (INVESTING.includes(f.investing)) out.investing = f.investing;
+  if (Array.isArray(f.interests)) { const a = [...new Set(f.interests.map(x => s(x, 40)).filter(Boolean))].slice(0, 12); if (a.length) out.interests = a; }
+  if (f.relation && typeof f.relation === 'object') { const r = { role: s(f.relation.role, 200), lastContact: s(f.relation.lastContact, 40), topic: s(f.relation.topic, 200) }; if (r.role || r.lastContact || r.topic) out.relation = r; }
+  if (s(f.capitalBasis, 1000)) out.capitalBasis = s(f.capitalBasis, 1000);
+  return out;
+}
+export const cleanRequests = (rs) => (Array.isArray(rs) ? rs : []).map(r => ({ cat: CATS[r && r.cat] ? r.cat : catOf(r && r.text), text: String((r && r.text) || '').trim().slice(0, 200) })).filter(r => r.text).slice(0, 10);
+// ключевые вопросы, на которые текст должен ответить
+export const KEY_QUESTIONS = [
+  ['age', 'Сколько человеку примерно лет?'], ['capital', 'Какой у него примерно личный капитал?'], ['capitalBasis', 'Почему вы так оцениваете капитал: продажа бизнеса, доля, другое?'],
+  ['source', 'На чем он заработал основной капитал?'], ['family', 'Есть ли семья и дети?'], ['interests', 'Чем он увлекается, на что тратит свободное время?'],
+  ['request', 'Что ему нужно сейчас, какой у него запрос?'], ['relation', 'Как вы с ним знакомы и когда последний раз общались?'],
+];
+export function missingFor(card, fields = {}, cells = [], requests = []) {
+  const f = { ...card, ...fields }; const has = (k) => { const x = (card.cells || {})[k]; return (x && x.kind === 'fact' && meaningful(x.v)) || cells.some(c => c.cell === k && c.kind === 'fact' && meaningful(c.value)); };
+  const rel = { ...(card.relation || {}), ...(fields.relation || {}) };
+  const ok = {
+    age: !!f.age || has('about.age'), capital: !!f.capital, capitalBasis: !!String(f.capitalBasis || '').trim(), source: has('business.source'),
+    family: (f.kids !== null && f.kids !== undefined && f.kids !== '') || has('family.kids') || has('family.circle'),
+    interests: (f.interests || []).length > 0 || ['interests.time', 'interests.subject', 'interests.memory'].some(has),
+    request: (card.requests || []).some(r => r.status === 'open') || requests.length > 0, relation: !!(rel.role && rel.lastContact),
+  };
+  return KEY_QUESTIONS.filter(([k]) => !ok[k]).map(([key, q]) => ({ key, q }));
 }

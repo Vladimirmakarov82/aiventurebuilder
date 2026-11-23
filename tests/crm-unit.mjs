@@ -117,6 +117,24 @@ const qualCard = (id, n, extra = {}) => ({ id, created: '2026-11-01T00:00:' + St
   const f = C.feedFor(card, cat, { hide: ['w-soon'] }, now); assert.ok(!f.items.includes('w-soon') && !f.items.includes('w-old') && !f.items.includes('idea')); assert.equal(f.items[0], 'w-late'); ok('лента клиента: скрытое исчезает, совпадение первым');
 }
 
+{ // регрессия по реальному прогону intake (правила без модели)
+  const T = 'Познакомились через общих друзей в 2021. Ему 52 года, знакомы 15 лет. Заработал на фармдистрибуции, владеет сетью аптек в регионах. Сыну 25 лет. Капитал около 30 млн, оценка по продаже доли в 2023. Последний раз виделись в сентябре 2026, обсуждали поступление сына. Ищет недвижимость в Дубае.';
+  const { proposals } = C.buildProposals({}, C.heuristicExtract(T));
+  const age = proposals.find(p => p.cell === 'about.age'); assert.equal(age.value, '45–54'); assert.ok(!('ageScore' in age));
+  assert.equal(C.buildProposals({}, [{ cell: 'about.age', value: 'знаком лет 20', kind: 'fact' }, { cell: 'about.age', value: 'Ему 61 год', kind: 'fact' }, { cell: 'about.age', value: 'около 30', kind: 'fact' }]).proposals[0].value, '55–64');
+  assert.equal(C.ageMention('Познакомились в 2021 году'), null); assert.equal(C.ageMention('Знакомы 15 лет'), null); assert.equal(C.ageMention('Сыну 25 лет'), null); assert.equal(C.ageMention('Ему 52 года').range, '45–54');
+  ok('возраст: диапазон заменяется самым конкретным упоминанием, годы и стаж знакомства не считаются');
+  assert.equal(proposals.find(p => p.cell === 'business.source').value, 'Заработал на фармдистрибуции, владеет сетью аптек в регионах');
+  for (const x of ['Бизнес: фармдистрибуция', 'Владеет сетью клиник', 'Заработал на девелопменте']) assert.deepEqual(C.heuristicExtract(x).map(i => i.cell), ['business.source'], x);
+  ok('дело: «фармдистрибуция», «заработал на», «владеет» → business.source');
+  const f = C.cleanFields(C.heuristicFields(T).fields);
+  assert.deepEqual(f.relation, { role: 'Познакомились через общих друзей в 2021', lastContact: 'сентябре 2026', topic: 'поступление сына' }); assert.equal(f.age, '45–54');
+  assert.equal(C.heuristicFields('Знакомы с ним по яхт-клубу.').fields.relation.role, 'Знакомы с ним по яхт-клубу');
+  assert.equal(C.heuristicFields('Последний раз виделись на дне рождения у партнера.').fields.relation.lastContact, 'на дне рождения у партнера');
+  assert.ok(!proposals.some(p => /виделись|Познакомились/.test(p.value))); ok('знакомство: «через общих друзей», «знакомы с …», «последний раз виделись …» → relation, а не ячейки круга');
+  assert.deepEqual(C.missingFor({}, f, proposals, C.heuristicFields(T).requests).map(x => x.key), ['interests']); ok('missing не спрашивает о деле, возрасте и знакомстве, если ответ есть в тексте');
+}
+
 // ===================== маршруты на моке Redis =====================
 process.env.KV_REST_API_URL = 'https://kv.test'; process.env.KV_REST_API_TOKEN = 'x'; await import('./kvmock.mjs');
 Object.assign(process.env, { EMAIL_MODE: 'test', SESSION_SECRET: 'test-secret-crm-unit', ADMIN_KEY: 'owner-key-123', CRM_OWNER_EMAILS: 'boss@example.com' });
@@ -188,6 +206,38 @@ const facts = r.j.proposals.filter(p => p.kind === 'fact'); assert.equal(facts.l
 r = await call('client/apply', { body: { id: CID, items: [...facts, ...r.j.proposals.filter(p => p.kind !== 'fact')] }, cookie: PA.ck });
 assert.deepEqual([r.j.circle.filled, r.j.circle.applicable, r.j.circle.pct], [3, 18, 17]); assert.ok(r.j.changed.length);
 r = await call('client/apply', { body: { id: CID, items: facts }, cookie: PA.ck }); assert.equal(r.j.circle.pct, 17); assert.deepEqual(r.j.changed, []); ok('подтверждение: 3 из 18, 17%; повтор не меняет процент');
+
+// карточка из одного свободного текста
+const STORY = 'Мой клиент по часам, знакомы лет десять. Ему 61 год. Личный капитал около 40 млн долларов, продал долю в строительной компании в 2022. Двое детей, дочь учится в Лондоне. Увлекается часами и яхтами. Сейчас ищет второе гражданство для семьи. Последний раз общались в октябре 2026, обсуждали покупку новых часов. Его телефон +7 916 777 66 55.';
+r = await call('client/intake', { body: { alias: 'Атлас', text: STORY }, cookie: PA.ck }); assert.equal(r.s, 409);
+r = await call('client/intake', { body: { alias: 'Комета', text: 'x'.repeat(30001) }, cookie: PA.ck }); assert.equal(r.s, 400);
+r = await call('client/create', { body: { alias: 'Комета' }, cookie: PB.ck }); assert.equal(r.s, 200); ok('intake: занятое имя → 409, длинный текст → 400 без создания карточки');
+r = await call('client/intake', { body: { alias: 'Меридиан', text: STORY }, cookie: PA.ck }); assert.equal(r.s, 200); const CI = r.j.id; assert.equal(r.j.engine, 'rules');
+const PR = r.j.proposals; assert.deepEqual(PR.fields, { age: '55–64', capital: '25–100', capitalBasis: 'Личный капитал около 40 млн долларов, продал долю в строительной компании в 2022.', kids: 2, interests: ['Часы', 'Яхты'], relation: { role: 'Мой клиент по часам, знакомы лет десять', lastContact: 'октябре 2026', topic: 'покупку новых часов' } });
+assert.deepEqual(PR.requests, [{ cat: 'citizenship', text: 'Сейчас ищет второе гражданство для семьи' }]); assert.ok(PR.cells.some(x => x.cell === 'business.source' && x.kind === 'fact'));
+assert.deepEqual(r.j.missing, []); assert.equal(r.j.card.stage, 'draft'); assert.equal(r.j.card.age, ''); assert.ok(!r.raw.includes('777')); assert.ok(!allStore().includes('Лондоне') && !allStore().includes('строительной'));
+ok('intake: карточка создана черновиком, текст разобран во все поля, контакты вырезаны, текст не сохранен');
+r = await call('client/intake', { body: { alias: 'Пустошь', text: 'Просто хороший человек.' }, cookie: PA.ck }); assert.deepEqual(r.j.missing.map(x => x.key), ['age', 'capital', 'capitalBasis', 'source', 'family', 'interests', 'request', 'relation']); assert.ok(r.j.missing.every(x => x.q.endsWith('?'))); ok('intake: ключевые вопросы без ответа в тексте');
+r = await call('client/intake', { body: { alias: 'Фарма', text: 'Бизнес: фармдистрибуция. Ему 58 лет, познакомились в 2019 году через общих друзей. Последний раз виделись в октябре 2026. Капитал около 15 млн, продал долю. Двое детей. Любит гольф. Ищет школу для внука.' }, cookie: PA.ck });
+assert.equal(r.j.proposals.fields.age, '55–64'); assert.equal(r.j.proposals.cells.find(x => x.cell === 'about.age').value, '55–64'); assert.ok(r.j.proposals.cells.some(x => x.cell === 'business.source'));
+assert.equal(r.j.proposals.fields.relation.lastContact, 'октябре 2026'); assert.deepEqual(r.j.missing, []); ok('intake: регрессия реального прогона — возраст без склейки, дело и знакомство распознаны');
+r = await call('client/apply', { body: { id: CI, fields: PR.fields, requests: PR.requests, items: PR.cells }, cookie: PA.ck }); assert.equal(r.s, 200);
+assert.equal(r.j.card.capital, '25–100'); assert.equal(r.j.card.kids, 2); assert.equal(r.j.card.requests[0].cat, 'citizenship'); assert.equal(r.j.card.relation.lastContact, 'октябре 2026'); assert.match(r.j.changed[0], /^Заполнено: /); assert.deepEqual(r.j.missing, []);
+const pct1 = r.j.circle.pct; r = await call('client/apply', { body: { id: CI, fields: PR.fields, requests: PR.requests, items: PR.cells }, cookie: PA.ck }); assert.equal(r.j.circle.pct, pct1); assert.equal(r.j.card.requests.length, 1); assert.deepEqual(r.j.changed, []);
+r = await call('client/get', { q: '&id=' + CI, cookie: PB.ck }); assert.equal(r.j.requests[0].text, ''); assert.ok(!r.raw.includes('Лондон')); ok('apply: подтвержденные поля и запросы сохраняются, повтор без дублей; в сети текст запроса только после подтверждения');
+r = await call('client/extract', { body: { id: CI, text: 'Хочет купить виллу в Испании. Активно инвестирует.' }, cookie: PA.ck }); assert.equal(r.j.requests[0].cat, 'realty'); assert.equal(r.j.fields.investing, 'active'); assert.ok(Array.isArray(r.j.proposals)); ok('extract тоже возвращает поля и запросы');
+{ // AI Gateway через OIDC-токен Vercel; 401 → правила без ошибки
+  let seenH = null, seenB = null, code = 200; const prev = globalThis.fetch;
+  globalThis.fetch = async (u, o) => { if (String(u).startsWith('https://ai-gateway.vercel.sh/')) { seenH = o.headers; seenB = JSON.parse(o.body); if (code !== 200) return new Response('{}', { status: code });
+    return new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify({ fields: { age: '65+', capital: '100+', kids: 'много', investing: 'weird', capitalBasis: 'Публичная оценка доли, почта a@b.cd', relation: { role: 'сосед', lastContact: '2026-09', topic: 'яхты' } }, requests: [{ cat: 'aviation', text: 'Чартер яхты' }, { cat: 'nope', text: 'Нужна школа для внука' }], items: [{ cell: 'interests.subject', value: 'Яхты', kind: 'fact' }] }) } }] }), { status: 200 }); } return prev(u, o); };
+  r = await call('client/intake', { body: { alias: 'Бриз', text: 'Сосед по даче.' }, cookie: PA.ck, headers: { 'x-vercel-oidc-token': 'oidc-xyz' } });
+  assert.equal(r.j.engine, 'ai'); assert.equal(seenH.Authorization, 'Bearer oidc-xyz'); assert.equal(seenB.model, 'google/gemini-2.5-flash-lite'); assert.deepEqual(seenB.response_format, { type: 'json_object' });
+  assert.equal(r.j.proposals.fields.capital, '100+'); assert.ok(!('kids' in r.j.proposals.fields) && !('investing' in r.j.proposals.fields)); assert.ok(!r.raw.includes('a@b.cd'));
+  assert.deepEqual(r.j.proposals.requests, [{ cat: 'aviation', text: 'Чартер яхты' }, { cat: 'education', text: 'Нужна школа для внука' }]); ok('AI: OIDC-токен как Bearer, дешевая модель по умолчанию, ответ фильтруется по схеме');
+  code = 401; r = await call('client/intake', { body: { alias: 'Штиль', text: 'Ему 50 лет.' }, cookie: PA.ck, headers: { 'x-vercel-oidc-token': 'bad' } }); assert.equal(r.s, 200); assert.equal(r.j.engine, 'rules'); assert.equal(r.j.proposals.fields.age, '45–54');
+  seenB = null; r = await call('client/intake', { body: { alias: 'Туман', text: 'Ему 50 лет.' }, cookie: PA.ck }); assert.equal(seenB, null); assert.equal(r.j.engine, 'rules'); ok('AI: 401 или нет токена → правила без ошибки');
+  globalThis.fetch = prev;
+}
 
 // заметки и пересылка через Orbiq
 r = await call('note/add', { body: { cid: CID, text: 'Личная мысль Б: секретная заметка' }, cookie: PB.ck }); const NID = r.j.note.id;
@@ -314,7 +364,7 @@ ok('связь двух карточек: обе сохраняются, зап�
 
 // журнал
 r = await call('audit', { cookie: O }); const auditRaw = JSON.stringify(r.j);
-assert.ok(r.j.audit.length > 5); for (const bad of ['секретная', 'Казани', 'Мальты', 'ivan@example.com', '916']) assert.ok(!auditRaw.includes(bad), bad); ok('журнал без текстов заметок, импорта и контактов');
+assert.ok(r.j.audit.length > 5); for (const bad of ['секретная', 'Казани', 'Мальты', 'Лондон', 'ivan@example.com', '916 555', '916 123', '916 777']) assert.ok(!auditRaw.includes(bad), bad + ' ' + (auditRaw.match(new RegExp('.{40}' + bad + '.{20}')) || [''])[0]); ok('журнал без текстов заметок, импорта и контактов');
 r = await call('audit', { cookie: PA.ck }); assert.equal(r.s, 403);
 r = await call('client/update', { body: { id: CID, patch: {} }, cookie: PA.ck, method: 'GET' }); assert.equal(r.s, 400); ok('изменения только через POST');
 r = await call('client/create', { body: { alias: 'Чужой сайт' }, cookie: PA.ck, headers: { origin: 'https://evil.test' } }); assert.equal(r.s, 403); ok('запрос с чужого сайта отклоняется');

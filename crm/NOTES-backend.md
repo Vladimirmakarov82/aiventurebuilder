@@ -1,6 +1,6 @@
 # CRM · заметки серверной части
 
-Файлы: `api/crm.mjs` (маршруты), `api/_crm_core.mjs` (чистые функции), `tests/crm-unit.mjs` (82 проверки: ядро + смоук маршрутов на `tests/kvmock.mjs`). Запуск: `node tests/crm-unit.mjs`.
+Файлы: `api/crm.mjs` (маршруты), `api/_crm_core.mjs` (чистые функции), `tests/crm-unit.mjs` (94 проверки: ядро + смоук маршрутов на `tests/kvmock.mjs`). Запуск: `node tests/crm-unit.mjs`.
 
 ## 1. Решения там, где контракт молчит или мок не позволяет
 
@@ -45,8 +45,23 @@
 25. **relation** второго места: `wife`, `husband`, `daughter`, `son`; `spouse` принимается как синоним. Значение хранится как прислано. Клиентский `i/i.js` пока шлет `spouse` для обоих вариантов — клиентскому агенту стоит перейти на `wife`/`husband`.
 26. **`renew/request`** (журнальная сессия семьи). Работает, если доступ закончился или до конца меньше 14 дней, иначе 409. Создает обращение `kind:'renew'` со статусом `new` во «Входящих» владельца Orbiq. Партнер семьи получает сообщение от Orbiq в своей ветке. Пока прежний запрос не закрыт, повтор возвращает `{ok, again:true}` без дубля. Автосписания нет.
 
+27. **Карточка из свободного текста.** `client/intake {alias, text}`:
+   - Сначала проверяются имя и текст (до 30 000 символов). Ошибка → 400, занятое имя → 409; карточка при этом не создается.
+   - Создает карточку с `stage:'draft'` и пустыми полями. Ответ: `{id, card, proposals:{fields, cells, requests}, missing, contradictions, removed, engine}`.
+   - Предложения нигде не хранятся. Экран проверки показывает их уже заполненными. Сохраняется только то, что партнер подтвердил через `client/apply`. Исходный текст не пишется ни в хранилище, ни в журнал.
+   - `fields`: age, capital, kids, investing, interests, relation{role,lastContact,topic}, capitalBasis. Значения проходят ту же проверку, что и ручная правка.
+   - `missing`: `[{key, q}]`, ключи `age, capital, capitalBasis, source, family, interests, request, relation` — на что в тексте и карточке нет ответа.
+28. **`client/extract`** отдает прежний массив `proposals` (ячейки) и дополнительно `fields`, `requests`, `missing`.
+29. **`client/apply {id, items?, fields?, requests?}`**. Нужен хотя бы один из трех. Интересы и запросы добавляются без дублей, остальные поля заменяются. Повтор тех же данных ничего не меняет. Ответ дополнен `missing`, а в `changed` первой строкой идет «Заполнено: …».
+30. **Модель.** Vercel AI Gateway, Bearer = `x-vercel-oidc-token` из запроса, иначе `VERCEL_OIDC_TOKEN`, иначе `AI_GATEWAY_API_KEY`. Модель `CRM_AI_MODEL`, по умолчанию `google/gemini-2.5-flash-lite`. Таймаут 25 с. Нет токена, 401/403, сбой или неверный JSON → разбор правилами без ошибки для пользователя (`engine:'rules'`). Если модель не вернула поля, их дополняют правила. Ответ модели фильтруется по схеме, контакты вырезаются повторно.
+
+31. **Разбор правилами, уточнения после прогона.**
+   - Возраст: учитывается только возраст самого человека. Годы календаря («в 2021»), стаж знакомства и возраст детей не считаются. При нескольких упоминаниях берется самое конкретное («Ему 61 год» важнее «около 30»), диапазон заменяется, а не дописывается.
+   - Дело: «заработал на», «владеет», «основатель», «Бизнес: …», отрасли («дистрибуция», «девелопмент», «производство» и другие) → `business.source`.
+   - Знакомство: «через общих друзей», «знакомы с/по …», «познакомились», «последний раз виделись …», «обсуждали / по поводу …» → `fields.relation`. Такие фразы не попадают в ячейки круга; явный возраст в той же фразе сохраняется.
+
 ## 2. Маршруты сверх контракта
-`demand`, `renew/request`, `note/edit`, `rq/att?rid=&id=` (файл по правам ветки), `owner/write {pid,cid?,text}`, `pf/all`, `pf/extend {pid}`, `catalog`, `catalog/upsert {item}`, `catalog/del {id}`, `invite/seat2`, `tg/link`, `tg/off`, `tg/events`, `tg/webhook`, `cron` (напоминания).
+`client/intake`, `demand`, `renew/request`, `note/edit`, `rq/att?rid=&id=` (файл по правам ветки), `owner/write {pid,cid?,text}`, `pf/all`, `pf/extend {pid}`, `catalog`, `catalog/upsert {item}`, `catalog/del {id}`, `invite/seat2`, `tg/link`, `tg/off`, `tg/events`, `tg/webhook`, `cron` (напоминания).
 
 ## 3. Что упрощено или не сделано
 - Временная сессия сверки личности с моделью — нет. Владелец проверяет вручную, в CRM хранится только результат по трем пунктам и причина.
@@ -59,4 +74,4 @@
 
 ## 5. Нужно координатору
 - `vercel.json`: добавить `"api/crm.mjs": {"includeFiles": "api/_data/**", "maxDuration": 60}` — каталог строится из `api/_data/content.json`. Для напоминаний — cron на `/api/crm?r=cron`.
-- Переменные: `SESSION_SECRET`, `CRM_OWNER_EMAILS`, `ADMIN_KEY` (тот же ключ, что у админки журнала), `KV_REST_API_URL/TOKEN`, `RESEND_API_KEY`, `CRM_MAIL_FROM` (по умолчанию `Orbiq <crm@orbiqgroup.com>`), `AI_GATEWAY_API_KEY`, `CRM_AI_MODEL`, `TG_BOT_TOKEN`, `TG_BOT_NAME`, `TG_WEBHOOK_SECRET`, `CRON_SECRET`, `SITE_URL`, `EMAIL_MODE=test` только на превью.
+- Переменные: `SESSION_SECRET`, `CRM_OWNER_EMAILS`, `ADMIN_KEY` (тот же ключ, что у админки журнала), `KV_REST_API_URL/TOKEN`, `RESEND_API_KEY`, `CRM_MAIL_FROM` (по умолчанию `Orbiq <crm@orbiqgroup.com>`), `VERCEL_OIDC_TOKEN` (Vercel задает сам) или `AI_GATEWAY_API_KEY`, `CRM_AI_MODEL`, `TG_BOT_TOKEN`, `TG_BOT_NAME`, `TG_WEBHOOK_SECRET`, `CRON_SECRET`, `SITE_URL`, `EMAIL_MODE=test` только на превью.

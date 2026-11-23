@@ -62,7 +62,7 @@ const KPFX = process.env.VERCEL_ENV === 'preview' ? 'pv/' : ''; // превью 
 const kpre = (k) => (KPFX && typeof k === 'string' && k.startsWith('crm/')) ? KPFX + k : k;
 async function kv(cmd) {
   const { url, token } = kvConf(); if (!url || !token) throw new NoStore();
-  if (KPFX) { cmd = cmd.slice(); if (cmd[0] === 'EVAL') { const n = +cmd[2] || 0; for (let i = 0; i < n; i++) cmd[3 + i] = kpre(cmd[3 + i]); } else cmd[1] = kpre(cmd[1]); }
+  if (KPFX && cmd[0] !== 'SCAN') { cmd = cmd.slice(); if (cmd[0] === 'EVAL') { const n = +cmd[2] || 0; for (let i = 0; i < n; i++) cmd[3 + i] = kpre(cmd[3 + i]); } else cmd[1] = kpre(cmd[1]); }
   const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(cmd) });
   const j = await r.json().catch(() => ({})); if (!r.ok || j.error) throw new Error('kv ' + r.status); return j.result;
 }
@@ -1017,9 +1017,9 @@ get('stats/public', async (req, res) => {
 });
 // проверка ИИ для диагностики: только с ключом DIAG_KEY, без содержимого
 get('diag/partners', async (req, res) => { // диагностика целостности партнеров, без почт и имен
-  const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY) || KPFX) return send(res, 404, { error: 'Не найдено' });
+  const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
   const plist = await setGet('crm/plist'); let cur = '0', keys = [];
-  do { const r = await kv(['SCAN', cur, 'MATCH', 'crm/pidx/*', 'COUNT', '500']); cur = String(r[0]); keys = keys.concat(r[1]); } while (cur !== '0' && keys.length < 5000);
+  do { const r = await kv(['SCAN', cur, 'MATCH', KPFX + 'crm/pidx/*', 'COUNT', '500']); cur = String(r[0]); keys = keys.concat(r[1].map(x => KPFX && x.startsWith(KPFX) ? x.slice(KPFX.length) : x)); } while (cur !== '0' && keys.length < 5000);
   const out = [];
   for (const key of keys) { const pid = await sget(key); const p = pid && await sget(`crm/p/${pid}.json`); out.push({ pid, inPlist: plist.includes(pid), hasDoc: !!p, kind: p && p.kind, invite: p && p.invite && p.invite.status, created: p && p.created }); }
   send(res, 200, { plist: plist.length, pidx: keys.length, items: out });

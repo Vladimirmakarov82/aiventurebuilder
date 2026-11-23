@@ -72,7 +72,7 @@ const qualCard = (id, extra = {}) => ({ id, created: '2026-11-01T00:00:' + Strin
     publicText: { r1: 'Второе гражданство' } };
   const v = C.networkView(card);
   assert.deepEqual(Object.keys(v).sort(), ['age', 'alias', 'capital', 'id', 'interests', 'investing', 'kids', 'mine', 'requests']);
-  assert.deepEqual(v.requests, [{ id: 'r1', cat: 'citizenship', text: 'Второе гражданство' }]); assert.ok(!JSON.stringify(v).includes('p_secret') && !JSON.stringify(v).includes('Иванов'));
+  assert.deepEqual(v.requests.map(({ at, ...x }) => x), [{ id: 'r1', cat: 'citizenship', text: 'Второе гражданство' }]); assert.ok(!JSON.stringify(v).includes('p_secret') && !JSON.stringify(v).includes('Иванов'));
   ok('сетевое представление: только разрешенные поля, текст запроса только после подтверждения');
   delete card.publicText; assert.equal(C.networkView(card).requests[0].text, ''); ok('без подтвержденной формулировки текст запроса пустой');
 }
@@ -227,7 +227,7 @@ const ageReqs = (cid, hours = 96) => { const k = 'crm/c/' + cid + '.json'; const
 ageReqs(CID); ok('новый запрос виден бесплатным партнерам через 72 часа; видна сфера ведущего партнера');
 r = await call('client/get', { q: '&id=' + CID, cookie: PB.ck }); assert.equal(r.s, 200);
 for (const k of ['owner', 'cells', 'relation', 'capitalBasis', 'plan', 'history']) assert.ok(!(k in r.j) && !(k in r.j.card), k);
-assert.deepEqual(r.j.requests, [{ id: RID, cat: 'citizenship', text: 'Второе гражданство' }]); assert.ok(!r.raw.includes(PA.pid) && !r.raw.includes('Мальты'));
+assert.deepEqual(r.j.requests.map(({ at, ...x }) => x), [{ id: RID, cat: 'citizenship', text: 'Второе гражданство' }]); assert.ok(!r.raw.includes(PA.pid) && !r.raw.includes('Мальты'));
 r = await call('client/update', { body: { id: CID, patch: { age: '<35' } }, cookie: PB.ck }); assert.equal(r.s, 403);
 r = await call('client/archive', { body: { id: CID }, cookie: PB.ck }); assert.equal(r.s, 403); ok('чужая карточка: только сетевое представление, изменить нельзя (P2)');
 r = await call('clients', { q: '&scope=all&cat=citizenship', cookie: PB.ck }); assert.ok(r.j.rows.some(x => x.id === CID && x.mine === false)); assert.ok(!r.raw.includes(PA.pid)); ok('поиск по типу запроса во «Все»');

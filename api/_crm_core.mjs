@@ -436,18 +436,27 @@ export function applyItems(card, items, src = 'md', now = new Date().toISOString
 }
 
 // ---------- каталог и подбор ----------
+// факты статьи журнала: «Повторить», «Подготовка», «Гости», «Стоимость» → понятное описание предложения
+export function articleFacts(html) {
+  const out = {}; const re = /<dt>([^<]+)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g; let m;
+  while ((m = re.exec(String(html || '')))) out[m[1].trim()] = m[2].replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+  return out;
+}
+export const CATALOG_HIDE = new Set(['cars-rolls-starlight']);
+export const journalUrl = (id) => `/journal/a/${id}/`;
 export function catalogFromContent(content) {
-  return Object.entries((content && content.articles) || {}).map(([id, a]) => ({
-    id, title: a.title, themes: DIR_THEMES[a.dir] || [a.dir], format: 'journal', region: a.geo || '', online: false, terms: '', cost: '', dates: '', deadline: '',
-    verifiedAt: '', status: (a.status || 'published') === 'published' ? 'available' : 'idea', deliver: a.hook || '', confirmBy: 'Orbiq', prepDays: 14,
-  }));
+  return Object.entries((content && content.articles) || {}).filter(([id]) => !CATALOG_HIDE.has(id)).map(([id, a]) => { const f = articleFacts(a.facts);
+    return {
+      id, title: a.title, themes: DIR_THEMES[a.dir] || [a.dir], format: 'journal', region: a.geo || '', online: false, terms: '', cost: f['Стоимость'] || '', dates: f['Подготовка'] || '', deadline: '',
+      verifiedAt: '', status: (a.status || 'published') === 'published' ? 'available' : 'idea', deliver: f['Повторить'] || a.hook || '', guests: f['Гости'] || '', hook: a.hook || '', url: journalUrl(id), confirmBy: 'Orbiq', prepDays: 14,
+    }; });
 }
 export function cleanItem(x) {
   const s = (v, n) => String(v ?? '').trim().slice(0, n); const id = s(x.id, 80).replace(/[^a-z0-9_-]/gi, '');
   if (!id || !s(x.title, 200)) return null;
   return { id, title: s(x.title, 200), themes: (Array.isArray(x.themes) ? x.themes : []).map(t => s(t, 40)).filter(Boolean).slice(0, 10), format: s(x.format, 40), region: s(x.region, 120), online: !!x.online,
     terms: s(x.terms, 500), cost: s(x.cost, 120), dates: s(x.dates, 120), deadline: /^\d{4}-\d{2}-\d{2}$/.test(x.deadline || '') ? x.deadline : '', verifiedAt: s(x.verifiedAt, 30),
-    status: x.status === 'idea' ? 'idea' : 'available', deliver: s(x.deliver, 300), confirmBy: s(x.confirmBy || 'Orbiq', 80), cover: /^(\/[^\s]*|https:\/\/[^\s]+)$/.test(String(x.cover || '')) ? s(x.cover, 300) : '', next: s(x.next, 200), prepDays: Math.max(0, Math.min(180, parseInt(x.prepDays ?? 14, 10) || 0)) };
+    status: x.status === 'idea' ? 'idea' : 'available', deliver: s(x.deliver, 300), confirmBy: s(x.confirmBy || 'Orbiq', 80), cover: /^(\/[^\s]*|https:\/\/[^\s]+)$/.test(String(x.cover || '')) ? s(x.cover, 300) : '', next: s(x.next, 200), url: /^(\/[^\s]*|https:\/\/[^\s]+)$/.test(String(x.url || '')) ? s(x.url, 300) : '', guests: s(x.guests, 80), hook: s(x.hook, 400), prepDays: Math.max(0, Math.min(180, parseInt(x.prepDays ?? 14, 10) || 0)) };
 }
 const STOP = new Set(['котор', 'потом', 'всего', 'очень', 'много', 'сейча', 'хочет', 'хотел', 'обычн', 'компа', 'котор', 'после', 'перед', 'между', 'также', 'тольк', 'когда', 'можно', 'будет', 'своих', 'своим', 'своей', 'этого', 'этому']);
 const stems = (t) => new Set(normText(t).split(' ').filter(w => w.length >= 5).map(w => w.slice(0, 5)).filter(w => !STOP.has(w)));

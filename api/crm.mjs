@@ -1,4 +1,4 @@
-// Orbiq Partner Room API: один обработчик, маршрут в ?r=. Права проверяются на сервере при каждом запросе, запрет по умолчанию.
+// Orbiq Room API: один обработчик, маршрут в ?r=. Права проверяются на сервере при каждом запросе, запрет по умолчанию.
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -299,7 +299,7 @@ post('auth/request', async (req, res) => {
   if (!kind) return send(res, 200, { ok: true }); // тот же ответ без письма
   const j = rid(16); const t = sign({ e: email, k: 'crml', j, exp: Date.now() + LOGIN_TTL });
   const link = `https://${linkHost(req)}/api/crm?r=auth/verify&t=${encodeURIComponent(t)}`;
-  return deliver(res, email, 'Вход в Orbiq Partner Room', mailBox('Вход в Orbiq Partner Room', 'Ссылку можно сохранить: она открывает кабинет 30 дней на любом устройстве.', link, 'Войти'), {}, { test_link: link });
+  return deliver(res, email, 'Вход в Orbiq Room', mailBox('Вход в Orbiq Room', 'Ссылку можно сохранить: она открывает кабинет 30 дней на любом устройстве.', link, 'Войти'), {}, { test_link: link });
 });
 get('auth/verify', async (req, res) => {
   const t = unsign(query(req).get('t') || '');
@@ -793,7 +793,7 @@ async function issuePinv(req, p) {
   await sput(`crm/pinv/${h}.json`, { pid: p.id, email: p.email, expires, status: 'created', created: nowIso() });
   await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, invite: { tokHash: h, status: 'created', expires } } } : { noop: 1 });
   const link = pinvLink(req, tok);
-  if (ENV.RESEND_API_KEY) await mail(p.email, 'Приглашение в Orbiq Partner Room', mailBox('Приглашение в Orbiq Partner Room', 'Ссылка одноразовая и действует 7 дней.', link, 'Открыть кабинет')).catch(() => {});
+  if (ENV.RESEND_API_KEY) await mail(p.email, 'Приглашение в Orbiq Room', mailBox('Приглашение в Orbiq Room', 'Ссылка одноразовая и действует 7 дней.', link, 'Открыть кабинет')).catch(() => {});
   return { link, expires };
 }
 post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | networker; профиль продукта из свободного текста

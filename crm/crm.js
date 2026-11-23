@@ -546,7 +546,7 @@ function mountRing(c,anim){var w=$('#ringw-slot');if(!w)return;w.innerHTML=ringP
 /* ================= Карточка клиента ================= */
 function cardTabs(c,tab){
   var t=c.mine?[['profile','Профиль'],['match','Подборка'],['notes','Заметки'],['plans','Планы'],['history','История']]:isOwner()?[['profile','Профиль'],['notes','Заметки для себя'],['history','История']]:[['profile','Профиль'],['notes','Заметки для себя']];
-  return '<nav class="tabs">'+t.map(function(x){return '<a href="#/c/'+E(c.id)+'/'+x[0]+'" class="'+(tab===x[0]?'on':'')+'">'+x[1]+'</a>'}).join('')+'</nav>';
+  return '<nav class="tabs">'+t.map(function(x){return '<a href="#/c/'+E(c.id)+'/'+x[0]+'" data-tab="'+x[0]+'" class="'+(tab===x[0]?'on':'')+'">'+x[1]+'</a>'}).join('')+'</nav>';
 }
 function vCard(args){
   var id=args[0],tab=args[1]||'profile';
@@ -1148,6 +1148,9 @@ function boot(to){
   }).catch(function(){S.me={role:null};render()});
 }
 window.addEventListener('hashchange',function(){S.viewAs='own';render()});
+// вкладки карточки переключаются на месте: без перерисовки страницы и без прыжка наверх
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('nav.tabs a[data-tab]');if(!a||!S.card||!$('#tabc'))return;e.preventDefault();
+  history.replaceState(null,'',a.getAttribute('href'));[].forEach.call(a.parentNode.children,function(x){x.classList.toggle('on',x===a)});renderTab(S.card,a.getAttribute('data-tab'))},true);
 if(DEMO){var dm=document.createElement('div');dm.className='demo';dm.innerHTML='Демо <select aria-label="Роль">'+[['paid','Платный партнер'],['trial','Пробный партнер'],['candidate','Кандидат'],['owner','Владелец'],['login','Вход'],['key','Ключ владельца']].map(function(o){return '<option value="'+o[0]+'"'+(Demo.as()===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select>';document.body.appendChild(dm);dm.querySelector('select').addEventListener('change',function(){var u=new URL(location.href);u.searchParams.set('as',this.value);u.hash='';location.href=u.toString()})}
 boot();
 })();

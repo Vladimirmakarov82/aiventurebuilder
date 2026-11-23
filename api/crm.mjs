@@ -308,6 +308,7 @@ post('auth/request', async (req, res) => {
   if (ownerEmails().includes(email)) kind = 'owner';
   else { const pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`); const p = pid && await sget(`crm/p/${pid}.json`); if (p && !p.suspended) kind = 'partner'; }
   if (!kind) return send(res, 200, { ok: true }); // тот же ответ без письма
+  if (kind === 'owner' && await ownerPw()) return send(res, 200, { ok: true, password: true }); // Founder входит по почте и паролю, без письма
   const j = rid(16); const t = sign({ e: email, k: 'crml', j, exp: Date.now() + LOGIN_TTL });
   const link = `https://${linkHost(req)}/api/crm?r=auth/verify&t=${encodeURIComponent(t)}`;
   return deliver(res, email, 'Вход в Orbiq Room', mailBox('Вход в Orbiq Room', 'Ссылку можно сохранить: она открывает кабинет 30 дней на любом устройстве.', link, 'Войти'), {}, { test_link: link });
@@ -362,6 +363,14 @@ get('auth/reset', async (req, res) => {
   await revokeSession(unsign(cookies(req).oc));
   setCookie(res, 'oc', sign({ u: 'owner', r: 'owner', e: t.e, mfa: false, rs: Date.now(), j: rid(16), exp: Date.now() + 3600e3 }), 3600);
   return redirect(res, '/crm/?key=1');
+});
+post('auth/owner-login', async (req, res) => { // Founder: почта + пароль одним шагом
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const pw = String(b.password || '');
+  if (!(await rateLimit('crm-ol:' + ipOf(req), 10, 15)) || !(await rateLimit('crm-olm:' + email, 8, 15))) return send(res, 429, { error: 'Слишком много попыток. Попробуйте через 15 минут' });
+  const rec = await ownerPw(); const adm = !!ENV.ADMIN_KEY && safeEq(pw, ENV.ADMIN_KEY);
+  if (!ownerEmails().includes(email) || !(adm || pwCheck(pw, rec))) { await audit('owner', 'owner0', 'owner_login', {}, '', 'fail'); await new Promise(r => setTimeout(r, 400)); return send(res, 403, { error: 'Почта или пароль не подошли' }); }
+  setCookie(res, 'oc', sign({ u: 'owner', r: 'owner', e: email, mfa: true, kt: keyTag(rec), j: rid(16), exp: Date.now() + OWNER_TTL }), OWNER_TTL / 1000);
+  await audit('owner', 'owner', 'owner_login'); send(res, 200, { ok: true });
 });
 post('auth/logout', async (req, res) => { await revokeSession(unsign(cookies(req).oc)); setCookie(res, 'oc', '', 0); send(res, 200, { ok: true }); });
 get('me', async (req, res) => {
@@ -969,19 +978,20 @@ get('seat/list', async (req, res) => {
 });
 // резервная копия базы CRM: раз в сутки при входе Founder, зашифрованный файл в Vercel Blob, хранится 60 дней
 async function maybeBackup(force) {
-  const tok = ENV.BLOB_READ_WRITE_TOKEN; if (!tok || !ENV.SESSION_SECRET) return { skipped: 'no_store' };
+  const tok = ENV.BLOB_READ_WRITE_TOKEN || ''; if (!ENV.SESSION_SECRET) return { skipped: 'no_secret' };
   const day = new Date().toISOString().slice(0, 10);
   if (!force && !(await createNX(`crm/bk/${day}`, 1))) return { skipped: 'done_today' };
   let cur = '0', keys = []; do { const r = await kv(['SCAN', cur, 'MATCH', KPFX + 'crm/*', 'COUNT', '1000']); cur = String(r[0]); keys = keys.concat(r[1]); } while (cur !== '0' && keys.length < 50000);
   const dump = {};
-  for (const k of keys) { const key = KPFX && k.startsWith(KPFX) ? k.slice(KPFX.length) : k; if (key.startsWith('crm/bk/') || key.startsWith('crm/rl/') || key.startsWith('crm/sx/')) continue;
+  for (const k of keys) { const key = KPFX && k.startsWith(KPFX) ? k.slice(KPFX.length) : k; if (key.startsWith('crm/bk/') || key.startsWith('crm/bkdata/') || key.startsWith('crm/rl/') || key.startsWith('crm/sx/')) continue;
     const t = await kv(['TYPE', key]); if (t === 'string') dump[key] = { t, v: await kv(['GET', key]) }; else if (t === 'list') dump[key] = { t, v: await kv(['LRANGE', key, '0', '-1']) }; else if (t === 'set') dump[key] = { t, v: await kv(['SMEMBERS', key]) }; }
   const iv = crypto.randomBytes(12); const keyB = crypto.createHash('sha256').update('crm-backup|' + ENV.SESSION_SECRET).digest();
   const c = crypto.createCipheriv('aes-256-gcm', keyB, iv); const enc = Buffer.concat([c.update(JSON.stringify({ at: nowIso(), env: KPFX ? 'preview' : 'production', keys: dump }), 'utf8'), c.final()]);
   const blob = Buffer.concat([Buffer.from('OBK1'), iv, c.getAuthTag(), enc]);
   const name = `crm-backup/${KPFX ? 'pv-' : ''}${day}.bin`;
-  const r = await fetch(`https://blob.vercel-storage.com/${name}`, { method: 'PUT', headers: { authorization: `Bearer ${tok}`, 'x-api-version': '7', 'x-content-type': 'application/octet-stream', 'x-add-random-suffix': '1' }, body: blob }).catch(() => null);
+  const r = !tok ? null : await fetch(`https://blob.vercel-storage.com/${name}`, { method: 'PUT', headers: { authorization: `Bearer ${tok}`, 'x-api-version': '7', 'x-content-type': 'application/octet-stream', 'x-add-random-suffix': '1' }, body: blob }).catch(() => null);
   const ok = !!(r && r.ok); const info = ok ? await r.json().catch(() => ({})) : {};
+  if (!ok) { await kv(['SET', `crm/bkdata/${day}`, blob.toString('base64'), 'EX', String(8 * 864e5 / 1000)]).catch(() => {}); } // запас: если файловое хранилище недоступно, копия 8 дней лежит в базе
   await kv(['LPUSH', 'crm/bklog', JSON.stringify({ at: nowIso(), ok, keys: Object.keys(dump).length, bytes: blob.length, url: info.url || '' })]).catch(() => {}); await kv(['LTRIM', 'crm/bklog', '0', '59']).catch(() => {});
   if (ok) { // старше 60 дней — удалить
     const old = ((await kv(['LRANGE', 'crm/bklog', '60', '200'])) || []).map(x => { try { return JSON.parse(x).url; } catch { return ''; } }).filter(Boolean);
@@ -1101,6 +1111,12 @@ post('diag/unseed', async (req, res) => {
   const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
   let n = 0; for (const id of await setGet('crm/seedidx')) { const c = await sget(`crm/c/${id}.json`); if (c && c.seed) { await kv(['DEL', `crm/alias/${normAlias(c.alias).norm}`]); await kv(['DEL', `crm/c/${id}.json`]); await setRem('crm/cidx/all', id); await setRem(`crm/cidx/p/${ORBIQ.id}`, id); n++; } }
   await kv(['DEL', 'crm/seedidx']); await kv(['DEL', 'crm/stats/public.json']).catch(() => {}); send(res, 200, { removed: n });
+});
+post('diag/setpw', async (req, res) => { // задать пароль Founder (только с DIAG_KEY)
+  const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
+  const b = await body(req); const pw = String(b.password || ''); if (pw.length < 12) return send(res, 400, { error: 'Пароль от 12 символов' });
+  const salt = rid(16); const rec = { salt, hash: pwHash(pw, salt), at: Date.now() };
+  await update('crm/owner.json', (d) => ({ doc: { ...(d || {}), pw: rec } })); await audit('owner', 'owner', 'owner_pw_set', { via: 'diag' }); send(res, 200, { ok: true });
 });
 get('diag/partners', async (req, res) => { // диагностика целостности партнеров, без почт и имен
   const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });

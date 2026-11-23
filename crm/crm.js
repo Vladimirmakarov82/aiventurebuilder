@@ -351,7 +351,8 @@ var Demo=(function(){
     switch(r){
     case 'me':if(isOwner())return {role:'owner',owner:true,partner:{id:'orbiq',name:'Владимир',tier:'paid',suspended:false,tg:{connected:true}}};
       var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on}}};
-    case 'auth/request':return {ok:true,test_link:'#/clients'};
+    case 'auth/request':if(/private@/.test(b.email||''))return {ok:true,password:true};return {ok:true,test_link:'#/clients'};
+    case 'auth/owner-login':if(String(b.password||'').length<4)fail(403,'Почта или пароль не подошли');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-key':if(String(b.key||'').length<4)fail(403,'Пароль не подошел');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-setpw':if(String(b.password||'').length<10)fail(400,'Пароль от 10 символов');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-reset':return {ok:true};
@@ -532,7 +533,7 @@ function vLogin(){
   var f=$('#lgf');f.addEventListener('submit',function(e){e.preventDefault();var em=$('#lge').value.trim();var er=$('#lgerr');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){er.hidden=false;er.textContent='Проверьте адрес почты';return}
     er.hidden=true;f.classList.add('busy');
-    api('auth/request',{email:em}).then(function(r){$('#lgm').innerHTML='<div class="lg-ok"><svg class="i" viewBox="0 0 24 24" style="width:44px;height:44px;stroke-width:1.3"><path d="M3 6h18v12H3z"/><path d="m3 7 9 7 9-7"/></svg><p>Если адрес есть в Orbiq, письмо уже в пути на <b>'+E(em)+'</b>. Откройте его и нажмите ссылку для входа.</p>'+(r.test_link?'<a class="lg-l" href="'+E(r.test_link)+'" data-a="demoin">Предпросмотр: войти</a>':'')+'<button type="button" class="lg-l" data-a="relogin">Другая почта</button></div>'})
+    api('auth/request',{email:em}).then(function(r){if(r&&r.password)return pwStage(em);$('#lgm').innerHTML='<div class="lg-ok"><svg class="i" viewBox="0 0 24 24" style="width:44px;height:44px;stroke-width:1.3"><path d="M3 6h18v12H3z"/><path d="m3 7 9 7 9-7"/></svg><p>Если адрес есть в Orbiq, письмо уже в пути на <b>'+E(em)+'</b>. Откройте его и нажмите ссылку для входа.</p>'+(r.test_link?'<a class="lg-l" href="'+E(r.test_link)+'" data-a="demoin">Предпросмотр: войти</a>':'')+'<button type="button" class="lg-l" data-a="relogin">Другая почта</button></div>'})
     .catch(function(e2){f.classList.remove('busy');er.hidden=false;er.textContent=e2.status===429?'Слишком много попыток. Попробуйте через час':e2.message})});
 }
 function capSum(x){if(!x||(!x.min&&!x.max))return '';var f=function(v){return v>=1000?(Math.round(v/100)/10).toString().replace('.',','):String(Math.round(v))};var big=(x.max||x.min)>=1000;
@@ -549,6 +550,14 @@ function loginStats(){var box=$('#lst');if(!box)return;
     var tk=(d.ticker||[]).map(function(x){return '<span>'+E(x.catTitle||CATS[x.cat]||'Запрос')+'<i>·</i>'+E(capL(x.capital))+'<i>·</i>'+E(ageL(x.age))+'<i>·</i><em>'+E(x.ago||'')+'</em></span>'}).join('');
     if(tk){var t=document.createElement('div');t.className='ltk';t.setAttribute('aria-label','Последние запросы в сети');t.innerHTML='<div class="ltk-in" style="--d:'+Math.max(20,(d.ticker||[]).length*5)+'s">'+tk+tk+'</div>';$('.lgn').appendChild(t)}
   }).catch(function(){box.innerHTML=''})}
+function pwStage(em){var box=$('#lgm');if(!box)return;
+  box.innerHTML='<form class="lg-fs" id="opf" method="post" action="#" autocomplete="on"><div class="lg-f lg-ro"><label class="sr" for="opu">Почта</label><input id="opu" name="username" type="email" autocomplete="username" value="'+E(em)+'" readonly tabindex="-1"></div><div class="lg-f"><label class="sr" for="opp">Пароль</label><input id="opp" name="password" type="password" autocomplete="current-password" placeholder="Пароль" required><button type="button" class="lg-eye" id="opeye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="Войти">'+ic('ar')+'</button></div></form><p class="lg-e" id="operr" hidden></p><p class="lg-n"><button type="button" class="lg-lnk" id="opfg">Забыли пароль?</button> · <button type="button" class="lg-lnk" data-a="relogin">Другая почта</button></p>';
+  var f=$('#opf'),inp=$('#opp'),er=$('#operr');setTimeout(function(){inp.focus()},50);
+  $('#opeye').addEventListener('click',function(){inp.type=inp.type==='password'?'text':'password';inp.focus()});
+  f.addEventListener('submit',function(e){e.preventDefault();if(!inp.value)return;var fb=f.querySelector('.lg-f:not(.lg-ro)');fb.classList.add('busy');er.hidden=true;
+    api('auth/owner-login',{email:em,password:inp.value}).then(function(){return boot('#/partners')}).catch(function(e2){fb.classList.remove('busy');er.hidden=false;er.textContent=e2.status===429?'Слишком много попыток. Попробуйте через 15 минут':'Почта или пароль не подошли'})});
+  $('#opfg').addEventListener('click',function(){var b=this;b.disabled=true;api('auth/owner-reset',{email:em}).then(function(){b.parentNode.textContent='Ссылка для нового пароля отправлена на '+em+'. Она действует 1 час'}).catch(function(){b.disabled=false;er.hidden=false;er.textContent='Письмо не отправлено, попробуйте позже'})});
+}
 function vKey(){
   var set=!!(S.me&&S.me.needSet);
   $('#root').innerHTML='<div class="lgn">'+wall()+'<span class="lg-logo">ORBIQ</span><span class="lg-tag">'+E(CAB.tag)+' · второй шаг</span><div class="lg-card"><h1 class="sm">'+(set?'НОВЫЙ ПАРОЛЬ':'ПАРОЛЬ')+'</h1><p class="lg-sub">'+(set?'Почта подтверждена. Придумайте пароль от 10 символов: дальше вход по почте и паролю':'Почта подтверждена. Введите пароль Founder')+'</p><form class="lg-fs" id="kf" method="post" action="#" autocomplete="on"><label class="sr" for="ku">Почта</label><div class="lg-f lg-ro"><input id="ku" name="username" type="email" autocomplete="username" value="'+E((S.me&&S.me.email)||'')+'" readonly tabindex="-1"></div><div class="lg-f"><label class="sr" for="kk">Пароль</label><input id="kk" name="password" type="password" autocomplete="'+(set?'new-password':'current-password')+'" placeholder="'+(set?'Новый пароль':'Пароль')+'" minlength="'+(set?10:1)+'" required><button type="button" class="lg-eye" id="keye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="'+(set?'Сохранить пароль':'Войти')+'">'+ic('ar')+'</button></div></form><p class="lg-e" id="kerr" hidden></p>'+(set?'<p class="lg-n">Сессия Founder действует 12 часов</p>':'<p class="lg-n"><button type="button" class="lg-lnk" id="kfg">Забыли пароль?</button></p>')+'</div></div>';

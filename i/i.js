@@ -231,10 +231,7 @@ function invalid(msg){S.mode='invalid';S.err=msg&&/недейств|не най�
 /* ---------- магнит и наклон ---------- */
 var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 if(fine){
-  document.addEventListener('pointermove',function(e){var b=e.target.closest&&e.target.closest('.mag');
-    document.querySelectorAll('.mag.mg').forEach(function(x){if(x!==b){x.classList.remove('mg');x.style.transition='transform 1s cubic-bezier(.34,1.56,.64,1)';x.style.transform=''}});
-    if(!b||reduced())return;var r=b.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2);
-    b.classList.add('mg');b.style.transition='transform 1.2s cubic-bezier(.22,1,.36,1)';b.style.transform='translate('+(dx*.22)+'px,'+(dy*.32)+'px)'});
+  /* магнит у кнопок отключен: кнопки не двигаются за курсором */
   var tx=0,ty=0,cx=0,cy=0,raf=0,stk=document.querySelector('.stack');
   window.addEventListener('pointermove',function(e){if(!split()||book.classList.contains('open')){tx=ty=0}else{tx=(e.clientX/innerWidth-.5);ty=(e.clientY/innerHeight-.5)}if(!raf)raf=requestAnimationFrame(loop)});
   var loop=function(){raf=0;cx+=(tx-cx)*.07;cy+=(ty-cy)*.07;var on=!reduced();

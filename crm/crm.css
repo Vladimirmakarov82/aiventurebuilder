@@ -947,3 +947,4 @@ html{font-family:var(--f)}
 /* ORBIQ ROOM в одну строку, симметрично */
 .lgn .lg-card h1{font-size:clamp(22px,6.4vw,32px);letter-spacing:.26em;padding-left:.26em}
 @media (max-width:860px){.lgn .lg-card h1{font-size:clamp(20px,6.6vw,28px);letter-spacing:.24em;padding-left:.24em}}
+.lgn .lg-card h1{margin-top:6px}

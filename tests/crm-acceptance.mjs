@@ -58,6 +58,8 @@ function exec(cmd) {
     case 'LTRIM': { const l = LISTS.get(a[0]) || []; const e = +a[2] < 0 ? l.length + +a[2] : +a[2]; LISTS.set(a[0], l.slice(+a[1], e + 1)); return 'OK'; }
     case 'LRANGE': { alive(a[0]); const l = LISTS.get(a[0]) || []; const e = +a[2] < 0 ? l.length + +a[2] : +a[2]; return l.slice(+a[1], e + 1); }
     case 'LLEN': return (LISTS.get(a[0]) || []).length;
+    case 'TYPE': return LISTS.has(a[0]) ? 'list' : SETS.has(a[0]) ? 'set' : HASH.has(a[0]) ? 'hash' : has(a[0]) ? 'string' : 'none';
+    case 'LINDEX': { const l = LISTS.get(a[0]) || []; const i = +a[1] < 0 ? l.length + +a[1] : +a[1]; return l[i] ?? null; }
     case 'SADD': { alive(a[0]); const s = SETS.get(a[0]) || new Set(); let n = 0; for (const v of a.slice(1)) if (!s.has(String(v))) { s.add(String(v)); n++; } SETS.set(a[0], s); return n; }
     case 'SREM': { const s = SETS.get(a[0]) || new Set(); let n = 0; for (const v of a.slice(1)) if (s.delete(String(v))) n++; return n; }
     case 'SMEMBERS': alive(a[0]); return [...(SETS.get(a[0]) || [])];

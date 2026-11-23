@@ -959,16 +959,22 @@ function vNotify(){
 }
 
 /* ================= Владелец: партнеры ================= */
-function pStatus(p){if(p.suspended)return '<span class="chip err">Приостановлен</span>';var iv=p.invite||{};if(iv.status==='draft')return '<span class="chip">Не отправлено</span>';if(iv.status==='created')return '<span class="chip warn">Ссылка до '+E(fmtDate(iv.expires))+'</span>';if(iv.status==='revoked')return '<span class="chip line">Приглашение отозвано</span>';return '<span class="chip ok">Активен</span>'}
+function pStatus(p){if(p.suspended)return '<span class="chip err">Приостановлен</span>';var iv=p.invite||{};
+  if(p.activated||iv.status==='used')return '<span class="chip ok">Активен</span>';
+  var send=function(t){return '<button type="button" class="btn sm pri pinv-b" data-a="preinv" data-p="'+E(p.id)+'">'+ic('send')+'<span>'+t+'</span></button>'};
+  if(iv.status==='created')return '<span class="pst"><span class="chip warn">Приглашение отправлено</span><small class="mu">ссылка до '+E(fmtDate(iv.expires))+'</small></span>';
+  if(iv.status==='expired')return '<span class="pst"><span class="chip line">Ссылка истекла</span>'+send('Отправить заново')+'</span>';
+  if(iv.status==='revoked')return '<span class="pst"><span class="chip line">Приглашение отозвано</span>'+send('Отправить заново')+'</span>';
+  return '<span class="pst"><span class="chip">Не активен</span>'+send('Пригласить')+'</span>'}
 function vPartners(){
   loading('partners');
   Promise.all([api('partners'),api('seat/list')]).then(function(r){var ps=r[0],seats=r[1];S.partners=ps;
     page('partners',hd('Только Founder Orbiq','Партнеры',btn('Добавить партнера','pri mag','data-a="pinv"','plus'))+
-    '<div class="tbl-w rv" style="margin-bottom:22px"><table class="tbl"><thead><tr><th>Партнер</th><th>Доступ</th><th>Роль и статус</th><th>Направления</th><th>Клиенты</th><th>Telegram</th><th>Активность</th><th class="sr">Действия</th></tr></thead><tbody>'+ps.map(function(p,i){
+    '<div class="tbl-w rv" style="margin-bottom:22px"><table class="tbl ptbl"><thead><tr><th>Партнер</th><th>Доступ</th><th>Роль и статус</th><th>Направления</th><th>Клиенты</th><th>Активность</th><th aria-label="Действия"></th></tr></thead><tbody>'+ps.map(function(p,i){
       return '<tr class="rv prow" style="--i:'+i+';cursor:pointer" data-go="#/partner/'+E(p.id)+'"><td class="c-nm"><span class="nm" style="flex-direction:column;align-items:flex-start;gap:2px">'+E(p.name)+'<small class="mu" style="font-weight:400;font-size:12.5px">'+E(p.email)+'</small></span></td>'+
       '<td class="c-rq">'+pStatus(p)+'</td><td class="x" data-l="Роль">'+(p.kind==='networker'||normTier(p.tier)==='networker'?'<span class="chip dark">Нетворкер</span>':'<span class="fsel">'+sel('tier',[['new','Новый'],['basic','Базовый'],['paid','Партнер Orbiq']],normTier(p.tier),null,'data-ptier="'+E(p.id)+'" style="min-height:36px;font-size:13.5px"')+'</span>')+(p.ready!=null?'<small class="mu" style="display:block;margin-top:4px;font-family:var(--m);font-size:11px">Готовых '+p.ready+' из 50</small>':'')+'</td>'+
       '<td class="x" data-l="Направления">'+(p.categories||[]).map(function(c){return '<span class="chip" style="margin:2px">'+E(CATS[c]||c)+'</span>'}).join('')+'</td>'+
-      '<td class="x num" data-l="Клиенты">'+(p.clients||0)+'</td><td class="x" data-l="Telegram">'+(p.tg&&p.tg.connected?'<span class="chip ok">Подключен</span>':'<span class="mu">—</span>')+'</td><td class="x" data-l="Активность">'+(p.lastSeen?E(relDay(p.lastSeen)):'<span class="mu">—</span>')+'</td>'+
+      '<td class="x num" data-l="Клиенты">'+(p.clients||0)+'</td><td class="x" data-l="Активность">'+(p.tg&&p.tg.connected?'<span class="chip ok" style="margin-right:6px">TG</span>':'')+(p.lastSeen?E(relDay(p.lastSeen)):'<span class="mu">—</span>')+'</td>'+
       '<td class="c-exp"><span class="menu"><button type="button" class="ibtn" data-a="pmenu" data-p="'+E(p.id)+'" aria-label="Действия">'+ic('more')+'</button></span></td></tr>'}).join('')+'</tbody></table></div>'+
     '<div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 class="sec-h">Места по направлениям</h2><span class="kick">Два платных места на направление</span></div><div class="seats">'+seats.map(function(s,i){var sl='';for(var k=0;k<(s.max||2);k++){var x=s.seats[k];sl+='<i class="'+(x?'f':'')+'" title="'+E(x?x.name:'Свободно')+'">'+(x?E(x.name.split(' ')[0]):'Свободно')+'</i>'}return '<div class="seat rv" style="--i:'+i+'">'+catChip(s.cat)+'<div class="sl">'+sl+'</div>'+((s.waitlist||[]).length?'<span class="hint">Лист ожидания: '+s.waitlist.length+'</span>':'')+'</div>'}).join('')+'</div>',function(m){
       $$('[data-ptier]',m).forEach(function(s){s.addEventListener('change',function(){api('partner/tier',{pid:s.getAttribute('data-ptier'),tier:s.value}).then(function(){toast('Тариф изменен')}).catch(function(e){toast(e.message,'alert');vPartners()})})});
@@ -978,11 +984,11 @@ function vPartners(){
 document.addEventListener('click',function(e){var tr=e.target.closest&&e.target.closest('tr.prow[data-go]');if(!tr||e.target.closest('button,select,a,input,label,.menu'))return;location.hash=tr.getAttribute('data-go')});
 function partnerMenu(el){
   $$('.menu-p').forEach(function(x){x.remove()});var pid=el.getAttribute('data-p');var p=(S.partners||[]).find(function(x){return x.id===pid})||{};
-  var m=document.createElement('div');m.className='menu-p';
+  var m=document.createElement('div');m.className='menu-p';m.setAttribute('data-for',pid);
   m.innerHTML=(p.invite&&p.invite.status==='draft'?'<button type="button" data-a="preinv" data-p="'+E(pid)+'">'+ic('send')+'Отправить приглашение</button>':p.invite&&p.invite.status!=='used'?'<button type="button" data-a="preinv" data-p="'+E(pid)+'">'+ic('redo')+'Выдать ссылку заново</button><button type="button" data-a="prevoke" data-p="'+E(pid)+'">'+ic('x')+'Отозвать приглашение</button>':'')+
     (p.kind!=='networker'?'<button type="button" data-a="pprod" data-p="'+E(pid)+'">'+ic('gift')+'Карточка продукта</button>':'')+'<button type="button" data-a="ppay" data-p="'+E(pid)+'" data-w="1">'+ic('check')+'Отметить платеж 1</button><button type="button" data-a="ppay" data-p="'+E(pid)+'" data-w="2">'+ic('check')+'Отметить платеж 2</button>'+
     '<button type="button" class="'+(p.suspended?'':'d')+'" data-a="psusp" data-p="'+E(pid)+'" data-v="'+(p.suspended?'0':'1')+'">'+ic(p.suspended?'check':'pause')+(p.suspended?'Вернуть доступ':'Приостановить доступ')+'</button>';
-  el.parentNode.appendChild(m);
+  document.body.appendChild(m);var rc=el.getBoundingClientRect();m.style.position='fixed';m.style.top=Math.min(rc.bottom+6,innerHeight-m.offsetHeight-12)+'px';m.style.right=Math.max(12,innerWidth-rc.right)+'px';
 }
 function inviteSheet(){
   var chosen={};
@@ -1161,7 +1167,7 @@ var A={
   pinv:inviteSheet2,
   pprod:function(el){productSheet(el.getAttribute('data-p'))},
   prodsug:function(){var s2=sheet('<div class="kick">Карточка продукта</div><h2>Предложить правку</h2><p class="hint">Orbiq проверит и обновит карточку. Можно вставить текст с сайта или переписку</p><textarea class="ta" id="psg" style="min-height:160px"></textarea><div class="row">'+btn('Отправить в Orbiq','pri','id="psgo"','send')+'</div>');$('#psgo',s2).addEventListener('click',function(){var t=$('#psg',s2).value.trim();if(t.length<5){toast('Опишите правку','alert');return}api('product/suggest',{text:t}).then(function(){closeSheet();toast('Правка отправлена в Orbiq','send')}).catch(function(e){toast(e.message,'alert')})})},
-  pmenu:function(el,e){e.stopPropagation();var open=el.parentNode.querySelector('.menu-p');$$('.menu-p').forEach(function(x){x.remove()});if(!open)partnerMenu(el)},
+  pmenu:function(el,e){e.stopPropagation();var open=document.querySelector('.menu-p[data-for="'+el.getAttribute('data-p')+'"]');$$('.menu-p').forEach(function(x){x.remove()});if(!open)partnerMenu(el)},
   prest:function(el){if(!confirm('Вернуть эту версию? Текущая версия тоже останется в истории'))return;var pid=el.getAttribute('data-p');api('partner/restore',{pid:pid,i:+el.getAttribute('data-i')}).then(function(){toast('Версия возвращена');vPartner([pid])}).catch(function(e){toast(e.message,'alert')})},
   preinv:function(el){var pid=el.getAttribute('data-p'),p=(S.partners||[]).find(function(x){return x.id===pid})||{},first=(p.invite||{}).status==='draft';api('partner/reinvite',{pid:pid}).then(function(r){sheet('<div class="kick">'+(first?'Приглашение отправлено':'Новая ссылка')+'</div><h2>Ссылка для партнера</h2>'+linkBox(r.link,(first?'Письмо со ссылкой ушло на '+E(p.email||'почту партнера')+'. ':'Прежняя ссылка больше не работает. ')+'Действует до '+fmtDate(r.expires)));if(location.hash.indexOf('#/partner/')===0)vPartner([pid]);else vPartners()}).catch(function(e){toast(e.message,'alert')})},
   prevoke:function(el){api('partner/revoke',{pid:el.getAttribute('data-p')}).then(function(){toast('Приглашение отозвано');vPartners()})},
@@ -1203,7 +1209,7 @@ var A={
   pffin:function(el){var pid=el.getAttribute('data-p'),v=el.getAttribute('data-v');var r=$('[data-fr="'+pid+'"]').value.trim();if(!r){toast('Впишите основание решения','alert');return}api('pf/final',{pid:pid,decision:v,reason:r}).then(function(){toast('Решение отправлено партнеру');vReviews()}).catch(function(e){toast(e.message,'alert')})}
 };
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.menu'))$$('.menu-p').forEach(function(x){x.remove()});
+  if(!e.target.closest('.menu')&&!e.target.closest('.menu-p'))$$('.menu-p').forEach(function(x){x.remove()});
   var el=e.target.closest('[data-a]');if(!el)return;var f=A[el.getAttribute('data-a')];if(!f)return;
   if(el.tagName==='A'&&el.getAttribute('data-a')==='sclose'){closeSheet();return}
   if(el.tagName==='BUTTON'&&el.type==='submit'&&!f)return;
@@ -1601,3 +1607,5 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 if(DEMO){var dm=document.createElement('div');dm.className='demo';dm.innerHTML='Демо <select aria-label="Роль">'+[['owner','Founder'],['new','Новый партнер'],['basic','Базовый партнер'],['paid','Партнер Orbiq'],['networker','Нетворкер'],['login','Вход'],['key','Пароль Founder']].map(function(o){return '<option value="'+o[0]+'"'+(Demo.as()===o[0]?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select>';document.body.appendChild(dm);dm.querySelector('select').addEventListener('change',function(){var u=new URL(location.href);u.searchParams.set('as',this.value);u.hash='';location.href=u.toString()})}
 boot();
 })();
+
+window.addEventListener('scroll',function(){$$('.menu-p').forEach(function(x){x.remove()})},{passive:true});

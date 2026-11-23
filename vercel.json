@@ -202,5 +202,10 @@
         }
       ]
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "journal-editorial": false
+    }
+  }
 }

@@ -928,3 +928,8 @@ html{font-family:var(--f)}
 .ltk-in i{color:rgba(244,241,236,.25)}
 .ltk-in em{color:rgba(244,241,236,.3)}
 @media (max-width:860px){.ls-row b{font-size:14px}}
+/* название в одну строку заглавными */
+.lgn .lg-card h1{text-transform:uppercase;white-space:nowrap;font-weight:500;font-size:clamp(19px,5.6vw,30px);letter-spacing:.14em;line-height:1.1;margin-top:14px}
+.lgn .lg-card h1 .w{margin-right:.1em}
+.lgn .lg-tag{display:none}
+@media (max-width:860px){.lgn .lg-card h1{font-size:clamp(17px,5.4vw,24px);letter-spacing:.12em}}

@@ -182,6 +182,8 @@ const cardOf = (j) => (j && (j.card || j.client || j.view || j)) || {};
 const meP = async (s) => { const r = await as(s, 'me'); return (r.j && r.j.partner) || {}; };
 const deepHas = (o, s) => JSON.stringify(o).includes(s);
 const iso = (d = 0) => new Date(Date.now() + d * 864e5).toISOString();
+// SPEC-v2: новые запросы бесплатные партнеры видят через 72 часа; стенд «состаривает» запросы, где проверка не о приоритете
+const ageReqs = (cid) => { const k = 'crm/c/' + cid + '.json'; const d = store.get(k); if (d) store.put(k, { ...d, requests: (d.requests || []).map(x => ({ ...x, at: iso(-4) })) }); };
 const day = (d = 0) => iso(d).slice(0, 10);
 
 const CELLS = ['about.age', 'about.region', 'about.places', 'business.source', 'business.now', 'business.project', 'family.circle', 'family.kids', 'family.gift', 'interests.time', 'interests.subject', 'interests.memory', 'prefs.formats', 'prefs.no', 'prefs.style', 'plans.asked', 'plans.next', 'plans.timing'];
@@ -273,7 +275,7 @@ await T('§11.12', 'партнер', 'повторное использован�
   need(!(m.j && m.j.partner && m.j.partner.id), 'повтор дал сессию: ' + E(r)); return E(r);
 });
 await T('§11.12', 'owner', 'тарифы выставлены: candidate / trial / paid', async () => {
-  need(KAND.me.tier === 'candidate', 'KAND tier=' + KAND.me.tier); need(PA.me.tier === 'trial', 'PA tier=' + PA.me.tier + ' ' + E(PA.tierR || {})); need(PB.me.tier === 'paid', 'PB tier=' + PB.me.tier + ' pay ' + E(PB.pay || {}) + ' tier ' + E(PB.tierR || {}));
+  need(KAND.me.tier === 'new', 'KAND tier=' + KAND.me.tier); need(PA.me.tier === 'basic', 'PA tier=' + PA.me.tier + ' ' + E(PA.tierR || {})); /* SPEC-v2: candidate → new, trial → basic */ need(PB.me.tier === 'paid', 'PB tier=' + PB.me.tier + ' pay ' + E(PB.pay || {}) + ' tier ' + E(PB.tierR || {}));
   return 'candidate/trial/paid';
 });
 await T('§11.12', 'owner', 'reinvite выдает новую ссылку, revoke делает ссылку недействительной', async () => {
@@ -290,7 +292,7 @@ await T('A1', 'партнер (paid)', 'обычная роль не получ�
   const tries = [['partners'], ['partner/invite', { name: 'X', email: 'x@example.com', categories: ['art'] }], ['partner/tier', { pid: PA.pid, tier: 'paid' }], ['partner/payment', { pid: PB.pid, which: 2, at: iso(), amount: 10000 }], ['partner/suspend', { pid: PA.pid, on: true }], ['intro/use', { pid: PA.pid, rid: 'x' }], ['rq/all'], ['pf/decide', { pid: KAND.pid, cid: 'x', exists: true, relation: true, capital: true }], ['pf/final', { pid: KAND.pid, decision: 'approve' }], ['seat/list', null, '&cat=watches'], ['audit'], ['rq/status', { rid: 'x', status: 'closed' }], ['rq/send', { rid: 'x', to: 'initiator', text: 'x' }]];
   for (const [r, b, q] of tries) { const x = await as(PB.s, r, { body: b || undefined, q: q || '' }); if (x.s !== 403 && x.s !== 401) bad.push(r + ':' + x.s); }
   const sk = await as(PB.s, 'auth/owner-key', { body: { key: ADMIN_KEY } }); const t = PB.s.clone(); t.absorb(sk.h); const p = await as(t, 'partners'); if (p.s !== 403 && p.s !== 401) bad.push('owner-key у партнера → partners ' + p.s);
-  need(!bad.length, 'пропущено: ' + bad.join(', ')); const me = await meP(PA.s); need(me.tier === 'trial', 'PA tier изменился: ' + me.tier); return 'все 403';
+  need(!bad.length, 'пропущено: ' + bad.join(', ')); const me = await meP(PA.s); need(me.tier === 'basic', 'PA tier изменился: ' + me.tier); return 'все 403'; // SPEC-v2: trial → basic
 });
 
 // ---------- P1 / §11.1: создание, уникальность имени ----------
@@ -358,7 +360,7 @@ await T('P2', 'партнер Б (paid)', 'видит «Атлас» в «Все
 });
 await T('P2', 'партнер Б', 'client/get чужой карточки → только разрешенные поля (networkView)', async () => {
   const r = await as(PB.s, 'client/get', { q: '&id=' + ctx.atlas }); need(r.s === 200, E(r)); const c = cardOf(r.j);
-  const extra = Object.keys(c).filter(k => !NET_ALLOWED.has(k)); const forb = NET_FORBIDDEN.filter(k => deepHas(r.j, '"' + k + '"'));
+  const extra = Object.keys(c).filter(k => !NET_ALLOWED.has(k) && !['leadBy', 'byOrbiq'].includes(k)); const forb = NET_FORBIDDEN.filter(k => deepHas(r.j, '"' + k + '"')); // SPEC-v2: в сети видна сфера ведущего партнера (leadBy) и метка «Ведет Orbiq»
   need(!forb.length, 'запрещенные поля: ' + forb.join(',')); need(!extra.length, 'лишние поля: ' + extra.join(','));
   const lk = leakCheck(r.j); need(!lk.length, 'утечка: ' + lk.join(','));
   need(c.mine === false, 'mine=' + c.mine); return 'поля: ' + Object.keys(c).join(',');
@@ -551,6 +553,7 @@ await T('P4', 'кандидат', 'видит обезличенный спро�
   // спрос на часы от карточек других партнеров
   const s1 = await as(PB.s, 'client/create', { body: { alias: 'Сириус' } }); ctx.sirius = cardOf(s1.j).id;
   await as(PB.s, 'client/update', { body: { id: ctx.sirius, patch: { age: '55–64', capital: '25–100', kids: 2, investing: 'active', interests: ['Часы', 'Яхты'], requests: [{ id: 'rw1', cat: 'watches', text: 'Редкие часы к юбилею', status: 'open', at: iso(), public: true }, { id: 'rw0', cat: 'citizenship', text: 'ВНЖ', status: 'open', at: iso(), public: true }], publicText: { rw1: 'Редкие часы к юбилею', rw0: 'ВНЖ' }, relation: { role: 'клиент', lastContact: '2026-11', topic: 'гражданство' }, capitalBasis: 'QA-SIRIUS-BASIS' } } });
+  ageReqs(ctx.sirius); // SPEC-v2: бесплатные партнеры видят запрос через 72 часа
   let r = await as(KAND.s, 'demand'); if (!r.j || !r.j.demand) r = await as(KAND.s, 'clients', { q: '&scope=all' });
   const d = r.j.demand; need(Array.isArray(d), 'нет demand: ' + E(r)); const w = d.find(x => x.cat === 'watches'); need(w && w.count >= 1, 'нет спроса watches: ' + short(JSON.stringify(d), 100));
   const t = JSON.stringify(r.j); need(!t.includes('Сириус') && !t.includes(ctx.sirius) && !t.includes('QA-SIRIUS-BASIS') && !t.includes(PB.pid), 'утечка alias/id'); need(!d.some(x => x.cat !== 'watches'), 'чужие категории в demand');
@@ -673,34 +676,35 @@ await T('§11.18', 'партнер А', '«Убрать в архив»: про�
 await T('§11.18', 'владелец Orbiq', 'архивирование отражено в журнале', async () => { const a = await as(OWs, 'audit', { q: '&limit=500' }); need(/archive/i.test(JSON.stringify(a.j)) && deepHas(a.j, ctx.zenit), 'нет записи'); return 'есть'; });
 
 // ---------- §11.15 / §11.16 / A5: портфель кандидата ----------
-async function kandCard(n, alias, { nFact = 15, restKind = 'unknown', capital = '3–10', cat, basis = true, relation = true } = {}) {
+async function kandCard(n, alias, { nFact = 15, restKind = 'unknown', capital = '3–10', cat, basis = true, relation = true, noYears = false } = {}) {
   const c = await as(KAND.s, 'client/create', { body: { alias } }); const id = cardOf(c.j).id; if (!id) return { id: null, r: c };
   const rcat = cat || CATS_OTHER[n % CATS_OTHER.length];
   const patch = { age: ['45–54', '55–64', '65+'][n % 3], capital, kids: n % 4, investing: ['active', 'sometimes', 'no'][n % 3], interests: [WORDS[n % WORDS.length]],
     requests: [{ id: 'rk' + n, cat: rcat, text: `${['Подобрать', 'Найти', 'Оформить', 'Сравнить', 'Организовать'][n % 5]} ${WORDS[(n * 5) % WORDS.length]} ${WORDS[(n * 11) % WORDS.length]} ${n}`, status: 'open', at: iso(), public: true }],
     cells: cellsFor(n, nFact, restKind) };
   if (basis) patch.capitalBasis = `Доля ${10 + n}% в ${WORDS[(n * 13) % WORDS.length]} холдинге, оценка ${2020 + (n % 6)} г., период ${n % 12 + 1} мес`;
-  if (relation) patch.relation = { role: `${['сосед', 'бывший клиент', 'партнер по проекту', 'однокурсник', 'клиент'][n % 5]} ${n}`, lastContact: `2026-${String((n % 10) + 1).padStart(2, '0')}`, topic: `${WORDS[(n * 17) % WORDS.length]} тема ${n}` };
+  if (relation) patch.relation = { role: `${['сосед', 'бывший клиент', 'партнер по проекту', 'однокурсник', 'клиент'][n % 5]} ${n}`, lastContact: `2026-${String((n % 10) + 1).padStart(2, '0')}`, topic: `${WORDS[(n * 17) % WORDS.length]} тема ${n}`,
+    ...(noYears ? {} : { years: 2 + (n % 10), isClient: n % 2 ? 'yes' : 'no' }) }; // SPEC-v2: блок 6 — сколько лет знакомы и платил ли
   const u = await as(KAND.s, 'client/update', { body: { id, patch } }); return { id, r: u };
 }
 ctx.pf = [];
-for (let n = 1; n <= 30; n++) ctx.pf.push(await kandCard(n, `Портфель-${WORDS[n % WORDS.length]}-${n}`));
-ctx.pf14 = await kandCard(31, 'Портфель-четырнадцать', { nFact: 14 });
-ctx.pf14na = await kandCard(32, 'Портфель-нп', { nFact: 14, restKind: 'na' });
-ctx.pfOwn = await kandCard(33, 'Портфель-своя-категория', { cat: 'watches' });
-ctx.pfPoor = await kandCard(34, 'Портфель-малый-капитал', { capital: '<1' });
-ctx.pfNoBasis = await kandCard(35, 'Портфель-без-основания', { basis: false });
-await T('§11.15', 'кандидат', 'создано 30 зачетных карточек и 5 контрольных', async () => {
-  const bad = [...ctx.pf, ctx.pf14, ctx.pf14na, ctx.pfOwn, ctx.pfPoor, ctx.pfNoBasis].filter(x => !x.id || !okS(x.r)); need(!bad.length, 'не создано/не обновлено: ' + bad.length + ' ' + (bad[0] ? E(bad[0].r) : '')); return '35 карточек';
+for (let n = 1; n <= 50; n++) ctx.pf.push(await kandCard(n, `Портфель-${WORDS[n % WORDS.length]}-${n}`)); // SPEC-v2: 50 готовых карточек вместо 30
+ctx.pf14 = await kandCard(51, 'Портфель-без-знакомства', { noYears: true }); // SPEC-v2: вместо 14/18 — не заполнен блок «знакомство и оплата»
+ctx.pf14na = await kandCard(52, 'Портфель-без-дела', { nFact: 3, restKind: 'na' }); // SPEC-v2: не заполнен блок «на чем заработал»
+ctx.pfOwn = await kandCard(53, 'Портфель-своя-категория', { cat: 'watches', noYears: true }); // SPEC-v2: своя категория больше не исключает; карточка не готова по блоку 6
+ctx.pfPoor = await kandCard(54, 'Портфель-малый-капитал', { capital: '<1' });
+ctx.pfNoBasis = await kandCard(55, 'Портфель-без-основания', { basis: false });
+await T('§11.15', 'кандидат', 'создано 50 зачетных карточек и 5 контрольных (SPEC-v2)', async () => {
+  const bad = [...ctx.pf, ctx.pf14, ctx.pf14na, ctx.pfOwn, ctx.pfPoor, ctx.pfNoBasis].filter(x => !x.id || !okS(x.r)); need(!bad.length, 'не создано/не обновлено: ' + bad.length + ' ' + (bad[0] ? E(bad[0].r) : '')); return '55 карточек';
 });
-await T('§11.15', 'кандидат', 'pf/status: 14/18 не проходит, 15/18 проходит; na не снижает порог; своя категория, капитал <1, без основания — не зачтены, с причинами', async () => {
+await T('§11.15', 'кандидат', 'pf/status (SPEC-v2: готовность по 6 блокам): без знакомства, без дела, без годов знакомства, капитал <1, без основания — не зачтены, с причинами', async () => {
   const r = await as(KAND.s, 'pf/status'); need(r.s === 200, E(r)); const rows = r.j.rows || []; const row = (id) => rows.find(x => x.cid === id) || {};
-  need(row(ctx.pf[0].id).ok === true, '15/18: ' + JSON.stringify(row(ctx.pf[0].id)));
-  for (const [nm, c] of [['14/18', ctx.pf14], ['14+na', ctx.pf14na], ['своя категория', ctx.pfOwn], ['капитал <1', ctx.pfPoor], ['без основания', ctx.pfNoBasis]]) { const x = row(c.id); need(x.ok === false && (x.reasons || []).length, nm + ': ' + JSON.stringify(x)); }
-  need(r.j.counted === 30 && r.j.of === 30, `counted ${r.j.counted} of ${r.j.of}`); return `зачтено ${r.j.counted} из ${r.j.of}`;
+  need(row(ctx.pf[0].id).ok === true, 'готовая: ' + JSON.stringify(row(ctx.pf[0].id)));
+  for (const [nm, c] of [['без знакомства', ctx.pf14], ['без дела', ctx.pf14na], ['своя категория без годов', ctx.pfOwn], ['капитал <1', ctx.pfPoor], ['без основания', ctx.pfNoBasis]]) { const x = row(c.id); need(x.ok === false && (x.reasons || []).length, nm + ': ' + JSON.stringify(x)); }
+  need(r.j.counted === 50 && r.j.of === 50, `counted ${r.j.counted} of ${r.j.of}`); return `зачтено ${r.j.counted} из ${r.j.of}`; // SPEC-v2: 50
 });
-await T('§11.15', 'кандидат', 'pf/submit: выборка из 2 карточек; повтор, переименование, архив и перезагрузка ее не меняют', async () => {
-  const s1 = await as(KAND.s, 'pf/submit', { body: {} }); need(okS(s1), E(s1)); let st = await as(KAND.s, 'pf/status'); const sample = st.j.sample; need(Array.isArray(sample) && sample.length === 2, 'sample ' + JSON.stringify(sample)); ctx.sample = sample;
+await T('§11.15', 'кандидат', 'pf/submit: выборка из 3 карточек (SPEC-v2: 50 = 20 + 20 + 10); повтор, переименование, архив и перезагрузка ее не меняют', async () => {
+  const s1 = await as(KAND.s, 'pf/submit', { body: {} }); need(okS(s1), E(s1)); let st = await as(KAND.s, 'pf/status'); const sample = st.j.sample; need(Array.isArray(sample) && sample.length === 3, 'sample ' + JSON.stringify(sample)); /* SPEC-v2 */ ctx.sample = sample;
   const pfIds = new Set(ctx.pf.map(x => x.id)); need(sample.every(id => pfIds.has(id)), 'выборка вне портфеля');
   await as(KAND.s, 'pf/submit', { body: {} }); st = await as(KAND.s, 'pf/status'); need(JSON.stringify(st.j.sample) === JSON.stringify(sample), 'повторный submit изменил выборку');
   await as(KAND.s, 'client/update', { body: { id: sample[0], patch: { alias: 'Переименован-образец' } } }); st = await as(KAND.s, 'pf/status'); need(JSON.stringify(st.j.sample) === JSON.stringify(sample), 'переименование изменило выборку');
@@ -710,12 +714,12 @@ await T('§11.15', 'кандидат', 'pf/submit: выборка из 2 кар�
 await T('§11.16', 'кандидат', 'капитал не подтвержден по образцу 1 → знакомства закрыты до решения владельца', async () => {
   need(ctx.sample, 'нет выборки'); const d = await as(OWs, 'pf/decide', { body: { pid: KAND.pid, cid: ctx.sample[0], exists: true, relation: true, capital: false, reason: 'Капитал не подтвержден', evidence: { name: 'QA-EVIDENCE-NAME Семенов', doc: 'data:text/plain;base64,' + Buffer.from('QA-EVIDENCE-DOC').toString('base64'), url: 'https://qa-evidence.example.org' } } });
   need(okS(d), 'decide ' + E(d)); const me = await meP(KAND.s); const rq = await as(KAND.s, 'rq/create', { body: { cid: ctx.sirius, requestId: 'rw1', offer: 'часы', terms: '5%' } }); const all = await as(KAND.s, 'clients', { q: '&scope=all' });
-  need(me.tier === 'candidate' && rq.s === 403 && !rowsOf(all.j).some(x => x.alias), `tier ${me.tier}, rq ${rq.s}`); return 'закрыто';
+  need(me.tier === 'new' && rq.s === 403 && !rowsOf(all.j).some(x => x.alias), `tier ${me.tier}, rq ${rq.s}`); return 'закрыто'; // SPEC-v2: candidate → new
 });
 await T('§11.16', 'кандидат', 'знакомство не подтверждено по образцу 2 → знакомства закрыты; pf/final clarify не открывает доступ', async () => {
   const d = await as(OWs, 'pf/decide', { body: { pid: KAND.pid, cid: ctx.sample[1], exists: true, relation: false, capital: true, reason: 'Связь не подтверждена' } }); need(okS(d), E(d));
   const f = await as(OWs, 'pf/final', { body: { pid: KAND.pid, decision: 'clarify', reason: 'Нужны уточнения по двум карточкам' } }); need(okS(f), 'final ' + E(f));
-  const me = await meP(KAND.s); const rq = await as(KAND.s, 'rq/create', { body: { cid: ctx.sirius, requestId: 'rw1', offer: 'часы', terms: '5%' } }); need(me.tier === 'candidate' && rq.s === 403, `tier ${me.tier}, rq ${rq.s}`);
+  const me = await meP(KAND.s); const rq = await as(KAND.s, 'rq/create', { body: { cid: ctx.sirius, requestId: 'rw1', offer: 'часы', terms: '5%' } }); need(me.tier === 'new' && rq.s === 403, `tier ${me.tier}, rq ${rq.s}`); // SPEC-v2: candidate → new
   const st = await as(KAND.s, 'pf/status'); need(/clarify/.test(JSON.stringify(st.j)) && /уточнения/.test(JSON.stringify(st.j)), 'решение и основание не видны партнеру'); return 'закрыто, решение видно';
 });
 await T('A5', 'владелец Orbiq', 'после закрытия проверки: ID, решение, основание; доказательств нет в хранилище, журнале, pf/status', async () => {
@@ -727,54 +731,55 @@ await T('A5', 'владелец Orbiq', 'после закрытия прове�
   const au = await as(OWs, 'audit', { q: '&limit=1000' }); need(!/QA-EVIDENCE|Семенов/.test(JSON.stringify(au.j)), 'доказательства в журнале'); need(/pf/i.test(JSON.stringify(au.j)) && deepHas(au.j, KAND.pid), 'решения нет в журнале');
   return 'решение есть, доказательств нет';
 });
-await T('§11.15', 'кандидат', 'после approve открыт пробный тариф (trial) с квотой 3', async () => {
-  const me = await meP(KAND.s); need(me.tier === 'trial' && me.trial && me.trial.quota === 3, 'tier ' + me.tier + ' trial ' + JSON.stringify(me.trial)); return 'trial, quota 3';
+await T('§11.15', 'кандидат', 'после approve открыт статус базового партнера (SPEC-v2: вместо пробы с квотой 3)', async () => {
+  const me = await meP(KAND.s); need(me.tier === 'basic' && !(me.trial && me.trial.quota), 'tier ' + me.tier + ' trial ' + JSON.stringify(me.trial)); return 'basic, без квоты';
 });
 
-// ---------- P5 / §11.19 / §11.17: квота знакомств ----------
-// спрос на часы для партнера А (trial, watches)
+// ---------- P5 / §11.19 / §11.17: знакомства (SPEC-v2: квоты «3 за 30 карточек» нет; базовый партнер — 1 обращение в месяц) ----------
+// спрос на часы для партнера А (basic, watches)
 ctx.wcards = [];
 for (const [i, al] of ['Альтаир', 'Денеб', 'Ригель', 'Процион', 'Капелла', 'Арктур'].entries()) {
   const c = await as(PB.s, 'client/create', { body: { alias: al } }); const id = cardOf(c.j).id;
   await as(PB.s, 'client/update', { body: { id, patch: { age: '55–64', capital: '10–25', interests: ['Часы'], requests: [{ id: 'rw' + i, cat: 'watches', text: 'Часы ' + al, status: 'open', at: iso(), public: true }], publicText: { ['rw' + i]: 'Часы ' + al } } } });
+  ageReqs(id); // SPEC-v2: запросы старше 72 часов, чтобы базовый партнер их видел
   ctx.wcards.push({ id, req: 'rw' + i });
 }
 ctx.rids = [];
-for (const w of ctx.wcards) { const r = await as(PA.s, 'rq/create', { body: { cid: w.id, requestId: w.req, offer: 'Часы под заказ', terms: 'комиссия 5000' } }); ctx.rids.push(r.j.rid || r.j.id || (r.j.rq && r.j.rq.id)); }
-const used = async () => ((await meP(PA.s)).trial || {}).used;
-await T('§11.19', 'владелец Orbiq', 'отказ клиента (rq/status closed без intro/use) квоту не расходует', async () => {
-  need(ctx.rids.every(Boolean), 'обращения не созданы'); const u0 = await used(); const s = await as(OWs, 'rq/status', { body: { rid: ctx.rids[0], status: 'closed' } }); need(okS(s), E(s)); const u1 = await used(); need(u0 === 0 && u1 === 0, `used ${u0} → ${u1}`); return 'used 0';
+const resetMonth = (P) => { const k = 'crm/p/' + P.pid + '.json'; const p = store.get(k); if (p) { delete p.rqMonth; store.put(k, p); } }; // SPEC-v2: имитация следующего месяца
+for (const w of ctx.wcards) { resetMonth(PA); const r = await as(PA.s, 'rq/create', { body: { cid: w.id, requestId: w.req, offer: 'Часы под заказ', terms: 'комиссия 5000' } }); ctx.rids.push(r.j.rid || r.j.id || (r.j.rq && r.j.rq.id)); }
+const introN = () => ctx.rids.filter(id => { const d = store.get('crm/rq/' + id + '.json'); return d && d.intro; }).length;
+await T('SPEC-v2', 'партнер А (basic)', 'базовый партнер: не больше одного обращения в календарный месяц', async () => {
+  const r = await as(PA.s, 'rq/create', { body: { cid: ctx.sirius, offer: 'второе за месяц', terms: '-' } }); need(r.s === 409 && /Лимит/.test(E(r)), E(r)); return '409 ' + r.j.error;
 });
-await T('P5', 'владелец Orbiq', 'повторное подтверждение того же знакомства не расходует квоту', async () => {
-  const a = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[1] } }); need(okS(a), E(a)); const b = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[1] } }); const u = await used(); need(u === 1, `used ${u}, повтор ${b.s}`); return 'used 1, повтор ' + b.s;
+await T('§11.19', 'владелец Orbiq', 'отказ клиента (rq/status closed без intro/use) знакомство не отмечает', async () => {
+  need(ctx.rids.every(Boolean), 'обращения не созданы'); const s = await as(OWs, 'rq/status', { body: { rid: ctx.rids[0], status: 'closed' } }); need(okS(s), E(s)); need(introN() === 0, 'intro ' + introN()); return 'знакомств 0';
 });
-await T('P5', 'владелец Orbiq (две вкладки)', 'два одновременных подтверждения на последнее место → учтено одно', async () => {
-  const a = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[2] } }); need(okS(a), E(a)); need(await used() === 2, 'used не 2');
-  const rs = await Promise.all([as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[3] } }), as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[4] } })]);
-  const u = await used(); need(u === 3 && rs.filter(okS).length === 1, `used ${u}, статусы ${rs.map(r => r.s).join(',')}`); return 'статусы ' + rs.map(r => r.s).join(',');
+await T('P5', 'владелец Orbiq', 'повторное подтверждение того же знакомства учитывается один раз', async () => {
+  const a = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[1] } }); need(okS(a), E(a)); const b = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[1] } }); need(introN() === 1, `знакомств ${introN()}, повтор ${b.s}`); return 'знакомств 1, повтор ' + b.s;
 });
-await T('§11.19', 'владелец Orbiq', 'четвертое знакомство → 409; новая партия карточек / повторный pf/submit квоту не пополняет', async () => {
-  const r = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[5] } }); need(r.s === 409, '4-е: ' + E(r));
-  for (let n = 40; n < 43; n++) { const c = await as(PA.s, 'client/create', { body: { alias: 'Новая-партия-' + n } }); }
-  await as(PA.s, 'pf/submit', { body: {} }); const me = await meP(PA.s); need(me.trial.used === 3 && me.trial.quota === 3, JSON.stringify(me.trial));
-  const r2 = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[5] } }); need(r2.s === 409, 'после новой партии: ' + r2.s); return '409, квота 3/3';
+await T('P5', 'владелец Orbiq (две вкладки)', 'два одновременных подтверждения одного знакомства → учтено одно (SPEC-v2: квоты нет)', async () => {
+  const rs = await Promise.all([as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[2] } }), as(OWs, 'intro/use', { body: { pid: PA.pid, rid: ctx.rids[2] } })]);
+  need(rs.every(okS) && rs.filter(r => r.j.counted).length === 1 && introN() === 2, `знакомств ${introN()}, ответы ${rs.map(r => E(r)).join(' | ')}`); return 'учтено одно';
 });
-await T('§11.19', 'кандидат→trial (отдельный партнер) / владелец', 'дубль обращения по тому же запросу квоту не расходует', async () => {
-  const uk = async () => ((await meP(KAND.s)).trial || {}).used; const w = ctx.wcards[0];
+await T('§11.19', 'владелец Orbiq', 'SPEC-v2: четвертое знакомство не ограничено; новая партия карточек ничего не меняет', async () => {
+  for (const id of ctx.rids.slice(3, 6)) { const r = await as(OWs, 'intro/use', { body: { pid: PA.pid, rid: id } }); need(okS(r), E(r)); }
+  for (let n = 40; n < 43; n++) await as(PA.s, 'client/create', { body: { alias: 'Новая-партия-' + n } });
+  need(introN() === 5, 'знакомств ' + introN()); const me = await meP(PA.s); need(!(me.trial && me.trial.quota), 'квота вернулась: ' + JSON.stringify(me.trial)); return 'знакомств 5, квоты нет';
+});
+await T('§11.19', 'базовый партнер (KAND) / владелец', 'дубль обращения по тому же запросу не создается; знакомство по нему учитывается один раз', async () => {
+  const w = ctx.wcards[0];
   const a = await as(KAND.s, 'rq/create', { body: { cid: w.id, requestId: w.req, offer: 'Часы', terms: '5000' } }); const ra = a.j.rid || a.j.id; need(okS(a) && ra, 'первое обращение ' + E(a));
-  const d = await as(KAND.s, 'rq/create', { body: { cid: w.id, requestId: w.req, offer: 'Часы', terms: '5000' } }); const rd = d.j.rid || d.j.id;
-  const u0 = await uk(); const i1 = await as(OWs, 'intro/use', { body: { pid: KAND.pid, rid: ra } }); need(okS(i1), 'intro ' + E(i1));
-  if (okS(d) && rd && rd !== ra) await as(OWs, 'intro/use', { body: { pid: KAND.pid, rid: rd } });
-  const u = await uk(); need(u === u0 + 1, `used ${u0} → ${u} (повторное обращение: ${d.s}${rd && rd !== ra ? ', отдельный rid' : ''})`); return 'дубль ' + d.s + ', used +1';
+  const d = await as(KAND.s, 'rq/create', { body: { cid: w.id, requestId: w.req, offer: 'Часы', terms: '5000' } }); need(d.s === 409, 'дубль ' + E(d));
+  const i1 = await as(OWs, 'intro/use', { body: { pid: KAND.pid, rid: ra } }); const i2 = await as(OWs, 'intro/use', { body: { pid: KAND.pid, rid: ra } }); need(i1.j.counted && i2.j.already, E(i1) + ' / ' + E(i2));
+  return 'дубль 409, знакомство одно';
 });
-await T('§11.17', 'владелец Orbiq', 'пробный партнер зарабатывает по сделке: комиссия записана, счета за подключение нет', async () => {
+await T('§11.17', 'владелец Orbiq', 'базовый партнер зарабатывает по сделке: комиссия записана, счета за подключение нет', async () => {
   const s = await as(OWs, 'rq/status', { body: { rid: ctx.rids[1], status: 'closed', deal: { payer: 'Партнер Альфа', amount: 5000, basis: 'QA-TRIAL-DEAL комиссия за часы', received: true } } }); need(okS(s), E(s));
-  const me = await meP(PA.s); need(me.tier === 'trial', 'tier ' + me.tier); need(!(me.paid && (me.paid.pay2Due || (me.paid.seats || []).length)), 'появился счет/место: ' + JSON.stringify(me.paid)); return 'сделка записана, paid пуст';
+  const me = await meP(PA.s); need(me.tier === 'basic', 'tier ' + me.tier); need(!(me.paid && (me.paid.pay2Due || (me.paid.seats || []).length)), 'появился счет/место: ' + JSON.stringify(me.paid)); return 'сделка записана, paid пуст';
 });
-await T('§11.17', 'партнер А', 'после истечения пробного срока поиск закрыт, вознаграждение по сделке сохранено', async () => {
-  const k = 'crm/p/' + PA.pid + '.json'; const p = store.get(k); need(p && p.trial, 'нет записи партнера'); p.trial.end = iso(-1); p.trial.start = iso(-92); store.put(k, p);
-  const all = await as(PA.s, 'clients', { q: '&scope=all' }); const rq = await as(PA.s, 'rq/create', { body: { cid: ctx.wcards[5].id, requestId: ctx.wcards[5].req, offer: 'x', terms: 'x' } });
-  need(denied(all) || !rowsOf(all.j).some(x => !x.mine && x.alias && x.alias !== 'Атлас'), 'поиск открыт: ' + all.s); need(denied(rq), 'rq/create ' + rq.s);
+await T('§11.17', 'партнер А', 'SPEC-v2: срока пробы нет — базовый партнер сохраняет сеть; новые обращения по лимиту месяца; вознаграждение по сделке сохранено', async () => {
+  const all = await as(PA.s, 'clients', { q: '&scope=all' }); const rq = await as(PA.s, 'rq/create', { body: { cid: ctx.wcards[5].id, offer: 'x', terms: 'x' } });
+  need(all.s === 200, 'сеть закрыта: ' + all.s); need(rq.s === 409, 'лимит месяца не сработал: ' + rq.s);
   const g = await as(OWs, 'rq/get', { q: '&rid=' + ctx.rids[1] }); need(deepHas(g.j, 'QA-TRIAL-DEAL'), 'сделка потеряна');
   const mine = await as(PA.s, 'clients', { q: '&scope=mine' }); need(mine.s === 200, 'своя CRM закрыта: ' + mine.s);
   return `all ${all.s}, rq ${rq.s}, сделка сохранена`;

@@ -951,8 +951,8 @@ html{font-family:var(--f)}
 /* монета: каждое фото центрировано в своем секторе */
 .lgn .coin{--cs:112px}
 .coin .sg{position:absolute;inset:0}
-.coin .sg img{position:absolute;width:92%;height:92%;object-fit:cover;transform:translate(-50%,-50%)}
-.coin .sg.s0 img{left:69%;top:38%}
-.coin .sg.s1 img{left:50%;top:72%}
-.coin .sg.s2 img{left:31%;top:38%}
+.coin .sg img{position:absolute;inset:auto;object-fit:cover}
+.coin .sg.s0 img{left:50%;top:0;width:50%;height:80%}
+.coin .sg.s1 img{left:0;top:48%;width:100%;height:52%}
+.coin .sg.s2 img{left:0;top:0;width:50%;height:80%}
 @media (max-width:860px){.lgn .coin{--cs:92px}}

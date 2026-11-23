@@ -64,6 +64,8 @@ const PX = await partner('Реальный адрес', 'partner@orbiq-partner.r
 const mk = async (p, alias, patch) => { const x = await call('client/create', { body: { alias }, cookie: p.ck }); assert.equal(x.s, 200, alias); if (patch) { const u = await call('client/update', { body: { id: x.j.id, patch }, cookie: p.ck }); assert.equal(u.s, 200, JSON.stringify(u.j)); return u.j; } return x.j; };
 const cP = await mk(PP, 'Гранит', { capital: '25–100', interests: ['Часы'], requests: [{ cat: 'realty', text: 'Дом у моря' }] });
 const cT = await mk(PT, 'Сокол', { capital: '10–25', requests: [{ cat: 'citizenship', text: 'ВНЖ' }] });
+// SPEC-v2: новые запросы бесплатные партнеры видят через 72 часа; стенду нужны «старые» запросы
+for (const c of [cP, cT]) { const k = `crm/c/${c.id}.json`; const d = store.get(k); store.put(k, { ...d, requests: d.requests.map(x => ({ ...x, at: new Date(Date.now() - 96 * 3600e3).toISOString() })) }); }
 
 // ===== V2/V3: секрет сессии, тестовый режим, подделка =====
 {
@@ -113,9 +115,12 @@ const cT = await mk(PT, 'Сокол', { capital: '10–25', requests: [{ cat: 'c
 }
 // ===== V4: матрица прав, запрет по умолчанию, тариф в открытой сессии =====
 {
-  const ADMIN = [['partners'], ['audit'], ['rq/all'], ['pf/all'], ['seat/list'], ['partner/suspend', { pid: PT.pid, on: true }], ['partner/tier', { pid: PT.pid, tier: 'paid' }], ['partner/payment', { pid: PT.pid, which: 1 }], ['intro/use', { pid: PT.pid, rid: 'q_xxxxxx' }], ['pf/decide', { pid: PT.pid }], ['pf/final', { pid: PT.pid, decision: 'approve' }], ['catalog/upsert', { item: { id: 'x', title: 'x' } }], ['catalog/del', { id: 'x' }], ['client/link', { cidA: cP.id, cidB: cT.id, confirmedBy: 'client' }], ['owner/write', { pid: PT.pid, text: 'x' }], ['rq/status', { rid: 'q_xxxxxx', status: 'closed' }]];
+  const ADMIN = [['partners'], ['audit'], ['rq/all'], ['pf/all'], ['partner/suspend', { pid: PT.pid, on: true }], ['partner/tier', { pid: PT.pid, tier: 'paid' }], ['partner/payment', { pid: PT.pid, which: 1 }], ['intro/use', { pid: PT.pid, rid: 'q_xxxxxx' }], ['pf/decide', { pid: PT.pid }], ['pf/final', { pid: PT.pid, decision: 'approve' }], ['catalog/upsert', { item: { id: 'x', title: 'x' } }], ['catalog/del', { id: 'x' }], ['client/link', { cidA: cP.id, cidB: cT.id, confirmedBy: 'client' }], ['owner/write', { pid: PT.pid, text: 'x' }], ['rq/status', { rid: 'q_xxxxxx', status: 'closed' }]];
   for (const who of [PC, PT, PP]) for (const [rt, b] of ADMIN) { const x = await call(rt, { body: b, cookie: who.ck }); assert.equal(x.s, 403, rt); }
   for (const [rt, b] of ADMIN) { assert.equal((await call(rt, { body: b })).s, 401, rt); }
+  // seat/list для партнера — только счетчики своих категорий, без имен и id (владельцу — полный список)
+  for (const who of [PC, PT, PP]) { const x = await call('seat/list', { cookie: who.ck }); assert.equal(x.s, 200); for (const p of [PC, PT, PP, PX]) assert.ok(!x.raw.includes(p.pid)); assert.ok(!/Платный|Проба|Кандидат/.test(x.raw)); assert.equal((await call('seat/list', { q: '&cat=health', cookie: who.ck })).s, 403); }
+  assert.equal((await call('seat/list')).s, 401);
   resetRL();
   r = await call('auth/request', { body: { email: OWNER } }); const v3 = await call('auth/verify', { q: '&t=' + encodeURIComponent(lp(r.j.test_link).get('t')) }); const OK0 = ck(v3.h);
   for (const [rt, b] of ADMIN) { assert.equal((await call(rt, { body: b, cookie: OK0 })).s, 403, rt); }
@@ -238,6 +243,52 @@ let RQ;
   assert.equal((await call('clients', { cookie: PT.ck })).s, 401); assert.equal((await call('rq/att', { q: `&rid=${RQ.id}&id=${RQ.attachments[0].id}`, cookie: PT.ck })).s, 401);
   ok('пуш без имени клиента и текста; после приостановки пушей и доступа нет');
   for (const k of ['TG_BOT_TOKEN', 'TG_WEBHOOK_SECRET', 'CRON_SECRET']) delete process.env[k];
+}
+// ===== SPEC-v2: статусы, лимиты, клиенты Orbiq, досье =====
+{
+  resetRL();
+  const PY = await partner('Базовый', 'basic@example.com', ['legal'], 'basic');
+  const cP2 = await mk(PP, 'Гранит-2', { capital: '10–25' });
+  const rs = await Promise.all([call('rq/create', { body: { cid: cP.id, offer: 'a' }, cookie: PY.ck }), call('rq/create', { body: { cid: cP2.id, offer: 'b' }, cookie: PY.ck })]);
+  assert.deepEqual(rs.map(x => x.s).sort(), [200, 409]); r = await call('rq/create', { body: { cid: cP.id, offer: 'c' }, cookie: PY.ck }); assert.equal(r.s, 409);
+  ok('лимит базового партнера (1 обращение в месяц) нельзя обойти одновременными запросами');
+  assert.equal((await call('rq/create', { body: { cid: cP.id, offer: 'x' }, cookie: PC.ck })).s, 403); ok('новый партнер не отправляет обращения');
+  const fresh = await mk(PP, 'Свежий', { capital: '10–25', requests: [{ cat: 'legal', text: 'Наследство' }] });
+  r = await call('client/get', { q: '&id=' + fresh.id, cookie: PY.ck }); assert.equal(r.s, 200); assert.deepEqual(r.j.requests, []);
+  r = await call('clients', { q: '&scope=all&cat=legal', cookie: PY.ck }); assert.ok(!r.j.rows.some(x => x.id === fresh.id));
+  ok('новые запросы скрыты от бесплатных партнеров 72 часа (карточка, список, фильтр)');
+  r = await call('partner/product', { body: { pid: PP.pid, product: { summary: 'Юридические услуги', categories: ['realty'], fitSignals: ['Часы'], typicalEarnPerClient: { min: 1000, max: 2000 } } }, cookie: O }); assert.equal(r.s, 200);
+  r = await call('fit/list', { cookie: PP.ck }); assert.equal(r.s, 200); const raw = r.raw;
+  for (const bad of [PT.pid, PC.pid, PX.pid, '"owner"', '"cells"', 'capitalBasis', '"relation"', 'Дом у моря']) assert.ok(!raw.includes(bad), bad);
+  ok('fit/list: без id владельцев, ячеек, оснований и исходных текстов запросов');
+  { const x = await call('auth/request', { body: { email: OWNER } }); const v = await call('auth/verify', { q: '&t=' + encodeURIComponent(lp(x.j.test_link).get('t')) });
+    r = await call('client/create', { body: { alias: 'Клиент владельца' }, cookie: ck(v.h) }); assert.equal(r.s, 403); } // вход по ссылке без ключа
+  r = await call('client/create', { body: { alias: 'Клиент владельца' }, cookie: O }); assert.equal(r.s, 200); const cO = r.j.card;
+  assert.equal((await call('client/update', { body: { id: cO.id, patch: { age: '<35' } }, cookie: PP.ck })).s, 403);
+  r = await call('client/get', { q: '&id=' + cO.id, cookie: PP.ck }); assert.ok(!('owner' in r.j) && !('cells' in r.j)); assert.equal(r.j.leadBy, 'Orbiq');
+  assert.equal((await call('client/update', { body: { id: cP.id, patch: { age: '<35' } }, cookie: O })).s, 403);
+  ok('клиенты Orbiq: ведет только владелец с ключом; партнеры видят сетевое представление; чужие карточки владелец не правит');
+  const PN = await partner('Нетворкер', 'net@example.com', ['art']); await call('partner/kind', { body: { pid: PN.pid, kind: 'networker' }, cookie: O });
+  const PN2 = { ...PN }; const x = await call('auth/request', { body: { email: 'net@example.com' } }); PN2.ck = ck((await call('auth/verify', { q: '&t=' + encodeURIComponent(lp(x.j.test_link).get('t')) })).h);
+  const cn = await mk(PN2, 'Знакомый нетворкера', { capital: '10–25' });
+  assert.equal((await call('invite/create', { body: { cid: cn.id, consentAt: '2026-11-20', consentChannel: 'встреча', confirm10m: true }, cookie: PN2.ck })).s, 403);
+  assert.equal((await call('partner/product', { body: { pid: PN.pid, product: { summary: 'x' } }, cookie: O })).s, 409);
+  assert.equal((await call('rq/create', { body: { cid: cP.id, offer: 'свое' }, cookie: PN2.ck })).s, 403);
+  ok('нетворкер: нет семейных приглашений, своего продукта и обращений со своим продуктом');
+}
+{ // публичная статистика: без входа, только числа и диапазоны
+  resetRL(); S.delete('crm/stats/public.json');
+  r = await call('stats/public'); assert.equal(r.s, 200);
+  assert.deepEqual(Object.keys(r.j).sort(), ['byCapital', 'capitalSum', 'clients', 'ticker', 'updated', 'withRequests']);
+  for (const t of r.j.ticker) assert.deepEqual(Object.keys(t).sort(), ['age', 'ago', 'capital', 'cat', 'catTitle']);
+  const cards = [...S.keys()].filter(k => /^crm\/c\//.test(k)).map(k => store.get(k));
+  const secrets = new Set(); for (const c of cards) { secrets.add(c.id); secrets.add(c.alias); secrets.add(c.owner); for (const q of c.requests || []) { secrets.add(q.id); if (q.text) secrets.add(q.text); } for (const v of Object.values(c.publicText || {})) secrets.add(v); }
+  for (const p of [PC, PT, PP, PX]) secrets.add(p.pid);
+  for (const x of secrets) if (x && x !== 'orbiq' && String(x).length > 2) assert.ok(!r.raw.includes(String(x)), 'утечка: ' + x);
+  assert.ok(r.j.ticker.length >= 1 && r.j.clients >= 1); const fresh = cards.flatMap(c => (c.requests || []).filter(q => Date.now() - Date.parse(q.at) < 72 * 3600e3)).length; assert.ok(fresh >= 1);
+  assert.ok(r.j.ticker.length <= cards.flatMap(c => (c.requests || []).filter(q => q.status === 'open' && q.public && Date.now() - Date.parse(q.at) >= 72 * 3600e3)).length);
+  let lim = 0; for (let i = 0; i < 70; i++) { const x = await call('stats/public', { headers: { 'x-forwarded-for': '9.9.9.9', 'x-real-ip': '9.9.9.9', 'x-vercel-forwarded-for': '9.9.9.9' } }); if (x.s === 429) lim++; } assert.ok(lim > 0);
+  ok('stats/public: без входа, без alias, текстов, id и партнеров; запросы моложе 72 часов не попадают; лимит по IP');
 }
 assert.ok(!outbound.some(u => !/ai-gateway|api\.telegram\.org/.test(u)), 'внешние вызовы: ' + outbound.join(','));
 console.log(`\nCRM security: ${n} проверок пройдено`);

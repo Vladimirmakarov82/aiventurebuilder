@@ -21,7 +21,7 @@ export const SECTORS = [
 ];
 export const CELL_KEYS = SECTORS.flatMap(s => s.cells.map(c => `${s.id}.${c[0]}`));
 export const QUESTIONS = Object.fromEntries(SECTORS.flatMap(s => s.cells.map(c => [`${s.id}.${c[0]}`, c[1]])));
-export const QUAL_MIN = 15, QUAL_DENOM = 18, PF_NEED = 30, SEATS_MAX = 2, TRIAL_QUOTA = 3;
+export const QUAL_MIN = 15, QUAL_DENOM = 18, PF_NEED = 50, SEATS_MAX = 2, TRIAL_QUOTA = 3, PAID_FAMILY_INVITES = 20, PRIORITY_HOURS = 72;
 export const FREE_ALIASES = ['Атлас', 'Орион', 'Вега', 'Сириус', 'Альтаир', 'Лира', 'Персей', 'Кассиопея', 'Андромеда', 'Полярис', 'Капелла', 'Антарес'];
 
 // ---------- мелкие утилиты ----------
@@ -86,7 +86,7 @@ export function cleanPatch(card, patch, newId) {
   if ('stage' in patch) { if (patch.stage && !STAGES.includes(patch.stage)) return { error: 'Неизвестный этап' }; out.stage = patch.stage || 'draft'; }
   if ('interests' in patch) { if (!Array.isArray(patch.interests)) return { error: 'Интересы: список' }; out.interests = [...new Set(patch.interests.map(x => str(x, 40)).filter(x => x && !hasContacts(x)))].slice(0, 12); } // SEC: интересы видны сети, контакты в них не принимаются
   if ('capitalBasis' in patch) out.capitalBasis = str(patch.capitalBasis, 1000);
-  if ('relation' in patch) { const r = patch.relation || {}; out.relation = { role: str(r.role, 200), lastContact: str(r.lastContact, 40), topic: str(r.topic, 200) }; }
+  if ('relation' in patch) { const r = patch.relation || {}; const rr = cleanRelation(r); if (rr.error) return rr; const prev = card.relation || {}; out.relation = { role: str(r.role, 200), lastContact: str(r.lastContact, 40), topic: str(r.topic, 200), years: 'years' in r ? rr.years : (prev.years ?? null), isClient: 'isClient' in r ? rr.isClient : (prev.isClient || 'unknown') }; }
   if ('requests' in patch) {
     if (!Array.isArray(patch.requests) || patch.requests.length > 20) return { error: 'Запросы: список до 20' };
     const prev = Object.fromEntries((card.requests || []).map(r => [r.id, r])); const seen = new Set(); const reqs = [];
@@ -119,6 +119,12 @@ export function cleanPatch(card, patch, newId) {
   }
   return { patch: out };
 }
+// сколько лет знакомы и платил ли деньги партнеру (SPEC-v2, блок 6)
+export function cleanRelation(r = {}) {
+  let years = null; if (r.years !== undefined && r.years !== null && r.years !== '') { const n = Number(r.years); if (!Number.isFinite(n) || n < 0 || n > 80) return { error: 'Сколько лет знакомы: число от 0 до 80' }; years = Math.round(n); }
+  const isClient = ['yes', 'no', 'unknown'].includes(r.isClient) ? r.isClient : (r.isClient === true ? 'yes' : r.isClient === false ? 'no' : 'unknown');
+  return { years, isClient };
+}
 // после правки запросов: формулировка для сети сбрасывается, если исходный текст изменился
 export function mergePatch(card, p) {
   const c = { ...card, ...p };
@@ -135,9 +141,10 @@ function syncFromCells(c) { const a = c.cells && c.cells['about.age']; if (a && 
 const AGE_NOT = /знаком|дружим|работа|опыт|стаж|назад|в течение|уже \d|сын|доч|внук|ребен|дет(и|ей|ям)|жен[аеыу]|супруг|компани|бизнес|фирм/;
 export function ageMention(s) {
   const t = low(s); let m;
-  if ((m = /(?:ему|ей|возраст[а-я]*|исполнилось)\s*[:—-]?\s*(?:около|примерно|под|за|почти|чуть больше)?\s*(?<![\d.,])(\d{2})(?![\d.,%])/.exec(t))) return { range: ageRange(m[1]), score: /около|примерно|под|за|почти|чуть/.test(m[0]) ? 3 : 4 };
+  if ((m = /(?<![а-я])(?:ему|ей|возраст[а-я]*|исполнилось)\s*[:—-]?\s*(?:около|примерно|под|за|почти|чуть больше)?\s*(?<![\d.,])(\d{2})(?![\d.,%])/.exec(t))) return { range: ageRange(m[1]), score: /около|примерно|под|за|почти|чуть/.test(m[0]) ? 3 : 4 };
+  // «58 лет, жена и двое сыновей 12 и 24 лет»: берем число, перед которым нет слов о семье, знакомстве и годах работы
+  if ((m = /(?<![\d.,])(\d{2})(?![\d.,%])\s*(лет|года?)(?![а-я])/.exec(t)) && !AGE_NOT.test(t.slice(0, m.index))) return { range: ageRange(m[1]), score: 2 };
   if (AGE_NOT.test(t)) return null;
-  if ((m = /(?<![\d.,])(\d{2})(?![\d.,%])\s*(лет|года?)(?![а-я])/.exec(t))) return { range: ageRange(m[1]), score: 2 };
   if ((m = /(?:около|под|за|примерно)\s*(?<![\d.,])(\d{2})(?![\d.,%])(?!\s*(млн|млрд|миллион|тыс|\$|€|%|год))/.exec(t)) && /лет|возраст|ему|ей/.test(t)) return { range: ageRange(m[1]), score: 1 };
   return null;
 }
@@ -175,10 +182,37 @@ export function networkView(c) {
     mine: false,
   };
 }
+// ---------- готовность карточки: 6 блоков (SPEC-v2) ----------
+export const BLOCKS = [
+  ['ageFamily', 'Возраст и семья'], ['capital', 'Капитал и откуда оценка'], ['business', 'На чем заработал'],
+  ['interests', 'Интересы'], ['request', 'Подтвержденный запрос'], ['relation', 'Знакомство и оплата'],
+];
+const BLOCK_Q = {
+  age: 'Сколько человеку примерно лет?', family: 'Есть ли семья и дети?', capital: 'Какой у него примерно личный капитал?', capitalBasis: 'Почему вы так оцениваете капитал: продажа бизнеса, доля, другое?',
+  business: 'На чем он заработал: отрасль, масштаб, его роль в компании?', interests: 'Чем он увлекается? Что конкретно: марка, место, вид спорта?',
+  request: 'Что ему нужно сейчас? Какой запрос он сам подтвердил?', years: 'Сколько лет вы знакомы?', isClient: 'Он ваш клиент: платил ли вам деньги?',
+};
+export function readiness(card, fields = {}, cells = [], requests = []) {
+  const f = { ...card, ...fields }; const rel = { ...(card.relation || {}), ...(fields.relation || {}) };
+  const has = (k) => { const x = (card.cells || {})[k]; return (x && x.kind === 'fact' && meaningful(x.v)) || cells.some(c => c.cell === k && c.kind === 'fact' && meaningful(c.value)); };
+  const miss = {
+    ageFamily: [!(f.age || has('about.age')) && 'age', !((f.kids !== null && f.kids !== undefined && f.kids !== '') || has('family.kids') || has('family.circle')) && 'family'].filter(Boolean),
+    capital: [!CAPS.includes(f.capital) && 'capital', !(str(f.capitalBasis, 1000).length >= 3 && meaningful(f.capitalBasis)) && 'capitalBasis'].filter(Boolean),
+    business: has('business.source') || has('business.now') ? [] : ['business'],
+    interests: (f.interests || []).length || ['interests.time', 'interests.subject', 'interests.memory'].some(has) ? [] : ['interests'],
+    request: (card.requests || []).some(r => r.status === 'open') || requests.length ? [] : ['request'],
+    relation: [!(Number.isFinite(rel.years) && rel.years >= 0) && 'years', !['yes', 'no'].includes(rel.isClient) && 'isClient'].filter(Boolean),
+  };
+  const blocks = BLOCKS.map(([id, title]) => ({ id, title, ok: !miss[id].length, q: miss[id].map(k => BLOCK_Q[k]) }));
+  const okSet = new Set(blocks.filter(b => b.ok).map(b => b.id)); const filled = okSet.size;
+  const ready = filled >= 5 && ['capital', 'business', 'request', 'relation'].every(k => okSet.has(k));
+  return { filled, of: 6, ready, pct: Math.round(100 * filled / 6), label: `${filled} из 6`, blocks };
+}
 export function ownRow(c, next) {
   return { id: c.id, alias: c.alias, age: c.age || '', capital: c.capital || '', kids: c.kids ?? null, investing: c.investing || '', interests: [...(c.interests || [])],
     requests: (c.requests || []).map(r => ({ id: r.id, cat: r.cat, text: r.text, status: r.status, public: r.public })), stage: c.stage || 'draft',
-    circle: (({ filled, applicable, pct, label }) => ({ filled, applicable, pct, label }))(circle(c)), next: next || null, updated: c.updated, mine: true };
+    circle: (({ filled, applicable, pct, label }) => ({ filled, applicable, pct, label }))(circle(c)), ready: (({ filled, of, ready, pct, label }) => ({ filled, of, ready, pct, label }))(readiness(c)),
+    relation: { years: (c.relation || {}).years ?? null, isClient: (c.relation || {}).isClient || 'unknown' }, next: next || null, updated: c.updated, mine: true };
 }
 export function filterRows(rows, q = {}) {
   const s = q.q ? normAlias(q.q).norm : '';
@@ -205,26 +239,30 @@ export function demand(cards, cats) {
 
 // ---------- права ----------
 // эффективное состояние тарифа: проба истекла, второй платеж просрочен, срок места закончился
+// SPEC-v2: статусы new → basic → paid; networker — отдельная роль. Миграция v1: candidate → new, trial → basic
+export const TIERS = ['new', 'basic', 'paid'];
+export const normTier = (t) => t === 'candidate' ? 'new' : t === 'trial' ? 'basic' : TIERS.includes(t) ? t : 'new';
 export function effTier(p, now = Date.now()) {
   if (!p) return null;
-  if (p.tier === 'trial') return p.trial && p.trial.end && Date.parse(p.trial.end) < now ? 'trial_expired' : 'trial';
-  if (p.tier === 'paid') {
+  if (p.kind === 'networker') return normTier(p.tier) === 'new' ? 'networker_new' : 'networker'; // до 50 готовых карточек и проверки — как новый партнер
+  const t = normTier(p.tier);
+  if (t === 'paid') {
     const pd = p.paid || {};
-    if (pd.end && Date.parse(pd.end) < now) return 'paid_ended';
+    if (pd.end && Date.parse(pd.end) < now) return 'basic';
     if (pd.pay2Due && !pd.pay2 && Date.parse(pd.pay2Due) < now) return 'paid_hold';
     return 'paid';
   }
-  return 'candidate';
+  return t;
 }
-const OWN = ['crm.own', 'notes', 'tasks', 'demand', 'rq.read', 'pf.submit', 'tg'];
+const OWN = ['crm.own', 'notes', 'tasks', 'demand', 'rq.read', 'pf.submit', 'tg', 'fit', 'seat.count'];
 export const MATRIX = {
-  candidate: [...OWN],
-  trial: [...OWN, 'net.view', 'rq.create', 'catalog'],
-  trial_expired: [...OWN],
-  paid: [...OWN, 'net.view', 'rq.create', 'catalog', 'invite.create'],
-  paid_hold: [...OWN, 'net.view', 'rq.create', 'catalog'],
-  paid_ended: [...OWN],
-  owner: ['net.view', 'net.full', 'owner.admin', 'notes', 'catalog', 'tg'],
+  new: [...OWN],
+  basic: [...OWN, 'net.view', 'rq.create', 'catalog'],
+  paid: [...OWN, 'net.view', 'rq.create', 'rq.unlimited', 'priority', 'catalog', 'invite.create'],
+  paid_hold: [...OWN, 'net.view', 'rq.create', 'rq.unlimited', 'priority', 'catalog'],
+  networker: ['crm.own', 'notes', 'tasks', 'rq.read', 'tg', 'net.view', 'rq.create', 'rq.refer', 'catalog'],
+  networker_new: ['crm.own', 'notes', 'tasks', 'demand', 'rq.read', 'pf.submit', 'tg'],
+  owner: ['net.view', 'net.full', 'owner.admin', 'notes', 'catalog', 'tg', 'crm.own', 'tasks', 'priority'],
 };
 // запрет по умолчанию: неизвестная роль, тариф или операция → false
 export function can(role, tier, suspended, op) {
@@ -235,13 +273,6 @@ export function can(role, tier, suspended, op) {
 }
 
 // ---------- квота знакомств и места ----------
-export function introUse(p, rid) {
-  if (p.tier !== 'trial') return { err: p.tier === 'paid' ? 'paid' : 'tier' };
-  const t = { quota: TRIAL_QUOTA, used: 0, intros: [], ...(p.trial || {}) }; t.intros = t.intros || [];
-  if (t.intros.includes(rid)) return { already: true, p };
-  if (t.used >= t.quota) return { err: 'quota' };
-  return { p: { ...p, trial: { ...t, used: t.used + 1, intros: [...t.intros, rid] } } };
-}
 export function seatTake(doc, pid, at, max = SEATS_MAX) {
   const d = { taken: [], wait: [], ...(doc || {}) };
   if (d.taken.some(x => x.pid === pid)) return { doc: d, already: true };
@@ -252,20 +283,17 @@ export function seatFree(doc, pid) { const d = { taken: [], wait: [], ...(doc ||
 
 // ---------- зачет карточки и выборка ----------
 export function qualifyCard(card, partner, cardsOfPartner = []) {
-  const reasons = []; const facts = factCells(card).length;
-  if (facts < QUAL_MIN) reasons.push(`Заполнено ${facts} из ${QUAL_DENOM}, нужно ${QUAL_MIN}`);
-  if (CAPS.indexOf(card.capital) < 1) reasons.push('Капитал не указан или ниже $1 млн');
-  if (str(card.capitalBasis, 1000).length < 10) reasons.push('Нет основания оценки капитала');
-  const r = card.relation || {}; if (!str(r.role, 200) || !str(r.lastContact, 40) || !str(r.topic, 200)) reasons.push('Не описаны отношения: роль, когда общались, какую задачу обсуждали');
-  const own = new Set(partner.categories || []);
-  const other = (card.requests || []).filter(x => x.status === 'open' && !own.has(x.cat) && meaningful(x.text));
-  if (!other.length) reasons.push('Нет актуального запроса на другую услугу каталога');
+  // SPEC-v2: карточка засчитывается, если готова по 6 блокам, капитал от $1 млн и нет дубля
+  const reasons = []; const facts = factCells(card).length; const rd = readiness(card);
+  for (const b of rd.blocks) if (!b.ok) reasons.push(`Не заполнено: ${b.title.toLowerCase()}`);
+  if (rd.ready) reasons.length = 0;
+  if (card.capital && CAPS.indexOf(card.capital) < 1) reasons.push('Капитал ниже $1 млн');
   // дубль: такой же текст запроса или основания у более ранней карточки этого партнера
   const sig = (c) => ({ reqs: (c.requests || []).filter(x => x.status === 'open').map(x => normText(x.text)).filter(Boolean), basis: normText(c.capitalBasis) });
   const me = sig(card);
   const earlier = cardsOfPartner.filter(c => c.id !== card.id && !c.archived && (c.created < card.created || (c.created === card.created && c.id < card.id)));
   if (earlier.some(c => { const s = sig(c); return (me.basis && me.basis === s.basis) || me.reqs.some(t => s.reqs.includes(t)); })) reasons.push('Повтор: такой же запрос или основание уже есть в другой карточке');
-  return { ok: reasons.length === 0, reasons, facts };
+  return { ok: reasons.length === 0, reasons, facts, ready: rd.filled };
 }
 // из каждой полной двадцатки одна карточка плюс одна из остатка; детерминировано по seed
 export function selectSample(cids, seed) {
@@ -331,8 +359,9 @@ export function heuristicExtract(text) {
     for (const sent of body.split(/(?<=[.!?;])\s+/)) {
       const s = sent.trim().replace(/[.;]+$/, ''); if (s.length < 3) continue;
       let sec = sector, kind = kindOf(s); if (sec === 'clarify') { sec = ''; kind = 'hypothesis'; }
-      const cell = cellFor(s, sec); if (!cell) continue;
-      items.push({ cell, value: s.slice(0, 300), kind });
+      const cell = cellFor(s, sec);
+      if (cell) items.push({ cell, value: s.slice(0, 300), kind });
+      const am = ageMention(s); if (am && am.score >= 2 && cell !== 'about.age' && kind === 'fact') items.push({ cell: 'about.age', value: am.range, kind: 'fact', ageScore: am.score }); // возраст в одной фразе с семьей
     }
   }
   return items;
@@ -507,7 +536,18 @@ export const catOf = (t) => { const s = low(t); const m = CAT_RE.find(([, re]) =
 export function capitalRange(n) { return n < 1 ? '<1' : n < 3 ? '1–3' : n < 10 ? '3–10' : n < 25 ? '10–25' : n < 100 ? '25–100' : '100+'; }
 const sentencesOf = (text) => String(text || '').split(/\r?\n|(?<=[.!?;])\s+/).map(s => s.replace(/^[-*•#\s]+/, '').trim()).filter(s => s.length > 2);
 const MONTHS = 'январ|феврал|март|апрел|мая|май|июн|июл|август|сентябр|октябр|ноябр|декабр';
-export function heuristicFields(text) {
+const YWORD = { 'год': 1, 'два': 2, 'двух': 2, 'три': 3, 'трех': 3, 'четыре': 4, 'пять': 5, 'шесть': 6, 'семь': 7, 'восемь': 8, 'девять': 9, 'десять': 10, 'пятнадцать': 15, 'двадцать': 20, 'тридцать': 30 };
+// «знакомы 8 лет», «лет 10 знаем друг друга», «работаем с 2018», «знакомы с 2015» → сколько лет знакомы
+export function yearsKnown(t, now = Date.now()) {
+  const Y = new Date(now).getUTCFullYear(); let m;
+  if (!/знаком|знаем|работаем|сотруднича|дружим|общаемся|ведем|ведём|клиент/.test(t)) return null;
+  if ((m = /(?:с|со)\s+(19\d{2}|20\d{2})(?:\s*г(?:ода|\.)?)?/.exec(t)) && /знаком|знаем|работаем|сотруднича|дружим|общаемся|ведем|клиент/.test(t)) { const y = +m[1]; if (y <= Y && y > Y - 80) return Y - y; }
+  if ((m = /познакомились\s+(?:в\s+)?(19\d{2}|20\d{2})/.exec(t))) { const y = +m[1]; if (y <= Y) return Y - y; }
+  if ((m = /(\d{1,2})\s*(?:лет|года?)\s*(?:знаем|знакомы|работаем|сотруднича|дружим|общаемся)/.exec(t)) || (m = /(?:знакомы|знаем друг друга|работаем вместе|работаем|сотрудничаем|дружим|общаемся)\s*(?:уже|около|примерно|больше|более)?\s*(\d{1,2})\s*(?:лет|года?)/.exec(t)) || (m = /лет\s*(\d{1,2})\s*(?:знаем|знакомы|работаем|дружим)/.exec(t))) return +m[1];
+  if ((m = /(?:знакомы|знаем друг друга|работаем|дружим)\s*(?:уже|около|примерно|больше|более)?\s*(?:лет\s+)?(год|два|двух|три|трех|четыре|пять|шесть|семь|восемь|девять|десять|пятнадцать|двадцать|тридцать)(?:\s+лет)?/.exec(t)) || (m = /лет\s+(десять|пять|семь|восемь|девять|пятнадцать|двадцать|тридцать)\s*(?:знаем|знакомы|работаем|дружим)?/.exec(t))) return YWORD[m[1]];
+  return null;
+}
+export function heuristicFields(text, now = Date.now()) {
   const fields = {}; const requests = []; const ss = sentencesOf(text); let ageBest = {};
   for (const s of ss) {
     const t = low(s);
@@ -534,10 +574,17 @@ export function heuristicFields(text) {
       else { const k = /(последний раз [а-я]+|виделись|общались|созванивались|встречались)\s+(.+)/.exec(t); if (k) r.lastContact = k[2].replace(/[.;,].*$/, '').slice(0, 40); }
     }
     if (!r.topic) { const m = /(обсуждали|говорили о|говорили об|говорили про|разговор (о|про)|советовался (о|по)|по поводу|по вопросу)\s+(.+)/.exec(s.toLowerCase().replace(/ё/g, 'е')); if (m) r.topic = m[m.length - 1].replace(/[.;]+$/, '').slice(0, 200); }
-    if (r.role || r.lastContact || r.topic) fields.relation = { role: r.role || '', lastContact: r.lastContact || '', topic: r.topic || '' };
+    if (r.years == null) { const y = yearsKnown(t, now); if (y != null) r.years = y; }
+    if (!r.isClient) { if (/не (наш|мой) клиент|не покупал|не платил|пока не клиент/.test(t)) r.isClient = 'no'; else if (/(наш|мой|моя|наша) (клиент|клиентка)|покупал у (нас|меня)|покупала у (нас|меня)|платил (за|нам|мне)|оплачивал|заказывал у (нас|меня)|клиент (нашей|моей|компании)|является клиентом/.test(t)) r.isClient = 'yes'; }
+    if (r.role || r.lastContact || r.topic || r.years != null || r.isClient) fields.relation = { role: r.role || '', lastContact: r.lastContact || '', topic: r.topic || '', ...(r.years != null ? { years: r.years } : {}), ...(r.isClient ? { isClient: r.isClient } : {}) };
   }
   const tags = new Set(); for (const s of ss) if (/увлека|любит|хобби|интересуется|коллекц|в свободное время|страсть/.test(low(s)) && !/не любит/.test(low(s))) for (const g of tagsFrom(s)) tags.add(g);
-  if (tags.size) fields.interests = [...tags].slice(0, 12);
+  // списки через запятую после «любит / увлекается / интересуется / интересы / хобби» берем как есть: «вина, регаты»
+  const listed = [];
+  for (const s0 of ss) { const m = /(?:любит|увлекается|интересуется|интересы|хобби)\s*[:—-]?\s*([^.;!?]+)/i.exec(s0); if (!m || !m[1].includes(',') || /не любит/i.test(s0)) continue;
+    for (const it of m[1].split(/,|\s+и\s+/)) { const x = it.trim().replace(/^(очень|особенно|также|еще)\s+/i, '').slice(0, 40); if (x.length >= 3 && !/\d{3,}/.test(x)) listed.push(x[0].toUpperCase() + x.slice(1)); } }
+  if (listed.length) fields.interests = [...new Set(listed)].slice(0, 8);
+  else if (tags.size) fields.interests = [...tags].slice(0, 12);
   const seen = new Set(); const reqs = requests.filter(x => { const k = normText(x.text); if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 10);
   return { fields, requests: reqs };
 }
@@ -549,25 +596,77 @@ export function cleanFields(f = {}) {
   if (f.kids !== undefined && f.kids !== null && f.kids !== '') { const n = Number(f.kids); if (Number.isInteger(n) && n >= 0 && n <= 20) out.kids = n; }
   if (INVESTING.includes(f.investing)) out.investing = f.investing;
   if (Array.isArray(f.interests)) { const a = [...new Set(f.interests.map(x => s(x, 40)).filter(Boolean))].slice(0, 12); if (a.length) out.interests = a; }
-  if (f.relation && typeof f.relation === 'object') { const r = { role: s(f.relation.role, 200), lastContact: s(f.relation.lastContact, 40), topic: s(f.relation.topic, 200) }; if (r.role || r.lastContact || r.topic) out.relation = r; }
+  if (f.relation && typeof f.relation === 'object') { const rr = cleanRelation(f.relation); const r = { role: s(f.relation.role, 200), lastContact: s(f.relation.lastContact, 40), topic: s(f.relation.topic, 200) }; if (!rr.error && rr.years !== null) r.years = rr.years; if (!rr.error && rr.isClient !== 'unknown') r.isClient = rr.isClient; if (r.role || r.lastContact || r.topic || 'years' in r || 'isClient' in r) out.relation = r; }
   if (s(f.capitalBasis, 1000)) out.capitalBasis = s(f.capitalBasis, 1000);
   return out;
 }
 export const cleanRequests = (rs) => (Array.isArray(rs) ? rs : []).map(r => ({ cat: CATS[r && r.cat] ? r.cat : catOf(r && r.text), text: String((r && r.text) || '').trim().slice(0, 200) })).filter(r => r.text).slice(0, 10);
-// ключевые вопросы, на которые текст должен ответить
-export const KEY_QUESTIONS = [
-  ['age', 'Сколько человеку примерно лет?'], ['capital', 'Какой у него примерно личный капитал?'], ['capitalBasis', 'Почему вы так оцениваете капитал: продажа бизнеса, доля, другое?'],
-  ['source', 'На чем он заработал основной капитал?'], ['family', 'Есть ли семья и дети?'], ['interests', 'Чем он увлекается, на что тратит свободное время?'],
-  ['request', 'Что ему нужно сейчас, какой у него запрос?'], ['relation', 'Как вы с ним знакомы и когда последний раз общались?'],
-];
+// недостающие блоки готовности с вопросами (SPEC-v2)
 export function missingFor(card, fields = {}, cells = [], requests = []) {
-  const f = { ...card, ...fields }; const has = (k) => { const x = (card.cells || {})[k]; return (x && x.kind === 'fact' && meaningful(x.v)) || cells.some(c => c.cell === k && c.kind === 'fact' && meaningful(c.value)); };
-  const rel = { ...(card.relation || {}), ...(fields.relation || {}) };
-  const ok = {
-    age: !!f.age || has('about.age'), capital: !!f.capital, capitalBasis: !!String(f.capitalBasis || '').trim(), source: has('business.source'),
-    family: (f.kids !== null && f.kids !== undefined && f.kids !== '') || has('family.kids') || has('family.circle'),
-    interests: (f.interests || []).length > 0 || ['interests.time', 'interests.subject', 'interests.memory'].some(has),
-    request: (card.requests || []).some(r => r.status === 'open') || requests.length > 0, relation: !!(rel.role && rel.lastContact),
-  };
-  return KEY_QUESTIONS.filter(([k]) => !ok[k]).map(([key, q]) => ({ key, q }));
+  return readiness(card, fields, cells, requests).blocks.filter(b => !b.ok).map(b => ({ key: b.id, title: b.title, q: b.q.join(' ') }));
+}
+
+// ---------- профиль продукта партнера (SPEC-v2 §3) ----------
+const money = (t) => { const out = []; const re = /(\$|usd|€|eur)?\s*(\d[\d\s]{0,9}(?:[.,]\d+)?)\s*(тыс\.?|тысяч|k|к|млн|миллион[а-я]*)?\s*(\$|usd|долл[а-я]*|€|евро)?/gi; let m;
+  while ((m = re.exec(t))) { const cur = m[1] || m[4]; const mult = m[3]; if (!cur && !mult) continue; let n = parseFloat(m[2].replace(/\s/g, '').replace(',', '.')); if (!Number.isFinite(n) || n <= 0) continue;
+    if (mult && /тыс|k|к/i.test(mult)) n *= 1000; else if (mult && /млн|миллион/i.test(mult)) n *= 1e6; if (!cur && n < 1000) continue; out.push(Math.round(n)); } return out; };
+export function cleanProduct(x = {}) {
+  const s = (v, n) => scrubPII(String(v ?? '')).text.trim().slice(0, n);
+  const e = x.typicalEarnPerClient || {}; const num = (v) => { const n = Number(v); return Number.isFinite(n) && n >= 0 && n < 1e9 ? Math.round(n) : null; };
+  let min = num(e.min), max = num(e.max); if (min != null && max != null && min > max) [min, max] = [max, min];
+  return { summary: s(x.summary, 600), whoNeeds: s(x.whoNeeds, 400), fitSignals: [...new Set((Array.isArray(x.fitSignals) ? x.fitSignals : []).map(v => s(v, 60)).filter(Boolean))].slice(0, 12),
+    categories: [...new Set((Array.isArray(x.categories) ? x.categories : []).filter(c => CATS[c]))].slice(0, 5), typicalEarnPerClient: { min, max, currency: 'USD' } };
+}
+export function heuristicProduct(text) {
+  const clean = scrubPII(text).text; const ss = sentencesOf(clean); const t = low(clean);
+  const cats = []; for (const [c, re] of CAT_RE) if (re.test(t) && !cats.includes(c)) cats.push(c);
+  const who = ss.find(x => /для (тех|клиент|семей|людей|владельц|предпринимател|состоятельн)|подходит|нужно тем|тем, кто/.test(low(x))) || '';
+  const sig = [...new Set([...tagsFrom(clean), ...cats.map(c => CATS[c])])];
+  const earnS = ss.find(x => /зарабат|комисси|доход|вознагражд|чек|с клиента|за клиента/.test(low(x)));
+  const nums = money(low(earnS || '')); const all = nums.length ? nums : [];
+  return cleanProduct({ summary: ss.slice(0, 2).join(' '), whoNeeds: who, fitSignals: sig, categories: cats.slice(0, 3),
+    typicalEarnPerClient: { min: all.length ? Math.min(...all) : null, max: all.length ? Math.max(...all) : null } });
+}
+
+// ---------- досье и подборка под продукт (SPEC-v2 §4) ----------
+const INDUSTRY = [[/фарм|аптек|лекарств/, 'фармацевтика'], [/дистрибуц|оптов/, 'дистрибуция'], [/строит|девелоп|застрой/, 'строительство и девелопмент'], [/нефт|газ|энергет/, 'энергетика'],
+  [/ритейл|магазин|торгов/, 'торговля'], [/(^|[^а-я])it([^a-z]|$)|софт|программ|разработк|айти/, 'IT'], [/логист|перевоз|транспорт/, 'логистика'], [/производ|завод|фабрик/, 'производство'],
+  [/агро|сельск|ферм|зерн/, 'агробизнес'], [/медиц|клиник|стоматолог/, 'медицина'], [/банк|финанс|инвестиц/, 'финансы и инвестиции'], [/ресторан|кафе|общепит/, 'ресторанный бизнес'],
+  [/недвиж|аренд/, 'недвижимость'], [/металл|добыч|горнодоб/, 'металлургия и добыча'], [/автомоб|автосалон|дилер/, 'автобизнес'], [/медиа|реклам/, 'медиа и реклама']];
+const REGIONS = [[/краснодар|ростов|сочи|крым|ставропол|кубан|юг/, 'юг России'], [/москв|подмосков|тул|калуг|рязан|ярослав|твер|владимир/, 'центр России'], [/петербург|питер|ленинград|карел|мурманск|архангел|калинингр/, 'северо-запад России'],
+  [/казан|татарст|самар|нижн|поволж|уф[аеу]|башкир|саратов|волгоград|пенз|ульянов/, 'Поволжье'], [/екатеринб|челябин|урал|тюмен|перм|сургут|ханты|ямал/, 'Урал'], [/новосиб|омск|томск|красноярск|иркутск|сибир|барнаул|кемеров/, 'Сибирь'],
+  [/владивосток|хабаров|дальн|сахалин|камчат|якут/, 'Дальний Восток'], [/дуба|оаэ|эмират|абу-даби/, 'ОАЭ'], [/кипр|испан|итал|франц|герман|европ|португал|черногор|лондон|англи|швейцар/, 'Европа'], [/казахст|алмат|астан|узбек|ташкент|кыргыз|бишкек/, 'Центральная Азия'], [/таиланд|бали|индонез|сингапур|вьетнам|ази/, 'Азия']];
+const ROLE = [[/собственник|владел|основал|основатель|совладел|свой бизнес/, 'собственник бизнеса'], [/генеральн|директор|руковод|ceo/, 'руководитель'], [/инвестор|инвестирует/, 'инвестор'], [/партнер в|управляющ/, 'управляющий партнер']];
+const pick = (list, t) => { const o = []; for (const [re, v] of list) if (re.test(t) && !o.includes(v)) o.push(v); return o; };
+// структурированная основа досье: только укрупненные сведения из подтвержденных фактов
+export function dossierBase(card) {
+  const cells = card.cells || {}; const fact = (k) => { const x = cells[k]; return x && x.kind === 'fact' ? low(x.v) : ''; };
+  const biz = [fact('business.source'), fact('business.now'), fact('business.project')].join(' ');
+  return { age: card.age || '', capital: card.capital || '', industry: pick(INDUSTRY, biz).slice(0, 2), role: pick(ROLE, biz)[0] || '', region: pick(REGIONS, fact('about.region') + ' ' + fact('about.places'))[0] || '',
+    interests: [...(card.interests || [])].slice(0, 4), kids: card.kids ?? null };
+}
+export function dossierText(b) {
+  const out = [];
+  const who = b.role ? b.role[0].toUpperCase() + b.role.slice(1) : 'Предприниматель';
+  out.push(`${who}${b.age ? `, ${b.age} лет` : ''}${b.industry.length ? `, ${b.industry.join(' и ')}` : ''}.`);
+  if (b.capital) out.push(`Личный капитал в диапазоне $${b.capital} млн.`);
+  if (b.region) out.push(`Живет и ведет дела: ${b.region}.`);
+  if (b.interests.length) out.push(`Интересы: ${b.interests.map(x => low(x)).join(', ')}.`);
+  return out.slice(0, 4).join(' ');
+}
+// подборка сетевых карточек под продукт; requests — уже отфильтрованные для зрителя (с учетом 72 часов)
+export function fitRows(cards, product, leadByOf = () => 'партнер') {
+  const pr = cleanProduct(product || {}); const sig = pr.fitSignals.map(low); const pcats = new Set(pr.categories);
+  const earn = pr.typicalEarnPerClient; const rows = []; let tmin = 0, tmax = 0;
+  for (const { card, requests } of cards) {
+    const why = []; let score = 0; let hasRequest = false;
+    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); }
+    for (const tag of card.interests || []) { const t = low(tag); const th = TAG_THEMES[tag] || []; if (sig.some(s => s.includes(t) || t.includes(s)) || [...pcats].some(c => (CAT_THEMES[c] || []).some(x => th.includes(x)))) { score += 10; why.push(`Интерес: ${low(tag)}`); } }
+    if (!score) continue;
+    const potential = earn.min != null || earn.max != null ? { min: earn.min ?? earn.max, max: earn.max ?? earn.min } : null;
+    if (potential) { if (hasRequest) tmin += potential.min; tmax += potential.max; }
+    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, leadBy: leadByOf(card), score });
+  }
+  rows.sort((a, b) => b.score - a.score || a.alias.localeCompare(b.alias));
+  return { total: rows.length, potential: earn.min != null || earn.max != null ? { min: tmin, max: tmax } : null, rows: rows.map(({ score, ...r }) => r) };
 }

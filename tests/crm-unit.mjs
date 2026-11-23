@@ -20,21 +20,29 @@ const ok = (name) => console.log('✓', name);
   const dup = { cells: { 'about.region': { v: 'Москва', kind: 'fact' }, 'about.places': { v: 'москва', kind: 'fact' } } }; assert.equal(C.circle(dup).filled, 1); ok('повтор одного текста в разных ячейках дает один балл');
 }
 const fullCells = (n, tag = '') => Object.fromEntries(C.CELL_KEYS.slice(0, n).map((k, i) => [k, { v: `Сведение ${tag} номер ${i + 1}`, kind: 'fact' }]));
-const qualCard = (id, n, extra = {}) => ({ id, created: '2026-11-01T00:00:' + String(id.slice(-2)).padStart(2, '0') + 'Z', capital: '3–10', capitalBasis: 'Продал долю в производстве в 2023 году ' + id, relation: { role: 'клиент по часам', lastContact: '2026-10', topic: 'подбор часов' },
-  requests: [{ id: 'r1', cat: 'realty', text: 'Подобрать недвижимость ' + id, status: 'open', public: true }], cells: fullCells(n, id), ...extra });
+// SPEC-v2: готовая карточка = 6 блоков
+const readyCells = (tag) => ({ 'about.age': { v: '55–64', kind: 'fact' }, 'family.kids': { v: 'двое детей ' + tag, kind: 'fact' }, 'business.source': { v: 'Фармдистрибуция, собственник ' + tag, kind: 'fact' }, 'interests.subject': { v: 'Часы независимых мастеров ' + tag, kind: 'fact' } });
+const qualCard = (id, extra = {}) => ({ id, created: '2026-11-01T00:00:' + String(id.slice(-2)).padStart(2, '0') + 'Z', age: '55–64', kids: 2, capital: '3–10', capitalBasis: 'Продал долю в производстве в 2023 году ' + id, interests: ['Часы'],
+  relation: { role: 'клиент по часам', lastContact: '2026-10', topic: 'подбор часов', years: 8, isClient: 'yes' },
+  requests: [{ id: 'r1', cat: 'realty', text: 'Подобрать недвижимость ' + id, status: 'open', public: true }], cells: readyCells(id), ...extra });
 {
   const P = { categories: ['watches'] };
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa01', 14), P).ok, false); assert.match(C.qualifyCard(qualCard('c_aaaaaa01', 14), P).reasons[0], /14 из 18/);
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa02', 15), P).ok, true); ok('зачет: 14 из 18 не проходит, 15 из 18 проходит');
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa03', 18, { capital: '<1' }), P).ok, false);
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa04', 18, { capitalBasis: '' }), P).ok, false);
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa05', 18, { relation: { role: 'x', lastContact: '', topic: 'y' } }), P).ok, false);
-  assert.equal(C.qualifyCard(qualCard('c_aaaaaa06', 18, { requests: [{ id: 'r1', cat: 'watches', text: 'Часы', status: 'open' }] }), P).ok, false);
-  ok('зачет: капитал от $1 млн, основание, отношения и запрос в другой категории обязательны');
-  const a = qualCard('c_aaaaaa07', 18), b = qualCard('c_aaaaaa08', 18, { requests: a.requests });
+  const r6 = C.readiness(qualCard('c_aaaaaa01')); assert.equal(r6.filled, 6); assert.equal(r6.ready, true); assert.equal(C.qualifyCard(qualCard('c_aaaaaa01'), P).ok, true);
+  const noFam = qualCard('c_aaaaaa02', { kids: null, cells: { ...readyCells('x'), 'family.kids': undefined } }); delete noFam.cells['family.kids'];
+  assert.equal(C.readiness(noFam).filled, 5); assert.equal(C.readiness(noFam).ready, true); ok('готовность: 6 блоков; 5 из 6 без семьи — готова');
+  for (const [nm, extra] of [['капитал', { capital: '' }], ['основание', { capitalBasis: '' }], ['дело', { cells: { 'about.age': { v: '55–64', kind: 'fact' } } }], ['запрос', { requests: [] }],
+    ['годы', { relation: { years: null, isClient: 'yes' } }], ['клиент', { relation: { years: 3, isClient: 'unknown' } }]]) {
+    const r = C.readiness(qualCard('c_aaaaaa03', extra)); assert.equal(r.ready, false, nm); assert.equal(C.qualifyCard(qualCard('c_aaaaaa03', extra), P).ok, false, nm);
+  }
+  const two = qualCard('c_aaaaaa04', { kids: null, interests: [], cells: { 'business.source': { v: 'Стройка', kind: 'fact' } }, age: '' }); assert.equal(C.readiness(two).filled, 4); assert.equal(C.readiness(two).ready, false);
+  ok('готовность: блоки 2, 3, 5, 6 обязательны, всего не меньше 5');
+  assert.equal(C.qualifyCard(qualCard('c_aaaaaa05', { capital: '<1' }), P).ok, false); ok('зачет: капитал ниже $1 млн не засчитывается');
+  const a = qualCard('c_aaaaaa07'), b = qualCard('c_aaaaaa08', { requests: a.requests });
   assert.equal(C.qualifyCard(a, P, [a, b]).ok, true); assert.equal(C.qualifyCard(b, P, [a, b]).ok, false); ok('зачет: одинаковые запросы засчитываются один раз');
-  const h = { ...qualCard('c_aaaaaa09', 18) }; h.cells = { ...h.cells }; for (const k of C.CELL_KEYS.slice(0, 4)) h.cells[k] = { ...h.cells[k], kind: 'hypothesis' };
-  assert.equal(C.qualifyCard(h, P).ok, false); ok('зачет: гипотезы баллов не дают');
+  const h = qualCard('c_aaaaaa09'); h.cells = { ...h.cells, 'business.source': { ...h.cells['business.source'], kind: 'hypothesis' } };
+  assert.equal(C.qualifyCard(h, P).ok, false); ok('зачет: гипотезы блок не закрывают');
+  assert.deepEqual(C.missingFor({}).map(x => x.key), ['ageFamily', 'capital', 'business', 'interests', 'request', 'relation']); assert.ok(C.missingFor({}).every(x => x.q.endsWith('?') || x.q.length > 10));
+  ok('missing: недостающие блоки с вопросами');
 }
 {
   const ids = Array.from({ length: 30 }, (_, i) => 'c' + i);
@@ -45,17 +53,18 @@ const qualCard = (id, n, extra = {}) => ({ id, created: '2026-11-01T00:00:' + St
   assert.equal(C.extendSample(ids, s, 'seed').length, 3); ok('выборку можно расширить при противоречиях');
 }
 {
-  assert.equal(C.can('partner', 'candidate', false, 'net.view'), false); assert.equal(C.can('partner', 'candidate', false, 'demand'), true); assert.equal(C.can('partner', 'candidate', false, 'crm.own'), true);
-  assert.equal(C.can('partner', 'trial', false, 'net.view'), true); assert.equal(C.can('partner', 'trial', false, 'rq.create'), true); assert.equal(C.can('partner', 'trial', false, 'invite.create'), false);
-  assert.equal(C.can('partner', 'paid', false, 'invite.create'), true); assert.equal(C.can('partner', 'paid_hold', false, 'invite.create'), false);
-  assert.equal(C.can('partner', 'paid', true, 'crm.own'), false); assert.equal(C.can('partner', 'trial_expired', false, 'net.view'), false);
-  assert.equal(C.can('owner', null, false, 'owner.admin'), true); assert.equal(C.can('owner', null, false, 'crm.own'), false); assert.equal(C.can('owner', null, false, 'invite.create'), false);
-  assert.equal(C.can('owner0', null, false, 'owner.admin'), false); assert.equal(C.can('partner', 'trial', false, 'owner.admin'), false); assert.equal(C.can('partner', 'weird', false, 'crm.own'), false); assert.equal(C.can(undefined, 'paid', false, 'crm.own'), false);
-  ok('права: матрица ролей, приостановка и запрет по умолчанию');
+  assert.equal(C.can('partner', 'new', false, 'net.view'), false); assert.equal(C.can('partner', 'new', false, 'fit'), true); assert.equal(C.can('partner', 'new', false, 'crm.own'), true); assert.equal(C.can('partner', 'new', false, 'rq.create'), false);
+  assert.equal(C.can('partner', 'basic', false, 'net.view'), true); assert.equal(C.can('partner', 'basic', false, 'rq.create'), true); assert.equal(C.can('partner', 'basic', false, 'rq.unlimited'), false); assert.equal(C.can('partner', 'basic', false, 'invite.create'), false);
+  assert.equal(C.can('partner', 'paid', false, 'invite.create'), true); assert.equal(C.can('partner', 'paid', false, 'priority'), true); assert.equal(C.can('partner', 'paid_hold', false, 'invite.create'), false);
+  assert.equal(C.can('partner', 'networker', false, 'rq.refer'), true); assert.equal(C.can('partner', 'networker', false, 'invite.create'), false); assert.equal(C.can('partner', 'networker', false, 'fit'), false); assert.equal(C.can('partner', 'networker_new', false, 'net.view'), false); assert.equal(C.can('partner', 'networker_new', false, 'rq.refer'), false); assert.equal(C.can('partner', 'networker_new', false, 'demand'), true); assert.equal(C.effTier({ tier: 'new', kind: 'networker' }), 'networker_new');
+  assert.equal(C.can('partner', 'paid', true, 'crm.own'), false);
+  assert.equal(C.can('owner', null, false, 'owner.admin'), true); assert.equal(C.can('owner', null, false, 'crm.own'), true); assert.equal(C.can('owner', null, false, 'invite.create'), false); assert.equal(C.can('owner', null, false, 'rq.create'), false);
+  assert.equal(C.can('owner0', null, false, 'owner.admin'), false); assert.equal(C.can('partner', 'basic', false, 'owner.admin'), false); assert.equal(C.can('partner', 'weird', false, 'crm.own'), false); assert.equal(C.can('partner', 'candidate', false, 'crm.own'), false); assert.equal(C.can(undefined, 'paid', false, 'crm.own'), false);
+  ok('права v2: new / basic / paid / networker, владелец ведет свою CRM, запрет по умолчанию');
   const now = Date.parse('2026-11-23T00:00:00Z');
-  assert.equal(C.effTier({ tier: 'trial', trial: { end: '2026-11-01T00:00:00Z' } }, now), 'trial_expired');
-  assert.equal(C.effTier({ tier: 'paid', paid: { pay2Due: '2026-11-01T00:00:00Z' } }, now), 'paid_hold');
-  assert.equal(C.effTier({ tier: 'paid', paid: { pay2Due: '2026-11-01T00:00:00Z', pay2: { at: 'x' } } }, now), 'paid'); ok('тариф: истечение пробы и просрочка второго платежа');
+  assert.equal(C.effTier({ tier: 'candidate' }, now), 'new'); assert.equal(C.effTier({ tier: 'trial', trial: { end: '2026-11-01T00:00:00Z' } }, now), 'basic'); assert.equal(C.effTier({ tier: 'basic', kind: 'networker' }, now), 'networker');
+  assert.equal(C.effTier({ tier: 'paid', paid: { pay2Due: '2026-11-01T00:00:00Z' } }, now), 'paid_hold'); assert.equal(C.effTier({ tier: 'paid', paid: { end: '2026-11-01T00:00:00Z' } }, now), 'basic');
+  assert.equal(C.effTier({ tier: 'paid', paid: { pay2Due: '2026-11-01T00:00:00Z', pay2: { at: 'x' } } }, now), 'paid'); ok('статусы: миграция candidate → new, trial → basic; просрочка и окончание платного места');
 }
 {
   const card = { id: 'c_1', owner: 'p_secret', alias: 'Атлас', age: '55–64', capital: '10–25', kids: 2, investing: 'active', interests: ['Часы'], cells: { 'about.age': { v: '58', kind: 'fact' } }, relation: { role: 'x' }, capitalBasis: 'y', plan: [], history: [],
@@ -87,10 +96,6 @@ const qualCard = (id, n, extra = {}) => ({ id, created: '2026-11-01T00:00:' + St
   const a3 = C.applyItems(a1.card, [{ cell: 'about.region', value: 'кажется Сочи', kind: 'hypothesis' }]); assert.equal(a3.n, 0); ok('догадка не затирает факт');
 }
 {
-  let p = { tier: 'trial', trial: { quota: 3, used: 0 } };
-  for (const r of ['q1', 'q2', 'q3']) { const x = C.introUse(p, r); assert.ok(!x.err); p = x.p; }
-  assert.equal(p.trial.used, 3); assert.equal(C.introUse(p, 'q4').err, 'quota'); assert.ok(C.introUse(p, 'q2').already); ok('квота: три знакомства, повтор того же не расходует, четвертого нет');
-  assert.equal(C.introUse({ tier: 'candidate' }, 'q').err, 'tier');
   let d = null; d = C.seatTake(d, 'p1', 't').doc; d = C.seatTake(d, 'p2', 't').doc; const s3 = C.seatTake(d, 'p3', 't');
   assert.equal(s3.err, 'full'); assert.deepEqual(s3.doc.wait, ['p3']); assert.ok(C.seatTake(d, 'p1', 't').already); ok('места: не больше двух на направление, третье в лист ожидания');
 }
@@ -128,11 +133,19 @@ const qualCard = (id, n, extra = {}) => ({ id, created: '2026-11-01T00:00:' + St
   for (const x of ['Бизнес: фармдистрибуция', 'Владеет сетью клиник', 'Заработал на девелопменте']) assert.deepEqual(C.heuristicExtract(x).map(i => i.cell), ['business.source'], x);
   ok('дело: «фармдистрибуция», «заработал на», «владеет» → business.source');
   const f = C.cleanFields(C.heuristicFields(T).fields);
-  assert.deepEqual(f.relation, { role: 'Познакомились через общих друзей в 2021', lastContact: 'сентябре 2026', topic: 'поступление сына' }); assert.equal(f.age, '45–54');
+  assert.deepEqual(f.relation, { role: 'Познакомились через общих друзей в 2021', lastContact: 'сентябре 2026', topic: 'поступление сына', years: 15 }); assert.equal(f.age, '45–54');
   assert.equal(C.heuristicFields('Знакомы с ним по яхт-клубу.').fields.relation.role, 'Знакомы с ним по яхт-клубу');
   assert.equal(C.heuristicFields('Последний раз виделись на дне рождения у партнера.').fields.relation.lastContact, 'на дне рождения у партнера');
   assert.ok(!proposals.some(p => /виделись|Познакомились/.test(p.value))); ok('знакомство: «через общих друзей», «знакомы с …», «последний раз виделись …» → relation, а не ячейки круга');
-  assert.deepEqual(C.missingFor({}, f, proposals, C.heuristicFields(T).requests).map(x => x.key), ['interests']); ok('missing не спрашивает о деле, возрасте и знакомстве, если ответ есть в тексте');
+  assert.deepEqual(C.missingFor({}, f, proposals, C.heuristicFields(T).requests).map(x => x.key), ['interests', 'relation']); ok('missing не спрашивает о деле, возрасте и знакомстве, если ответ есть в тексте');
+}
+
+{ // сквозной прогон UI: возраст детей не берем; списки интересов через запятую
+  const T = '58 лет, жена и двое сыновей 12 и 24 лет. Любит вина, регаты.';
+  const f = C.heuristicFields(T).fields; assert.equal(f.age, '55–64'); assert.equal(f.kids, 2); assert.deepEqual(f.interests, ['Вина', 'Регаты']);
+  assert.equal(C.buildProposals({}, C.heuristicExtract(T)).proposals.find(x => x.cell === 'about.age').value, '55–64');
+  assert.deepEqual(C.heuristicFields('Увлекается часами и яхтами.').fields.interests, ['Часы', 'Яхты']); assert.equal(C.ageMention('двое сыновей 12 и 24 лет'), null);
+  ok('разбор: «58 лет, жена и двое сыновей 12 и 24 лет» → 55–64; «любит вина, регаты» → интересы списком');
 }
 
 // ===================== маршруты на моке Redis =====================
@@ -157,7 +170,7 @@ r = await call('me'); assert.equal(r.j.role, null); assert.equal(r.h['cache-cont
 // владелец: ссылка + ключ
 r = await call('auth/request', { body: { email: 'boss@example.com' } }); assert.ok(r.j.test_link);
 let rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(r.j.test_link).get('t')) }); assert.equal(rr.s, 302); const O0 = ck(rr.h);
-rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(r.j.test_link).get('t')) }); assert.match(rr.h.location, /expired/); ok('ссылка входа одноразовая');
+rr = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(r.j.test_link).get('t')) }); assert.doesNotMatch(rr.h.location, /expired/); ok('ссылка входа работает повторно 30 дней (решение Владимира)');
 r = await call('partners', { cookie: O0 }); assert.equal(r.s, 403); r = await call('me', { cookie: O0 }); assert.equal(r.j.owner, false); assert.equal(r.j.needKey, true); ok('владелец без ключа не получает прав');
 r = await call('auth/owner-key', { body: { key: 'wrong-key-12' }, cookie: O0 }); assert.equal(r.s, 403);
 r = await call('auth/owner-key', { body: { key: 'owner-key-123' }, cookie: O0 }); assert.equal(r.s, 200); const O = ck(r.h);
@@ -175,8 +188,8 @@ const PB = await invitePartner('Партнер Б', 'b@example.com', ['citizensh
 r = await call('pinv/accept', { q: '&t=' + linkParams(PA.link).get('t') }); assert.match(r.h.location, /invite=used/); ok('приглашение партнера одноразовое');
 r = await call('partner/invite', { body: { name: 'Дубль', email: 'A@example.com' }, cookie: O }); assert.equal(r.s, 409); ok('одна почта — один партнер');
 r = await call('partners', { cookie: PA.ck }); assert.equal(r.s, 403); ok('у партнера нет раздела «Партнеры»');
-r = await call('clients', { q: '&scope=all', cookie: PA.ck }); assert.equal(r.s, 403); assert.ok(Array.isArray(r.j.demand)); ok('кандидат: «Все» закрыто, виден только спрос');
-for (const p of [PA, PB]) { r = await call('partner/tier', { body: { pid: p.pid, tier: 'trial' }, cookie: O }); assert.equal(r.j.trial.quota, 3); }
+r = await call('clients', { q: '&scope=all', cookie: PA.ck }); assert.equal(r.s, 403); assert.ok(Array.isArray(r.j.demand)); ok('новый партнер: «Все» закрыто, виден только спрос');
+for (const p of [PA, PB]) { r = await call('partner/tier', { body: { pid: p.pid, tier: 'trial' }, cookie: O }); assert.equal(r.j.tier, 'basic'); } ok('partner/tier: старое значение trial принимается как basic');
 
 // карточки и уникальность имени
 r = await call('client/create', { body: { alias: 'Атлас' }, cookie: PA.ck }); assert.equal(r.s, 200); const CID = r.j.id; assert.equal(r.j.card.owner, PA.pid);
@@ -188,6 +201,9 @@ assert.equal(r.s, 200); const RID = r.j.requests[0].id;
 r = await call('client/update', { body: { id: CID, patch: { publicText: { [RID]: 'Второе гражданство, звоните +7 916 123 45 67' } } }, cookie: PA.ck }); assert.equal(r.j.publicText[RID], 'Второе гражданство, звоните [телефон удален]');
 r = await call('client/update', { body: { id: CID, patch: { publicText: { [RID]: 'Второе гражданство' } } }, cookie: PA.ck });
 r = await call('client/update', { body: { id: CID, patch: { owner: PB.pid } }, cookie: PA.ck }); assert.equal(r.s, 400); ok('владелец правит свою карточку; служебные поля менять нельзя (P1)');
+r = await call('client/get', { q: '&id=' + CID, cookie: PB.ck }); assert.deepEqual(r.j.requests, []); assert.equal(r.j.leadBy, 'партнер по направлению «Часы и коллекции»');
+const ageReqs = (cid, hours = 96) => { const k = 'crm/c/' + cid + '.json'; const d = JSON.parse(B.get(k).body); d.requests = d.requests.map(x => ({ ...x, at: new Date(Date.now() - hours * 3600e3).toISOString() })); B.set(k, { body: JSON.stringify(d) }); };
+ageReqs(CID); ok('новый запрос виден бесплатным партнерам через 72 часа; видна сфера ведущего партнера');
 r = await call('client/get', { q: '&id=' + CID, cookie: PB.ck }); assert.equal(r.s, 200);
 for (const k of ['owner', 'cells', 'relation', 'capitalBasis', 'plan', 'history']) assert.ok(!(k in r.j) && !(k in r.j.card), k);
 assert.deepEqual(r.j.requests, [{ id: RID, cat: 'citizenship', text: 'Второе гражданство' }]); assert.ok(!r.raw.includes(PA.pid) && !r.raw.includes('Мальты'));
@@ -213,18 +229,18 @@ r = await call('client/intake', { body: { alias: 'Атлас', text: STORY }, co
 r = await call('client/intake', { body: { alias: 'Комета', text: 'x'.repeat(30001) }, cookie: PA.ck }); assert.equal(r.s, 400);
 r = await call('client/create', { body: { alias: 'Комета' }, cookie: PB.ck }); assert.equal(r.s, 200); ok('intake: занятое имя → 409, длинный текст → 400 без создания карточки');
 r = await call('client/intake', { body: { alias: 'Меридиан', text: STORY }, cookie: PA.ck }); assert.equal(r.s, 200); const CI = r.j.id; assert.equal(r.j.engine, 'rules');
-const PR = r.j.proposals; assert.deepEqual(PR.fields, { age: '55–64', capital: '25–100', capitalBasis: 'Личный капитал около 40 млн долларов, продал долю в строительной компании в 2022.', kids: 2, interests: ['Часы', 'Яхты'], relation: { role: 'Мой клиент по часам, знакомы лет десять', lastContact: 'октябре 2026', topic: 'покупку новых часов' } });
+const PR = r.j.proposals; assert.deepEqual(PR.fields, { age: '55–64', capital: '25–100', capitalBasis: 'Личный капитал около 40 млн долларов, продал долю в строительной компании в 2022.', kids: 2, interests: ['Часы', 'Яхты'], relation: { role: 'Мой клиент по часам, знакомы лет десять', lastContact: 'октябре 2026', topic: 'покупку новых часов', years: 10, isClient: 'yes' } });
 assert.deepEqual(PR.requests, [{ cat: 'citizenship', text: 'Сейчас ищет второе гражданство для семьи' }]); assert.ok(PR.cells.some(x => x.cell === 'business.source' && x.kind === 'fact'));
 assert.deepEqual(r.j.missing, []); assert.equal(r.j.card.stage, 'draft'); assert.equal(r.j.card.age, ''); assert.ok(!r.raw.includes('777')); assert.ok(!allStore().includes('Лондоне') && !allStore().includes('строительной'));
 ok('intake: карточка создана черновиком, текст разобран во все поля, контакты вырезаны, текст не сохранен');
-r = await call('client/intake', { body: { alias: 'Пустошь', text: 'Просто хороший человек.' }, cookie: PA.ck }); assert.deepEqual(r.j.missing.map(x => x.key), ['age', 'capital', 'capitalBasis', 'source', 'family', 'interests', 'request', 'relation']); assert.ok(r.j.missing.every(x => x.q.endsWith('?'))); ok('intake: ключевые вопросы без ответа в тексте');
+r = await call('client/intake', { body: { alias: 'Пустошь', text: 'Просто хороший человек.' }, cookie: PA.ck }); assert.deepEqual(r.j.missing.map(x => x.key), ['ageFamily', 'capital', 'business', 'interests', 'request', 'relation']); assert.ok(r.j.missing.every(x => x.q.endsWith('?') && x.title)); ok('intake: ключевые вопросы без ответа в тексте');
 r = await call('client/intake', { body: { alias: 'Фарма', text: 'Бизнес: фармдистрибуция. Ему 58 лет, познакомились в 2019 году через общих друзей. Последний раз виделись в октябре 2026. Капитал около 15 млн, продал долю. Двое детей. Любит гольф. Ищет школу для внука.' }, cookie: PA.ck });
 assert.equal(r.j.proposals.fields.age, '55–64'); assert.equal(r.j.proposals.cells.find(x => x.cell === 'about.age').value, '55–64'); assert.ok(r.j.proposals.cells.some(x => x.cell === 'business.source'));
-assert.equal(r.j.proposals.fields.relation.lastContact, 'октябре 2026'); assert.deepEqual(r.j.missing, []); ok('intake: регрессия реального прогона — возраст без склейки, дело и знакомство распознаны');
+assert.equal(r.j.proposals.fields.relation.lastContact, 'октябре 2026'); assert.equal(r.j.proposals.fields.relation.years, new Date().getUTCFullYear() - 2019); assert.deepEqual(r.j.missing, [{ key: 'relation', title: 'Знакомство и оплата', q: 'Он ваш клиент: платил ли вам деньги?' }]); ok('intake: регрессия реального прогона — возраст без склейки, дело и знакомство распознаны');
 r = await call('client/apply', { body: { id: CI, fields: PR.fields, requests: PR.requests, items: PR.cells }, cookie: PA.ck }); assert.equal(r.s, 200);
 assert.equal(r.j.card.capital, '25–100'); assert.equal(r.j.card.kids, 2); assert.equal(r.j.card.requests[0].cat, 'citizenship'); assert.equal(r.j.card.relation.lastContact, 'октябре 2026'); assert.match(r.j.changed[0], /^Заполнено: /); assert.deepEqual(r.j.missing, []);
 const pct1 = r.j.circle.pct; r = await call('client/apply', { body: { id: CI, fields: PR.fields, requests: PR.requests, items: PR.cells }, cookie: PA.ck }); assert.equal(r.j.circle.pct, pct1); assert.equal(r.j.card.requests.length, 1); assert.deepEqual(r.j.changed, []);
-r = await call('client/get', { q: '&id=' + CI, cookie: PB.ck }); assert.equal(r.j.requests[0].text, ''); assert.ok(!r.raw.includes('Лондон')); ok('apply: подтвержденные поля и запросы сохраняются, повтор без дублей; в сети текст запроса только после подтверждения');
+ageReqs(CI); r = await call('client/get', { q: '&id=' + CI, cookie: PB.ck }); assert.equal(r.j.requests[0].text, ''); assert.ok(!r.raw.includes('Лондон')); ok('apply: подтвержденные поля и запросы сохраняются, повтор без дублей; в сети текст запроса только после подтверждения');
 r = await call('client/extract', { body: { id: CI, text: 'Хочет купить виллу в Испании. Активно инвестирует.' }, cookie: PA.ck }); assert.equal(r.j.requests[0].cat, 'realty'); assert.equal(r.j.fields.investing, 'active'); assert.ok(Array.isArray(r.j.proposals)); ok('extract тоже возвращает поля и запросы');
 { // AI Gateway через OIDC-токен Vercel; 401 → правила без ошибки
   let seenH = null, seenB = null, code = 200; const prev = globalThis.fetch;
@@ -256,15 +272,19 @@ r = await call('rq/all', { cookie: PB.ck }); assert.equal(r.s, 403);
 // квота знакомств при одновременных подтверждениях
 r = await call('rq/create', { body: { cid: CID, requestId: RID, offer: 'Еще вариант' }, cookie: PB.ck }); assert.equal(r.s, 409); assert.equal(r.j.error, 'Обращение по этому запросу уже отправлено');
 r = await call('rq/create', { body: { cid: CID, requestId: RID, offer: 'x', attachment: { name: 'big.pdf', dataUrl: 'data:application/pdf;base64,' + Buffer.alloc(2.2 * 1024 * 1024, 65).toString('base64') } }, cookie: PB.ck }); assert.equal(r.s, 400); ok('повтор обращения по тому же запросу → 409; вложение больше 2 МБ → 400');
+r = await call('rq/create', { body: { cid: CID, offer: 'Второе за месяц' }, cookie: PB.ck }); assert.equal(r.s, 409); assert.match(r.j.error, /^Лимит: одно обращение в месяц/);
+r = await call('me', { cookie: PB.ck }); assert.equal(r.j.partner.limits.rqUsed, 1); assert.equal(r.j.partner.limits.rqPerMonth, 1); ok('базовый партнер: одно обращение в календарный месяц');
+r = await call('partner/tier', { body: { pid: PB.pid, tier: 'paid' }, cookie: O }); assert.equal(r.j.tier, 'paid');
 const rq2 = await call('rq/create', { body: { cid: CID, offer: 'Еще вариант' }, cookie: PB.ck }); const rq3 = await call('rq/create', { body: { cid: CID, offer: 'Третий' }, cookie: PB.ck }); const rq4 = await call('rq/create', { body: { cid: CID, offer: 'Четвертый' }, cookie: PB.ck });
-r = await call('intro/use', { body: { pid: PB.pid, rid: Q1 }, cookie: O }); assert.equal(r.j.used, 1);
-r = await call('intro/use', { body: { pid: PB.pid, rid: Q1 }, cookie: O }); assert.equal(r.j.used, 1); assert.ok(r.j.already);
-r = await call('intro/use', { body: { pid: PB.pid, rid: rq2.j.id }, cookie: O }); assert.equal(r.j.used, 2);
-const race = await Promise.all([call('intro/use', { body: { pid: PB.pid, rid: rq3.j.id }, cookie: O }), call('intro/use', { body: { pid: PB.pid, rid: rq4.j.id }, cookie: O })]);
-assert.deepEqual(race.map(x => x.s).sort(), [200, 409]); r = await call('me', { cookie: PB.ck }); assert.equal(r.j.partner.trial.used, 3); ok('квота: повтор не расходует, при двух одновременных на последнее место засчитано одно (P5)');
+assert.deepEqual([rq2.s, rq3.s, rq4.s], [200, 200, 200]); ok('«Партнер Orbiq»: обращения без лимита');
+r = await call('intro/use', { body: { pid: PB.pid, rid: Q1 }, cookie: O }); assert.equal(r.j.counted, true);
+r = await call('intro/use', { body: { pid: PB.pid, rid: Q1 }, cookie: O }); assert.ok(r.j.already);
+const race = await Promise.all([call('intro/use', { body: { pid: PB.pid, rid: rq3.j.id }, cookie: O }), call('intro/use', { body: { pid: PB.pid, rid: rq3.j.id }, cookie: O })]);
+assert.deepEqual(race.map(x => !!x.j.counted).sort(), [false, true]);
+for (const q of [rq2, rq4]) { r = await call('intro/use', { body: { pid: PB.pid, rid: q.j.id }, cookie: O }); assert.equal(r.j.counted, true); } ok('знакомства отмечаются без квоты, одно и то же — один раз');
 
 // семейное приглашение и места
-r = await call('invite/create', { body: { cid: CID, consentAt: '2026-11-20', consentChannel: 'телефон' }, cookie: PA.ck }); assert.equal(r.s, 403); ok('пробный партнер не выдает подарок (P4)');
+r = await call('invite/create', { body: { cid: CID, consentAt: '2026-11-20', consentChannel: 'телефон' }, cookie: PA.ck }); assert.equal(r.s, 403); ok('базовый партнер не выдает подарок (P4)');
 const PC = await invitePartner('Партнер В', 'c@example.com', ['realty']); const PD = await invitePartner('Партнер Г', 'd@example.com', ['realty']); const PE = await invitePartner('Партнер Д', 'e@example.com', ['realty']);
 r = await call('partner/payment', { body: { pid: PC.pid, which: 1, amount: 10000 }, cookie: O }); assert.equal(r.s, 200);
 r = await call('partner/payment', { body: { pid: PC.pid, which: 1, amount: 10000 }, cookie: O }); assert.equal(r.s, 409);
@@ -328,32 +348,34 @@ r = await call('clients', { q: '&scope=mine', cookie: PA.ck }); assert.equal(r.j
 // портфель кандидата
 const PF = await invitePartner('Партнер Е', 'f@example.com', ['watches']);
 const cids = [];
-for (let i = 0; i < 30; i++) {
+// SPEC-v2: 50 готовых карточек (6 блоков) → базовый партнер
+for (let i = 0; i < 50; i++) {
   const x = await call('client/create', { body: { alias: 'Звезда ' + i }, cookie: PF.ck }); cids.push(x.j.id);
-  const cells = Object.fromEntries(C.CELL_KEYS.slice(0, i === 0 ? 14 : 15).map((k, j) => [k, { v: `Факт ${j} о клиенте ${i}`, kind: 'fact' }]));
-  await call('client/update', { body: { id: x.j.id, patch: { capital: '3–10', capitalBasis: 'Оценка по доле в бизнесе номер ' + i, relation: { role: 'знакомый', lastContact: '2026-09', topic: 'поездки' }, requests: [{ cat: 'realty', text: 'Нужна вилла ' + i }], cells } }, cookie: PF.ck });
+  await call('client/update', { body: { id: x.j.id, patch: { age: '45–54', kids: 1, capital: '3–10', capitalBasis: 'Оценка по доле в бизнесе номер ' + i, interests: ['Гольф'], relation: { role: 'знакомый', lastContact: '2026-09', topic: 'поездки', years: 5, isClient: i === 0 ? 'unknown' : 'no' },
+    requests: [{ cat: 'realty', text: 'Нужна вилла ' + i }], cells: { 'business.source': { v: 'Строительство, собственник, клиент ' + i, kind: 'fact' } } } }, cookie: PF.ck });
 }
-r = await call('pf/status', { cookie: PF.ck }); assert.equal(r.j.counted, 29); assert.match(r.j.rows[0].reasons[0], /14 из 18/);
-r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.equal(r.s, 409);
-await call('client/update', { body: { id: cids[0], patch: { cells: { 'plans.timing': { v: 'До весны', kind: 'fact' } } } }, cookie: PF.ck });
-r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.equal(r.s, 200); const sample = r.j.sample; assert.equal(sample.length, 2);
+r = await call('pf/status', { cookie: PF.ck }); assert.equal(r.j.counted, 49); assert.equal(r.j.of, 50); assert.match(r.j.rows[0].reasons[0], /знакомство и оплата/);
+r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.equal(r.s, 409); assert.equal(r.j.error, 'Зачтено 49 из 50');
+await call('client/update', { body: { id: cids[0], patch: { relation: { isClient: 'yes' } } }, cookie: PF.ck });
+r = await call('client/get', { q: '&id=' + cids[0], cookie: PF.ck }); assert.equal(r.j.relation.years, 5); assert.equal(r.j.ready.ready, true);
+r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.equal(r.s, 200); const sample = r.j.sample; assert.equal(sample.length, 3);
 const oldAlias = (await call('client/get', { q: '&id=' + sample[0], cookie: PF.ck })).j.alias;
 r = await call('client/update', { body: { id: sample[0], patch: { alias: 'Атлас' } }, cookie: PF.ck }); assert.equal(r.s, 409); assert.match(r.j.error, /^Это имя уже занято/);
 r = await call('client/update', { body: { id: sample[0], patch: { alias: 'Новая звезда' } }, cookie: PF.ck }); assert.equal(r.j.alias, 'Новая звезда');
 r = await call('client/create', { body: { alias: oldAlias }, cookie: PA.ck }); assert.equal(r.s, 200);
 const rn = await Promise.all([call('client/update', { body: { id: cids[5], patch: { alias: 'Капелла' } }, cookie: PF.ck }), call('client/update', { body: { id: cids[6], patch: { alias: 'капелла' } }, cookie: PF.ck })]);
 assert.deepEqual(rn.map(x => x.s).sort(), [200, 409]); ok('переименование: занятое → 409, старое имя освобождается, одновременно в одно имя — успешно одно');
-r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.deepEqual(r.j.sample, sample); r = await call('pf/status', { cookie: PF.ck }); assert.deepEqual(r.j.sample, sample); ok('портфель: 14/18 не засчитано, 15/18 засчитано; выборка из двух не меняется');
+r = await call('pf/submit', { body: {}, cookie: PF.ck }); assert.deepEqual(r.j.sample, sample); r = await call('pf/status', { cookie: PF.ck }); assert.deepEqual(r.j.sample, sample); ok('портфель: 50 готовых карточек, неготовая не засчитана; выборка из трех не меняется');
 r = await call('pf/final', { body: { pid: PF.pid, decision: 'approve' }, cookie: O }); assert.equal(r.s, 409);
 for (const cid of sample) await call('pf/decide', { body: { pid: PF.pid, cid, exists: 'yes', relation: 'yes', capital: 'yes', reason: 'подтверждено' }, cookie: O });
-r = await call('pf/final', { body: { pid: PF.pid, decision: 'approve', reason: 'две проверки' }, cookie: O }); assert.equal(r.s, 200);
-r = await call('me', { cookie: PF.ck }); assert.equal(r.j.partner.tier, 'trial'); ok('одобрение только после успешных проверок, кандидат → проба');
+r = await call('pf/final', { body: { pid: PF.pid, decision: 'approve', reason: 'три проверки' }, cookie: O }); assert.equal(r.s, 200);
+r = await call('me', { cookie: PF.ck }); assert.equal(r.j.partner.tier, 'basic'); assert.equal(r.j.partner.title, 'Базовый партнер'); ok('одобрение только после успешных проверок: новый → базовый');
 
 // связь карточек одного человека и основной партнер
 r = await call('client/create', { body: { alias: 'Сириус' }, cookie: PD.ck }); const CS = r.j.id;
 r = await call('client/update', { body: { id: CS, patch: { requests: [{ cat: 'citizenship', text: 'Паспорт' }] } }, cookie: PD.ck });
 await call('client/update', { body: { id: CS, patch: { publicText: { [r.j.requests[0].id]: 'Второе гражданство' } } }, cookie: PD.ck });
-r = await call('clients', { q: '&scope=all&cat=citizenship', cookie: PF.ck }); assert.equal(r.j.rows.filter(x => !x.mine && x.requests.some(q => q.text === 'Второе гражданство')).length, 2);
+ageReqs(CS); r = await call('clients', { q: '&scope=all&cat=citizenship', cookie: PF.ck }); assert.equal(r.j.rows.filter(x => !x.mine && x.requests.some(q => q.text === 'Второе гражданство')).length, 2);
 r = await call('client/link', { body: { cidA: CID, cidB: CS, confirmedBy: 'client' }, cookie: PA.ck }); assert.equal(r.s, 403);
 r = await call('client/link', { body: { cidA: CID, cidB: CS, confirmedBy: 'client' }, cookie: O }); assert.equal(r.s, 200); const LID = r.j.linkId;
 r = await call('clients', { q: '&scope=all&cat=citizenship', cookie: PF.ck }); assert.equal(r.j.rows.filter(x => !x.mine && x.requests.some(q => q.text === 'Второе гражданство')).length, 1); assert.ok(!r.raw.includes(LID));
@@ -361,6 +383,69 @@ r = await call('note/list', { q: '&cid=' + CID, cookie: PA.ck }); assert.equal(r
 r = await call('client/primary', { body: { linkId: LID, pid: PF.pid }, cookie: O }); assert.equal(r.s, 400);
 r = await call('client/primary', { body: { linkId: LID, pid: PD.pid }, cookie: O }); assert.equal(r.s, 200); assert.equal(r.j.primary.pid, PD.pid);
 ok('связь двух карточек: обе сохраняются, запрос в сети показан один раз; основной партнер — из ведущих карточку');
+
+// ===== SPEC-v2 =====
+// клиенты Orbiq у владельца
+r = await call('client/create', { body: { alias: 'Зенит' }, cookie: O }); assert.equal(r.s, 200); const CO = r.j.id; assert.equal(r.j.card.owner, 'orbiq');
+r = await call('client/update', { body: { id: CO, patch: { age: '65+', capital: '100+', interests: ['Яхты'], requests: [{ cat: 'citizenship', text: 'Паспорт для внуков' }], relation: { years: 3, isClient: 'yes' } } }, cookie: O });
+assert.equal(r.s, 200); assert.equal(r.j.relation.years, 3); const ORQ = r.j.requests[0].id;
+await call('client/update', { body: { id: CO, patch: { publicText: { [ORQ]: 'Гражданство для семьи' } } }, cookie: O }); ageReqs(CO);
+r = await call('clients', { q: '&scope=mine', cookie: O }); assert.deepEqual(r.j.rows.map(x => [x.id, x.label, x.mine]), [[CO, 'Клиент Orbiq', true]]);
+r = await call('client/update', { body: { id: CID, patch: { age: '<35' } }, cookie: O }); assert.equal(r.s, 403);
+r = await call('client/get', { q: '&id=' + CO, cookie: PA.ck }); assert.equal(r.j.leadBy, 'Orbiq'); assert.equal(r.j.byOrbiq, true); assert.ok(!r.raw.includes('orbiq"') || !('owner' in r.j));
+r = await call('rq/create', { body: { cid: CO, requestId: ORQ, offer: 'Могу помочь' }, cookie: PD.ck }); assert.equal(r.s, 200); const QO = r.j.id;
+r = await call('rq/all', { cookie: O }); assert.ok(r.j.rqs.some(x => x.id === QO));
+r = await call('rq/send', { body: { rid: QO, to: 'cardOwner', text: 'x' }, cookie: O }); assert.equal(r.s, 400);
+ok('владелец ведет клиентов Orbiq: «Мои клиенты», метка, в сети «Ведет Orbiq», обращения идут владельцу');
+// профиль продукта, роли
+r = await call('partner/invite', { body: { name: 'Партнер Гражданство', email: 'cit@example.com', productText: 'Помогаем получить гражданство Португалии и Мальты. Подходит для семей с капиталом от 3 млн. С одного клиента зарабатываем от 15 тыс до 40 тыс долларов. Пишите boss@cit.example' }, cookie: O });
+assert.equal(r.s, 200); assert.equal(r.j.kind, 'supplier'); assert.deepEqual(r.j.product.categories, ['citizenship']); assert.deepEqual(r.j.product.typicalEarnPerClient, { min: 15000, max: 40000, currency: 'USD' }); assert.ok(!r.raw.includes('boss@'));
+const PG2 = { pid: r.j.pid }; { const a = await call('pinv/accept', { q: '&t=' + linkParams(r.j.link).get('t') }); PG2.ck = ck(a.h); }
+r = await call('partner/product', { body: { pid: PG2.pid, product: { ...r.j.product, fitSignals: ['Гражданство и ВНЖ', 'Яхты'] } }, cookie: O }); assert.equal(r.s, 200);
+r = await call('me', { cookie: PG2.ck }); assert.equal(r.j.partner.tier, 'new'); assert.equal(r.j.partner.title, 'Новый партнер'); assert.deepEqual(r.j.partner.product.fitSignals, ['Гражданство и ВНЖ', 'Яхты']); assert.equal(r.j.access['rq.create'], false);
+r = await call('partner/kind', { body: { pid: PG2.pid, kind: 'networker' }, cookie: O }); assert.equal(r.s, 409); ok('профиль продукта из текста при приглашении, правка владельцем; с продуктом роль нетворкера недоступна');
+// подборка-досье под продукт
+await call('client/update', { body: { id: CO, patch: { cells: { 'business.source': { v: 'Заработал на фармдистрибуции, владеет сетью аптек «Здоровье»', kind: 'fact' }, 'about.region': { v: 'Живет в Краснодаре', kind: 'fact' } } } }, cookie: O });
+r = await call('fit/list', { cookie: PG2.ck }); assert.equal(r.s, 200); const fr = r.j.rows.find(x => x.cid === CO); assert.ok(fr); assert.equal(fr.hasRequest, true); assert.equal(fr.leadBy, 'Orbiq');
+assert.match(fr.dossier, /фармацевтика/); assert.match(fr.dossier, /юг России/); assert.ok(!/Краснодар|Здоровье|аптек «/.test(fr.dossier)); assert.match(fr.whyFit, /Гражданство и ВНЖ/);
+assert.deepEqual(fr.potential, { min: 15000, max: 40000 }); assert.ok(r.j.total >= 1 && r.j.potential.min >= 15000); assert.equal(r.j.canOffer, false);
+r = await call('fit/list', { cookie: PA.ck }); assert.equal(r.j.total, 0); assert.equal(r.j.product, null); ok('fit/list: обезличенное досье, почему подходит, потенциал; новому партнеру — без действий');
+r = await call('seat/count', { cookie: PG2.ck }); assert.deepEqual(r.j.seats, [{ cat: 'citizenship', title: 'Гражданство и ВНЖ', taken: 1, of: 2, free: 1 }]); ok('счетчик мест в категории без имен');
+// нетворкер
+r = await call('partner/invite', { body: { name: 'Нетворкер', email: 'net@example.com', kind: 'networker', productText: 'что угодно' }, cookie: O }); assert.equal(r.j.kind, 'networker'); assert.equal(r.j.product, null);
+const PN = { pid: r.j.pid }; { const a = await call('pinv/accept', { q: '&t=' + linkParams(r.j.link).get('t') }); PN.ck = ck(a.h); }
+r = await call('me', { cookie: PN.ck }); assert.equal(r.j.partner.state, 'networker_new'); assert.equal(r.j.access['net.view'], false); assert.equal(r.j.access['demand'], true);
+r = await call('client/create', { body: { alias: 'Ранний знакомый' }, cookie: PN.ck }); assert.equal(r.s, 200); const CN0 = r.j.id;
+for (const [rt, q, b] of [['clients', '&scope=all'], ['fit/list', ''], ['rq/create', '', { cid: CN0, offer: 'x', kind: 'refer' }], ['client/get', '&id=' + CO]]) { const x = await call(rt, { q, body: b, cookie: PN.ck }); assert.ok([403, 404].includes(x.s), rt + ' ' + x.s); }
+r = await call('demand', { cookie: PN.ck }); assert.equal(r.s, 200); ok('нетворкер до 50 готовых карточек и проверки: своя CRM и счетчики спроса, без сети и передачи');
+r = await call('partner/tier', { body: { pid: PN.pid, tier: 'basic' }, cookie: O }); assert.equal(r.j.tier, 'basic');
+r = await call('me', { cookie: PN.ck }); assert.equal(r.j.partner.state, 'networker'); assert.equal(r.j.access['net.view'], true); assert.equal(r.j.access['invite.create'], false);
+r = await call('client/create', { body: { alias: 'Мой знакомый' }, cookie: PN.ck }); const CN = r.j.id;
+r = await call('rq/create', { body: { cid: CO, offer: 'Хочу продать свое' }, cookie: PN.ck }); assert.equal(r.s, 403);
+r = await call('rq/create', { body: { cid: CO, offer: 'x', kind: 'refer' }, cookie: PN.ck }); assert.equal(r.s, 400);
+for (let i = 0; i < 2; i++) { r = await call('rq/create', { body: { cid: CN, offer: 'Передаю клиента под гражданство ' + i, kind: 'refer' }, cookie: PN.ck }); assert.equal(r.s, 200); assert.equal(r.j.rq.kind, 'refer'); }
+r = await call('partner/tier', { body: { pid: PN.pid, tier: 'paid' }, cookie: O }); assert.equal(r.s, 409); r = await call('partner/payment', { body: { pid: PN.pid, which: 1 }, cookie: O }); assert.equal(r.s, 409);
+r = await call('fit/list', { cookie: PN.ck }); assert.equal(r.s, 403); ok('нетворкер: видит сеть, передает своих клиентов без лимита, не продает свое и не покупает место');
+// миграция статусов и лимит семейных приглашений
+{ const k = 'crm/p/' + PG2.pid + '.json'; const d = JSON.parse(B.get(k).body); d.tier = 'trial'; B.set(k, { body: JSON.stringify(d) }); }
+r = await call('me', { cookie: PG2.ck }); assert.equal(r.j.partner.tier, 'basic'); assert.equal(JSON.parse(B.get('crm/p/' + PG2.pid + '.json').body).tier, 'basic'); ok('миграция: trial → basic при первом запросе');
+r = await call('client/create', { body: { alias: 'Меркурий' }, cookie: O }); const CO2 = r.j.id;
+r = await call('client/update', { body: { id: CO2, patch: { interests: ['Яхты'], requests: [{ cat: 'citizenship', text: 'ВНЖ' }] } }, cookie: O });
+await call('client/update', { body: { id: CO2, patch: { publicText: { [r.j.requests[0].id]: 'ВНЖ для семьи' } } }, cookie: O });
+r = await call('client/get', { q: '&id=' + CO2, cookie: PA.ck }); assert.equal(r.j.requests[0].text, 'ВНЖ для семьи');
+r = await call('fit/list', { cookie: PG2.ck }); assert.equal(r.j.rows.find(x => x.cid === CO2).hasRequest, true); ok('новые запросы клиентов Orbiq видны базовым сразу, в том числе в fit/list');
+r = await call('seat/list', { cookie: PG2.ck }); assert.deepEqual(r.j.seats, [{ cat: 'citizenship', title: 'Гражданство и ВНЖ', taken: 1, of: 2, free: 1 }]); assert.ok(!r.raw.includes('Партнер'));
+r = await call('seat/list', { q: '&cat=realty', cookie: PG2.ck }); assert.equal(r.s, 403); ok('seat/list для партнера: только счетчик своей категории, без имен');
+r = await call('partner/invite', { body: { name: 'Черновик', email: 'draft@example.com', productText: 'Подбираем яхты в аренду. С клиента 5 тыс долларов.', send: false }, cookie: O });
+assert.equal(r.s, 200); assert.equal(r.j.link, null); assert.equal(r.j.sent, false); assert.ok(r.j.product.summary); const PDR = r.j.pid;
+r = await call('partners', { cookie: O }); assert.equal(r.j.partners.find(x => x.id === PDR).invite.status, 'draft');
+r = await call('partner/reinvite', { body: { pid: PDR }, cookie: O }); assert.ok(r.j.link); r = await call('pinv/accept', { q: '&t=' + linkParams(r.j.link).get('t') }); assert.equal(r.s, 302); assert.equal(r.h.location, '/crm/?welcome=1');
+ok('partner/invite send:false — партнер и продукт без письма; reinvite отправляет ссылку');
+{ const x = await call('auth/request', { body: { email: 'c@example.com' } }); const v = await call('auth/verify', { q: '&t=' + encodeURIComponent(linkParams(x.j.test_link).get('t')) }); PC.ck = ck(v.h); }
+{ const k = 'crm/p/' + PC.pid + '.json'; const d = JSON.parse(B.get(k).body); d.familyInvites = 19; B.set(k, { body: JSON.stringify(d) }); }
+r = await call('invite/create', { body: { cid: CV, consentAt: '2026-11-22', consentChannel: 'встреча' }, cookie: PC.ck }); assert.equal(r.s, 200); const F20 = r.j.id;
+r = await call('invite/create', { body: { cid: CV, consentAt: '2026-11-22', consentChannel: 'встреча' }, cookie: PC.ck }); assert.equal(r.s, 409);
+await call('invite/revoke', { body: { id: F20 }, cookie: PC.ck }); r = await call('invite/create', { body: { cid: CV, consentAt: '2026-11-22', consentChannel: 'встреча' }, cookie: PC.ck }); assert.equal(r.s, 200); ok('«Партнер Orbiq»: 20 семейных приглашений, отозванное не расходует');
 
 // журнал
 r = await call('audit', { cookie: O }); const auditRaw = JSON.stringify(r.j);

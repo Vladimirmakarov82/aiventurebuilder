@@ -532,12 +532,11 @@ var SAMPLE_STATS={clients:128,byCapital:[{range:'1–3',count:22},{range:'3–10
       ticker:[{catTitle:'Гражданство и ВНЖ',capital:'10–25',age:'55–64',ago:'2 дня назад'},{catTitle:'Недвижимость',capital:'25–100',age:'45–54',ago:'3 дня назад'},{catTitle:'Образование детей',capital:'3–10',age:'45–54',ago:'4 дня назад'},{catTitle:'Искусство',capital:'10–25',age:'65+',ago:'5 дней назад'},{catTitle:'Здоровье',capital:'25–100',age:'55–64',ago:'неделю назад'},{catTitle:'Авиация и яхты',capital:'100+',age:'45–54',ago:'неделю назад'}]};
 function loginStats(){var box=$('#lst');if(!box)return;
   api('stats/public').then(function(d){if(!$('#lst'))return;d=d||{};var n=+d.clients||0;
-    var sample=false;if(!n){d=SAMPLE_STATS;n=d.clients;sample=true}
-    var bc=(d.byCapital||[]).filter(function(x){return x.count>0}).sort(function(a,b){return CAPS.indexOf(b.range)-CAPS.indexOf(a.range)}).slice(0,4);var mx=Math.max.apply(null,bc.map(function(x){return x.count}).concat(1));
-    box.innerHTML=(sample?'<p class="lst-e" style="margin:0 0 10px"><i></i>Пример: так выглядит сеть. Цифры станут живыми, когда партнеры занесут клиентов</p>':'')+'<div class="lst-top"><div><b id="lsn">0</b><span>'+plural(n,'клиент','клиента','клиентов')+' в сети</span></div>'+(capSum(d.capitalSum)?'<div><b class="lst-cap">'+E(capSum(d.capitalSum))+'</b><span>суммарный капитал</span></div>':'')+'</div>'+
-     (bc.length?'<ul class="lst-b">'+bc.map(function(x,i){return '<li style="--w:'+Math.max(8,Math.round(x.count/mx*100))+'%;--i:'+i+'"><b data-c="'+x.count+'">0</b> '+plural(x.count,'клиент','клиента','клиентов')+' с капиталом '+E(capL(x.range))+'</li>'}).join('')+'</ul>':'')+
-     (d.withRequests?'<p class="lst-r"><i></i><b id="lsr">0</b> '+plural(d.withRequests,'клиент','клиента','клиентов')+' с открытыми запросами</p>':'');
-    count($('#lsn'),0,n,1500);$$('.lst-b b[data-c]',box).forEach(function(e){count(e,0,+e.getAttribute('data-c'),1400)});if($('#lsr'))count($('#lsr'),0,+d.withRequests,1400);
+    if(!n){if(Q.get('sample')==='1'){d=SAMPLE_STATS;n=d.clients}else{box.innerHTML='';return}}
+    var bc=(d.byCapital||[]).filter(function(x){return x.count>0}).sort(function(a,b){return CAPS.indexOf(b.range)-CAPS.indexOf(a.range)}).slice(0,4);var tot=bc.reduce(function(s2,x){return s2+x.count},0)||1;
+    box.innerHTML='<div class="ls-row"><span><b id="lsn">0</b> '+plural(n,'семья','семьи','семей')+'</span>'+(capSum(d.capitalSum)?'<span class="ls-d"></span><span><b>'+E(capSum(d.capitalSum))+'</b></span>':'')+(d.withRequests?'<span class="ls-d"></span><span><b id="lsr">0</b> '+plural(d.withRequests,'запрос','запроса','запросов')+'</span>':'')+'</div>'+
+     (bc.length?'<div class="ls-bar">'+bc.map(function(x,i){return '<i style="flex:'+x.count+';--i:'+i+'"></i>'}).join('')+'</div><div class="ls-leg">'+bc.map(function(x,i){return '<span style="--i:'+i+'"><i></i>'+E(capL(x.range))+' <b>'+x.count+'</b></span>'}).join('')+'</div>':'');
+    count($('#lsn'),0,n,1400);if($('#lsr'))count($('#lsr'),0,+d.withRequests,1400);
     var tk=(d.ticker||[]).map(function(x){return '<span>'+E(x.catTitle||CATS[x.cat]||'Запрос')+'<i>·</i>'+E(capL(x.capital))+'<i>·</i>'+E(ageL(x.age))+'<i>·</i><em>'+E(x.ago||'')+'</em></span>'}).join('');
     if(tk){var t=document.createElement('div');t.className='ltk';t.setAttribute('aria-label','Последние запросы в сети');t.innerHTML='<div class="ltk-in" style="--d:'+Math.max(20,(d.ticker||[]).length*5)+'s">'+tk+tk+'</div>';$('.lgn').appendChild(t)}
   }).catch(function(){box.innerHTML=''})}

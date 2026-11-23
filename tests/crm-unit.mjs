@@ -192,6 +192,9 @@ r = await call('me', { cookie: O }); assert.equal(r.j.owner, true); ok('влад
   y = await call('auth/owner-setpw', { body: { password: 'Brand-new-pass-26' }, cookie: R1 }); assert.equal(y.s, 200); const P2 = ck(y.h);
   assert.equal((await call('partners', { cookie: M1 })).s, 401); assert.equal((await call('partners', { cookie: P2 })).s, 200); ok('сброс пароля через почту, старые сессии погашены');
   x = await call('auth/owner-reset', { body: { email: 'stranger@example.com' } }); assert.equal(x.s, 200); assert.ok(!x.j.test_link); ok('сброс на чужую почту: тот же ответ без письма');
+  x = await call('auth/request', { body: { email: 'boss@example.com' } }); assert.equal(x.j.password, true); assert.ok(!x.j.test_link);
+  assert.equal((await call('auth/owner-login', { body: { email: 'boss@example.com', password: 'wrong-pass-0000' } })).s, 403);
+  x = await call('auth/owner-login', { body: { email: 'boss@example.com', password: 'Brand-new-pass-26' } }); assert.equal(x.s, 200); assert.equal((await call('partners', { cookie: ck(x.h) })).s, 200); ok('Founder: вход по почте и паролю одним шагом');
   O = P2; }
 r = await call('auth/request', { body: { email: 'stranger@example.com' } }); assert.equal(r.s, 200); assert.ok(!r.j.test_link); ok('чужой адрес: тот же ответ без письма');
 

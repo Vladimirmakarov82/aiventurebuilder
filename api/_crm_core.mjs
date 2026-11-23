@@ -178,7 +178,7 @@ export function networkView(c) {
   return {
     id: c.id, alias: c.alias, age: c.age || '', capital: c.capital || '', kids: c.kids ?? null, investing: c.investing || '',
     interests: (c.interests || []).filter(x => !hasContacts(x)),
-    requests: (c.requests || []).filter(r => r.status === 'open' && r.public === true).map(r => ({ id: r.id, cat: r.cat, text: pt[r.id] || '' })),
+    requests: (c.requests || []).filter(r => r.status === 'open' && r.public === true).map(r => ({ id: r.id, cat: r.cat, text: pt[r.id] || '', at: r.at || '' })),
     mine: false,
   };
 }
@@ -668,14 +668,14 @@ export function fitRows(cards, product, leadByOf = () => 'партнер') {
   const pr = cleanProduct(product || {}); const sig = pr.fitSignals.map(low); const pcats = new Set(pr.categories);
   const earn = pr.typicalEarnPerClient; const rows = []; let tmin = 0, tmax = 0;
   for (const { card, requests } of cards) {
-    const why = []; let score = 0; let hasRequest = false;
-    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); }
+    const why = []; let score = 0; let hasRequest = false; let reqAt = ''; let reqText = '';
+    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); if (r.at && (!reqAt || r.at > reqAt)) { reqAt = r.at; reqText = r.text || ''; } }
     for (const tag of card.interests || []) { const t = low(tag); const th = TAG_THEMES[tag] || []; if (sig.some(s => s.includes(t) || t.includes(s)) || [...pcats].some(c => (CAT_THEMES[c] || []).some(x => th.includes(x)))) { score += 10; why.push(`Интерес: ${low(tag)}`); } }
     if (!score) continue;
     const potential = earn.min != null || earn.max != null ? { min: earn.min ?? earn.max, max: earn.max ?? earn.min } : null;
     if (potential) { if (hasRequest) tmin += potential.min; tmax += potential.max; }
-    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, leadBy: leadByOf(card), score });
+    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, reqAt, reqText, leadBy: leadByOf(card), score });
   }
-  rows.sort((a, b) => b.score - a.score || a.alias.localeCompare(b.alias));
+  rows.sort((a, b) => (b.reqAt || '').localeCompare(a.reqAt || '') || b.score - a.score || a.alias.localeCompare(b.alias));
   return { total: rows.length, potential: earn.min != null || earn.max != null ? { min: tmin, max: tmax } : null, rows: rows.map(({ score, ...r }) => r) };
 }

@@ -346,7 +346,7 @@ var Demo=(function(){
 
   function call(r,b,q){
     if(AS==='login'&&r==='me')return {role:null};
-    if(AS==='key'&&r==='me')return {role:null,needKey:true,needSet:Q.get('set')==='1'};
+    if(AS==='key'&&r==='me')return {role:null,email:'private@orbiqgroup.com',needKey:true,needSet:Q.get('set')==='1'};
     switch(r){
     case 'me':if(isOwner())return {role:'owner',owner:true,partner:{id:'orbiq',name:'Владимир',tier:'paid',suspended:false,tg:{connected:true}}};
       var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on}}};
@@ -545,12 +545,12 @@ function loginStats(){var box=$('#lst');if(!box)return;
   }).catch(function(){box.innerHTML=''})}
 function vKey(){
   var set=!!(S.me&&S.me.needSet);
-  $('#root').innerHTML='<div class="lgn">'+wall()+'<span class="lg-logo">ORBIQ</span><span class="lg-tag">'+E(CAB.tag)+' · второй шаг</span><div class="lg-card">'+coin(true)+'<h1 class="sm">'+(set?'НОВЫЙ ПАРОЛЬ':'ПАРОЛЬ')+'</h1><p class="lg-sub">'+(set?'Почта подтверждена. Придумайте пароль от 10 символов: дальше вход по почте и паролю':'Почта подтверждена. Введите пароль владельца')+'</p><form class="lg-f" id="kf"><label class="sr" for="kk">Пароль</label><input id="kk" type="password" autocomplete="'+(set?'new-password':'current-password')+'" placeholder="'+(set?'Новый пароль':'Пароль')+'" minlength="'+(set?10:1)+'" required><button type="button" class="lg-eye" id="keye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="'+(set?'Сохранить пароль':'Войти')+'">'+ic('ar')+'</button></form><p class="lg-e" id="kerr" hidden></p>'+(set?'<p class="lg-n">Сессия владельца действует 12 часов</p>':'<p class="lg-n"><button type="button" class="lg-lnk" id="kfg">Забыли пароль?</button></p>')+'</div></div>';
-  var f=$('#kf'),inp=$('#kk'),er=$('#kerr');
+  $('#root').innerHTML='<div class="lgn">'+wall()+'<span class="lg-logo">ORBIQ</span><span class="lg-tag">'+E(CAB.tag)+' · второй шаг</span><div class="lg-card">'+coin(true)+'<h1 class="sm">'+(set?'НОВЫЙ ПАРОЛЬ':'ПАРОЛЬ')+'</h1><p class="lg-sub">'+(set?'Почта подтверждена. Придумайте пароль от 10 символов: дальше вход по почте и паролю':'Почта подтверждена. Введите пароль владельца')+'</p><form class="lg-fs" id="kf" method="post" action="#" autocomplete="on"><label class="sr" for="ku">Почта</label><div class="lg-f lg-ro"><input id="ku" name="username" type="email" autocomplete="username" value="'+E((S.me&&S.me.email)||'')+'" readonly tabindex="-1"></div><div class="lg-f"><label class="sr" for="kk">Пароль</label><input id="kk" name="password" type="password" autocomplete="'+(set?'new-password':'current-password')+'" placeholder="'+(set?'Новый пароль':'Пароль')+'" minlength="'+(set?10:1)+'" required><button type="button" class="lg-eye" id="keye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="'+(set?'Сохранить пароль':'Войти')+'">'+ic('ar')+'</button></div></form><p class="lg-e" id="kerr" hidden></p>'+(set?'<p class="lg-n">Сессия владельца действует 12 часов</p>':'<p class="lg-n"><button type="button" class="lg-lnk" id="kfg">Забыли пароль?</button></p>')+'</div></div>';
+  var f=$('#kf'),fb=f.querySelector('.lg-f:not(.lg-ro)'),inp=$('#kk'),er=$('#kerr');
   function err(t){er.hidden=false;er.textContent=t}
   $('#keye').addEventListener('click',function(){inp.type=inp.type==='password'?'text':'password';inp.focus()});
-  f.addEventListener('submit',function(e){e.preventDefault();var k=inp.value;if(!k)return;if(set&&k.length<10)return err('Нужно от 10 символов');f.classList.add('busy');er.hidden=true;
-    (set?api('auth/owner-setpw',{password:k}):api('auth/owner-key',{key:k})).then(function(){return boot('#/mine')}).catch(function(e2){f.classList.remove('busy');
+  f.addEventListener('submit',function(e){e.preventDefault();var k=inp.value;if(!k)return;if(set&&k.length<10)return err('Нужно от 10 символов');fb.classList.add('busy');er.hidden=true;
+    (set?api('auth/owner-setpw',{password:k}):api('auth/owner-key',{key:k})).then(function(){return boot('#/mine')}).catch(function(e2){fb.classList.remove('busy');
       if(e2.status===409){S.me.needSet=true;return vKey()}
       err(e2.status===429?'Слишком много попыток. Попробуйте через 15 минут':set?(e2.message||'Пароль не сохранен'):'Пароль не подошел')})});
   var fg=$('#kfg');if(fg)fg.addEventListener('click',function(){fg.disabled=true;

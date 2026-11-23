@@ -359,7 +359,7 @@ get('auth/reset', async (req, res) => {
 post('auth/logout', async (req, res) => { await revokeSession(unsign(cookies(req).oc)); setCookie(res, 'oc', '', 0); send(res, 200, { ok: true }); });
 get('me', async (req, res) => {
   const c = await session(req);
-  if (c.role === 'owner' || c.role === 'owner0') { const o = (await sget('crm/owner.json')) || {}; const pwr = c.role !== 'owner' ? await ownerPw() : 1; return send(res, 200, { role: 'owner', owner: c.role === 'owner', mfa: c.role === 'owner', needKey: c.role !== 'owner', needSet: c.role !== 'owner' && (!pwr || !!(c.s.rs && c.s.rs > (pwr.at || 0))), partner: null, tg: { connected: !!(o.tg && o.tg.chatId) } }); }
+  if (c.role === 'owner' || c.role === 'owner0') { const o = (await sget('crm/owner.json')) || {}; const pwr = c.role !== 'owner' ? await ownerPw() : 1; return send(res, 200, { role: 'owner', email: c.email, owner: c.role === 'owner', mfa: c.role === 'owner', needKey: c.role !== 'owner', needSet: c.role !== 'owner' && (!pwr || !!(c.s.rs && c.s.rs > (pwr.at || 0))), partner: null, tg: { connected: !!(o.tg && o.tg.chatId) } }); }
   if (c.role !== 'partner') return send(res, 200, { role: null, partner: null, owner: false });
   const p = c.p; const t = c.tier;
   if (!p.lastSeen || Date.now() - Date.parse(p.lastSeen) > 3600e3) await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, lastSeen: nowIso() } } : { noop: 1 }).catch(() => {});

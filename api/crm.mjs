@@ -373,7 +373,7 @@ get('me', async (req, res) => {
   const month = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 7); const used = p.rqMonth && p.rqMonth.m === month ? p.rqMonth.n : 0; const unl = allowed(c, 'rq.unlimited') || p.kind === 'networker';
   send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: t === 'paid' ? 'Партнер Orbiq' : t === 'networker' ? 'Нетворкер' : t === 'networker_new' ? 'Новый нетворкер' : t === 'basic' ? 'Базовый партнер' : 'Новый партнер',
       suspended: !!p.suspended, paid: p.paid || null, categories: p.categories || [], product: p.product || null, tg: { connected: !!(p.tg && p.tg.chatId) },
-      limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0 } },
+      limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0 } },
     access: Object.fromEntries(['net.view', 'rq.create', 'rq.refer', 'invite.create', 'demand', 'pf.submit', 'fit', 'priority'].map(op => [op, allowed(c, op)])) });
 });
 get('pinv/accept', async (req, res) => {
@@ -1072,6 +1072,36 @@ get('stats/public', async (req, res) => {
   await sput('crm/stats/public.json', { at: now, data }).catch(() => {}); send(res, 200, data);
 });
 // проверка ИИ для диагностики: только с ключом DIAG_KEY, без содержимого
+// тестовые клиенты сети для проверки кабинета партнера (только с DIAG_KEY); у каждой карточки seed:true, удаляются diag/unseed
+const SEED_NAMES = ['Андрей','Михаил','Сергей','Дмитрий','Алексей','Игорь','Олег','Виктор','Павел','Роман','Константин','Николай','Артем','Евгений','Владислав','Тимур','Руслан','Глеб','Марат','Борис','Елена','Ирина','Марина','Ольга','Наталья','Светлана','Анна','Татьяна','Юлия','Вера','Аркадий','Леонид','Григорий','Станислав','Вадим','Ринат','Эльдар','Карина','Алина','Ксения'];
+const SEED_BIZ = [['дистрибуция электроники, ввозит оборудование из Китая', 'собственник бизнеса'], ['производство стройматериалов, закупает линии в Европе и Китае', 'основатель'], ['агрохолдинг, экспорт зерна', 'совладелец'], ['сеть клиник', 'собственник'], ['девелопмент жилья', 'основатель'], ['логистика и таможенное оформление', 'владелец'], ['оптовая торговля продуктами питания, импорт из Турции', 'собственник'], ['IT-интегратор, закупки серверов за рубежом', 'основатель'], ['металлоторговля', 'совладелец'], ['фармдистрибуция', 'собственник'], ['ритейл одежды, закупки в Китае', 'владелец'], ['энергетика, подрядчик', 'генеральный директор и совладелец']];
+const SEED_REG = ['Москва', 'Санкт-Петербург', 'Казань', 'Екатеринбург', 'Краснодар', 'Новосибирск', 'Ростов', 'Дубай', 'Кипр'];
+const SEED_RQ = { finance: ['Платежи поставщикам в Китае без задержек и потери на курсе', 'Счет за рубежом для расчетов по импорту', 'Перевод оплаты за оборудование в Европу', 'Валютный контроль и платежи по ВЭД'], realty: ['Дом у моря в Испании рядом со школой', 'Квартира в Дубае под сдачу'], citizenship: ['Второе гражданство для семьи'], watches: ['Часы к юбилею, лимитированная серия'], education: ['Школа-пансион в Швейцарии для сына'], preipo: ['Вход в pre-IPO технологической компании'], art: ['Картина в коллекцию, современные художники'], aviation: ['Джет-карта на зимний сезон'] };
+const SEED_INT = ['Часы', 'Искусство', 'Путешествия', 'Яхты', 'Вино', 'Автомобили', 'Спорт', 'Охота и рыбалка', 'Образование', 'Архитектура'];
+post('diag/seed', async (req, res) => {
+  const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
+  const b = await body(req); const n = Math.max(1, Math.min(60, parseInt(b.n, 10) || 40)); const main = CATS[b.cat] ? b.cat : 'finance';
+  let made = 0; const caps = ['3–10', '10–25', '10–25', '25–100', '25–100', '100+'], ages = ['35–44', '45–54', '45–54', '55–64', '55–64', '65+'];
+  for (let i = 0; i < n; i++) {
+    const name = SEED_NAMES[i % SEED_NAMES.length] + (i >= SEED_NAMES.length ? ' ' + (i + 1) : ''); const { alias, norm } = normAlias(name);
+    const id = 'c_' + rid(12); if (!(await createNX(`crm/alias/${norm}`, id))) continue;
+    const at = new Date(Date.now() - (i * 37 % 20) * 864e5 - 4 * 864e5).toISOString();
+    const [biz, role] = SEED_BIZ[i % SEED_BIZ.length]; const reg = SEED_REG[i % SEED_REG.length];
+    const cat = i % 5 === 4 ? Object.keys(SEED_RQ)[1 + (i % (Object.keys(SEED_RQ).length - 1))] : main;
+    const pool = SEED_RQ[cat] || SEED_RQ.finance; const rqText = pool[i % pool.length]; const rqid = 'r_' + rid(8);
+    const ints = [SEED_INT[i % SEED_INT.length], SEED_INT[(i * 3 + 1) % SEED_INT.length]];
+    const cells = { 'business.now': { kind: 'fact', v: `${role}, ${biz}` }, 'business.source': { kind: 'fact', v: biz }, 'about.region': { kind: 'fact', v: reg } };
+    const card = { id, owner: ORBIQ.id, alias, created: at, updated: at, archived: false, seed: true, age: ages[i % ages.length], capital: caps[(i * 5) % caps.length], kids: i % 3, investing: '', interests: ints,
+      requests: [{ id: rqid, cat, status: 'open', public: true, at }], publicText: { [rqid]: rqText }, cells, relation: { role: 'клиент Orbiq', lastContact: '', topic: '' }, capitalBasis: '', plan: [], history: [{ at, what: 'Тестовая карточка' }], stage: 'ready' };
+    await sput(`crm/c/${id}.json`, card); await setAdd('crm/cidx/all', id); await setAdd(`crm/cidx/p/${ORBIQ.id}`, id); await setAdd('crm/seedidx', id); made++;
+  }
+  await kv(['DEL', 'crm/stats/public.json']).catch(() => {}); send(res, 200, { made });
+});
+post('diag/unseed', async (req, res) => {
+  const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
+  let n = 0; for (const id of await setGet('crm/seedidx')) { const c = await sget(`crm/c/${id}.json`); if (c && c.seed) { await kv(['DEL', `crm/alias/${normAlias(c.alias).norm}`]); await kv(['DEL', `crm/c/${id}.json`]); await setRem('crm/cidx/all', id); await setRem(`crm/cidx/p/${ORBIQ.id}`, id); n++; } }
+  await kv(['DEL', 'crm/seedidx']); await kv(['DEL', 'crm/stats/public.json']).catch(() => {}); send(res, 200, { removed: n });
+});
 get('diag/partners', async (req, res) => { // диагностика целостности партнеров, без почт и имен
   const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
   const plist = await setGet('crm/plist'); let cur = '0', keys = [];

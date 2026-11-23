@@ -933,3 +933,14 @@ html{font-family:var(--f)}
 .lgn .lg-card h1 .w{margin-right:.1em}
 .lgn .lg-tag{display:none}
 @media (max-width:860px){.lgn .lg-card h1{font-size:clamp(17px,5.4vw,24px);letter-spacing:.12em}}
+/* название тем же начертанием, что логотип ORBIQ */
+.lgn .lg-card h1{font-family:var(--s);font-stretch:112%;font-weight:700;letter-spacing:.22em;font-size:clamp(17px,4.6vw,26px)}
+@media (max-width:860px){.lgn .lg-card h1{font-size:clamp(15px,4.4vw,20px);letter-spacing:.2em}}
+.ls-row{flex-wrap:nowrap;white-space:nowrap;gap:0 10px;letter-spacing:.08em;font-size:10px}
+@media (max-width:860px){.ls-row{gap:0 7px;font-size:9px;letter-spacing:.05em}.ls-row b{font-size:13px}}
+/* логин: только ORBIQ, симметрично, с воздухом от краев */
+.lgn .lg-card h1{font-family:var(--s);font-stretch:112%;font-weight:700;text-transform:uppercase;white-space:nowrap;letter-spacing:.32em;padding-left:.32em;margin:18px 0 4px;font-size:clamp(28px,7vw,40px);line-height:1;text-align:center}
+.lgn .lg-card h1 .w{margin:0}
+.lgn .lg-card{padding-left:clamp(24px,6vw,40px);padding-right:clamp(24px,6vw,40px)}
+@media (max-width:860px){.lgn .lg-card h1{font-size:clamp(26px,8vw,34px);letter-spacing:.3em;padding-left:.3em}}
+.ls-leg{display:grid!important;grid-template-columns:auto auto;justify-content:center;gap:4px 20px}

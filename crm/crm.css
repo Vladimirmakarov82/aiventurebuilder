@@ -944,3 +944,6 @@ html{font-family:var(--f)}
 .lgn .lg-card{padding-left:clamp(24px,6vw,40px);padding-right:clamp(24px,6vw,40px)}
 @media (max-width:860px){.lgn .lg-card h1{font-size:clamp(26px,8vw,34px);letter-spacing:.3em;padding-left:.3em}}
 .ls-leg{display:grid!important;grid-template-columns:auto auto;justify-content:center;gap:4px 20px}
+/* ORBIQ ROOM в одну строку, симметрично */
+.lgn .lg-card h1{font-size:clamp(22px,6.4vw,32px);letter-spacing:.26em;padding-left:.26em}
+@media (max-width:860px){.lgn .lg-card h1{font-size:clamp(20px,6.6vw,28px);letter-spacing:.24em;padding-left:.24em}}

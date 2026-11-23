@@ -256,7 +256,7 @@ async function aiJson(system, user, token, ms = 25000) {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
     const r = await fetch('https://ai-gateway.vercel.sh/v1/chat/completions', { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: ENV.CRM_AI_MODEL || 'google/gemini-2.5-flash-lite', temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
-    clearTimeout(tm); if (!r.ok) return aiFail('http_' + r.status); const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
+    clearTimeout(tm); if (!r.ok) { const et = await r.text().catch(() => ''); return aiFail('http_' + r.status + ' ' + et.replace(/\s+/g, ' ').slice(0, 300)); } const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '').trim()); if (!o || typeof o !== 'object') return aiFail('shape'); AI_LAST = { at: Date.now(), ok: true, reason: '' }; return o;
   } catch (e) { return aiFail(e && e.name === 'AbortError' ? 'timeout' : 'error_' + String((e && e.name) || 'x')); }
 }

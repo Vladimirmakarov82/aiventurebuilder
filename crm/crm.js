@@ -528,11 +528,13 @@ function vLogin(){
 }
 function capSum(x){if(!x||(!x.min&&!x.max))return '';var f=function(v){return v>=1000?(Math.round(v/100)/10).toString().replace('.',','):String(Math.round(v))};var big=(x.max||x.min)>=1000;
   if(big&&x.min<1000)return '$'+Math.round(x.min)+' млн – '+f(x.max)+' млрд';return '$'+f(x.min)+(x.max&&x.max!==x.min?'–'+f(x.max):'')+(big?' млрд':' млн')}
+var SAMPLE_STATS={clients:128,byCapital:[{range:'1–3',count:22},{range:'3–10',count:41},{range:'10–25',count:28},{range:'25–100',count:14},{range:'100+',count:4}],capitalSum:{min:1240,max:3410},withRequests:57,
+      ticker:[{catTitle:'Гражданство и ВНЖ',capital:'10–25',age:'55–64',ago:'2 дня назад'},{catTitle:'Недвижимость',capital:'25–100',age:'45–54',ago:'3 дня назад'},{catTitle:'Образование детей',capital:'3–10',age:'45–54',ago:'4 дня назад'},{catTitle:'Искусство',capital:'10–25',age:'65+',ago:'5 дней назад'},{catTitle:'Здоровье',capital:'25–100',age:'55–64',ago:'неделю назад'},{catTitle:'Авиация и яхты',capital:'100+',age:'45–54',ago:'неделю назад'}]};
 function loginStats(){var box=$('#lst');if(!box)return;
   api('stats/public').then(function(d){if(!$('#lst'))return;d=d||{};var n=+d.clients||0;
-    if(!n){box.innerHTML='<p class="lst-e"><i></i>Сеть формируется</p>';return}
+    var sample=false;if(!n){d=SAMPLE_STATS;n=d.clients;sample=true}
     var bc=(d.byCapital||[]).filter(function(x){return x.count>0}).sort(function(a,b){return CAPS.indexOf(b.range)-CAPS.indexOf(a.range)}).slice(0,4);var mx=Math.max.apply(null,bc.map(function(x){return x.count}).concat(1));
-    box.innerHTML='<div class="lst-top"><div><b id="lsn">0</b><span>'+plural(n,'клиент','клиента','клиентов')+' в сети</span></div>'+(capSum(d.capitalSum)?'<div><b class="lst-cap">'+E(capSum(d.capitalSum))+'</b><span>суммарный капитал</span></div>':'')+'</div>'+
+    box.innerHTML=(sample?'<p class="lst-e" style="margin:0 0 10px"><i></i>Пример: так выглядит сеть. Цифры станут живыми, когда партнеры занесут клиентов</p>':'')+'<div class="lst-top"><div><b id="lsn">0</b><span>'+plural(n,'клиент','клиента','клиентов')+' в сети</span></div>'+(capSum(d.capitalSum)?'<div><b class="lst-cap">'+E(capSum(d.capitalSum))+'</b><span>суммарный капитал</span></div>':'')+'</div>'+
      (bc.length?'<ul class="lst-b">'+bc.map(function(x,i){return '<li style="--w:'+Math.max(8,Math.round(x.count/mx*100))+'%;--i:'+i+'"><b data-c="'+x.count+'">0</b> '+plural(x.count,'клиент','клиента','клиентов')+' с капиталом '+E(capL(x.range))+'</li>'}).join('')+'</ul>':'')+
      (d.withRequests?'<p class="lst-r"><i></i><b id="lsr">0</b> '+plural(d.withRequests,'клиент','клиента','клиентов')+' с открытыми запросами</p>':'');
     count($('#lsn'),0,n,1500);$$('.lst-b b[data-c]',box).forEach(function(e){count(e,0,+e.getAttribute('data-c'),1400)});if($('#lsr'))count($('#lsr'),0,+d.withRequests,1400);

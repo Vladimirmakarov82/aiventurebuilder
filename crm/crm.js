@@ -534,7 +534,7 @@ function loginStats(){var box=$('#lst');if(!box)return;
   api('stats/public').then(function(d){if(!$('#lst'))return;d=d||{};var n=+d.clients||0;
     if(!n){if(Q.get('sample')==='1'){d=SAMPLE_STATS;n=d.clients}else{box.innerHTML='';return}}
     var bc=(d.byCapital||[]).filter(function(x){return x.count>0}).sort(function(a,b){return CAPS.indexOf(b.range)-CAPS.indexOf(a.range)}).slice(0,4);var tot=bc.reduce(function(s2,x){return s2+x.count},0)||1;
-    box.innerHTML='<div class="ls-row"><span><b id="lsn">0</b> '+plural(n,'семья','семьи','семей')+'</span>'+(capSum(d.capitalSum)?'<span class="ls-d"></span><span><b>'+E(capSum(d.capitalSum))+'</b></span>':'')+(d.withRequests?'<span class="ls-d"></span><span><b id="lsr">0</b> '+plural(d.withRequests,'запрос','запроса','запросов')+'</span>':'')+'</div>'+
+    box.innerHTML='<div class="ls-row"><span><b id="lsn">0</b> '+plural(n,'семья','семьи','семей')+'</span>'+(capSum(d.capitalSum)?'<span class="ls-d"></span><span><b>'+E(capSum(d.capitalSum))+'</b></span>':'')+(d.withRequests?'<span class="ls-d"></span><span><b id="lsr">0</b> '+plural(d.withRequests,'активный запрос','активных запроса','активных запросов')+'</span>':'')+'</div>'+
      (bc.length?'<div class="ls-bar">'+bc.map(function(x,i){return '<i style="flex:'+x.count+';--i:'+i+'"></i>'}).join('')+'</div><div class="ls-leg">'+bc.map(function(x,i){return '<span style="--i:'+i+'"><i></i>'+E(capL(x.range))+' <b>'+x.count+'</b></span>'}).join('')+'</div>':'');
     count($('#lsn'),0,n,1400);if($('#lsr'))count($('#lsr'),0,+d.withRequests,1400);
     var tk=(d.ticker||[]).map(function(x){return '<span>'+E(x.catTitle||CATS[x.cat]||'Запрос')+'<i>·</i>'+E(capL(x.capital))+'<i>·</i>'+E(ageL(x.age))+'<i>·</i><em>'+E(x.ago||'')+'</em></span>'}).join('');

@@ -967,3 +967,6 @@ html{font-family:var(--f)}
 .lg-fs{display:flex;flex-direction:column;gap:10px;width:100%}
 .lg-f.lg-ro{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);padding-right:22px}
 .lg-f.lg-ro input{color:rgba(244,241,236,.6);cursor:default;padding:14px 0}
+/* кружок входа: готовая картинка */
+.lg-coin{display:block;width:112px;height:112px;border-radius:50%;box-shadow:0 14px 40px -12px rgba(0,0,0,.8);animation:cup 1.6s var(--e-out)}
+@media (max-width:860px){.lg-coin{width:92px;height:92px}}

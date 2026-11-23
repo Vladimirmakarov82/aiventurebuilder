@@ -478,7 +478,7 @@ function initials(n){return String(n||'?').trim().slice(0,1).toUpperCase()}
 
 /* ================= Каркас ================= */
 function navItems(){
-  if(isOwner())return [['mine','Мои клиенты','users'],['inbox','Входящие','inbox'],['clients','Вся сеть','chart'],['partners','Партнеры','handshake'],['catalog','Каталог','spark'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['notify','Уведомления','bell']];
+  if(isOwner())return [['partners','Партнеры','handshake'],['inbox','Входящие','inbox'],['mine','Мои клиенты','users'],['clients','Вся сеть','chart'],['catalog','Каталог','spark'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['notify','Уведомления','bell']];
   var t=ptier();
   if(t==='networker')return [['clients','Клиенты','users'],['requests','Обращения','msg'],['status','Статус','star'],['plans','Планы','cal'],['notify','Уведомления','bell']];
   return [['clients','Клиенты','users'],['fit','Подборка','spark'],['product','Мой продукт','gift'],['status','Статус','star'],['requests','Обращения','msg'],['plans','Планы','cal'],['notify','Уведомления','bell']]}
@@ -550,7 +550,7 @@ function vKey(){
   function err(t){er.hidden=false;er.textContent=t}
   $('#keye').addEventListener('click',function(){inp.type=inp.type==='password'?'text':'password';inp.focus()});
   f.addEventListener('submit',function(e){e.preventDefault();var k=inp.value;if(!k)return;if(set&&k.length<10)return err('Нужно от 10 символов');fb.classList.add('busy');er.hidden=true;
-    (set?api('auth/owner-setpw',{password:k}):api('auth/owner-key',{key:k})).then(function(){return boot('#/mine')}).catch(function(e2){fb.classList.remove('busy');
+    (set?api('auth/owner-setpw',{password:k}):api('auth/owner-key',{key:k})).then(function(){return boot('#/partners')}).catch(function(e2){fb.classList.remove('busy');
       if(e2.status===409){S.me.needSet=true;return vKey()}
       err(e2.status===429?'Слишком много попыток. Попробуйте через 15 минут':set?(e2.message||'Пароль не сохранен'):'Пароль не подошел')})});
   var fg=$('#kfg');if(fg)fg.addEventListener('click',function(){fg.disabled=true;
@@ -1548,7 +1548,7 @@ function render(){
   stopRec();closeSheet();
   if(S.me&&S.me.needKey)return vKey();if(!S.me||!S.me.role)return vLogin();
   var h=location.hash.replace(/^#\/?/,'').split('?')[0];var parts=h.split('/').filter(Boolean);
-  var r=parts[0];if(!r||r==='login'){location.replace('#/'+(isOwner()?'mine':'clients'));return}
+  var r=parts[0];if(!r||r==='login'){location.replace('#/'+(isOwner()?'partners':'clients'));return}
   if(OWNER_ONLY[r]&&!isOwner())r='clients';if(r==='plans'&&isOwner())r='mine';
   if(r==='demand'||r==='portfolio'||r==='tariff')r=isOwner()?'mine':(r==='demand'?'fit':'status');
   if((r==='fit'||r==='product')&&ptier()==='networker')r='clients';
@@ -1557,7 +1557,7 @@ function render(){
 }
 function boot(to){
   return api('me').then(function(m){S.me=m;
-    if(m&&m.role&&!m.needKey){if(!$('#root .app'))$('#root').innerHTML='';if(to)location.hash=to;else if(!location.hash||location.hash==='#/login')location.hash='#/'+(m.owner?'mine':'clients')}
+    if(m&&m.role&&!m.needKey){if(!$('#root .app'))$('#root').innerHTML='';if(to)location.hash=to;else if(!location.hash||location.hash==='#/login')location.hash='#/'+(m.owner?'partners':'clients')}
     render();
     if(Q.get('welcome')==='1'&&m.role)toast('Добро пожаловать в Orbiq');
     if(m.role==='partner'&&!m.needKey&&(Q.get('onb')==='1'||(!DEMO&&localStorage.getItem('oc_onb')!=='1')))setTimeout(onboarding,400);

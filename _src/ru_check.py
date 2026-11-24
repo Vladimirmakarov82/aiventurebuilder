@@ -54,7 +54,7 @@ def main():
     for l in lines:
         low = l.lower()
         for rx, why in HARD:
-            if re.search(rx, low): errs.append((why, l))
+            if re.search(rx, low) and not (why.startswith('канцелярит «данный»') and re.search(r'(обезличенн\w+|личн\w+|персональн\w+) данн|данные по ', low)): errs.append((why, l))
     # повторы: одинаковые фразы из 3+ слов
     grams = collections.Counter()
     for l in vis:
@@ -69,7 +69,7 @@ def main():
         cur += l + '\n'
     chunks.append(cur)
     for msg, ctx, word in [x for ch in chunks for x in lt(ch)]: 
-        if 'орфограф' in msg and (word.lower() in {'бизнес-джет','бизнес-джета','арт-консультант','дирхамах','хели-ски','резидентство','резидентства','топ-школах','виниры','джет','джет-клубе','аккредитив','бонд'} or word[:1].isupper() or MONTHS.match(word)): continue  # имена, топонимы, подписи графика
+        if 'орфограф' in msg and (word.lower() in {'бизнес-джет','бизнес-джета','арт-консультант','дирхамах','хели-ски','резидентство','резидентства','топ-школах','виниры','джет','джет-клубе','аккредитив','бонд','децентрализованного','консьерж-сервиса','консьерж-сервис'} or word[:1].isupper() or MONTHS.match(word)): continue  # имена, топонимы, подписи графика
         errs.append(('LanguageTool: ' + msg, ctx))
     for why, l in errs: print('ERROR', why, '|', l[:150])
     print(f'{len(errs)} errors in {len(lines)} lines'); sys.exit(1 if errs else 0)

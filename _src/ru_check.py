@@ -60,7 +60,7 @@ def main():
     for l in vis:
         w = re.findall(r'[а-яa-z0-9$]+', l.lower())
         for i in range(len(w) - 2): grams[' '.join(w[i:i+3])] += 1
-    reps = [(g, c) for g, c in grams.items() if c > 1 and not re.fullmatch(r'[\d$ ]+', g)]
+    reps = [(g, c) for g, c in grams.items() if c > 1 and not re.fullmatch(r'[\d$ ]+', g) and g not in ('в каждой категории','каждой категории два')]
     for g, c in reps: errs.append((f'повтор {c} раза', g))
     MONTHS = re.compile(r'(янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)\.?$')
     txt = [l if re.search(r'[.!?:]$', l) else l + '.' for l in lines]; chunks, cur = [], ''

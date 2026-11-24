@@ -769,7 +769,7 @@ $('pleads').onclick=function(e){var h=e.target.closest('.pld-h');if(!h)return;va
 $('more').onclick=function(){shown+=8;renderAud()};
 
 /* тариф и звонок */
-document.querySelector('.plans').onclick=function(e){var b=e.target.closest('[data-plan]');if(!b)return;S.plan=+b.dataset.plan;if(S.done){go('cab');toast('Тариф изменен: '+PL[S.plan].n)}else go('call')};
+var plansEl=document.querySelector('.plans');if(plansEl)plansEl.onclick=function(e){var b=e.target.closest('[data-plan]');if(!b)return;S.plan=+b.dataset.plan;if(S.done){go('cab');toast('Тариф изменен: '+PL[S.plan].n)}else go('call')};
 $('plBack').onclick=function(){go(S.done?'cab':'aud')};
 var F={iName:'name',iContact:'contact',iWhen:'when'};
 function renderCall(){Object.keys(F).forEach(function(k){if($(k).value!==S[F[k]])$(k).value=S[F[k]]});

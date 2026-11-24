@@ -110,3 +110,6 @@
 .pl-top .lab{margin:0}
 .pl-all{font-family:var(--m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);background:none;border:0;padding:6px 0;cursor:pointer}
 .pl-all:hover{text-decoration:underline;text-underline-offset:4px}
+.pld.is-open .pld-x::before,.pld.is-open .pld-x::after{background:var(--bg)!important}
+.pld.is-open{box-shadow:0 0 0 1px var(--line),0 0 0 1px var(--line),0 20px 40px -28px rgba(0,0,0,.3)}
+@media (prefers-color-scheme:dark){.pld.is-open,.pld:hover{box-shadow:0 0 0 1px rgba(255,255,255,.22),0 20px 40px -28px rgba(0,0,0,.6)}}

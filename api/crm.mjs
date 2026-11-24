@@ -483,7 +483,7 @@ post('client/create', async (req, res) => {
 post('client/intake', async (req, res) => {
   const c = await need(req, 'crm.own'); const b = await body(req); const raw = String(b.text || '');
   const e = aliasError(normAlias(b.alias).alias) || textErr(raw); if (e) return send(res, 400, { error: e });
-  if (!(await rateLimit('crm-ex:' + c.p.id, 60, 60))) return send(res, 429, { error: 'Слишком много разборов за час' });
+  if (!(await rateLimit('crm-ex:' + c.p.id, 600, 60))) return send(res, 429, { error: 'Слишком много разборов за час' });
   const card = await createCard(c, b.alias); const p = await parseText(card, raw, aiToken(req));
   const v = { ...card, circle: circle(card), mine: true };
   send(res, 200, { ok: true, id: card.id, card: v, proposals: { fields: p.fields, cells: p.cells, requests: p.requests }, contradictions: p.contradictions, missing: p.missing, removed: p.removed, engine: p.engine });

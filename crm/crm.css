@@ -1324,3 +1324,6 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
 .bfile b{font-weight:600;font-size:15px;color:var(--acc,#FF4D00)}
 .bfile span{font-size:13px;color:var(--mute,#5E616A)}
 .bfile:hover,.bfile.on{border-color:var(--acc,#FF4D00);background:rgba(255,77,0,.05)}
+
+.bprev{list-style:none;margin:10px 0 0;padding:12px 14px;border-radius:14px;background:var(--bg2,rgba(0,0,0,.03));display:grid;gap:6px;font-size:13.5px;line-height:1.4}
+.bprev b{font-weight:600}.bprev .more{color:var(--mute,#5E616A)}

@@ -92,3 +92,15 @@
 .w-lab{position:absolute;z-index:2;pointer-events:none;white-space:nowrap;font-family:var(--f);font-size:13px;font-weight:500;line-height:1;color:#fff;padding:4px 8px;border-radius:999px;background:rgba(11,11,13,.85);-webkit-font-smoothing:antialiased}
 .w-lab.w-core{transform:translate(-50%,-50%);background:none;font-size:15px;font-weight:600;padding:0}
 @media (max-width:720px){.w-lab{font-size:12px;padding:3px 7px}.w-lab.w-core{font-size:14px}}
+
+/* dark cards keep fixed colors in both themes */
+.hpot,.asym-ex{background:#0B0B0D!important;color:#F3F4F2!important}
+.hpot .lab{color:rgba(243,244,242,.62)!important}
+.hpot span,.hpot b{color:#F3F4F2}
+.hpot div.tot b{color:#FF4D00}
+.hpot i{color:rgba(243,244,242,.62);opacity:1!important}
+.asym-ex p{color:#F3F4F2!important}
+.hpot div{grid-template-columns:1fr auto!important;gap:2px 16px!important}
+.hpot div>i{grid-column:1;grid-row:2;font-size:11.5px}
+.hpot div>b{grid-column:2;grid-row:1/3;align-self:center}
+.hpot .w-bar{grid-template-columns:none!important}

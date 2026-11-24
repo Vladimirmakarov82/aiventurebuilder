@@ -326,6 +326,83 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 .plans.duo{grid-template-columns:repeat(2,minmax(0,1fr))}@media (max-width:760px){.plans.duo{grid-template-columns:1fr}}
 .ben.st{margin-top:4px}.ben.st li{border-top:1px solid rgba(255,255,255,.16);font-size:16px}.stage .kick .dot{background:var(--or)}.stags{display:flex;flex-wrap:wrap;gap:8px}.stags span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 12px;font-size:14px}
 @media (prefers-color-scheme:dark){.ben.st li{border-top-color:rgba(0,0,0,.14)}.stags span{border-color:rgba(0,0,0,.2)}}
+
+.pget,.pearn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pget div{background:var(--bg);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.pget b{font-weight:600;font-stretch:112%;font-size:17px;letter-spacing:-.01em}
+.pget span{font-size:14.5px;line-height:1.45;color:var(--mute)}
+.pearn{margin-top:2px;grid-template-columns:repeat(2,1fr)}.pearn div{background:rgba(255,255,255,.07);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.pearn b{font-weight:600;font-stretch:112%;font-size:24px;letter-spacing:-.02em;color:var(--or)}
+.pearn span{font-size:14px;line-height:1.4;opacity:.85}
+.pl-sub{margin:4px 0 0;font-size:14px;color:var(--mute)}
+.pleads{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.pld{border-radius:18px;background:var(--paper);box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s}
+.pld.is-open{box-shadow:0 0 0 1px rgba(11,11,13,.2),0 20px 40px -28px rgba(0,0,0,.3)}
+.pld-h{display:grid;grid-template-columns:120px 1fr auto 34px;gap:16px;align-items:center;width:100%;border:0;background:none;text-align:left;padding:16px 16px 16px 18px;cursor:pointer;font:inherit;color:inherit}
+.pld-l{display:flex;flex-direction:column;gap:3px;align-self:start;padding-top:3px}
+.pld-k{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+.pld-k i{width:6px;height:6px;border-radius:50%;background:var(--or)}
+.pld.warm .pld-k i{background:#E5A100}.pld.old .pld-k i{background:transparent;box-shadow:inset 0 0 0 1.3px var(--mute)}.pld.old .pld-k{color:#7a5600;font-weight:500}
+.pld-a{font-size:12px;color:var(--mute)}
+.pld-m{display:flex;flex-direction:column;gap:7px;min-width:0}
+.pld-m>b{font-weight:500;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+.pld-s{display:flex;flex-wrap:wrap;gap:5px}.pld-s em{font-style:normal;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--bg)}
+.pld-w{font-size:13px;color:var(--mute)}
+.pld-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;white-space:nowrap}
+.pld-r small{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.pld-r b{font-weight:500;font-size:17px}
+.pld-x{position:relative;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+.pld-x::before,.pld-x::after{content:"";position:absolute;left:11px;right:11px;top:16.4px;height:1.2px;background:var(--ink);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.pld-x::after{transform:rotate(90deg)}.pld.is-open .pld-x{background:var(--ink)}.pld.is-open .pld-x::before,.pld.is-open .pld-x::after{background:#fff}.pld.is-open .pld-x::after{transform:rotate(0)}
+.pld-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.16,1,.3,1)}.pld-b>div{overflow:hidden}.pld.is-open .pld-b{grid-template-rows:1fr}
+.pld-in{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin:0 16px 18px 154px;padding-top:14px;border-top:1px solid var(--line)}
+.pld-in p{margin:0;font-size:14.5px;line-height:1.5}.pld-in small{display:block;font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+@media (max-width:760px){.pget,.pearn{grid-template-columns:1fr}.pld-h{grid-template-columns:1fr 34px;gap:10px}.pld-l{grid-column:1/-1;flex-direction:row;gap:10px;padding:0}.pld-r{grid-column:1;flex-direction:row;align-items:baseline;gap:8px}.pld-x{grid-row:2;grid-column:2;align-self:start}.pld-in{grid-template-columns:1fr;margin:0 16px 16px}}
+
+.asym{margin-top:26px;padding:22px;border-radius:var(--r-l);background:var(--bg);display:grid;gap:12px}
+.asym h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;line-height:1.08;max-width:22ch}
+.asym p{margin:0;font-size:16px;line-height:1.5;color:var(--mute);max-width:64ch}
+.asym-v{display:grid;gap:14px;margin-top:6px;padding:18px;border-radius:18px;background:var(--paper)}
+.asym-r{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:center}
+.asym-t{display:flex;flex-direction:column;gap:2px}.asym-t b{font-weight:600;font-size:15px}.asym-t span{font-size:13px;color:var(--mute)}
+.asym-d{display:grid;gap:4px;align-items:center}.asym-d.one{grid-template-columns:repeat(12,1fr)}.asym-d.many{grid-template-columns:repeat(48,1fr)}
+.asym-d i{height:22px;border-radius:6px;background:var(--soft)}
+.asym-d.one i.on{background:var(--ink)}
+.asym-d.many i{height:22px;border-radius:4px}.asym-d.many i.on{background:var(--or)}
+.asym-d i.on{transform:scaleY(.2);opacity:0;animation:asIn .7s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--d)*40ms + .2s)}
+@keyframes asIn{to{transform:none;opacity:1}}
+.asym-m{display:grid;grid-template-columns:200px repeat(12,1fr);gap:4px 16px;font-family:var(--m);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.asym-m::before{content:""}
+.asym-m span{text-align:center}
+.asym-c{font-size:14px!important;color:var(--ink)!important}
+.asym-acc{font-size:16px!important;color:var(--ink)!important;padding:14px 16px;border-radius:16px;background:var(--paper)}
+@media (max-width:760px){.asym{padding:16px}.asym-r{grid-template-columns:1fr;gap:8px}.asym-m{grid-template-columns:repeat(12,1fr);gap:2px;font-size:8.5px}.asym-m::before{display:none}.asym-d.many{grid-template-columns:repeat(24,1fr)}.asym-d.many i:nth-child(n+25){display:none}}
+@media (prefers-reduced-motion:reduce){.asym-d i.on{animation:none;opacity:1;transform:none}}
+
+.hnum{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}
+.hnum div{padding:16px;border-radius:18px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.hnum b{font-weight:600;font-stretch:112%;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.035em;line-height:1;color:var(--or);font-variant-numeric:tabular-nums}
+.hnum span{font-size:14px;line-height:1.35;color:var(--mute)}
+.hpot{margin-top:12px;padding:18px;border-radius:18px;background:var(--ink);color:var(--bg);display:grid;gap:4px}
+.hpot .lab{color:rgba(255,255,255,.6);margin:0 0 6px}
+.hpot div{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:baseline;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);font-size:15px}
+.hpot div:first-of-type{border-top:0}
+.hpot i{font-style:normal;font-family:var(--m);font-size:12.5px;opacity:.6}
+.hpot b{font-weight:600;font-variant-numeric:tabular-nums;min-width:90px;text-align:right}
+.hpot div.tot{font-size:18px}.hpot div.tot b{color:var(--or);font-size:24px;font-stretch:112%}
+.arch{margin-top:26px;display:grid;gap:12px}
+.arch h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;line-height:1.08;max-width:24ch}
+.arch-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.arch-g section{padding:16px;border-radius:18px;background:var(--bg)}
+.arch-g section.k{background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+.arch-g h3{margin:0 0 8px;font-size:15px;font-weight:600}
+.arch-g ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.arch-g li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.45}
+.arch-g li::before{content:"";position:absolute;left:2px;top:10px;width:8px;height:1.5px;background:var(--or)}
+.arch p.why{margin:0;font-size:16px;line-height:1.55;max-width:66ch}
+@media (max-width:760px){.hnum{grid-template-columns:1fr 1fr}.arch-g{grid-template-columns:1fr}.hpot div{grid-template-columns:1fr auto;gap:8px}.hpot i{grid-column:1;grid-row:2}}
+.row .btn.soft.sm{white-space:normal;max-width:100%;text-align:center}/*.wrap-pill*/
+.asym-ex{padding:16px 18px;border-radius:16px;background:var(--ink);color:var(--bg);display:grid;gap:6px;max-width:760px}.asym-ex .lab{color:var(--or);margin:0}.asym-ex p{margin:0;font-size:17px!important;line-height:1.5;color:var(--bg)!important}
 </style>
 </head>
 <body>
@@ -350,9 +427,8 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
       <div class="kick mono"><span class="dot"></span>For partners</div>
       <h1 class="display hl">Orbiq provides the target audience and infrastructure <span class="lt">for teams with unique services for HNWIs to build a partner network</span></h1>
       <div class="t3">
-        <div><b>15</b><span>clients with $10⁠–⁠50M in wealth</span></div>
-        <div><b>63</b><span>clients with $1⁠–⁠10M in wealth</span></div>
-        <div><b>40</b><span>clients with $0.5⁠–⁠1M in wealth</span></div>
+        <div><b>46</b><span>clients with $20–100M in wealth</span></div>
+        <div><b>72</b><span>clients with $5–20M in wealth</span></div>
       </div>
       <p class="sub" style="margin-top:18px"><b style="color:var(--ink)">118 HNWI in the Orbiq network.</b> Each client talks to the person who brought them to Orbiq. Orbiq helps uncover the client’s interest, need or problem and finds the solution among network partners.</p>
     </div>
@@ -377,8 +453,8 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
         <li><b>04</b><span>An Orbiq subscription costs a client $10,000 a year. Every client who pays for the Orbiq subscription brings the partner $3,000 a year.</span></li>
       </ol>
       <style>.yr{list-style:none;margin:0;padding:0;display:grid;gap:10px;background:none}.yr li{display:grid;grid-template-columns:1fr;gap:8px;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.08)}.yr b{font-size:26px;line-height:1.1;letter-spacing:-.03em;color:var(--or)}.yr span{font-size:15px;line-height:1.4}.yrh{font-size:clamp(20px,2.4vw,26px);letter-spacing:-.03em;line-height:1.1;font-weight:600;margin-top:10px}@media (prefers-color-scheme:dark){.yr li{background:rgba(0,0,0,.07)}}</style>
-      <p class="yrh">Joining Orbiq for the first 15 partners: $20,000 for 2 years</p><p style="margin-top:-4px">The Orbiq network has at most 2 partners per service segment.</p>
-      <p style="margin-top:2px">The fee opens access to the network. Income comes from deals the partner runs: they hear their clients’ requests and pass them to other partners. For each client, a partner in the network pays 20–25% of its revenue. Example of a first year for a family lawyer with 30 wealthy clients:</p><ul class="yr"><li><b>$10,000 + $30,000 at IPO</b><span><strong style="color:inherit">Pre-IPO.</strong> A client puts $1M into a company before its IPO through a fund in the network. The fund takes 5% at entry, $50,000, and 15% of the profit at exit. The company doubles: the client makes $1M, the fund’s share is $150,000. The partner gets 20% of both.</span></li><li><b>$45,000</b><span><strong style="color:inherit">Business sale.</strong> A client sells a company for $5M. An M&A advisor in the network charges about $225,000 on a deal this size and pays the partner 20%.</span></li><li><b>$40,000 a year</b><span><strong style="color:inherit">Wealth management.</strong> A client moves $20M to a manager in the network. The manager charges 1% a year, $200,000. The partner gets 20% every year the client stays.</span></li><li><b>$20,000</b><span><strong style="color:inherit">Citizenship for the family.</strong> The client’s family gets a second citizenship. A licensed agent in the network charges about $100,000 for the full process and pays the partner 20%.</span></li><li><b>$8,000 + $3,000 a year</b><span><strong style="color:inherit">Trust for heirs.</strong> A client asked the partner how to pass capital to the children. The partner introduced a trust company from the network. A Jersey trust costs about $40,000 to set up and about $15,000 a year to run. The company pays the partner 20%.</span></li><li><b>$20,000</b><span><strong style="color:inherit">Painting.</strong> An art advisor in the network sources a $1M work and takes 10%, $100,000. The partner gets 20%.</span></li><li><b>$62,500</b><span><strong style="color:inherit">Villa.</strong> A client buys a $5M house. The agent earns 5%, $250,000, and by market norm pays 25% to whoever brought the buyer.</span></li></ul><p style="margin-top:2px"><b>Total: $208,500 in the first year on a $20,000 fee.</b> $43,000 of it repeats every year: the trust and wealth management. The partner gets another $30,000 when the company goes public. The partner does the deals: asks clients questions, makes introductions, follows through. Orbiq provides the rest: vetted partners with unique services, no more than two per segment, fee agreements, and its own audience of wealthy clients. That audience also comes to the partner for the partner’s own service.</p><p style="opacity:.6;font-size:12px;margin-top:4px">Market rates: pre-IPO funds take 1–10% at entry and 10–20% of profit, an M&A advisor earns about $225,000 on average on a $5M deal (Firmex survey), citizenship agents get $12,000–50,000 per application, real estate agents pass on 25% of the commission for a client, art advisors take 10%, a complex Jersey trust costs £30–50k to set up.</p>
+      <p style="margin-top:-4px">The Orbiq network has at most 2 partners per service segment.</p>
+      <ul class="yr"><li><b>$10,000 + $30,000 at IPO</b><span><strong style="color:inherit">Pre-IPO.</strong> A client puts $1M into a company before its IPO through a fund in the network. The fund takes 5% at entry, $50,000, and 15% of the profit at exit. The company doubles: the client makes $1M, the fund’s share is $150,000. The partner gets 20% of both.</span></li><li><b>$45,000</b><span><strong style="color:inherit">Business sale.</strong> A client sells a company for $5M. An M&A advisor in the network charges about $225,000 on a deal this size and pays the partner 20%.</span></li><li><b>$40,000 a year</b><span><strong style="color:inherit">Wealth management.</strong> A client moves $20M to a manager in the network. The manager charges 1% a year, $200,000. The partner gets 20% every year the client stays.</span></li><li><b>$20,000</b><span><strong style="color:inherit">Citizenship for the family.</strong> The client’s family gets a second citizenship. A licensed agent in the network charges about $100,000 for the full process and pays the partner 20%.</span></li><li><b>$8,000 + $3,000 a year</b><span><strong style="color:inherit">Trust for heirs.</strong> A client asked the partner how to pass capital to the children. The partner introduced a trust company from the network. A Jersey trust costs about $40,000 to set up and about $15,000 a year to run. The company pays the partner 20%.</span></li><li><b>$20,000</b><span><strong style="color:inherit">Painting.</strong> An art advisor in the network sources a $1M work and takes 10%, $100,000. The partner gets 20%.</span></li><li><b>$62,500</b><span><strong style="color:inherit">Villa.</strong> A client buys a $5M house. The agent earns 5%, $250,000, and by market norm pays 25% to whoever brought the buyer.</span></li></ul><p style="margin-top:2px"><b>Total: $208,500 in the first year.</b> $43,000 of it repeats every year: the trust and wealth management. The partner gets another $30,000 when the company goes public. The partner does the deals: asks clients questions, makes introductions, follows through. Orbiq provides the rest: vetted partners with unique services, no more than two per segment, fee agreements, and its own audience of wealthy clients. That audience also comes to the partner for the partner’s own service.</p><p style="opacity:.6;font-size:12px;margin-top:4px">Market rates: pre-IPO funds take 1–10% at entry and 10–20% of profit, an M&A advisor earns about $225,000 on average on a $5M deal (Firmex survey), citizenship agents get $12,000–50,000 per application, real estate agents pass on 25% of the commission for a client, art advisors take 10%, a complex Jersey trust costs £30–50k to set up.</p>
       <p class="mono" style="opacity:.7;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px">Services at launch</p>
       <div class="stags"><span>Financial advisor</span><span>Financial security</span><span>Pre-IPO</span><span>Rare watches</span><span>Wealth management</span><span>Digital infrastructure</span><span>AI search visibility</span><span>Celebrity introductions</span></div>
     </div>
@@ -449,21 +525,34 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 
 <section class="view" id="v-aud">
   <div class="card">
-    <div class="kick mono"><span class="dot"></span>Orbiq clients</div>
-    <h1 class="h2">118 clients. Each got private access to Orbiq as a gift from an expert they trust</h1>
-    <p class="sub">A wealthy client waits for advice from someone they trust. That expert became their personal concierge and offers them the services of Orbiq partners.</p>
-    <label class="lab">Who gifted the access</label>
-    <div class="srcs" id="srcs"></div>
-    <div class="cta2" id="aCta">
-      <h2>Experts offer these clients the service of a partner who gifted Orbiq access to its own clients</h2>
-      <p>The client gets access in the partner’s name and stays with the partner. The partner becomes the client’s personal concierge. When the client pays for the year, the partner gets 30% of the fee.</p>
-      <div><button class="btn" data-go="plan"><span class="roll"><span>See the terms</span><span>See the terms</span></span></button></div>
+    <div class="kick mono"><span class="dot"></span>For Orbiq partners</div>
+    <h1 class="h2">118 clients with $5M+ in capital</h1>
+    <p class="sub">A partner adds the needs of own clients that the partner cannot cover alone. Surnames and contacts stay with the partner. Two partners per category.</p>
+    <div class="hnum"><div><b>$1.2B</b><span>combined client capital</span></div><div><b>46</b><span>clients with $20M+</span></div></div>
+    <div class="hpot"><label class="lab">Partner income per year: example</label><div><span>30% of access fees from 20 of the partner's clients</span><i>20 × $3,000</i><b>$60,000</b></div><div><span>Commission on 6 network deals</span><i>6 × $7,500</i><b>$45,000</b></div><div class="tot"><span>Total</span><i></i><b>$105,000</b></div></div>
+    <div class="row" style="margin-top:12px"><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Sign up</span><span>Sign up</span></span></a></div>
+    <label class="lab" style="margin-top:26px">Current requests</label>
+    <p class="pl-sub">Added by the partners who look after these clients. Names are changed.</p>
+    <div class="pleads" id="pleads"></div>
+    <div class="row" style="margin-top:14px;justify-content:center"><button class="btn soft sm" id="more">Show more</button></div>
+    <div class="asym">
+      <label class="lab">Asymmetry</label>
+      <h2>Every partner’s asymmetries in one place</h2>
+      <p class="asym-acc">One asymmetry from one partner is not worth a subscription. Dozens of asymmetries from different markets are worth $10,000 a year. The partner who gave the client access gets 30%.</p>
+      <div class="asym-ex"><span class="lab">Example</span><p>A developer has a cash gap. It sells 10–70 apartments at a 40–45% discount. The offer lasts 2–7 days.</p></div>
+      <div class="asym-v">
+        <div class="asym-r"><div class="asym-t"><b>One partner</b><span>1–2 asymmetries a year</span></div><div class="asym-d one"><i class="" style="--d:0"></i><i class="" style="--d:1"></i><i class="on" style="--d:2"></i><i class="" style="--d:3"></i><i class="" style="--d:4"></i><i class="" style="--d:5"></i><i class="" style="--d:6"></i><i class="" style="--d:7"></i><i class="on" style="--d:8"></i><i class="" style="--d:9"></i><i class="" style="--d:10"></i><i class="" style="--d:11"></i></div></div>
+        <div class="asym-r"><div class="asym-t"><b>Partner in Orbiq</b><span>asymmetries of every partner</span></div><div class="asym-d many"><i></i><i class="on" style="--d:0"></i><i class="on" style="--d:1"></i><i class="on" style="--d:2"></i><i class="on" style="--d:3"></i><i class="on" style="--d:4"></i><i class="on" style="--d:5"></i><i class="on" style="--d:6"></i><i></i><i class="on" style="--d:7"></i><i></i><i></i><i></i><i class="on" style="--d:8"></i><i></i><i></i><i></i><i class="on" style="--d:9"></i><i class="on" style="--d:10"></i><i></i><i class="on" style="--d:11"></i><i></i><i></i><i class="on" style="--d:12"></i><i></i><i class="on" style="--d:13"></i><i class="on" style="--d:14"></i><i class="on" style="--d:15"></i><i></i><i class="on" style="--d:16"></i><i class="on" style="--d:17"></i><i></i><i class="on" style="--d:18"></i><i></i><i class="on" style="--d:19"></i><i class="on" style="--d:20"></i><i></i><i class="on" style="--d:21"></i><i class="on" style="--d:22"></i><i></i><i></i><i class="on" style="--d:23"></i><i></i><i class="on" style="--d:24"></i><i class="on" style="--d:25"></i><i></i><i></i><i></i></div></div>
+        <div class="asym-m"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+      </div>
     </div>
-    <label class="lab">Segment</label>
-    <div class="chips" id="tiers"></div>
-    <div class="keyl"><span>Wealth:</span><span><i style="background:var(--or)"></i>Company profits</span><span><i style="background:var(--vi)"></i>Real estate</span><span><i style="background:var(--gr)"></i>Liquid assets</span></div>
-    <ul class="ppl" id="ppl"></ul>
-    <div class="row" style="margin-top:20px;justify-content:center"><button class="btn soft sm" id="more">Show more</button></div>
+    <div class="arch">
+      <label class="lab">How Orbiq works</label>
+      <h2>A partner shares everything with the network except client contacts</h2>
+      <div class="arch-g"><section><h3>What the network sees</h3><ul><li>Client needs the partner cannot cover alone</li><li>The partner’s asymmetries</li><li>Client country, language and interests</li></ul></section><section class="k"><h3>What stays with the partner</h3><ul><li>Client contacts and the relationship</li><li>An introduction to another partner only with the client’s consent</li></ul></section></div>
+      <p class="why">A finance advisor recommends a watch expert from Orbiq to a client and earns a commission on the deal. Each category has two experts, so the client trusts the recommendation.</p>
+    </div>
+    <div class="row" id="aCta" style="margin-top:26px;justify-content:center"><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Sign up</span><span>Sign up</span></span></a></div>
   </div>
 </section>
 
@@ -476,10 +565,7 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
       <li><b>02</b><span>The client pays for the year: the partner gets 30% of the fee, $3,000 a year from each client.</span></li>
       <li><b>03</b><span>All Orbiq partners offer the partner’s service to their clients.</span></li>
     </ol>
-    <div class="plans duo">
-      <div class="plan"><div class="pn">Partner</div><div class="pp">$20,000<small>for 2 years</small></div><ul><li>10 gift codes for 3 months each, $25,000 worth of gifts</li><li>30% of the fee of every own client</li><li>Orbiq partners offer the service</li></ul><button class="btn" data-plan="0">Choose</button></div>
-      <div class="plan top"><div class="pn">Partner-investor</div><div class="pp">$50,000<small>one time</small></div><ul><li>Unlimited gift codes</li><li>2% of Orbiq at a $2.5M valuation</li><li>30% of the fee of every own client</li><li>The service is listed first in its area</li></ul><button class="btn" data-plan="1">Choose</button></div>
-    </div>
+    
     <p class="sub" style="margin-top:18px"><b style="color:var(--ink)">Launch at 15 partners.</b> The client’s fee is split: 30% to the partner who brought the client, 70% to Orbiq.</p>
     <p class="sub" style="margin-top:18px">Orbiq runs the onboarding: a 30-minute call, a write-up of the service, access for the clients on the partner’s list.</p>
     <div class="row" style="margin-top:14px"><button class="textbtn" id="plBack">Back</button></div>
@@ -631,18 +717,18 @@ var CATS=[
  {c:'safe',n:'Security',d:'Protection, checks, data security'},
  {c:'staff',n:'Household staff',d:'Search and screening of household staff'}
 ];
-var DEF={view:'welcome',done:false,plan:null,name:'',spec:'',specs:[],custom:'',own:false,contact:'',when:'',clients:[],reqs:[],cur:null};
-var PL=[{n:'Partner',p:'$20,000',q:10},{n:'Partner-investor',p:'$50,000',q:0}];
+var DEF={view:'aud',done:false,plan:null,name:'',spec:'',specs:[],custom:'',own:false,contact:'',when:'',clients:[],reqs:[],cur:null};
+var PL=[{n:'Partner',p:'',q:10},{n:'Partner-investor',p:'',q:0}];
 var KW={fly:['plane','jet','flight','charter','fly'],yacht:['yacht','boat'],rare:['watch','bag','birkin','patek','rolex','jewel','ring'],home:['house','villa','apartment','property','penthouse','real estate'],edu:['school','universit','college','stud'],res:['visa','residen','passport','citizenship'],med:['doctor','clinic','health','check-up','checkup','medic'],cap:['invest','ipo','fund'],art:['painting','art','auction'],event:['ticket','concert','event','race','formula'],auto:['car','ferrari','porsche'],bank:['account','bank','card'],law:['trust','lawyer','structur','inherit','estate plan'],tax:['tax'],trip:['hotel','trip','travel','vacation','holiday'],safe:['guard','security','protect'],staff:['nanny','staff','driver','chef']};
 var NM=['Andrey','Sergey','Ivan','Mikhail','Dmitry','Alexey','Oleg','Igor','Pavel','Nikolay','Viktor','Roman','Konstantin','Evgeny','Artem','Vladislav','Grigory','Maxim','Timur','Boris','Leonid','Vadim','Stanislav','Yury','Denis','Anton','Kirill','Georgy','Ruslan','Mark','Elena','Olga','Natalia','Marina','Irina','Anna','Tatiana','Svetlana','Ekaterina','Yulia','Arseny','Fedor','Vasily','Petr','Ilya','Eduard','Zakhar','Rinat','David','Lev'];
 var JOBS=['Owns a construction company','Co-owns an IT company','Owns a clinic chain','Residential real estate developer','Owns a logistics company','Private investor','Owns a packaging plant','Co-owns a retail chain','Owns an agricultural holding','Co-owns a pharmaceutical company','Owns a restaurant chain','Co-owns a metals trading firm'];
 function rnd(i){var x=Math.sin(i*99.7+3.1)*10000;return x-Math.floor(x)}
-var TIERS=[{n:'$10–50M',min:10,max:50,q:15},{n:'$1–10M',min:1,max:10,q:63},{n:'$0.5–1M',min:.5,max:1,q:40}];
+var TIERS=[{n:'$20–100M',min:20,max:100,q:46},{n:'$5–20M',min:5,max:20,q:72}];
 var PPL=[];(function(){var i=0;TIERS.forEach(function(t,k){for(var j=0;j<t.q;j++,i++){var a=Math.round(30+rnd(i+50)*40),b=Math.round((100-a)*(.3+rnd(i+90)*.4));
  PPL.push({n:NM[(i*7)%50],cap:Math.round((t.min+Math.pow(rnd(i),1.6)*(t.max-t.min))*100)/100,tier:k,mix:[a,b,100-a-b],job:JOBS[Math.floor(rnd(i+40)*JOBS.length)],lead:Math.floor(rnd(i+300)*DIRS.length)})}})})();
 PPL.sort(function(x,y){return y.cap-x.cap});
 function fcap(c){return c>=1?'$'+c.toFixed(1)+'M':'$'+Math.round(c*100)*10+'K'}
-var S=load(),curTier=0,shown=12,log=[];
+var S=load(),curTier=0,shown=6,log=[];
 function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);for(var k in DEF)if(!(k in o))o[k]=DEF[k];return o}}catch(e){}return JSON.parse(JSON.stringify(DEF))}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function $(i){return document.getElementById(i)}
@@ -655,7 +741,7 @@ function leadI(p){var i=p.lead;while(S.specs.indexOf(DIRS[i].n)>=0)i=(i+1)%DIRS.
 function catName(c){for(var i=0;i<CATS.length;i++)if(CATS[i].c===c)return CATS[i].n;return c}
 function dirFor(c){for(var i=0;i<DIRS.length;i++)if(DIRS[i].c===c&&S.specs.indexOf(DIRS[i].n)<0)return DIRS[i].n;return null}
 var tt;function toast(t){var e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){e.classList.remove('on')},2800)}
-function go(v){if(v==='aud'&&S.view!=='aud')shown=12;if(v==='cli')log=[];S.view=v;save();render();window.scrollTo(0,0)}
+function go(v){if(v==='aud'&&S.view!=='aud')shown=6;if(v==='cli')log=[];S.view=v;save();render();window.scrollTo(0,0)}
 function render(){
  ['welcome','aud','plan','call','cab','cli'].forEach(function(v){$('v-'+v).classList.toggle('on',S.view===v)});
  $('seg').hidden=!S.done||['cab','aud'].indexOf(S.view)<0;
@@ -674,22 +760,20 @@ $('wOwn').oninput=function(){S.custom=this.value;sync();save()};
 $('wGo').onclick=function(){sync();if(!S.spec){$('e0').textContent='No area selected yet';return}go('aud')};
 /* Orbiq clients */
 function renderAud(){
- var cnt={};PPL.forEach(function(p){var i=leadI(p);cnt[i]=(cnt[i]||0)+1});
- $('srcs').innerHTML=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).map(function(i){return '<span>'+DIRS[i].n+'<b>'+cnt[i]+'</b></span>'}).join('');
- $('aCta').hidden=S.done;
- $('tiers').innerHTML=TIERS.map(function(t,k){return '<button class="chip" aria-pressed="'+(k===curTier)+'" data-tier="'+k+'">'+t.n+' · '+t.q+'</button>'}).join('');
- var list=PPL.filter(function(p){return p.tier===curTier});$('more').hidden=shown>=list.length;
- $('ppl').innerHTML=list.slice(0,shown).map(function(p){
-  return '<li><div class="top"><span class="nm">'+p.n+'</span><span class="cp2">'+fcap(p.cap)+'</span></div><div class="mix"><i style="width:'+p.mix[0]+'%;background:var(--or)"></i><i style="width:'+p.mix[1]+'%;background:var(--vi)"></i><i style="width:'+p.mix[2]+'%;background:var(--gr)"></i></div><div class="bot"><span>'+p.job+'. Access gifted by an expert: '+DIRS[leadI(p)].n.toLowerCase()+'</span></div></li>'}).join('');
+ var LD=[{"k": "hot", "kl": "Hot", "ago": "yesterday", "q": "Mortgage flat in Valencia", "who": "Konstantin, 35–44 · capital $5–10M", "b": "€450–600k", "bl": "", "s": ["Mortgage", "Valencia, Ruzafa", "By summer 2027"], "w": "Moving to Valencia for work for 3–5 years. 40% down payment, the rest a Spanish bank mortgage.", "d": ["2 bedrooms", "Terrace", "New build"], "m": "€200k for the down payment in an EU bank", "h": "The bank needs proof of a non-resident’s income"}, {"k": "hot", "kl": "Hot", "ago": "3 days ago", "q": "Seaside house in Italy for a large family", "who": "Grigory, 55–64 · capital $25–100M", "b": "€4–6M", "bl": "", "s": ["Liguria or Tuscany", "By May 2027"], "w": "A summer house for three generations. Garden, sea access, no close neighbours.", "d": ["7–8 bedrooms", "Plot 4,000 m²+", "Berth within 15 min"], "m": "Accounts in Switzerland and the UAE, no mortgage, 10% deposit", "h": "The notary needs proof of source of funds"}, {"k": "hot", "kl": "Hot", "ago": "5 days ago", "q": "Payments to suppliers in China without FX losses", "who": "Irina, 45–54 · capital $10–25M", "b": "$1.5–2M a month", "bl": "Volume", "s": ["Payments", "Guangzhou, Yiwu", "By February 2027"], "w": "Equipment imports, 25–30 payments a month. Money takes 10–14 days, up to 3% lost on FX.", "d": ["CNY and USD", "Credit within 3 days", "Accounting documents"], "m": "Company revenue in the UAE and Kazakhstan", "h": "Two suppliers already returned payments"}, {"k": "warm", "kl": "Current", "ago": "11 days ago", "q": "Plot for a villa in Ibiza", "who": "Viktor, 45–54 · capital $10–25M", "b": "€3–4M", "bl": "", "s": ["Plot and build", "North Ibiza", "By summer 2027"], "w": "A plot with a building licence and a sunset view. Builds with his own architect.", "d": ["5,000 m²+", "Licence", "West view"], "m": "Funds in the UAE, build paid in tranches", "h": "Few plots with a licence in the north"}, {"k": "warm", "kl": "Current", "ago": "14 days ago", "q": "Swiss boarding school for a son", "who": "Maria, 45–54 · capital $5–10M", "b": "CHF 120–150k a year", "bl": "", "s": ["French-speaking Switzerland", "September 2027"], "w": "Son is 13, strong in maths and sport.", "d": ["IB programme", "Ice hockey", "Boarding"], "m": "", "h": "French level needed for admission"}, {"k": "warm", "kl": "Current", "ago": "21 days ago", "q": "Second citizenship for the family", "who": "Andrey, 55–64 · capital $10–25M", "b": "$400–600k", "bl": "", "s": ["By investment", "Caribbean or Europe", "By end of 2027"], "w": "Citizenship for him, his wife and two children. Visa-free Schengen and UK matter.", "d": ["No relocation", "Confidential"], "m": "Funds in the UAE and Cyprus", "h": "Documents on source of funds from Cyprus needed"}, {"k": "warm", "kl": "Current", "ago": "24 days ago", "q": "Private jet for winter: 25 flight hours", "who": "Oleg, 55–64 · capital $25–100M", "b": "$150–250k", "bl": "", "s": ["Prepaid hours", "Moscow, Dubai, Alps", "From December 2026"], "w": "A family of 4 and a dog.", "d": ["Midsize business jet"], "m": "Funds in the UAE", "h": "Some routes are closed to private flights"}, {"k": "old", "kl": "Needs confirmation", "ago": "48 days ago", "q": "Apartment in Milan near Brera", "who": "Elena, 55–64 · capital $10–25M", "b": "€1.5–2M", "bl": "", "s": ["Milan, Brera", "By spring 2027"], "w": "For opera and exhibition trips, 6–8 times a year. A historic building.", "d": ["2 bedrooms", "Concierge", "Parking"], "m": "Funds in Switzerland", "h": ""}],TX={"budget": "Budget", "what": "What they want", "det": "Details", "money": "Where the money is", "hard": "Difficulties"};
+ var el=$('pleads');if(!el)return;var n=Math.min(shown,LD.length);
+ el.innerHTML=LD.slice(0,n).map(function(x,i){return '<article class="pld '+x.k+(i===0?' is-open':'')+'"><button type="button" class="pld-h"><span class="pld-l"><span class="pld-k"><i></i>'+x.kl+'</span><span class="pld-a">'+x.ago+'</span></span><span class="pld-m"><b>'+x.q+'</b><span class="pld-s">'+x.s.map(function(s){return '<em>'+s+'</em>'}).join('')+'</span><span class="pld-w">'+x.who+'</span></span><span class="pld-r"><small>'+(x.bl||TX.budget)+'</small><b>'+x.b+'</b></span><span class="pld-x"></span></button><div class="pld-b"><div><div class="pld-in"><p><small>'+TX.what+'</small>'+x.w+'</p><p><small>'+TX.det+'</small>'+x.d.join(' · ')+'</p>'+(x.m?'<p><small>'+TX.money+'</small>'+x.m+'</p>':'')+(x.h?'<p><small>'+TX.hard+'</small>'+x.h+'</p>':'')+'</div></div></div></article>'}).join('');
+ $('more').hidden=n>=LD.length;$('aCta').hidden=S.done;
 }
-$('tiers').onclick=function(e){var b=e.target.closest('[data-tier]');if(!b)return;curTier=+b.dataset.tier;shown=12;renderAud()};
-$('more').onclick=function(){shown+=24;renderAud()};
+$('pleads').onclick=function(e){var h=e.target.closest('.pld-h');if(!h)return;var a=h.parentNode;var on=!a.classList.contains('is-open');[].forEach.call(document.querySelectorAll('.pld.is-open'),function(x){x.classList.remove('is-open')});a.classList.toggle('is-open',on)};
+$('more').onclick=function(){shown+=8;renderAud()};
+
 /* plan and call */
 document.querySelector('.plans').onclick=function(e){var b=e.target.closest('[data-plan]');if(!b)return;S.plan=+b.dataset.plan;if(S.done){go('cab');toast('Plan changed: '+PL[S.plan].n)}else go('call')};
 $('plBack').onclick=function(){go(S.done?'cab':'aud')};
 var F={iName:'name',iContact:'contact',iWhen:'when'};
 function renderCall(){Object.keys(F).forEach(function(k){if($(k).value!==S[F[k]])$(k).value=S[F[k]]});
- $('clPlan').textContent=S.plan!==null?PL[S.plan].n+' · '+PL[S.plan].p:'';
+ $('clPlan').textContent=S.plan!==null?PL[S.plan].n:'';
  var t=S.done?'Save':'Request a call';$('pT').textContent=t;$('pT2').textContent=t}
 Object.keys(F).forEach(function(k){$(k).oninput=function(){S[F[k]]=this.value;save()}});
 $('pBack').onclick=function(){go(S.done?'cab':'plan')};
@@ -701,7 +785,7 @@ $('pSave').onclick=function(){
 /* dashboard */
 function renderCab(){
  var n=S.clients.length,pl=PL[S.plan],q=pl.q;
- $('cPlan').textContent='Plan: '+pl.n+' · '+pl.p;
+ $('cPlan').textContent='Plan: '+pl.n;
  $('cH').textContent=q?'Access gifted: '+n+' of '+q:'Access gifted to '+n+' '+plural(n,['client','clients','clients']);
  $('lvb').style.width=(q?Math.min(100,Math.round(n/q*100)):100)+'%';
  $('cSub').textContent=n?'When these clients pay for the year, the partner gets $'+String(n*3000).replace(/\B(?=(\d{3})+$)/g,',')+' a year: 30% of each fee.':'The best clients go first. Each gets 3 months of access as a gift from the partner.';
@@ -749,9 +833,9 @@ if(SR){$('mic').hidden=false;var rec=null;
    rec.onend=function(){rec=null;$('mic').classList.remove('rec')};
    rec.onerror=function(){rec=null;$('mic').classList.remove('rec')};
    rec.start();$('mic').classList.add('rec')}catch(e){rec=null}}}
-if(['cab','cli'].indexOf(S.view)>=0&&!S.done)S.view='welcome';
+if(['cab','cli','welcome'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='cli')S.view='cab';
-if(['aud','plan','call'].indexOf(S.view)>=0&&!S.spec)S.view='welcome';
+if(['plan','call'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='call'&&S.plan===null)S.view='plan';
 render();
 })();

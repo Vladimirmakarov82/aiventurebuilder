@@ -68,6 +68,7 @@ function burst(a,e){if(!G||RM)return;var x=$('.pld-x',a);if(x){
 function rot(a){var x=$('.pld-x',a);if(!x||!G)return;var o=a.classList.contains('is-open');if(!!x._o===o)return;x._o=o;G.to(x,{rotation:o?135:0,duration:o?.9:.6,ease:o?'elastic.out(1,0.45)':'expo.out'})}
 function leads(){var box=$('#pleads');if(!box)return;leadsIn();document.documentElement.classList.add('w-on');
  new MutationObserver(function(){leadsIn()}).observe(box,{childList:true});
+ document.addEventListener('pld-all',function(){$$('.pld',box).forEach(function(x,i){rot(x);if(x.classList.contains('is-open'))setTimeout(function(){reveal(x)},i*60)})});
  box.addEventListener('click',function(e){var h=e.target.closest('.pld-h');if(!h)return;var a=h.parentNode;
   setTimeout(function(){$$('.pld',box).forEach(rot);if(a.classList.contains('is-open')){burst(a,e);reveal(a)}},0)},true);
  if(FINE&&G)box.addEventListener('pointermove',function(e){var h=e.target.closest('.pld-h');if(!h)return;var x=$('.pld-x',h),r=x.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.hypot(dx,dy);

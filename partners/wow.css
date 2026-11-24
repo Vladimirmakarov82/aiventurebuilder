@@ -104,3 +104,9 @@
 .hpot div>i{grid-column:1;grid-row:2;font-size:11.5px}
 .hpot div>b{grid-column:2;grid-row:1/3;align-self:center}
 .hpot .w-bar{grid-template-columns:none!important}
+
+.pl-cta{margin:22px 0 0!important}
+.pl-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:40px}
+.pl-top .lab{margin:0}
+.pl-all{font-family:var(--m);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);background:none;border:0;padding:6px 0;cursor:pointer}
+.pl-all:hover{text-decoration:underline;text-underline-offset:4px}

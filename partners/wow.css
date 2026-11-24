@@ -158,3 +158,11 @@
 .infra2 .iwho p{grid-column:1/-1;margin:0;font-size:13px;color:var(--mute)}
 @media (max-width:720px){.infra2{grid-template-columns:1fr}.infra2 section{grid-template-columns:96px 1fr;padding:14px}.infra2 .iwho{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.ig .ln path{animation:none}.ig .p{display:none}}
+
+.pfil{display:flex;gap:6px;overflow-x:auto;margin-top:12px;padding-bottom:2px;scrollbar-width:none}
+.pfil::-webkit-scrollbar{display:none}
+.pf{flex:none;display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;border:0;background:var(--bg);color:var(--ink);font:500 13.5px/1 var(--f);cursor:pointer;transition:background .25s,color .25s,transform .2s}
+.pf i{font-style:normal;font-family:var(--m);font-size:11px;opacity:.55}
+.pf:hover{transform:translateY(-1px)}
+.pf.on{background:#FF4D00;color:#fff}.pf.on i{opacity:.85}
+@media (min-width:721px){.pfil{flex-wrap:wrap;overflow:visible}}

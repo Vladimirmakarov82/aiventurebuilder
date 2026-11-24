@@ -1660,7 +1660,7 @@ function vFit(){
       (can?'':pathHtml())+
       '<nav class="jt" role="tablist">'+tabs.map(function(x){return '<button type="button" role="tab" data-lf="'+x[0]+'" class="'+(f===x[0]?'on':'')+'"'+(x[2]?' title="'+x[2]+'"':'')+'>'+x[1]+'<sup>'+cnt[x[0]]+'</sup></button>'}).join('')+'</nav></header>';
     var item=function(r,i){var k=leadKind(r),dd=leadAge(r),B=r.reqBrief||null;
-      var when='запрос '+agoD(dd);var KL={hot:'Горячий',warm:'Актуальный',old:'Требует подтверждения актуальности'}[k]||'';
+      var when=agoD(dd);var KL={hot:'Горячий',warm:'Актуальный',old:'Требует подтверждения актуальности'}[k]||'';
       var ds=String(r.dossier||'');var title=r.reqText||'';
       var strip=B?[B.deal,B.where,B.when].filter(Boolean):[];
       var asked=l.asked.indexOf(r.cid)>=0,picked=pk.indexOf(r.cid)>=0;

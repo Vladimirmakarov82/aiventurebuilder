@@ -113,3 +113,6 @@
 .pld.is-open .pld-x::before,.pld.is-open .pld-x::after{background:var(--bg)!important}
 .pld.is-open{box-shadow:0 0 0 1px var(--line),0 0 0 1px var(--line),0 20px 40px -28px rgba(0,0,0,.3)}
 @media (prefers-color-scheme:dark){.pld.is-open,.pld:hover{box-shadow:0 0 0 1px rgba(255,255,255,.22),0 20px 40px -28px rgba(0,0,0,.6)}}
+
+.w-net{background:#0B0B0D!important}
+.w-lab{white-space:pre;text-align:center;line-height:1.15}

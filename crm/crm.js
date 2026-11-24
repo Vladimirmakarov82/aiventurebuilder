@@ -1546,26 +1546,35 @@ function vFit(){
   var t=ptier();var first=!isOwner()&&localStorage.getItem('oc_tour')!=='1'&&t!=='paid';
   document.body.classList.toggle('focus',first);
   loading('fit');
-  Promise.all([api('fit/list'),loadSent()]).then(function(rr){var d=rr[0]||{};var rows=d.rows||[];var tot=d.total!=null?d.total:rows.length;var pot=d.potential||{};
+  Promise.all([api('fit/list'),loadSent()]).then(function(rr){var d=rr[0]||{};var rows=(d.rows||[]).slice().sort(function(a,b){var x=leadAge(a),y=leadAge(b);return (x==null?1e9:x)-(y==null?1e9:y)});
     var can=d.canOffer!=null?!!d.canOffer:(t==='basic'||t==='paid');var lim=rqLimit();S.leads=rows;
-    var f=S.leadF||'all';var cnt={all:rows.length,hot:0,warm:0,int:0};rows.forEach(function(r){var k=leadKind(r);if(k==='hot')cnt.hot++;else if(k==='warm'||k==='cold')cnt.warm++;else cnt.int++});
-    var L=rows.filter(function(r){var k=leadKind(r);return f==='all'||(f==='hot'&&k==='hot')||(f==='warm'&&(k==='warm'||k==='cold'))||(f==='int'&&k==='int')});
+    var kk=function(r){var k=leadKind(r);return k==='cold'?'warm':k};
+    var cnt={all:rows.length,hot:0,warm:0,int:0};rows.forEach(function(r){cnt[kk(r)]++});
+    var f=S.leadF||'all';if(f!=='all'&&!cnt[f])f='all';
     var nm=((S.me.partner||{}).name||'').split(' ')[0];
-    var head='<header class="lh rv">'+(first?'<div class="lh-top"><span class="lh-logo">ORBIQ</span><button type="button" class="lnk2" data-a="leavefocus">Открыть кабинет '+ic('ar')+'</button></div>':'')+
-      '<span class="kick">'+(first&&nm?E(nm)+', ':'')+'клиенты сети под ваш продукт</span><h1 class="lh-t"><span id="ftot">0</span> '+plural(tot,'лид','лида','лидов')+(cnt.hot?' <em>· '+cnt.hot+' '+plural(cnt.hot,'горячий','горячих','горячих')+'</em>':'')+'</h1>'+
-      '<p class="lh-s">Предприниматели с капиталом от $3 млн, которых привели партнеры Orbiq. Потенциал для вас <b>'+E(range(pot))+'</b> в год</p></header>';
-    page('fit',head+
-    '<div class="tools lead-f"><div class="pills">'+[['all','Все'],['hot','Горячие'],['warm','Теплые'],['int','По интересам']].map(function(x){return '<button type="button" class="'+(f===x[0]?'on':'')+'" data-a="leadf" data-v="'+x[0]+'">'+(x[0]==='hot'?'<i class="dot hot"></i>':x[0]==='warm'?'<i class="dot warm"></i>':x[0]==='int'?'<i class="dot int"></i>':'')+x[1]+' <span class="cnt">'+cnt[x[0]]+'</span></button>'}).join('')+'</div><p class="hint lead-leg">Горячий: запрос на ваш продукт за последние 7 дней. Теплый: за 30 дней. По интересам: запроса нет, совпадают интересы</p></div>'+
-    (L.length?'<div class="leads">'+L.map(function(r,i){var k=leadKind(r),dd=leadAge(r);
-      var act=can?btn('Предложить через Orbiq','sm '+(k==='hot'?'pri':'dark'),'data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':''),'send'):btn(k==='hot'?'Связаться':'Предложить','sm '+(k==='hot'?'pri':'dark'),'data-a="getlead" data-c="'+E(r.cid)+'"','send');
-      return '<article class="ld rv '+k+'" style="--i:'+Math.min(i,12)+'"><div class="ld-top"><span class="lead-b '+k+'"><i class="dot '+k+'"></i><b>'+LK[k][0]+'</b>'+(dd!=null?'<span>· запрос '+agoD(dd)+'</span>':'')+'</span><span class="ld-pot">'+E(range(r.potential))+'<small>ваш доход</small></span></div>'+
-        (r.reqText?'<p class="ld-q">«'+E(r.reqText)+'»</p>':'')+
-        '<div class="ld-who"><span class="ld-av">'+E((r.alias||'?').charAt(0))+'</span><div><b>'+E(r.alias)+'</b><span>'+E(ageL(r.age))+' · капитал '+E(capL(r.capital))+'</span></div></div>'+
-        '<p class="ld-d">'+E(r.dossier||'')+'</p>'+(r.whyFit?'<p class="ld-w">'+ic('spark')+E(r.whyFit)+'</p>':'')+
-        '<div class="ld-f"><span class="lb">'+ic('shield')+'Ведет '+E(r.leadBy||'партнер сети')+'</span>'+act+'</div></article>'}).join('')+'</div>'
-     :'<div class="card">'+emptyBox(rows.length?'В этом фильтре пусто':'Лидов пока нет',rows.length?'Посмотрите все лиды':'Лиды появятся, когда в сети будут клиенты под ваш продукт','')+'</div>')+
-    (first?'':'<nav class="qlinks">'+[['product','Мой продукт','gift'],['status','Статус','star'],['requests','Обращения','msg'],['plans','Планы','cal'],['notify','Уведомления','bell']].map(function(x){return '<a href="#/'+x[0]+'" class="'+(gated(x[0])?'lk':'')+'">'+ic(x[2])+x[1]+(gated(x[0])?ic('lock','lki'):'')+'</a>'}).join('')+'</nav>'),
-    function(){count($('#ftot'),0,tot,1400)});
+    var tabs=[['all','Все'],['hot','Горячие','запрос за последние 7 дней'],['warm','Теплые','запрос за последние 30 дней и раньше'],['int','По интересам','запроса нет, совпадают интересы']].filter(function(x){return x[0]==='all'||cnt[x[0]]});
+    var head='<header class="jh rv">'+(first?'<div class="jh-bar"><span class="jh-logo">ORBIQ ROOM</span><button type="button" class="jh-lnk" data-a="leavefocus">Кабинет '+ic('ar')+'</button></div>':'')+
+      '<div class="jh-row"><div><h1>Лиды</h1><p>'+(first&&nm?E(nm)+', это клиенты':'Клиенты')+' партнеров Orbiq, которым подходит ваш продукт</p></div></div>'+
+      '<nav class="jt" role="tablist">'+tabs.map(function(x){return '<button type="button" role="tab" data-lf="'+x[0]+'" class="'+(f===x[0]?'on':'')+'"'+(x[2]?' title="'+x[2]+'"':'')+'>'+x[1]+'<sup>'+cnt[x[0]]+'</sup></button>'}).join('')+'</nav></header>';
+    var item=function(r,i){var k=kk(r),dd=leadAge(r);
+      var when=dd!=null?'запрос '+agoD(dd):'совпадают интересы';
+      var ds=String(r.dossier||'');var cut=ds.search(/[.!?](\s|$)/);var lead1=r.reqText||(cut>0?ds.slice(0,cut):ds)||r.whyFit||'';var rest=r.reqText?ds:(cut>0?ds.slice(cut+1).trim():'');
+      var act=can?btn('Предложить через Orbiq','sm dark','data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':'')):btn('Связаться','sm dark','data-a="getlead" data-c="'+E(r.cid)+'"');
+      return '<article class="je '+k+'" data-k="'+k+'"'+(f!=='all'&&f!==k?' hidden':'')+'>'+
+        '<button type="button" class="je-h" aria-expanded="false"><span class="je-n">'+String(i+1).padStart(2,'0')+'</span>'+
+        '<span class="je-m"><span class="je-w">'+(k==='hot'?'<i></i>':'')+E(when)+'</span><span class="je-q">'+E(lead1)+'</span><span class="je-p">'+E(r.alias)+' · '+E(ageL(r.age))+' · капитал '+E(capL(r.capital))+'</span></span>'+
+        '<span class="je-x" aria-hidden="true"></span></button>'+
+        '<div class="je-b"><div><div class="je-in">'+(rest?'<p class="je-d">'+E(rest)+'</p>':'')+
+          (r.whyFit?'<dl><dt>Почему вам</dt><dd>'+E(r.whyFit)+'</dd></dl>':'')+
+          '<dl><dt>Ваш доход</dt><dd>'+E(range(r.potential))+' с клиента</dd></dl><dl><dt>Ведет</dt><dd>'+E(r.leadBy||'партнер сети')+'</dd></dl>'+
+          '<div class="je-a">'+act+'</div></div></div></div></article>'};
+    page('fit',head+(rows.length?'<div class="jl">'+rows.map(item).join('')+'</div>':'<div class="je-empty"><p>Лидов пока нет</p><span>Они появятся здесь, когда в сети будут клиенты под ваш продукт</span></div>'),
+    function(m){var list=$('.jl',m);if(!list)return;
+      var open=function(a,on){var h=$('.je-h',a);a.classList.toggle('open',on);h.setAttribute('aria-expanded',on?'true':'false')};
+      list.addEventListener('click',function(e){var h=e.target.closest('.je-h');if(!h)return;var a=h.parentNode;open(a,!a.classList.contains('open'))});
+      $$('.jt button',m).forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-lf');S.leadF=v;$$('.jt button',m).forEach(function(x){x.classList.toggle('on',x===b)});
+        $$('.je',list).forEach(function(a){a.hidden=!(v==='all'||a.getAttribute('data-k')===v)})})});
+      });
   }).catch(function(e){page('fit',e.status===403?'<div class="card">'+emptyBox('Лиды недоступны','Они строятся под продукт поставщика')+'</div>':errBox(e))});
 }
 function leaveFocus(){localStorage.setItem('oc_tour','1');document.body.classList.remove('focus');S.tour=0}

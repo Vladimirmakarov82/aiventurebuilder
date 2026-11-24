@@ -48,7 +48,7 @@ def main():
     vis, data = view_lines(path, view if view != 'all' else None); lines = vis + data
     errs = []
     raw = open(path, encoding='utf-8').read()
-    for m in re.finditer(r'(\$20[\s\u00a0,.]?000|\$20k|20&nbsp;000)', raw):  # взнос партнера: нигде на странице, включая скрытые виды
+    for m in re.finditer(r'(\$20[\s\u00a0,.]?000|\$20k|(?<![\d])20&nbsp;000)', raw):  # взнос партнера: нигде на странице, включая скрытые виды
         ctx = re.sub(r'<[^>]+>', ' ', raw[max(0, m.start()-80):m.end()+140])
         if not re.search(r'Гражданство|Citizenship|Картина|Painting|typicalEarn', ctx): errs.append(('сумма $20 000 на странице (взнос партнера запрещен)', ctx.strip()))
     for l in lines:

@@ -208,3 +208,44 @@
 @media (max-width:720px){.indp-v.q{grid-template-columns:1fr}.indp-v.q .indp-ar{justify-self:center;transform:rotate(90deg)}}
 .indp-v.q .now p{color:#F3F4F2!important;font-weight:500}
 .indp.end{margin:26px 0 0}
+/* asymmetry: two levels + client value */
+.asym-two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 10px}
+.asym-two>div{padding:14px 16px;border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:4px;align-content:start}
+.asym-two>div:last-child{background:#0B0B0D;color:#F3F4F2;box-shadow:none}
+.asym-two b{font-size:clamp(20px,2vw,26px);font-weight:600;letter-spacing:-.03em;font-stretch:112%}
+.asym-two>div:last-child b{color:#FF4D00}
+.asym-two p{margin:0;font-size:14.5px;line-height:1.45}
+.aval{margin-top:10px;padding:16px 18px;border-radius:18px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:10px}
+.aval-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:center}
+.aval-r span{font-size:13.5px;color:var(--mute);grid-column:1/-1}
+.aval-b{height:12px;border-radius:6px;background:rgba(127,127,127,.12);overflow:hidden}
+.aval-b i{display:block;height:100%;width:var(--w);border-radius:6px;background:var(--ink);transform-origin:left;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.aval-r.hi .aval-b i{background:#FF4D00}
+.aval-r b{font-size:20px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;min-width:110px;text-align:right}
+.aval-r.hi b{color:#FF4D00}
+.aval.pre .aval-b i{transform:scaleX(0)}
+.aval-n{margin:0;font-size:14px;font-weight:500}
+@media (max-width:720px){.asym-two{grid-template-columns:1fr}}
+/* call animation */
+.call{position:relative;height:320px;border-radius:24px;background:#0B0B0D;color:#F3F4F2;overflow:hidden;box-shadow:0 30px 60px -40px rgba(0,0,0,.6)}
+.call-top{position:absolute;left:0;right:0;top:0;height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:600;z-index:3;background:#0B0B0D}
+.call-top em{font-style:normal;font-family:var(--m);font-size:11px;background:#FF4D00;color:#fff;border-radius:999px;padding:3px 8px;font-variant-numeric:tabular-nums}
+.call-top .on{display:inline-flex;align-items:center;gap:7px}
+.call-top .on::before{content:"";width:7px;height:7px;border-radius:50%;background:#3DDC84;box-shadow:0 0 0 3px rgba(61,220,132,.2)}
+.call-in{position:absolute;left:0;right:0;top:46px;bottom:0;margin:0;padding:8px 10px;list-style:none;display:flex;flex-direction:column;gap:6px}
+.call-in li{display:grid;grid-template-columns:28px 1fr auto;gap:2px 10px;align-items:center;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05)}
+.call-in li i{grid-row:1/3;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.12);font-style:normal;font-size:11px;display:grid;place-items:center;color:rgba(255,255,255,.6)}
+.call-in li b{font-size:12.5px;font-weight:600}
+.call-in li span{grid-column:2;font-size:12px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.call-in li small{grid-row:1;grid-column:3;font-family:var(--m);font-size:10px;color:rgba(255,255,255,.35)}
+.call-chat{position:absolute;left:0;right:0;top:46px;bottom:0;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;z-index:2}
+.bub{max-width:82%;padding:10px 13px;border-radius:16px;font-size:14px;line-height:1.35}
+.bub.cl{align-self:flex-end;background:#F3F4F2;color:#0B0B0D;border-bottom-right-radius:5px}
+.bub.pt{align-self:flex-start;background:#FF4D00;color:#fff;border-bottom-left-radius:5px}
+.bub.pt small{display:block;margin-top:6px;font-family:var(--m);font-size:10.5px;opacity:.85}
+.bub.ty{display:inline-flex;gap:4px;padding:12px 14px}
+.bub.ty i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5;animation:tyB 1s infinite}
+.bub.ty i:nth-child(2){animation-delay:.15s}.bub.ty i:nth-child(3){animation-delay:.3s}
+@keyframes tyB{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-4px);opacity:.9}}
+.indp.has-call{grid-template-columns:1fr 1fr}
+.asym-two>div:last-child p{color:rgba(243,244,242,.82)!important}

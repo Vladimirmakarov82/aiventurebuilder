@@ -326,6 +326,38 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 .plans.duo{grid-template-columns:repeat(2,minmax(0,1fr))}@media (max-width:760px){.plans.duo{grid-template-columns:1fr}}
 .ben.st{margin-top:4px}.ben.st li{border-top:1px solid rgba(255,255,255,.16);font-size:16px}.stage .kick .dot{background:var(--or)}.stags{display:flex;flex-wrap:wrap;gap:8px}.stags span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 12px;font-size:14px}
 @media (prefers-color-scheme:dark){.ben.st li{border-top-color:rgba(0,0,0,.14)}.stags span{border-color:rgba(0,0,0,.2)}}
+
+.pget,.pearn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.pget div{background:var(--bg);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.pget b{font-weight:600;font-stretch:112%;font-size:17px;letter-spacing:-.01em}
+.pget span{font-size:14.5px;line-height:1.45;color:var(--mute)}
+.pearn{margin-top:2px}.pearn div{background:rgba(255,255,255,.07);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.pearn b{font-weight:600;font-stretch:112%;font-size:24px;letter-spacing:-.02em;color:var(--or)}
+.pearn span{font-size:14px;line-height:1.4;opacity:.85}
+.pl-sub{margin:4px 0 0;font-size:14px;color:var(--mute)}
+.pleads{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.pld{border-radius:18px;background:var(--paper);box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s}
+.pld.is-open{box-shadow:0 0 0 1px rgba(11,11,13,.2),0 20px 40px -28px rgba(0,0,0,.3)}
+.pld-h{display:grid;grid-template-columns:120px 1fr auto 34px;gap:16px;align-items:center;width:100%;border:0;background:none;text-align:left;padding:16px 16px 16px 18px;cursor:pointer;font:inherit;color:inherit}
+.pld-l{display:flex;flex-direction:column;gap:3px;align-self:start;padding-top:3px}
+.pld-k{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+.pld-k i{width:6px;height:6px;border-radius:50%;background:var(--or)}
+.pld.warm .pld-k i{background:#E5A100}.pld.old .pld-k i{background:transparent;box-shadow:inset 0 0 0 1.3px var(--mute)}.pld.old .pld-k{color:#7a5600;font-weight:500}
+.pld-a{font-size:12px;color:var(--mute)}
+.pld-m{display:flex;flex-direction:column;gap:7px;min-width:0}
+.pld-m>b{font-weight:500;font-size:17px;line-height:1.3;letter-spacing:-.01em}
+.pld-s{display:flex;flex-wrap:wrap;gap:5px}.pld-s em{font-style:normal;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--bg)}
+.pld-w{font-size:13px;color:var(--mute)}
+.pld-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;white-space:nowrap}
+.pld-r small{font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.pld-r b{font-weight:500;font-size:17px}
+.pld-x{position:relative;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+.pld-x::before,.pld-x::after{content:"";position:absolute;left:11px;right:11px;top:16.4px;height:1.2px;background:var(--ink);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.pld-x::after{transform:rotate(90deg)}.pld.is-open .pld-x{background:var(--ink)}.pld.is-open .pld-x::before,.pld.is-open .pld-x::after{background:#fff}.pld.is-open .pld-x::after{transform:rotate(0)}
+.pld-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.16,1,.3,1)}.pld-b>div{overflow:hidden}.pld.is-open .pld-b{grid-template-rows:1fr}
+.pld-in{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin:0 16px 18px 154px;padding-top:14px;border-top:1px solid var(--line)}
+.pld-in p{margin:0;font-size:14.5px;line-height:1.5}.pld-in small{display:block;font-family:var(--m);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
+@media (max-width:760px){.pget,.pearn{grid-template-columns:1fr}.pld-h{grid-template-columns:1fr 34px;gap:10px}.pld-l{grid-column:1/-1;flex-direction:row;gap:10px;padding:0}.pld-r{grid-column:1;flex-direction:row;align-items:baseline;gap:8px}.pld-x{grid-row:2;grid-column:2;align-self:start}.pld-in{grid-template-columns:1fr;margin:0 16px 16px}}
 </style>
 </head>
 <body>
@@ -449,19 +481,21 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 
 <section class="view" id="v-aud">
   <div class="card">
-    <div class="kick mono"><span class="dot"></span>Клиенты Orbiq</div>
-    <h1 class="h2">118 клиентов с капиталом от $500&nbsp;тыс уже в Orbiq</h1>
-    <p class="sub">Это предприниматели, инвесторы и семьи, которых привели партнеры сети. Ниже видно капитал каждого и из чего он состоит. Имен и контактов здесь нет: знакомство организует Orbiq.</p>
+    <div class="kick mono"><span class="dot"></span>Партнерам Orbiq</div>
+    <h1 class="h2">Станьте партнером международного консьерж-сервиса</h1>
+    <p class="sub">Клиенты партнеров сети уже ищут то, что вы продаете. Вы видите их запросы, предлагаете продукт через Orbiq и получаете комиссию.</p>
+    <label class="lab">Что вы получаете</label>
+    <div class="pget"><div><b>Клиентов</b><span>118 клиентов с капиталом от $500&nbsp;тыс и открытыми запросами. Новые запросы приходят каждую неделю</span></div><div><b>Систему работы с партнерами</b><span>Orbiq знакомит вас с клиентом, согласует комиссию до сделки и ведет переписку. В кабинете лиды, помощник и готовые скрипты</span></div><div><b>Проверенные продукты</b><span>Каталог продуктов партнеров сети для ваших клиентов: недвижимость, визы, авиация, часы, обучение. Комиссия в среднем $5–10&nbsp;тыс со сделки</span></div></div>
+    <label class="lab">Запросы клиентов сейчас</label>
+    <p class="pl-sub">Так их видят партнеры в кабинете. Имен и контактов нет, знакомит Orbiq</p>
+    <div class="pleads" id="pleads"></div>
+    <div class="row" style="margin-top:14px;justify-content:center;gap:10px;flex-wrap:wrap"><button class="btn soft sm" id="more">Показать еще</button></div>
     <div class="cta2" id="aCta">
-      <h2>Предложите им свой продукт через Orbiq</h2>
-      <p>Вы выбираете клиентов под свой продукт. Orbiq знакомит вас с ними через партнера, который их ведет. Своим клиентам вы дарите 3 месяца Orbiq: они остаются за вами, а с каждого оплаченного года вы получаете 30% взноса.</p>
+      <h2>Как вы зарабатываете</h2>
+      <div class="pearn"><div><b>$5–10&nbsp;тыс</b><span>с продажи продукта партнера своему клиенту, в среднем</span></div><div><b>Ваша цена</b><span>с продажи своего продукта клиентам сети</span></div><div><b>30%</b><span>с каждого оплаченного года клиента, которому вы подарили доступ</span></div></div>
       <div><button class="btn" data-go="plan"><span class="roll"><span>Посмотреть условия</span><span>Посмотреть условия</span></span></button></div>
     </div>
-    <label class="lab">Сегмент</label>
-    <div class="chips" id="tiers"></div>
-    <div class="keyl"><span>Капитал:</span><span><i style="background:var(--or)"></i>Прибыль компаний</span><span><i style="background:var(--vi)"></i>Недвижимость</span><span><i style="background:var(--gr)"></i>Ликвидные активы</span></div>
-    <ul class="ppl" id="ppl"></ul>
-    <div class="row" style="margin-top:20px;justify-content:center"><button class="btn soft sm" id="more">Показать еще</button></div>
+    <div class="row" style="margin-top:16px;justify-content:center"><button class="btn soft sm" data-go="welcome">Как устроен Orbiq: сеть, консьерж-сервис, этапы</button></div>
   </div>
 </section>
 
@@ -629,7 +663,7 @@ var CATS=[
  {c:'safe',n:'Безопасность',d:'Охрана, проверка, защита данных'},
  {c:'staff',n:'Домашний персонал',d:'Подбор и проверка людей в дом'}
 ];
-var DEF={view:'welcome',done:false,plan:null,name:'',spec:'',specs:[],custom:'',own:false,contact:'',when:'',clients:[],reqs:[],cur:null};
+var DEF={view:'aud',done:false,plan:null,name:'',spec:'',specs:[],custom:'',own:false,contact:'',when:'',clients:[],reqs:[],cur:null};
 var PL=[{n:'Партнер',p:'$20 000',q:10},{n:'Партнер-инвестор',p:'$50 000',q:0}];
 var KW={fly:['самолет','джет','перелет','чартер','рейс'],yacht:['яхт'],rare:['час','сумк','birkin','patek','rolex','украшен','кольц'],home:['дом','вилл','квартир','недвижим','пентхаус'],edu:['школ','университет','учеб'],res:['виз','резидент','паспорт','внж','гражданств'],med:['врач','клиник','здоров','чекап','лекарств'],cap:['инвест','ipo','фонд'],art:['картин','искусств','аукцион'],event:['билет','концерт','событи','гонк','формул'],auto:['машин','авто','ferrari','porsche'],bank:['счет','банк','карт'],law:['траст','юрист','структур','наследств'],tax:['налог'],trip:['отел','поездк','путешеств','отпуск'],safe:['охран','безопасн'],staff:['нян','персонал','водител','повар']};
 var NM=['Андрей','Сергей','Иван','Михаил','Дмитрий','Алексей','Олег','Игорь','Павел','Николай','Виктор','Роман','Константин','Евгений','Артем','Владислав','Григорий','Максим','Тимур','Борис','Леонид','Вадим','Станислав','Юрий','Денис','Антон','Кирилл','Георгий','Руслан','Марк','Елена','Ольга','Наталья','Марина','Ирина','Анна','Татьяна','Светлана','Екатерина','Юлия','Арсений','Федор','Василий','Петр','Илья','Эдуард','Захар','Ринат','Давид','Лев'];
@@ -640,7 +674,7 @@ var PPL=[];(function(){var i=0;TIERS.forEach(function(t,k){for(var j=0;j<t.q;j++
  PPL.push({n:NM[(i*7)%50],cap:Math.round((t.min+Math.pow(rnd(i),1.6)*(t.max-t.min))*100)/100,tier:k,mix:[a,b,100-a-b],job:JOBS[Math.floor(rnd(i+40)*JOBS.length)],lead:Math.floor(rnd(i+300)*DIRS.length)})}})})();
 PPL.sort(function(x,y){return y.cap-x.cap});
 function fcap(c){return c>=1?'$'+String(c.toFixed(1)).replace('.',',')+' млн':'$'+Math.round(c*100)*10+' тыс'}
-var S=load(),curTier=0,shown=12,log=[];
+var S=load(),curTier=0,shown=6,log=[];
 function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);for(var k in DEF)if(!(k in o))o[k]=DEF[k];return o}}catch(e){}return JSON.parse(JSON.stringify(DEF))}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 function $(i){return document.getElementById(i)}
@@ -653,7 +687,7 @@ function leadI(p){var i=p.lead;while(S.specs.indexOf(DIRS[i].n)>=0)i=(i+1)%DIRS.
 function catName(c){for(var i=0;i<CATS.length;i++)if(CATS[i].c===c)return CATS[i].n;return c}
 function dirFor(c){for(var i=0;i<DIRS.length;i++)if(DIRS[i].c===c&&S.specs.indexOf(DIRS[i].n)<0)return DIRS[i].n;return null}
 var tt;function toast(t){var e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){e.classList.remove('on')},2800)}
-function go(v){if(v==='aud'&&S.view!=='aud')shown=12;if(v==='cli')log=[];S.view=v;save();render();window.scrollTo(0,0)}
+function go(v){if(v==='aud'&&S.view!=='aud')shown=6;if(v==='cli')log=[];S.view=v;save();render();window.scrollTo(0,0)}
 function render(){
  ['welcome','aud','plan','call','cab','cli'].forEach(function(v){$('v-'+v).classList.toggle('on',S.view===v)});
  $('seg').hidden=!S.done||['cab','aud'].indexOf(S.view)<0;
@@ -672,16 +706,14 @@ $('wOwn').oninput=function(){S.custom=this.value;sync();save()};
 $('wGo').onclick=function(){sync();if(!S.spec){$('e0').textContent='Ни одно направление пока не отмечено';return}go('aud')};
 /* клиенты Orbiq */
 function renderAud(){
- var cnt={};PPL.forEach(function(p){var i=leadI(p);cnt[i]=(cnt[i]||0)+1});
- if($('srcs'))$('srcs').innerHTML=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).map(function(i){return '<span>'+DIRS[i].n+'<b>'+cnt[i]+'</b></span>'}).join('');
- $('aCta').hidden=S.done;
- $('tiers').innerHTML=TIERS.map(function(t,k){return '<button class="chip" aria-pressed="'+(k===curTier)+'" data-tier="'+k+'">'+t.n+' · '+t.q+'</button>'}).join('');
- var list=PPL.filter(function(p){return p.tier===curTier});$('more').hidden=shown>=list.length;
- $('ppl').innerHTML=list.slice(0,shown).map(function(p){
-  return '<li><div class="top"><span class="nm">'+p.n+'</span><span class="cp2">'+fcap(p.cap)+'</span></div><div class="mix"><i style="width:'+p.mix[0]+'%;background:var(--or)"></i><i style="width:'+p.mix[1]+'%;background:var(--vi)"></i><i style="width:'+p.mix[2]+'%;background:var(--gr)"></i></div><div class="bot"><span>'+p.job+'. Доступ подарил эксперт: '+DIRS[leadI(p)].n.toLowerCase()+'</span></div></li>'}).join('');
+ var LD=[{"k": "hot", "kl": "Горячий", "ago": "запрос вчера", "q": "Квартира в Валенсии в ипотеку", "who": "Константин, 35–44 · капитал $3–10 млн", "b": "€450–600 тыс", "s": ["Покупка в ипотеку", "Валенсия, Русафа", "До лета 2027"], "w": "Переезжает работать в Валенсию на 3–5 лет. Первый взнос 40%, остальное ипотека испанского банка.", "d": ["2 спальни", "Терраса", "Новостройка"], "m": "Первый взнос €200 тыс в европейском банке", "h": "Нерезиденту нужна ипотека с подтверждением дохода"}, {"k": "hot", "kl": "Горячий", "ago": "запрос 3 дня назад", "q": "Дом у моря в Италии для большой семьи", "who": "Григорий, 55–64 · капитал $25–100 млн", "b": "€4–6 млн", "s": ["Покупка", "Лигурия или Тоскана", "До мая 2027"], "w": "Семейный дом на 3 поколения: собирать всех летом. Участок с садом и выходом к морю, без соседей вплотную.", "d": ["7–8 спален", "Участок от 4 000 м²", "Причал до 15 минут"], "m": "Счета в Швейцарии и ОАЭ, без ипотеки, задаток 10%", "h": "Нотариусу нужно подтвердить происхождение средств"}, {"k": "hot", "kl": "Горячий", "ago": "запрос 5 дней назад", "q": "Платежи поставщикам в Китае без потерь на курсе", "who": "Ирина, 45–54 · капитал $10–25 млн", "b": "$1,5–2 млн в месяц", "s": ["Платежный маршрут", "Гуанчжоу, Иу", "До февраля 2027"], "w": "Импорт оборудования, 25–30 платежей в месяц. Сейчас деньги идут 10–14 дней, потери на курсе до 3%.", "d": ["Юани и доллары", "Зачисление до 3 дней", "Документы для бухгалтерии"], "m": "Выручка в рублях и в ОАЭ", "h": "Два поставщика уже возвращали платежи"}, {"k": "warm", "kl": "Актуальный", "ago": "запрос 11 дней назад", "q": "Участок под виллу на Ибице", "who": "Виктор, 45–54 · капитал $10–25 млн", "b": "€3–4 млн", "s": ["Участок и стройка", "Север Ибицы", "До лета 2027"], "w": "Участок с лицензией на строительство и видом на закат. Строит со своим архитектором. Партнер приложил бриф клиента.", "d": ["От 5 000 м²", "Лицензия", "Вид на запад"], "m": "Средства в ОАЭ, стройка траншами", "h": "На севере острова мало участков с лицензией"}, {"k": "warm", "kl": "Актуальный", "ago": "запрос 14 дней назад", "q": "Школа-пансион в Швейцарии для сына", "who": "Мария, 45–54 · капитал $3–10 млн", "b": "CHF 120–150 тыс в год", "s": ["Поступление", "Франкоязычная Швейцария", "Сентябрь 2027"], "w": "Сыну 13 лет, сильный в математике и спорте. Нужен пансион с программой IB и хоккеем.", "d": ["Программа IB", "Хоккей", "Пансион"], "m": "Личные средства", "h": "Нужен уровень французского к поступлению"}, {"k": "warm", "kl": "Актуальный", "ago": "запрос 21 день назад", "q": "Второе гражданство для семьи", "who": "Андрей, 55–64 · капитал $10–25 млн", "b": "$400–600 тыс", "s": ["Гражданство за инвестиции", "Карибы или Европа", "До конца 2027"], "w": "Гражданство для себя, жены и двоих детей. Важен безвиз в Шенген и Великобританию.", "d": ["4 человека", "Без переезда", "Конфиденциально"], "m": "Средства в ОАЭ и на Кипре", "h": "Проверка происхождения средств"}, {"k": "warm", "kl": "Актуальный", "ago": "запрос 24 дня назад", "q": "Джет-карта на зимний сезон", "who": "Олег, 55–64 · капитал $25–100 млн", "b": "$150–250 тыс", "s": ["Аренда", "Москва, Дубай, Альпы", "С декабря 2026"], "w": "25 летных часов на зиму, семья из 4 человек и собака.", "d": ["25 часов", "Midsize jet", "Перелеты с животными"], "m": "Средства в ОАЭ", "h": "Ограничения на маршруты"}, {"k": "old", "kl": "Требует подтверждения", "ago": "запрос 48 дней назад", "q": "Апартаменты в Милане рядом с Брерой", "who": "Елена, 55–64 · капитал $10–25 млн", "b": "€1,5–2 млн", "s": ["Покупка", "Милан, Брера", "До весны 2027"], "w": "Апартаменты для поездок в оперу и на выставки, 6–8 раз в год. Исторический дом с консьержем.", "d": ["2 спальни", "Консьерж", "Парковка"], "m": "Средства в Швейцарии", "h": "Клиентка могла решить вопрос через другого брокера"}],TX={"budget": "Бюджет", "what": "Что хочет", "det": "Детали", "money": "Деньги", "hard": "Сложности"};
+ var el=$('pleads');if(!el)return;var n=Math.min(shown,LD.length);
+ el.innerHTML=LD.slice(0,n).map(function(x,i){return '<article class="pld '+x.k+(i===0?' is-open':'')+'"><button type="button" class="pld-h"><span class="pld-l"><span class="pld-k"><i></i>'+x.kl+'</span><span class="pld-a">'+x.ago+'</span></span><span class="pld-m"><b>'+x.q+'</b><span class="pld-s">'+x.s.map(function(s){return '<em>'+s+'</em>'}).join('')+'</span><span class="pld-w">'+x.who+'</span></span><span class="pld-r"><small>'+TX.budget+'</small><b>'+x.b+'</b></span><span class="pld-x"></span></button><div class="pld-b"><div><div class="pld-in"><p><small>'+TX.what+'</small>'+x.w+'</p><p><small>'+TX.det+'</small>'+x.d.join(' · ')+'</p><p><small>'+TX.money+'</small>'+x.m+'</p><p><small>'+TX.hard+'</small>'+x.h+'</p></div></div></div></article>'}).join('');
+ $('more').hidden=n>=LD.length;$('aCta').hidden=S.done;
 }
-$('tiers').onclick=function(e){var b=e.target.closest('[data-tier]');if(!b)return;curTier=+b.dataset.tier;shown=12;renderAud()};
-$('more').onclick=function(){shown+=24;renderAud()};
+$('pleads').onclick=function(e){var h=e.target.closest('.pld-h');if(!h)return;var a=h.parentNode;var on=!a.classList.contains('is-open');[].forEach.call(document.querySelectorAll('.pld.is-open'),function(x){x.classList.remove('is-open')});a.classList.toggle('is-open',on)};
+$('more').onclick=function(){shown+=8;renderAud()};
+
 /* тариф и звонок */
 document.querySelector('.plans').onclick=function(e){var b=e.target.closest('[data-plan]');if(!b)return;S.plan=+b.dataset.plan;if(S.done){go('cab');toast('Тариф изменен: '+PL[S.plan].n)}else go('call')};
 $('plBack').onclick=function(){go(S.done?'cab':'aud')};
@@ -747,9 +779,9 @@ if(SR){$('mic').hidden=false;var rec=null;
    rec.onend=function(){rec=null;$('mic').classList.remove('rec')};
    rec.onerror=function(){rec=null;$('mic').classList.remove('rec')};
    rec.start();$('mic').classList.add('rec')}catch(e){rec=null}}}
-if(['cab','cli'].indexOf(S.view)>=0&&!S.done)S.view='welcome';
+if(['cab','cli','welcome'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='cli')S.view='cab';
-if(['aud','plan','call'].indexOf(S.view)>=0&&!S.spec)S.view='welcome';
+if(['plan','call'].indexOf(S.view)>=0&&!S.spec)S.view='aud';
 if(S.view==='call'&&S.plan===null)S.view='plan';
 render();
 })();

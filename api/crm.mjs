@@ -301,19 +301,21 @@ const get = (name, fn) => { R[name] = fn; };
 
 // ===== авторизация =====
 post('auth/signup', async (req, res) => { // саморегистрация партнера: имя, почта, категория; кабинет нового партнера, письмо со ссылкой входа
-  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const name = scrubPII(String(b.name || '')).text.trim().slice(0, 60);
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const name = scrubPII(String(b.name || '')).text.trim().split(/\s+/)[0].slice(0, 30); // только имя, без фамилии
   if (!name) return send(res, 400, { error: 'Нужно имя' }); if (!EMAIL_RE.test(email) || email.length > 120) return send(res, 400, { error: 'Адрес почты с ошибкой' });
-  if (!CATS[b.cat]) return send(res, 400, { error: 'Нужна категория' });
+  const role = ['clients', 'product', 'both'].includes(b.role) ? b.role : 'product';
+  if (role !== 'clients' && !CATS[b.cat]) return send(res, 400, { error: 'Нужна категория' });
   if (!(await rateLimit('crm-su:' + ipOf(req), 5, 3600)) || !(await rateLimit('crm-em:' + email, 5, 60))) return send(res, 429, { error: 'Слишком много запросов. Повтор позже' });
   if (ownerEmails().includes(email)) return send(res, 200, { ok: true });
   let pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`);
   if (!pid) {
     const id = 'p_' + rid(12);
     if (await createNX(`crm/pidx/${sha(email).slice(0, 32)}`, id)) {
-      const product = cleanProduct({ summary: String(b.about || '').slice(0, 600), categories: [b.cat] });
-      const p = { id, email, name, tier: 'new', kind: 'supplier', product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'self', categories: [b.cat], tg: {}, ical: {}, paid: null, activated: null, lastSeen: null };
-      await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id); await pushHist(id, 'product', null, product, 'саморегистрация');
-      await audit('partner', id, 'partner_signup', { cat: b.cat }); pid = id;
+      const cats = role === 'clients' ? [] : [b.cat];
+      const product = role === 'clients' ? null : cleanProduct({ summary: String(b.about || '').slice(0, 600), categories: cats });
+      const p = { id, email, name, tier: 'new', kind: role === 'clients' ? 'networker' : 'supplier', role, product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'self', categories: cats, tg: {}, ical: {}, paid: null, activated: null, lastSeen: null };
+      await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id); if (product) await pushHist(id, 'product', null, product, 'саморегистрация');
+      await audit('partner', id, 'partner_signup', { cat: b.cat || null, role }); pid = id;
     } else pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`);
   }
   const p = pid && await sget(`crm/p/${pid}.json`); if (!p || p.suspended) return send(res, 200, { ok: true });
@@ -717,19 +719,27 @@ async function leadLim(p) { // 30 своих клиентов с открыты�
   const own = (await many((await setGet(`crm/cidx/p/${p.id}`)).map(i => `crm/c/${i}.json`))).filter(x => x && !x.archived && x.owner === p.id);
   const n = own.filter(x => (x.requests || []).some(r => r.status === 'open')).length;
   const asked = ((await sget(`crm/lead/${p.id}.json`)) || []).map(x => x.cid);
-  return { need: LEAD_NEED, per: LEAD_PER, n, used: asked.length, left: n >= LEAD_NEED ? Math.max(0, LEAD_PER - asked.length) : 0, asked };
+  return { need: 0, per: 0, n, used: asked.length, left: 999, asked }; // лимиты сняты 24.11: знакомства Владимир согласует лично
 }
+post('asym/ask', async (req, res) => { // партнер предлагает асимметрию своему клиенту: запрос уходит Владимиру
+  const c = await need(req, 'crm.own'); const b = await body(req);
+  const text = scrubPII(String(b.text || '')).text.trim().slice(0, 2000); if (text.length < 10) return send(res, 400, { error: 'Нужно коротко описать клиента' });
+  if (!(await rateLimit('crm-aa:' + c.p.id, 30, 86400))) return send(res, 429, { error: 'Много запросов за день' });
+  const item = { id: rid(10), pid: c.p.id, name: c.p.name, title: String(b.title || '').slice(0, 200), text, at: nowIso() };
+  await update('crm/asymask.json', (cur) => ({ doc: [...(cur || []), item].slice(-500) }));
+  await audit(c.p.id, 'partner', 'asym_ask', { title: item.title }); await notify('owner', 'rq_new', item.id);
+  send(res, 200, { ok: true });
+});
 post('lead/ask', async (req, res) => {
   const c = await need(req, 'fit'); const b = await body(req); const card = await loadCard(b.cid);
   if (!card || card.archived || card.owner === c.p.id) return send(res, 404, { error: 'Карточка не найдена' });
   const cats = (c.p.product && c.p.product.categories) || c.p.categories || [];
   const open = (card.requests || []).filter(r => r.status === 'open' && r.public === true);
-  const rq0 = open.find(r => r.id === b.requestId) || open.find(r => cats.includes(r.cat)) || null;
-  if (!rq0) return send(res, 404, { error: 'У клиента нет открытого запроса под ваш продукт' });
+  const rq0 = open.find(r => r.id === b.requestId) || open.find(r => cats.includes(r.cat)) || open[0] || null;
+  if (!rq0) return send(res, 404, { error: 'У клиента нет открытого запроса' });
   const text = String(b.text || '').trim().slice(0, 2000); if (text.length < 10) return send(res, 400, { error: 'Напишите, что предложите клиенту' });
   const l = await leadLim(c.p); if (l.asked.includes(card.id)) return send(res, 409, { error: 'Запрос по этому клиенту уже отправлен' });
-  if (l.n < l.need) return send(res, 403, { error: `Сначала загрузите ${l.need} своих клиентов с запросами`, leads: l });
-  if (l.left < 1) return send(res, 429, { error: 'Все 3 лида использованы', leads: l });
+  if (!(await rateLimit('crm-la:' + c.p.id, 30, 86400))) return send(res, 429, { error: 'Много запросов за день. Orbiq ответит по уже отправленным' });
   const rq = await createRq(c, { card, requestId: rq0.id, offer: 'Запрос на связь с лидом. ' + text, terms: '' });
   await update(`crm/lead/${c.p.id}.json`, (cur) => ({ doc: [...(cur || []), { cid: card.id, rq: rq.id, at: nowIso() }] }));
   send(res, 200, { ok: true, id: rq.id, leads: await leadLim(c.p) });

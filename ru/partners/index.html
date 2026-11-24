@@ -450,13 +450,11 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
 <section class="view" id="v-aud">
   <div class="card">
     <div class="kick mono"><span class="dot"></span>Клиенты Orbiq</div>
-    <h1 class="h2">118 клиентов. Каждому закрытый доступ в Orbiq подарил эксперт, которому он доверяет</h1>
-    <p class="sub">Клиент с капиталом ждет совета от того, кому доверяет. Этот эксперт стал его личным консьержем и предлагает ему услуги партнеров Orbiq.</p>
-    <label class="lab">Кто подарил доступ</label>
-    <div class="srcs" id="srcs"></div>
+    <h1 class="h2">118 клиентов с капиталом от $500&nbsp;тыс уже в Orbiq</h1>
+    <p class="sub">Это предприниматели, инвесторы и семьи, которых привели партнеры сети. Ниже видно капитал каждого и из чего он состоит. Имен и контактов здесь нет: знакомство организует Orbiq.</p>
     <div class="cta2" id="aCta">
-      <h2>Эксперты предлагают этим клиентам услугу партнера, который подарил доступ в Orbiq своим клиентам</h2>
-      <p>Клиент получает доступ от имени партнера и остается с ним. Партнер становится его личным консьержем. Когда клиент оплатит год, партнер получит 30% его взноса.</p>
+      <h2>Предложите им свой продукт через Orbiq</h2>
+      <p>Вы выбираете клиентов под свой продукт. Orbiq знакомит вас с ними через партнера, который их ведет. Своим клиентам вы дарите 3 месяца Orbiq: они остаются за вами, а с каждого оплаченного года вы получаете 30% взноса.</p>
       <div><button class="btn" data-go="plan"><span class="roll"><span>Посмотреть условия</span><span>Посмотреть условия</span></span></button></div>
     </div>
     <label class="lab">Сегмент</label>
@@ -675,7 +673,7 @@ $('wGo').onclick=function(){sync();if(!S.spec){$('e0').textContent='Ни одн�
 /* клиенты Orbiq */
 function renderAud(){
  var cnt={};PPL.forEach(function(p){var i=leadI(p);cnt[i]=(cnt[i]||0)+1});
- $('srcs').innerHTML=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).map(function(i){return '<span>'+DIRS[i].n+'<b>'+cnt[i]+'</b></span>'}).join('');
+ if($('srcs'))$('srcs').innerHTML=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).map(function(i){return '<span>'+DIRS[i].n+'<b>'+cnt[i]+'</b></span>'}).join('');
  $('aCta').hidden=S.done;
  $('tiers').innerHTML=TIERS.map(function(t,k){return '<button class="chip" aria-pressed="'+(k===curTier)+'" data-tier="'+k+'">'+t.n+' · '+t.q+'</button>'}).join('');
  var list=PPL.filter(function(p){return p.tier===curTier});$('more').hidden=shown>=list.length;

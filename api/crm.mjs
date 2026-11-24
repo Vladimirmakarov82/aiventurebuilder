@@ -382,7 +382,7 @@ get('me', async (req, res) => {
   const month = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 7); const used = p.rqMonth && p.rqMonth.m === month ? p.rqMonth.n : 0; const unl = allowed(c, 'rq.unlimited') || p.kind === 'networker';
   send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: t === 'paid' ? 'Партнер Orbiq' : t === 'networker' ? 'Нетворкер' : t === 'networker_new' ? 'Новый нетворкер' : t === 'basic' ? 'Базовый партнер' : 'Новый партнер',
       suspended: !!p.suspended, paid: p.paid || null, categories: p.categories || [], product: p.product || null, tg: { connected: !!(p.tg && p.tg.chatId) },
-      limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0 } },
+      limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0, leads: await leadLim(p) } },
     access: Object.fromEntries(['net.view', 'rq.create', 'rq.refer', 'invite.create', 'demand', 'pf.submit', 'fit', 'priority'].map(op => [op, allowed(c, op)])) });
 });
 get('pinv/accept', async (req, res) => {
@@ -680,6 +680,24 @@ async function createRq(c, { card, requestId, offer, terms, attachment, fromNote
   return rq;
 }
 async function rqTarget(c, cid) { const card = await loadCard(cid); const v = await viewOf(c, card); if (!v || v.kind === 'owner') fail(404, 'Карточка не найдена'); return card; }
+const LEAD_NEED = 30, LEAD_PER = 3;
+async function leadLim(p) { // 30 своих клиентов с открытым запросом открывают связь с 3 лидами (ТЗ, раздел 7)
+  const own = (await many((await setGet(`crm/cidx/p/${p.id}`)).map(i => `crm/c/${i}.json`))).filter(x => x && !x.archived && x.owner === p.id);
+  const n = own.filter(x => (x.requests || []).some(r => r.status === 'open')).length;
+  const asked = ((await sget(`crm/lead/${p.id}.json`)) || []).map(x => x.cid);
+  return { need: LEAD_NEED, per: LEAD_PER, n, used: asked.length, left: n >= LEAD_NEED ? Math.max(0, LEAD_PER - asked.length) : 0, asked };
+}
+post('lead/ask', async (req, res) => {
+  const c = await need(req, 'fit'); const b = await body(req); const card = await rqTarget(c, b.cid);
+  const text = String(b.text || '').trim().slice(0, 2000); if (text.length < 10) return send(res, 400, { error: 'Напишите, что предложите клиенту' });
+  const l = await leadLim(c.p); if (l.asked.includes(card.id)) return send(res, 409, { error: 'Запрос по этому клиенту уже отправлен' });
+  if (l.n < l.need) return send(res, 403, { error: `Сначала загрузите ${l.need} своих клиентов с запросами`, leads: l });
+  if (l.left < 1) return send(res, 429, { error: 'Все 3 лида использованы', leads: l });
+  const reqOpen = (card.requests || []).find(r => r.status === 'open' && r.public === true);
+  const rq = await createRq(c, { card, requestId: reqOpen ? reqOpen.id : '', offer: 'Запрос на связь с лидом. ' + text, terms: '' });
+  await update(`crm/lead/${c.p.id}.json`, (cur) => ({ doc: [...(cur || []), { cid: card.id, rq: rq.id, at: nowIso() }] }));
+  send(res, 200, { ok: true, id: rq.id, leads: await leadLim(c.p) });
+});
 post('rq/create', async (req, res) => {
   const c = await need(req, 'rq.create'); const b = await body(req); const card = await rqTarget(c, b.cid);
   const offer = String(b.offer || '').trim().slice(0, 3000); if (!offer) return send(res, 400, { error: 'Опишите, что вы предлагаете' });

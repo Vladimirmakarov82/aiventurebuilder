@@ -228,24 +228,24 @@ var Demo=(function(){
       relation:{years:6,isClient:'yes',role:'Клиент по часам',lastContact:'2026-10',topic:'Часы к юбилею'},capitalBasis:'Доля в девелоперской компании, оценка по открытой отчетности',
       history:[{at:day(-40),what:'Карточка создана'},{at:day(-12),what:'Добавлен запрос: гражданство'},{at:day(-3),what:'Добавлены два интереса'}]}),
     c_sokol:cl({id:'c_sokol',owner:'p_irina',alias:'Виктор',age:'45–54',capital:'3–10',kids:1,investing:'sometimes',interests:['Авиация','Гольф'],
-      requests:[{id:'r3',cat:'aviation',text:'Джет-карта на зимний сезон',status:'open',at:day(-4),public:true}],
+      requests:[{id:'r32',cat:'realty',text:'Участок под виллу на Ибице',status:'open',at:day(-11),public:true},{id:'r3',cat:'aviation',text:'Джет-карта на зимний сезон',status:'open',at:day(-4),public:true}],
       cells:cells({'about.age':['45–54'],'business.source':['Логистика'],'interests.time':['Гольф по выходным'],'plans.asked':['Перелеты частным бортом']}),relation:{role:'Друг семьи',lastContact:'2026-11',topic:'Перелеты'}}),
     c_lira:cl({id:'c_lira',owner:'p_irina',alias:'Елена',age:'65+',capital:'25–100',kids:3,investing:'no',interests:['Искусство','Опера','Сады'],
-      requests:[{id:'r4',cat:'art',text:'Семейный портрет у современного художника',status:'open',at:day(-9),public:true},{id:'r5',cat:'health',text:'Комплексный чекап в Европе',status:'open',at:day(-2),public:true}],
+      requests:[{id:'r33',cat:'realty',text:'Апартаменты в Милане рядом с Брерой',status:'open',at:day(-48),public:true},{id:'r4',cat:'art',text:'Семейный портрет у современного художника',status:'open',at:day(-9),public:true},{id:'r5',cat:'health',text:'Комплексный чекап в Европе',status:'open',at:day(-2),public:true}],
       publicText:{r4:'Семейный портрет у современного художника'},
       cells:cells({'about.age':['65+'],'about.region':['Москва и Подмосковье'],'about.places':['Флоренция каждую весну'],'business.source':['Фармдистрибуция'],'family.circle':['С дочерью'],'family.kids':['Трое взрослых детей, пятеро внуков'],'interests.time':['Опера, сады'],'interests.subject':['Итальянская живопись'],'interests.memory':['Закрытая экскурсия по Уффици'],'prefs.formats':['Камерные события'],'plans.asked':['Портрет'],'plans.timing':['К юбилею в марте']}),relation:{role:'Давняя клиентка',lastContact:'2026-09',topic:'Подарок внучке'}}),
     c_borey:cl({id:'c_borey',owner:'p_irina',alias:'Сергей',age:'35–44',capital:'1–3',kids:0,investing:'active',interests:['Технологии'],requests:[{id:'r6',cat:'finance',text:'Счет в швейцарском банке',status:'closed',at:day(-30),public:true}]}),
-    c_granit:cl({id:'c_granit',owner:'p_mark',alias:'Олег',linkId:'l_demo01',age:'55–64',capital:'10–25',kids:2,investing:'active',interests:['Часы','Охота'],requests:[{id:'r7',cat:'watches',text:'Редкие независимые часы к 60-летию',status:'open',at:day(-5),public:true}],publicText:{r7:'Редкие независимые часы к юбилею'},cells:cells({'about.age':['55–64'],'interests.subject':['Часы ручной сборки']}),relation:{role:'Клиент по ВНЖ',lastContact:'2026-11',topic:'Португалия'}}),
-    c_kedr:cl({id:'c_kedr',owner:'p_mark',alias:'Наталья',age:'45–54',capital:'3–10',kids:1,investing:'sometimes',interests:['Горы','Образование'],requests:[{id:'r8',cat:'education',text:'Летний лагерь в Швейцарии для дочери 12 лет',status:'open',at:day(-3),public:true}],publicText:{r8:'Летний лагерь в Швейцарии для ребенка'}}),
+    c_granit:cl({id:'c_granit',owner:'p_mark',alias:'Олег',linkId:'l_demo01',age:'55–64',capital:'10–25',kids:2,investing:'active',interests:['Часы','Охота'],requests:[{id:'r30',cat:'realty',text:'Дом в Марбелье: жить зимой, летом сдавать',status:'open',at:day(-16),public:true},{id:'r7',cat:'watches',text:'Редкие независимые часы к 60-летию',status:'open',at:day(-5),public:true}],publicText:{r7:'Редкие независимые часы к юбилею'},cells:cells({'about.age':['55–64'],'interests.subject':['Часы ручной сборки']}),relation:{role:'Клиент по ВНЖ',lastContact:'2026-11',topic:'Португалия'}}),
+    c_kedr:cl({id:'c_kedr',owner:'p_mark',alias:'Наталья',age:'45–54',capital:'3–10',kids:1,investing:'sometimes',interests:['Горы','Образование'],requests:[{id:'r31',cat:'realty',text:'Квартира в Барселоне для дочери-студентки',status:'open',at:day(-24),public:true},{id:'r8',cat:'education',text:'Летний лагерь в Швейцарии для дочери 12 лет',status:'open',at:day(-3),public:true}],publicText:{r8:'Летний лагерь в Швейцарии для ребенка'}}),
     c_neptun:cl({id:'c_neptun',owner:'p_vera',alias:'Марина',age:'45–54',capital:'25–100',kids:2,investing:'active',interests:['Яхты','Вино'],requests:[{id:'r9',cat:'realty',text:'Вилла на Сардинии',status:'open',at:day(-8),public:true},{id:'r10',cat:'watches',text:'Часы к рождению внука',status:'open',at:day(-1),public:true}],publicText:{r9:'Вилла на побережье Италии',r10:'Часы к рождению внука'}}),
     c_orion:cl({id:'c_orion',owner:'p_oleg',alias:'Ирина',age:'55–64',capital:'3–10',kids:2,investing:'no',interests:['Рыбалка'],requests:[{id:'r11',cat:'security',text:'Охрана для поездок',status:'open',at:day(-2),public:true}]}),
     c_tigr:cl({id:'c_tigr',owner:'p_oleg',alias:'Павел',age:'45–54',capital:'10–25',kids:3,investing:'active',interests:['Охота','Авто'],requests:[{id:'r12',cat:'aviation',text:'Вертолет для охоты',status:'open',at:day(-2),public:true}],publicText:{r12:'Вертолет на сезон'}}),
     c_grig:cl({id:'c_grig',owner:'orbiq',alias:'Григорий',age:'55–64',capital:'25–100',kids:2,investing:'active',interests:['Яхты','Вино'],capitalBasis:'Продал сеть клиник в 2022, оценка сделки в открытой прессе',
       requests:[{id:'r20',cat:'realty',text:'Дом у моря в Италии для большой семьи',status:'open',at:day(-3),public:true},{id:'r21',cat:'citizenship',text:'ВНЖ в Португалии для младшего сына',status:'open',at:day(-2),public:true}],publicText:{r20:'Дом у моря в Италии для большой семьи'},
       cells:cells({'about.age':['55–64'],'business.source':['Частная медицина, сеть клиник, основатель'],'family.kids':['Двое сыновей, 12 и 24 года'],'interests.subject':['Бургундские вина, свой погреб'],'interests.time':['Парусные регаты'],'plans.next':['Купить дом у моря до лета']}),relation:{years:12,isClient:'yes',role:'Знакомы по бизнесу',lastContact:'2026-11',topic:'Переезд семьи'}}),
-    c_sofia:cl({id:'c_sofia',owner:'orbiq',alias:'Софья',age:'45–54',capital:'10–25',kids:1,investing:'sometimes',interests:['Искусство'],requests:[{id:'r22',cat:'art',text:'Портрет дочери к 18-летию',status:'open',at:day(-1),public:true}],
+    c_sofia:cl({id:'c_sofia',owner:'orbiq',alias:'Софья',age:'45–54',capital:'10–25',kids:1,investing:'sometimes',interests:['Искусство'],requests:[{id:'r34',cat:'realty',text:'Дом на Майорке до €1 млн',status:'open',at:day(-67),public:true},{id:'r22',cat:'art',text:'Портрет дочери к 18-летию',status:'open',at:day(-1),public:true}],
       cells:cells({'about.age':['45–54'],'interests.subject':['Современная графика']}),relation:{years:4,role:'Через общих друзей'}}),
-    c_kost:cl({id:'c_kost',owner:'orbiq',alias:'Константин',age:'35–44',capital:'3–10',interests:['Авиация'],requests:[]}),
+    c_kost:cl({id:'c_kost',owner:'orbiq',alias:'Константин',age:'35–44',capital:'3–10',interests:['Авиация'],requests:[{id:'r35',cat:'realty',text:'Квартира в Валенсии в ипотеку',status:'open',at:day(-1),public:true}]}),
     c_vega:cl({id:'c_vega',owner:'p_oleg',alias:'Татьяна',archived:true,archivedAt:day(-6),age:'45–54',capital:'1–3',kids:1,investing:'no',interests:['Йога'],requests:[]})
   };
   var NOTES={'p_irina/c_atlas':[{id:'n1',text:'Удобно звонить после 19:00. Про гражданство говорит охотно, про бизнес коротко.',at:day(-5)}],'p_irina/c_granit':[{id:'n2',text:'Возможно, знаком с Андреем по яхт-клубу. Уточнить осторожно.',at:day(-2)}]};
@@ -284,6 +284,60 @@ var Demo=(function(){
   var DEMAND={realty:{count:7,examples:[{text:'Дом у моря в Испании, рядом со школой',age:'55–64',capital:'10–25',when:'до лета'},{text:'Вилла на побережье Италии',age:'45–54',capital:'25–100',when:'в течение года'},{text:'Квартира в Дубае для сдачи',age:'35–44',capital:'3–10',when:'1–3 месяца'}]},
     aviation:{count:3,examples:[{text:'Джет-карта на зимний сезон',age:'45–54',capital:'3–10',when:'до декабря'}]}};
   var ICAL=null,INVREV={};
+  var BRIEF={
+    r32:{deal:'Участок и стройка',budget:'€3–4 млн',where:'Ибица, север острова: Сан-Жуан, Сан-Мигель',when:'Купить участок до лета 2027, стройка 2 года',
+      what:'Ищет участок с лицензией на строительство и видом на закат. Хочет строить сам со своим архитектором. Партнер приложил бриф клиента с требованиями и вопросами.',
+      details:['Участок от 5 000 м²','Лицензия на строительство','Вид на запад','До 25 минут до аэропорта'],
+      money:'Средства в ОАЭ. Стройку готов финансировать траншами',hurdles:['На севере острова почти нет участков с действующей лицензией','Нужен местный проектный менеджер'],
+      seen:'Был на острове в октябре, смотрел 3 участка с местным агентом',steps:[['Запрос подтвержден',1],['Смотрел объекты',1],['Юрист в Испании',0],['Деньги готовы',1]],
+      doc:{name:'Бриф клиента · участок Ибица.pdf',meta:'4 страницы · требования и вопросы',sections:[['Задача','Участок под семейную виллу 600–700 м². Хочет жить там 4 месяца в году, остальное время дом закрыт.'],['Обязательно','Действующая лицензия или реальный срок ее получения до 9 месяцев. Вода и электричество на участке. Нет линий электропередач в обзоре.'],['Желательно','Старые оливы на участке. Возможность сделать бассейн 20 м. Соседи не ближе 150 м.'],['Вопросы клиента','Сколько реально занимает получение лицензии на севере острова? Можно ли купить на испанскую компанию? Какой налог при последующей продаже через 10 лет?'],['Бюджет','Участок €1,2–1,8 млн. Стройка и дизайн до €2,2 млн. Сопровождение отдельно.']]}},
+    r33:{deal:'Покупка',budget:'€1,5–2 млн',where:'Милан, Брера или Порта Нуова',when:'Хотела купить до весны 2027',
+      what:'Апартаменты для поездок в оперу и на выставки, 6–8 раз в год. Важен исторический дом с консьержем и видом на внутренний двор.',
+      details:['2 спальни','Исторический дом','Консьерж','Парковка'],money:'Средства в Швейцарии',hurdles:['Клиент мог уже решить вопрос через другого брокера'],
+      seen:'Обсуждала с партнером в начале октября',steps:[['Запрос подтвержден',0],['Смотрел объекты',0],['Юрист в Италии',0],['Деньги готовы',1]]},
+    r34:{deal:'Покупка',budget:'до €1 млн',where:'Майорка, юго-запад',when:'Отпуск летом 2027',
+      what:'Небольшой дом для отпуска с дочерью, 2–3 спальни, можно под ремонт.',details:['2–3 спальни','Можно под ремонт','До 15 минут до моря'],
+      money:'Личные средства, возможна ипотека 50%',hurdles:[],seen:'',steps:[['Запрос подтвержден',0],['Смотрел объекты',0],['Юрист в Испании',0],['Деньги готовы',0]]},
+    r35:{deal:'Покупка в ипотеку',budget:'€450–600 тыс',where:'Валенсия, Русафа или Эль-Кармен',when:'Хочет купить до лета 2027',
+      what:'Переезжает работать в Валенсию на 3–5 лет. Первый взнос 40%, остальное ипотека испанского банка.',details:['2 спальни','Новостройка или после ремонта','Терраса'],
+      money:'Первый взнос €200 тыс в европейском банке',hurdles:['Нерезиденту нужна ипотека с подтверждением дохода'],seen:'',steps:[['Запрос подтвержден',1],['Смотрел объекты',0],['Юрист в Испании',0],['Деньги готовы',1]]},
+    r20:{deal:'Покупка',budget:'€4–6 млн',where:'Лигурия или Тоскана, первая линия',when:'Сделка до мая 2027',
+      what:'Семейный дом на 3 поколения: сам, жена, двое взрослых детей с семьями. Хочет собирать всех на лето с июня по сентябрь. Нужен участок с садом и выходом к морю, без соседей вплотную. Остальное время дом должен стоять под управлением, без сдачи посторонним.',
+      details:['7–8 спален','Гостевой дом для персонала','Участок от 4 000 м²','Причал или марина до 15 минут','Аэропорт до часа езды'],
+      money:'Средства на счетах в Швейцарии и ОАЭ. Платит без ипотеки, готов внести задаток 10%',
+      hurdles:['Итальянскому нотариусу нужно подтвердить происхождение средств','Покупка на семейный фонд, а не на физлицо'],
+      seen:'Смотрел 4 виллы в Портофино в сентябре. Отказал: мало земли и шумная дорога',
+      steps:[['Запрос подтвержден',1],['Смотрел объекты',1],['Юрист в Италии',0],['Деньги готовы',1]]},
+    r2:{deal:'Покупка',budget:'€2,5–3,5 млн',where:'Коста-дель-Соль: Марбелья, Сотогранде',when:'Переезд к сентябрю 2027',
+      what:'Переезжает с семьей на постоянное жительство. Главное условие: британская или международная школа в 10 минутах на машине. Дом с охраняемым поселком, младшему сыну 9 лет.',
+      details:['5 спален','Закрытый поселок с охраной','Школа IB до 10 минут','Сад и бассейн','Готов к заезду, без ремонта'],
+      money:'Продает долю в бизнесе, деньги придут в Q2 2027 на счет в Кипре',
+      hurdles:['Сделка зависит от закрытия продажи доли','Нужен испанский ВНЖ для детей до начала учебного года'],
+      seen:'Шортлист школ уже есть: Aloha College и Sotogrande International',
+      steps:[['Запрос подтвержден',1],['Смотрел объекты',0],['Юрист в Испании',1],['Деньги готовы',0]]},
+    r9:{deal:'Покупка',budget:'€8–12 млн',where:'Сардиния, Коста-Смеральда',when:'Хочет успеть к сезону 2027',
+      what:'Вилла для отдыха и приема гостей. Летом приходит на своей яхте 34 м, поэтому важна стоянка рядом. Хочет вид на море из главной спальни и место под винный погреб.',
+      details:['6 спален','Вид на море','Марина Порто-Черво рядом','Винный погреб','Отдельный вход для персонала'],
+      money:'Собственные средства в Монако. Рассматривает частичный кредит в швейцарском банке под залог портфеля',
+      hurdles:['Ограничения на перестройку в прибрежной зоне','Продавцы просят NDA до показа'],
+      seen:'Видела off-market предложение через знакомого брокера, не подошла планировка',
+      steps:[['Запрос подтвержден',1],['Смотрел объекты',1],['Юрист в Италии',1],['Деньги готовы',1]]},
+    r30:{deal:'Покупка и сдача',budget:'€1,8–2,5 млн',where:'Марбелья, Золотая миля или Нуэва Андалусия',when:'Решение до весны 2027',
+      what:'Хочет жить в доме с ноября по март, а летом сдавать. Ждет доходность от сдачи не ниже 4% годовых. Важно управление под ключ: уборка, заезды гостей, ремонт.',
+      details:['4 спальни','Лицензия на туристическую сдачу','Пешком до пляжа','Управляющая компания'],
+      money:'Средства в ОАЭ, переводит через европейский банк',
+      hurdles:['Нужна действующая лицензия на сдачу, новые в районе не выдают'],
+      seen:'Сравнивает с апартаментами в Дубае',
+      steps:[['Запрос подтвержден',1],['Смотрел объекты',0],['Юрист в Испании',0],['Деньги готовы',1]]},
+    r31:{deal:'Покупка',budget:'€900 тыс – 1,3 млн',where:'Барселона, Эшампле или Сант-Жерваси',when:'До сентября 2027',
+      what:'Дочь поступает в университет в Барселоне. Квартира на 4–6 лет учебы, потом под сдачу. Нужен консьерж в доме и безопасный район.',
+      details:['2–3 спальни','Консьерж','До 20 минут до кампуса','Балкон или терраса'],
+      money:'Деньги на счете в Казахстане, нужен понятный маршрут перевода',
+      hurdles:['Перевод средств из Казахстана в испанский банк'],
+      seen:'Пока изучает районы, объекты не смотрела',
+      steps:[['Запрос подтвержден',1],['Смотрел объекты',0],['Юрист в Испании',0],['Деньги готовы',0]]}
+  };
+  var LASK={};function leadLim(){var n=Object.keys(C).filter(function(k){var c=C[k];return c.owner===ME&&!c.archived&&(c.requests||[]).some(function(r){return r.status==='open'})}).length;var u=Object.keys(LASK).length;return {need:30,per:3,n:n,used:u,left:n>=30?Math.max(0,3-u):0,asked:Object.keys(LASK)}}
   var DOS={c_atlas:'Строительный бизнес с 2000-х, сейчас девелопмент жилья, совладелец. Поволжье. Двое детей, младший школьник. Увлекается парусом и независимыми часовщиками.',
     c_sokol:'Основатель логистической компании среднего масштаба. Центральная Россия. Один ребенок. Гольф по выходным, часто летает частным бортом.',
     c_lira:'Фармдистрибуция, вышла из операционного управления. Москва и область, весной Италия. Трое взрослых детей, пятеро внуков. Опера, итальянская живопись.',
@@ -350,7 +404,8 @@ var Demo=(function(){
     if(AS==='key'&&r==='me')return {role:null,email:'private@orbiqgroup.com',needKey:true,needSet:Q.get('set')==='1'};
     switch(r){
     case 'me':if(isOwner())return {role:'owner',owner:true,partner:{id:'orbiq',name:'Владимир',tier:'paid',suspended:false,tg:{connected:true}}};
-      var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on}}};
+      var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on},limits:{leads:leadLim()}}};
+    case 'lead/ask':{var ll=leadLim();if(ll.n<ll.need)fail(403,'Сначала загрузите '+ll.need+' своих клиентов с запросами');if(ll.left<1)fail(429,'Все 3 лида использованы');LASK[b.cid]=nowISO();audit('Запрос на связь с лидом',b.cid);return {ok:true,leads:leadLim()}}
     case 'auth/request':if(/private@/.test(b.email||''))return {ok:true,password:true};return {ok:true,test_link:'#/clients'};
     case 'auth/owner-login':if(String(b.password||'').length<4)fail(403,'Почта или пароль не подошли');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-key':if(String(b.key||'').length<4)fail(403,'Пароль не подошел');AS='owner';ME='orbiq';return {ok:true};
@@ -431,8 +486,8 @@ var Demo=(function(){
     case 'stats/public':return Q.get('empty')==='1'?{clients:0,byCapital:[],capitalSum:{min:0,max:0},withRequests:0,ticker:[]}:{clients:128,byCapital:[{range:'1–3',count:22},{range:'3–10',count:41},{range:'10–25',count:28},{range:'25–100',count:14},{range:'100+',count:4}],capitalSum:{min:1240,max:3410},withRequests:57,
       ticker:[{catTitle:'Гражданство и ВНЖ',capital:'10–25',age:'55–64',ago:'2 дня назад'},{catTitle:'Недвижимость',capital:'25–100',age:'45–54',ago:'3 дня назад'},{catTitle:'Образование детей',capital:'3–10',age:'45–54',ago:'4 дня назад'},{catTitle:'Искусство',capital:'10–25',age:'65+',ago:'5 дней назад'},{catTitle:'Здоровье',capital:'25–100',age:'55–64',ago:'неделю назад'},{catTitle:'Авиация и яхты',capital:'100+',age:'45–54',ago:'неделю назад'}]};
     case 'fit/list':{var mp2=meP();if(!mp2||!mp2.product)fail(403,'Подборка строится под продукт поставщика');var cats=mp2.product.categories||[];var e=mp2.product.typicalEarnPerClient||{min:5000,max:15000};
-      var rowsF=Object.keys(C).map(function(k){return C[k]}).filter(function(c){return !c.archived&&c.owner!==ME}).map(function(c){var hr=(c.requests||[]).filter(function(r){return r.status==='open'&&cats.indexOf(r.cat)>=0});var hit=hr.length>0;var mult=c.capital==='25–100'||c.capital==='100+'?1.6:c.capital==='10–25'?1.2:c.capital==='3–10'?.9:.6;
-        return {cid:c.id,alias:c.alias,age:c.age,capital:c.capital,dossier:DOS[c.id]||((c.interests||[]).length?'Интересы: '+c.interests.join(', ').toLowerCase()+'.':'Сведений пока немного.'),whyFit:hit?'Открытый запрос в вашем направлении':((c.kids>0&&mp2.product.fitSignals.join(' ').match(/дет/i))?'Семья с детьми, это признак вашего клиента':'Капитал и интересы совпадают с признаками продукта'),potential:{min:Math.round(e.min*mult/1000)*1000,max:Math.round(e.max*mult/1000)*1000},hasRequest:hit,reqAt:hit?hr[0].at:'',reqText:hit?hr[0].text:'',leadBy:leadOf(c)}}).sort(function(a,b){return b.hasRequest-a.hasRequest||b.potential.max-a.potential.max});
+      var rowsF=Object.keys(C).map(function(k){return C[k]}).filter(function(c){return !c.archived&&c.owner!==ME}).map(function(c){var hr=(c.requests||[]).filter(function(r){return r.status==='open'&&cats.indexOf(r.cat)>=0}).sort(function(a,b){return a.at<b.at?1:-1});var hit=hr.length>0;var mult=c.capital==='25–100'||c.capital==='100+'?1.6:c.capital==='10–25'?1.2:c.capital==='3–10'?.9:.6;
+        return {cid:c.id,alias:c.alias,age:c.age,capital:c.capital,dossier:DOS[c.id]||((c.interests||[]).length?'Интересы: '+c.interests.join(', ').toLowerCase()+'.':'Сведений пока немного.'),whyFit:hit?'Открытый запрос в вашем направлении':((c.kids>0&&mp2.product.fitSignals.join(' ').match(/дет/i))?'Семья с детьми, это признак вашего клиента':'Капитал и интересы совпадают с признаками продукта'),potential:{min:Math.round(e.min*mult/1000)*1000,max:Math.round(e.max*mult/1000)*1000},hasRequest:hit,reqAt:hit?hr[0].at:'',reqText:hit?hr[0].text:'',reqBrief:hit?BRIEF[hr[0].id]||null:null,leadBy:leadOf(c)}}).filter(function(r){return r.hasRequest}).sort(function(a,b){return a.reqAt<b.reqAt?1:-1});
       var pmin=0,pmax=0;rowsF.forEach(function(r){pmin+=r.potential.min;pmax+=r.potential.max});return {total:rowsF.length,potential:{min:pmin,max:pmax},rows:rowsF}}
     case 'seat/list':{if(q.cat){var tk=Object.keys(P).filter(function(k){return P[k].paid&&(P[k].paid.seats||[]).indexOf(q.cat)>=0});return {cat:q.cat,max:2,seats:tk.map(function(k){return {pid:k}}),waitlist:[]}}needOwner();return Object.keys(CATS).map(function(c){return {cat:c,max:2,seats:Object.keys(P).filter(function(k){return P[k].paid&&(P[k].paid.seats||[]).indexOf(c)>=0}).map(function(k){return {pid:k,name:P[k].name}}),waitlist:c==='watches'?[{name:'Заявка в листе ожидания'}]:[]}})}
     case 'audit':needOwner();return AUD.slice(0,+(q.limit||100));
@@ -1218,6 +1273,10 @@ var A={
   cconfirm:function(el){confirmCheck(el)},
   leadf:function(el){S.leadF=el.getAttribute('data-v');vFit()},
   getlead:function(el){getLeadSheet(el.getAttribute('data-c'))},
+  pick:function(el){var c=el.getAttribute('data-c');var a=picks();var i=a.indexOf(c);if(i>=0)a.splice(i,1);else{if(a.length>=3){toast('Можно выбрать до 3 лидов','alert');return}a.push(c)}setPicks(a);S.leadOpen=c;vFit()},
+  leaddoc:function(el){var r=(S.leads||[]).find(function(x){return x.cid===el.getAttribute('data-c')})||{};var D=(r.reqBrief||{}).doc;if(!D)return;
+    sheet('<div class="kick">Документ от партнера · '+E(r.alias||'')+'</div><h2>'+E(D.name)+'</h2><p class="hint">Партнер обезличил документ: имен, контактов и названий компаний в нем нет</p><div class="jdoc">'+(D.sections||[]).map(function(x){return '<section><h4>'+E(x[0])+'</h4><p>'+E(x[1])+'</p></section>'}).join('')+'</div>',true)},
+  'upgrade-info':function(){upgradeSheet()},
   bulk:function(){bulkSheet()},
   leavefocus:function(){leaveFocus();vFit()},
   upgrade:function(){api('product/suggest',{text:'Хочу статус «Партнер Orbiq» ($20 000 в год), чтобы связаться с лидами сети'}).then(function(){closeSheet();toast('Orbiq свяжется с вами')}).catch(function(e){toast(e.message,'alert')})},
@@ -1536,63 +1595,106 @@ function seatCard(st,dark){if(!st)return '';var sl='';for(var i=0;i<st.max;i++)s
   return '<div class="card '+(dark?'dk ':'')+'rv stack" style="--i:3;gap:12px"><span class="kick"'+(dark?' style="color:var(--dmute)"':'')+'>Места «Партнер Orbiq» · '+E(CATS[st.cat]||st.cat)+'</span><h2'+(dark?' style="color:#fff"':'')+'>Занято '+st.taken+' из '+st.max+'</h2><div class="seatbar">'+sl+'</div><p class="hint"'+(dark?' style="color:var(--dmute)"':'')+'>'+(st.taken>=st.max?'Мест нет. Можно встать в лист ожидания':'Два места на направление. Первым видит новые запросы своей категории')+'</p></div>'}
 
 function leadAge(r){if(!r.reqAt)return null;return Math.max(0,Math.floor((Date.now()-Date.parse(r.reqAt))/864e5))}
-function leadKind(r){var d=leadAge(r);if(d==null)return 'int';return d<=7?'hot':d<=30?'warm':'cold'}
+function leadKind(r){var d=leadAge(r);if(d==null)return 'int';return d<=7?'hot':d<=30?'warm':'old'}
+function LL(){var l=(S.me&&S.me.partner&&S.me.partner.limits&&S.me.partner.limits.leads)||{};return {need:+l.need||30,per:+l.per||3,n:+l.n||0,used:+l.used||0,left:+l.left||0,asked:l.asked||[]}}
+function picks(){try{return JSON.parse(localStorage.getItem('oc_pick')||'[]')}catch(e){return []}}
+function setPicks(a){try{localStorage.setItem('oc_pick',JSON.stringify(a.slice(0,3)))}catch(e){}}
 var LK={hot:['Горячий','запрос за последние 7 дней'],warm:['Теплый','запрос за последние 30 дней'],cold:['Запрос','больше 30 дней назад'],int:['По интересам','запроса нет, совпадают интересы']};
 function agoD(d){return d===0?'сегодня':d===1?'вчера':d+' '+plural(d,'день','дня','дней')+' назад'}
 function stageHtml(t){var rn=readyN();var st=t==='paid'||t==='basic'?3:(S.me.partner&&S.me.partner.pf==='submitted')?2:1;
   var it=[['Занесите своих клиентов',rn.n+' из '+rn.need+' карточек','#/new'],['Проверка Orbiq','2–3 дня после '+rn.need+' карточек',''],['Предлагайте лидам','через Orbiq, клиент остается за вами','']];
   return '<div class="stg rv"><div class="stg-h"><span class="kick">Ваш этап</span><b>'+(st===1?'Шаг 1 из 3. Занесите '+rn.need+' своих клиентов, чтобы предлагать лидам':st===2?'Шаг 2 из 3. Orbiq проверяет ваш портфель':'Шаг 3 из 3. Предлагайте лидам через Orbiq')+'</b></div><ol class="stg-l">'+it.map(function(x,k){var c=k+1<st?'done':k+1===st?'cur':'';return '<li class="'+c+'"><i>'+(k+1<st?ic('check'):k+1)+'</i><span><b>'+x[0]+'</b><small>'+x[1]+'</small></span>'+(k===0&&st===1?'<i class="gate-p"><i style="width:'+Math.min(100,Math.round(rn.n/rn.need*100))+'%"></i></i>':'')+'</li>'}).join('')+'</ol><div class="row">'+(st===1?btn('Добавить клиента','pri','data-a="go" data-h="#/new"','plus')+'<a class="btn soft" href="#/help">'+ic('note')+'Как быстро занести 50</a>':'<a class="btn soft" href="#/help">'+ic('note')+'Сценарий разговора</a>')+'</div></div>'}
+function pathHtml(){var l=LL(),pk=picks().length,open=l.n>=l.need;var st=open?(l.left>0?3:4):(pk?2:1);
+  var it=[['Выберите лиды',pk?'Выбрано '+pk+' из 3':'Отметьте до 3 клиентов, с которыми хотите связаться'],
+    ['Загрузите своих клиентов',open?'Готово: '+l.n+' клиентов с запросами':l.n+' из '+l.need+' клиентов с запросами'],
+    ['Свяжитесь через Orbiq',open?'Доступно '+l.left+' из '+l.per+' лидов':'Откроется '+l.per+' лида']];
+  return '<section class="jpath" id="jpath"><div class="jpath-h"><span class="jp-k">Как начать работать с лидами</span><button type="button" class="jh-lnk" data-a="upgrade-info">Сразу без лимита: Партнер Orbiq '+ic('ar')+'</button></div><ol>'+it.map(function(x,k){var c=k+1<st?'done':k+1===st?'cur':'';
+    return '<li class="'+c+'"><i>'+(k+1<st?ic('check'):(k+1))+'</i><div><b>'+x[0]+'</b><span>'+x[1]+'</span>'+(k===1?'<em class="jpath-bar"><u style="width:'+Math.min(100,Math.round(l.n/l.need*100))+'%"></u></em>':'')+'</div>'+
+      (k===1&&c==='cur'?btn('Загрузить список','sm dark','data-a="bulk"','upload'):'')+'</li>'}).join('')+'</ol>'+
+    '<p class="jpath-n">'+(open?'Нажмите «Связаться» у лида. Orbiq передаст ваш запрос партнеру клиента и организует знакомство':'За '+l.need+' своих клиентов с запросами Orbiq открывает связь с '+l.per+' лидами. Только имена, без фамилий и контактов. Клиенты остаются за вами')+'</p></section>'}
 function vFit(){
   var t=ptier();var first=!isOwner()&&localStorage.getItem('oc_tour')!=='1'&&t!=='paid';
   document.body.classList.toggle('focus',first);
   loading('fit');
-  Promise.all([api('fit/list'),loadSent()]).then(function(rr){var d=rr[0]||{};var rows=(d.rows||[]).slice().sort(function(a,b){var x=leadAge(a),y=leadAge(b);return (x==null?1e9:x)-(y==null?1e9:y)});
-    var can=d.canOffer!=null?!!d.canOffer:(t==='basic'||t==='paid');var lim=rqLimit();S.leads=rows;
-    var kk=function(r){var k=leadKind(r);return k==='cold'?'warm':k};
-    var cnt={all:rows.length,hot:0,warm:0,int:0};rows.forEach(function(r){cnt[kk(r)]++});
+  Promise.all([api('fit/list'),loadSent()]).then(function(rr){var d=rr[0]||{};var rows=(d.rows||[]).filter(function(r){return r.reqAt||r.hasRequest}).slice().sort(function(a,b){return (leadAge(a)||0)-(leadAge(b)||0)});
+    var can=d.canOffer!=null?!!d.canOffer:(t==='basic'||t==='paid');var lim=rqLimit();S.leads=rows;var l=LL();var pk=picks();
+    var cnt={all:rows.length,hot:0,warm:0,old:0};rows.forEach(function(r){var k=leadKind(r);if(cnt[k]!=null)cnt[k]++});
     var f=S.leadF||'all';if(f!=='all'&&!cnt[f])f='all';
     var nm=((S.me.partner||{}).name||'').split(' ')[0];
-    var tabs=[['all','Все'],['hot','Горячие','запрос за последние 7 дней'],['warm','Теплые','запрос за последние 30 дней и раньше'],['int','По интересам','запроса нет, совпадают интересы']].filter(function(x){return x[0]==='all'||cnt[x[0]]});
+    var tabs=[['all','Все'],['hot','Горячие','запрос за последние 7 дней'],['warm','Актуальные','запрос за последние 30 дней'],['old','Нужно подтвердить','запрос старше месяца, актуальность уточнит партнер клиента']].filter(function(x){return x[0]==='all'||cnt[x[0]]});
     var head='<header class="jh rv">'+(first?'<div class="jh-bar"><span class="jh-logo">ORBIQ ROOM</span><button type="button" class="jh-lnk" data-a="leavefocus">Кабинет '+ic('ar')+'</button></div>':'')+
-      '<div class="jh-row"><div><h1>Лиды</h1><p>'+(first&&nm?E(nm)+', это клиенты':'Клиенты')+' партнеров Orbiq, которым подходит ваш продукт</p></div></div>'+
+      '<div class="jh-row"><div><h1>Лиды</h1><p>'+(first&&nm?E(nm)+', это запросы':'Запросы')+' клиентов партнеров Orbiq на ваш продукт. Клиентов привели партнеры сети, связь идет через Orbiq</p></div></div>'+
+      (can?'':pathHtml())+
       '<nav class="jt" role="tablist">'+tabs.map(function(x){return '<button type="button" role="tab" data-lf="'+x[0]+'" class="'+(f===x[0]?'on':'')+'"'+(x[2]?' title="'+x[2]+'"':'')+'>'+x[1]+'<sup>'+cnt[x[0]]+'</sup></button>'}).join('')+'</nav></header>';
-    var item=function(r,i){var k=kk(r),dd=leadAge(r);
-      var when=dd!=null?'запрос '+agoD(dd):'совпадают интересы';
-      var ds=String(r.dossier||'');var cut=ds.search(/[.!?](\s|$)/);var lead1=r.reqText||(cut>0?ds.slice(0,cut):ds)||r.whyFit||'';var rest=r.reqText?ds:(cut>0?ds.slice(cut+1).trim():'');
-      var act=can?btn('Предложить через Orbiq','sm dark','data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':'')):btn('Связаться','sm dark','data-a="getlead" data-c="'+E(r.cid)+'"');
-      return '<article class="je '+k+'" data-k="'+k+'"'+(f!=='all'&&f!==k?' hidden':'')+'>'+
-        '<button type="button" class="je-h" aria-expanded="false"><span class="je-n">'+String(i+1).padStart(2,'0')+'</span>'+
-        '<span class="je-m"><span class="je-w">'+(k==='hot'?'<i></i>':'')+E(when)+'</span><span class="je-q">'+E(lead1)+'</span><span class="je-p">'+E(r.alias)+' · '+E(ageL(r.age))+' · капитал '+E(capL(r.capital))+'</span></span>'+
-        '<span class="je-x" aria-hidden="true"></span></button>'+
-        '<div class="je-b"><div><div class="je-in">'+(rest?'<p class="je-d">'+E(rest)+'</p>':'')+
-          (r.whyFit?'<dl><dt>Почему вам</dt><dd>'+E(r.whyFit)+'</dd></dl>':'')+
-          '<dl><dt>Ваш доход</dt><dd>'+E(range(r.potential))+' с клиента</dd></dl><dl><dt>Ведет</dt><dd>'+E(r.leadBy||'партнер сети')+'</dd></dl>'+
-          '<div class="je-a">'+act+'</div></div></div></div></article>'};
-    page('fit',head+(rows.length?'<div class="jl">'+rows.map(item).join('')+'</div>':'<div class="je-empty"><p>Лидов пока нет</p><span>Они появятся здесь, когда в сети будут клиенты под ваш продукт</span></div>'),
+    var item=function(r,i){var k=leadKind(r),dd=leadAge(r),B=r.reqBrief||null;
+      var when='запрос '+agoD(dd);
+      var ds=String(r.dossier||'');var title=r.reqText||'';
+      var strip=B?[B.deal,B.where,B.when].filter(Boolean):[];
+      var asked=l.asked.indexOf(r.cid)>=0,picked=pk.indexOf(r.cid)>=0;
+      var act=can?btn('Предложить через Orbiq','pri','data-a="go" data-h="#/c/'+E(r.cid)+'/offer"'+(lim.left<1?' disabled title="'+E(limText())+'"':''),'send'):
+        asked?'<span class="jp-sent">'+ic('check')+'Запрос на связь отправлен в Orbiq</span>':btn('Связаться с клиентом','pri','data-a="getlead" data-c="'+E(r.cid)+'"','send');
+      var pickB=can||asked?'':'<button type="button" class="jp-pick'+(picked?' on':'')+'" data-a="pick" data-c="'+E(r.cid)+'">'+ic(picked?'check':'plus')+'<span>'+(picked?'В вашем списке':'Выбрать лид')+'</span></button>';
+      var st=B&&B.steps||[];var done=st.filter(function(x){return x[1]}).length;
+      var n=0;var bl=function(h){return '<div class="jp-s" style="--j:'+(n++)+'">'+h+'</div>'};
+      var left=(k==='old'?bl('<p class="jp-old">'+ic('clock')+'Запросу '+agoD(dd).replace(' назад','')+'. Партнер, который ведет клиента, подтвердит актуальность за 1–2 дня после вашего запроса на связь</p>'):'')+
+        (B?bl('<span class="jp-k">Что хочет</span><p class="jp-what">'+E(B.what)+'</p>')+
+          (B.doc?bl('<span class="jp-k">Документ от партнера</span><button type="button" class="jp-doc" data-a="leaddoc" data-c="'+E(r.cid)+'"><span class="jp-doc-i">PDF</span><span><b>'+E(B.doc.name)+'</b><small>'+E(B.doc.meta||'')+'</small></span>'+ic('ar')+'</button>'):'')+
+          ((B.details||[]).length?bl('<span class="jp-k">Детали</span><div class="jp-ch">'+B.details.map(function(x){return '<span>'+E(x)+'</span>'}).join('')+'</div>'):'')+
+          (B.seen?bl('<span class="jp-k">Что уже сделано</span><p class="jp-seen">'+ic('check')+E(B.seen)+'</p>'):'')+
+          ((B.hurdles||[]).length?bl('<span class="jp-k">Сложности</span><ul class="jp-h">'+B.hurdles.map(function(x){return '<li>'+E(x)+'</li>'}).join('')+'</ul>'):'')
+        :bl('<span class="jp-k">Запрос</span><p class="jp-what">'+E(title)+'</p><p class="jp-note">Партнер описал запрос коротко. Детали уточните при знакомстве через Orbiq</p>'))+
+        (ds?bl('<span class="jp-k">О клиенте</span><p class="jp-dos">'+E(ds)+'</p>'):'');
+      var right=(B?bl('<span class="jp-k">Условия сделки</span><dl class="jp-dl">'+[['Формат',B.deal],['Бюджет',B.budget],['Где',B.where],['Сроки',B.when],['Деньги',B.money]].filter(function(x){return x[1]}).map(function(x){return '<div><dt>'+x[0]+'</dt><dd>'+E(x[1])+'</dd></div>'}).join('')+'</dl>')+
+          (st.length?bl('<div class="jp-rh"><span class="jp-k">Готовность сделки</span><b>'+done+' из '+st.length+'</b></div><div class="jp-bar">'+st.map(function(x){return '<i class="'+(x[1]?'f':'')+'"></i>'}).join('')+'</div><ul class="jp-st">'+st.map(function(x){return '<li class="'+(x[1]?'f':'')+'">'+(x[1]?ic('check'):'<i></i>')+E(x[0])+'</li>'}).join('')+'</ul>'):''):'')+
+        bl('<dl class="jp-dl sm"><div><dt>Ваш доход</dt><dd>'+E(range(r.potential))+' со сделки</dd></div><div><dt>Ведет</dt><dd>'+E(r.leadBy||'партнер сети')+'</dd></div></dl>')+
+        bl('<div class="jp-cta">'+act+pickB+'<small>Связь идет через Orbiq. Клиент остается за партнером, который его привел</small></div>');
+      return '<article class="je '+k+(picked?' picked':'')+'" data-k="'+k+'" data-c="'+E(r.cid)+'"'+(f!=='all'&&f!==k?' hidden':'')+' style="--i:'+Math.min(i,10)+'">'+
+        '<div class="je-h" role="button" tabindex="0" aria-expanded="false">'+
+          '<div class="je-l"><span class="je-w '+k+'"><i></i>'+E(when)+'</span>'+(k==='old'?'<span class="je-cf">Нужно подтвердить</span>':'')+(picked?'<span class="je-pk">'+ic('check')+'Выбран</span>':'')+'</div>'+
+          '<div class="je-m"><h3 class="je-q">'+E(title)+'</h3>'+(strip.length?'<div class="je-s">'+strip.map(function(x){return '<span>'+E(x)+'</span>'}).join('')+(B&&B.doc?'<span class="d">'+ic('file')+'Документ</span>':'')+'</div>':'')+
+            '<div class="je-p"><span class="je-av">'+E((r.alias||'?').charAt(0))+'</span>'+E(r.alias)+', '+E(ageL(r.age))+' · капитал '+E(capL(r.capital))+'</div></div>'+
+          '<div class="je-r">'+(B&&B.budget?'<span class="jp-k">Бюджет</span><b>'+E(B.budget)+'</b>':'<span class="jp-k">Ваш доход</span><b>'+E(range(r.potential))+'</b>')+'</div>'+
+          '<span class="je-x" aria-hidden="true"></span></div>'+
+        '<div class="je-b"><div><div class="jp"><div class="jp-a">'+left+'</div><div class="jp-b">'+right+'</div></div></div></div></article>'};
+    page('fit',head+(rows.length?'<div class="jl">'+rows.map(item).join('')+'</div>':'<div class="je-empty"><p>Запросов на ваш продукт пока нет</p><span>Они появятся здесь, как только партнеры сети занесут клиентов с таким запросом</span></div>'),
     function(m){var list=$('.jl',m);if(!list)return;
       var open=function(a,on){var h=$('.je-h',a);a.classList.toggle('open',on);h.setAttribute('aria-expanded',on?'true':'false')};
       list.addEventListener('click',function(e){var h=e.target.closest('.je-h');if(!h)return;var a=h.parentNode;open(a,!a.classList.contains('open'))});
+      var fv=$$('.je',list).filter(function(a){return !a.hidden})[0];if(fv&&!S.leadOpen)setTimeout(function(){open(fv,true)},350);
+      if(S.leadOpen){var lo=$('.je[data-c="'+S.leadOpen+'"]',list);if(lo)open(lo,true);S.leadOpen=null}
+      list.addEventListener('keydown',function(e){var h=e.target.closest('.je-h');if(h&&(e.key==='Enter'||e.key===' ')){e.preventDefault();h.click()}});
       $$('.jt button',m).forEach(function(b){b.addEventListener('click',function(){var v=b.getAttribute('data-lf');S.leadF=v;$$('.jt button',m).forEach(function(x){x.classList.toggle('on',x===b)});
-        $$('.je',list).forEach(function(a){a.hidden=!(v==='all'||a.getAttribute('data-k')===v)})})});
-      });
+        $$('.je',list).forEach(function(a){a.hidden=!(v==='all'||a.getAttribute('data-k')===v)})})})});
   }).catch(function(e){page('fit',e.status===403?'<div class="card">'+emptyBox('Лиды недоступны','Они строятся под продукт поставщика')+'</div>':errBox(e))});
 }
 function leaveFocus(){localStorage.setItem('oc_tour','1');document.body.classList.remove('focus');S.tour=0}
-function getLeadSheet(cid){var r=(S.leads||[]).find(function(x){return x.cid===cid})||{};var rn=readyN();
-  var el=sheet('<div class="kick">'+E(r.alias||'Лид')+(r.reqText?' · «'+E(r.reqText)+'»':'')+'</div><h2>Как получить этого клиента</h2><p class="hint">Связь с клиентами сети идет через Orbiq. Откройте доступ одним из двух способов</p>'+
-   '<div class="gopt"><section class="go1"><span class="kick">Бесплатно · 2 минуты</span><h3>Загрузите список своих клиентов</h3><ul><li>Только имена, без фамилий и контактов. Никто, включая Orbiq, не узнает, кто это</li><li>Клиенты остаются за вами навсегда</li><li>Запросы и детали добавите потом, когда будет время</li><li>Когда у вас '+rn.need+' клиентов с заполненными карточками, Orbiq проверяет портфель и открывает вам связь с лидами</li></ul>'+btn('Загрузить список клиентов','pri','data-a="bulk"','upload')+'<small class="mu">Сейчас у вас '+rn.n+' из '+rn.need+'</small></section>'+
-   '<section class="go2"><span class="kick">Сразу</span><h3>Станьте Партнером Orbiq</h3><ul><li>Связь с горячими лидами сразу, без лимита</li><li>Видите новые запросы на 72 часа раньше остальных</li><li>Два места на направление, ваш продукт в приоритете</li></ul><p class="go2-p">$20 000 в год</p>'+btn('Обсудить с Orbiq','dark','data-a="upgrade"','msg')+'</section></div>',true);
+function upgradeSheet(){closeSheet();sheet('<div class="kick">Партнер Orbiq</div><h2>Связь с лидами без лимита</h2><ul class="gl"><li>Связь со всеми лидами под ваш продукт, без загрузки клиентов</li><li>Новые запросы видите на 72 часа раньше остальных</li><li>Два места на направление, ваш продукт в приоритете у сети</li><li>Можно дарить клиентам 3 месяца Orbiq</li></ul><p class="go2-p">$20 000 в год</p>'+btn('Обсудить с Orbiq','pri','data-a="upgrade"','msg'),true)}
+function getLeadSheet(cid){var r=(S.leads||[]).find(function(x){return x.cid===cid})||{};var l=LL();
+  if(l.n>=l.need&&l.left>0){var el=sheet('<div class="kick">'+E(r.alias||'Лид')+' · «'+E(r.reqText||'')+'»</div><h2>Запрос на связь через Orbiq</h2><p class="hint">Orbiq передаст запрос партнеру, который ведет клиента. Он '+(leadKind(r)==='old'?'подтвердит актуальность и ':'')+'организует знакомство. Останется лидов: '+(l.left-1)+' из '+l.per+'</p><textarea class="ta" id="lask" placeholder="Коротко: что вы предложите клиенту. Например: есть 2 off-market виллы в Лигурии под его требования, могу показать в декабре"></textarea><div class="row">'+btn('Отправить запрос','pri','id="laskgo"','send')+'</div>',true);
+    $('#laskgo',el).addEventListener('click',function(){var tx=$('#lask',el).value.trim();if(tx.length<10){toast('Напишите, что предложите клиенту','alert');return}this.disabled=true;
+      api('lead/ask',{cid:cid,text:tx}).then(function(x){if(x&&x.leads&&S.me.partner){S.me.partner.limits=S.me.partner.limits||{};S.me.partner.limits.leads=x.leads}var a=picks().filter(function(c){return c!==cid});setPicks(a);closeSheet();toast('Запрос отправлен. Orbiq свяжется с вами');S.leadOpen=cid;vFit()}).catch(function(e){toast(e.message||'Не получилось','alert')})});return}
+  if(l.n>=l.need&&l.left<1){upgradeSheet();return}
+  var pct=Math.min(100,Math.round(l.n/l.need*100));
+  sheet('<div class="kick">'+E(r.alias||'Лид')+(r.reqText?' · «'+E(r.reqText)+'»':'')+'</div><h2>Как связаться с этим клиентом</h2><p class="hint">Клиента ведет другой партнер, поэтому связь идет через Orbiq. Откройте ее одним из двух способов</p>'+
+   '<div class="gopt"><section class="go1"><span class="kick">Бесплатно</span><h3>Загрузите '+l.need+' своих клиентов с запросами</h3><p class="gl-t">За это Orbiq откроет связь с '+l.per+' лидами на выбор. Этот клиент '+(picks().indexOf(cid)>=0?'уже в вашем списке':'добавится в ваш список')+'</p><div class="gprog"><u style="width:'+pct+'%"></u></div><small class="mu">У вас '+l.n+' из '+l.need+'</small><ul><li>Только имя, возраст, сфера и запрос. Без фамилий и контактов</li><li>Запрос клиента может быть на любую услугу сети: недвижимость, гражданство, обучение, часы</li><li>Клиенты остаются за вами, их видят только обезличенно</li></ul>'+btn('Загрузить список клиентов','pri','data-a="bulk"','upload')+'</section>'+
+   '<section class="go2"><span class="kick">Сразу</span><h3>Станьте Партнером Orbiq</h3><ul><li>Связь со всеми лидами без лимита</li><li>Новые запросы на 72 часа раньше остальных</li><li>Два места на направление</li></ul><p class="go2-p">$20 000 в год</p>'+btn('Обсудить с Orbiq','pri','data-a="upgrade"','msg')+'</section></div>',true);
+  if(cid&&picks().indexOf(cid)<0&&picks().length<3)setPicks(picks().concat([cid]));
 }
 function bulkSheet(){closeSheet();
-  var el=sheet('<div class="kick">Мои клиенты</div><h2>Загрузить список клиентов</h2><p class="hint">Одна строка, один клиент. Имя и все, что знаете, через запятую. Без фамилий, телефонов и почты. Например: «Андрей, 52 года, логистика, ищет дом в Испании»</p><textarea class="ta" id="blk" style="min-height:240px" placeholder="Андрей, 52, логистика, ищет дом в Испании&#10;Ирина, 45, сеть клиник, дети учатся в Лондоне&#10;Олег, 60, агробизнес"></textarea><div class="row" style="justify-content:space-between"><span class="hint" id="blkn">0 клиентов</span>'+btn('Загрузить','pri','id="blkgo"','upload')+'</div><p class="err" id="blke" hidden></p>',true);
+  var el=sheet('<div class="kick">Мои клиенты</div><h2>Загрузить список клиентов</h2><p class="hint">Одна строка, один клиент: имя, возраст, сфера и что он сейчас ищет. Без фамилий, телефонов и почты. Например: «Андрей, 52 года, логистика, ищет дом в Испании». Для связи с лидами считаются клиенты с запросом</p><textarea class="ta" id="blk" style="min-height:240px" placeholder="Андрей, 52, логистика, ищет дом в Испании&#10;Ирина, 45, сеть клиник, дети учатся в Лондоне&#10;Олег, 60, агробизнес"></textarea><div class="row" style="justify-content:space-between"><span class="hint" id="blkn">0 клиентов</span>'+btn('Загрузить','pri','id="blkgo"','upload')+'</div><p class="err" id="blke" hidden></p>',true);
   var ta=$('#blk',el),n=$('#blkn',el);var lines=function(){return ta.value.split('\n').map(function(x){return x.trim()}).filter(Boolean).slice(0,300)};
   ta.addEventListener('input',function(){var k=lines().length;n.textContent=k+' '+plural(k,'клиент','клиента','клиентов')});
-  $('#blkgo',el).addEventListener('click',function(){var L=lines();if(!L.length)return;var b=this;b.disabled=true;var ok=0,i=0;
-    var next=function(){if(i>=L.length){toast('Загружено: '+ok+' '+plural(ok,'клиент','клиента','клиентов'));closeSheet();leaveFocus();go('#/clients');return}
-      var line=L[i++];var parts=line.split(/[,;—–-]/);var alias=parts[0].replace(/[^\p{L}\p{N} .'’\-]/gu,'').trim().slice(0,30)||('Клиент '+i);var rest=parts.slice(1).join(',').trim();
-      var tryAlias=function(a,k){return api(rest.length>=20?'client/intake':'client/create',rest.length>=20?{alias:a,text:line}:{alias:a}).then(function(){ok++;n.textContent='Загружено '+ok+' из '+L.length}).catch(function(e){if(e.status===409&&k<9)return tryAlias(alias+' '+(k+2),k+1);})};
+  $('#blkgo',el).addEventListener('click',function(){var L=lines();if(!L.length)return;var b=this;b.disabled=true;var ok=0,wr=0,i=0;
+    var next=function(){if(i>=L.length){toast('Загружено: '+ok+' '+plural(ok,'клиент','клиента','клиентов')+', с запросом: '+wr);api('me').then(function(m){if(m&&m.partner)S.me.partner.limits=m.partner.limits}).catch(function(){}).then(function(){closeSheet();if(location.hash==='#/fit'||location.hash==='')vFit();else go('#/fit')});return}
+      var line=L[i++];var parts=line.split(/[,;]/);var alias=parts[0].replace(/[^\p{L}\p{N} .'’\-]/gu,'').trim().slice(0,30)||('Клиент '+i);
+      var am=/(\d{2})\s*(лет|год|г\b|,|$)/.exec(line);var a=am?+am[1]:0;var age=a?(a<35?'<35':a<45?'35–44':a<55?'45–54':a<65?'55–64':'65+'):'';
+      var rm=/(ищет|хочет|нужн\S*|планирует|интересует|запрос:?|выбирает|покупает)\s+(.{4,})$/i.exec(line);var rq=rm?(rm[0].charAt(0).toUpperCase()+rm[0].slice(1)).slice(0,200):'';
+      var patch={};if(age)patch.age=age;if(rq)patch.requests=[{cat:guessCat(rq),text:rq,status:'open',public:true}];
+      var tryAlias=function(nm,k){return api('client/create',{alias:nm}).then(function(c){ok++;n.textContent='Загружено '+ok+' из '+L.length;var id=c&&(c.id||(c.card&&c.card.id));if(id&&Object.keys(patch).length)return api('client/update',{id:id,patch:patch}).then(function(){if(rq)wr++}).catch(function(){})}).catch(function(e){if(e.status===409&&k<9)return tryAlias(alias+' '+(k+2),k+1)})};
       tryAlias(alias,0).then(next,next)};next()});
 }
+function guessCat(t){var R=[[/гражданств|паспорт|внж|резидентств/i,'citizenship'],[/дом|вилл|квартир|апартамент|участок|недвиж/i,'realty'],[/час(ы|ов)\b|часовщ/i,'watches'],[/счет|платеж|перевод|валют|банк/i,'finance'],[/pre-?ipo|инвест|доля|акци/i,'preipo'],[/охран|безопасн/i,'security'],[/чекап|клиник|лечени|здоров/i,'health'],[/школ|университет|лагер|пансион|обучен/i,'education'],[/картин|портрет|искусств|коллекц/i,'art'],[/джет|перелет|самолет|вертолет/i,'aviation']];
+  for(var k=0;k<R.length;k++)if(R[k][0].test(t)&&CATS[R[k][1]])return R[k][1];return CATS.travel?'travel':Object.keys(CATS)[0]}
 
 function productView(pr,opt){opt=opt||{};pr=pr||{};var e=pr.typicalEarnPerClient||{};
   return '<div class="prod"><div class="card rv stack" style="gap:16px"><span class="kick">'+(opt.kick||'Ваш продукт в сети')+'</span><p class="sum">'+E(pr.summary||'Описание появится после проверки Orbiq')+'</p>'+

@@ -173,12 +173,21 @@ export function circle(card) {
 }
 
 // ---------- сетевое представление и строки таблицы ----------
+const bs = (v, n = 300) => (typeof v === 'string' && !hasContacts(v) ? v.trim().slice(0, n) : '');
+export function cleanBrief(b) {
+  if (!b || typeof b !== 'object') return null;
+  const arr = (a, n) => (Array.isArray(a) ? a.map(x => bs(x, 160)).filter(Boolean).slice(0, n) : []);
+  const o = { deal: bs(b.deal, 40), budget: bs(b.budget, 60), where: bs(b.where, 120), when: bs(b.when, 80), what: bs(b.what, 900), money: bs(b.money, 240), seen: bs(b.seen, 240),
+    details: arr(b.details, 10), hurdles: arr(b.hurdles, 6),
+    steps: (Array.isArray(b.steps) ? b.steps : []).filter(x => Array.isArray(x) && bs(x[0], 40)).slice(0, 6).map(x => [bs(x[0], 40), x[1] ? 1 : 0]) };
+  return o.what || o.budget ? o : null;
+}
 export function networkView(c) {
   const pt = c.publicText || {};
   return {
     id: c.id, alias: c.alias, age: c.age || '', capital: c.capital || '', kids: c.kids ?? null, investing: c.investing || '',
     interests: (c.interests || []).filter(x => !hasContacts(x)),
-    requests: (c.requests || []).filter(r => r.status === 'open' && r.public === true).map(r => ({ id: r.id, cat: r.cat, text: pt[r.id] || '', at: r.at || '' })),
+    requests: (c.requests || []).filter(r => r.status === 'open' && r.public === true).map(r => ({ id: r.id, cat: r.cat, text: pt[r.id] || '', at: r.at || '', ...(r.brief ? { brief: cleanBrief(r.brief) } : {}) })),
     mine: false,
   };
 }
@@ -668,13 +677,13 @@ export function fitRows(cards, product, leadByOf = () => 'партнер') {
   const pr = cleanProduct(product || {}); const sig = pr.fitSignals.map(low); const pcats = new Set(pr.categories);
   const earn = pr.typicalEarnPerClient; const rows = []; let tmin = 0, tmax = 0;
   for (const { card, requests } of cards) {
-    const why = []; let score = 0; let hasRequest = false; let reqAt = ''; let reqText = '';
-    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); if (r.at && (!reqAt || r.at > reqAt)) { reqAt = r.at; reqText = r.text || ''; } }
+    const why = []; let score = 0; let hasRequest = false; let reqAt = ''; let reqText = ''; let reqBrief = null;
+    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); if (r.at && (!reqAt || r.at > reqAt)) { reqAt = r.at; reqText = r.text || ''; reqBrief = r.brief || null; } }
     for (const tag of card.interests || []) { const t = low(tag); const th = TAG_THEMES[tag] || []; if (sig.some(s => s.includes(t) || t.includes(s)) || [...pcats].some(c => (CAT_THEMES[c] || []).some(x => th.includes(x)))) { score += 10; why.push(`Интерес: ${low(tag)}`); } }
-    if (!score) continue;
+    if (!hasRequest) continue; // в лиды попадают только клиенты с запросом на продукт
     const potential = earn.min != null || earn.max != null ? { min: earn.min ?? earn.max, max: earn.max ?? earn.min } : null;
     if (potential) { if (hasRequest) tmin += potential.min; tmax += potential.max; }
-    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, reqAt, reqText, leadBy: leadByOf(card), score });
+    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, reqAt, reqText, reqBrief, leadBy: leadByOf(card), score });
   }
   rows.sort((a, b) => (b.reqAt || '').localeCompare(a.reqAt || '') || b.score - a.score || a.alias.localeCompare(b.alias));
   return { total: rows.length, potential: earn.min != null || earn.max != null ? { min: tmin, max: tmax } : null, rows: rows.map(({ score, ...r }) => r) };

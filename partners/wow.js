@@ -111,8 +111,8 @@ function timeline(){var v=$('.asym-v',aud);if(!v||!G||RM)return;v.classList.add(
 function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$('h2',ar);
  var CAT=RU?['Финансы','Недвижимость','Право','Авиация','Образование','Искусство','Часы','Медицина']:['Finance','Real estate','Law','Aviation','Education','Art','Watches','Medicine'];
  var net=document.createElement('div');net.className='w-net';
- var MOB=net.clientWidth<720||innerWidth<720,VW=MOB?600:1000,VH=MOB?850:440;net.innerHTML='<svg viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet"></svg><div class="cap"><span><i style="background:#FF4D00"></i>'+(RU?'Запросы и асимметрии':'Requests and asymmetries')+'</span><span><i style="background:#fff"></i>'+(RU?'Партнеры':'Partners')+'</span><span><i style="background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)"></i>'+(RU?'Клиенты остаются у партнера':'Clients stay with the partner')+'</span></div>';
- h2.parentNode.insertBefore(net,h2.nextSibling);
+ var MOB=innerWidth<720,VW=MOB?600:1000,VH=MOB?850:440;net.innerHTML='<svg viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet"></svg><div class="cap"><span><i style="background:#FF4D00"></i>'+(RU?'Запросы и асимметрии':'Requests and asymmetries')+'</span><span><i style="background:#fff"></i>'+(RU?'Партнеры':'Partners')+'</span><span><i style="background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)"></i>'+(RU?'Клиенты остаются у партнера':'Clients stay with the partner')+'</span></div>';
+ h2.parentNode.insertBefore(net,h2.nextSibling);net.style.aspectRatio=VW+'/'+VH;net.style.minHeight='0';
  var svg=$('svg',net),NS='http://www.w3.org/2000/svg',cx=VW/2,cy=MOB?350:210,RX=MOB?205:232,RY=MOB?255:150,FS=MOB?22:13,P=[];
  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
  var gl=el('g',{}),gc=el('g',{}),gp=el('g',{}),gn=el('g',{});
@@ -124,11 +124,12 @@ function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$(
    el('line',{x1:x,y1:y,x2:ox,y2:oy,stroke:'rgba(255,255,255,.14)','stroke-width':1},gc);
    el('circle',{cx:ox,cy:oy,r:MOB?7:4.5,fill:'none',stroke:'rgba(255,255,255,.5)','stroke-width':1.4},gc)}
   p.dot=el('circle',{cx:x,cy:y,r:MOB?11:7,fill:'#fff'},gn);p.r=MOB?11:7;
-  var ca=Math.cos(a),sa=Math.sin(a),side=Math.abs(ca)>.75;var t=el('text',{x:side?x-ca*(FS+6):x,y:side?y-FS*.9:y-sa*(FS*1.9)+FS*.35,'text-anchor':side?(ca>0?'end':'start'):'middle',fill:'rgba(255,255,255,.8)',stroke:'#0B0B0D','stroke-width':FS*.5,'paint-order':'stroke','font-size':FS,'font-family':'TikTok Sans,system-ui','letter-spacing':'.01em'},gn);t.textContent=c;
+  var ca=Math.cos(a),sa=Math.sin(a),side=Math.abs(ca)>.75;var lx=side?x-ca*(FS+6):x,ly=side?y-FS*1.7:y-sa*(FS*2.4)-(sa>0?FS*.3:FS*.2),lb=document.createElement('span');lb.className='w-lab';lb.textContent=c;
+  lb.style.left=(lx/VW*100)+'%';lb.style.top=(ly/VH*100)+'%';lb.style.transform='translate('+(side?(ca>0?'-100%':'0'):'-50%')+',-50%)';net.appendChild(lb);
   P.push(p)});
  var CR=MOB?52:34;el('circle',{cx:cx,cy:cy,r:CR,fill:'#FF4D00'},gn);
  var halo=el('circle',{cx:cx,cy:cy,r:CR,fill:'none',stroke:'#FF4D00','stroke-width':1.5},gn);
- var tt=el('text',{x:cx,y:cy+FS*.4,'text-anchor':'middle',fill:'#fff','font-size':MOB?24:15,'font-weight':600,'font-family':'TikTok Sans,system-ui'},gn);tt.textContent='Orbiq';
+ var tl0=document.createElement('span');tl0.className='w-lab w-core';tl0.textContent='Orbiq';tl0.style.left=(cx/VW*100)+'%';tl0.style.top=(cy/VH*100)+'%';net.appendChild(tl0);
  var packets=[];
  function spawn(){var a=P[(Math.random()*P.length)|0],b=P[(Math.random()*P.length)|0];if(a===b)return;
   packets.push({a:a,b:b,t:0,s:.006+Math.random()*.004,e:el('circle',{r:MOB?6:4,fill:'#FF4D00'},gp),tr:el('circle',{r:MOB?14:9,fill:'rgba(255,77,0,.18)'},gp)})}
@@ -140,7 +141,7 @@ function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$(
   requestAnimationFrame(tick)}
  onView(net,function(){
   if(G&&!RM){G.to(P.map(function(p){return p.line}),{attr:{'stroke-dashoffset':0},duration:1.2,ease:'expo.inOut',stagger:.06});
-   G.from(gn.childNodes,{opacity:0,duration:.8,stagger:.03,ease:'power2.out'});
+   G.from([].slice.call(gn.childNodes).concat($$('.w-lab',net)),{opacity:0,duration:.8,stagger:.03,ease:'power2.out'});
    G.from(gc,{opacity:0,duration:1,delay:.8});
    G.fromTo(halo,{attr:{r:CR},opacity:.8},{attr:{r:CR*2},opacity:0,duration:2.2,ease:'expo.out',repeat:-1});
    run=true;requestAnimationFrame(tick);

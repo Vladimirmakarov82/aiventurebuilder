@@ -688,13 +688,17 @@ async function leadLim(p) { // 30 своих клиентов с открыты�
   return { need: LEAD_NEED, per: LEAD_PER, n, used: asked.length, left: n >= LEAD_NEED ? Math.max(0, LEAD_PER - asked.length) : 0, asked };
 }
 post('lead/ask', async (req, res) => {
-  const c = await need(req, 'fit'); const b = await body(req); const card = await rqTarget(c, b.cid);
+  const c = await need(req, 'fit'); const b = await body(req); const card = await loadCard(b.cid);
+  if (!card || card.archived || card.owner === c.p.id) return send(res, 404, { error: 'Карточка не найдена' });
+  const cats = (c.p.product && c.p.product.categories) || c.p.categories || [];
+  const open = (card.requests || []).filter(r => r.status === 'open' && r.public === true);
+  const rq0 = open.find(r => r.id === b.requestId) || open.find(r => cats.includes(r.cat)) || null;
+  if (!rq0) return send(res, 404, { error: 'У клиента нет открытого запроса под ваш продукт' });
   const text = String(b.text || '').trim().slice(0, 2000); if (text.length < 10) return send(res, 400, { error: 'Напишите, что предложите клиенту' });
   const l = await leadLim(c.p); if (l.asked.includes(card.id)) return send(res, 409, { error: 'Запрос по этому клиенту уже отправлен' });
   if (l.n < l.need) return send(res, 403, { error: `Сначала загрузите ${l.need} своих клиентов с запросами`, leads: l });
   if (l.left < 1) return send(res, 429, { error: 'Все 3 лида использованы', leads: l });
-  const reqOpen = (card.requests || []).find(r => r.status === 'open' && r.public === true);
-  const rq = await createRq(c, { card, requestId: reqOpen ? reqOpen.id : '', offer: 'Запрос на связь с лидом. ' + text, terms: '' });
+  const rq = await createRq(c, { card, requestId: rq0.id, offer: 'Запрос на связь с лидом. ' + text, terms: '' });
   await update(`crm/lead/${c.p.id}.json`, (cur) => ({ doc: [...(cur || []), { cid: card.id, rq: rq.id, at: nowIso() }] }));
   send(res, 200, { ok: true, id: rq.id, leads: await leadLim(c.p) });
 });

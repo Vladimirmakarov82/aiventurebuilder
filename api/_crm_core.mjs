@@ -92,11 +92,12 @@ export function cleanPatch(card, patch, newId) {
     const prev = Object.fromEntries((card.requests || []).map(r => [r.id, r])); const seen = new Set(); const reqs = [];
     for (const r of patch.requests) {
       if (!r || !CATS[r.cat]) return { error: 'Запрос: выберите категорию' };
-      const text = str(r.text, 300); if (!text) return { error: 'Запрос: короткая формулировка' };
+      const text = scrubPII(str(r.text, 300)).text; if (!text) return { error: 'Запрос: короткая формулировка' };
       const status = r.status === 'closed' ? 'closed' : 'open';
       let id = /^r[A-Za-z0-9_-]{1,20}$/.test(r.id || '') && !seen.has(r.id) ? r.id : newId(); seen.add(id);
       const p = prev[id];
-      reqs.push({ id, cat: r.cat, text, status, at: (p && p.at) || new Date().toISOString(), public: r.public === false ? false : true });
+      const brief = 'brief' in r ? cleanBrief(r.brief) : (p && p.brief) || null;
+      reqs.push({ id, cat: r.cat, text, status, at: (p && p.at) || new Date().toISOString(), public: r.public === false ? false : true, ...(brief ? { brief } : {}) });
     }
     out.requests = reqs;
   }
@@ -173,13 +174,14 @@ export function circle(card) {
 }
 
 // ---------- сетевое представление и строки таблицы ----------
-const bs = (v, n = 300) => (typeof v === 'string' && !hasContacts(v) ? v.trim().slice(0, n) : '');
+const bs = (v, n = 300) => (typeof v === 'string' ? scrubPII(v.trim().slice(0, n)).text : '');
 export function cleanBrief(b) {
   if (!b || typeof b !== 'object') return null;
   const arr = (a, n) => (Array.isArray(a) ? a.map(x => bs(x, 160)).filter(Boolean).slice(0, n) : []);
   const o = { deal: bs(b.deal, 40), budget: bs(b.budget, 60), where: bs(b.where, 120), when: bs(b.when, 80), what: bs(b.what, 900), money: bs(b.money, 240), seen: bs(b.seen, 240),
     details: arr(b.details, 10), hurdles: arr(b.hurdles, 6),
     steps: (Array.isArray(b.steps) ? b.steps : []).filter(x => Array.isArray(x) && bs(x[0], 40)).slice(0, 6).map(x => [bs(x[0], 40), x[1] ? 1 : 0]) };
+  if (b.doc && typeof b.doc === 'object') { const secs = (Array.isArray(b.doc.sections) ? b.doc.sections : []).filter(x => Array.isArray(x)).slice(0, 12).map(x => [bs(x[0], 60), bs(x[1], 1500)]).filter(x => x[0] && x[1]); if (bs(b.doc.name, 120) && secs.length) o.doc = { name: bs(b.doc.name, 120), meta: bs(b.doc.meta, 80), sections: secs }; }
   return o.what || o.budget ? o : null;
 }
 export function networkView(c) {
@@ -677,13 +679,13 @@ export function fitRows(cards, product, leadByOf = () => 'партнер') {
   const pr = cleanProduct(product || {}); const sig = pr.fitSignals.map(low); const pcats = new Set(pr.categories);
   const earn = pr.typicalEarnPerClient; const rows = []; let tmin = 0, tmax = 0;
   for (const { card, requests } of cards) {
-    const why = []; let score = 0; let hasRequest = false; let reqAt = ''; let reqText = ''; let reqBrief = null;
-    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); if (r.at && (!reqAt || r.at > reqAt)) { reqAt = r.at; reqText = r.text || ''; reqBrief = r.brief || null; } }
+    const why = []; let score = 0; let hasRequest = false; let reqAt = ''; let reqText = ''; let reqBrief = null; let reqId = '';
+    for (const r of requests || []) if (pcats.has(r.cat)) { hasRequest = true; score += 30; why.push(`Открытый запрос: ${CATS[r.cat]}`); if (r.at && (!reqAt || r.at > reqAt)) { reqAt = r.at; reqText = r.text || ''; reqBrief = r.brief || null; reqId = r.id; } }
     for (const tag of card.interests || []) { const t = low(tag); const th = TAG_THEMES[tag] || []; if (sig.some(s => s.includes(t) || t.includes(s)) || [...pcats].some(c => (CAT_THEMES[c] || []).some(x => th.includes(x)))) { score += 10; why.push(`Интерес: ${low(tag)}`); } }
     if (!hasRequest) continue; // в лиды попадают только клиенты с запросом на продукт
     const potential = earn.min != null || earn.max != null ? { min: earn.min ?? earn.max, max: earn.max ?? earn.min } : null;
     if (potential) { if (hasRequest) tmin += potential.min; tmax += potential.max; }
-    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, reqAt, reqText, reqBrief, leadBy: leadByOf(card), score });
+    rows.push({ cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', dossier: dossierText(dossierBase(card)), whyFit: [...new Set(why)].slice(0, 3).join('; '), potential, hasRequest, reqAt, reqText, reqBrief, reqId, leadBy: leadByOf(card), score });
   }
   rows.sort((a, b) => (b.reqAt || '').localeCompare(a.reqAt || '') || b.score - a.score || a.alias.localeCompare(b.alias));
   return { total: rows.length, potential: earn.min != null || earn.max != null ? { min: tmin, max: tmax } : null, rows: rows.map(({ score, ...r }) => r) };

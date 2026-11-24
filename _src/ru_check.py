@@ -24,11 +24,11 @@ HARD = [(rx, why) for rx, why in SITE_HARD if not SKIP.search(rx)] + [
 ]
 def strings_from_js(src):
     out = []
-    for m in re.finditer(r'var LD=(\[.*?\]),TX=(\{.*?\});', src, re.S):
+    for m in re.finditer(r'var LD=(\[.*?\]),(?:CT=(\[.*?\]),)?TX=(\{.*?\});', src, re.S):
         for it in json.loads(m.group(1)):
             for k in ('q', 'who', 'b', 'w', 'm', 'h', 'ago', 'kl'): out.append(str(it.get(k) or ''))
             out += list(it.get('s') or []) + list(it.get('d') or [])
-        out += list(json.loads(m.group(2)).values())
+        out += [c['n'] for c in json.loads(m.group(2) or '[]')] + list(json.loads(m.group(3)).values())
     return [x for x in out if x.strip()]
 def view_lines(path, view):
     src = open(path, encoding='utf-8').read()
@@ -64,7 +64,7 @@ def main():
     for g, c in reps: errs.append((f'повтор {c} раза', g))
     MONTHS = re.compile(r'(янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)\.?$')
     for msg, ctx, word in lt('\n'.join(l if re.search(r'[.!?:]$', l) else l + '.' for l in lines)): 
-        if 'орфограф' in msg and (word.lower() in {'бизнес-джет'} or word[:1].isupper() or MONTHS.match(word)): continue  # имена, топонимы, подписи графика
+        if 'орфограф' in msg and (word.lower() in {'бизнес-джет','бизнес-джета','арт-консультант','дирхамах','хели-ски','резидентство','резидентства','топ-школах','виниры','джет','джет-клубе','аккредитив','бонд'} or word[:1].isupper() or MONTHS.match(word)): continue  # имена, топонимы, подписи графика
         errs.append(('LanguageTool: ' + msg, ctx))
     for why, l in errs: print('ERROR', why, '|', l[:150])
     print(f'{len(errs)} errors in {len(lines)} lines'); sys.exit(1 if errs else 0)

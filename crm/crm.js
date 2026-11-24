@@ -406,6 +406,7 @@ var Demo=(function(){
     case 'me':if(isOwner())return {role:'owner',owner:true,partner:{id:'orbiq',name:'Владимир',tier:'paid',suspended:false,tg:{connected:true}}};
       var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on},limits:{leads:leadLim()}}};
     case 'lead/ask':{var ll=leadLim();if(ll.n<ll.need)fail(403,'Сначала нужно загрузить '+ll.need+' своих клиентов с запросами');if(ll.left<1)fail(429,'Все 3 лида использованы');LASK[b.cid]=nowISO();audit('Запрос на связь с лидом',b.cid);return {ok:true,leads:leadLim()}}
+    case 'auth/signup':return {ok:true,test_link:'#/fit'};
     case 'auth/request':if(/private@/.test(b.email||''))return {ok:true,password:true};return {ok:true,test_link:'#/clients'};
     case 'auth/owner-login':if(String(b.password||'').length<4)fail(403,'Почта или пароль не подошли');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-key':if(String(b.key||'').length<4)fail(403,'Пароль не подошел');AS='owner';ME='orbiq';return {ok:true};
@@ -585,6 +586,7 @@ function vLogin(){
   var LM={expired:'Ссылка устарела или уже открыта. Нужна новая ссылка',suspended:'Доступ приостановлен. Связь через Orbiq'},IM={used:'Приглашение уже использовано. Вход по почте',revoked:'Приглашение отозвано',expired:'Срок приглашения истек. Нужна новая ссылка',invalid:'Ссылка приглашения не подошла'};
   var pm=LM[Q.get('login')]||IM[Q.get('invite')];if(pm){var e0=$('#lgerr');e0.hidden=false;e0.textContent=pm}
   loginStats();
+  var su=document.createElement('button');su.type='button';su.className='lg-lnk lg-su';su.textContent='Регистрация партнера';var lc=$('.lg-card');if(lc&&!$('.lg-su'))lc.appendChild(su);su.addEventListener('click',signupStage);if(Q.get('signup')==='1')setTimeout(signupStage,0);
   var f=$('#lgf');f.addEventListener('submit',function(e){e.preventDefault();var em=$('#lge').value.trim();var er=$('#lgerr');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){er.hidden=false;er.textContent='Адрес почты с ошибкой';return}
     er.hidden=true;f.classList.add('busy');
@@ -605,6 +607,21 @@ function loginStats(){var box=$('#lst');if(!box)return;
     var tk=(d.ticker||[]).map(function(x){return '<span>'+E(x.catTitle||CATS[x.cat]||'Запрос')+'<i>·</i>'+E(capL(x.capital))+'<i>·</i>'+E(ageL(x.age))+'<i>·</i><em>'+E(x.ago||'')+'</em></span>'}).join('');
     if(tk){var t=document.createElement('div');t.className='ltk';t.setAttribute('aria-label','Последние запросы в сети');t.innerHTML='<div class="ltk-in" style="--d:'+Math.max(20,(d.ticker||[]).length*5)+'s">'+tk+tk+'</div>';$('.lgn').appendChild(t)}
   }).catch(function(){box.innerHTML=''})}
+function signupStage(){var box=$('#lgm');if(!box)return;var su=$('.lg-su');if(su)su.hidden=true;
+  var opts=Object.keys(CATS).map(function(k){return '<option value="'+k+'">'+E(CATS[k])+'</option>'}).join('');
+  box.innerHTML='<form id="suf" class="lg-fs" novalidate><p class="lg-p">Кабинет партнера: задачи клиентов сети под свою категорию, загрузка своих клиентов, связь через Orbiq</p>'+
+   '<input class="lg-in" id="sun" name="given-name" autocomplete="given-name" placeholder="Имя" required>'+
+   '<input class="lg-in" id="sue" type="email" name="email" autocomplete="email" inputmode="email" placeholder="Почта" required>'+
+   '<select class="lg-in" id="suc" required><option value="">Категория</option>'+opts+'</select>'+
+   '<input class="lg-in" id="sua" placeholder="Чем занимается, одной строкой">'+
+   '<div class="lg-err" id="suerr" hidden></div>'+btn('Зарегистрироваться','pri','type="submit"','ar')+'</form>';
+  var f=$('#suf');f.addEventListener('submit',function(e){e.preventDefault();var er=$('#suerr');var b={name:$('#sun').value.trim(),email:$('#sue').value.trim(),cat:$('#suc').value,about:$('#sua').value.trim()};
+    var bad=!b.name?'Нужно имя':!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email)?'Адрес почты с ошибкой':!b.cat?'Нужна категория':'';if(bad){er.hidden=false;er.textContent=bad;return}
+    er.hidden=true;f.classList.add('busy');
+    api('auth/signup',b).then(function(r){if(DEMO&&r&&r.test_link){location.href='?demo=1&as=new&onb=1'+r.test_link;return}
+      box.innerHTML='<div class="lg-ok"><h2>Ссылка для входа отправлена</h2><p class="lg-p">Письмо на '+E(b.email)+'. Ссылка открывает кабинет 30 дней на любом устройстве</p></div>'})
+    .catch(function(e2){f.classList.remove('busy');er.hidden=false;er.textContent=e2.status===429?'Слишком много попыток. Повтор позже':e2.message})});
+  var n=$('#sun');if(n&&matchMedia('(hover:hover)').matches)n.focus()}
 function pwStage(em){var box=$('#lgm');if(!box)return;
   box.innerHTML='<form class="lg-fs" id="opf" method="post" action="#" autocomplete="on"><div class="lg-f lg-ro"><label class="sr" for="opu">Почта</label><input id="opu" name="username" type="email" autocomplete="username" value="'+E(em)+'" readonly tabindex="-1"></div><div class="lg-f"><label class="sr" for="opp">Пароль</label><input id="opp" name="password" type="password" autocomplete="current-password" placeholder="Пароль" required><button type="button" class="lg-eye" id="opeye" aria-label="Показать пароль">'+ic('eye')+'</button><button type="submit" aria-label="Войти">'+ic('ar')+'</button></div></form><p class="lg-e" id="operr" hidden></p><p class="lg-n"><button type="button" class="lg-lnk" id="opfg">Забыли пароль?</button> · <button type="button" class="lg-lnk" data-a="relogin">Другая почта</button></p>';
   var f=$('#opf'),inp=$('#opp'),er=$('#operr');setTimeout(function(){inp.focus()},50);
@@ -1617,7 +1634,7 @@ function pathHtml(){var l=LL(),pk=picks().length,open=l.n>=l.need;var st=open?3:
   var it=[['Выбрать лиды',pk?'Выбрано '+pk+' из 3':'До 3 клиентов'],['Загрузить своих клиентов',l.n+' из '+l.need+' с запросами'],['Связаться через Orbiq','Откроется '+l.per+' '+plural(l.per,'лид','лида','лидов')]];
   return '<section class="jpath" id="jpath"><ol>'+it.map(function(x,k){var c=k+1<st?'done':k+1===st?'cur':'';
     return '<li class="'+c+'"><i>'+(k+1<st?ic('check'):(k+1))+'</i><div><b>'+x[0]+'</b><span>'+x[1]+'</span>'+(k===1?'<em class="jpath-bar"><u style="width:'+Math.min(100,Math.round(l.n/l.need*100))+'%"></u></em>':'')+'</div></li>'}).join('')+'</ol>'+
-    '<div class="jpath-f"><p>За '+l.need+' своих клиентов с запросами Orbiq открывает связь с '+l.per+' лидами. Только имена, без фамилий и контактов</p><div class="row">'+btn('Загрузить клиентов','sm dark','data-a="bulk"','upload')+'<button type="button" class="jh-lnk" data-a="upgrade-info">Без лимита: Партнер Orbiq '+ic('ar')+'</button></div></div></section>'}
+    '<div class="jpath-f"><p>За '+l.need+' своих клиентов с запросами Orbiq открывает связь с '+l.per+' лидами. Только имена, без фамилий и контактов</p><div class="row">'+btn('Загрузить клиентов','sm dark','data-a="bulk"','upload')+'</div></div></section>'}
 function hintAt(el,html){var o=$('.hintp');if(o)o.remove();var h=document.createElement('div');h.className='hintp';h.innerHTML=html;document.body.appendChild(h);
   var r=el.getBoundingClientRect();var w=Math.min(300,innerWidth-32);h.style.width=w+'px';var top=r.bottom+10;if(top+h.offsetHeight>innerHeight-16)top=r.top-10-h.offsetHeight;h.style.top=top+'px';h.style.left=Math.min(Math.max(16,r.left+r.width/2-w/2),innerWidth-w-16)+'px';
   requestAnimationFrame(function(){h.classList.add('on')});var kill=function(){h.classList.remove('on');setTimeout(function(){h.remove()},300);removeEventListener('scroll',kill,true)};setTimeout(kill,5200);setTimeout(function(){addEventListener('scroll',kill,true)},700)}
@@ -1697,7 +1714,7 @@ function getLeadSheet(cid){var r=(S.leads||[]).find(function(x){return x.cid===c
   var pct=Math.min(100,Math.round(l.n/l.need*100));
   sheet('<div class="kick">'+E(r.alias||'Лид')+(r.reqText?' · «'+E(r.reqText)+'»':'')+'</div><h2>Как связаться с этим клиентом</h2>'+whyNet(r)+'<p class="hint" style="margin-top:4px">Связь открывается одним из двух способов</p>'+
    '<div class="gopt"><section class="go1"><span class="kick">Бесплатно</span><h3>Загрузить '+l.need+' своих клиентов с запросами</h3><p class="gl-t">За это Orbiq откроет связь с '+l.per+' лидами на выбор</p><div class="gprog-r"><div class="gprog"><u style="width:'+pct+'%"></u></div><small>'+l.n+' из '+l.need+'</small></div><ul class="dash"><li>Только имя, возраст, сфера и запрос. Без фамилий и контактов</li><li>Запрос может быть на любую услугу сети. Клиенты остаются за партнером</li></ul>'+btn('Загрузить клиентов','pri','data-a="bulk"','upload')+'</section>'+
-   '<section class="go2"><span class="kick">Сразу</span><h3>Стать Партнером Orbiq</h3><ul class="dash"><li>Связь с лидами своей категории без загрузки клиентов</li><li>Новые запросы на 72 часа раньше остальных</li><li>Два места на категорию</li></ul><p class="go2-p">$20 000 за 2 года</p><small class="go2-s">$10 000 сразу и $10 000 через 90 дней</small>'+btn('Обсудить с Orbiq','light','data-a="upgrade"','msg')+'</section></div>',true);
+   '</div>',true);
 }
 function bulkParse(line,i){var parts=line.split(/[,;]/).map(function(x){return x.trim()});var alias=(parts[0]||'').replace(/[^\p{L}\p{N} .'’\-]/gu,'').trim().split(/\s+/)[0].slice(0,30)||('Клиент '+i);
   var am=/(\d{2})\s*(лет|год|г\b|,|$)/.exec(line);var a=am?+am[1]:0;var age=a?(a<35?'<35':a<45?'35–44':a<55?'45–54':a<65?'55–64':'65+'):'';

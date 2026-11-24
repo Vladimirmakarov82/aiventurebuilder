@@ -300,6 +300,27 @@ const post = (name, fn) => { R[name] = fn; POST.add(name); };
 const get = (name, fn) => { R[name] = fn; };
 
 // ===== авторизация =====
+post('auth/signup', async (req, res) => { // саморегистрация партнера: имя, почта, категория; кабинет нового партнера, письмо со ссылкой входа
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const name = scrubPII(String(b.name || '')).text.trim().slice(0, 60);
+  if (!name) return send(res, 400, { error: 'Нужно имя' }); if (!EMAIL_RE.test(email) || email.length > 120) return send(res, 400, { error: 'Адрес почты с ошибкой' });
+  if (!CATS[b.cat]) return send(res, 400, { error: 'Нужна категория' });
+  if (!(await rateLimit('crm-su:' + ipOf(req), 5, 3600)) || !(await rateLimit('crm-em:' + email, 5, 60))) return send(res, 429, { error: 'Слишком много запросов. Повтор позже' });
+  if (ownerEmails().includes(email)) return send(res, 200, { ok: true });
+  let pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`);
+  if (!pid) {
+    const id = 'p_' + rid(12);
+    if (await createNX(`crm/pidx/${sha(email).slice(0, 32)}`, id)) {
+      const product = cleanProduct({ summary: String(b.about || '').slice(0, 600), categories: [b.cat] });
+      const p = { id, email, name, tier: 'new', kind: 'supplier', product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'self', categories: [b.cat], tg: {}, ical: {}, paid: null, activated: null, lastSeen: null };
+      await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id); await pushHist(id, 'product', null, product, 'саморегистрация');
+      await audit('partner', id, 'partner_signup', { cat: b.cat }); pid = id;
+    } else pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`);
+  }
+  const p = pid && await sget(`crm/p/${pid}.json`); if (!p || p.suspended) return send(res, 200, { ok: true });
+  const j = rid(16); const t = sign({ e: email, k: 'crml', j, exp: Date.now() + LOGIN_TTL });
+  const link = `https://${linkHost(req)}/api/crm?r=auth/verify&t=${encodeURIComponent(t)}`;
+  return deliver(res, email, 'Вход в Orbiq Room', mailBox('Вход в Orbiq Room', 'Кабинет партнера Orbiq готов. Ссылка открывает его 30 дней на любом устройстве.', link, 'Войти'), {}, { test_link: link });
+});
 post('auth/request', async (req, res) => {
   const b = await body(req); const email = String(b.email || '').trim().toLowerCase();
   if (!EMAIL_RE.test(email) || email.length > 120) return send(res, 400, { error: 'Проверьте адрес почты' });

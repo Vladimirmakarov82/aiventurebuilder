@@ -528,8 +528,8 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <h1 class="h2">118 clients with $5M+ in capital. 2 partner seats in each category</h1>
     <p class="sub">Partners have worked with their clients for years and know their needs. Needs a partner cannot cover alone go into the network without the client’s surname or contacts. Orbiq selects the best in each category, so a recommendation inside the network is reliable.</p>
     <div class="hnum"><div><b>118</b><span>clients in the network</span></div><div><b>$1.2B+</b><span>combined client capital</span></div><div><b>46</b><span>clients with $20M+</span></div><div><b>2</b><span>partner seats per category</span></div></div>
-    <div class="hpot"><label class="lab">A partner’s money in a year, example</label><div><span>20 clients with Orbiq access</span><i>20 × $3,000</i><b>$60,000</b></div><div><span>6 deals with network partners’ products</span><i>6 × $7,500</i><b>$45,000</b></div><div><span>Sales of own product to network clients</span><i>at own price</i><b>+</b></div><div><span>Partner fee: $20,000 for 2 years</span><i>per year</i><b>−$10,000</b></div><div class="tot"><span>Total per year</span><i></i><b>$95,000+</b></div></div>
-    <div class="row" style="margin-top:12px;gap:12px;align-items:center;flex-wrap:wrap"><button class="btn" data-go="plan"><span class="roll"><span>See the terms</span><span>See the terms</span></span></button><span class="pl-sub" style="margin:0">Category seats go in order of applications</span></div>
+    <div class="hpot"><label class="lab">A partner’s money in a year, example</label><div><span>20 clients with Orbiq access</span><i>20 × $3,000</i><b>$60,000</b></div><div><span>6 deals with network partners’ products</span><i>6 × $7,500</i><b>$45,000</b></div><div><span>Sales of own product to network clients</span><i>at own price</i><b>+</b></div><div class="tot"><span>Total per year</span><i></i><b>$105,000+</b></div></div>
+    <div class="row" style="margin-top:12px;gap:12px;align-items:center;flex-wrap:wrap"><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Sign up</span><span>Sign up</span></span></a><span class="pl-sub" style="margin:0">Category seats go in order of sign-up</span></div>
     <label class="lab" style="margin-top:26px">Client needs in the network now</label>
     <p class="pl-sub">Added by the partners who look after these clients. This is how the cabinet shows them: alias, no surname or contacts</p>
     <div class="pleads" id="pleads"></div>
@@ -555,7 +555,7 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <div class="cta2" id="aCta">
       <h2>How a partner earns</h2>
       <div class="pearn"><div><b>$5–10k</b><span>average commission for selling another partner’s product to own client</span></div><div><b>Own price</b><span>for selling own product to network clients</span></div></div>
-      <div><button class="btn" data-go="plan"><span class="roll"><span>See the terms</span><span>See the terms</span></span></button></div>
+      <div><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Sign up</span><span>Sign up</span></span></a></div>
     </div>
     <div class="row" style="margin-top:16px;justify-content:center"><button class="btn soft sm" data-go="welcome">How Orbiq works: network, concierge, stages</button></div>
   </div>
@@ -843,7 +843,7 @@ if(SR){$('mic').hidden=false;var rec=null;
    rec.start();$('mic').classList.add('rec')}catch(e){rec=null}}}
 if(['cab','cli','welcome'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='cli')S.view='cab';
-if(['plan','call'].indexOf(S.view)>=0&&!S.spec)S.view='aud';
+if(['plan','call'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='call'&&S.plan===null)S.view='plan';
 render();
 })();

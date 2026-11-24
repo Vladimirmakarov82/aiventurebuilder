@@ -207,3 +207,4 @@
 .indp-v.q .indp-ar{align-self:center}
 @media (max-width:720px){.indp-v.q{grid-template-columns:1fr}.indp-v.q .indp-ar{justify-self:center;transform:rotate(90deg)}}
 .indp-v.q .now p{color:#F3F4F2!important;font-weight:500}
+.indp.end{margin:26px 0 0}

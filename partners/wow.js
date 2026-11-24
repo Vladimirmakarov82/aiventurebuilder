@@ -158,6 +158,41 @@ function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$(
 function heads(){$$('.asym h2,.arch h2',aud).forEach(function(h){onView(h,function(){lines(h)})});
  var ex=$('.asym-ex',aud);if(ex)spot(ex)}
 
-function boot(){try{hero();income();leads();example();timeline();network();heads()}catch(e){if(window.console)console.warn('wow',e)}}
+
+/* --- client value bars --- */
+function value(){var v=$('.aval',aud);if(!v||RM)return;v.classList.add('pre');onView(v,function(){setTimeout(function(){v.classList.remove('pre')},120);$$('.aval-r b',v).forEach(function(b,i){count(b,1.4,.1+i*.2)})})}
+/* --- "the call clients wait for": inbox -> chat --- */
+function callAnim(){var box=$('.indp .indp-v');if(!box||!G||RM)return;var sec=box.closest('.indp');
+ var M=RU?[['Банк','Облигации: 18% годовых до конца года'],['Застройщик','Новый ЖК бизнес-класса, старт продаж'],['Брокер','Страхование жизни для семьи'],['Банк','Персональный банкир: встреча на неделе?'],['Агентство','Апартаменты в Дубае с рассрочкой'],['Фонд','Фонд недвижимости, вход от $100 тыс.']]
+   :[['Bank','Bonds: 18% a year until year end'],['Developer','New business-class project, sales open'],['Broker','Life insurance for the family'],['Bank','Personal banker: meet this week?'],['Agency','Dubai apartments with instalments'],['Fund','Real estate fund, from $100k']];
+ var T=RU?{inbox:'Входящие клиента',chat:'Партнер Orbiq',q1:'Что нового появилось в сети?',q2:'Есть интересные сделки?',a:'Три новые асимметрии на этой неделе',as:'Скидка 40–45% · срок 2–7 дней'}
+   :{inbox:'Client inbox',chat:'Orbiq partner',q1:'What’s new in the network?',q2:'Any interesting deals?',a:'Three new asymmetries this week',as:'40–45% off · 2–7 days'};
+ box.style.display='none';sec.classList.add('has-call');
+ var c=document.createElement('div');c.className='call';
+ c.innerHTML='<div class="call-top"><span class="t1">'+T.inbox+'</span><em>0</em></div><ul class="call-in">'+M.map(function(m,i){return '<li><i>'+m[0].charAt(0)+'</i><b>'+m[0]+'</b><span>'+m[1]+'</span><small>'+(9+i)+':'+(10+i*7)+'</small></li>'}).join('')+'</ul><div class="call-chat"></div>';
+ box.parentNode.insertBefore(c,box);
+ var top=$('.call-top',c),cnt=$('em',top),t1=$('.t1',top),list=$('.call-in',c),lis=$$('li',list),chat=$('.call-chat',c),o={n:0};
+ var bub=function(cls,html){var b=document.createElement('div');b.className='bub '+cls;b.innerHTML=html;chat.appendChild(b);return b};
+ var typing=function(cls){return bub(cls+' ty','<i></i><i></i><i></i>')};
+ var tl=G.timeline({repeat:-1,repeatDelay:.8,paused:true,onRepeat:function(){}});
+ tl.call(function(){chat.innerHTML='';t1.textContent=T.inbox;t1.className='t1';cnt.style.display='';o.n=0;cnt.textContent='0'})
+  .set(lis,{y:-30,opacity:0,filter:'blur(0px)'}).set(list,{opacity:1,scale:1,filter:'blur(0px)'})
+  .to(lis,{y:0,opacity:1,duration:.5,ease:'expo.out',stagger:.32})
+  .to(lis,{opacity:.38,duration:.6,stagger:.32},.5)
+  .to(o,{n:37,duration:2.2,ease:'power2.out',onUpdate:function(){cnt.textContent=Math.round(o.n)}},0)
+  .to(list,{opacity:.12,scale:.94,filter:'blur(3px)',duration:.7,ease:'expo.inOut'},'+=.5')
+  .call(function(){t1.textContent=T.chat;t1.className='t1 on';cnt.style.display='none'},null,'<.3')
+  .call(function(){window.__ty=typing('cl')},null,'+=.2')
+  .to({},{duration:.9})
+  .call(function(){window.__ty.remove();G.from(bub('cl',T.q1),{y:14,opacity:0,duration:.45,ease:'expo.out'})})
+  .to({},{duration:.7})
+  .call(function(){G.from(bub('cl',T.q2),{y:14,opacity:0,duration:.45,ease:'expo.out'})})
+  .to({},{duration:.6})
+  .call(function(){window.__ty=typing('pt')})
+  .to({},{duration:1.1})
+  .call(function(){window.__ty.remove();G.from(bub('pt',T.a+'<small>'+T.as+'</small>'),{y:14,opacity:0,scale:.96,duration:.5,ease:'back.out(1.6)'})})
+  .to({},{duration:3});
+ onView(c,function(){tl.play()})}
+function boot(){try{hero();income();leads();example();timeline();network();heads();value();callAnim()}catch(e){if(window.console)console.warn('wow',e)}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();

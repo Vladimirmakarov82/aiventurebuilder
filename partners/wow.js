@@ -110,7 +110,7 @@ function timeline(){var v=$('.asym-v',aud);if(!v||!G||RM)return;v.classList.add(
 
 /* --- architecture: network --- */
 function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$('h2',ar);
- var CAT=RU?['Финансы','Недвижимость','Право','Авиация','Образование','Искусство','Часы','Медицина']:['Finance','Real estate','Law','Aviation','Education','Art','Watches','Medicine'];
+ var CAT=RU?['Финансы','Недвижимость','Право','Авиация','Образование','Искусство и\nколлекционирование','Медицина']:['Finance','Real estate','Law','Aviation','Education','Art and\ncollectibles','Medicine'];
  var net=document.createElement('div');net.className='w-net';
  var MOB=innerWidth<720,VW=MOB?600:1000,VH=MOB?850:440;net.innerHTML='<svg viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet"></svg><div class="cap"><span><i style="background:#FF4D00"></i>'+(RU?'Запросы и асимметрии':'Requests and asymmetries')+'</span><span><i style="background:#fff"></i>'+(RU?'Партнеры':'Partners')+'</span><span><i style="background:transparent;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)"></i>'+(RU?'Клиенты остаются у партнера':'Clients stay with the partner')+'</span></div>';
  h2.parentNode.insertBefore(net,h2.nextSibling);net.style.aspectRatio=VW+'/'+VH;net.style.minHeight='0';
@@ -125,9 +125,11 @@ function network(){var ar=$('.arch',aud);if(!ar||$('.w-net',ar))return;var h2=$(
    el('line',{x1:x,y1:y,x2:ox,y2:oy,stroke:'rgba(255,255,255,.14)','stroke-width':1},gc);
    el('circle',{cx:ox,cy:oy,r:MOB?7:4.5,fill:'none',stroke:'rgba(255,255,255,.5)','stroke-width':1.4},gc)}
   p.dot=el('circle',{cx:x,cy:y,r:MOB?11:7,fill:'#fff'},gn);p.r=MOB?11:7;
-  var ca=Math.cos(a),sa=Math.sin(a),side=Math.abs(ca)>.75;var lx=side?x-ca*(FS+6):x,ly=side?y-FS*1.7:y-sa*(FS*2.4)-(sa>0?FS*.3:FS*.2),lb=document.createElement('span');lb.className='w-lab';lb.textContent=c;
-  lb.style.left=(lx/VW*100)+'%';lb.style.top=(ly/VH*100)+'%';lb.style.transform='translate('+(side?(ca>0?'-100%':'0'):'-50%')+',-50%)';net.appendChild(lb);
+  var ca=Math.cos(a),sa=Math.sin(a),side=Math.abs(ca)>.75;var vert=Math.abs(sa)>.5,two=c.indexOf('\n')>0,lx=x,ly=vert?y-sa*(FS*(two?3.1:2.4)):(two&&MOB?y+FS*2.7:y-FS*(two?2.6:1.9)),lb=document.createElement('span');lb.className='w-lab';lb.textContent=c;
+  lb.style.left=(lx/VW*100)+'%';lb.style.top=(ly/VH*100)+'%';lb.style.transform='translate(-50%,-50%)';net.appendChild(lb);
   P.push(p)});
+ function fit(){var n=net.getBoundingClientRect();$$('.w-lab',net).forEach(function(lb){if(lb.classList.contains('w-core'))return;lb.style.marginLeft='0';var r=lb.getBoundingClientRect(),d=0;if(r.left<n.left+8)d=n.left+8-r.left;else if(r.right>n.right-8)d=n.right-8-r.right;lb.style.marginLeft=d+'px'})}
+ setTimeout(fit,50);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);window.addEventListener('resize',fit);
  var CR=MOB?52:34;el('circle',{cx:cx,cy:cy,r:CR,fill:'#FF4D00'},gn);
  var halo=el('circle',{cx:cx,cy:cy,r:CR,fill:'none',stroke:'#FF4D00','stroke-width':1.5},gn);
  var tl0=document.createElement('span');tl0.className='w-lab w-core';tl0.textContent='Orbiq';tl0.style.left=(cx/VW*100)+'%';tl0.style.top=(cy/VH*100)+'%';net.appendChild(tl0);

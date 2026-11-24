@@ -1295,3 +1295,18 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
   .jpath-f .jh-lnk{font-size:12.5px}
 }
 .je-p{display:block;line-height:1.6}.je-av{display:inline-grid;vertical-align:middle;margin:-2px 8px 0 0}
+/* онбординг лидов: подсказки и объяснения */
+.jh-row{position:relative}
+.jh-how{position:absolute;right:0;top:4px;gap:7px}
+.jh-how svg{width:16px;height:16px}
+@media (max-width:640px){.jh-how{position:static;margin-bottom:6px}}
+.hintp{position:fixed;z-index:95;background:var(--ink);color:#fff;border-radius:16px;padding:13px 15px;font-size:13.5px;line-height:1.45;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .4s var(--e-out);pointer-events:none}
+.hintp.on{opacity:1;transform:none}
+.hintp b{display:block;font-size:14px;margin-bottom:3px}
+.why{display:flex;flex-direction:column;gap:10px;margin-top:4px;padding:16px;border-radius:18px;background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+.why p{margin:0;font-size:14px;line-height:1.55;color:var(--ink2)}
+.why-f{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px;margin-bottom:4px}
+.why-f span{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:var(--bg);font-size:12.5px;color:var(--mute);line-height:1.35}
+.why-f b{font-size:13.5px;color:var(--ink);font-weight:600}
+.why-f i svg{width:14px;height:14px;color:var(--mute)}
+@media (max-width:640px){.why-f{grid-template-columns:1fr;gap:4px}.why-f i{display:none}}

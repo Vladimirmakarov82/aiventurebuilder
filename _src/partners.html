@@ -416,7 +416,7 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <button role="tab" data-go="cab" aria-selected="true">Кабинет</button>
     <button role="tab" data-go="aud" aria-selected="false">Клиенты Orbiq</button>
   </div>
-  <button class="btn sm" data-go="plan" style="min-height:40px">Условия</button>
+  <a class="btn sm" href="/crm/?signup=1" style="min-height:40px">Регистрация</a>
 </header>
 
 <section class="view" id="v-welcome">
@@ -528,8 +528,8 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <h1 class="h2">118 клиентов с капиталом от $5&nbsp;млн. В каждой категории 2 места для партнеров</h1>
     <p class="sub">Партнеры годами работают со своими клиентами и знают их задачи. Задачи, которые партнер не решает сам, он вносит в сеть без фамилии и контактов клиента. Orbiq отбирает в каждую категорию лучших, чтобы рекомендация внутри сети была надежной.</p>
     <div class="hnum"><div><b>118</b><span>клиентов в сети</span></div><div><b>$1,2&nbsp;млрд+</b><span>совокупный капитал клиентов</span></div><div><b>46</b><span>клиентов с капиталом $20&nbsp;млн+</span></div><div><b>2</b><span>места для партнеров в каждой категории</span></div></div>
-    <div class="hpot"><label class="lab">Деньги партнера за год, пример</label><div><span>20 клиентов с доступом в Orbiq</span><i>20 × $3&nbsp;000</i><b>$60&nbsp;000</b></div><div><span>6 сделок с продуктами партнеров сети</span><i>6 × $7&nbsp;500</i><b>$45&nbsp;000</b></div><div><span>Продажи своего продукта клиентам сети</span><i>по своей цене</i><b>+</b></div><div><span>Взнос партнера: $20&nbsp;000 за 2 года</span><i>в год</i><b>−$10&nbsp;000</b></div><div class="tot"><span>Итого за год</span><i></i><b>$95&nbsp;000+</b></div></div>
-    <div class="row" style="margin-top:12px;gap:12px;align-items:center;flex-wrap:wrap"><button class="btn" data-go="plan"><span class="roll"><span>Посмотреть условия</span><span>Посмотреть условия</span></span></button><span class="pl-sub" style="margin:0">Места в категории закрепляются по порядку заявок</span></div>
+    <div class="hpot"><label class="lab">Деньги партнера за год, пример</label><div><span>20 клиентов с доступом в Orbiq</span><i>20 × $3&nbsp;000</i><b>$60&nbsp;000</b></div><div><span>6 сделок с продуктами партнеров сети</span><i>6 × $7&nbsp;500</i><b>$45&nbsp;000</b></div><div><span>Продажи своего продукта клиентам сети</span><i>по своей цене</i><b>+</b></div><div class="tot"><span>Итого за год</span><i></i><b>$105&nbsp;000+</b></div></div>
+    <div class="row" style="margin-top:12px;gap:12px;align-items:center;flex-wrap:wrap"><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Зарегистрироваться</span><span>Зарегистрироваться</span></span></a><span class="pl-sub" style="margin:0">Места в категории закрепляются по порядку регистрации</span></div>
     <label class="lab" style="margin-top:26px">Задачи клиентов в сети сейчас</label>
     <p class="pl-sub">Их внесли партнеры, которые ведут этих клиентов. Так задачи видны в кабинете: псевдоним, без фамилии и контактов</p>
     <div class="pleads" id="pleads"></div>
@@ -555,7 +555,7 @@ textarea.field{border-radius:20px;padding:14px 18px;min-height:112px;resize:vert
     <div class="cta2" id="aCta">
       <h2>Как зарабатывает партнер</h2>
       <div class="pearn"><div><b>$3&nbsp;000 в год</b><span>с каждого клиента с доступом в Orbiq: 30% от $10&nbsp;000</span></div><div><b>$5–10&nbsp;тыс</b><span>в среднем с продажи продукта другого партнера своему клиенту</span></div><div><b>Своя цена</b><span>с продажи своего продукта клиентам сети</span></div></div>
-      <div><button class="btn" data-go="plan"><span class="roll"><span>Посмотреть условия</span><span>Посмотреть условия</span></span></button></div>
+      <div><a class="btn" href="/crm/?signup=1"><span class="roll"><span>Зарегистрироваться</span><span>Зарегистрироваться</span></span></a></div>
     </div>
     <div class="row" style="margin-top:16px;justify-content:center"><button class="btn soft sm" data-go="welcome">Как устроен Orbiq: сеть, консьерж-сервис, этапы</button></div>
   </div>
@@ -843,7 +843,7 @@ if(SR){$('mic').hidden=false;var rec=null;
    rec.start();$('mic').classList.add('rec')}catch(e){rec=null}}}
 if(['cab','cli','welcome'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='cli')S.view='cab';
-if(['plan','call'].indexOf(S.view)>=0&&!S.spec)S.view='aud';
+if(['plan','call'].indexOf(S.view)>=0&&!S.done)S.view='aud';
 if(S.view==='call'&&S.plan===null)S.view='plan';
 render();
 })();

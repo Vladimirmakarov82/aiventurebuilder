@@ -63,7 +63,12 @@ def main():
     reps = [(g, c) for g, c in grams.items() if c > 1 and not re.fullmatch(r'[\d$ ]+', g)]
     for g, c in reps: errs.append((f'повтор {c} раза', g))
     MONTHS = re.compile(r'(янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)\.?$')
-    for msg, ctx, word in lt('\n'.join(l if re.search(r'[.!?:]$', l) else l + '.' for l in lines)): 
+    txt = [l if re.search(r'[.!?:]$', l) else l + '.' for l in lines]; chunks, cur = [], ''
+    for l in txt:
+        if len(cur) + len(l) > 12000: chunks.append(cur); cur = ''
+        cur += l + '\n'
+    chunks.append(cur)
+    for msg, ctx, word in [x for ch in chunks for x in lt(ch)]: 
         if 'орфограф' in msg and (word.lower() in {'бизнес-джет','бизнес-джета','арт-консультант','дирхамах','хели-ски','резидентство','резидентства','топ-школах','виниры','джет','джет-клубе','аккредитив','бонд'} or word[:1].isupper() or MONTHS.match(word)): continue  # имена, топонимы, подписи графика
         errs.append(('LanguageTool: ' + msg, ctx))
     for why, l in errs: print('ERROR', why, '|', l[:150])

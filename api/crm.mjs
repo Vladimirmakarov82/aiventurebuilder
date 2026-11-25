@@ -414,7 +414,7 @@ get('me', async (req, res) => {
   if (!p.lastSeen || Date.now() - Date.parse(p.lastSeen) > 3600e3) await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, lastSeen: nowIso() } } : { noop: 1 }).catch(() => {});
   const month = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 7); const used = p.rqMonth && p.rqMonth.m === month ? p.rqMonth.n : 0; const unl = allowed(c, 'rq.unlimited') || p.kind === 'networker';
   send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: (p.kind === 'networker' || t === 'networker' || t === 'networker_new') ? 'Агент Orbiq' : 'Партнер Orbiq',
-      site: await ensureSite(p).then(x => ({ slug: x.slug, link: siteUrl(req, x.slug), phone: (p.contact || {}).phone || '', tgUser: (p.contact || {}).tg || '' })).catch(() => null), start: p.activated || p.created, deadlineDays: TRIAL_DAYS, removed: !!p.trialFailed, trial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null),
+      site: await ensureSite(p).then(x => ({ slug: x.slug, link: siteUrl(req, x.slug, x.name), long: siteUrl(req, x.slug), phone: (p.contact || {}).phone || '', tgUser: (p.contact || {}).tg || '' })).catch(() => null), start: p.activated || p.created, deadlineDays: TRIAL_DAYS, removed: !!p.trialFailed, trial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null),
       suspended: !!p.suspended, paid: p.paid || null, categories: p.categories || [], product: p.product || null, tg: { connected: !!(p.tg && p.tg.chatId) },
       limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0, leads: await leadLim(p) } },
     access: Object.fromEntries(['net.view', 'rq.create', 'rq.refer', 'invite.create', 'demand', 'pf.submit', 'fit', 'priority'].map(op => [op, allowed(c, op)])) });
@@ -763,17 +763,72 @@ post('partner/trial', async (req, res) => { // Founder: продлить ста�
 post('trial/drip', async (req, res) => { await need(req, 'owner.admin'); send(res, 200, { emails: DRIP.map(([t, x], i) => ({ day: i + 1, subject: t, text: x })) }); });
 // ---------- сайт партнера: журнал Orbiq с его контактом ----------
 const TRIAL_DAYS = 10;
-const siteUrl = (req, slug) => `https://${linkHost(req)}/journal/?p=${slug}`;
+const siteUrl = (req, slug, nm) => nm ? `https://${linkHost(req)}/${nm}` : `https://${linkHost(req)}/journal/?p=${slug}`;
+const TR = { а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'e', ж: 'zh', з: 'z', и: 'i', й: 'y', к: 'k', л: 'l', м: 'm', н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u', ф: 'f', х: 'h', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sch', ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya' };
+const RESERVED = new Set(['api', 'crm', 'journal', 'ru', 'en', 'partners', 'img', 'i', 'admin', 'about', 'login', 'site', 'app', 'www', 'orbiq', 'help', 'privacy', 'terms', 'fonts', 'css', 'js', 'static', 'invest', 'visa', 'concierge', 'founder', 'vladimir']);
+const latin = (s) => String(s || '').toLowerCase().split('').map(ch => TR[ch] !== undefined ? TR[ch] : ch).join('').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 24);
+async function siteName(p, want) { // короткая ссылка orbiqgroup.com/<имя>; занятое имя получает номер
+  const base = latin(want || String(p.name || '').split(/\s+/)[0]) || 'partner';
+  for (let i = 0; i < 50; i++) { const nm = i ? base + (i + 1) : base; if (nm.length < 3 || RESERVED.has(nm)) continue; if (await createNX(`crm/pname/${nm}`, p.id)) return nm; }
+  return null;
+}
 async function ensureSite(p) {
-  if (p.site && p.site.slug) return p.site;
-  const slug = rid(8).toLowerCase(); await sput(`crm/psite/${slug}.json`, { pid: p.id });
-  const out = await update(`crm/p/${p.id}.json`, (d) => d ? (d.site && d.site.slug ? { err: 'has', site: d.site } : { doc: { ...d, site: { slug, created: nowIso() } } }) : { err: 1 });
-  if (out.err === 'has') { await sdel(`crm/psite/${slug}.json`); return out.site; } return { slug };
+  if (p.site && p.site.slug && p.site.name) return p.site;
+  if (p.site && p.site.slug) { const nm = await siteName(p); await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, site: { ...(d.site || {}), name: nm } } } : { noop: 1 }); return { ...p.site, name: nm }; }
+  const slug = rid(8).toLowerCase(); await sput(`crm/psite/${slug}.json`, { pid: p.id }); const nm = await siteName(p);
+  const out = await update(`crm/p/${p.id}.json`, (d) => d ? (d.site && d.site.slug ? { err: 'has', site: d.site } : { doc: { ...d, site: { slug, name: nm, created: nowIso() } } }) : { err: 1 });
+  if (out.err === 'has') { await sdel(`crm/psite/${slug}.json`); return out.site; } return { slug, name: nm };
 }
 const phoneOf = (v) => { const d = String(v || '').replace(/[^\d+]/g, ''); const n = d.replace(/\D/g, ''); return n.length >= 10 && n.length <= 15 ? '+' + n : ''; };
 function instrName(n) { n = String(n || ''); const X = { 'Павел': 'Павлом', 'Лев': 'Львом', 'Любовь': 'Любовью', 'Илья': 'Ильей', 'Никита': 'Никитой' }; if (X[n]) return X[n];
   if (/ия$/.test(n)) return n.slice(0, -1) + 'ей'; if (/[жшчщц]а$/.test(n)) return n.slice(0, -1) + 'ей'; if (/а$/.test(n)) return n.slice(0, -1) + 'ой'; if (/я$/.test(n)) return n.slice(0, -1) + 'ей';
   if (/[йь]$/.test(n)) return n.slice(0, -1) + 'ем'; if (/[жшчщц]$/.test(n)) return n + 'ем'; if (/[бвгдзклмнпрстфх]$/i.test(n)) return n + 'ом'; return n; }
+get('site/go', async (req, res) => { // orbiqgroup.com/<имя> → сайт партнера; неизвестное имя → главная
+  const nm = String(query(req).get('n') || '').toLowerCase().replace(/\/+$/, ''); const pid = /^[a-z0-9-]{2,30}$/.test(nm) ? await sget(`crm/pname/${nm}`) : null;
+  const p = pid && await sget(`crm/p/${pid}.json`); const to = p && p.site && p.site.slug && !p.suspended ? `/journal/?p=${p.site.slug}` : '/';
+  res.statusCode = 302; res.setHeader('Location', to); res.setHeader('Cache-Control', 'no-store'); res.end();
+});
+post('site/register', async (req, res) => { // посетитель сайта партнера заводит аккаунт: имя, почта, пароль; становится клиентом этого партнера
+  const b = await body(req); const slug = String(b.p || '').toLowerCase(); if (!/^[a-z0-9]{8}$/.test(slug)) return send(res, 404, { error: 'Сайт не найден' });
+  if (b.website) return send(res, 200, { ok: true });
+  if (!(await rateLimit('crm-sr:' + ipOf(req), 10, 60))) return send(res, 429, { error: 'Слишком много попыток. Попробуйте позже' });
+  const x = await sget(`crm/psite/${slug}.json`); const p = x && await sget(`crm/p/${x.pid}.json`); if (!p || p.suspended) return send(res, 404, { error: 'Сайт не найден' });
+  const mkCard = async (name, email) => { let card = null; const c = { role: 'partner', p };
+    for (let i = 0; i < 6 && !card; i++) { try { card = await createCard(c, i ? `${name} ${rid(3)}` : name); } catch (e) { if (e.status !== 409) throw e; } }
+    if (card) await update(`crm/c/${card.id}.json`, (d) => d ? { doc: { ...d, source: 'site', contact: { email }, history: [...(d.history || []), { at: nowIso(), what: 'Клиент зарегистрировался на сайте партнера' }] } } : { noop: 1 });
+    return card; };
+  if (b.attach) { // уже вошел в Orbiq без партнера: привязываем к партнеру этого сайта
+    const u = await journalUser(req); if (!u || !u.id) return send(res, 401, { error: 'Войдите с паролем' });
+    if (u.crmLink) return send(res, 200, { ok: true, already: true });
+    const card = await mkCard(u.first || 'Клиент', u.email); if (!card) return send(res, 500, { error: 'Не получилось, повторите' });
+    await update(`users/${u.id}.json`, (d) => d && !d.crmLink ? { doc: { ...d, crmLink: { cid: card.id, seat: 1, pid: p.id, src: 'site' }, access: d.access || { from: nowIso(), until: addMonths(nowIso(), 3) } } } : { noop: 1 });
+    await audit(p.id, 'client', 'site_attach', { cid: card.id }); return send(res, 200, { ok: true });
+  }
+  const name = scrubPII(String(b.name || '')).text.trim().split(/\s+/)[0].slice(0, 40); const email = String(b.email || '').trim().toLowerCase(); const pw = String(b.password || '');
+  if (!name) return send(res, 400, { error: 'Как к вам обращаться?' }); if (!EMAIL_RE.test(email) || email.length > 120) return send(res, 400, { error: 'Проверьте адрес почты' });
+  if (pw.length < 8) return send(res, 400, { error: 'Пароль: не меньше 8 символов' });
+  const uid = uidOf(email); const ex = await sget(`users/${uid}.json`);
+  if (ex) return send(res, 409, { error: 'С этой почтой аккаунт уже есть. Войдите с паролем', exists: true });
+  const card = await mkCard(name, email); if (!card) return send(res, 500, { error: 'Не получилось, повторите' }); const at = nowIso();
+  const salt = crypto.randomBytes(16).toString('hex');
+  await sput(`users/${uid}.json`, { id: uid, email, first: name, last: '', created: at, ref: 'site', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3, sex: '', emailOk: false, pw: { salt, hash: pwHash(pw, salt) }, crmLink: { cid: card.id, seat: 1, pid: p.id, src: 'site' }, access: { from: at, until: addMonths(at, 3) }, interests: [], crmPrefs: {} });
+  await audit(p.id, 'client', 'site_register', { cid: card.id });
+  await sendConfirm(req, uid, email, name).catch(() => {});
+  setCookie(res, 'oj', sign({ u: uid, e: email, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
+  const ct = p.contact || {}; send(res, 200, { ok: true, name, partner: String(p.name || '').split(' ')[0], label: `Отправить запрос ${datName(String(p.name || '').split(' ')[0])}` });
+});
+async function sendConfirm(req, uid, email, name) {
+  const t = sign({ cu: uid, k: 'conf', exp: Date.now() + 30 * 864e5 }); const link = `https://${linkHost(req)}/api/crm/?r=client/confirm&t=${encodeURIComponent(t)}`;
+  if (ENV.RESEND_API_KEY) await mail(email, 'Подтвердите почту в Orbiq', mailBox((name ? name + ', ' : '') + 'подтвердите почту', 'Это письмо подтверждает, что почта ваша. После этого входите на orbiqgroup.com с паролем.', link, 'Подтвердить почту'));
+  return link;
+}
+get('client/confirm', async (req, res) => {
+  const d = unsign(String(query(req).get('t') || '')); const go = (to) => { res.statusCode = 302; res.setHeader('Location', to); res.setHeader('Cache-Control', 'no-store'); res.end(); };
+  if (!d || d.k !== 'conf' || d.exp < Date.now()) return go('/journal/profile/?confirm=bad');
+  await update(`users/${d.cu}.json`, (u) => u ? { doc: { ...u, emailOk: nowIso() } } : { noop: 1 }); go('/journal/?confirm=ok');
+});
+function datName(n) { n = String(n || ''); const X = { 'Павел': 'Павлу', 'Лев': 'Льву', 'Любовь': 'Любови', 'Илья': 'Илье', 'Никита': 'Никите' }; if (X[n]) return X[n];
+  if (/ия$/.test(n)) return n.slice(0, -1) + 'и'; if (/[ая]$/.test(n)) return n.slice(0, -1) + 'е'; if (/[йь]$/.test(n)) return n.slice(0, -1) + 'ю'; if (/[бвгджзклмнпрстфхцчшщ]$/i.test(n)) return n + 'у'; return n; }
 post('site/contacts', async (req, res) => { // партнер (или Founder для партнера) задает телефон и ник Telegram для своего сайта
   const c = await need(req); const b = await body(req); let pid = '';
   if (c.role === 'owner') pid = String(b.pid || ''); else if (c.role === 'partner') pid = c.p.id; else return send(res, 403, { error: 'Недостаточно прав' });
@@ -788,7 +843,7 @@ get('site/info', async (req, res) => { // публично: чей это сай
   const x = await sget(`crm/psite/${slug}.json`); const p = x && await sget(`crm/p/${x.pid}.json`); if (!p || p.suspended || p.trialFailed) return send(res, 404, { error: 'Сайт не найден' });
   if (query(req).get('open') === '1') await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, site: { ...(d.site || {}), opens: ((d.site || {}).opens || 0) + 1 } } } : { noop: 1 });
   const first = String(p.name || '').split(/\s+/)[0]; const ct = p.contact || {};
-  send(res, 200, { name: first, label: `Связаться с ${instrName(first)}`, phone: ct.phone || '', tg: ct.tg || '' });
+  send(res, 200, { name: first, label: `Связаться с ${instrName(first)}`, instr: instrName(first), dat: datName(first), phone: ct.phone || '', tg: ct.tg || '' });
 });
 post('site/lead', async (req, res) => { // публично: посетитель сайта партнера оставляет имя и почту
   const b = await body(req); const slug = String(b.p || '').toLowerCase(); if (!/^[a-z0-9]{8}$/.test(slug)) return send(res, 404, { error: 'Сайт не найден' });
@@ -1057,7 +1112,9 @@ async function issuePinv(req, p, noMail) {
   await sput(`crm/pinv/${h}.json`, { pid: p.id, email: p.email, expires, status: 'created', created: nowIso() });
   await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, invite: { tokHash: h, status: 'created', expires } } } : { noop: 1 });
   const link = pinvLink(req, tok);
-  if (ENV.RESEND_API_KEY && !noMail) await mail(p.email, 'Приглашение в Orbiq Room', mailBox('Приглашение в Orbiq Room', 'Ссылка одноразовая и действует 7 дней.', link, 'Открыть кабинет')).catch(() => {});
+  if (ENV.RESEND_API_KEY && !noMail) { const ag = p.kind === 'networker'; const st = await ensureSite(p).catch(() => null); const sl = st ? siteUrl(req, st.slug, st.name) : '';
+    const first = String(p.name || '').split(/\s+/)[0];
+    await mail(p.email, ag ? 'Ваш кабинет Агента Orbiq' : 'Приглашение в Orbiq Room', mailBox(ag ? `${first}, ваш кабинет Агента Orbiq готов` : 'Приглашение в Orbiq Room', `1. Кабинет: кнопка ниже. Ссылка одноразовая и действует 7 дней.${sl ? ` 2. Ссылка для ваших клиентов: ${sl}. На каждом продукте журнала кнопка «Связаться с ${instrName(first)}». Инструкция внутри кабинета.` : ''}`, link, 'Открыть кабинет')).catch(() => {}); }
   return { link, expires };
 }
 post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | networker; профиль продукта из свободного текста
@@ -1078,7 +1135,7 @@ post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | net
   const inv = b.send === false ? { link: null, expires: null } : await issuePinv(req, p, b.mail === false);
   if (b.send === false) await update(`crm/p/${id}.json`, (d) => d ? { doc: { ...d, invite: { status: 'draft' } } } : { noop: 1 });
   await audit('owner', 'owner', 'partner_invite', { pid: id, kind, send: b.send !== false });
-  const site = await ensureSite(p); send(res, 200, { ok: true, pid: id, kind, product, engine, categories: cats, link: inv.link, expires: inv.expires, sent: b.send !== false, site: siteUrl(req, site.slug) });
+  const site = await ensureSite(p); send(res, 200, { ok: true, pid: id, kind, product, engine, categories: cats, link: inv.link, expires: inv.expires, sent: b.send !== false, site: siteUrl(req, site.slug, site.name) });
 });
 // история версий партнера: каждый снимок до правки, до 300 записей, хранится в базе
 const PH = (pid) => `crm/phist/${pid}`;
@@ -1216,7 +1273,7 @@ get('partners', async (req, res) => {
   await need(req, 'owner.admin'); await maybeBackup(false).catch(() => {}); const ps = (await many((await setGet('crm/plist')).map(i => `crm/p/${i}.json`))).filter(Boolean); const out = [];
   for (const p of ps) { const n = (await setGet(`crm/cidx/p/${p.id}`)).length; const pf = await sget(`crm/pf/${p.id}.json`);
     const inv = p.invite ? { status: p.invite.status === 'created' && Date.parse(p.invite.expires) < Date.now() ? 'expired' : p.invite.status, expires: p.invite.expires } : null;
-    out.push({ site: p.site && p.site.slug ? siteUrl(req, p.site.slug) : '', phone: (p.contact || {}).phone || '', trialOk: !!p.trialOk, startTrial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null), tgOn: !!(p.tg && p.tg.chatId), id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
+    out.push({ site: p.site && p.site.slug ? siteUrl(req, p.site.slug, p.site.name) : '', phone: (p.contact || {}).phone || '', trialOk: !!p.trialOk, startTrial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null), tgOn: !!(p.tg && p.tg.chatId), id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
   send(res, 200, { partners: out });
 });
 // один человек у нескольких партнеров: связь подтверждает клиент или сверка при регистрации; обе частные карточки сохраняются
@@ -1417,7 +1474,7 @@ get('invite/info', async (req, res) => { // публично: без личны�
   if (!(await rateLimit('crm-ii:' + ipOf(req), 60, 60))) return send(res, 429, { error: 'Слишком много попыток' });
   const x = await resolveInv(query(req).get('t') || ''); if (!x) return send(res, 404, { error: 'Приглашение не найдено' });
   if (!invOpen(x)) return send(res, 410, { error: 'Приглашение недействительно' });
-  const em = x.seat === 1 ? x.main.email : ''; send(res, 200, { title: 'Для вас и того, кого вы захотите пригласить', subtitle: 'Три месяца персонального доступа в Orbiq', seat: x.seat, expires: x.seat === 1 ? x.main.expires : null, partner: x.main.pname || '', emailHint: em ? em.replace(/^(.).*(@.*)$/, '$1•••$2') : '', bound: !!em, relation: x.seat === 2 && x.main.seat2 ? x.main.seat2.relation || '' : '' });
+  const em = x.seat === 1 ? x.main.email : ''; let al = ''; if (x.seat === 1 && x.main.cid) { const cc = await sget(`crm/c/${x.main.cid}.json`); al = cc ? String(cc.alias || '').split(' ')[0] : ''; } send(res, 200, { email: em, alias: al, title: 'Для вас и того, кого вы захотите пригласить', subtitle: 'Три месяца персонального доступа в Orbiq', seat: x.seat, expires: x.seat === 1 ? x.main.expires : null, partner: x.main.pname || '', emailHint: em ? em.replace(/^(.).*(@.*)$/, '$1•••$2') : '', bound: !!em, relation: x.seat === 2 && x.main.seat2 ? x.main.seat2.relation || '' : '' });
 });
 post('invite/start', async (req, res) => {
   const b = await body(req); if (!(await rateLimit('crm-is:' + ipOf(req), 10, 60))) return send(res, 429, { error: 'Слишком много попыток' });
@@ -1462,6 +1519,7 @@ post('invite/claim', async (req, res) => { // вход по приглашени
   });
   await update(`crm/c/${x.main.cid}.json`, (d) => d ? { doc: { ...d, ...(x.seat === 1 ? { stage: 'active', access: { until: result.until } } : {}), history: [...(d.history || []), { at, what: x.seat === 1 ? 'Клиент принял приглашение в Orbiq' : 'Близкий человек клиента принял приглашение' }] } } : { noop: 1 });
   await audit(x.main.pid, 'client', 'family_invite_activate', { inv: x.main.id.slice(0, 8), seat: x.seat }); await notify(x.main.pid, 'want', 'act' + x.main.id + x.seat);
+  await sendConfirm(req, uid, email, name).catch(() => {});
   setCookie(res, 'oj', sign({ u: uid, e: email, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
   send(res, 200, { ok: true, name, until: result.until, seat: x.seat, partner: x.main.pname || '' });
 });
@@ -1542,7 +1600,7 @@ async function feedPayload(u, prefs) {
 }
 get('client/who', async (req, res) => { const u = await journalUser(req); if (!u.crmLink) return send(res, 200, { linked: false });
   const card = await sget(`crm/c/${u.crmLink.cid}.json`); const p = card ? await sget(`crm/p/${card.owner}.json`) : null; const first = p && !p.suspended ? String(p.name || '').split(/\s+/)[0] : '';
-  send(res, 200, { linked: !!first, partner: first, label: first ? `Запросить у ${genName(first)}` : '', seat: u.crmLink.seat, sex: u.sex || '' }); });
+  const ct = (p && p.contact) || {}; send(res, 200, { linked: !!first, partner: first, label: first ? (u.crmLink.src === 'site' ? `Связаться с ${instrName(first)}` : `Запросить у ${genName(first)}`) : '', instr: first ? instrName(first) : '', dat: first ? datName(first) : '', seat: u.crmLink.seat, sex: u.sex || '', name: u.first || '', phone: ct.phone || '', tg: ct.tg || '' }); });
 get('client/feed', async (req, res) => { const u = await journalUser(req); send(res, 200, await feedPayload(u)); });
 post('renew/request', async (req, res) => { // «Обсудить продление»: обращение владельцу Orbiq и партнеру семьи через ветку Orbiq; автосписания нет
   const u = await journalUser(req); if (!u.crmLink || !u.access) return send(res, 403, { error: 'Недостаточно прав' });
@@ -1570,9 +1628,11 @@ post('client/interest', async (req, res) => {
     await update(`crm/c/${u.crmLink.cid}.json`, (d) => { if (!d) return { noop: 1 }; const s = { like: [], less: [], hide: [], want: [], ...(d.clientSignals || {}) }; if (!s[b.action].includes(b.itemId)) s[b.action] = [...s[b.action], b.itemId]; return { doc: { ...d, clientSignals: s, clientUpdatedAt: nowIso() } }; });
     if (b.action === 'want') { const card = await sget(`crm/c/${u.crmLink.cid}.json`); const it = cat.find(x => x.id === b.itemId) || {}; const title = String(it.title || b.title || b.itemId).slice(0, 200); const note = scrubPII(String(b.note || '')).text.trim().slice(0, 600); const at = nowIso();
       const pn = card ? ((await sget(`crm/p/${card.owner}.json`)) || {}).name || '' : '';
-      await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { id: 'pa_' + rid(10), pid: card ? card.owner : '', cid: u.crmLink.cid, alias: card ? card.alias : '', partner: String(pn).split(' ')[0], kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-3000) }));
-      await update(`crm/c/${u.crmLink.cid}.json`, (d) => d ? { doc: { ...d, plAsks: [...(d.plAsks || []), { kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-200), history: [...(d.history || []), { at, what: (u.crmLink.seat === 2 ? 'Близкий человек клиента запросил: ' : 'Клиент запросил: ') + title }] } } : { noop: 1 });
-      const ex = `${u.crmLink.seat === 2 ? 'Близкий человек клиента' : 'Клиент'} ${card ? card.alias : ''} запросил в журнале\n${title}${note ? '\nКомментарий: ' + note : ''}`;
+      await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { id: 'pa_' + rid(10), pid: card ? card.owner : '', cid: u.crmLink.cid, alias: card ? card.alias : '', email: u.crmLink.src === 'site' ? u.email : '', partner: String(pn).split(' ')[0], kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-3000) }));
+      await update(`crm/c/${u.crmLink.cid}.json`, (d) => d ? { doc: { ...d, plAsks: [...(d.plAsks || []), { kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, email: u.crmLink.src === 'site' ? u.email : '', at }].slice(-200), history: [...(d.history || []), { at, what: (u.crmLink.seat === 2 ? 'Близкий человек клиента запросил: ' : 'Клиент запросил: ') + title }] } } : { noop: 1 });
+      const ce = card && card.contact && card.contact.email ? card.contact.email : (u.crmLink.src === 'site' ? u.email : '');
+      const ex = `${u.crmLink.seat === 2 ? 'Близкий человек клиента' : 'Клиент'} ${card ? card.alias : ''}${ce ? ' · ' + ce : ''} запросил в журнале\n${title}${note ? '\nКомментарий: ' + note : ''}`;
+      if (card) await update(`crm/plead/${card.owner}.json`, (l) => ({ doc: [...(l || []), { id: 'sl_' + rid(10), name: card.alias, email: ce, title, note, kind: 'want', cid: card.id, src: u.crmLink.src || 'invite', status: 'new', at }].slice(-1000) }));
       if (card) await notify(card.owner, 'want', u.crmLink.cid + b.itemId, ex); await notify('owner', 'rq_new', u.crmLink.cid + b.itemId, ex + (pn ? '\nПартнер: ' + String(pn).split(' ')[0] : '')); next = { type: 'partner', text: (String(pn).split(' ')[0] || 'Партнер') + ' получил запрос и свяжется с вами' }; }
   }
   const f = await feedPayload({ ...u, crmPrefs: out.doc.crmPrefs }, out.doc.crmPrefs);

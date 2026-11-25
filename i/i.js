@@ -71,13 +71,14 @@ function leftInvite(){
     termsHtml()+
     (S.info&&S.info.expires?'<p class="note" data-rv>Приглашение действует до '+esc(ruDate(S.info.expires))+'</p>':'');
 }
-function rightForm(){var hint=S.info&&S.info.emailHint;
+function rightForm(){var hint=S.info&&S.info.emailHint;var pre=!!(S.info&&S.info.email&&S.email===S.info.email&&S.name);
   return pgTop(2,'Вход в Orbiq')+
-    '<h2 data-rv>Откройте свою ленту</h2>'+
-    '<p data-rv>'+nb(hint?'Приглашение выписано на '+esc(hint)+'. Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.':'Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.')+'</p>'+
+    '<h2 data-rv>'+(pre?'Придумайте пароль':'Откройте свою ленту')+'</h2>'+
+    '<p data-rv>'+nb(pre?'Осталось придумать пароль. Потом подтвердите почту по ссылке из письма.':hint?'Приглашение выписано на '+esc(hint)+'. Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.':'Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.')+'</p>'+
     '<form class="form" id="fStart" novalidate>'+
+      (pre?'<p class="note" data-rv style="margin:0">'+esc(S.name)+' · '+esc(S.email)+'</p><input type="hidden" name="name" value="'+esc(S.name)+'"><input type="hidden" name="email" autocomplete="username" value="'+esc(S.email)+'">':
       '<label class="fld" data-rv><span>Как к вам обращаться</span><input name="name" autocomplete="given-name" maxlength="60" required placeholder="Имя" value="'+esc(S.name)+'"></label>'+
-      '<label class="fld" data-rv><span>Почта</span><input name="email" type="email" inputmode="email" autocomplete="username" required placeholder="'+esc(hint||'name@mail.com')+'" value="'+esc(S.email)+'"></label>'+
+      '<label class="fld" data-rv><span>Почта</span><input name="email" type="email" inputmode="email" autocomplete="username" required placeholder="'+esc(hint||'name@mail.com')+'" value="'+esc(S.email)+'"></label>')+
       '<label class="fld" data-rv><span>Придумайте пароль</span><input name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="Не меньше 8 символов"></label>'+
       '<div data-rv>'+btn('Войти в Orbiq','type="submit" data-sub','wide mag').replace('type="button" ','')+'</div>'+
       '<p class="note" id="nStart" role="status"></p>'+
@@ -253,7 +254,7 @@ var cd=$('#capDate');if(cd)cd.textContent=monthYear(new Date());
 renderFront('invite');
 if(!T){loadPersonal(false).then(function(ok){if(!ok){S.err='Ссылка приглашения неполная';invalid(S.err)}})}
 else api('invite/info&t='+encodeURIComponent(T)).then(function(r){
-  if(r._s===200){S.info=r;S.seat=r.seat||1;if(!book.classList.contains('open'))renderFront('invite');var cr=$('#capR');if(cr&&r.expires)cr.innerHTML='<span>Приглашение</span><span>до '+esc(ruDate(r.expires))+'</span>';
+  if(r._s===200){S.info=r;S.seat=r.seat||1;if(r.email&&!S.email)S.email=r.email;if(r.alias&&!S.name)S.name=r.alias;if(!book.classList.contains('open'))renderFront('invite');var cr=$('#capR');if(cr&&r.expires)cr.innerHTML='<span>Приглашение</span><span>до '+esc(ruDate(r.expires))+'</span>';
     var nt=$('.cv-row',front);if(nt&&r.expires&&!$('.cv-note',nt))nt.insertAdjacentHTML('beforeend','<span class="cv-note">До '+esc(ruDate(r.expires))+'</span>');
     if(C.length===6){S.step='code'}
     return}

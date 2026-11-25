@@ -207,5 +207,15 @@
     "deploymentEnabled": {
       "journal-editorial": false
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/:name([a-z][a-z0-9-]{1,23})",
+      "destination": "/api/crm/?r=site/go&n=:name"
+    },
+    {
+      "source": "/:name([a-z][a-z0-9-]{1,23})/",
+      "destination": "/api/crm/?r=site/go&n=:name"
+    }
+  ]
 }

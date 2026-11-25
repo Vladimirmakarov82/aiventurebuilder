@@ -21,6 +21,8 @@ http.createServer(async (req, res) => {
     let p = path.join(ROOT, decodeURIComponent(u.pathname));
     if (fs.existsSync(p) && fs.statSync(p).isDirectory()) p = path.join(p, 'index.html');
     if (!fs.existsSync(p) && fs.existsSync(p + '.html')) p = p + '.html';
+    const mm = /^\/([a-z][a-z0-9-]{1,23})\/?$/.exec(u.pathname);
+    if (!fs.existsSync(p) && mm) { req.url = '/api/crm/?r=site/go&n=' + mm[1]; return await crm(req, res); }
     if (!fs.existsSync(p)) { res.statusCode = 404; return res.end('404'); }
     res.setHeader('Content-Type', MIME[path.extname(p)] || 'application/octet-stream'); fs.createReadStream(p).pipe(res);
   } catch (e) { console.error(e); if (!res.headersSent) { res.statusCode = 500; res.end(String(e)); } }

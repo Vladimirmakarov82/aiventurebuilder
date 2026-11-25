@@ -175,7 +175,7 @@ function bind(){
     api('invite/claim',{body:{t:T,name:name,email:email,password:pw}}).then(function(r){setBusy(fs,0);
       if(!r.ok){n.className='note err';n.textContent=r.error||'Не получилось, попробуйте еще раз';if(r._s===410||r._s===404)invalid(r.error);return}
       S.name=r.name||name;S.email=email;if(r.until)S.until=r.until;S.seat=r.seat||1;
-      try{if(window.PasswordCredential&&navigator.credentials)navigator.credentials.store(new PasswordCredential({id:email,password:pw,name:S.name}))}catch(_){}
+      try{if(window.PasswordCredential&&navigator.credentials){var pc=navigator.credentials.store(new PasswordCredential({id:email,password:pw,name:S.name}));if(pc&&pc.catch)pc.catch(function(){})}}catch(_){}
       n.className='note ok';n.textContent='Готово';loadPersonal(true)})};
   var fc=$('#fCode',page);
   if(fc){var inp=$('#codeIn',page),cells=[].slice.call(page.querySelectorAll('.cells i'));
@@ -252,8 +252,8 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&book.classL
 var cd=$('#capDate');if(cd)cd.textContent=monthYear(new Date());
 renderFront('invite');
 if(!T){loadPersonal(false).then(function(ok){if(!ok){S.err='Ссылка приглашения неполная';invalid(S.err)}})}
-else api('invite/info?t='+encodeURIComponent(T)).then(function(r){
-  if(r._s===200){S.info=r;S.seat=r.seat||1;var cr=$('#capR');if(cr&&r.expires)cr.innerHTML='<span>Приглашение</span><span>до '+esc(ruDate(r.expires))+'</span>';
+else api('invite/info&t='+encodeURIComponent(T)).then(function(r){
+  if(r._s===200){S.info=r;S.seat=r.seat||1;if(!book.classList.contains('open'))renderFront('invite');var cr=$('#capR');if(cr&&r.expires)cr.innerHTML='<span>Приглашение</span><span>до '+esc(ruDate(r.expires))+'</span>';
     var nt=$('.cv-row',front);if(nt&&r.expires&&!$('.cv-note',nt))nt.insertAdjacentHTML('beforeend','<span class="cv-note">До '+esc(ruDate(r.expires))+'</span>');
     if(C.length===6){S.step='code'}
     return}

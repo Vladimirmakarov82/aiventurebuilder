@@ -221,13 +221,16 @@ const AI_SYSTEM = `Ты разбираешь обезличенные замет
 "items":[{"cell":"<ключ>","value":"<суть своими словами, до 200 символов>","kind":"fact|hypothesis|unknown"}]}
 Ключи ячеек: ${CELL_KEYS.map(k => `${k} (${QUESTIONS[k]})`).join('; ')}.
 Факт — прямо сказано; гипотеза — предположение. Если сведений нет, оставь поле пустым или не добавляй. Ничего не выдумывай. Не добавляй имена, фамилии, контакты, ссылки, названия компаний.`;
-const aiToken = (req) => (req && req.headers && req.headers['x-vercel-oidc-token']) || ENV.VERCEL_OIDC_TOKEN || ENV.AI_GATEWAY_API_KEY || '';
+const aiToken = (req) => ENV.AI_API_KEY || (req && req.headers && req.headers['x-vercel-oidc-token']) || ENV.VERCEL_OIDC_TOKEN || ENV.AI_GATEWAY_API_KEY || '';
+// свой провайдер с OpenAI-совместимым API (Gemini, OpenRouter, свой сервер): AI_BASE_URL + AI_API_KEY + CRM_AI_MODEL
+const AI_URL = () => ENV.AI_BASE_URL ? ENV.AI_BASE_URL.replace(/\/+$/, '') + '/chat/completions' : 'https://ai-gateway.vercel.sh/v1/chat/completions';
+const AI_MODEL = () => ENV.CRM_AI_MODEL || (ENV.AI_BASE_URL ? 'gemini-2.5-flash' : 'google/gemini-2.5-flash-lite');
 async function aiExtract(text, token) {
   if (!token) return null;
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
-    const r = await fetch('https://ai-gateway.vercel.sh/v1/chat/completions', { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: ENV.CRM_AI_MODEL || 'google/gemini-2.5-flash-lite', temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
+    const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) return null; // 401/403 и прочие ошибки — молча резерв
     const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '')); if (!o || typeof o !== 'object') return null;
@@ -259,8 +262,8 @@ async function aiJson(system, user, token, ms = 25000) {
   if (!token) return aiFail('no_token');
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
-    const r = await fetch('https://ai-gateway.vercel.sh/v1/chat/completions', { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: ENV.CRM_AI_MODEL || 'google/gemini-2.5-flash-lite', temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
+    const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) { const et = await r.text().catch(() => ''); return aiFail('http_' + r.status + ' ' + et.replace(/\s+/g, ' ').slice(0, 300)); } const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '').trim()); if (!o || typeof o !== 'object') return aiFail('shape'); AI_LAST = { at: Date.now(), ok: true, reason: '' }; return o;
   } catch (e) { return aiFail(e && e.name === 'AbortError' ? 'timeout' : 'error_' + String((e && e.name) || 'x')); }
@@ -313,7 +316,7 @@ post('auth/signup', async (req, res) => { // саморегистрация па
     if (await createNX(`crm/pidx/${sha(email).slice(0, 32)}`, id)) {
       const cats = role === 'clients' ? [] : [b.cat];
       const product = role === 'clients' ? null : cleanProduct({ summary: String(b.about || '').slice(0, 600), categories: cats });
-      const p = { id, email, name, tier: 'new', kind: role === 'clients' ? 'networker' : 'supplier', role, product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'self', categories: cats, tg: {}, ical: {}, paid: null, activated: null, lastSeen: null };
+      const p = { id, email, name, tier: 'new', kind: role === 'clients' ? 'networker' : 'supplier', role, product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'self', categories: cats, tg: {}, ical: {}, paid: null, activated: null, lastSeen: null, contact: { phone: phoneOf(b.phone), tg: '' } };
       await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id); if (product) await pushHist(id, 'product', null, product, 'саморегистрация');
       await audit('partner', id, 'partner_signup', { cat: b.cat || null, role }); pid = id;
     } else pid = await sget(`crm/pidx/${sha(email).slice(0, 32)}`);
@@ -403,7 +406,8 @@ get('me', async (req, res) => {
   const p = c.p; const t = c.tier;
   if (!p.lastSeen || Date.now() - Date.parse(p.lastSeen) > 3600e3) await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, lastSeen: nowIso() } } : { noop: 1 }).catch(() => {});
   const month = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 7); const used = p.rqMonth && p.rqMonth.m === month ? p.rqMonth.n : 0; const unl = allowed(c, 'rq.unlimited') || p.kind === 'networker';
-  send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: t === 'paid' ? 'Партнер Orbiq' : t === 'networker' ? 'Нетворкер' : t === 'networker_new' ? 'Новый нетворкер' : t === 'basic' ? 'Базовый партнер' : 'Новый партнер',
+  send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: (p.kind === 'networker' || t === 'networker' || t === 'networker_new') ? 'Агент Orbiq' : 'Партнер Orbiq',
+      site: await ensureSite(p).then(x => ({ slug: x.slug, link: siteUrl(req, x.slug), phone: (p.contact || {}).phone || '', tgUser: (p.contact || {}).tg || '' })).catch(() => null), start: p.activated || p.created, deadlineDays: TRIAL_DAYS, removed: !!p.trialFailed, trial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null),
       suspended: !!p.suspended, paid: p.paid || null, categories: p.categories || [], product: p.product || null, tg: { connected: !!(p.tg && p.tg.chatId) },
       limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0, leads: await leadLim(p) } },
     access: Object.fromEntries(['net.view', 'rq.create', 'rq.refer', 'invite.create', 'demand', 'pf.submit', 'fit', 'priority'].map(op => [op, allowed(c, op)])) });
@@ -721,6 +725,77 @@ async function leadLim(p) { // 30 своих клиентов с открыты�
   const asked = ((await sget(`crm/lead/${p.id}.json`)) || []).map(x => x.cid);
   return { need: 0, per: 0, n, used: asked.length, left: 999, asked }; // лимиты сняты 24.11: знакомства Владимир согласует лично
 }
+// ---------- 10 дней на старт: 5 клиентов с капиталом от $3–10 млн или 3 клиента от $10–25 млн ----------
+const CAP5 = ['3–10', '10–25', '25–100', '100+'], CAP15 = ['10–25', '25–100', '100+'];
+async function trialStat(p) {
+  const cards = (await many((await setGet(`crm/cidx/p/${p.id}`)).map(i => `crm/c/${i}.json`))).filter(x => x && !x.archived && x.owner === p.id);
+  const a = cards.filter(x => CAP5.includes(x.capital) && x.age).length, b2 = cards.filter(x => CAP15.includes(x.capital) && x.age).length;
+  const start = Date.parse(p.activated || p.created); const left = Math.ceil((start + TRIAL_DAYS * 864e5 - Date.now()) / 864e5);
+  return { total: cards.length, cap5: a, cap15: b2, done: a >= 5 || b2 >= 3, left, day: Math.max(1, Math.floor((Date.now() - start) / 864e5) + 1) };
+}
+const DRIP = [
+  ['Orbiq: ваш сайт и кабинет готовы', 'Orbiq строит децентрализованную сеть партнеров для семей с капиталом. В каждом направлении мы ищем одного-двух исключительных партнеров: деньги и переводы, криптобезопасность, недвижимость, образование детей, отдых. Ваш сайт с вашим контактом уже работает. Ссылка на него лежит в кабинете, раздел «Мой сайт».'],
+  ['Как клиент попадает к вам', 'Клиент открывает ваш сайт Orbiq и видит редкие возможности со всего мира. Под каждой стоит кнопка с вашим именем. Заявка приходит вам на почту и в кабинет. Услугу оказывает партнер сети, а клиент остается вашим.'],
+  ['Ваша база остается вашей', 'В Orbiq не попадают фамилии, телефоны и почты ваших клиентов. Система удаляет их еще в браузере, до отправки. Сеть видит только запрос, возраст и капитал. Контакт и отношения с клиентом остаются у вас.'],
+  ['Партнер и агент Orbiq', 'Партнер Orbiq ставит на полку сети свой продукт после модерации. Агент Orbiq продает своим клиентам продукты всей сети. Агент получает 30% подписки клиента $10 000 в год и комиссию со сделок.'],
+  ['Личная ссылка для клиента', 'Для близкого клиента создайте личное приглашение: почта клиента и кнопка «Создать ссылку» в его карточке. Клиент задает пароль и получает свою ленту. Жену или мужа он пригласит сам. Его запросы приходят вам.'],
+  ['Половина срока позади', 'Чтобы кабинет и сайт остались за вами, внесите 5 клиентов с капиталом от $3–10 млн или 3 клиента от $10–25 млн. Подойдет любой формат: Excel, заметки, текст. Начать можно с одного имени.'],
+  ['CRM, которая подсказывает', 'Карточка клиента собирает интересы, планы и запросы. Кабинет подсказывает, о чем и когда спросить клиента, и показывает, какие продукты сети ему подходят.'],
+  ['Асимметрии сети', 'Асимметрия — редкая выгодная сделка: скидка застройщика при кассовом разрыве, доля до IPO, возврат украденной криптовалюты. Такие сделки появляются в разделе «Асимметрии» и на вашем сайте. Клиенты, которые их получают, обычно возвращаются.'],
+  ['Осталось 2 дня', 'Через 2 дня закончится срок старта. Проверьте раздел «Мои клиенты»: у каждого клиента должны быть возраст и капитал. Мы проверяем клиентскую базу выборочно, в частном порядке.'],
+  ['Последний день старта', 'Сегодня последний день. Если клиенты уже внесены, кабинет и сайт остаются за вами. Если нужно больше времени, ответьте на это письмо.'],
+];
+post('trial/drip', async (req, res) => { await need(req, 'owner.admin'); send(res, 200, { emails: DRIP.map(([t, x], i) => ({ day: i + 1, subject: t, text: x })) }); });
+// ---------- сайт партнера: журнал Orbiq с его контактом ----------
+const TRIAL_DAYS = 10;
+const siteUrl = (req, slug) => `https://${linkHost(req)}/journal/?p=${slug}`;
+async function ensureSite(p) {
+  if (p.site && p.site.slug) return p.site;
+  const slug = rid(8).toLowerCase(); await sput(`crm/psite/${slug}.json`, { pid: p.id });
+  const out = await update(`crm/p/${p.id}.json`, (d) => d ? (d.site && d.site.slug ? { err: 'has', site: d.site } : { doc: { ...d, site: { slug, created: nowIso() } } }) : { err: 1 });
+  if (out.err === 'has') { await sdel(`crm/psite/${slug}.json`); return out.site; } return { slug };
+}
+const phoneOf = (v) => { const d = String(v || '').replace(/[^\d+]/g, ''); const n = d.replace(/\D/g, ''); return n.length >= 10 && n.length <= 15 ? '+' + n : ''; };
+function instrName(n) { n = String(n || ''); const X = { 'Павел': 'Павлом', 'Лев': 'Львом', 'Любовь': 'Любовью', 'Илья': 'Ильей', 'Никита': 'Никитой' }; if (X[n]) return X[n];
+  if (/ия$/.test(n)) return n.slice(0, -1) + 'ей'; if (/[жшчщц]а$/.test(n)) return n.slice(0, -1) + 'ей'; if (/а$/.test(n)) return n.slice(0, -1) + 'ой'; if (/я$/.test(n)) return n.slice(0, -1) + 'ей';
+  if (/[йь]$/.test(n)) return n.slice(0, -1) + 'ем'; if (/[жшчщц]$/.test(n)) return n + 'ем'; if (/[бвгдзклмнпрстфх]$/i.test(n)) return n + 'ом'; return n; }
+post('site/contacts', async (req, res) => { // партнер (или Founder для партнера) задает телефон и ник Telegram для своего сайта
+  const c = await need(req); const b = await body(req); let pid = '';
+  if (c.role === 'owner') pid = String(b.pid || ''); else if (c.role === 'partner') pid = c.p.id; else return send(res, 403, { error: 'Недостаточно прав' });
+  const phone = b.phone ? phoneOf(b.phone) : ''; if (b.phone && !phone) return send(res, 400, { error: 'Телефон в формате +7 900 000-00-00' });
+  const tg = String(b.tg || '').trim().replace(/^@|^https?:\/\/t\.me\//, '').replace(/[^A-Za-z0-9_]/g, '').slice(0, 32);
+  const out = await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, contact: { phone, tg } } } : { err: 1 }); if (out.err) return send(res, 404, { error: 'Партнер не найден' });
+  send(res, 200, { ok: true, phone, tg });
+});
+get('site/info', async (req, res) => { // публично: чей это сайт
+  const slug = String(query(req).get('p') || '').toLowerCase(); if (!/^[a-z0-9]{8}$/.test(slug)) return send(res, 404, { error: 'Сайт не найден' });
+  if (!(await rateLimit('crm-si:' + ipOf(req), 300, 60))) return send(res, 429, { error: 'Много запросов' });
+  const x = await sget(`crm/psite/${slug}.json`); const p = x && await sget(`crm/p/${x.pid}.json`); if (!p || p.suspended || p.trialFailed) return send(res, 404, { error: 'Сайт не найден' });
+  if (query(req).get('open') === '1') await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, site: { ...(d.site || {}), opens: ((d.site || {}).opens || 0) + 1 } } } : { noop: 1 });
+  const first = String(p.name || '').split(/\s+/)[0]; const ct = p.contact || {};
+  send(res, 200, { name: first, label: `Связаться с ${instrName(first)}`, phone: ct.phone || '', tg: ct.tg || '' });
+});
+post('site/lead', async (req, res) => { // публично: посетитель сайта партнера оставляет имя и почту
+  const b = await body(req); const slug = String(b.p || '').toLowerCase(); if (!/^[a-z0-9]{8}$/.test(slug)) return send(res, 404, { error: 'Сайт не найден' });
+  if (b.website) return send(res, 200, { ok: true });
+  if (!(await rateLimit('crm-sl:' + ipOf(req), 20, 1440))) return send(res, 429, { error: 'Много запросов за день' });
+  const x = await sget(`crm/psite/${slug}.json`); const p = x && await sget(`crm/p/${x.pid}.json`); if (!p || p.suspended) return send(res, 404, { error: 'Сайт не найден' });
+  const name = scrubPII(String(b.name || '')).text.trim().slice(0, 60); const email = String(b.email || '').trim().toLowerCase();
+  if (!name) return send(res, 400, { error: 'Как к вам обращаться?' }); if (!EMAIL_RE.test(email) || email.length > 120) return send(res, 400, { error: 'Проверьте адрес почты' });
+  const title = String(b.title || '').replace(/[<>]/g, '').trim().slice(0, 200); const item = String(b.item || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 80);
+  const note = String(b.note || '').replace(/[<>]/g, '').trim().slice(0, 600); const at = nowIso();
+  const lead = { id: 'sl_' + rid(10), name, email, title, item, note, kind: b.kind === 'notify' ? 'notify' : 'want', at, status: 'new' };
+  await update(`crm/plead/${p.id}.json`, (l) => ({ doc: [...(l || []), lead].slice(-1000) }));
+  await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { ...lead, pid: p.id, partner: String(p.name || '').split(' ')[0], alias: name, src: 'site' }].slice(-3000) }));
+  await audit(p.id, 'client', 'site_lead', { kind: lead.kind });
+  await notify(p.id, 'want', lead.id); await notify('owner', 'rq_new', lead.id);
+  if (ENV.RESEND_API_KEY) await mail(p.email, 'Новая заявка с вашего сайта Orbiq', mailBox('Новая заявка: ' + name, (title ? 'Интересует: ' + title + '. ' : '') + 'Почта клиента: ' + email + (note ? '. Комментарий: ' + note : '') + '. Заявка сохранена в кабинете, раздел «Мой сайт».', `${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/#/site`, 'Открыть кабинет')).catch(() => {});
+  const ct = p.contact || {}; send(res, 200, { ok: true, name: String(p.name || '').split(' ')[0], phone: ct.phone || '', tg: ct.tg || '' });
+});
+get('site/leads', async (req, res) => { const c = await need(req, 'crm.own'); send(res, 200, { rows: ((await sget(`crm/plead/${c.p.id}.json`)) || []).slice().reverse() }); });
+post('site/lead/status', async (req, res) => { const c = await need(req, 'crm.own'); const b = await body(req);
+  const out = await update(`crm/plead/${c.p.id}.json`, (l) => l ? { doc: l.map(x => x.id === b.id ? { ...x, status: b.status === 'done' ? 'done' : 'new' } : x) } : { err: 1 }); if (out.err) return send(res, 404, { error: 'Заявка не найдена' }); send(res, 200, { ok: true }); });
+
 // личные ссылки на журнал: партнер делает для клиента свою подборку, кнопки ведут к нему
 const PLK = /^[A-Za-z0-9_-]{12}$/;
 function genName(n){n=String(n||'');var X={'Павел':'Павла','Лев':'Льва','Любовь':'Любови'};if(X[n])return X[n];if(/ия$/.test(n))return n.slice(0,-1)+'и';if(/[гкхжчшщ]а$/.test(n))return n.slice(0,-1)+'и';if(/а$/.test(n))return n.slice(0,-1)+'ы';if(/я$/.test(n))return n.slice(0,-1)+'и';if(/[йь]$/.test(n))return n.slice(0,-1)+'я';if(/[бвгджзклмнпрстфхцчшщ]$/i.test(n))return n+'а';return n}
@@ -980,14 +1055,14 @@ post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | net
   const cats = [...new Set([...(Array.isArray(b.categories) ? b.categories : []), ...((product && product.categories) || [])].filter(x => CATS[x]))].slice(0, 5);
   const id = 'p_' + rid(12);
   if (!(await createNX(`crm/pidx/${sha(email).slice(0, 32)}`, id))) return send(res, 409, { error: 'Партнер с этой почтой уже есть' });
-  const p = { id, email, name, tier: 'new', kind, product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'owner', categories: cats, tg: {}, ical: {}, paid: null, activated: null, lastSeen: null };
+  const p = { id, email, name, tier: 'new', kind, product, suspended: false, sessVer: 1, created: nowIso(), invitedBy: 'owner', categories: cats, tg: {}, ical: {}, paid: null, activated: null, lastSeen: null, contact: { phone: phoneOf(b.phone), tg: String(b.tg || '').trim().replace(/^@|^https?:\/\/t\.me\//, '').replace(/[^A-Za-z0-9_]/g, '').slice(0, 32) } };
   await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id);
   if (product) await pushHist(id, 'product', null, product, 'карточка создана при приглашении');
   // send:false — партнер и карточка продукта без письма и ссылки; письмо отправит partner/reinvite после правки
   const inv = b.send === false ? { link: null, expires: null } : await issuePinv(req, p);
   if (b.send === false) await update(`crm/p/${id}.json`, (d) => d ? { doc: { ...d, invite: { status: 'draft' } } } : { noop: 1 });
   await audit('owner', 'owner', 'partner_invite', { pid: id, kind, send: b.send !== false });
-  send(res, 200, { ok: true, pid: id, kind, product, engine, categories: cats, link: inv.link, expires: inv.expires, sent: b.send !== false });
+  const site = await ensureSite(p); send(res, 200, { ok: true, pid: id, kind, product, engine, categories: cats, link: inv.link, expires: inv.expires, sent: b.send !== false, site: siteUrl(req, site.slug) });
 });
 // история версий партнера: каждый снимок до правки, до 300 записей, хранится в базе
 const PH = (pid) => `crm/phist/${pid}`;
@@ -1125,7 +1200,7 @@ get('partners', async (req, res) => {
   await need(req, 'owner.admin'); await maybeBackup(false).catch(() => {}); const ps = (await many((await setGet('crm/plist')).map(i => `crm/p/${i}.json`))).filter(Boolean); const out = [];
   for (const p of ps) { const n = (await setGet(`crm/cidx/p/${p.id}`)).length; const pf = await sget(`crm/pf/${p.id}.json`);
     const inv = p.invite ? { status: p.invite.status === 'created' && Date.parse(p.invite.expires) < Date.now() ? 'expired' : p.invite.status, expires: p.invite.expires } : null;
-    out.push({ id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
+    out.push({ site: p.site && p.site.slug ? siteUrl(req, p.site.slug) : '', phone: (p.contact || {}).phone || '', trialOk: !!p.trialOk, id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
   send(res, 200, { partners: out });
 });
 // один человек у нескольких партнеров: связь подтверждает клиент или сверка при регистрации; обе частные карточки сохраняются
@@ -1264,7 +1339,7 @@ get('diag/partners', async (req, res) => { // диагностика целос�
 get('ai/ping', async (req, res) => {
   const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
   const t = aiToken(req); const o = await aiJson('Верни JSON {"ok":true}', 'ping', t, 15000);
-  send(res, 200, { hasHeader: !!req.headers['x-vercel-oidc-token'], hasEnvOidc: !!ENV.VERCEL_OIDC_TOKEN, hasKey: !!ENV.AI_GATEWAY_API_KEY, model: ENV.CRM_AI_MODEL || 'google/gemini-2.5-flash-lite', result: !!o, last: AI_LAST });
+  send(res, 200, { hasHeader: !!req.headers['x-vercel-oidc-token'], hasEnvOidc: !!ENV.VERCEL_OIDC_TOKEN, hasKey: !!ENV.AI_GATEWAY_API_KEY, model: AI_MODEL(), result: !!o, last: AI_LAST });
 });
 get('audit', async (req, res) => { await need(req, 'owner.admin'); const n = Math.max(1, Math.min(1000, parseInt(query(req).get('limit') || '200', 10) || 200)); const l = await kv(['LRANGE', 'crm/audit', '0', String(n - 1)]); send(res, 200, { audit: (l || []).map(x => JSON.parse(x)) }); });
 get('catalog', async (req, res) => { await need(req, 'catalog'); send(res, 200, { items: await catalog() }); });
@@ -1471,7 +1546,7 @@ post('renew/request', async (req, res) => { // «Обсудить продлен
 post('client/interest', async (req, res) => {
   const u = await journalUser(req); const b = await body(req); const A = ['like', 'less', 'hide', 'want'];
   if (!A.includes(b.action)) return send(res, 400, { error: 'action: like, less, hide или want' });
-  const cat = await catalog(); if (!cat.some(x => x.id === b.itemId)) return send(res, 404, { error: 'Не найдено' });
+  const cat = await catalog(); if (!/^(deal-[a-z0-9-]{3,60}|general)$/.test(String(b.itemId || '')) && !cat.some(x => x.id === b.itemId)) return send(res, 404, { error: 'Не найдено' });
   const out = await update(`users/${u.id}.json`, (d) => { if (!d) return { err: 1 }; const p = { like: [], less: [], hide: [], want: [], ...(d.crmPrefs || {}) }; for (const k of ['like', 'less', 'hide']) if (k !== b.action && b.action !== 'want') p[k] = p[k].filter(x => x !== b.itemId); if (!p[b.action].includes(b.itemId)) p[b.action] = [...p[b.action], b.itemId]; return { doc: { ...d, crmPrefs: p } }; });
   if (out.err) return send(res, 401, { error: 'Войдите в журнал' });
   let next = null;
@@ -1510,7 +1585,15 @@ get('cron', async (req, res) => { // напоминания к точному в
   let n = 0; const now = Date.now();
   for (const pid of await setGet('crm/plist')) { const tasks = (await sget(`crm/task/${pid}.json`)) || [];
     for (const t of tasks) if (!t.done && t.due && t.due.length > 10 && !t.reminded && Date.parse(t.due + ':00Z') - t.remind * 60e3 <= now) { await notify(pid, 'reminder', t.id + t.due); n++; await update(`crm/task/${pid}.json`, (l) => ({ doc: (l || []).map(x => x.id === t.id ? { ...x, reminded: true } : x) })); } }
-  send(res, 200, { reminders: n });
+  let mails = 0;
+  for (const pid of await setGet('crm/plist')) { const p = await sget(`crm/p/${pid}.json`); if (!p || p.suspended || !p.email) continue;
+    const st = await trialStat(p).catch(() => null); if (!st) continue;
+    if (st.done && !p.trialOk) await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, trialOk: nowIso() } } : { noop: 1 });
+    const day = Math.min(st.day, DRIP.length); if (st.day > DRIP.length || (p.drip || 0) >= day) continue;
+    const [subj, text] = DRIP[day - 1]; const prog = st.done ? 'Условие старта выполнено, кабинет и сайт закреплены за вами.' : `Сейчас подходят ${st.cap5} из 5 клиентов от $3–10 млн или ${st.cap15} из 3 клиентов от $10–25 млн. Осталось дней: ${Math.max(0, st.left)}.`;
+    if (ENV.RESEND_API_KEY) { const m = await mail(p.email, subj, mailBox(subj, text + ' ' + prog, `${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/`, 'Открыть кабинет')).catch(() => ({ ok: false })); if (!m.ok) continue; }
+    await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, drip: day } } : { noop: 1 }); mails++; }
+  send(res, 200, { reminders: n, drip: mails });
 });
 
 export default async function handler(req, res) {

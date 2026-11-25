@@ -1652,10 +1652,10 @@ async function ensureWebhook(req) {
   await sput('crm/tgwh.json', { mark, at: nowIso(), url }); return true;
 }
 post('tg/link', async (req, res) => {
-  const c = await need(req, 'tg'); if (!ENV.TG_BOT_TOKEN || !ENV.TG_BOT_NAME) return send(res, 200, { ok: false, connected: false, error: 'Telegram пока не подключен. Все события видны во «Входящих»' });
+  const c = await need(req, 'tg'); if (!ENV.TG_BOT_TOKEN || !(ENV.TG_BOT_NAME || 'Orbiqgroup_bot')) return send(res, 200, { ok: false, connected: false, error: 'Telegram пока не подключен. Все события видны во «Входящих»' });
   await ensureWebhook(req).catch(() => false);
   const tok = rid(24); await sput(`crm/tgtok/${sha(tok).slice(0, 32)}`, { who: who(c), exp: Date.now() + 10 * 60e3 });
-  send(res, 200, { ok: true, link: `https://t.me/${ENV.TG_BOT_NAME}?start=${tok}` });
+  send(res, 200, { ok: true, link: `https://t.me/${(ENV.TG_BOT_NAME || 'Orbiqgroup_bot')}?start=${tok}` });
 });
 post('tg/setup', async (req, res) => { // Founder: подключить бота Orbiq (вебхук) после того, как токен лежит в Vercel
   await need(req, 'owner.admin'); if (!ENV.TG_BOT_TOKEN || !ENV.TG_WEBHOOK_SECRET) return send(res, 400, { error: 'В Vercel нет TG_BOT_TOKEN или TG_WEBHOOK_SECRET' });
@@ -1663,7 +1663,7 @@ post('tg/setup', async (req, res) => { // Founder: подключить бота
   const url = `${ENV.SITE_URL || ('https://' + linkHost(req))}/api/crm/?r=tg/webhook`;
   const wh = await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/setWebhook`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url, secret_token: ENV.TG_WEBHOOK_SECRET, allowed_updates: ['message'] }) }).then(r => r.json()).catch(() => ({}));
   await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/setMyDescription`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: 'Уведомления Orbiq: заявки с вашего сайта и запросы клиентов. Подключается из кабинета, раздел «Мой сайт».' }) }).catch(() => {});
-  send(res, 200, { ok: !!wh.ok, bot: me.result && me.result.username, name: ENV.TG_BOT_NAME || '', webhook: wh });
+  send(res, 200, { ok: !!wh.ok, bot: me.result && me.result.username, name: (ENV.TG_BOT_NAME || 'Orbiqgroup_bot') || '', webhook: wh });
 });
 post('tg/off', async (req, res) => { const c = await need(req, 'tg'); const k = c.role === 'owner' ? 'crm/owner.json' : `crm/p/${c.p.id}.json`; await update(k, (d) => ({ doc: { ...(d || {}), tg: { on: (d && d.tg && d.tg.on) || {} } } })); send(res, 200, { ok: true }); });
 post('tg/events', async (req, res) => { const c = await need(req, 'tg'); const b = await body(req); const on = Object.fromEntries(Object.entries(b.on || {}).filter(([k]) => TG_TEXT[k]).map(([k, v]) => [k, !!v])); const k = c.role === 'owner' ? 'crm/owner.json' : `crm/p/${c.p.id}.json`; await update(k, (d) => ({ doc: { ...(d || {}), tg: { ...((d && d.tg) || {}), on } } })); send(res, 200, { ok: true, on }); });

@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 process.env.KV_REST_API_URL = 'https://kv.test'; process.env.KV_REST_API_TOKEN = 't';
 process.env.SESSION_SECRET = 'e2e-secret-1234567890'; process.env.EMAIL_MODE = 'test'; process.env.ADMIN_KEY = 'e2e-admin-key';
-process.env.CRM_OWNER_EMAILS = 'owner@e2e.test'; process.env.CRON_SECRET = 'cron'; process.env.SITE_URL = '';
+process.env.CRM_OWNER_EMAILS = 'owner@e2e.test'; process.env.CRON_SECRET = 'cron'; process.env.OPS_KEY = 'ops-key-e2e-0123456789abcdef0123456789'; process.env.SITE_URL = '';
 for (const k of ['AI_GATEWAY_API_KEY', 'RESEND_API_KEY', 'TG_BOT_TOKEN', 'VERCEL_OIDC_TOKEN', 'AI_BASE_URL']) delete process.env[k];
 await import(pathToFileURL(path.join(ROOT, 'tests', 'kvmock.mjs')).href);
 const crm = (await import(pathToFileURL(path.join(ROOT, 'api', 'crm.mjs')).href)).default;

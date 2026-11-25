@@ -120,13 +120,13 @@ async function tgApi(method, payload) {
   const r = await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/${method}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).catch(() => null);
   const j = r ? await r.json().catch(() => ({})) : {}; return { ok: !!j.ok };
 }
-async function notify(who, event, key) {
+async function notify(who, event, key, extra) {
   try {
     if (!ENV.TG_BOT_TOKEN) return;
     const doc = who === 'owner' ? await sget('crm/owner.json') : await sget(`crm/p/${who}.json`);
     const tg = doc && doc.tg; if (!tg || !tg.chatId || (tg.on && tg.on[event] === false) || (doc.suspended)) return;
     if (!(await createNX(`crm/tgsent/${sha(who + '|' + event + '|' + key).slice(0, 32)}`, 1))) return; // повторная обработка не дает второго пуша
-    await tgApi('sendMessage', { chat_id: tg.chatId, text: `${TG_TEXT[event] || 'Событие в Orbiq. Открыть'}: ${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/` });
+    await tgApi('sendMessage', { chat_id: tg.chatId, text: (extra ? String(extra).slice(0, 900) + '\n\n' : '') + `${TG_TEXT[event] || 'Событие в Orbiq. Открыть'}: ${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/${who === 'owner' ? '#/asks' : (event === 'want' ? '#/site' : '')}` });
   } catch {}
 }
 
@@ -157,7 +157,10 @@ async function session(req) {
 }
 const who = (c) => c.role === 'owner' ? 'owner' : c.p ? c.p.id : '-';
 const allowed = (c, op) => c.role === 'partner' ? can('partner', c.tier, c.p.suspended, op) : can(c.role, null, false, op);
+// Служебный ключ Founder для работы из чата с Claude: OPS_KEY в Vercel (sensitive), заголовок x-ops-key. Права как у Founder
+const opsOk = (req) => { const k = String((req.headers || {})['x-ops-key'] || ''); return !!(ENV.OPS_KEY && ENV.OPS_KEY.length >= 32 && k && safeEq(k, ENV.OPS_KEY)); };
 async function need(req, op) {
+  if (opsOk(req)) { const c = { role: 'owner', ops: true }; if (op && !allowed(c, op)) fail(403, 'Недостаточно прав'); return c; }
   const c = await session(req);
   if (!c.role) fail(401, 'Войдите заново');
   if (op && !allowed(c, op)) fail(403, 'Недостаточно прав');
@@ -229,6 +232,7 @@ async function aiExtract(text, token) {
   if (!token) return null;
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
+    if (!(await aiBudget())) return null;
     const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) return null; // 401/403 и прочие ошибки — молча резерв
@@ -244,6 +248,8 @@ async function aiExtract(text, token) {
   } catch { return null; } // ошибка модели: предыдущая версия карточки остается, разбор уходит в резерв
 }
 // разбор свободного текста во все поля; ничего не сохраняет, текст не пишется в журналы
+// бюджет нейросети: вызовы только из функций кабинета, с общим дневным лимитом; сверх лимита работают правила без ИИ
+async function aiBudget() { return rateLimit('crm-ai-day', +(ENV.AI_DAILY_CAP || 3000), 1440); }
 async function parseText(card, raw, token) {
   const clean = scrubPII(raw); const ai = await aiExtract(clean.text, token);
   const h = heuristicFields(clean.text);
@@ -262,6 +268,7 @@ async function aiJson(system, user, token, ms = 25000) {
   if (!token) return aiFail('no_token');
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
+    if (!(await aiBudget())) return null;
     const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) { const et = await r.text().catch(() => ''); return aiFail('http_' + r.status + ' ' + et.replace(/\s+/g, ' ').slice(0, 300)); } const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
@@ -474,9 +481,10 @@ const IMPORT_SYSTEM = `Ты разбираешь список клиентов �
 Найди каждого отдельного человека и верни JSON {"clients":[{"name":"только имя, без фамилии и отчества; если имени нет — пусто","age":число или null,"sphere":"сфера или бизнес, 1-4 слова, без названий компаний","request":"что человеку нужно сейчас, коротко, начиная с глагола; если нет — пусто"}]}.
 Не выдумывай. Не добавляй фамилии, отчества, телефоны, почту, ссылки, названия компаний.`;
 post('client/importparse', async (req, res) => { // разбор свободного списка клиентов ИИ; ничего не сохраняет
-  await need(req, 'crm.own'); const b = await body(req); const raw = String(b.text || '').slice(0, 30000); if (!raw.trim()) return send(res, 400, { error: 'Пустой текст' });
+  const c = await need(req, 'crm.own'); const b = await body(req); const raw = String(b.text || '').slice(0, 30000); if (!raw.trim()) return send(res, 400, { error: 'Пустой текст' });
   if (!(await rateLimit('crm-imp', 20, 60))) return send(res, 429, { error: 'Слишком часто' });
-  const o = await aiJson(IMPORT_SYSTEM, scrubPII(raw).text, aiToken(req), 40000);
+  const own = c.p ? await rateLimit('crm-aip:' + c.p.id, 30, 1440) : true;
+  const o = own ? await aiJson(IMPORT_SYSTEM, scrubPII(raw).text, aiToken(req), 40000) : null;
   const sc = (v, n) => scrubPII(String(v ?? '')).text.replace(/\[[^\]]*удален[^\]]*\]/g, '').replace(/\s+/g, ' ').trim().slice(0, n);
   const clients = (o && Array.isArray(o.clients) ? o.clients : []).slice(0, 300).map(x => ({ name: sc(x && x.name, 30).split(' ')[0], age: Number.isFinite(+(x && x.age)) && +x.age >= 18 && +x.age <= 95 ? +x.age : null, sphere: sc(x && x.sphere, 80), request: sc(x && x.request, 200) })).filter(x => x.name || x.request || x.sphere);
   send(res, 200, { clients, engine: o ? 'ai' : 'rules' });
@@ -490,7 +498,7 @@ post('client/intake', async (req, res) => {
   const c = await need(req, 'crm.own'); const b = await body(req); const raw = String(b.text || '');
   const e = aliasError(normAlias(b.alias).alias) || textErr(raw); if (e) return send(res, 400, { error: e });
   if (!(await rateLimit('crm-ex:' + c.p.id, 600, 60))) return send(res, 429, { error: 'Слишком много разборов за час' });
-  const card = await createCard(c, b.alias); const p = await parseText(card, raw, aiToken(req));
+  const card = await createCard(c, b.alias); const p = await parseText(card, raw, (c.p && !(await rateLimit('crm-aic:' + c.p.id, 400, 1440))) ? '' : aiToken(req));
   const v = { ...card, circle: circle(card), mine: true };
   send(res, 200, { ok: true, id: card.id, card: v, proposals: { fields: p.fields, cells: p.cells, requests: p.requests }, contradictions: p.contradictions, missing: p.missing, removed: p.removed, engine: p.engine });
 });
@@ -730,7 +738,7 @@ const CAP5 = ['3–10', '10–25', '25–100', '100+'], CAP15 = ['10–25', '25�
 async function trialStat(p) {
   const cards = (await many((await setGet(`crm/cidx/p/${p.id}`)).map(i => `crm/c/${i}.json`))).filter(x => x && !x.archived && x.owner === p.id);
   const a = cards.filter(x => CAP5.includes(x.capital) && x.age).length, b2 = cards.filter(x => CAP15.includes(x.capital) && x.age).length;
-  const start = Date.parse(p.activated || p.created); const left = Math.ceil((start + TRIAL_DAYS * 864e5 - Date.now()) / 864e5);
+  const start = Date.parse(p.activated || p.created); const left = Math.ceil((start + (TRIAL_DAYS + (p.trialExtra || 0)) * 864e5 - Date.now()) / 864e5);
   return { total: cards.length, cap5: a, cap15: b2, done: a >= 5 || b2 >= 3, left, day: Math.max(1, Math.floor((Date.now() - start) / 864e5) + 1) };
 }
 const DRIP = [
@@ -745,6 +753,11 @@ const DRIP = [
   ['Осталось 2 дня', 'Через 2 дня закончится срок старта. Проверьте раздел «Мои клиенты»: у каждого клиента должны быть возраст и капитал. Мы проверяем клиентскую базу выборочно, в частном порядке.'],
   ['Последний день старта', 'Сегодня последний день. Если клиенты уже внесены, кабинет и сайт остаются за вами. Если нужно больше времени, ответьте на это письмо.'],
 ];
+post('partner/trial', async (req, res) => { // Founder: продлить старт или засчитать условие
+  await need(req, 'owner.admin'); const b = await body(req); const days = Math.max(0, Math.min(60, +b.days || 0));
+  const out = await update(`crm/p/${String(b.pid || '')}.json`, (d) => d ? { doc: { ...d, ...(b.done ? { trialOk: nowIso() } : { trialExtra: (d.trialExtra || 0) + days, trialFailed: false, trialWarned: null }) } } : { err: 1 });
+  if (out.err) return send(res, 404, { error: 'Партнер не найден' }); await audit('owner', 'owner', 'partner_trial', { pid: b.pid, days, done: !!b.done }); send(res, 200, { ok: true });
+});
 post('trial/drip', async (req, res) => { await need(req, 'owner.admin'); send(res, 200, { emails: DRIP.map(([t, x], i) => ({ day: i + 1, subject: t, text: x })) }); });
 // ---------- сайт партнера: журнал Orbiq с его контактом ----------
 const TRIAL_DAYS = 10;
@@ -788,7 +801,8 @@ post('site/lead', async (req, res) => { // публично: посетител�
   await update(`crm/plead/${p.id}.json`, (l) => ({ doc: [...(l || []), lead].slice(-1000) }));
   await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { ...lead, pid: p.id, partner: String(p.name || '').split(' ')[0], alias: name, src: 'site' }].slice(-3000) }));
   await audit(p.id, 'client', 'site_lead', { kind: lead.kind });
-  await notify(p.id, 'want', lead.id); await notify('owner', 'rq_new', lead.id);
+  const ex = `Заявка с вашего сайта Orbiq\n${name} · ${email}${title ? '\nИнтересует: ' + title : ''}${note ? '\nКомментарий: ' + note : ''}`;
+  await notify(p.id, 'want', lead.id, ex); await notify('owner', 'rq_new', lead.id, ex.replace('с вашего сайта Orbiq', 'с сайта партнера ' + String(p.name || '').split(' ')[0]));
   if (ENV.RESEND_API_KEY) await mail(p.email, 'Новая заявка с вашего сайта Orbiq', mailBox('Новая заявка: ' + name, (title ? 'Интересует: ' + title + '. ' : '') + 'Почта клиента: ' + email + (note ? '. Комментарий: ' + note : '') + '. Заявка сохранена в кабинете, раздел «Мой сайт».', `${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/#/site`, 'Открыть кабинет')).catch(() => {});
   const ct = p.contact || {}; send(res, 200, { ok: true, name: String(p.name || '').split(' ')[0], phone: ct.phone || '', tg: ct.tg || '' });
 });
@@ -1035,13 +1049,13 @@ post('pf/final', async (req, res) => {
 
 // ===== партнеры (owner) =====
 const pinvLink = (req, tok) => `https://${linkHost(req)}/api/crm?r=pinv/accept&t=${tok}`;
-async function issuePinv(req, p) {
+async function issuePinv(req, p, noMail) {
   if (p.invite && p.invite.tokHash) await update(`crm/pinv/${p.invite.tokHash}.json`, (d) => d && d.status === 'created' ? { doc: { ...d, status: 'revoked' } } : { noop: 1 });
   const tok = crypto.randomBytes(32).toString('base64url'); const h = sha('pinv|' + tok).slice(0, 40); const expires = new Date(Date.now() + 7 * 864e5).toISOString();
   await sput(`crm/pinv/${h}.json`, { pid: p.id, email: p.email, expires, status: 'created', created: nowIso() });
   await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, invite: { tokHash: h, status: 'created', expires } } } : { noop: 1 });
   const link = pinvLink(req, tok);
-  if (ENV.RESEND_API_KEY) await mail(p.email, 'Приглашение в Orbiq Room', mailBox('Приглашение в Orbiq Room', 'Ссылка одноразовая и действует 7 дней.', link, 'Открыть кабинет')).catch(() => {});
+  if (ENV.RESEND_API_KEY && !noMail) await mail(p.email, 'Приглашение в Orbiq Room', mailBox('Приглашение в Orbiq Room', 'Ссылка одноразовая и действует 7 дней.', link, 'Открыть кабинет')).catch(() => {});
   return { link, expires };
 }
 post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | networker; профиль продукта из свободного текста
@@ -1059,7 +1073,7 @@ post('partner/invite', async (req, res) => { // SPEC-v2: роль supplier | net
   await sput(`crm/p/${id}.json`, p); await setAdd('crm/plist', id);
   if (product) await pushHist(id, 'product', null, product, 'карточка создана при приглашении');
   // send:false — партнер и карточка продукта без письма и ссылки; письмо отправит partner/reinvite после правки
-  const inv = b.send === false ? { link: null, expires: null } : await issuePinv(req, p);
+  const inv = b.send === false ? { link: null, expires: null } : await issuePinv(req, p, b.mail === false);
   if (b.send === false) await update(`crm/p/${id}.json`, (d) => d ? { doc: { ...d, invite: { status: 'draft' } } } : { noop: 1 });
   await audit('owner', 'owner', 'partner_invite', { pid: id, kind, send: b.send !== false });
   const site = await ensureSite(p); send(res, 200, { ok: true, pid: id, kind, product, engine, categories: cats, link: inv.link, expires: inv.expires, sent: b.send !== false, site: siteUrl(req, site.slug) });
@@ -1200,7 +1214,7 @@ get('partners', async (req, res) => {
   await need(req, 'owner.admin'); await maybeBackup(false).catch(() => {}); const ps = (await many((await setGet('crm/plist')).map(i => `crm/p/${i}.json`))).filter(Boolean); const out = [];
   for (const p of ps) { const n = (await setGet(`crm/cidx/p/${p.id}`)).length; const pf = await sget(`crm/pf/${p.id}.json`);
     const inv = p.invite ? { status: p.invite.status === 'created' && Date.parse(p.invite.expires) < Date.now() ? 'expired' : p.invite.status, expires: p.invite.expires } : null;
-    out.push({ site: p.site && p.site.slug ? siteUrl(req, p.site.slug) : '', phone: (p.contact || {}).phone || '', trialOk: !!p.trialOk, id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
+    out.push({ site: p.site && p.site.slug ? siteUrl(req, p.site.slug) : '', phone: (p.contact || {}).phone || '', trialOk: !!p.trialOk, startTrial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null), tgOn: !!(p.tg && p.tg.chatId), id: p.id, name: p.name, email: p.email, tier: normTier(p.tier), kind: p.kind || 'supplier', product: p.product || null, ready: (pf && pf.cards) ? pf.cards.length : null, state: effTier(p), suspended: !!p.suspended, created: p.created, activated: p.activated, lastSeen: p.lastSeen, invite: inv, clients: n, tg: { connected: !!(p.tg && p.tg.chatId) }, trial: p.trial, paid: p.paid, categories: p.categories || [], pf: pf ? { status: pf.status } : null }); }
   send(res, 200, { partners: out });
 });
 // один человек у нескольких партнеров: связь подтверждает клиент или сверка при регистрации; обе частные карточки сохраняются
@@ -1556,7 +1570,8 @@ post('client/interest', async (req, res) => {
       const pn = card ? ((await sget(`crm/p/${card.owner}.json`)) || {}).name || '' : '';
       await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { id: 'pa_' + rid(10), pid: card ? card.owner : '', cid: u.crmLink.cid, alias: card ? card.alias : '', partner: String(pn).split(' ')[0], kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-3000) }));
       await update(`crm/c/${u.crmLink.cid}.json`, (d) => d ? { doc: { ...d, plAsks: [...(d.plAsks || []), { kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-200), history: [...(d.history || []), { at, what: (u.crmLink.seat === 2 ? 'Близкий человек клиента запросил: ' : 'Клиент запросил: ') + title }] } } : { noop: 1 });
-      if (card) await notify(card.owner, 'want', u.crmLink.cid + b.itemId); await notify('owner', 'rq_new', u.crmLink.cid + b.itemId); next = { type: 'partner', text: (String(pn).split(' ')[0] || 'Партнер') + ' получил запрос и свяжется с вами' }; }
+      const ex = `${u.crmLink.seat === 2 ? 'Близкий человек клиента' : 'Клиент'} ${card ? card.alias : ''} запросил в журнале\n${title}${note ? '\nКомментарий: ' + note : ''}`;
+      if (card) await notify(card.owner, 'want', u.crmLink.cid + b.itemId, ex); await notify('owner', 'rq_new', u.crmLink.cid + b.itemId, ex + (pn ? '\nПартнер: ' + String(pn).split(' ')[0] : '')); next = { type: 'partner', text: (String(pn).split(' ')[0] || 'Партнер') + ' получил запрос и свяжется с вами' }; }
   }
   const f = await feedPayload({ ...u, crmPrefs: out.doc.crmPrefs }, out.doc.crmPrefs);
   send(res, 200, { ok: true, items: f.items, themes: f.themes, why: f.why, cards: f.cards, next });
@@ -1567,6 +1582,14 @@ post('tg/link', async (req, res) => {
   const c = await need(req, 'tg'); if (!ENV.TG_BOT_TOKEN || !ENV.TG_BOT_NAME) return send(res, 200, { ok: false, connected: false, error: 'Telegram пока не подключен. Все события видны во «Входящих»' });
   const tok = rid(24); await sput(`crm/tgtok/${sha(tok).slice(0, 32)}`, { who: who(c), exp: Date.now() + 10 * 60e3 });
   send(res, 200, { ok: true, link: `https://t.me/${ENV.TG_BOT_NAME}?start=${tok}` });
+});
+post('tg/setup', async (req, res) => { // Founder: подключить бота Orbiq (вебхук) после того, как токен лежит в Vercel
+  await need(req, 'owner.admin'); if (!ENV.TG_BOT_TOKEN || !ENV.TG_WEBHOOK_SECRET) return send(res, 400, { error: 'В Vercel нет TG_BOT_TOKEN или TG_WEBHOOK_SECRET' });
+  const me = await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/getMe`).then(r => r.json()).catch(() => ({}));
+  const url = `${ENV.SITE_URL || ('https://' + linkHost(req))}/api/crm/?r=tg/webhook`;
+  const wh = await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/setWebhook`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url, secret_token: ENV.TG_WEBHOOK_SECRET, allowed_updates: ['message'] }) }).then(r => r.json()).catch(() => ({}));
+  await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/setMyDescription`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: 'Уведомления Orbiq: заявки с вашего сайта и запросы клиентов. Подключается из кабинета, раздел «Мой сайт».' }) }).catch(() => {});
+  send(res, 200, { ok: !!wh.ok, bot: me.result && me.result.username, name: ENV.TG_BOT_NAME || '', webhook: wh });
 });
 post('tg/off', async (req, res) => { const c = await need(req, 'tg'); const k = c.role === 'owner' ? 'crm/owner.json' : `crm/p/${c.p.id}.json`; await update(k, (d) => ({ doc: { ...(d || {}), tg: { on: (d && d.tg && d.tg.on) || {} } } })); send(res, 200, { ok: true }); });
 post('tg/events', async (req, res) => { const c = await need(req, 'tg'); const b = await body(req); const on = Object.fromEntries(Object.entries(b.on || {}).filter(([k]) => TG_TEXT[k]).map(([k, v]) => [k, !!v])); const k = c.role === 'owner' ? 'crm/owner.json' : `crm/p/${c.p.id}.json`; await update(k, (d) => ({ doc: { ...(d || {}), tg: { ...((d && d.tg) || {}), on } } })); send(res, 200, { ok: true, on }); });
@@ -1589,6 +1612,7 @@ get('cron', async (req, res) => { // напоминания к точному в
   for (const pid of await setGet('crm/plist')) { const p = await sget(`crm/p/${pid}.json`); if (!p || p.suspended || !p.email) continue;
     const st = await trialStat(p).catch(() => null); if (!st) continue;
     if (st.done && !p.trialOk) await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, trialOk: nowIso() } } : { noop: 1 });
+    if (!st.done && !p.trialOk && st.left <= 0 && !p.trialWarned) { await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, trialWarned: nowIso() } } : { noop: 1 }); await notify('owner', 'rq_new', 'trial' + pid, `Срок старта вышел: ${String(p.name || '').split(' ')[0]}\nКлиентов от $3–10 млн: ${st.cap5} из 5, от $10–25 млн: ${st.cap15} из 3\nРешение в разделе «Партнеры»`); }
     const day = Math.min(st.day, DRIP.length); if (st.day > DRIP.length || (p.drip || 0) >= day) continue;
     const [subj, text] = DRIP[day - 1]; const prog = st.done ? 'Условие старта выполнено, кабинет и сайт закреплены за вами.' : `Сейчас подходят ${st.cap5} из 5 клиентов от $3–10 млн или ${st.cap15} из 3 клиентов от $10–25 млн. Осталось дней: ${Math.max(0, st.left)}.`;
     if (ENV.RESEND_API_KEY) { const m = await mail(p.email, subj, mailBox(subj, text + ' ' + prog, `${ENV.SITE_URL || 'https://orbiqgroup.com'}/crm/`, 'Открыть кабинет')).catch(() => ({ ok: false })); if (!m.ok) continue; }

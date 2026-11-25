@@ -88,6 +88,17 @@ with sync_playwright() as p:
     pp.locator('text=Андрей').first.click(); pp.wait_for_timeout(2000); pp.locator('#plk').scroll_into_view_if_needed(); pp.wait_for_timeout(800)
     t = pp.locator('#plk').inner_text(); ok('partner: запрос клиента в карточке', 'ЗАПРОСЫ КЛИЕНТА' in t.upper() and 'В ORBIQ' in t.upper(), t[:200]); pp.screenshot(path=OUT + '/14-partner-card.png')
     op.goto(B + '/crm/#/asks'); op.wait_for_timeout(1500); t = op.locator('main').inner_text(); ok('owner: запросы в общем CRM', 'olga@e2e.test' in t or 'Ольга' in t, t[:200]); op.screenshot(path=OUT + '/15-owner-asks.png')
+    # ---------- служебный ключ и продление старта ----------
+    H={'x-ops-key':'ops-key-e2e-0123456789abcdef0123456789'}
+    pl = oc.request.get(B + '/api/crm/?r=partners', headers=H).json(); eg=[x for x in pl.get('partners',[]) if x.get('name')=='Егор']
+    ok('ops: список партнеров по ключу', eg, str(pl)[:120])
+    ok('ops: старт виден в админке', eg and eg[0].get('startTrial') and eg[0]['startTrial'].get('left') == 10, eg[0].get('startTrial') if eg else '')
+    np = oc.request.post(B + '/api/crm/?r=partner/invite', data={'name':'Тест','email':'t2@e2e.test','kind':'networker','phone':'+79000000000','mail':False}, headers=H).json()
+    ok('ops: партнер создан без письма, ссылки есть', np.get('link') and np.get('site'), np)
+    tr = oc.request.post(B + '/api/crm/?r=partner/trial', data={'pid':eg[0]['id'],'days':7}, headers=H).json(); pl2 = oc.request.get(B + '/api/crm/?r=partners', headers=H).json()
+    ok('ops: продление старта', [x for x in pl2['partners'] if x['name']=='Егор'][0]['startTrial']['left'] == 17)
+    bad = br.new_context().request.get(B + '/api/crm/?r=partners', headers={'x-ops-key':'wrong-key-wrong-key-wrong-key-wrong'}); ok('ops: чужой ключ не пускает', bad.status in (401,403), bad.status)
+    pp.goto(B + '/crm/#/site'); pp.wait_for_timeout(1500); ok('partner: блок Telegram с инструкцией', 'Подключить Telegram' in pp.locator('.tgb').inner_text())
     cr = oc.request.get(B + '/api/crm/?r=cron', headers={'Authorization': 'Bearer cron'}).json(); ok('cron: письмо дня 1', cr.get('drip', 0) >= 1, cr)
     ok('ошибок JS: founder', not oe, oe[:3]); ok('ошибок JS: partner', not pe, pe[:3]); ok('ошибок JS: visitor', not ve, ve[:3]); ok('ошибок JS: client', not ce, ce[:3])
     br.close()

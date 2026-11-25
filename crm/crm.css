@@ -1414,3 +1414,8 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
 .trs b{font-family:var(--s);font-stretch:112%;font-size:30px;font-weight:700}.trs b small{font-size:15px;opacity:.5}.trs span{font-size:12.5px;color:var(--mute)}
 .trp-m{display:none}
 @media (max-width:1100px){.trp-m{display:block;margin:-6px 0 14px}.trp-m .trp{background:var(--ink);margin:0}}
+.tgs{list-style:none;margin:6px 0 14px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;counter-reset:t}
+.tgs li{counter-increment:t;padding:12px 14px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:3px}
+.tgs li::before{content:"0" counter(t);font-family:var(--m);font-size:11px;color:var(--acc,#FF4D00)}
+.tgs b{font-size:14.5px}.tgs span{font-size:13px;color:var(--mute)}
+@media (max-width:720px){.tgs{grid-template-columns:1fr}}

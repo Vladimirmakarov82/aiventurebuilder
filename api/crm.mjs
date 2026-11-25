@@ -737,7 +737,9 @@ async function leadLim(p) { // 30 своих клиентов с открыты�
 const CAP5 = ['3–10', '10–25', '25–100', '100+'], CAP15 = ['10–25', '25–100', '100+'];
 async function trialStat(p) {
   const cards = (await many((await setGet(`crm/cidx/p/${p.id}`)).map(i => `crm/c/${i}.json`))).filter(x => x && !x.archived && x.owner === p.id);
-  const a = cards.filter(x => CAP5.includes(x.capital) && x.age).length, b2 = cards.filter(x => CAP15.includes(x.capital) && x.age).length;
+  // в зачет идет клиент с возрастом и капиталом, у которого есть актуальный запрос либо полное описание: интересы и активы (решение 25.11)
+  const full = (x) => { if ((x.requests || []).some(r => r.status === 'open')) return true; const ok = new Set(readiness(x).blocks.filter(b => b.ok).map(b => b.id)); return ok.has('interests') && ok.has('business'); };
+  const a = cards.filter(x => CAP5.includes(x.capital) && x.age && full(x)).length, b2 = cards.filter(x => CAP15.includes(x.capital) && x.age && full(x)).length;
   const start = Date.parse(p.activated || p.created); const left = Math.ceil((start + (TRIAL_DAYS + (p.trialExtra || 0)) * 864e5 - Date.now()) / 864e5);
   return { total: cards.length, cap5: a, cap15: b2, done: a >= 5 || b2 >= 3, left, day: Math.max(1, Math.floor((Date.now() - start) / 864e5) + 1) };
 }

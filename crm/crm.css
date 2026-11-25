@@ -1355,3 +1355,19 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
 .su-role button{border:0;border-radius:999px;padding:9px 14px;background:rgba(0,0,0,.05);font:500 14px/1 inherit;cursor:pointer;color:inherit}
 .su-role button.on{background:#FF4D00;color:#fff}
 @media (max-width:720px){.asy-n{grid-template-columns:1fr}}
+.indep-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 14px}
+.indep-g>div{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);display:grid;gap:4px;align-content:start}
+.indep-g span{font-family:var(--m);font-size:11px;color:#FF4D00}
+.indep-g b{font-size:15px}
+.indep-g p{margin:0!important;font-size:13.5px;line-height:1.45}
+@media (max-width:720px){.indep-g{grid-template-columns:1fr}}
+.plk-l{display:grid;gap:8px}
+.plk-i{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 14px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line)}
+.plk-i .grow{display:grid;gap:3px;min-width:0}
+.plk-u{font-family:var(--m);font-size:12px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plk-i small{font-size:12px;color:var(--mute)}
+.plk-a{margin-top:14px;display:grid;gap:6px}
+.plk-a>div{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.plk-done{margin-top:14px;padding:14px;border-radius:14px;background:var(--ink);color:var(--bg);display:grid;gap:8px}
+.plk-done p{margin:0;font-family:var(--m);font-size:13px;word-break:break-all}
+.plk-done .hint{color:rgba(255,255,255,.6)}

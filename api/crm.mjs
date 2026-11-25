@@ -721,6 +721,62 @@ async function leadLim(p) { // 30 своих клиентов с открыты�
   const asked = ((await sget(`crm/lead/${p.id}.json`)) || []).map(x => x.cid);
   return { need: 0, per: 0, n, used: asked.length, left: 999, asked }; // лимиты сняты 24.11: знакомства Владимир согласует лично
 }
+// личные ссылки на журнал: партнер делает для клиента свою подборку, кнопки ведут к нему
+const PLK = /^[A-Za-z0-9_-]{12}$/;
+function genName(n){n=String(n||'');var X={'Павел':'Павла','Лев':'Льва','Любовь':'Любови'};if(X[n])return X[n];if(/ия$/.test(n))return n.slice(0,-1)+'и';if(/[гкхжчшщ]а$/.test(n))return n.slice(0,-1)+'и';if(/а$/.test(n))return n.slice(0,-1)+'ы';if(/я$/.test(n))return n.slice(0,-1)+'и';if(/[йь]$/.test(n))return n.slice(0,-1)+'я';if(/[бвгджзклмнпрстфхцчшщ]$/i.test(n))return n+'а';return n}
+const plinkUrl = (req, tok) => `https://${linkHost(req)}/journal/?k=${tok}`;
+post('plink/create', async (req, res) => {
+  const c = await need(req, 'crm.own'); const b = await body(req); const card = await ownCard(c, b.cid);
+  if (!(await rateLimit('crm-plc:' + c.p.id, 200, 1440))) return send(res, 429, { error: 'Много ссылок за день' });
+  const first = String(c.p.name || '').trim().split(/\s+/)[0] || 'партнера';
+  const label = scrubPII(String(b.label || '')).text.replace(/\s+/g, ' ').trim().slice(0, 40) || `Запросить у ${genName(first)}`;
+  const tok = crypto.randomBytes(9).toString('base64url');
+  const doc = { tok, pid: c.p.id, cid: card.id, alias: card.alias, name: first, label, status: 'on', created: nowIso(), opens: 0, lastOpen: null, asks: 0 };
+  await sput(`crm/plink/${tok}.json`, doc);
+  await update(`crm/c/${card.id}.json`, (d) => d ? { doc: { ...d, plinks: [...(d.plinks || []), tok] } } : { noop: 1 });
+  await audit(c.p.id, 'partner', 'plink_create', { cid: card.id });
+  send(res, 200, { ok: true, tok, label, link: plinkUrl(req, tok) });
+});
+get('plink/list', async (req, res) => {
+  const c = await need(req, 'crm.own'); const card = await ownCard(c, query(req).get('cid') || '');
+  const docs = (await many((card.plinks || []).map(t => `crm/plink/${t}.json`))).filter(Boolean);
+  send(res, 200, { links: docs.map(d => ({ tok: d.tok, label: d.label, status: d.status, created: d.created, opens: d.opens || 0, lastOpen: d.lastOpen, asks: d.asks || 0, link: plinkUrl(req, d.tok) })), asks: card.plAsks || [] });
+});
+post('plink/revoke', async (req, res) => {
+  const c = await need(req, 'crm.own'); const b = await body(req); if (!PLK.test(String(b.tok || ''))) return send(res, 400, { error: 'Ссылка не найдена' });
+  const out = await update(`crm/plink/${b.tok}.json`, (d) => d && d.pid === c.p.id ? { doc: { ...d, status: 'off', revoked: nowIso() } } : { err: 1 });
+  if (out.err) return send(res, 404, { error: 'Ссылка не найдена' }); send(res, 200, { ok: true });
+});
+get('plink/info', async (req, res) => { // публично: журнал узнает, чья это подборка
+  const k = query(req).get('k') || ''; if (!PLK.test(k)) return send(res, 404, { error: 'Ссылка не найдена' });
+  if (!(await rateLimit('crm-pli:' + ipOf(req), 300, 60))) return send(res, 429, { error: 'Много запросов' });
+  const d = await sget(`crm/plink/${k}.json`); if (!d || d.status !== 'on') return send(res, 404, { error: 'Ссылка не действует' });
+  const p = await sget(`crm/p/${d.pid}.json`); if (!p || p.suspended) return send(res, 404, { error: 'Ссылка не действует' });
+  if (query(req).get('open') === '1') await update(`crm/plink/${k}.json`, (x) => x ? { doc: { ...x, opens: (x.opens || 0) + 1, lastOpen: nowIso() } } : { noop: 1 });
+  send(res, 200, { name: d.name, label: d.label });
+});
+post('plink/ask', async (req, res) => { // публично: клиент нажал кнопку в своей подборке
+  const b = await body(req); const k = String(b.k || ''); if (!PLK.test(k)) return send(res, 404, { error: 'Ссылка не найдена' });
+  if (!(await rateLimit('crm-pla:' + k, 40, 1440)) || !(await rateLimit('crm-plai:' + ipOf(req), 60, 1440))) return send(res, 429, { error: 'Много запросов за день' });
+  const d = await sget(`crm/plink/${k}.json`); if (!d || d.status !== 'on') return send(res, 404, { error: 'Ссылка не действует' });
+  const kind = b.kind === 'notify' ? 'notify' : 'want';
+  const title = scrubPII(String(b.title || '')).text.trim().slice(0, 200); const item = String(b.item || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 80);
+  const note = scrubPII(String(b.note || '')).text.trim().slice(0, 600);
+  const a = { id: 'pa_' + rid(10), k, pid: d.pid, cid: d.cid, alias: d.alias, partner: d.name, kind, item, title, note, page: String(b.page || '').slice(0, 120), at: nowIso() };
+  await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), a].slice(-3000) }));
+  await update(`crm/plink/${k}.json`, (x) => x ? { doc: { ...x, asks: (x.asks || 0) + 1 } } : { noop: 1 });
+  const what = (kind === 'notify' ? 'Клиент просит уведомлять о подобных: ' : 'Клиент запросил по личной ссылке: ') + (title || item);
+  await update(`crm/c/${d.cid}.json`, (x) => x ? { doc: { ...x, plAsks: [...(x.plAsks || []), { id: a.id, kind, item, title, note, at: a.at }].slice(-200), history: [...(x.history || []), { at: a.at, what }] } } : { noop: 1 });
+  await audit(d.pid, 'client', 'plink_ask', { cid: d.cid, kind });
+  await notify(d.pid, 'want', a.id); await notify('owner', 'rq_new', a.id);
+  send(res, 200, { ok: true, name: d.name });
+});
+get('asks/all', async (req, res) => { // общий CRM: запросы клиентов по личным ссылкам и асимметрии от партнеров
+  await need(req, 'owner.admin');
+  const pl = (await sget('crm/plask.json')) || []; const aa = (await sget('crm/asymask.json')) || [];
+  send(res, 200, { rows: [...pl.map(x => ({ ...x, src: 'plink' })), ...aa.map(x => ({ id: x.id, pid: x.pid, partner: x.name, kind: 'asym', title: x.title, note: x.text, at: x.at, src: 'asym' }))].sort((x, y) => String(y.at).localeCompare(String(x.at))).slice(0, 1000) });
+});
+
 post('asym/ask', async (req, res) => { // партнер предлагает асимметрию своему клиенту: запрос уходит Владимиру
   const c = await need(req, 'crm.own'); const b = await body(req);
   const text = scrubPII(String(b.text || '')).text.trim().slice(0, 2000); if (text.length < 10) return send(res, 400, { error: 'Нужно коротко описать клиента' });

@@ -204,7 +204,7 @@ function fail(st,msg){var e=new Error(msg);e.status=st;throw e}
 var Demo=(function(){
   var AS={candidate:'new',trial:'basic'}[Q.get('as')]||Q.get('as')||'paid';
   var d0=new Date();function day(n,h,m){var d=new Date();d.setDate(d.getDate()+n);d.setHours(h==null?12:h,m||0,0,0);return d.toISOString()}
-  var PH={};
+  var PH={},PLD={};
   var P={
     p_irina:{id:'p_irina',name:'Анна',email:'anna@example.com',tier:'paid',kind:'supplier',suspended:false,categories:['watches'],tg:{connected:true,on:{orbiq_msg:true,rq_status:true,reminder:true}},paid:{seats:['watches'],pay1:day(-28),pay2Due:day(62)},lastSeen:day(0,9),invite:{status:'used'},
       product:{summary:'Независимые часовщики и редкие часы на заказ: подбор, очередь в мастерской, гравировка к семейной дате',whoNeeds:'Владельцы бизнеса 45+, которые собирают часы или ищут подарок к юбилею, рождению внука',fitSignals:['Интерес к часам или механике','Юбилей в семье','Капитал от $3 млн','Коллекционирует'],categories:['watches'],typicalEarnPerClient:{min:4000,max:15000,currency:'USD'}}},
@@ -407,6 +407,10 @@ var Demo=(function(){
       var p=meP();return {role:'partner',owner:false,access:{'net.view':net()},partner:{id:p.id,name:p.name,tier:p.tier,kind:p.kind,suspended:p.suspended,paid:p.paid,categories:p.categories,product:p.product||null,tg:{connected:p.tg.connected,on:p.tg.on},limits:{leads:leadLim()}}};
     case 'lead/ask':{LASK[b.cid]=nowISO();audit('Запрос на связь с лидом',b.cid);return {ok:true,leads:leadLim()}}
     case 'auth/signup':return {ok:true,test_link:b.role==='clients'?'#/asym':'#/fit'};case 'asym/ask':return {ok:true};
+    case 'plink/create':{var cc=own(b.cid);var tk=Math.random().toString(36).slice(2,14);var fn=(meP().name||'').split(' ')[0];var lb=String(b.label||'').trim()||('Запросить у '+gen(fn));PLD[tk]={tok:tk,cid:cc.id,label:lb,status:'on',created:nowISO(),opens:0,asks:0,link:location.origin+'/journal/?k='+tk};return {ok:true,tok:tk,label:lb,link:PLD[tk].link}}
+    case 'plink/list':{var cc2=own(q.cid);return {links:Object.keys(PLD).map(function(k){return PLD[k]}).filter(function(x){return x.cid===cc2.id}),asks:cc2.plAsks||[{id:'pa1',kind:'want',title:'Ночь в императорском храме Киото',at:day(-1,19)},{id:'pa2',kind:'notify',title:'Скидка 40–45% на квартиры у застройщика',at:day(-3,10)}]}}
+    case 'plink/revoke':{if(PLD[b.tok])PLD[b.tok].status='off';return {ok:true}}
+    case 'asks/all':return {rows:[{id:'pa1',kind:'want',partner:'Анна',alias:'Андрей',title:'Ночь в императорском храме Киото',at:day(-1,19),src:'plink'},{id:'pa2',kind:'notify',partner:'Нина',alias:'Олег',title:'Скидка 40–45% на квартиры у застройщика',at:day(-3,10),src:'plink'},{id:'aa1',kind:'asym',partner:'Марк',title:'Discord: 7 400 акций до IPO',note:'Клиент 50 лет, IT, готов к $200 тыс.',at:day(-4,12),src:'asym'}]};
     case 'auth/request':if(/private@/.test(b.email||''))return {ok:true,password:true};return {ok:true,test_link:'#/clients'};
     case 'auth/owner-login':if(String(b.password||'').length<4)fail(403,'Почта или пароль не подошли');AS='owner';ME='orbiq';return {ok:true};
     case 'auth/owner-key':if(String(b.key||'').length<4)fail(403,'Пароль не подошел');AS='owner';ME='orbiq';return {ok:true};
@@ -539,7 +543,7 @@ function initials(n){return String(n||'?').trim().slice(0,1).toUpperCase()}
 
 /* ================= Каркас ================= */
 function navItems(){
-  if(isOwner())return [['partners','Партнеры','handshake'],['inbox','Входящие','inbox'],['mine','Мои клиенты','users'],['clients','Вся сеть','chart'],['catalog','Каталог','spark'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['notify','Уведомления','bell']];
+  if(isOwner())return [['partners','Партнеры','handshake'],['inbox','Входящие','inbox'],['asks','Запросы клиентов','msg'],['mine','Мои клиенты','users'],['clients','Вся сеть','chart'],['catalog','Каталог','spark'],['reviews','Проверки','shield'],['archive','Архив','archive'],['audit','Журнал','list'],['notify','Уведомления','bell']];
   var t=ptier();
   if(t==='networker')return [['asym','Асимметрии','star'],['clients','Мои клиенты','users'],['help','Помощник','note']];
   return [['fit','Лиды','spark'],['asym','Асимметрии','star'],['clients','Мои клиенты','users'],['help','Помощник','note']]}
@@ -806,10 +810,11 @@ function tabProfile(c,b){
     '<div class="fld"><label for="rl3">Что обсуждали</label><input class="in" id="rl3" data-rel="topic" value="'+E(rel.topic||'')+'" placeholder="Подарок к юбилею" '+(ro?'disabled':'')+'></div></div>'+
     '<div class="fld" style="margin-top:14px"><label for="cb">Основание оценки капитала</label><textarea class="ta" id="cb" style="min-height:80px" placeholder="Источник, период, чья доля. Должность или покупка часов капитал не подтверждают" '+(ro?'disabled':'')+'>'+E(c.capitalBasis||'')+'</textarea></div></section>'+
   (!ro&&(c.invites||[]).length?'<section class="card rv" style="--i:3"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2>Приглашения семьи</h2><span class="kick">'+c.invites.length+'</span></div><div class="ql">'+c.invites.map(function(id,i){return '<div><span class="tchk on" style="background:var(--ink);border-color:var(--ink)">'+ic('gift')+'</span><span class="grow">Приглашение '+(i+1)+' <small class="mu" style="font-family:var(--m);font-size:11px">'+E(String(id).slice(0,8))+'</small></span><button type="button" class="link mute" data-a="invrev" data-id="'+E(id)+'">Отозвать</button></div>'}).join('')+'</div><p class="hint" style="margin-top:8px">Отозвать можно, пока ссылку не активировали.</p></section>':'')+
+  (ro?'':'<section class="card rv plk" style="--i:3" id="plk" data-c="'+E(c.id)+'"><div class="row" style="justify-content:space-between;margin-bottom:6px"><h2>Личная подборка для клиента</h2>'+btn('Создать ссылку','pri sm','data-a="plnew"','plus')+'</div><p class="hint" style="margin:0 0 12px">Клиент получает ссылку на журнал Orbiq: открытые истории, сервисы и асимметрии сети. Кнопки в журнале ведут к партнеру: «Запросить у '+E(gen(((S.me.partner||{}).name||'').split(' ')[0]))+'». Каждый запрос клиента попадает в эту карточку и в Orbiq</p><div id="plkl"><p class="hint">Загружаем…</p></div></section>')+
   (ro&&isOwner()?ownerLinkBlock(c):'')+
   (ro?'':'<div class="row" style="justify-content:flex-end"><button type="button" class="link mute" data-a="archive">'+ic('archive')+' Убрать в архив</button></div>')+
   '</div>';
-  segs(b);
+  segs(b);if($('#plk'))plkLoad($('#plk').getAttribute('data-c'));
   if(ro&&isOwner()&&c.primary&&c.primary.pid)api('partners').then(function(ps){var x=ps.find(function(q){return q.id===c.primary.pid});var e=$('#prname');if(x&&e)e.textContent=x.name}).catch(function(){});
   if(ro)return;
   var al=$('#alias');al.addEventListener('change',function(){var v=cleanAlias(al.value);if(!v||v===c.alias){al.value=c.alias;return}patch({alias:v}).then(function(){var h=$('.ch h1 .mask>span');if(h)h.textContent=v}).catch(function(e){var er=$('#aerr');er.hidden=false;er.innerHTML=ic('alert')+E(e.message);al.value=c.alias})});
@@ -1303,6 +1308,9 @@ var A={
   'upgrade-info':function(){upgradeSheet()},
   asyask:function(el){asyAsk(el.getAttribute('data-k'))},
   bulk:function(){bulkSheet()},
+  plnew:function(){var p=$('#plk');if(p)plkNew(p.getAttribute('data-c'))},
+  plcopy:function(el){copy(el.getAttribute('data-u'))},
+  plrev:function(el){api('plink/revoke',{tok:el.getAttribute('data-t')}).then(function(){toast('Ссылка отключена');var p=$('#plk');if(p)plkLoad(p.getAttribute('data-c'))}).catch(function(e){toast(e.message||'Не получилось','alert')})},
   leavefocus:function(){leaveFocus();vFit()},
   upgrade:function(el){if(localStorage.getItem('oc_upg')){toast('Заявка уже у Orbiq. Ответим в Telegram в течение дня');return}el.disabled=true;api('product/suggest',{text:'ЗАЯВКА НА СТАТУС «Партнер Orbiq» ($20 000 за 2 года): хочу связаться с лидами сети'}).then(function(){localStorage.setItem('oc_upg','1');closeSheet();toast('Заявка у Orbiq. Ответим в Telegram в течение дня')}).catch(function(e){el.disabled=false;toast(e.message,'alert')})},
   cpy:function(){},
@@ -1742,7 +1750,7 @@ function vAsym(){
     '<p class="asy-p m">'+E(a.what)+'</p>'+row('Асимметрия:',a.why)+row('Кейс:',a.cas)+row('Вход:',a.entry)+row('Риски:',a.risk)+
     '<div class="row">'+btn('Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"','send')+'</div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+
-    '<div class="indep rv"><b>Свое дело рядом с клиентом</b><p>Партнер Orbiq сам выбирает, что и кому из своих клиентов предложить. Продукты всей сети, свои клиенты, комиссия с каждой сделки. С клиентом он говорит на равных, как владелец бизнеса.</p></div>'+
+    '<div class="indep rv"><b>Два способа предложить клиенту</b><div class="indep-g"><div><span>01</span><b>Лично</b><p>Партнер выбирает сделку ниже и рассказывает о ней клиенту сам. Кнопка «Предложить своему клиенту» отправляет запрос в Orbiq.</p></div><div><span>02</span><b>Личной ссылкой</b><p>Партнер отправляет клиенту его личную подборку журнала Orbiq. Клиент сам смотрит истории и асимметрии, а кнопка в журнале ведет к партнеру. Ссылка создается в карточке клиента.</p></div></div><a class="btn soft sm" href="#/clients">'+ic('users')+'Выбрать клиента для ссылки</a></div>'+
     '<p class="asy-lead">Редкие сделки, которые партнеры принесли в сеть. Контакты продавца Orbiq передает партнеру клиента после согласования условий.</p><div class="asy-list">'+cards+'</div>');
 }
 function asyAsk(k){var a=ASYM[+k]||{};var el=sheet('<div class="kick">'+E(a.title||'')+'</div><h2>Предложить клиенту</h2><p class="hint">Orbiq передаст запрос партнеру, который принес сделку, и лично согласует условия и комиссию</p><textarea class="ta" id="aak" placeholder="Коротко о клиенте: возраст, сфера, сумма, сроки. Без фамилии и контактов"></textarea><div class="row">'+btn('Отправить в Orbiq','pri','id="aakgo"','send')+'</div>',true);
@@ -1817,6 +1825,27 @@ function bulkSheet(){closeSheet();var l=LL();
     Promise.all([worker(),worker(),worker(),worker(),worker()]).then(function(){S.bulkBusy=false;toast('Загружено '+ok+', с запросом '+wr);
       api('me').then(function(m){if(m&&m.partner)S.me.partner.limits=m.partner.limits}).catch(function(){}).then(function(){closeSheet();var l2=LL();$$('.rdy').forEach(function(e){e.textContent=l2.n+'/'+l2.need;e.hidden=l2.n>=l2.need});toast('Загружено '+ok+' '+plural(ok,'клиент','клиента','клиентов'));var h=location.hash||'#/fit';if(h.indexOf('#/clients')===0)vClients('clients');else if(h==='#/fit'||h==='#/'){S.keepY=scrollY;vFit()}})})});
 }
+
+/* ================= Личная подборка: ссылка на журнал для одного клиента ================= */
+function gen(n){n=String(n||'');var X={'Павел':'Павла','Лев':'Льва','Любовь':'Любови'};if(X[n])return X[n];if(/ия$/.test(n))return n.slice(0,-1)+'и';if(/[гкхжчшщ]а$/.test(n))return n.slice(0,-1)+'и';if(/а$/.test(n))return n.slice(0,-1)+'ы';if(/я$/.test(n))return n.slice(0,-1)+'и';if(/[йь]$/.test(n))return n.slice(0,-1)+'я';if(/[бвгджзклмнпрстфхцчшщ]$/i.test(n))return n+'а';return n}
+function plkLoad(cid){var box=$('#plkl');if(!box)return;
+  api('plink/list',null,{cid:cid}).then(function(d){var L=(d.links||[]).filter(function(x){return x.status==='on'});var A=(d.asks||[]).slice().reverse();
+    box.innerHTML=(L.length?'<div class="plk-l">'+L.map(function(x){return '<div class="plk-i"><div class="grow"><b>'+E(x.label)+'</b><a class="plk-u" href="'+E(x.link)+'" target="_blank" rel="noopener">'+E(x.link.replace(/^https?:\/\//,''))+'</a><small>Открыта '+(x.opens||0)+' '+plural(x.opens||0,'раз','раза','раз')+' · запросов '+(x.asks||0)+'</small></div><div class="row">'+btn('Скопировать','soft sm','data-a="plcopy" data-u="'+E(x.link)+'"','copy')+'<button type="button" class="link mute" data-a="plrev" data-t="'+E(x.tok)+'">Отключить</button></div></div>'}).join('')+'</div>':'<p class="hint" style="margin:0">Ссылок пока нет. Одна ссылка на одного клиента: так видно, кто и что запросил</p>')+
+      (A.length?'<div class="plk-a"><span class="kick">Запросы клиента</span>'+A.map(function(a){return '<div><span class="chip '+(a.kind==='notify'?'':'dark')+'">'+(a.kind==='notify'?'Уведомлять':'Запрос')+'</span><span class="grow">'+E(a.title||a.item)+'</span><small class="mu">'+E(relDay(a.at))+'</small></div>'}).join('')+'</div>':'')})
+  .catch(function(e){box.innerHTML='<p class="hint">'+E(e.message||'Не загрузилось')+'</p>'})}
+function plkNew(cid){var fn=((S.me.partner||{}).name||'').split(' ')[0];
+  var el=sheet('<div class="kick">Личная подборка</div><h2>Ссылка для клиента</h2><p class="hint">Клиент откроет журнал Orbiq. Вместо кнопки «Хочу такую историю» он увидит кнопку с текстом ниже, и запрос придет партнеру</p><div class="fld"><label for="pll">Текст кнопки у клиента</label><input class="in" id="pll" maxlength="40" value="Запросить у '+E(gen(fn))+'"></div><div class="row" style="margin-top:12px">'+btn('Создать ссылку','pri','id="plgo"','plus')+'</div><div id="plres"></div>',true);
+  $('#plgo',el).addEventListener('click',function(){var b=this;b.disabled=true;api('plink/create',{cid:cid,label:$('#pll',el).value}).then(function(d){
+      $('#plres',el).innerHTML='<div class="plk-done"><span class="kick">Ссылка готова</span><p>'+E(d.link)+'</p><div class="row">'+btn('Скопировать ссылку','pri','id="plcp"','copy')+'</div><p class="hint">Ссылку отправляет партнер сам, в своем мессенджере</p></div>';b.hidden=true;
+      $('#plcp',el).addEventListener('click',function(){copy(d.link)});plkLoad(cid)}).catch(function(e){b.disabled=false;toast(e.message||'Не получилось','alert')})})}
+
+function vAsks(){loading('asks');
+  api('asks/all').then(function(d){var R2=d.rows||[];var K={want:['Запрос','dark'],notify:['Уведомлять',''],asym:['Асимметрия','ok']};
+    page('asks',hd('Личные ссылки клиентов и асимметрии от партнеров','Запросы клиентов')+
+      (R2.length?'<div class="tbl-w rv"><table class="tbl"><thead><tr><th>Когда</th><th>Тип</th><th>Что</th><th>Клиент</th><th>Партнер</th></tr></thead><tbody>'+R2.map(function(r){var k=K[r.kind]||K.want;
+        return '<tr><td data-l="Когда">'+E(relDay(r.at))+'</td><td data-l="Тип"><span class="chip '+k[1]+'">'+k[0]+'</span></td><td data-l="Что"><b>'+E(r.title||r.item||'')+'</b>'+(r.note?'<br><small class="mu">'+E(r.note)+'</small>':'')+'</td><td data-l="Клиент">'+E(r.alias||'—')+'</td><td data-l="Партнер">'+E(r.partner||'—')+'</td></tr>'}).join('')+'</tbody></table></div>'
+      :emptyBox('Запросов пока нет','Здесь появятся запросы клиентов по личным ссылкам партнеров и асимметрии, которые партнеры предложили своим клиентам','')))
+  }).catch(function(e){page('asks',errBox(e))})}
 function guessCat(t){var R=[[/гражданств|паспорт|внж|резидентств/i,'citizenship'],[/дом|вилл|квартир|апартамент|участок|недвиж/i,'realty'],[/час(ы|ов)\b|часовщ/i,'watches'],[/счет|платеж|перевод|валют|банк/i,'finance'],[/pre-?ipo|инвест|доля|акци/i,'preipo'],[/охран|безопасн/i,'security'],[/чекап|клиник|лечени|здоров/i,'health'],[/школ|университет|лагер|пансион|обучен/i,'education'],[/картин|портрет|искусств|коллекц/i,'art'],[/джет|перелет|самолет|вертолет/i,'aviation']];
   for(var k=0;k<R.length;k++)if(R[k][0].test(t)&&CATS[R[k][1]])return R[k][1];return CATS.travel?'travel':Object.keys(CATS)[0]}
 
@@ -1919,7 +1948,7 @@ function vPartner(args){var pid=(args||[])[0];loading('partners');
 
 /* ================= Маршруты и запуск ================= */
 var ROUTES={mine:function(){return vClients('mine')},fit:vFit,product:vProduct,status:vStatus,clients:function(){return vClients('clients')},'new':vNew2,c:vCard,plans:vPlans,requests:vRequests,notify:vNotify,
-  partners:vPartners,partner:vPartner,help:vHelp,asym:vAsym,inbox:vInbox,catalog:vCatalog,reviews:vReviews,archive:vArchive,audit:vAudit};
+  partners:vPartners,partner:vPartner,help:vHelp,asym:vAsym,asks:vAsks,inbox:vInbox,catalog:vCatalog,reviews:vReviews,archive:vArchive,audit:vAudit};
 var OWNER_ONLY={partner:1,partners:1,inbox:1,reviews:1,archive:1,audit:1,catalog:1,mine:1};
 function render(){
   stopRec();closeSheet();

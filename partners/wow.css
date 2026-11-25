@@ -263,3 +263,5 @@
 .earn+.hpot.hx{margin-top:8px}
 @media (max-width:720px){.earn-g{grid-template-columns:1fr}}
 .earn-g p,.earn-g b{letter-spacing:0!important;font-stretch:100%}
+.call-chat{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px);mask-image:linear-gradient(to bottom,transparent 0,#000 22px)}
+@media (max-width:720px){.indp.has-call{grid-template-columns:1fr;gap:18px;padding:18px 16px}.indp.has-call .indp-t p{font-size:15px}.call{height:340px}.bub{max-width:78%;font-size:14.5px}}

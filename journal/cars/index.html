@@ -468,4 +468,4 @@ if(ms){var sz=function(){document.documentElement.style.setProperty('--msh',(ms.
 var tk=0;window.addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(function(){tk=0;var o=window.scrollY>40;ms.classList.toggle('off',o);mf&&mf.classList.toggle('off',o);md&&md.classList.toggle('off',o)})}},{passive:true})}
 if(mf){mf.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;mf.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});var f=b.getAttribute('data-f');document.querySelectorAll('.sp').forEach(function(s){s.classList.toggle('hid',!!f&&s.getAttribute('data-t')!==f)});window.scrollTo(0,0)})}
 })();
-</script><script src="/journal/plink.js?v=2" defer></script></body></html>
+</script><script src="/journal/plink.js?v=3" defer></script></body></html>

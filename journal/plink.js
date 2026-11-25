@@ -9,7 +9,7 @@
     if(k&&RE.test(k)){if(localStorage.getItem(KEY)!==k)fresh=true;localStorage.setItem(KEY,k)}
     else k=localStorage.getItem(KEY);
   }catch(e){}
-  if(!k||!RE.test(k))return;
+  var MODE='k';
   if(q.get('k')){q.delete('k');var qs=q.toString();try{history.replaceState(history.state,'',location.pathname+(qs?'?'+qs:'')+location.hash)}catch(e){}}
   var once=false;try{once=!sessionStorage.getItem('oj_ko');sessionStorage.setItem('oj_ko','1')}catch(e){}
   var INFO=null;
@@ -38,14 +38,19 @@
   function ask(a){var notify=a.hasAttribute('data-arch');var title=titleOf(a);var item=(location.hash||'').slice(1);var nm=esc(INFO.name);
     modal('<small>'+(notify?'Уведомления':'Запрос')+'</small><h3>'+esc(title)+'</h3><p>'+(notify?nm+' сообщит, когда появится похожее предложение.':'Запрос получит ваш партнер '+nm+' лично и свяжется с вами.')+'</p><textarea placeholder="Комментарий, если нужно: сроки, для кого, пожелания"></textarea><div class="row"><button type="button" class="go">'+(notify?'Уведомлять':'Отправить запрос')+'</button><button type="button" class="no">Отмена</button></div>',
       function(m,g,kill){g.disabled=true;g.textContent='Отправляем…';
-        api('plink/ask',{k:k,kind:notify?'notify':'want',item:item,title:title,note:(m.querySelector('textarea')||{}).value||'',page:location.pathname}).then(function(r){
+        var nt=(m.querySelector('textarea')||{}).value||'';
+        (MODE==='user'?api('client/interest',{action:'want',itemId:item,title:title,note:(notify?'Уведомлять о подобных предложениях. ':'')+nt}):api('plink/ask',{k:k,kind:notify?'notify':'want',item:item,title:title,note:nt,page:location.pathname})).then(function(r){
           if(r._s===200){m.firstChild.innerHTML='<small>Готово</small><h3>'+(notify?'Уведомления включены':'Запрос отправлен')+'</h3><p>'+(notify?nm+' напишет, когда появится похожее предложение.':nm+' свяжется с вами лично.')+'</p><div class="row"><button type="button" class="no">Хорошо</button></div>'}
           else{g.disabled=false;g.textContent='Повторить';var p=m.querySelector('p');if(p)p.textContent=r._s===429?'Слишком много запросов. Можно повторить завтра.':'Запрос не отправился. Можно повторить.'}})})}
-  api('plink/info',null,'&k='+encodeURIComponent(k)+(once||fresh?'&open=1':'')).then(function(d){
-    if(d._s!==200||!d.label){if(d._s===404){try{localStorage.removeItem(KEY)}catch(e){}}return}
+  function start(d){
     INFO=d;var st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
-    var go=function(){fixAll();var r=document.createElement('div');r.className='plk-rib';r.innerHTML='<i></i><span>Личная подборка · запросы уходят '+esc(d.name)+'</span>';document.body.appendChild(r);
+    var go=function(){fixAll();var r=document.createElement('div');r.className='plk-rib';r.innerHTML='<i></i><span>'+(MODE==='user'?'Ваш партнер в Orbiq: ':'Личная подборка · ваш партнер ')+esc(d.name)+'</span>';document.body.appendChild(r);
       var prev=window.OJ_after;window.OJ_after=function(id,el){if(prev)prev(id,el);fixAll()};
       document.addEventListener('click',function(e){var a=e.target.closest('a.cta');if(!a||!INFO)return;e.preventDefault();e.stopPropagation();ask(a)},true)};
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()}
+  api('client/who').then(function(w){
+    if(w._s===200&&w.linked){MODE='user';return start({name:w.partner,label:w.label})}
+    if(!k||!RE.test(k))return;
+    api('plink/info',null,'&k='+encodeURIComponent(k)+(once||fresh?'&open=1':'')).then(function(d){
+      if(d._s!==200||!d.label){if(d._s===404){try{localStorage.removeItem(KEY)}catch(e){}}return}start(d)})})
 })();

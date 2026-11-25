@@ -1282,19 +1282,24 @@ post('catalog/del', async (req, res) => {
 const invHash = (tok) => sha('finv|' + tok).slice(0, 40);
 const TOK_RE = /^[A-Za-z0-9_-]{40,50}$/;
 const famLink = (req, tok) => `https://${linkHost(req)}/i/?t=${tok}`;
-post('invite/create', async (req, res) => {
-  const c = await need(req, 'invite.create'); const b = await body(req); const card = await ownCard(c, b.cid);
-  if (!b.consentAt || isNaN(Date.parse(b.consentAt))) return send(res, 400, { error: 'Отметьте дату согласия клиента' });
-  const ch = String(b.consentChannel || '').trim().slice(0, 60); if (!ch) return send(res, 400, { error: 'Укажите способ, которым клиент дал согласие' });
-  if (card.capital && CAPS.indexOf(card.capital) < 3 && !b.confirm10m) return send(res, 409, { error: 'Подарок доступен семьям с капиталом более $10 млн' });
-  // SPEC-v2: у «Партнера Orbiq» 20 семейных приглашений (выданные и активированные)
-  const lim = await update(`crm/p/${c.p.id}.json`, (d) => { if (!d) return { err: 1 }; const n = d.familyInvites || 0; if (n >= PAID_FAMILY_INVITES) return { err: 'limit' }; return { doc: { ...d, familyInvites: n + 1 } }; });
-  if (lim.err) return send(res, 409, { error: `Использованы все ${PAID_FAMILY_INVITES} семейных приглашений` });
+post('invite/create', async (req, res) => { // любой партнер приглашает своего клиента по почте; ссылку отправляет сам
+  const c = await need(req, 'crm.own'); const b = await body(req); const card = await ownCard(c, b.cid);
+  const email = String(b.email || '').trim().toLowerCase(); if (!EMAIL_RE.test(email)) return send(res, 400, { error: 'Проверьте почту клиента' });
+  const sex = b.sex === 'f' ? 'f' : b.sex === 'm' ? 'm' : ''; if (!sex) return send(res, 400, { error: 'Отметьте: мужчина или женщина' });
+  if (!(await rateLimit('crm-ic:' + c.p.id, 100, 1440))) return send(res, 429, { error: 'Много приглашений за день' });
+  const first = String(c.p.name || '').trim().split(/\s+/)[0] || '';
   const tok = crypto.randomBytes(32).toString('base64url'); const id = invHash(tok);
-  const inv = { id, kind: 'main', cid: card.id, pid: c.p.id, status: 'created', consentAt: new Date(b.consentAt).toISOString(), consentChannel: ch, created: nowIso(), expires: new Date(Date.now() + 30 * 864e5).toISOString(), activatedUid: null, seat2: null };
+  const inv = { id, kind: 'main', cid: card.id, pid: c.p.id, status: 'created', email, sex, pname: first, tok, created: nowIso(), expires: new Date(Date.now() + 90 * 864e5).toISOString(), activatedUid: null, seat2: null };
   await sput(`crm/inv/${id}.json`, inv);
-  await update(`crm/c/${card.id}.json`, (d) => d ? { doc: { ...d, stage: 'link', invites: [...(d.invites || []), id] } } : { noop: 1 });
+  await update(`crm/c/${card.id}.json`, (d) => d ? { doc: { ...d, stage: 'link', invites: [...(d.invites || []), id], history: [...(d.history || []), { at: inv.created, what: 'Создано приглашение в Orbiq' }] } } : { noop: 1 });
   await audit(c.p.id, 'partner', 'family_invite_create', { cid: card.id, inv: id.slice(0, 8) }); send(res, 200, { ok: true, id, link: famLink(req, tok), expires: inv.expires });
+});
+get('invite/status', async (req, res) => { // партнер видит приглашения своего клиента
+  const c = await need(req, 'crm.own'); const card = await ownCard(c, query(req).get('cid') || '');
+  const docs = (await many((card.invites || []).map(i => `crm/inv/${i}.json`))).filter(Boolean);
+  const mask = (e) => String(e || '').replace(/^(.).*(@.*)$/, '$1•••$2');
+  send(res, 200, { invites: docs.map(d => ({ id: d.id, status: d.status === 'created' && Date.parse(d.expires) < Date.now() ? 'expired' : d.status, email: d.email || '', sex: d.sex || '', created: d.created, expires: d.expires, activatedAt: d.activatedAt || null, until: d.until || null, link: d.tok && d.status === 'created' ? famLink(req, d.tok) : null,
+    seat2: d.seat2 ? { status: d.seat2.status, relation: d.seat2.relation || '', email: d.seat2.uid ? '' : '' } : null })).reverse(), asks: (card.plAsks || []).slice(-50).reverse() });
 });
 post('invite/revoke', async (req, res) => {
   const c = await need(req); const b = await body(req); const id = String(b.id || b['token-id'] || ''); if (!/^[a-f0-9]{40}$/.test(id)) return send(res, 404, { error: 'Приглашение не найдено' });
@@ -1321,7 +1326,7 @@ get('invite/info', async (req, res) => { // публично: без личны�
   if (!(await rateLimit('crm-ii:' + ipOf(req), 60, 60))) return send(res, 429, { error: 'Слишком много попыток' });
   const x = await resolveInv(query(req).get('t') || ''); if (!x) return send(res, 404, { error: 'Приглашение не найдено' });
   if (!invOpen(x)) return send(res, 410, { error: 'Приглашение недействительно' });
-  send(res, 200, { title: 'Для вас и того, кого вы захотите пригласить', subtitle: 'Три месяца персонального доступа в Orbiq', seat: x.seat, expires: x.seat === 1 ? x.main.expires : null });
+  const em = x.seat === 1 ? x.main.email : ''; send(res, 200, { title: 'Для вас и того, кого вы захотите пригласить', subtitle: 'Три месяца персонального доступа в Orbiq', seat: x.seat, expires: x.seat === 1 ? x.main.expires : null, partner: x.main.pname || '', emailHint: em ? em.replace(/^(.).*(@.*)$/, '$1•••$2') : '', bound: !!em, relation: x.seat === 2 && x.main.seat2 ? x.main.seat2.relation || '' : '' });
 });
 post('invite/start', async (req, res) => {
   const b = await body(req); if (!(await rateLimit('crm-is:' + ipOf(req), 10, 60))) return send(res, 429, { error: 'Слишком много попыток' });
@@ -1334,6 +1339,40 @@ post('invite/start', async (req, res) => {
   if (out.err) return send(res, 410, { error: 'Приглашение недействительно' });
   const link = `https://${linkHost(req)}/i/?t=${encodeURIComponent(String(b.t))}&c=${code}`;
   return deliver(res, email, 'Код для входа в Orbiq', mailBox('Ваш код: ' + code, 'Введите код на странице приглашения. Он действует 30 минут.', link, 'Открыть приглашение'), { sentTo: email.replace(/^(.).*(@.*)$/, '$1•••$2') }, { test_code: code, test_link: link });
+});
+post('invite/claim', async (req, res) => { // вход по приглашению: почта, на которую оно выписано, и свой пароль; код не нужен
+  const b = await body(req); if (!(await rateLimit('crm-icl:' + ipOf(req), 20, 60))) return send(res, 429, { error: 'Слишком много попыток' });
+  const x = await resolveInv(String(b.t || '')); if (!x) return send(res, 404, { error: 'Приглашение не найдено' });
+  const name = String(b.name || '').trim().slice(0, 60); const email = String(b.email || '').trim().toLowerCase(); const pw = String(b.password || '');
+  if (!name) return send(res, 400, { error: 'Как к вам обращаться?' }); if (!EMAIL_RE.test(email)) return send(res, 400, { error: 'Проверьте адрес почты' });
+  if (pw.length < 8) return send(res, 400, { error: 'Пароль: не меньше 8 символов' });
+  if (!(await rateLimit('crm-iclt:' + x.h, 10, 60))) return send(res, 429, { error: 'Слишком много попыток' });
+  if (x.seat === 1 && x.main.email && x.main.email !== email) return send(res, 400, { error: 'Приглашение выписано на другую почту' });
+  const uid = uidOf(email); const existing = await sget(`users/${uid}.json`);
+  if (existing && existing.blocked) return send(res, 403, { error: 'Доступ закрыт' });
+  if (existing && existing.crmLink && existing.crmLink.inv !== x.main.id) return send(res, 409, { error: 'У этого аккаунта уже есть персональный доступ' });
+  let result = null; const at = nowIso();
+  const out = await update(`crm/inv/${x.main.id}.json`, (d) => {
+    if (!d) return { err: 404 };
+    if (x.seat === 1) { if (d.status === 'activated') return d.activatedUid === uid ? { err: 'again' } : { err: 409 }; if (d.status !== 'created' || Date.parse(d.expires) < Date.now()) return { err: 410 };
+      const until = addMonths(at, 3); result = { until, seat: 1, sex: d.sex || '' }; const { pending, ...rest } = d; return { doc: { ...rest, status: 'activated', activatedAt: at, activatedUid: uid, until } }; }
+    if (!d.seat2 || d.seat2.tokHash !== x.h) return { err: 410 }; if (d.seat2.status === 'activated') return d.seat2.uid === uid ? { err: 'again' } : { err: 409 };
+    if (d.seat2.status !== 'created') return { err: 410 }; if (uid === d.activatedUid) return { err: 'same' };
+    const rel = d.seat2.relation; result = { until: d.until, seat: 2, sex: rel === 'wife' || rel === 'daughter' ? 'f' : rel === 'husband' || rel === 'son' ? 'm' : '' };
+    const { pending, ...s2 } = d.seat2; return { doc: { ...d, seat2: { ...s2, status: 'activated', uid, activatedAt: at } } };
+  });
+  if (out.err === 'again') { const u0 = existing; if (!u0 || !u0.pw || !safeEq(pwHash(pw, u0.pw.salt), u0.pw.hash)) return send(res, 409, { error: 'Приглашение уже активировано. Войдите с паролем на orbiqgroup.com' });
+    setCookie(res, 'oj', sign({ u: uid, e: email, exp: Date.now() + 365 * 864e5 }), 365 * 86400); return send(res, 200, { ok: true, again: true, name: u0.first || name }); }
+  if (out.err) { const m = { 404: [404, 'Приглашение не найдено'], 409: [409, 'Приглашение уже активировано'], 410: [410, 'Приглашение недействительно'], same: [409, 'Второе место — для другого человека'] }[out.err] || [400, 'Не получилось']; return send(res, m[0], { error: m[1] }); }
+  const card = await sget(`crm/c/${x.main.cid}.json`); const salt = crypto.randomBytes(16).toString('hex');
+  await update(`users/${uid}.json`, (u) => {
+    const base = u || { id: uid, email, first: name, last: '', created: at, ref: 'crm', letter: false, ops: {}, pins: {}, contributor: false, blocked: false, inviteLimit: 3 };
+    return { doc: { ...base, first: base.first || name, sex: result.sex || base.sex || '', pw: { salt, hash: pwHash(pw, salt) }, crmLink: { inv: x.main.id, cid: x.main.cid, seat: x.seat, pid: x.main.pid }, access: { from: at, until: result.until }, interests: x.seat === 1 ? [...((card && card.interests) || [])] : (base.interests || []), crmPrefs: base.crmPrefs || {} } };
+  });
+  await update(`crm/c/${x.main.cid}.json`, (d) => d ? { doc: { ...d, ...(x.seat === 1 ? { stage: 'active', access: { until: result.until } } : {}), history: [...(d.history || []), { at, what: x.seat === 1 ? 'Клиент принял приглашение в Orbiq' : 'Близкий человек клиента принял приглашение' }] } } : { noop: 1 });
+  await audit(x.main.pid, 'client', 'family_invite_activate', { inv: x.main.id.slice(0, 8), seat: x.seat }); await notify(x.main.pid, 'want', 'act' + x.main.id + x.seat);
+  setCookie(res, 'oj', sign({ u: uid, e: email, exp: Date.now() + 365 * 864e5 }), 365 * 86400);
+  send(res, 200, { ok: true, name, until: result.until, seat: x.seat, partner: x.main.pname || '' });
 });
 post('invite/activate', async (req, res) => { // атомарно, один раз; повтор не продлевает срок и не меняет партнера
   const b = await body(req); const code = String(b.code || '').trim(); const x = await resolveInv(String(b.t || '')); if (!x) return send(res, 404, { error: 'Приглашение не найдено' });
@@ -1399,14 +1438,20 @@ function seatInfo(u, inv) {
   const s2 = inv && inv.seat2; const status = !s2 ? 'none' : s2.status === 'activated' ? 'active' : s2.status === 'created' ? 'issued' : 'none';
   return { seat: u.crmLink.seat === 2 ? 'second' : 'primary', seat2: { status, relation: status === 'none' ? null : (s2.relation || null) } };
 }
+const SEX_SEC = { m: ['cars', 'hobby', 'sport', 'wealth', 'asymmetry', 'security', 'collect', 'first1m', 'taste', 'spirit', 'art', 'health', 'kids', 'charity', 'her'], f: ['her', 'art', 'collect', 'sport', 'taste', 'health', 'kids', 'spirit', 'charity', 'hobby', 'asymmetry', 'wealth', 'cars', 'security', 'first1m'] };
 async function feedPayload(u, prefs) {
   const cat = await catalog(); const card = u.crmLink ? await sget(`crm/c/${u.crmLink.cid}.json`) : null;
   const inv = u.crmLink ? await sget(`crm/inv/${u.crmLink.inv}.json`) : null; const active = !!(u.access && Date.parse(u.access.until) > Date.now());
   const f = feedFor(active ? card : null, cat, prefs || u.crmPrefs || {}, Date.now(), { journalIds: journalIds() });
+  if (u.sex === 'm' || u.sex === 'f') { const ord = SEX_SEC[u.sex]; const secOf = {}; for (const x of cat) { const m = String(x.url || '').match(/\/journal\/([^/]+)\//); secOf[x.id] = m ? m[1] : ''; }
+    const rk = (id) => { const i = ord.indexOf(secOf[id]); return i < 0 ? ord.length : Math.min(i, 6); }; f.items = f.items.map((id, i) => [id, i]).sort((a, b) => rk(a[0]) - rk(b[0]) || a[1] - b[1]).map(a => a[0]); }
   const rq = inv && inv.renewRid ? await sget(`crm/rq/${inv.renewRid}.json`) : null;
   return { name: u.first || '', items: f.items, themes: f.themes, why: f.why, cards: f.cards, personal: active && !!card, until: u.access ? u.access.until : null, expired: !!(u.access && !active),
     ...seatInfo(u, inv), renew: u.crmLink ? { requested: !!(rq && rq.status !== 'closed'), price: '$10 000 в год', autoCharge: false } : null };
 }
+get('client/who', async (req, res) => { const u = await journalUser(req); if (!u.crmLink) return send(res, 200, { linked: false });
+  const card = await sget(`crm/c/${u.crmLink.cid}.json`); const p = card ? await sget(`crm/p/${card.owner}.json`) : null; const first = p && !p.suspended ? String(p.name || '').split(/\s+/)[0] : '';
+  send(res, 200, { linked: !!first, partner: first, label: first ? `Запросить у ${genName(first)}` : '', seat: u.crmLink.seat, sex: u.sex || '' }); });
 get('client/feed', async (req, res) => { const u = await journalUser(req); send(res, 200, await feedPayload(u)); });
 post('renew/request', async (req, res) => { // «Обсудить продление»: обращение владельцу Orbiq и партнеру семьи через ветку Orbiq; автосписания нет
   const u = await journalUser(req); if (!u.crmLink || !u.access) return send(res, 403, { error: 'Недостаточно прав' });
@@ -1432,7 +1477,11 @@ post('client/interest', async (req, res) => {
   let next = null;
   if (u.crmLink && u.crmLink.cid) { // партнер видит, что интерес обновлен, без приватных ответов клиента
     await update(`crm/c/${u.crmLink.cid}.json`, (d) => { if (!d) return { noop: 1 }; const s = { like: [], less: [], hide: [], want: [], ...(d.clientSignals || {}) }; if (!s[b.action].includes(b.itemId)) s[b.action] = [...s[b.action], b.itemId]; return { doc: { ...d, clientSignals: s, clientUpdatedAt: nowIso() } }; });
-    if (b.action === 'want') { const card = await sget(`crm/c/${u.crmLink.cid}.json`); if (card) await notify(card.owner, 'want', u.crmLink.cid + b.itemId); next = { type: 'partner', text: 'Мы передали запрос. С вами свяжутся, чтобы уточнить детали' }; }
+    if (b.action === 'want') { const card = await sget(`crm/c/${u.crmLink.cid}.json`); const it = cat.find(x => x.id === b.itemId) || {}; const title = String(it.title || b.title || b.itemId).slice(0, 200); const note = scrubPII(String(b.note || '')).text.trim().slice(0, 600); const at = nowIso();
+      const pn = card ? ((await sget(`crm/p/${card.owner}.json`)) || {}).name || '' : '';
+      await update('crm/plask.json', (cur) => ({ doc: [...(cur || []), { id: 'pa_' + rid(10), pid: card ? card.owner : '', cid: u.crmLink.cid, alias: card ? card.alias : '', partner: String(pn).split(' ')[0], kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-3000) }));
+      await update(`crm/c/${u.crmLink.cid}.json`, (d) => d ? { doc: { ...d, plAsks: [...(d.plAsks || []), { kind: 'want', item: b.itemId, title, note, seat: u.crmLink.seat, at }].slice(-200), history: [...(d.history || []), { at, what: (u.crmLink.seat === 2 ? 'Близкий человек клиента запросил: ' : 'Клиент запросил: ') + title }] } } : { noop: 1 });
+      if (card) await notify(card.owner, 'want', u.crmLink.cid + b.itemId); await notify('owner', 'rq_new', u.crmLink.cid + b.itemId); next = { type: 'partner', text: (String(pn).split(' ')[0] || 'Партнер') + ' получил запрос и свяжется с вами' }; }
   }
   const f = await feedPayload({ ...u, crmPrefs: out.doc.crmPrefs }, out.doc.crmPrefs);
   send(res, 200, { ok: true, items: f.items, themes: f.themes, why: f.why, cards: f.cards, next });

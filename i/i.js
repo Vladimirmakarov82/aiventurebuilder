@@ -1,7 +1,7 @@
 /* Orbiq · приглашение семьи. Маршруты: /api/crm?r=invite/info|invite/start|invite/activate|invite/seat2|invite/seat2/revoke|client/feed */
 (function(){
 'use strict';
-var API='/api/crm?r=';
+var API='/api/crm/?r=';
 var $=function(s,r){return (r||document).querySelector(s)};
 var book=$('#book'),cover=$('#cover'),front=$('#front'),back=$('#back'),page=$('#page'),body=document.body;
 var qs=new URLSearchParams(location.search),T=qs.get('t')||'',C=(qs.get('c')||'').replace(/\D/g,'').slice(0,6);
@@ -30,8 +30,8 @@ function renderFront(kind){
   var img=COVER_IMG,line=COVER_LINE,top='<span class="kick">Персональный выпуск</span><span class="kick">Для двоих</span>',bot='';
   if(kind==='invite'){
     bot='<p class="kick cv-k">Приглашение</p>'+
-      '<h1 class="cv-h">'+nb('Для вас и того, кого вы захотите пригласить')+'</h1>'+
-      '<p class="cv-sub">'+nb('Три месяца персонального доступа в Orbiq')+'</p>'+
+      '<h1 class="cv-h">'+nb(S.info&&S.info.partner?S.info.partner+' приглашает вас в Orbiq':'Приглашение в Orbiq')+'</h1>'+
+      '<p class="cv-sub">'+nb('Децентрализованный консьерж-сервис. Лента открытий, которая настраивается под вас')+'</p>'+
       '<div class="cv-row">'+btn('Открыть приглашение','data-open id="openBtn"','mag')+(S.info&&S.info.expires?'<span class="cv-note">До '+esc(ruDate(S.info.expires))+'</span>':'')+'</div>';
   }else if(kind==='personal'){
     if(S.rec){img=S.rec.img||img;line=S.rec.title}
@@ -57,27 +57,29 @@ function renderFront(kind){
 
 /* ---------- страницы ---------- */
 function pgTop(n,label){if(!split())n=0;return '<div class="pg-top" data-rv><b>ORBIQ</b><span class="kick">'+esc(label||'')+(n?' · стр. '+n:'')+'</span></div>'}
-function termsHtml(){
+function termsHtml(){var p=(S.info&&S.info.partner||'Партнер');
   return '<dl class="terms">'+
-    '<div data-rv><dt><span data-count="3">3</span><small>месяца</small></dt><dd><b>Персональный доступ.</b> '+nb('Журнал, личная подборка по вашим интересам и помощь команды Orbiq')+'</dd></div>'+
-    '<div data-rv><dt><span data-count="2">2</span><small>места</small></dt><dd><b>Для вас и близкого человека.</b> '+nb('Второго участника можно выбрать сразу или позже')+'</dd></div>'+
-    '<div data-rv class="hot"><dt>$<span data-count="10000">10 000</span><small>в год</small></dt><dd><b>Годовой доступ после трех месяцев,</b> '+nb('если решите продолжить. Автосписания нет: продление только по вашему решению')+'</dd></div>'+
+    '<div data-rv><dt><span data-count="1">1</span><small>лента</small></dt><dd><b>Только ваша.</b> '+nb('Отмечайте «интересно» и «неинтересно», и лента подстраивается под вас: путешествия, коллекции, сделки, впечатления для семьи')+'</dd></div>'+
+    '<div data-rv><dt><span data-count="2">2</span><small>места</small></dt><dd><b>Для вас и близкого человека.</b> '+nb('Жену или мужа можно пригласить сразу или позже. У каждого своя лента')+'</dd></div>'+
+    '<div data-rv><dt><span data-count="3">3</span><small>месяца</small></dt><dd><b>Персональный доступ.</b> '+nb('Запросы из журнала получает '+p+' лично, без колл-центров и анкет')+'</dd></div>'+
+    '<div data-rv class="hot"><dt>$<span data-count="10000">10 000</span><small>в год</small></dt><dd><b>Годовой доступ после трех месяцев,</b> '+nb('если решите продолжить. Автосписания нет')+'</dd></div>'+
   '</dl>'}
 function leftInvite(){
-  return pgTop(1,'От редакции')+
-    '<h2 data-rv>'+nb('Журнал открытий, которые можно пережить самому')+'</h2>'+
-    '<p class="lead" data-rv>'+nb('Редакция находит редкие возможности: ночь в закрытом храме, место в мастерской, приглашение, которого нет в продаже. Команда Orbiq помогает ими воспользоваться.')+'</p>'+
+  return pgTop(1,'Orbiq')+
+    '<h2 data-rv>'+nb('Редкие возможности со всего мира в одной ленте')+'</h2>'+
+    '<p class="lead" data-rv>'+nb('Orbiq объединяет экспертов и партнеров из разных стран. Ночь в закрытом храме, место в мастерской, сделка, которой нет на открытом рынке. Ваш партнер помогает ими воспользоваться.')+'</p>'+
     termsHtml()+
     (S.info&&S.info.expires?'<p class="note" data-rv>Приглашение действует до '+esc(ruDate(S.info.expires))+'</p>':'');
 }
-function rightForm(){
-  return pgTop(2,'Шаг 1 из 2')+
-    '<h2 data-rv>Откройте приглашение</h2>'+
-    '<p data-rv>'+nb('Пришлем код на почту. Почта нужна только для входа в журнал.')+'</p>'+
+function rightForm(){var hint=S.info&&S.info.emailHint;
+  return pgTop(2,'Вход в Orbiq')+
+    '<h2 data-rv>Откройте свою ленту</h2>'+
+    '<p data-rv>'+nb(hint?'Приглашение выписано на '+esc(hint)+'. Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.':'Пароль нужен, чтобы дальше входить на orbiqgroup.com без этой ссылки.')+'</p>'+
     '<form class="form" id="fStart" novalidate>'+
       '<label class="fld" data-rv><span>Как к вам обращаться</span><input name="name" autocomplete="given-name" maxlength="60" required placeholder="Имя" value="'+esc(S.name)+'"></label>'+
-      '<label class="fld" data-rv><span>Почта</span><input name="email" type="email" inputmode="email" autocomplete="email" required placeholder="name@mail.com" value="'+esc(S.email)+'"></label>'+
-      '<div data-rv>'+btn('Получить код','type="submit" data-sub','wide mag').replace('type="button" ','')+'</div>'+
+      '<label class="fld" data-rv><span>Почта</span><input name="email" type="email" inputmode="email" autocomplete="username" required placeholder="'+esc(hint||'name@mail.com')+'" value="'+esc(S.email)+'"></label>'+
+      '<label class="fld" data-rv><span>Придумайте пароль</span><input name="password" type="password" autocomplete="new-password" minlength="8" required placeholder="Не меньше 8 символов"></label>'+
+      '<div data-rv>'+btn('Войти в Orbiq','type="submit" data-sub','wide mag').replace('type="button" ','')+'</div>'+
       '<p class="note" id="nStart" role="status"></p>'+
     '</form>';
 }
@@ -111,8 +113,8 @@ function accessHtml(){
     '<div data-rv><span class="v">$<span data-count="10000">10 000</span></span><span class="l">Год доступа</span><p class="t">'+nb('Если решите продолжить после трех месяцев')+'</p></div>'+
     '<div data-rv><span class="v" data-count="0">0</span><span class="l">Автосписаний</span><p class="t">'+nb('Продление только по вашему решению')+'</p></div>'+
   '</div>'}
-var REL=[['wife','Супруга'],['husband','Супруг'],['daughter','Дочь'],['son','Сын']];
-var REL_TO={'Супруга':'для супруги','Супруг':'для супруга','Дочь':'для дочери','Сын':'для сына'};
+var REL=[['wife','Жена'],['husband','Муж']];
+var REL_TO={'Жена':'для жены','Муж':'для мужа'};
 function seatHtml(){
   if(S.seat===2)return '<div class="seat" data-rv><h3>'+nb('Вас пригласили вместе с близким человеком')+'</h3><p>'+nb('Доступ общий на двоих, подборка у каждого своя.')+'</p></div>';
   var s=S.seat2;
@@ -124,13 +126,13 @@ function seatHtml(){
       '<div data-rv style="display:flex;gap:20px;flex-wrap:wrap"><button type="button" class="lnk" id="seatChange">Выбрать другого участника</button><button type="button" class="lnk" id="seatRevoke">Отозвать ссылку</button></div></div>';
   }
   if(s&&s.later)return '<div class="seat" id="seat"><p class="kick" data-rv>Второе место</p><h3 data-rv>Место сохранено за вами</h3><p data-rv>'+nb('Вернуться к выбору можно в любой момент: откройте эту страницу снова.')+'</p><div data-rv><button type="button" class="lnk" id="seatChange">Выбрать сейчас</button></div></div>';
-  return '<div class="seat" id="seat"><p class="kick" data-rv>Второе место</p><h3 data-rv>Кого хотите пригласить вместе с собой?</h3>'+
+  return '<div class="seat" id="seat"><p class="kick" data-rv>Второе место</p><h3 data-rv>Пригласить жену или мужа</h3><p data-rv>'+nb('У близкого человека будет своя лента и тот же партнер')+'</p>'+
     '<div class="chips" data-rv role="group" aria-label="Второй участник">'+REL.map(function(r){return '<button type="button" class="chip" data-rel="'+r[0]+'" data-label="'+r[1]+'" aria-pressed="false">'+r[1]+'</button>'}).join('')+'</div>'+
     '<div data-rv><button type="button" class="lnk" data-later>Выберу позже</button></div><p class="note" id="nSeat" role="status"></p></div>';
 }
 function rightIssue(){
   return pgTop(2,(S.name?S.name+', ваш доступ':'Ваш доступ'))+
-    accessHtml()+'<hr class="rule" data-rv>'+seatHtml()+
+    accessHtml()+(S.email?'<div class="seat" data-rv><p class="kick">Как входить дальше</p><h3>orbiqgroup.com/journal</h3><p>'+nb('Кнопка «Войти», затем «войти с паролем». Почта '+esc(S.email)+' и пароль, который вы только что задали')+'</p></div>':'')+'<hr class="rule" data-rv>'+seatHtml()+
     '<div data-rv>'+linkBtn('Открыть журнал','/journal/','ink wide')+'</div>';
 }
 
@@ -168,11 +170,13 @@ function bind(){
   if(fs)fs.onsubmit=function(e){e.preventDefault();var n=$('#nStart',page),name=fs.name.value.trim(),email=fs.email.value.trim();
     if(!name){n.className='note err';n.textContent='Как к вам обращаться?';fs.name.focus();return}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){n.className='note err';n.textContent='Проверьте адрес почты';fs.email.focus();return}
-    setBusy(fs,1);n.className='note';n.textContent='Отправляем код…';
-    api('invite/start',{body:{t:T,name:name,email:email}}).then(function(r){setBusy(fs,0);
+    var pw=fs.password.value;if(pw.length<8){n.className='note err';n.textContent='Пароль: не меньше 8 символов';fs.password.focus();return}
+    setBusy(fs,1);n.className='note';n.textContent='Открываем…';
+    api('invite/claim',{body:{t:T,name:name,email:email,password:pw}}).then(function(r){setBusy(fs,0);
       if(!r.ok){n.className='note err';n.textContent=r.error||'Не получилось, попробуйте еще раз';if(r._s===410||r._s===404)invalid(r.error);return}
-      S.name=name;S.email=email;S.sentTo=r.sentTo||email;if(r.test_code)C=r.test_code;
-      swap(function(){S.step='code';composeRight()})})};
+      S.name=r.name||name;S.email=email;if(r.until)S.until=r.until;S.seat=r.seat||1;
+      try{if(window.PasswordCredential&&navigator.credentials)navigator.credentials.store(new PasswordCredential({id:email,password:pw,name:S.name}))}catch(_){}
+      n.className='note ok';n.textContent='Готово';loadPersonal(true)})};
   var fc=$('#fCode',page);
   if(fc){var inp=$('#codeIn',page),cells=[].slice.call(page.querySelectorAll('.cells i'));
     var paint=function(){var v=inp.value.replace(/\D/g,'').slice(0,6);if(v!==inp.value)inp.value=v;cells.forEach(function(c,i){c.textContent=v[i]||'';c.classList.toggle('f',!!v[i]);c.classList.toggle('c',document.activeElement===inp&&i===Math.min(v.length,5))})};
@@ -200,7 +204,7 @@ function bind(){
     if(e.target.closest('[data-later]')){api('invite/seat2',{body:{later:true}}).then(function(r){if(!r.ok){if(n){n.className='note err';n.textContent=r.error||'Не получилось'}return}S.seat2={later:true};swap(composeRight)});return}
     if(e.target.closest('#seatChange')){S.seat2=null;swap(composeRight);return}
     if(e.target.closest('#seatRevoke')){api('invite/seat2/revoke',{body:{}}).then(function(r){if(!r.ok){n.className='note err';n.textContent=r.error||'Не получилось';return}S.seat2=null;swap(composeRight)});return}
-    var sh=e.target.closest('[data-sh]');if(!sh||!S.seat2||!S.seat2.link)return;var ch=sh.getAttribute('data-sh'),link=S.seat2.link,txt='Приглашаю тебя в Orbiq. Это журнал открытий и три месяца персонального доступа для нас двоих.';
+    var sh=e.target.closest('[data-sh]');if(!sh||!S.seat2||!S.seat2.link)return;var ch=sh.getAttribute('data-sh'),link=S.seat2.link,txt='Приглашаю тебя в Orbiq. Там своя лента открытий для каждого из нас.';
     if(ch==='tg')window.open('https://t.me/share/url?url='+encodeURIComponent(link)+'&text='+encodeURIComponent(txt),'_blank','noopener');
     if(ch==='wa')window.open('https://wa.me/?text='+encodeURIComponent(txt+'\n'+link),'_blank','noopener');
     if(ch==='mail')location.href='mailto:?subject='+encodeURIComponent('Приглашение в Orbiq')+'&body='+encodeURIComponent(txt+'\n\n'+link);

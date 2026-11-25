@@ -284,7 +284,7 @@ body.lgb .pf{background:#0c0c0d;padding:0;min-height:100svh;position:relative;ov
 .lg-sub{margin:0 0 10px;font-size:16px;line-height:1.45;color:rgba(244,241,236,.7)}
 .lg-f{display:flex;align-items:center;width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 6px 6px 22px;transition:border-color .3s,background .3s}
 .lg-f:focus-within{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.12)}
-.lg-f input[type=email]{flex:1;min-width:0;background:none;border:0!important;outline:none;color:#fff;font:inherit;font-size:17px;padding:12px 0!important}
+.lg-f input[type=password],.lg-f input[type=email]{flex:1;min-width:0;background:none;border:0!important;outline:none;color:#fff;font:inherit;font-size:17px;padding:12px 0!important}
 .lg-f input::placeholder{color:rgba(244,241,236,.5)}
 .lg-f button{flex:none;width:50px;height:50px;border-radius:50%;border:0;background:#f4f1ec;cursor:pointer;display:grid;place-items:center;transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .lg-f button svg{width:22px;height:22px;fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -323,7 +323,11 @@ window.OJ_PAGE=function(ME,j){var p=document.getElementById('pf'),E=OJ.esc;
   p.innerHTML='<div class="lg-wall" aria-hidden="true">'+col(0)+col(9)+col(18)+col(27)+'</div><div class="lg-card">'+coin+
    '<h1>Личный кабинет</h1><p class="lg-sub">Открытия, знаки и приглашения в одном профиле</p>'+
    '<form id="lg" class="lg-f"><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="Email" aria-label="Email"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" aria-label="Войти"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>'+
-   '<div id="lgm" class="lg-m"></div><p class="lg-n">Пароль не нужен: ссылка для входа придет на почту и будет работать год</p></div>';
+   '<form id="lgp" class="lg-f" hidden style="margin-top:10px"><input type="password" name="password" required autocomplete="current-password" placeholder="Пароль" aria-label="Пароль"><button type="submit" aria-label="Войти с паролем"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>'+
+   '<div id="lgm" class="lg-m"></div><p class="lg-n">Ссылка для входа придет на почту и будет работать год. Участники Orbiq по приглашению входят с паролем: <button type="button" class="lg-l" id="lgpw" style="display:inline;padding:0">войти с паролем</button></p></div>';
+  var fp=document.getElementById('lgp');document.getElementById('lgpw').onclick=function(){fp.hidden=false;var em=document.querySelector('#lg input[name=email]');(em.value?fp.password:em).focus()};
+  fp.onsubmit=function(e){e.preventDefault();var em=document.querySelector('#lg input[name=email]'),m=document.getElementById('lgm');if(!em.value){em.focus();m.innerHTML='<p class="lg-e">Введите почту</p>';return}fp.classList.add('busy');
+   OJ.api('auth/pw',{body:{email:em.value,password:fp.password.value}}).then(function(r){fp.classList.remove('busy');if(r.ok){location.href='/journal/';return}m.innerHTML='<p class="lg-e">'+E(r.error||'Почта или пароль не подошли')+'</p>'})};
   var f=document.getElementById('lg');f.onsubmit=function(e){e.preventDefault();var b=f.querySelector('button'),m=document.getElementById('lgm');if(b.disabled)return;b.disabled=true;f.classList.add('busy');m.textContent='';
    OJ.api('auth/request',{body:{email:f.email.value,website:f.website.value,ret:'/journal/profile/'}}).then(function(r){b.disabled=false;f.classList.remove('busy');
     if(r.ok){var em=f.email.value,dom=(em.split('@')[1]||'').toLowerCase(),box=dom==='gmail.com'?'https://mail.google.com/mail/u/0/#search/from%3Ajournal%40orbiqgroup.com':(/yandex|ya\.ru/.test(dom)?'https://mail.yandex.ru':(/icloud|me\.com/.test(dom)?'https://www.icloud.com/mail':(/mail\.ru|bk\.ru|inbox\.ru|list\.ru/.test(dom)?'https://e.mail.ru/inbox':'')));

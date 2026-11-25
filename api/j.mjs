@@ -155,6 +155,17 @@ async function deliverLogin(req, res, email, tok, extra = {}) {
   return send(res, 503, { error: 'Отправка писем не подключена' });
 }
 
+R['auth/pw'] = async (req, res) => { // вход по почте и паролю: пароль задают при принятии приглашения Orbiq
+  const b = await body(req); const email = String(b.email || '').trim().toLowerCase(); const pw = String(b.password || '');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || !pw) return send(res, 400, { error: 'Нужны почта и пароль' });
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0];
+  if (!(await rateLimit('pwi:' + ip, 20, 15)) || !(await rateLimit('pwe:' + email, 8, 15))) return send(res, 429, { error: 'Слишком много попыток. Попробуйте через 15 минут' });
+  const u = await loadUser(uidOf(email));
+  const h = u && u.pw ? crypto.scryptSync(pw, u.pw.salt, 64, { N: 16384, r: 8, p: 1 }).toString('hex') : '';
+  if (!u || !u.pw || h.length !== u.pw.hash.length || !crypto.timingSafeEqual(Buffer.from(h), Buffer.from(u.pw.hash))) return send(res, 401, { error: 'Почта или пароль не подошли' });
+  if (u.blocked) return send(res, 403, { error: 'Доступ закрыт' });
+  setCookie(res, 'oj', sign({ u: u.id, e: email, exp: Date.now() + 365 * 864e5 }), 365 * 86400); send(res, 200, { ok: true });
+};
 R['auth/verify'] = async (req, res) => {
   const q = new URL(req.url, 'http://x').searchParams; const t = unsign(q.get('t') || '');
   if (!t) { res.statusCode = 302; res.setHeader('Location', '/journal/profile/?login=expired'); return res.end(); }

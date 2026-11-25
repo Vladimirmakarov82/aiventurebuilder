@@ -249,3 +249,17 @@
 @keyframes tyB{0%,60%,100%{transform:none;opacity:.35}30%{transform:translateY(-4px);opacity:.9}}
 .indp.has-call{grid-template-columns:1fr 1fr}
 .asym-two>div:last-child p{color:rgba(243,244,242,.82)!important}
+
+/* how a partner earns */
+.earn{margin-top:10px}
+.earn .lab{display:block;margin-bottom:8px}
+.earn-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.earn-g section{position:relative;padding:14px 16px 16px;border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);display:grid;gap:5px;align-content:start;overflow:hidden}
+.earn-g section::after{content:"";position:absolute;left:16px;right:16px;bottom:0;height:2px;background:#FF4D00;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.earn-g section:hover::after{transform:scaleX(1)}
+.earn-g em{font-style:normal;font-family:var(--m);font-size:11px;color:#FF4D00;letter-spacing:.06em}
+.earn-g b{font-size:15.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.earn-g p{margin:0;font-size:13.5px;line-height:1.45;color:var(--mute)}
+.earn+.hpot.hx{margin-top:8px}
+@media (max-width:720px){.earn-g{grid-template-columns:1fr}}
+.earn-g p,.earn-g b{letter-spacing:0!important;font-stretch:100%}

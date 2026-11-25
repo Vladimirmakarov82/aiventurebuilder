@@ -1580,8 +1580,20 @@ post('client/interest', async (req, res) => {
 });
 
 // ===== Telegram =====
+// бот Orbiq сам регистрирует вебхук при первом подключении и после смены токена
+async function ensureWebhook(req) {
+  if (!ENV.TG_BOT_TOKEN || !ENV.TG_WEBHOOK_SECRET) return false; const mark = sha('wh|' + ENV.TG_BOT_TOKEN + '|' + ENV.TG_WEBHOOK_SECRET).slice(0, 24);
+  const cur = await sget('crm/tgwh.json'); if (cur && cur.mark === mark) return true;
+  const url = `${ENV.SITE_URL || ('https://' + linkHost(req))}/api/crm/?r=tg/webhook`;
+  const wh = await fetch(`https://api.telegram.org/bot${ENV.TG_BOT_TOKEN}/setWebhook`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url, secret_token: ENV.TG_WEBHOOK_SECRET, allowed_updates: ['message'] }) }).then(r => r.json()).catch(() => ({}));
+  if (!wh.ok) return false;
+  await tgApi('setMyDescription', { description: 'Уведомления Orbiq: заявки с вашего сайта и запросы клиентов. Подключается из кабинета, раздел «Мой сайт».' });
+  await tgApi('setMyShortDescription', { short_description: 'Заявки и запросы клиентов Orbiq' });
+  await sput('crm/tgwh.json', { mark, at: nowIso(), url }); return true;
+}
 post('tg/link', async (req, res) => {
   const c = await need(req, 'tg'); if (!ENV.TG_BOT_TOKEN || !ENV.TG_BOT_NAME) return send(res, 200, { ok: false, connected: false, error: 'Telegram пока не подключен. Все события видны во «Входящих»' });
+  await ensureWebhook(req).catch(() => false);
   const tok = rid(24); await sput(`crm/tgtok/${sha(tok).slice(0, 32)}`, { who: who(c), exp: Date.now() + 10 * 60e3 });
   send(res, 200, { ok: true, link: `https://t.me/${ENV.TG_BOT_NAME}?start=${tok}` });
 });
@@ -1598,19 +1610,19 @@ post('tg/events', async (req, res) => { const c = await need(req, 'tg'); const b
 post('tg/webhook', async (req, res) => {
   // SEC: без секрета вебхук закрыт (раньше принимал любой запрос), сравнение за постоянное время
   if (!ENV.TG_BOT_TOKEN || !ENV.TG_WEBHOOK_SECRET || !safeEq(req.headers['x-telegram-bot-api-secret-token'] || '', ENV.TG_WEBHOOK_SECRET)) return send(res, 403, { error: 'Недостаточно прав' });
-  const b = await body(req); const m = b.message || {}; const t = /^\/start\s+([A-Za-z0-9]{10,40})$/.exec(String(m.text || '').trim()); if (!t || !m.chat) return send(res, 200, { ok: true });
+  const b = await body(req); const m = b.message || {}; const t = /^\/start\s+([A-Za-z0-9]{10,40})$/.exec(String(m.text || '').trim()); if (!t && m.chat && /^\/start\b/.test(String(m.text || ''))) { await tgApi('sendMessage', { chat_id: m.chat.id, text: 'Это бот уведомлений Orbiq. Подключение делается из кабинета: orbiqgroup.com/crm/#/site, блок «Уведомления в Telegram», кнопка «Подключить Telegram».' }); return send(res, 200, { ok: true }); } if (!t || !m.chat) return send(res, 200, { ok: true });
   const k = `crm/tgtok/${sha(t[1]).slice(0, 32)}`; let d = null; // одноразовый токен гасится атомарно (CAS), два /start не привяжут два чата
   const used = await update(k, (x) => { if (!x || x.used) return { err: 1 }; d = x; return { doc: { ...x, used: 1 } }; }); if (used.err || !d || d.exp < Date.now()) return send(res, 200, { ok: true });
   const key = d.who === 'owner' ? 'crm/owner.json' : `crm/p/${d.who}.json`;
   await update(key, (x) => (d.who !== 'owner' && !x) ? { noop: 1 } : { doc: { ...(x || {}), tg: { ...((x && x.tg) || {}), chatId: m.chat.id, at: nowIso() } } });
-  await tgApi('sendMessage', { chat_id: m.chat.id, text: 'Orbiq: уведомления подключены. Это тестовое сообщение.' }); send(res, 200, { ok: true });
+  await tgApi('sendMessage', { chat_id: m.chat.id, text: 'Orbiq: уведомления подключены. Сюда будут приходить заявки с вашего сайта и запросы клиентов: имя, что интересует и комментарий.' }); send(res, 200, { ok: true });
 });
 get('cron', async (req, res) => { // напоминания к точному времени; без бота события остаются в CRM
   if (!ENV.CRON_SECRET || !safeEq(req.headers.authorization || '', `Bearer ${ENV.CRON_SECRET}`)) return send(res, 403, { error: 'Недостаточно прав' }); // SEC: без секрета закрыто
   let n = 0; const now = Date.now();
   for (const pid of await setGet('crm/plist')) { const tasks = (await sget(`crm/task/${pid}.json`)) || [];
     for (const t of tasks) if (!t.done && t.due && t.due.length > 10 && !t.reminded && Date.parse(t.due + ':00Z') - t.remind * 60e3 <= now) { await notify(pid, 'reminder', t.id + t.due); n++; await update(`crm/task/${pid}.json`, (l) => ({ doc: (l || []).map(x => x.id === t.id ? { ...x, reminded: true } : x) })); } }
-  let mails = 0;
+  await ensureWebhook(req).catch(() => false); let mails = 0;
   for (const pid of await setGet('crm/plist')) { const p = await sget(`crm/p/${pid}.json`); if (!p || p.suspended || !p.email) continue;
     const st = await trialStat(p).catch(() => null); if (!st) continue;
     if (st.done && !p.trialOk) await update(`crm/p/${pid}.json`, (d) => d ? { doc: { ...d, trialOk: nowIso() } } : { noop: 1 });

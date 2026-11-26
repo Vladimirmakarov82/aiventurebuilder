@@ -32,7 +32,7 @@ with sync_playwright() as p:
     pc = br.new_context(viewport={'width': 1360, 'height': 900}); pp = pc.new_page(); pe = []; errs(pp, pe)
     pp.goto(inv); pp.wait_for_timeout(2500); pp.screenshot(path=OUT + '/04-partner-first.png')
     ok('partner: знакомство поверх кабинета', '#/site' in pp.url and pp.locator('.of').count() > 0, pp.url)
-    for k in range(4):
+    for k in range(3):
         pp.screenshot(path=OUT + '/04b-onb-%d.png' % k)
         if pp.locator('[data-of=next]').count(): pp.click('[data-of=next]'); pp.wait_for_timeout(300)
     pp.click('[data-of=end]'); pp.wait_for_timeout(800)

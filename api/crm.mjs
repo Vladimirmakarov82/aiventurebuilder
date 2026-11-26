@@ -234,7 +234,7 @@ async function aiExtract(text, token) {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
     if (!(await aiBudget())) return null;
     const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
+      body: JSON.stringify({ model: model || AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) return null; // 401/403 и прочие ошибки — молча резерв
     const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '')); if (!o || typeof o !== 'object') return null;
@@ -264,7 +264,7 @@ const textErr = (raw) => !raw.trim() ? 'Пустой текст' : raw.length > 
 // ---------- профиль продукта и досье (SPEC-v2) ----------
 let AI_LAST = { at: 0, ok: false, reason: 'none' };
 const aiFail = (reason) => { AI_LAST = { at: Date.now(), ok: false, reason }; console.warn('crm-ai-fail', reason); return null; };
-async function aiJson(system, user, token, ms = 25000) {
+async function aiJson(system, user, token, ms = 25000, model = '') {
   if (!token) return aiFail('no_token');
   try {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
@@ -440,7 +440,7 @@ const DEAL_ITEMS = [
 async function recoCatalog() { const cat = await catalog(); return [...DEAL_ITEMS.map(d => ({ ...d, status: 'available', deliver: d.hook, confirmBy: 'Партнер Orbiq' })), ...cat]; }
 const recoSummary = (card) => { const cells = card.cells || {}; const f = Object.entries(cells).filter(([, v]) => v && v.kind === 'fact' && v.v).map(([k, v]) => `${(QUESTIONS[k] || k).replace(/\?$/, '')}: ${v.v}`).slice(0, 12);
   return { cid: card.id, name: card.alias, age: card.age || '', capital: card.capital ? `${card.capital} млн $` : '', interests: card.interests || [], requests: (card.requests || []).filter(r => r.status === 'open').map(r => r.text).slice(0, 5), facts: f }; };
-const RECO_V = 2;
+const RECO_V = 3;
 const RECO_SYSTEM = `Ты эксперт Orbiq. Агент привел состоятельных клиентов. Для каждого клиента выбери из каталога Orbiq до 3 продуктов, которые ему вероятнее всего интересны.
 Порядок выбора: 1) продукты, которые прямо отвечают на открытый запрос клиента; 2) сделки сети с id, начинающимся на deal-, если запрос или факты связаны с деньгами, инвестициями, доходностью, pre-IPO, криптовалютой, безопасностью капитала; 3) продукты под интересы и факты.
 Если подходящего продукта под запрос нет, не подбирай случайный, лучше меньше продуктов.
@@ -470,7 +470,8 @@ get('reco/list', async (req, res) => {
   const ids = await setGet(`crm/cidx/p/${pid}`); const cards = (await many(ids.map(id => `crm/c/${id}.json`))).filter(x => x && !x.archived);
   const cat = await recoCatalog(); const byId = Object.fromEntries(cat.map(x => [x.id, x]));
   const out = cards.map(card => { const ai = card.reco && card.reco.v === RECO_V && card.reco.at >= (card.updated || '') ? card.reco : null; const r = recoRules(card, cat);
-    const products = ai ? ai.products.filter(p => byId[p.id]).map(p => ({ id: p.id, title: byId[p.id].title, why: p.why, url: byId[p.id].url || '' })) : r.products;
+    const dealsR = r.products.filter(p => /^deal-/.test(p.id));
+    const products = ai ? [...dealsR, ...ai.products.filter(p => byId[p.id] && !dealsR.some(d => d.id === p.id)).map(p => ({ id: p.id, title: byId[p.id].title, why: p.why, url: byId[p.id].url || '' }))].slice(0, 3) : r.products;
     return { cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', interests: (card.interests || []).slice(0, 4), requests: (card.requests || []).filter(x => x.status === 'open').map(x => x.text || (card.publicText || {})[x.id] || '').filter(Boolean).slice(0, 2),
       products, questions: ai && ai.questions.length ? ai.questions : r.questions, engine: ai ? 'ai' : 'rules' }; });
   out.sort((a, b) => b.products.length - a.products.length || a.alias.localeCompare(b.alias));
@@ -484,7 +485,7 @@ post('reco/ai', async (req, res) => { // разбор до 12 клиентов �
   const batch = cards.slice(0, 12); if (!batch.length) return send(res, 200, { engine: 'ai', done: 0, left: 0 });
   const cat = (await recoCatalog()).filter(x => x.status === 'available').slice(0, 120); const valid = new Set(cat.map(x => x.id));
   const catText = cat.map(x => `${x.id} | ${x.title} | ${String(x.hook || x.deliver || '').slice(0, 140)}`).join('\n');
-  const o = await aiJson(RECO_SYSTEM, `КАТАЛОГ (id | название | суть):\n${catText}\n\nКЛИЕНТЫ:\n${JSON.stringify(batch.map(recoSummary))}`, aiToken(req), 50000);
+  const o = await aiJson(RECO_SYSTEM, `КАТАЛОГ (id | название | суть):\n${catText}\n\nКЛИЕНТЫ:\n${JSON.stringify(batch.map(recoSummary))}`, aiToken(req), 55000, ENV.AI_BASE_URL ? '' : (ENV.CRM_RECO_MODEL || 'google/gemini-2.5-flash'));
   if (!o || !Array.isArray(o.clients)) return send(res, 200, { engine: 'rules', done: 0, left: cards.length, reason: AI_LAST.reason });
   const sc = (v, n) => scrubPII(String(v || '')).text.replace(/\s+/g, ' ').trim().slice(0, n); let done = 0; const at = nowIso();
   for (const x of o.clients) { const card = batch.find(b => b.id === (x && x.cid)); if (!card) continue;

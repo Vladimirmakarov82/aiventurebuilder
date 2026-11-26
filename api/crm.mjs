@@ -465,7 +465,7 @@ get('reco/list', async (req, res) => {
   const cat = await recoCatalog(); const byId = Object.fromEntries(cat.map(x => [x.id, x]));
   const out = cards.map(card => { const ai = card.reco && card.reco.at && card.reco.at >= (card.updated || '') ? card.reco : null; const r = recoRules(card, cat);
     const products = ai ? ai.products.filter(p => byId[p.id]).map(p => ({ id: p.id, title: byId[p.id].title, why: p.why, url: byId[p.id].url || '' })) : r.products;
-    return { cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', interests: (card.interests || []).slice(0, 4), requests: (card.requests || []).filter(x => x.status === 'open').map(x => x.text).slice(0, 2),
+    return { cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', interests: (card.interests || []).slice(0, 4), requests: (card.requests || []).filter(x => x.status === 'open').map(x => x.text || (card.publicText || {})[x.id] || '').filter(Boolean).slice(0, 2),
       products, questions: ai && ai.questions.length ? ai.questions : r.questions, engine: ai ? 'ai' : 'rules' }; });
   out.sort((a, b) => b.products.length - a.products.length || a.alias.localeCompare(b.alias));
   send(res, 200, { clients: out, stale: cards.filter(x => !(x.reco && x.reco.at >= (x.updated || ''))).length });

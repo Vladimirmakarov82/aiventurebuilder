@@ -1409,6 +1409,9 @@ get('diag/partners', async (req, res) => { // диагностика целос�
   for (const key of keys) { const pid = await sget(key); const p = pid && await sget(`crm/p/${pid}.json`); out.push({ pid, inPlist: plist.includes(pid), hasDoc: !!p, kind: p && p.kind, invite: p && p.invite && p.invite.status, created: p && p.created }); }
   send(res, 200, { plist: plist.length, pidx: keys.length, items: out });
 });
+get('ai/status', async (req, res) => { await need(req, 'owner.admin'); const t = aiToken(req); const o = await aiJson('Верни JSON {"ok":true}', 'ping', t, 15000);
+  send(res, 200, { hasHeader: !!req.headers['x-vercel-oidc-token'], hasEnvOidc: !!ENV.VERCEL_OIDC_TOKEN, hasApiKey: !!ENV.AI_API_KEY, hasGwKey: !!ENV.AI_GATEWAY_API_KEY, url: AI_URL(), model: AI_MODEL(), result: !!o, last: AI_LAST });
+});
 get('ai/ping', async (req, res) => {
   const k = String(req.headers['x-diag-key'] || ''); if (!ENV.DIAG_KEY || !safeEq(k, ENV.DIAG_KEY)) return send(res, 404, { error: 'Не найдено' });
   const t = aiToken(req); const o = await aiJson('Верни JSON {"ok":true}', 'ping', t, 15000);

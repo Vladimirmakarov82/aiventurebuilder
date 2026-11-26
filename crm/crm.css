@@ -1442,3 +1442,5 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
 
 .of-d{display:grid;gap:8px}.of-d div{display:grid;grid-template-columns:136px 1fr;gap:12px;align-items:baseline;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .of-d b{white-space:nowrap;font-size:21px;letter-spacing:-.01em;color:#FF5A2A;font-variant-numeric:tabular-nums}.of-d span{font-size:14.5px;line-height:1.45}.of-d i{font-style:normal;font-weight:600}
+
+.of-l{margin:0 0 8px;font:500 11px/1.3 "Geist Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#FF5A2A}

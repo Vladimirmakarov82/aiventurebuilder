@@ -67,7 +67,7 @@ with sync_playwright() as p:
     ok('reco: что предложить или замок асимметрий', pp.locator('.reco-p li').count() >= 1 or 'открываются после выполнения условия' in rtxt, rtxt[:300])
     ok('trial: условие появилось после загрузки', pp.locator('.trp').count() >= 1)
     pp.goto(B + '/crm/#/asym'); pp.wait_for_timeout(2500); pp.screenshot(path=OUT + '/06d-asym-lock.png', full_page=True)
-    ok('asym: закрыто до выполнения условия', pp.locator('.asy-lock').count() == 1 and pp.locator('article.asy').count() == 0)
+    ok('asym: закрыто, видны тизеры', pp.locator('.asy-gate').count() == 1 and pp.locator('article.asy.lk').count() >= 3 and pp.locator('[data-a=asyask]').count() == 0)
     # ---------- Посетитель сайта партнера ----------
     vc = br.new_context(viewport={'width': 390, 'height': 844}); vp = vc.new_page(); ve = []; errs(vp, ve)
     vp.goto(site); vp.wait_for_timeout(2000); vp.screenshot(path=OUT + '/07-visitor-home.png')

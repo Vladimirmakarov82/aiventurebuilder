@@ -33,7 +33,7 @@ with sync_playwright() as p:
     pp.goto(inv); pp.wait_for_timeout(2500); pp.screenshot(path=OUT + '/04-partner-first.png')
     ok('partner: попал в Мой сайт', '#/site' in pp.url, pp.url)
     ok('partner: тур запущен', pp.locator('.tour').count() > 0)
-    for i in range(6):
+    for i in range(10):
         if pp.locator('.tour').count() == 0: break
         pp.screenshot(path=OUT + '/05-tour-%d.png' % i)
         nx = pp.locator('.tour-tip button').last
@@ -45,6 +45,17 @@ with sync_playwright() as p:
     pp.screenshot(path=OUT + '/06-partner-invite.png')
     m = re.search(r'https?://\S*/i/\?t=[A-Za-z0-9_-]+', pp.locator('#qir').inner_text())
     ok('partner: личная ссылка клиенту', m); cinv = m.group(0).replace('https://localhost:8790', B) if m else ''
+    # ---------- Загрузка клиентов списком и рекомендации ----------
+    pp.goto(B + '/crm/#/clients'); pp.wait_for_timeout(1500); pp.locator('[data-a=bulk]').first.click(); pp.wait_for_timeout(800)
+    ok('bulk: задание для своей нейросети', pp.locator('.aiown').count() > 0)
+    pp.fill('#blk', 'Иван Петров, 52 года, +7 917 000-00-00, логистика, капитал около 20 млн долларов, ищет доходность в долларах выше депозита\nМарина Соколова, 41, ivanova@mail.ru, сеть клиник, хочет ВНЖ в ОАЭ и школу для детей\nОлег, 60 лет, агробизнес, интересуется вином и яхтами, у него украли криптовалюту')
+    pp.wait_for_timeout(400); pp.screenshot(path=OUT + '/06b-bulk.png'); pp.click('#blkgo'); pp.wait_for_timeout(9000)
+    ok('bulk: переход в рекомендации', '#/reco' in pp.url, pp.url)
+    pp.screenshot(path=OUT + '/06c-reco.png', full_page=True)
+    rtxt = pp.locator('.reco-l').inner_text() if pp.locator('.reco-l').count() else ''
+    ok('reco: карточки клиентов', pp.locator('.reco').count() >= 3, pp.locator('.reco').count())
+    ok('reco: фамилии и контакты удалены', 'Петров' not in rtxt and '917' not in rtxt and 'mail.ru' not in rtxt)
+    ok('reco: есть что предложить', pp.locator('.reco-p li').count() >= 1, rtxt[:300])
     # ---------- Посетитель сайта партнера ----------
     vc = br.new_context(viewport={'width': 390, 'height': 844}); vp = vc.new_page(); ve = []; errs(vp, ve)
     vp.goto(site); vp.wait_for_timeout(2000); vp.screenshot(path=OUT + '/07-visitor-home.png')

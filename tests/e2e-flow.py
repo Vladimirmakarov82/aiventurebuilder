@@ -31,8 +31,12 @@ with sync_playwright() as p:
     # ---------- Партнер ----------
     pc = br.new_context(viewport={'width': 1360, 'height': 900}); pp = pc.new_page(); pe = []; errs(pp, pe)
     pp.goto(inv); pp.wait_for_timeout(2500); pp.screenshot(path=OUT + '/04-partner-first.png')
-    ok('partner: попал в Мой сайт', '#/site' in pp.url, pp.url)
-    ok('partner: тур запущен', pp.locator('.tour').count() > 0)
+    ok('partner: попал в знакомство', '#/welcome' in pp.url and pp.locator('.wl-hero').count() > 0, pp.url)
+    pp.screenshot(path=OUT + '/04b-welcome.png', full_page=True)
+    pp.locator('[data-a=wlsite]').click(); pp.wait_for_timeout(1200)
+    ok('partner: из знакомства в кабинет', '#/site' in pp.url, pp.url)
+    pp.evaluate("location.hash='#/site'"); pp.locator('[data-a=howto]').first.click() if pp.locator('[data-a=howto]').count() else None; pp.wait_for_timeout(1000)
+    ok('partner: «Как это работает» открывает знакомство', '#/welcome' in pp.url, pp.url)
     for i in range(10):
         if pp.locator('.tour').count() == 0: break
         pp.screenshot(path=OUT + '/05-tour-%d.png' % i)

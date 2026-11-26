@@ -49,7 +49,7 @@ with sync_playwright() as p:
         if nx.count(): nx.click(); pp.wait_for_timeout(700)
     pp.goto(B + '/crm/#/site'); pp.wait_for_timeout(1500)
     ok('partner: ссылка сайта видна', pp.locator('.site-u').count() and '/egor' in pp.locator('.site-u').inner_text(), pp.locator('.site-u').inner_text() if pp.locator('.site-u').count() else '')
-    ok('partner: счетчик старта', pp.locator('.trp').count() > 0)
+    ok('partner: условие старта скрыто до первого клиента', pp.locator('.trp').count() == 0)
     pp.fill('#qif input[name=alias]', 'Андрей'); pp.fill('#qif input[name=email]', 'andrey@e2e.test'); pp.click('#qif [type=submit]'); pp.wait_for_timeout(1500)
     pp.screenshot(path=OUT + '/06-partner-invite.png')
     m = re.search(r'https?://\S*/i/\?t=[A-Za-z0-9_-]+', pp.locator('#qir').inner_text())
@@ -64,7 +64,10 @@ with sync_playwright() as p:
     rtxt = pp.locator('.reco-l').inner_text() if pp.locator('.reco-l').count() else ''
     ok('reco: карточки клиентов', pp.locator('.reco').count() >= 3, pp.locator('.reco').count())
     ok('reco: фамилии и контакты удалены', 'Петров' not in rtxt and '917' not in rtxt and 'mail.ru' not in rtxt)
-    ok('reco: есть что предложить', pp.locator('.reco-p li').count() >= 1, rtxt[:300])
+    ok('reco: что предложить или замок асимметрий', pp.locator('.reco-p li').count() >= 1 or 'открываются после выполнения условия' in rtxt, rtxt[:300])
+    ok('trial: условие появилось после загрузки', pp.locator('.trp').count() >= 1)
+    pp.goto(B + '/crm/#/asym'); pp.wait_for_timeout(2500); pp.screenshot(path=OUT + '/06d-asym-lock.png', full_page=True)
+    ok('asym: закрыто до выполнения условия', pp.locator('.asy-lock').count() == 1 and pp.locator('article.asy').count() == 0)
     # ---------- Посетитель сайта партнера ----------
     vc = br.new_context(viewport={'width': 390, 'height': 844}); vp = vc.new_page(); ve = []; errs(vp, ve)
     vp.goto(site); vp.wait_for_timeout(2000); vp.screenshot(path=OUT + '/07-visitor-home.png')

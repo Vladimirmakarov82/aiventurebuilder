@@ -415,6 +415,7 @@ var Demo=(function(){
     case 'site/lead/status':return {ok:true};
     case 'invite/status':{var c4=own(q.cid);return {invites:(c4.invites2||[]).slice().reverse(),asks:[{kind:'want',title:'Ночь в императорском храме Киото',note:'Вдвоем, в мае',seat:1,at:day(-1,19)},{kind:'want',title:'Конный турнир в Довиле',seat:2,at:day(-2,11)}]}}
     case 'plink/revoke':{if(PLD[b.tok])PLD[b.tok].status='off';return {ok:true}}
+    case 'asym/list':return {locked:true,trial:{cap5:2,cap15:1,left:7,total:3}};
     case 'reco/list':return {stale:2,clients:[{cid:'c1',alias:'Андрей',age:'45–54',capital:'10–25',interests:['Яхты','Вино'],requests:['ВНЖ в ОАЭ для семьи'],engine:'ai',products:[{id:'deal-defi-credit',title:'Долларовые займы DeFi-протоколам под залог',why:'Держит капитал в долларах и ищет доходность выше депозита',url:'/journal/asymmetry/#deal-defi-credit'}],questions:['Какую часть капитала вы готовы разместить на срок до года?']},{cid:'c2',alias:'Марина',age:'35–44',capital:'3–10',interests:['Образование'],requests:['Школа для детей в Лондоне'],engine:'rules',products:[],questions:['Сколько лет детям и когда планируете переезд?']}]};
     case 'reco/ai':return {engine:'ai',done:2,left:0};
     case 'asks/all':return {rows:[{id:'pa1',kind:'want',partner:'Анна',alias:'Андрей',title:'Ночь в императорском храме Киото',at:day(-1,19),src:'plink'},{id:'pa2',kind:'notify',partner:'Нина',alias:'Олег',title:'Скидка 40–45% на квартиры у застройщика',at:day(-3,10),src:'plink'},{id:'aa1',kind:'asym',partner:'Марк',title:'Discord: 7 400 акций до IPO',note:'Клиент 50 лет, IT, готов к $200 тыс.',at:day(-4,12),src:'asym'}]};
@@ -1733,30 +1734,12 @@ function vFit(){
         $$('.je',list).forEach(function(a){a.hidden=!(v==='all'||a.getAttribute('data-k')===v)})})})});
   }).catch(function(e){page('fit',e.status===403?'<div class="card">'+emptyBox('Лиды недоступны','Они строятся под продукт поставщика')+'</div>':errBox(e))});
 }
-var ASYM=[
- {cat:'Безопасность',score:8,date:'Актуально на 25 ноября 2026',title:'Возврат украденных USDT',nums:[['$500 тыс.','украдено'],['< 7 мес.','до возврата'],['0','раскрытий личности']],
-  what:'Криптофорензика для СНГ: поиск средств, уголовное дело, переговоры с эмитентом.',
-  why:'Украденное считают потерей. USDT в Tron эмитент блокирует по делу и выпускает владельцу новые.',
-  cas:'Дело возбудили в СНГ, средства заблокировали, владелец получил новые USDT анонимно.',
-  entry:'Кражи и мошенничество с криптовалютой.',
-  risk:'Выведенное через миксер вернуть сложнее.'},
- {cat:'Безопасность',score:7,date:'Актуально на 25 ноября 2026',title:'Замена рисковых биткоинов на чистые',nums:[['22 BTC','оплата с рисковой историей'],['< 1 мес.','срок'],['< 7%','удержание']],
-  what:'Юристы разворачивают сделку: рисковые монеты уходят плательщику, клиент получает чистые.',
-  why:'Рисковые BTC замораживают биржи и банки. Законный возврат сделки знают единицы.',
-  cas:'22 BTC вернули плательщику, взамен получили чистые меньше чем за месяц.',
-  entry:'Кому заплатили криптовалютой с рисковой историей.',
-  risk:'Нужен доступный плательщик. Процент зависит от кейса.'},
- {cat:'Инвестиции',score:7,date:'Актуально на 24 ноября 2026',title:'DeFi-кредит под 15% годовых в долларах',nums:[['15%','цель фонда в год, чистыми'],['$57 млн','вложено в 6 сделок за 18 месяцев'],['0%','потерь основного капитала']],
-  what:'Фонд дает долларовые займы растущим DeFi-протоколам на 3–12 месяцев под залог их активов. Протоколам нужен капитал для роста, поэтому они платят выше рынка.',
-  why:'Доходность выше рынка при риске ниже обычного для нее. Вложенное и базовый доход можно забрать в любой момент. Деньги лежат в отдельном смарт-контракте. Токены протоколов идут сверху процентов.',
-  entry:'Граждане стран, которые без проблем проходят KYC и AML в американском банке.',
-  risk:'Фонд запускается сейчас, полностью закрыта одна сделка команды. В DeFi возможен взлом смарт-контракта и отказ протокола платить.'},
- {cat:'Pre-IPO',score:6,date:'Актуально на 12 ноября 2026',title:'Discord: 7 400 акций до IPO',nums:[['$29–33','цена акции на вторичном рынке'],['$215–245 тыс.','весь пакет по рынку'],['$15 млрд','оценка последнего раунда']],
-  what:'Участник фонда продает свою долю в Discord. Акции оформлены на отдельную компанию, и она уже в реестре акционеров. За весь пакет продавец дает скидку к рынку.',
-  why:'Вход до IPO ниже оценки последнего раунда. Discord подал документы на IPO в январе 2026 года, вторичный рынок оценивает компанию на 43% ниже раунда 2021 года.',
-  entry:'Продается только весь пакет. Размер скидки продавец обсуждает при сделке.',
-  risk:'Дата IPO не назначена. С 5 по 12 ноября цена на вторичном рынке снизилась на 17%.'}];
+var ASYM=[];
 function vAsym(){
+  loading('asym');api('asym/list').then(function(d){if(d.locked)return asymLocked(d.trial||{});ASYM=d.rows||[];asymDraw()}).catch(function(e){page('asym',errBox(e))})}
+function asymLocked(t){var l=Math.max(0,t.left||0);
+  page('asym',hd('Сделки партнеров сети','Асимметрии')+'<section class="card asy-lock rv"><span class="kick">'+ic('clock')+' Старт: 10 дней</span><h2>Список асимметрий открывается после загрузки клиентов</h2><p class="hint">Условие: 5 клиентов с капиталом $3–10 млн или 3 клиента от $10 млн. В зачет идет клиент с возрастом, капиталом и запросом или описанием интересов и активов. Фамилии и контакты не нужны</p><div class="trs"><div><b>'+(t.cap5||0)+'<small>/5</small></b><span>от $3–10 млн</span></div><div><b>'+(t.cap15||0)+'<small>/3</small></b><span>от $10 млн</span></div><div><b>'+l+'</b><span>'+plural(l,'день остался','дня осталось','дней осталось')+'</span></div></div><p class="hint" style="font-size:12px">Если за 10 дней условие не выполнено, кабинет и сайт закрываются</p><div class="row">'+btn('Загрузить клиентов','pri','data-a="bulk"','upload')+'</div></section>')}
+function asymDraw(){
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
   var row=function(t,x){return x?'<p class="asy-p"><b>'+t+'</b> '+E(x)+'</p>':''};
   var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.date)+'</span></div>'+
@@ -1839,7 +1822,7 @@ function bulkSheet(){closeSheet();var l=LL();
       return tryA(P.alias,0)};
     var worker=function(){if(idx>=L.length)return Promise.resolve();var i=idx++;return one(L[i],i+1).catch(function(){}).then(function(){done++;$('u',bar).style.width=Math.round(done/L.length*100)+'%';n.textContent='Загружено '+done+' из '+L.length;return worker()})};
     Promise.all([worker(),worker(),worker(),worker(),worker()]).then(function(){S.bulkBusy=false;toast('Загружено '+ok+', с запросом '+wr);
-      api('me').then(function(m){if(m&&m.partner)S.me.partner.limits=m.partner.limits}).catch(function(){}).then(function(){closeSheet();var l2=LL();$$('.rdy').forEach(function(e){e.textContent=l2.n+'/'+l2.need;e.hidden=l2.n>=l2.need});toast('Загружено '+ok+' '+plural(ok,'клиент','клиента','клиентов')+'. Orbiq подбирает рекомендации');if(ok){S.recoRun=1;go('#/reco');return}var h=location.hash||'#/fit';if(h.indexOf('#/clients')===0)vClients('clients');else if(h==='#/fit'||h==='#/'){S.keepY=scrollY;vFit()}})})});
+      api('me').then(function(m){if(m&&m.partner){S.me.partner.limits=m.partner.limits;S.me.partner.trial=m.partner.trial}}).catch(function(){}).then(function(){closeSheet();var l2=LL();$$('.rdy').forEach(function(e){e.textContent=l2.n+'/'+l2.need;e.hidden=l2.n>=l2.need});toast('Загружено '+ok+' '+plural(ok,'клиент','клиента','клиентов')+'. Orbiq подбирает рекомендации');if(ok){S.recoRun=1;go('#/reco');return}var h=location.hash||'#/fit';if(h.indexOf('#/clients')===0)vClients('clients');else if(h==='#/fit'||h==='#/'){S.keepY=scrollY;vFit()}})})});
 }
 
 
@@ -1853,10 +1836,10 @@ function vReco(){
     var cards=L.map(function(c,i){var meta=[c.age?c.age+' лет':'',c.capital?c.capital+' млн $':''].concat(c.interests||[]).filter(Boolean).join(' · ');
       return '<article class="reco rv" style="--i:'+Math.min(i,8)+'"><div class="reco-h"><a class="reco-n" href="#/c/'+E(c.cid)+'">'+E(c.alias)+'</a>'+(c.engine==='ai'?'<span class="reco-ai">нейросеть</span>':'')+'</div>'+(meta?'<p class="reco-m">'+E(meta)+'</p>':'')+
         ((c.requests||[]).length?'<p class="reco-r">Запрос: '+E(c.requests.join('; '))+'</p>':'')+
-        '<div class="reco-g"><div><div class="kick">Что предложить</div>'+(c.products.length?'<ul class="reco-p">'+c.products.map(function(p){return '<li><a href="'+E(p.url||'#')+'" target="_blank" rel="noopener"><b>'+E(p.title)+'</b></a>'+(p.why?'<span>'+E(p.why)+'</span>':'')+'</li>'}).join('')+'</ul>':'<p class="hint">Подходящего продукта в сети пока нет. Ответы на вопросы справа помогут подобрать</p>')+'</div>'+
+        '<div class="reco-g"><div><div class="kick">Что предложить</div>'+(c.products.length?'<ul class="reco-p">'+c.products.map(function(p){return '<li><a href="'+E(p.url||'#')+'" target="_blank" rel="noopener"><b>'+E(p.title)+'</b></a>'+(p.why?'<span>'+E(p.why)+'</span>':'')+'</li>'}).join('')+'</ul>':'<p class="hint">'+(d.locked?'Сделки-асимметрии под этого клиента открываются после выполнения условия старта: 5 клиентов от $3–10 млн или 3 от $10 млн':'Подходящего продукта в сети пока нет. Ответы на вопросы справа помогут подобрать')+'</p>')+'</div>'+
         '<div><div class="kick">Что спросить</div>'+(c.questions.length?'<ol class="reco-q">'+c.questions.map(function(q){return '<li>'+E(q)+'</li>'}).join('')+'</ol>':'<p class="hint">Данных достаточно</p>')+'</div></div>'+
         '<div class="row"><a class="btn sm soft" href="#/c/'+E(c.cid)+'">'+ic('ar')+'<span>Открыть карточку</span></a></div></article>'}).join('');
-    page('reco',head+bar+'<div class="reco-l">'+cards+'</div>');
+    page('reco',head+'<div class="trp-m">'+trialPill()+'</div>'+bar+'<div class="reco-l">'+cards+'</div>');
   };
   var run=function(){api('reco/list').then(function(d){S.reco=d;
       if(S.recoRun&&d.stale){S.recoRun=0;draw(d,true);ai()}else draw(d)}).catch(function(e){page('reco',errBox(e))})};
@@ -1909,12 +1892,12 @@ function onbFlow(){var old=$('.of');if(old)old.remove();
    ['Одна сделка: $30–100 тыс. агенту','Пример расчета. Условия каждой сделки партнер и агент согласуют отдельно.',
     '<div class="of-d"><div><b>$45 тыс.</b><span><i>Недвижимость.</i> Клиент покупает 3 квартиры застройщика на $1,5 млн. Комиссия агенту 3%</span></div><div><b>$50 тыс.</b><span><i>Pre-IPO.</i> Клиент покупает пакет акций на $2 млн. Агенту 2,5%</span></div><div><b>$40 тыс.</b><span><i>Часы.</i> Клиенту нужно быстро продать часы за $800 тыс. Покупатель из сети, агенту 5%</span></div><div><b>$30–60 тыс.</b><span><i>ВЭД.</i> Компания клиента оплачивает поставки оборудования на $15 млн в год через партнера по платежам. Агенту 0,2–0,4% от суммы, каждый год</span></div></div>'],
    ['Как это работает','Список клиентов загружается любым файлом: Word, PDF, Excel или текст. Фамилии и контакты удаляются еще на устройстве.',
-    '<ol class="of-s"><li>Orbiq подскажет, что предложить каждому клиенту и о чем его спросить</li><li>Клиент получает ссылку'+(lk?' '+E(lk):'')+': журнал с продуктами сети и кнопкой «Связаться с '+E(fn?instr(fn):'вами')+'»</li><li>Запрос клиента приходит в Telegram</li></ol>'+(t.done?'':'<p class="hint" style="margin:10px 0 0">Кабинет закрепляется за вами, когда в нем 5 клиентов с капиталом от 3–10 млн $ или 3 клиента от 10–25 млн $. Срок: '+Math.max(0,t.left)+' '+plural(Math.max(0,t.left),'день','дня','дней')+'</p>')]];
+    '<ol class="of-s"><li>Orbiq подскажет, что предложить каждому клиенту и о чем его спросить</li><li>Клиент получает ссылку'+(lk?' '+E(lk):'')+': журнал с продуктами сети и кнопкой «Связаться с '+E(fn?instr(fn):'вами')+'»</li><li>Запрос клиента приходит в Telegram</li></ol>']];
   var el=document.createElement('div');el.className='of';el.setAttribute('role','dialog');document.body.appendChild(el);var i=0;
   var done=function(){el.classList.remove('on');setTimeout(function(){el.remove()},300);if(p&&!p.onbDone){p.onbDone=1;api('me/onb',{}).catch(function(){})}};
   var draw=function(){var x=S1[i],last=i===S1.length-1;
     el.innerHTML='<div class="of-c"><button type="button" class="of-close" aria-label="Закрыть">'+ic('x')+'</button><div class="of-dots">'+S1.map(function(_,k){return '<i class="'+(k<=i?'on':'')+'"></i>'}).join('')+'</div><span class="kick">'+(i+1)+' из '+S1.length+'</span><h2>'+x[0]+'</h2><p>'+x[1]+'</p>'+x[2]+
-      '<div class="of-b">'+(i?'<button type="button" class="btn soft" data-of="back">'+ic('al')+'<span>Назад</span></button>':'<span></span>')+(last?'<div class="row">'+'<button type="button" class="btn soft" data-of="end"><span>Закрыть</span></button><button type="button" class="btn pri" data-of="bulk">'+ic('upload')+'<span>Загрузить клиентов</span></button></div>':'<button type="button" class="btn pri" data-of="next"><span>Дальше</span>'+ic('ar')+'</button>')+'</div></div>'};
+      '<div class="of-b">'+(i?'<button type="button" class="btn soft" data-of="back">'+ic('al')+'<span>Назад</span></button>':'<span></span>')+(last?'<button type="button" class="btn pri" data-of="end"><span>Личный кабинет</span>'+ic('ar')+'</button>':'<button type="button" class="btn pri" data-of="next"><span>Дальше</span>'+ic('ar')+'</button>')+'</div></div>'};
   el.addEventListener('click',function(e){var b=e.target.closest('[data-of],.of-close');if(!b){if(e.target===el)done();return}var a=b.getAttribute('data-of');
     if(b.classList.contains('of-close')||a==='end')done();else if(a==='next'){i++;draw()}else if(a==='back'){i--;draw()}else if(a==='bulk'){done();go('#/clients');setTimeout(bulkSheet,500)}});
   document.addEventListener('keydown',function kd(e){if(!document.body.contains(el)){document.removeEventListener('keydown',kd);return}if(e.key==='Escape')done();if(e.key==='ArrowRight'&&i<S1.length-1){i++;draw()}if(e.key==='ArrowLeft'&&i>0){i--;draw()}});
@@ -1929,17 +1912,17 @@ function tgBlock(){var on=S.me&&S.me.partner&&S.me.partner.tg&&S.me.partner.tg.c
     (on?'<p class="hint" style="margin:0">Заявки с сайта и запросы клиентов приходят в Telegram от бота Orbiq: имя, что интересует и комментарий</p>':
     '<ol class="tgs"><li><b>Кнопка «Подключить Telegram»</b><span>открывает бот Orbiq</span></li><li><b>Кнопка «Запустить» в боте</b><span>приходит тестовое сообщение</span></li><li><b>Готово</b><span>Каждая заявка придет в Telegram сразу</span></li></ol><div class="row" id="tgw">'+btn('Подключить Telegram','pri','data-a="tglink"','tg')+'<button type="button" class="link" data-a="tgcheck">Проверить</button></div><p class="hint" style="margin:10px 0 0;font-size:12.5px">Бот только присылает уведомления. Отвечать ему не нужно, и он ничего не тратит</p>')+'</section>'}
 function trialInfo(){var p=S.me&&S.me.partner||{};return p.trial||null}
-function trialPill(){var t=trialInfo();if(!t||t.done)return '';var l=Math.max(0,t.left);var hot=l<=3;
+function trialPill(){var t=trialInfo();if(!t||t.done||!(t.total>0))return '';var l=Math.max(0,t.left);var hot=l<=3;
   return '<button type="button" class="trp'+(hot?' hot':'')+'" data-a="trial"><span class="trp-n">'+l+'</span><span><b>'+plural(l,'день','дня','дней')+' на старт</b><small>'+t.cap5+' из 5 клиентов</small></span></button>'}
 function trialSheet(){var t=trialInfo()||{cap5:0,cap15:0,left:10};var l=Math.max(0,t.left);
-  sheet('<div class="kick">Старт за 10 дней</div><h2>Кабинет и сайт закрепляются за вами</h2><p class="hint">Условие: 5 клиентов с капиталом от $3–10 млн или 3 клиента от $10–25 млн. У каждого указаны возраст, примерный капитал, а главное — актуальный запрос. Фамилии и контакты не нужны</p><p class="hint">Можно описать сделку/кейс, которая была проведена с клиентом ранее.</p><p class="hint">Можно указать активы клиента без обозначения деталей. Например, клиент владеет винодельней в Аргентине на 20 га. Хорошо разбирается в вине и любит посещать Формулу 1. Посетил 50+ стран, уже не сильно интересуется путешествиями.</p><p class="hint">В зачет идет клиент с актуальным запросом или с полным описанием: хобби, интересы, активы</p><div class="trs"><div><b>'+t.cap5+'<small>/5</small></b><span>от $3–10 млн</span></div><div><b>'+t.cap15+'<small>/3</small></b><span>от $10–25 млн</span></div><div><b>'+l+'</b><span>'+plural(l,'день остался','дня осталось','дней осталось')+'</span></div></div><p class="hint" style="font-size:12px">Orbiq выборочно проверяет клиентскую базу, в частном порядке. Если срок выйдет, а клиентов не будет, кабинет и сайт закрываются</p><div class="row">'+btn('Загрузить клиентов','pri','data-a="bulk"','upload')+'</div>',true)}
+  sheet('<div class="kick">Старт: 10 дней</div><h2>Кабинет закрепляется за вами</h2><p class="hint">Условие: 5 клиентов с капиталом $3–10 млн или 3 клиента от $10 млн. В зачет идет клиент с возрастом, капиталом и запросом или описанием интересов и активов. Фамилии и контакты не нужны</p><div class="trs"><div><b>'+t.cap5+'<small>/5</small></b><span>от $3–10 млн</span></div><div><b>'+t.cap15+'<small>/3</small></b><span>от $10 млн</span></div><div><b>'+l+'</b><span>'+plural(l,'день остался','дня осталось','дней осталось')+'</span></div></div><p class="hint" style="font-size:12px">Если за срок условие не выполнено, кабинет и сайт закрываются</p><div class="row">'+btn('Загрузить клиентов','pri','data-a="bulk"','upload')+'</div>',true)}
 function shareRow(link,txt){return '<div class="row shr2">'+btn('Скопировать','pri sm','data-a="plcopy" data-u="'+E(link)+'"','copy')+'<a class="btn soft sm" target="_blank" rel="noopener" href="https://t.me/share/url?url='+encodeURIComponent(link)+'&text='+encodeURIComponent(txt)+'">'+ic('send')+'<span>Telegram</span></a><a class="btn soft sm" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(txt+' '+link)+'">'+ic('msg')+'<span>WhatsApp</span></a><a class="btn soft sm" target="_blank" rel="noopener" href="'+E(link)+'">'+ic('eye')+'<span>Открыть</span></a></div>'}
 function instr(n){n=String(n||'');var X={'Павел':'Павлом','Лев':'Львом','Илья':'Ильей','Никита':'Никитой'};if(X[n])return X[n];if(/ия$/.test(n))return n.slice(0,-1)+'ей';if(/[жшчщц]а$/.test(n))return n.slice(0,-1)+'ей';if(/а$/.test(n))return n.slice(0,-1)+'ой';if(/я$/.test(n))return n.slice(0,-1)+'ей';if(/[йь]$/.test(n))return n.slice(0,-1)+'ем';if(/[жшчщц]$/.test(n))return n+'ем';if(/[бвгдзклмнпрстфх]$/i.test(n))return n+'ом';return n}
 function vSite(){loading('site');var p=S.me.partner||{};var st=p.site||{};var fn=(p.name||'').split(' ')[0];
   api('site/leads').catch(function(){return {rows:[]}}).then(function(d){var L=d.rows||[];var t=trialInfo();
     var txt='Журнал Orbiq: редкие возможности со всего мира. Если что-то заинтересует, напишите мне прямо оттуда';
     page('site',hd('Журнал Orbiq с вашим контактом','Мой сайт')+'<div class="trp-m">'+trialPill()+'</div>'+
-      (t&&!t.done&&t.left<=0?'<div class="infob rv" style="margin-bottom:14px">'+ic('alert')+'<span>Срок старта вышел. Чтобы сайт и кабинет остались за вами, загрузите клиентов и напишите в Orbiq</span></div>':'')+
+      (t&&!t.done&&t.total>0&&t.left<=0?'<div class="infob rv" style="margin-bottom:14px">'+ic('alert')+'<span>Срок старта вышел. Чтобы сайт и кабинет остались за вами, загрузите клиентов и напишите в Orbiq</span></div>':'')+
       '<section class="site-h rv"><div class="site-l"><span class="kick">Ваш сайт для клиентов</span><a class="site-u" href="'+E(st.link||'#')+'" target="_blank" rel="noopener">'+E(String(st.link||'').replace(/^https?:\/\//,''))+'</a><p>Ссылка для клиентов и соцсетей. По ней открывается журнал Orbiq: редкие продукты и сделки партнеров сети. На каждом продукте кнопка «Связаться с '+E(fn?instr(fn):'вами')+'». Клиент регистрируется, нажимает ее, и вам приходит его контакт и продукт, который его заинтересовал</p>'+shareRow(st.link||'',txt)+'</div>'+
         '<form class="site-c" id="scf"><span class="kick">Ваши контакты для клиентов</span><input class="in" name="phone" type="tel" placeholder="Телефон: Telegram и WhatsApp" value="'+E(st.phone||'')+'"><input class="in" name="tg" placeholder="Ник Telegram, если есть" value="'+E(st.tgUser?'@'+st.tgUser:'')+'"><button class="btn soft sm" type="submit">'+ic('check')+'<span>Сохранить</span></button><small>Клиент увидит кнопки Telegram и WhatsApp после своего запроса</small></form></section>'+
       '<section class="card rv" style="--i:1"><h2 style="margin-bottom:6px">Пригласить знакомого клиента</h2><p class="hint" style="margin:0 0 12px">Личная ссылка для знакомого клиента. Имя и почта уже внесены: клиенту остается придумать пароль и подтвердить почту. Клиент увидит подборку под свои интересы и сможет дать доступ жене или мужу</p>'+
@@ -2065,7 +2048,7 @@ function render(){
   stopRec();closeSheet();
   if(S.me&&S.me.needKey)return vKey();if(!S.me||!S.me.role)return vLogin();
   var h=location.hash.replace(/^#\/?/,'').split('?')[0];var parts=h.split('/').filter(Boolean);
-  var r=parts[0];if(!r||r==='login'){location.replace('#/'+(isOwner()?'partners':ptier()==='networker'?'asym':'fit'));return}
+  var r=parts[0];if(!r||r==='login'){location.replace('#/'+(isOwner()?'partners':ptier()==='networker'?'site':'fit'));return}
   if(gated(r))return vGate(r);
   if(OWNER_ONLY[r]&&!isOwner())r='clients';if(r==='plans'&&isOwner())r='mine';
   if(r==='demand'||r==='portfolio'||r==='tariff')r=isOwner()?'mine':(r==='demand'?'fit':'status');
@@ -2078,7 +2061,7 @@ function boot(to){
   return api('me').then(function(m){S.me=m;
     if(m&&m.role&&!m.needKey){if(!$('#root .app'))$('#root').innerHTML='';if(to)location.hash=to;else if(!location.hash||location.hash==='#/login')location.hash='#/'+(m.owner?'partners':'site')}
     render();
-    if(m.role==='partner'&&!m.needKey&&m.partner&&(Q.get('onb')==='1'||Q.get('welcome')==='1'||(!DEMO&&!m.partner.onbDone)))setTimeout(onbFlow,500);
+    if(m.role==='partner'&&!m.needKey&&m.partner&&(Q.get('onb')==='1'||Q.get('welcome')==='1'||(!DEMO&&!m.partner.onbDone))){setTimeout(onbFlow,500);if(Q.get('onb')||Q.get('welcome')){var u=new URL(location.href);u.searchParams.delete('onb');u.searchParams.delete('welcome');history.replaceState(null,'',u.pathname+u.search+u.hash)}}
   }).catch(function(){S.me={role:null};render()});
 }
 window.addEventListener('hashchange',function(){S.viewAs='own';render()});

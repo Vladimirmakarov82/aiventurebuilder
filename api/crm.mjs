@@ -441,6 +441,32 @@ const DEAL_ITEMS = [
   { id: 'deal-preipo-discord', title: 'Пакет акций Discord до IPO', themes: ['preipo', 'wealth', 'first1m', 'finance'], hook: 'Нерыночное предложение: 7 400 акций Discord до IPO', url: '/journal/asymmetry/#deal-preipo-discord' },
   { id: 'deal-defi-credit', title: 'Долларовые займы DeFi-протоколам под залог', themes: ['finance', 'wealth', 'preipo'], hook: '14–22% годовых, 3–12 месяцев, до $25 млн', url: '/journal/asymmetry/#deal-defi-credit' },
 ];
+const ASYM_LIST = [
+ {cat:'Безопасность',score:8,date:'Актуально на 25 ноября 2026',title:'Возврат украденных USDT',nums:[['$500 тыс.','украдено'],['< 7 мес.','до возврата'],['0','раскрытий личности']],
+  what:'Криптофорензика для СНГ: поиск средств, уголовное дело, переговоры с эмитентом.',
+  why:'Украденное считают потерей. USDT в Tron эмитент блокирует по делу и выпускает владельцу новые.',
+  cas:'Дело возбудили в СНГ, средства заблокировали, владелец получил новые USDT анонимно.',
+  entry:'Кражи и мошенничество с криптовалютой.',
+  risk:'Выведенное через миксер вернуть сложнее.'},
+ {cat:'Безопасность',score:7,date:'Актуально на 25 ноября 2026',title:'Замена рисковых биткоинов на чистые',nums:[['22 BTC','оплата с рисковой историей'],['< 1 мес.','срок'],['< 7%','удержание']],
+  what:'Юристы разворачивают сделку: рисковые монеты уходят плательщику, клиент получает чистые.',
+  why:'Рисковые BTC замораживают биржи и банки. Законный возврат сделки знают единицы.',
+  cas:'22 BTC вернули плательщику, взамен получили чистые меньше чем за месяц.',
+  entry:'Кому заплатили криптовалютой с рисковой историей.',
+  risk:'Нужен доступный плательщик. Процент зависит от кейса.'},
+ {cat:'Инвестиции',score:7,date:'Актуально на 24 ноября 2026',title:'DeFi-кредит под 15% годовых в долларах',nums:[['15%','цель фонда в год, чистыми'],['$57 млн','вложено в 6 сделок за 18 месяцев'],['0%','потерь основного капитала']],
+  what:'Фонд дает долларовые займы растущим DeFi-протоколам на 3–12 месяцев под залог их активов. Протоколам нужен капитал для роста, поэтому они платят выше рынка.',
+  why:'Доходность выше рынка при риске ниже обычного для нее. Вложенное и базовый доход можно забрать в любой момент. Деньги лежат в отдельном смарт-контракте. Токены протоколов идут сверху процентов.',
+  entry:'Граждане стран, которые без проблем проходят KYC и AML в американском банке.',
+  risk:'Фонд запускается сейчас, полностью закрыта одна сделка команды. В DeFi возможен взлом смарт-контракта и отказ протокола платить.'},
+ {cat:'Pre-IPO',score:6,date:'Актуально на 12 ноября 2026',title:'Discord: 7 400 акций до IPO',nums:[['$29–33','цена акции на вторичном рынке'],['$215–245 тыс.','весь пакет по рынку'],['$15 млрд','оценка последнего раунда']],
+  what:'Участник фонда продает свою долю в Discord. Акции оформлены на отдельную компанию, и она уже в реестре акционеров. За весь пакет продавец дает скидку к рынку.',
+  why:'Вход до IPO ниже оценки последнего раунда. Discord подал документы на IPO в январе 2026 года, вторичный рынок оценивает компанию на 43% ниже раунда 2021 года.',
+  entry:'Продается только весь пакет. Размер скидки продавец обсуждает при сделке.',
+  risk:'Дата IPO не назначена. С 5 по 12 ноября цена на вторичном рынке снизилась на 17%.'}];
+// доступ агента к асимметриям: после выполнения условия старта (решение 26.11)
+async function asymLocked(c) { if (!c.p || c.p.kind !== 'networker' || c.p.trialOk) return null; const t = await trialStat(c.p).catch(() => null); return t && !t.done ? t : null; }
+get('asym/list', async (req, res) => { const c = await need(req, 'crm.own'); const t = await asymLocked(c); if (t) return send(res, 200, { locked: true, trial: t }); send(res, 200, { rows: ASYM_LIST }); });
 async function recoCatalog() { const cat = await catalog(); return [...DEAL_ITEMS.map(d => ({ ...d, status: 'available', deliver: d.hook, confirmBy: 'Партнер Orbiq' })), ...cat]; }
 const recoSummary = (card) => { const cells = card.cells || {}; const f = Object.entries(cells).filter(([, v]) => v && v.kind === 'fact' && v.v).map(([k, v]) => `${(QUESTIONS[k] || k).replace(/\?$/, '')}: ${v.v}`).slice(0, 12);
   return { cid: card.id, name: card.alias, age: card.age || '', capital: card.capital ? `${card.capital} млн $` : '', interests: card.interests || [], requests: (card.requests || []).filter(r => r.status === 'open').map(r => r.text).slice(0, 5), facts: f }; };
@@ -472,14 +498,14 @@ function recoRules(card, cat) {
 get('reco/list', async (req, res) => {
   const c = await need(req, 'crm.own'); const pid = c.p ? c.p.id : ORBIQ.id;
   const ids = await setGet(`crm/cidx/p/${pid}`); const cards = (await many(ids.map(id => `crm/c/${id}.json`))).filter(x => x && !x.archived);
-  const cat = await recoCatalog(); const byId = Object.fromEntries(cat.map(x => [x.id, x]));
+  const lockA = await asymLocked(c); const cat = (await recoCatalog()).filter(x => !(lockA && /^deal-/.test(x.id))); const byId = Object.fromEntries(cat.map(x => [x.id, x]));
   const out = cards.map(card => { const ai = card.reco && card.reco.v === RECO_V && card.reco.at >= (card.updated || '') ? card.reco : null; const r = recoRules(card, cat);
     const dealsR = r.products.filter(p => /^deal-/.test(p.id));
     const products = ai ? [...dealsR, ...ai.products.filter(p => byId[p.id] && !dealsR.some(d => d.id === p.id)).map(p => ({ id: p.id, title: byId[p.id].title, why: p.why, url: byId[p.id].url || '' }))].slice(0, 3) : r.products;
     return { cid: card.id, alias: card.alias, age: card.age || '', capital: card.capital || '', interests: (card.interests || []).slice(0, 4), requests: (card.requests || []).filter(x => x.status === 'open').map(x => x.text || (card.publicText || {})[x.id] || '').filter(Boolean).slice(0, 2),
       products, questions: ai && ai.questions.length ? ai.questions : r.questions, engine: ai ? 'ai' : 'rules' }; });
   out.sort((a, b) => b.products.length - a.products.length || a.alias.localeCompare(b.alias));
-  send(res, 200, { clients: out, stale: cards.filter(x => !(x.reco && x.reco.v === RECO_V && x.reco.at >= (x.updated || ''))).length });
+  send(res, 200, { locked: !!lockA, clients: out, stale: cards.filter(x => !(x.reco && x.reco.v === RECO_V && x.reco.at >= (x.updated || ''))).length });
 });
 post('reco/ai', async (req, res) => { // разбор до 12 клиентов за вызов; кэш в карточке до ее следующего изменения
   const c = await need(req, 'crm.own'); const pid = c.p ? c.p.id : ORBIQ.id;

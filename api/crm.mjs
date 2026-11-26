@@ -482,7 +482,7 @@ post('reco/ai', async (req, res) => { // разбор до 12 клиентов �
   if (c.p && !(await rateLimit('crm-reco:' + pid, 40, 1440))) return send(res, 429, { error: 'Лимит подбора на сегодня исчерпан' });
   if (!(await aiBudget())) return send(res, 200, { engine: 'rules', done: 0, left: 0 });
   const ids = await setGet(`crm/cidx/p/${pid}`); const cards = (await many(ids.map(id => `crm/c/${id}.json`))).filter(x => x && !x.archived && !(x.reco && x.reco.v === RECO_V && x.reco.at >= (x.updated || '')));
-  const batch = cards.slice(0, 12); if (!batch.length) return send(res, 200, { engine: 'ai', done: 0, left: 0 });
+  const batch = cards.slice(0, 5); if (!batch.length) return send(res, 200, { engine: 'ai', done: 0, left: 0 });
   const cat = (await recoCatalog()).filter(x => x.status === 'available').slice(0, 120); const valid = new Set(cat.map(x => x.id));
   const catText = cat.map(x => `${x.id} | ${x.title} | ${String(x.hook || x.deliver || '').slice(0, 140)}`).join('\n');
   const o = await aiJson(RECO_SYSTEM, `КАТАЛОГ (id | название | суть):\n${catText}\n\nКЛИЕНТЫ:\n${JSON.stringify(batch.map(recoSummary))}`, aiToken(req), 55000, ENV.AI_BASE_URL ? '' : (ENV.CRM_RECO_MODEL || 'google/gemini-2.5-flash'));

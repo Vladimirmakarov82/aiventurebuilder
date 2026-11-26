@@ -406,6 +406,10 @@ post('auth/owner-login', async (req, res) => { // Founder: почта + паро
   await audit('owner', 'owner', 'owner_login'); send(res, 200, { ok: true });
 });
 post('auth/logout', async (req, res) => { await revokeSession(unsign(cookies(req).oc)); setCookie(res, 'oc', '', 0); send(res, 200, { ok: true }); });
+post('me/onb', async (req, res) => { // знакомство пройдено: больше не показывать на любом устройстве
+  const c = await need(req); if (!c.p) return send(res, 200, { ok: true });
+  await update(`crm/p/${c.p.id}.json`, (d) => d ? { doc: { ...d, onbDone: nowIso() } } : { noop: 1 }); send(res, 200, { ok: true });
+});
 get('me', async (req, res) => {
   const c = await session(req);
   if (c.role === 'owner' || c.role === 'owner0') { const o = (await sget('crm/owner.json')) || {}; const pwr = c.role !== 'owner' ? await ownerPw() : 1; return send(res, 200, { role: 'owner', email: c.email, owner: c.role === 'owner', mfa: c.role === 'owner', needKey: c.role !== 'owner', needSet: c.role !== 'owner' && (!pwr || !!(c.s.rs && c.s.rs > (pwr.at || 0))), partner: null, tg: { connected: !!(o.tg && o.tg.chatId) } }); }
@@ -413,7 +417,7 @@ get('me', async (req, res) => {
   const p = c.p; const t = c.tier;
   if (!p.lastSeen || Date.now() - Date.parse(p.lastSeen) > 3600e3) await update(`crm/p/${p.id}.json`, (d) => d ? { doc: { ...d, lastSeen: nowIso() } } : { noop: 1 }).catch(() => {});
   const month = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 7); const used = p.rqMonth && p.rqMonth.m === month ? p.rqMonth.n : 0; const unl = allowed(c, 'rq.unlimited') || p.kind === 'networker';
-  send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: (p.kind === 'networker' || t === 'networker' || t === 'networker_new') ? 'Агент Orbiq' : 'Партнер Orbiq',
+  send(res, 200, { role: 'partner', owner: false, partner: { id: p.id, name: p.name, onbDone: !!p.onbDone, tier: normTier(p.tier), kind: p.kind || 'supplier', state: t, title: (p.kind === 'networker' || t === 'networker' || t === 'networker_new') ? 'Агент Orbiq' : 'Партнер Orbiq',
       site: await ensureSite(p).then(x => ({ slug: x.slug, link: siteUrl(req, x.slug, x.name), long: siteUrl(req, x.slug), phone: (p.contact || {}).phone || '', tgUser: (p.contact || {}).tg || '' })).catch(() => null), start: p.activated || p.created, deadlineDays: TRIAL_DAYS, removed: !!p.trialFailed, trial: p.trialOk ? { done: true } : await trialStat(p).catch(() => null),
       suspended: !!p.suspended, paid: p.paid || null, categories: p.categories || [], product: p.product || null, tg: { connected: !!(p.tg && p.tg.chatId) },
       limits: { rqPerMonth: unl ? null : 1, rqUsed: unl ? null : used, readyNeeded: PF_NEED, ready: t === 'new' ? (await pfRows(p).catch(() => [])).filter(r => r.ok).length : null, priorityHours: allowed(c, 'priority') ? 0 : PRIORITY_HOURS, familyInvites: t === 'paid' ? PAID_FAMILY_INVITES : 0, leads: await leadLim(p) } },

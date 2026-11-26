@@ -2078,7 +2078,7 @@ function boot(to){
   return api('me').then(function(m){S.me=m;
     if(m&&m.role&&!m.needKey){if(!$('#root .app'))$('#root').innerHTML='';if(to)location.hash=to;else if(!location.hash||location.hash==='#/login')location.hash='#/'+(m.owner?'partners':'site')}
     render();
-    if(m.role==='partner'&&!m.needKey&&m.partner&&(Q.get('onb')==='1'||(!DEMO&&!m.partner.onbDone)))setTimeout(onbFlow,500);
+    if(m.role==='partner'&&!m.needKey&&m.partner&&(Q.get('onb')==='1'||Q.get('welcome')==='1'||(!DEMO&&!m.partner.onbDone)))setTimeout(onbFlow,500);
   }).catch(function(){S.me={role:null};render()});
 }
 window.addEventListener('hashchange',function(){S.viewAs='own';render()});

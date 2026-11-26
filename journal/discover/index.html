@@ -187,7 +187,7 @@ body:has(.sp):not(:has(.page)) .mast::after{content:'';position:absolute;z-index
 .pz-n{color:var(--or)}
 .pz-s{margin:0;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:rgba(255,255,255,.82)}
 .pz-c{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 0}
-.pz-c span{font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.86)}
+.pz-c a{transition:background .2s}.pz-c a:hover{background:rgba(255,255,255,.18)}.pz-c span,.pz-c a{font-family:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.86)}
 .pz-i{align-self:flex-start;color:#fff;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,.4);padding:10px 0 2px;min-height:44px;display:inline-flex;align-items:flex-end;gap:6px}
 .pz-i:hover{border-color:#fff}
 .pz-w{position:relative;transition:height .7s cubic-bezier(.16,1,.3,1),opacity .45s}
@@ -383,13 +383,12 @@ function start(){crm('client/feed').then(function(f){
  var byId={};spreads.forEach(function(sp){byId[idOf(sp)]=sp});
  var first=feed.firstChild,mine=[];
  if(HOME){
-  var top=order.slice(0,N),secs=[];top.forEach(function(id){var n=secName(id);if(n&&secs.indexOf(n)<0)secs.push(n)});
+  var top=order.slice(0,N),secs=[],seen={};top.forEach(function(id){var t=IDX[id]||{},m=(t.href||'').match(/\/journal\/([^/]+)\//),a=m&&document.querySelector('#ms a[href$="/'+m[1]+'/"]');if(a&&!seen[a.textContent]){seen[a.textContent]=1;secs.push({n:a.textContent,h:a.getAttribute('href')})}});
   var h=document.createElement('section');h.className='pz-h';
   h.innerHTML='<p class="kick">Персональный выпуск'+(f.until?' · доступ до '+esc(ruDate(f.until)):'')+'</p>'+
    '<h1 class="pz-t"><span class="pz-n">'+esc(f.name||'')+(f.name?',':'')+'</span> '+(f.name?'это ваша подборка':'Это ваша подборка')+'</h1>'+
-   '<p class="pz-s">Вы можете менять интересы в любой момент</p>'+
-   (secs.length?'<p class="pz-c">'+secs.slice(0,4).map(function(s){return '<span>'+esc(s)+'</span>'}).join('')+'</p>':'')+
-   (f.seat===2?'':'<a class="pz-i" href="/i/">Пригласить близкого <span aria-hidden="true">→</span></a>');
+   (secs.length?'<p class="pz-s">Ваши разделы</p><p class="pz-c">'+secs.slice(0,4).map(function(s){return '<a href="'+esc(s.h)+'">'+esc(s.n)+'</a>'}).join('')+'</p>':'')+
+   (f.seat===2?'':'<a class="pz-i" href="/i/">Отправить доступ <span aria-hidden="true">→</span></a>');
   h.insertAdjacentHTML('beforeend','<div class="pz-f" aria-hidden="true">'+top.slice(0,3).map(function(id,i){var t=IDX[id];return '<span style="--k:'+i+'"><img src="'+esc(t.img||t.th)+'" alt=""><b>'+esc(secName(id)||t.geo||'')+'</b></span>'}).join('')+'</div>');
   feed.insertBefore(h,first);var mk=document.createComment('pz');feed.insertBefore(mk,h.nextSibling);
   top.forEach(function(id,i){var sp=byId[id]||make(id);if(!sp)return;var w=wrap(sp,id);feed.insertBefore(w,mk);mine.push(id);

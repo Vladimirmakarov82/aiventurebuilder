@@ -234,7 +234,7 @@ async function aiExtract(text, token) {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 25000);
     if (!(await aiBudget())) return null;
     const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: model || AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
+      body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: AI_SYSTEM }, { role: 'user', content: '<data>\n' + String(text).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) return null; // 401/403 и прочие ошибки — молча резерв
     const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '')); if (!o || typeof o !== 'object') return null;
@@ -270,7 +270,7 @@ async function aiJson(system, user, token, ms = 25000, model = '') {
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), ms);
     if (!(await aiBudget())) return null;
     const r = await fetch(AI_URL(), { method: 'POST', signal: ctl.signal, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
+      body: JSON.stringify({ model: model || AI_MODEL(), temperature: 0, response_format: { type: 'json_object' }, messages: [{ role: 'system', content: system }, { role: 'user', content: '<data>\n' + String(user).replace(/<\s*\/?\s*data\s*>/gi, ' ') + '\n</data>' }] }) });
     clearTimeout(tm); if (!r.ok) { const et = await r.text().catch(() => ''); return aiFail('http_' + r.status + ' ' + et.replace(/\s+/g, ' ').slice(0, 300)); } const j = await r.json(); const raw = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
     const o = JSON.parse(String(raw || '{}').replace(/^```(json)?|```$/g, '').trim()); if (!o || typeof o !== 'object') return aiFail('shape'); AI_LAST = { at: Date.now(), ok: true, reason: '' }; return o;
   } catch (e) { return aiFail(e && e.name === 'AbortError' ? 'timeout' : 'error_' + String((e && e.name) || 'x')); }
@@ -440,7 +440,7 @@ const DEAL_ITEMS = [
 async function recoCatalog() { const cat = await catalog(); return [...DEAL_ITEMS.map(d => ({ ...d, status: 'available', deliver: d.hook, confirmBy: 'Партнер Orbiq' })), ...cat]; }
 const recoSummary = (card) => { const cells = card.cells || {}; const f = Object.entries(cells).filter(([, v]) => v && v.kind === 'fact' && v.v).map(([k, v]) => `${(QUESTIONS[k] || k).replace(/\?$/, '')}: ${v.v}`).slice(0, 12);
   return { cid: card.id, name: card.alias, age: card.age || '', capital: card.capital ? `${card.capital} млн $` : '', interests: card.interests || [], requests: (card.requests || []).filter(r => r.status === 'open').map(r => r.text).slice(0, 5), facts: f }; };
-const RECO_V = 3;
+const RECO_V = 4;
 const RECO_SYSTEM = `Ты эксперт Orbiq. Агент привел состоятельных клиентов. Для каждого клиента выбери из каталога Orbiq до 3 продуктов, которые ему вероятнее всего интересны.
 Порядок выбора: 1) продукты, которые прямо отвечают на открытый запрос клиента; 2) сделки сети с id, начинающимся на deal-, если запрос или факты связаны с деньгами, инвестициями, доходностью, pre-IPO, криптовалютой, безопасностью капитала; 3) продукты под интересы и факты.
 Если подходящего продукта под запрос нет, не подбирай случайный, лучше меньше продуктов.

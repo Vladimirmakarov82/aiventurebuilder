@@ -1454,3 +1454,5 @@ ul.dash li::before{content:"";position:absolute;left:2px;top:10px;width:8px;heig
 .asy-lk{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute)}.asy-lk svg{width:16px;height:16px}
 
 .asy-off{display:inline-flex;align-items:center;gap:8px;margin:2px 0 6px;padding:6px 12px;border-radius:999px;background:#111;color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.asy-off.on{background:rgba(17,17,17,.07);color:#111}
+.asy-off{width:max-content;max-width:100%;justify-self:start;align-self:flex-start}

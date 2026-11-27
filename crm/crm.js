@@ -415,7 +415,7 @@ var Demo=(function(){
     case 'site/lead/status':return {ok:true};
     case 'invite/status':{var c4=own(q.cid);return {invites:(c4.invites2||[]).slice().reverse(),asks:[{kind:'want',title:'Ночь в императорском храме Киото',note:'Вдвоем, в мае',seat:1,at:day(-1,19)},{kind:'want',title:'Конный турнир в Довиле',seat:2,at:day(-2,11)}]}}
     case 'plink/revoke':{if(PLD[b.tok])PLD[b.tok].status='off';return {ok:true}}
-    case 'asym/list':return {locked:true,trial:{cap5:2,cap15:1,left:7,total:3},teaser:[{cat:'Инвестиции',score:7,date:'Актуально на 24 ноября 2026',title:'DeFi-кредит под 15% годовых в долларах',nums:[['15%','цель фонда в год, чистыми'],['$57 млн','вложено в 6 сделок'],['0%','потерь капитала']]}]};
+    case 'asym/list':return {locked:true,trial:{cap5:2,cap15:1,left:7,total:3},teaser:[{cat:'Инвестиции',score:7,date:'Актуально · регулярное, на 24 ноября 2026',title:'DeFi-кредит под 15% годовых в долларах',nums:[['15%','цель фонда в год, чистыми'],['$57 млн','вложено в 6 сделок'],['0%','потерь капитала']]}]};
     case 'reco/list':return {stale:2,clients:[{cid:'c1',alias:'Андрей',age:'45–54',capital:'10–25',interests:['Яхты','Вино'],requests:['ВНЖ в ОАЭ для семьи'],engine:'ai',products:[{id:'deal-defi-credit',title:'Долларовые займы DeFi-протоколам под залог',why:'Держит капитал в долларах и ищет доходность выше депозита',url:'/journal/asymmetry/#deal-defi-credit'}],questions:['Какую часть капитала вы готовы разместить на срок до года?']},{cid:'c2',alias:'Марина',age:'35–44',capital:'3–10',interests:['Образование'],requests:['Школа для детей в Лондоне'],engine:'rules',products:[],questions:['Сколько лет детям и когда планируете переезд?']}]};
     case 'reco/ai':return {engine:'ai',done:2,left:0};
     case 'asks/all':return {rows:[{id:'pa1',kind:'want',partner:'Анна',alias:'Андрей',title:'Ночь в императорском храме Киото',at:day(-1,19),src:'plink'},{id:'pa2',kind:'notify',partner:'Нина',alias:'Олег',title:'Скидка 40–45% на квартиры у застройщика',at:day(-3,10),src:'plink'},{id:'aa1',kind:'asym',partner:'Марк',title:'Discord: 7 400 акций до IPO',note:'Клиент 50 лет, IT, готов к $200 тыс.',at:day(-4,12),src:'asym'}]};
@@ -1739,8 +1739,8 @@ function vAsym(){
   loading('asym');api('asym/list').then(function(d){if(d.locked)return asymLocked(d.trial||{},d.teaser||[]);ASYM=d.rows||[];asymDraw()}).catch(function(e){page('asym',errBox(e))})}
 function asymLocked(t,T){var l=Math.max(0,t.left||0);
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
-  var cards=T.map(function(a,k){return '<article class="asy lk rv" style="--i:'+(k+1)+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.date)+'</span></div>'+
-    '<h2>'+E(a.title)+'</h2><div class="asy-n">'+(a.nums||[]).map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
+  var cards=T.map(function(a,k){return '<article class="asy lk rv" style="--i:'+(k+1)+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.closed?a.date:(String(a.date).split(', ')[1]||''))+'</span></div>'+
+    asySt(a)+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+(a.nums||[]).map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<div class="asy-bl" aria-hidden="true"><i style="width:94%"></i><i style="width:81%"></i><i style="width:88%"></i><i style="width:56%"></i></div>'+
     '<div class="asy-lk">'+ic('lock')+'<span>Механика, кейс, вход и риски откроются после старта</span></div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+
@@ -1748,11 +1748,12 @@ function asymLocked(t,T){var l=Math.max(0,t.left||0);
     '<div class="trs"><div><b>'+(t.cap5||0)+'<small>/5</small></b><span>от $3–10 млн</span></div><div><b>'+(t.cap15||0)+'<small>/3</small></b><span>от $10 млн</span></div><div><b>'+l+'</b><span>'+plural(l,'день остался','дня осталось','дней осталось')+'</span></div></div>'+
     '<div class="row">'+btn('Загрузить клиентов','pri','data-a="bulk"','upload')+'<small>Если за 10 дней условие не выполнено, кабинет и сайт закрываются</small></div></section>'+
     '<div class="asy-list">'+cards+'</div>')}
+function asySt(a){var t=a.closed?'Не актуально':String(a.date||'').split(',')[0];return '<p class="asy-off'+(a.closed?'':' on')+'">'+E(t)+'</p>'}
 function asymDraw(){
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
   var row=function(t,x){return x?'<p class="asy-p"><b>'+t+'</b> '+E(x)+'</p>':''};
-  var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.date)+'</span></div>'+
-    (a.closed?'<p class="asy-off">Не актуально</p>':'')+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
+  var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.closed?a.date:(String(a.date).split(', ')[1]||''))+'</span></div>'+
+    asySt(a)+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<p class="asy-p m">'+E(a.what)+'</p>'+row('Асимметрия:',a.why)+row('Кейс:',a.cas)+row('Вход:',a.entry)+row('Риски:',a.risk)+
     '<div class="row">'+btn(a.closed?'Уведомлять о подобных предложениях':'Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"',a.closed?'bell':'send')+'</div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+

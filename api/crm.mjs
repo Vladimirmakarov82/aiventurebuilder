@@ -480,7 +480,7 @@ const ASYM_LIST = [
   risk:'Нужен доступный плательщик. Процент зависит от кейса.'}];
 // доступ агента к асимметриям: после выполнения условия старта (решение 26.11)
 async function asymLocked(c) { if (!c.p || c.p.kind !== 'networker' || c.p.trialOk) return null; const t = await trialStat(c.p).catch(() => null); return t && !t.done ? t : null; }
-get('asym/list', async (req, res) => { const c = await need(req, 'crm.own'); const t = await asymLocked(c); if (t) return send(res, 200, { locked: true, trial: t, teaser: ASYM_LIST.map(({ cat, score, date, title, nums }) => ({ cat, score, date, title, nums })) }); send(res, 200, { rows: ASYM_LIST }); });
+get('asym/list', async (req, res) => { const c = await need(req, 'crm.own'); const t = await asymLocked(c); if (t) return send(res, 200, { locked: true, trial: t, teaser: ASYM_LIST.map(({ cat, score, date, title, nums, closed }) => ({ cat, score, date, title, nums, closed })) }); send(res, 200, { rows: ASYM_LIST }); });
 async function recoCatalog() { const cat = await catalog(); return [...DEAL_ITEMS.map(d => ({ ...d, status: 'available', deliver: d.hook, confirmBy: 'Партнер Orbiq' })), ...cat]; }
 const recoSummary = (card) => { const cells = card.cells || {}; const f = Object.entries(cells).filter(([, v]) => v && v.kind === 'fact' && v.v).map(([k, v]) => `${(QUESTIONS[k] || k).replace(/\?$/, '')}: ${v.v}`).slice(0, 12);
   return { cid: card.id, name: card.alias, age: card.age || '', capital: card.capital ? `${card.capital} млн $` : '', interests: card.interests || [], requests: (card.requests || []).filter(r => r.status === 'open').map(r => r.text).slice(0, 5), facts: f }; };

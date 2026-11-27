@@ -1740,9 +1740,9 @@ function vAsym(){
 function asymLocked(t,T){var l=Math.max(0,t.left||0);
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
   var cards=T.map(function(a,k){return '<article class="asy lk rv" style="--i:'+(k+1)+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.closed?a.date:(String(a.date).split(', ')[1]||''))+'</span></div>'+
-    asySt(a)+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+(a.nums||[]).map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
+    '<h2>'+E(a.title)+'</h2><div class="asy-n">'+(a.nums||[]).map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<div class="asy-bl" aria-hidden="true"><i style="width:94%"></i><i style="width:81%"></i><i style="width:88%"></i><i style="width:56%"></i></div>'+
-    '<div class="asy-lk">'+ic('lock')+'<span>Механика, кейс, вход и риски откроются после старта</span></div></article>'}).join('');
+    '<div class="asy-lk">'+asySt(a)+ic('lock')+'<span>Механика, кейс, вход и риски откроются после старта</span></div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+
     '<section class="asy-gate rv"><div><span class="kick">'+T.length+' '+plural(T.length,'сделка','сделки','сделок')+' в сети сейчас</span><h2>Полное описание открывается после старта</h2><p>5 клиентов с капиталом $3–10 млн или 3 клиента от $10 млн. В зачет идет клиент с возрастом, капиталом и запросом или описанием интересов и активов. Фамилии и контакты не нужны</p></div>'+
     '<div class="trs"><div><b>'+(t.cap5||0)+'<small>/5</small></b><span>от $3–10 млн</span></div><div><b>'+(t.cap15||0)+'<small>/3</small></b><span>от $10 млн</span></div><div><b>'+l+'</b><span>'+plural(l,'день остался','дня осталось','дней осталось')+'</span></div></div>'+
@@ -1753,9 +1753,9 @@ function asymDraw(){
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
   var row=function(t,x){return x?'<p class="asy-p"><b>'+t+'</b> '+E(x)+'</p>':''};
   var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.closed?a.date:(String(a.date).split(', ')[1]||''))+'</span></div>'+
-    asySt(a)+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
+    '<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<p class="asy-p m">'+E(a.what)+'</p>'+row('Асимметрия:',a.why)+row('Кейс:',a.cas)+row('Вход:',a.entry)+row('Риски:',a.risk)+
-    '<div class="row">'+btn(a.closed?'Уведомлять о подобных предложениях':'Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"',a.closed?'bell':'send')+'</div></article>'}).join('');
+    '<div class="row">'+asySt(a)+btn(a.closed?'Уведомлять о подобных предложениях':'Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"',a.closed?'bell':'send')+'</div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+
     ''+
     '<p class="asy-lead">Редкие сделки, которые партнеры принесли в сеть. Контакты продавца Orbiq передает партнеру клиента после согласования условий.</p><div class="asy-list">'+cards+'</div>');

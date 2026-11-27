@@ -1752,7 +1752,7 @@ function asymDraw(){
   var bar=function(n){var h='';for(var i=0;i<10;i++)h+='<i class="'+(i<n?'on':'')+'" style="--d:'+i+'"></i>';return '<span class="asy-bar">'+h+'</span>'};
   var row=function(t,x){return x?'<p class="asy-p"><b>'+t+'</b> '+E(x)+'</p>':''};
   var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.date)+'</span></div>'+
-    '<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
+    (a.closed?'<p class="asy-off">Не актуально. Окно закрыто, следующее открывается 1–2 раза в год</p>':'')+'<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<p class="asy-p m">'+E(a.what)+'</p>'+row('Асимметрия:',a.why)+row('Кейс:',a.cas)+row('Вход:',a.entry)+row('Риски:',a.risk)+
     '<div class="row">'+btn(a.closed?'Уведомлять о подобных предложениях':'Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"',a.closed?'bell':'send')+'</div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+

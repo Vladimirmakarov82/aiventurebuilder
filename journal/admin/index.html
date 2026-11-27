@@ -468,7 +468,7 @@ function start(){crm('client/feed').then(function(f){
   crm('client/interest',{itemId:id,action:act}).then(function(r){busy[id+act]=0;
    if(r._s!==200){b.disabled=false;toast(r.error||'Не получилось. Попробуйте еще раз',1);return}
    if(act==='like'){b.disabled=false;b.setAttribute('aria-pressed','true');b.textContent='Мне интересно ✓';toast('Учтем в вашей подборке')}
-   if(act==='want'){b.textContent='Запрос отправлен';b.classList.add('done');toast((r.next&&r.next.text)||'Мы передали запрос. С вами свяжутся, чтобы уточнить детали')}
+   if(act==='want'){b.textContent='Запрос отправлен';b.classList.add('done');toast(b.getAttribute('data-nt')?'Сообщим, когда появится похожее предложение':((r.next&&r.next.text)||'Мы передали запрос. С вами свяжутся, чтобы уточнить детали'))}
   })},true);
 });}
 })();

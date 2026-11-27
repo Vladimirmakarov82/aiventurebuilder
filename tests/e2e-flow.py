@@ -74,7 +74,7 @@ with sync_playwright() as p:
     ok('visitor: плашка партнера', 'Егор' in (vp.locator('.plk-rib').inner_text() if vp.locator('.plk-rib').count() else ''))
     vp.goto(B + '/journal/asymmetry/'); vp.wait_for_timeout(1800)
     ok('visitor: асимметрия первая в меню', vp.locator('#ms a').first.get_attribute('href')=='/journal/asymmetry/')
-    vp.locator('a.dl-c').first.click(); vp.wait_for_timeout(1500); vp.screenshot(path=OUT + '/08-visitor-deal.png')
+    vp.locator('a.dl-c:not(.arch)').first.click(); vp.wait_for_timeout(1500); vp.screenshot(path=OUT + '/08-visitor-deal.png')
     cta = vp.locator('a.cta:visible').first; ok('visitor: кнопка «Связаться с Егором»', 'Егором' in cta.inner_text(), cta.inner_text())
     cta.click(); vp.wait_for_timeout(600); ok('visitor: шаг 1 регистрация', 'регистрация' in vp.locator('.plk-m').inner_text().lower())
     vp.fill('.plk-m input[name=name]', 'Ольга'); vp.fill('.plk-m input[name=email]', 'olga@e2e.test'); vp.fill('.plk-m input[name=password]', 'olgapass1'); vp.screenshot(path=OUT + '/09a-visitor-register.png')

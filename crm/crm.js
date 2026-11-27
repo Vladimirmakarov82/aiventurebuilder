@@ -1754,12 +1754,12 @@ function asymDraw(){
   var cards=ASYM.map(function(a,k){return '<article class="asy rv" style="--i:'+k+'"><div class="asy-top"><span class="kick">'+E(a.cat)+'</span><span class="asy-s">Крутость '+a.score+'/10 '+bar(a.score)+'</span><span class="asy-w">'+E(a.date)+'</span></div>'+
     '<h2>'+E(a.title)+'</h2><div class="asy-n">'+a.nums.map(function(n){return '<div><b>'+E(n[0])+'</b><span>'+E(n[1])+'</span></div>'}).join('')+'</div>'+
     '<p class="asy-p m">'+E(a.what)+'</p>'+row('Асимметрия:',a.why)+row('Кейс:',a.cas)+row('Вход:',a.entry)+row('Риски:',a.risk)+
-    '<div class="row">'+btn('Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"','send')+'</div></article>'}).join('');
+    '<div class="row">'+btn(a.closed?'Уведомлять о подобных предложениях':'Предложить своему клиенту','pri','data-a="asyask" data-k="'+k+'"',a.closed?'bell':'send')+'</div></article>'}).join('');
   page('asym',hd('Сделки партнеров сети','Асимметрии')+
     ''+
     '<p class="asy-lead">Редкие сделки, которые партнеры принесли в сеть. Контакты продавца Orbiq передает партнеру клиента после согласования условий.</p><div class="asy-list">'+cards+'</div>');
 }
-function asyAsk(k){var a=ASYM[+k]||{};var el=sheet('<div class="kick">'+E(a.title||'')+'</div><h2>Предложить клиенту</h2><p class="hint">Orbiq передаст запрос партнеру, который принес сделку, и лично согласует условия и комиссию</p><textarea class="ta" id="aak" placeholder="Коротко о клиенте: возраст, сфера, сумма, сроки. Без фамилии и контактов"></textarea><div class="row">'+btn('Отправить в Orbiq','pri','id="aakgo"','send')+'</div>',true);
+function asyAsk(k){var a=ASYM[+k]||{};var el=sheet('<div class="kick">'+E(a.title||'')+'</div><h2>'+(a.closed?'Уведомить о следующем окне':'Предложить клиенту')+'</h2><p class="hint">'+(a.closed?'Окно закрыто. Orbiq сообщит, когда партнер откроет следующее, и передаст ему запрос клиента':'Orbiq передаст запрос партнеру, который принес сделку, и лично согласует условия и комиссию')+'</p><textarea class="ta" id="aak" placeholder="Коротко о клиенте: возраст, сфера, сумма, сроки. Без фамилии и контактов"></textarea><div class="row">'+btn('Отправить в Orbiq','pri','id="aakgo"','send')+'</div>',true);
   $('#aakgo',el).addEventListener('click',function(){var tx=$('#aak',el).value.trim();if(tx.length<10){toast('Нужно коротко описать клиента','alert');return}this.disabled=true;
     api('asym/ask',{title:a.title,text:tx}).then(function(){closeSheet();toast('Запрос у Orbiq. Ответ придет в кабинет и в Telegram')}).catch(function(e){toast(e.message||'Не получилось','alert')})})}
 function leaveFocus(){localStorage.setItem('oc_tour','1');document.body.classList.remove('focus');S.tour=0}

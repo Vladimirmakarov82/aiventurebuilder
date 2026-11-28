@@ -4,7 +4,7 @@ SVC_RU = ['Резидентство Монако', 'Счет в Pictet', 'Golden
           'Royal Enclosure', 'Ночная гонка в Сингапуре', 'Bal des Débutantes', 'Венский оперный бал',
           'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Ужин в Гионе', 'Охрана семьи',
           'Вилла вне продажи', 'Clinique La Prairie', 'Mayo Clinic', 'Растаможка груза', 'Оплата поставщику',
-          'Компания в ОАЭ', 'Счет в Julius Baer', 'Резидентство Сингапура', 'Семейный офис в Сингапуре',
+          'Компания в ОАЭ', 'Счет в Julius Baer', 'Резидентство Сингапура', 'Льгота 13O в Сингапуре',
           'Антарктида из Кейптауна', 'Оксфорд', 'Сафари в Саби Сэнд', 'Art Basel Hong Kong', 'amfAR Cannes',
           'Показ Chanel Haute Couture', 'Центральный корт Уимблдона', 'Gulfstream G700', 'Кубок Америки в Неаполе']
 SVC_EN = ['Monaco residence', 'Pictet account', 'UAE Golden Visa', 'Family trust', 'Liechtenstein foundation',
@@ -12,7 +12,7 @@ SVC_EN = ['Monaco residence', 'Pictet account', 'UAE Golden Visa', 'Family trust
           'Royal Enclosure', 'Singapore night race', 'Bal des Débutantes', 'Vienna Opera Ball',
           'Cerebras pre-IPO +2085%', 'CoreWeave pre-IPO +235%', 'Dinner in Gion', 'Family security',
           'Off-market villa', 'Clinique La Prairie', 'Mayo Clinic', 'Customs clearance', 'Supplier payment',
-          'UAE company', 'Julius Baer account', 'Singapore residence', 'Singapore family office',
+          'UAE company', 'Julius Baer account', 'Singapore residence', 'Singapore 13O scheme',
           'Antarctica from Cape Town', 'Oxford', 'Sabi Sand safari', 'Art Basel Hong Kong', 'amfAR Cannes',
           'Chanel Haute Couture show', 'Wimbledon Centre Court', 'Gulfstream G700', 'America’s Cup Naples']
 

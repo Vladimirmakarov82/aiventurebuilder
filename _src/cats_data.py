@@ -34,7 +34,7 @@ CATS_RU = [
  ]),
  ('Финансы', [
   ('Капитал', 'Pre-IPO', 'Акции частной компании нельзя просто купить: каждую продажу одобряет сама компания. Находим акционеров Stripe, Databricks и&nbsp;Anduril, готовых продать долю, и&nbsp;места в&nbsp;закрытых раундах'),
-  ('Сингапур', 'Семейный офис', 'Доход семейного офиса в&nbsp;Сингапуре освобождают от&nbsp;налога по&nbsp;программам 13O и&nbsp;13U. Для этого офис нанимает инвестиционных специалистов на&nbsp;месте и&nbsp;вкладывает часть капитала в&nbsp;местную экономику. Регистрируем офис и&nbsp;ведем отчетность'),
+  ('Сингапур', 'Налоговая льгота 13O и&nbsp;13U', 'Инвестиционный доход семьи в&nbsp;Сингапуре освобождают от&nbsp;налога по&nbsp;программам 13O и&nbsp;13U. Для этого офис нанимает инвестиционных специалистов на&nbsp;месте и&nbsp;вкладывает часть капитала в&nbsp;местную экономику. Регистрируем офис и&nbsp;ведем отчетность'),
   ('Женева · Сингапур', 'Счет для&nbsp;всей семьи', 'Школа в&nbsp;Швейцарии выставляет оплату во&nbsp;франках, клиника в&nbsp;Лондоне в&nbsp;фунтах. Открываем счета в&nbsp;частных банках Женевы и&nbsp;Сингапура, и&nbsp;семья платит за&nbsp;учебу, лечение и&nbsp;сделки из&nbsp;одного банка'),
   ('Лихтенштейн', 'Капитал для&nbsp;внуков', 'В&nbsp;уставе семейного фонда в&nbsp;Лихтенштейне можно записать, с&nbsp;какого возраста внуки получают доход и&nbsp;на&nbsp;что его тратят'),
  ]),
@@ -79,7 +79,7 @@ CATS_EN = [
  ]),
  ('Finance', [
   ('Capital', 'Pre-IPO', 'Shares of&nbsp;a&nbsp;private company cannot simply be&nbsp;bought: the company approves every sale. We&nbsp;find Stripe, Databricks and Anduril shareholders ready to&nbsp;sell, and places in&nbsp;closed rounds'),
-  ('Singapore', 'A&nbsp;family office', 'Singapore exempts family office income from tax under the 13O and 13U schemes. For this the office hires investment professionals locally and invests part of&nbsp;its capital in&nbsp;the local economy. We&nbsp;register the office and keep the reporting'),
+  ('Singapore', 'The 13O and 13U tax schemes', 'Singapore exempts a&nbsp;family&#39;s qualifying investment income from tax under the 13O and 13U schemes. For this the office hires investment professionals locally and invests part of&nbsp;its capital in&nbsp;the local economy. We&nbsp;register the office and keep the reporting'),
   ('Geneva · Singapore', 'One account for the family', 'A&nbsp;Swiss school bills in&nbsp;francs, a&nbsp;London clinic in&nbsp;pounds. We&nbsp;open accounts with private banks in&nbsp;Geneva and Singapore, and the family pays for school, care and deals from one bank'),
   ('Liechtenstein', 'Capital for the grandchildren', 'The charter of&nbsp;a&nbsp;Liechtenstein family foundation can set the age at&nbsp;which grandchildren receive income and what it&nbsp;can be&nbsp;spent on'),
  ]),
